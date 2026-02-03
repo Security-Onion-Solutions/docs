@@ -1,0 +1,14 @@
+# Additional Network Visibility
+
+In the [network](network-visibility.md) section, we looked at network visibility provided by Security Onion itself. The ideal situation would be to have Security Onion network sensors covering each and every one of your network segments. If you're able to achieve that ideal situation, then you may not need any additional network visibility. However, there may be times when you simply can't cover certain network segments with Security Onion network sensors and that's when these additional options can be beneficial. Keep in mind, though, that the data that they provide is nowhere near as comprehensive as a full Security Onion network sensor. 
+
+One option for additional network visibility would be [NetFlow](netflow.md) logs from firewalls, switches, or routers showing what traffic was observed by the network device. Another option would be firewall logs showing what traffic was allowed through the firewall and what traffic was denied. Firewall logs may be in different formats such as [CEF](cef.md), [iptables](iptables.md), or a combination of the two (as in [UniFi](unifi.md) firewalls). We also have support for [pfSense](pfsense.md) and [OPNsense](opnsense.md) firewalls and you can find other firewall integrations in the [Third Party Integrations](third-party-integrations.md) section.
+
+## Table of Contents
+
+- [NetFlow](netflow.md)
+- [CEF](cef.md)
+- [iptables](iptables.md)
+- [UniFi](unifi.md)
+- [pfSense](pfsense.md)
+- [OPNsense](opnsense.md)

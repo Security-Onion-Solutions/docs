@@ -1,0 +1,62 @@
+# Use Cases
+
+If you’re going to deploy Security Onion, you should first decide what your use case is. In this section, we'll discuss some common use cases and how they map to our different kinds of architecture. This could be anything from a temporary Import installation in a small virtual machine on your personal laptop all the way to a large scalable enterprise deployment consisting of a manager node, multiple search nodes, and lots of sensor nodes.
+
+## Minimal Import
+
+Suppose you just want to import PCAP or EVTX files or suppose that you have limited hardware and just want the minimal installation to get some experience with Security Onion. Install Security Onion and choose the `Import` option. This can be done in a minimal virtual machine with as little as 4GB RAM. You can read more about the `Import` option in the [First Time Users](first-time-users.md) section and in the [Architecture](architecture.md) section.
+
+## Minimal Network Visibility
+
+Suppose you have a small network where you just want some basic network visibility. This might be monitoring traffic from a TAP or SPAN port on a homelab or other small network that doesn't require a production installation. Install Security Onion and choose the `Evaluation` option. You can read more about the `Evaluation` option in the [Architecture](architecture.md) section.
+
+## Minimal Network Visibility with OPNsense Firewall instead of TAP or SPAN
+
+Suppose you have a small network segment where you just want some basic network visibility but you don't have the ability to collect traffic via TAP or SPAN port but you do have an [OPNsense](opnsense.md) firewall. Install Security Onion, choose the `ManagerSearch` option, and then follow the [OPNsense](opnsense.md) section to collect firewall logs, [Netflow](netflow.md) data, and Suricata [NIDS](nids.md) alerts. You can read more about the `ManagerSearch` option in the [Architecture](architecture.md) section.
+
+## Minimal Netflow Collector
+
+Suppose you have a small network where you just want to collect some [Netflow](netflow.md) data. Install Security Onion, choose the `ManagerSearch` option, and then follow the [Netflow](netflow.md) section. You can read more about the `ManagerSearch` option in the [Architecture](architecture.md) section.
+
+## Minimal Log Management
+
+Suppose you have a small network where you just want some basic host visibility. This might be deploying agents to a small number of desktops and servers and/or collecting syslog from firewall or other devices. Install Security Onion, choose the `ManagerSearch` option, and then deploy the [Elastic Agent](elastic-agent.md) to your hosts and review the [Host](host-visibility.md) and [Third Party Integrations](third-party-integrations.md) sections. You can read more about the `ManagerSearch` option in the [Architecture](architecture.md) section.
+
+## Minimal Network and Host Visibility
+
+Suppose you have a small network where you want both network visibility and host visibility. Install Security Onion and choose the `Standalone` option. This machine will then sniff network traffic from your TAP or SPAN port and also support deploying the [Elastic Agent](elastic-agent.md) to other hosts. You can read more about the `Standalone` option in the [Architecture](architecture.md) section.
+
+## Minimal Enterprise Deployment
+
+Suppose you have a small or medium network where you want some visibility for both network and hosts. A minimal enterprise deployment would look like this:
+
+- Install the first Security Onion instance and choose the `ManagerSearch` option.
+- Deploy the [Elastic Agent](elastic-agent.md) to hosts.
+- Install Security Onion on one or more additional machines and join them to the Grid as sensor nodes. They will analyze network traffic from your TAP or SPAN port.
+
+You can read more about distributed deployments in the [Architecture](architecture.md) section.
+
+## More Scalable Enterprise Deployment
+
+Suppose you have a medium or large network where you want some visibility for both network and hosts. A more scalable enterprise deployment would look like this:
+
+- Install the first Security Onion instance and choose the `Manager` option.
+- Install Security Onion on one or more additional machines and join them to the Grid as search nodes. They will store logs and allow you to search them.
+- Deploy the [Elastic Agent](elastic-agent.md) to hosts. They will collect logs and send them to the Grid.
+- Install Security Onion on one or more additional machines and join them to the Grid as sensor nodes. They will analyze network traffic from your TAP or SPAN port.
+
+You can read more about distributed deployments in the [Architecture](architecture.md) section.
+
+## Comprehensive Enterprise Deployment
+
+Suppose you have a large network where you want maximum visibility for both network and hosts. A comprehensive distributed deployment would look like this:
+
+- Install the first Security Onion instance and choose the `Manager` option.
+- Install Security Onion on one or more additional machines and join them to the Grid as search nodes. They will store logs and allow you to search them.
+- Install Security Onion on a machine in your DMZ and join it to the Grid as a Fleet node. This node will manage your Elastic agents whether they are onsite or offsite.
+- Deploy the [Elastic Agent](elastic-agent.md) to hosts. They will collect logs and send them to the Grid.
+- Install Security Onion on one or more additional machines and join them to the Grid as sensor nodes. They will analyze network traffic from your TAP or SPAN port.
+- Install Security Onion on one or more additional machines and join them to the Grid as receiver nodes. This provides load balancing and pipeline redundancy.
+- Install Security Onion on one or more additional machines and join them to the Grid as [IDH](idh.md) nodes. They will provide honeypot and deception capabilities.
+
+You can read more about distributed deployments in the [Architecture](architecture.md) section.

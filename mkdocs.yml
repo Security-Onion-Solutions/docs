@@ -1,0 +1,240 @@
+site_name: Security Onion Documentation
+site_url: https://securityonion.net/docs
+site_author: Security Onion Solutions, LLC
+copyright: Security Onion Solutions, LLC
+
+theme:
+  name: material
+  logo: images/logo/so-logo.png
+  favicon: images/logo/so-logo.png
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.expand
+    - navigation.path
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+  palette:
+    - scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Security-Onion-Solutions
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/securityonion
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/c/SecurityOnion
+
+extra_css:
+  - _static/theme_overrides.css
+
+extra_javascript:
+  - _static/theme_overrides.js
+
+plugins:
+  - search
+  - glightbox
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+nav:
+  - Home: index.md
+  - About: about.md
+  - Introduction: introduction.md
+  - License: license.md
+  - First Time Users: first-time-users.md
+  - Getting Started:
+    - Overview: getting-started.md
+    - Best Practices: best-practices.md
+    - Use Cases: use-cases.md
+    - Architecture: architecture.md
+    - Hardware: hardware.md
+    - Download: download.md
+    - VMware: vmware.md
+    - VirtualBox: virtualbox.md
+    - Proxmox: proxmox.md
+    - Trouble Booting: trouble-booting.md
+    - Airgap: airgap.md
+    - Installation: installation.md
+    - Amazon Cloud: cloud-amazon.md
+    - Azure Cloud: cloud-azure.md
+    - Google Cloud: cloud-google.md
+    - Configuration: configuration.md
+    - Post Installation: post-installation.md
+  - Security Onion Console:
+    - Overview: security-onion-console.md
+    - Alerts: alerts.md
+    - Dashboards: dashboards.md
+    - Hunt: hunt.md
+    - Cases: cases.md
+    - Detections: detections.md
+    - PCAP: pcap.md
+    - Grid: grid.md
+    - Downloads: downloads.md
+    - Administration: administration.md
+    - Kibana: kibana.md
+    - Elastic Fleet: elastic-fleet.md
+    - Osquery Manager: osquery-manager.md
+    - InfluxDB: influxdb.md
+    - CyberChef: cyberchef.md
+    - Attack Navigator: attack-navigator.md
+  - Security Onion Desktop:
+    - Overview: security-onion-desktop.md
+    - Chromium: chromium.md
+    - NetworkMiner: networkminer.md
+    - Wireshark: wireshark.md
+  - Network Visibility:
+    - Overview: network-visibility.md
+    - AF-PACKET: af-packet.md
+    - BPF: bpf.md
+    - Full Packet Capture: full-packet-capture.md
+    - Suricata: suricata.md
+    - Zeek: zeek.md
+    - Strelka: strelka.md
+    - IDH: idh.md
+  - Additional Network Visibility:
+    - Overview: additional-network-visibility.md
+    - NetFlow: netflow.md
+    - CEF: cef.md
+    - iptables: iptables.md
+    - UniFi: unifi.md
+    - pfSense: pfsense.md
+    - OPNsense: opnsense.md
+  - Host Visibility:
+    - Overview: host-visibility.md
+    - Elastic Agent: elastic-agent.md
+    - Syslog: syslog.md
+    - Sysmon: sysmon.md
+  - Third Party Integrations: third-party-integrations.md
+  - Rules:
+    - Overview: rules.md
+    - NIDS: nids.md
+    - Sigma: sigma.md
+    - YARA: yara.md
+  - Logs:
+    - Overview: logs.md
+    - Ingest: ingest.md
+    - Logstash: logstash.md
+    - Redis: redis.md
+    - Elasticsearch: elasticsearch.md
+    - ElastAlert: elastalert.md
+    - Data Fields: data-fields.md
+    - Alert Data Fields: alert-data-fields.md
+    - ElastAlert Fields: elastalert-fields.md
+    - Zeek Fields: zeek-fields.md
+    - Community ID: community-id.md
+    - Security Onion Console Logs: security-onion-console-logs.md
+  - Updating:
+    - Overview: updating.md
+    - soup: soup.md
+    - EOL: eol.md
+  - Accounts:
+    - Overview: accounts.md
+    - Adding Accounts: adding-accounts.md
+    - Disabling Accounts: disabling-accounts.md
+    - Listing Accounts: listing-accounts.md
+    - Passwords: passwords.md
+    - MFA: mfa.md
+    - RBAC: rbac.md
+    - Kratos: kratos.md
+  - Services: services.md
+  - Customizing:
+    - Overview: customizing.md
+    - Security Onion Console Customization: security-onion-console-customization.md
+    - nginx: nginx.md
+    - proxy: proxy.md
+    - firewall: firewall.md
+    - email: email.md
+    - ntp: ntp.md
+    - console: console.md
+    - ssh: ssh.md
+    - hostname: hostname.md
+    - ip: ip.md
+    - dns: dns.md
+    - URL Base: url-base.md
+  - Tricks and Tips:
+    - Overview: tricks-and-tips.md
+    - Backup: backup.md
+    - Docker: docker.md
+    - Jupyter: jupyter.md
+    - New Disk: new-disk.md
+    - Network Installation: network-installation.md
+    - PCAPs: pcaps.md
+    - Performance: performance.md
+    - Removing a Node: removing-a-node.md
+    - Salt: salt.md
+    - Syslog Output: syslog-output.md
+    - Time Zones: time-zones.md
+    - Endgame: endgame.md
+  - Utilities:
+    - Overview: utilities.md
+    - jq: jq.md
+    - so-allow: so-allow.md
+    - so-elastic-auth-password-reset: so-elastic-auth-password-reset.md
+    - so-elasticsearch-query: so-elasticsearch-query.md
+    - so-import-pcap: so-import-pcap.md
+    - so-import-evtx: so-import-evtx.md
+    - so-monitor-add: so-monitor-add.md
+    - so-status: so-status.md
+    - so-test: so-test.md
+    - so-user: so-user.md
+  - Help:
+    - Overview: help.md
+    - FAQ: faq.md
+    - Directory: directory.md
+    - Tools: tools.md
+    - Community Support: community-support.md
+    - Support: support.md
+    - Help Wanted: help-wanted.md
+  - Security Onion Pro:
+    - Overview: security-onion-pro.md
+    - OIDC: oidc.md
+    - LUKS: luks.md
+    - FIPS: fips.md
+    - STIG: stig.md
+    - Notifications: notifications.md
+    - Kafka: kafka.md
+    - Connect API: connect-api.md
+    - Active Query Management: active-query-management.md
+    - Manager of Managers: manager-of-managers.md
+    - MCP Server: mcp-server.md
+    - Security Onion App for Splunk: security-onion-app-for-splunk.md
+    - Hypervisor: hypervisor.md
+    - Reports: reports.md
+    - Onion AI: onion-ai.md
+  - Security: security.md
+  - Telemetry: telemetry.md
+  - Release Notes: release-notes.md
+  - Appendix: appendix.md
+  - Cheat Sheet: cheat-sheet.md
