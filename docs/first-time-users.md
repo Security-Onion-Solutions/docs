@@ -130,7 +130,7 @@ While on the [Grid](grid.md) page, you can import a PCAP or EVTX file using the 
 
 ![Image](images/40_upload.png)
 
-Once the import is complete, the [Grid](grid.md) page should display a message at the of the page and provide a link to [Dashboards](dashboards.md) to view all alerts and logs from the import:
+Once the import is complete, the [Grid](grid.md) page should display a message at the top of the page and provide a link to [Dashboards](dashboards.md) to view all alerts and logs from the import:
 
 ![Image](images/45_import.png)
 
