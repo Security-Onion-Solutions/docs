@@ -13,20 +13,28 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-      - run: pip install mkdocs mkdocs-material mkdocs-glightbox mike
-      - name: Decide deploy path
-        id: path
+
+      - run: pip install mkdocs mkdocs-material mkdocs-glightbox
+
+      - run: mkdocs build --strict
+
+      - name: Deploy stable
+        if: github.ref_name == 'main'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: site
+          branch: gh-pages
+          clean: true
+          target-folder: .
+
+      - name: Deploy dev
+        if: github.ref_name == 'dev'
         run: |
-          if [ "${{ github.ref_name }}" = "main" ]; then
-            echo "TARGET=." >> $GITHUB_OUTPUT          # root folder
-          else
-            echo "TARGET=${{ github.ref_name }}" >> $GITHUB_OUTPUT   # dev → dev/
-          fi
-      - name: Deploy with mike (no aliases, no version metadata)
-        run: |
+          pip install mike
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          mike deploy --push ${{ steps.path.outputs.TARGET }}
+          mike deploy --push dev
