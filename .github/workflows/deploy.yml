@@ -1,16 +1,40 @@
 name: Deploy MkDocs
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - dev
 jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-python@v5
-      with:
-        python-version: '3.x'
-    - run: pip install mkdocs mkdocs-material mkdocs-glightbox
-    - run: mkdocs gh-deploy --force
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - run: pip install mkdocs mkdocs-material mkdocs-glightbox
+
+      - run: mkdocs build --strict
+
+      - name: Deploy stable
+        if: github.ref_name == 'main'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: site
+          branch: gh-pages
+          clean: true
+          target-folder: .
+
+      - name: Deploy dev
+        if: github.ref_name == 'dev'
+        run: |
+          pip install mike
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          mike deploy --push dev
