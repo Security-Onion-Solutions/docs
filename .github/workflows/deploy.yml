@@ -22,19 +22,11 @@ jobs:
 
       - run: mkdocs build --strict
 
-      - name: Deploy stable
-        if: github.ref_name == 'main'
+      - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: site
-          branch: gh-pages
-          clean: true
-          target-folder: .
-
-      - name: Deploy dev
-        if: github.ref_name == 'dev'
-        run: |
-          pip install mike
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          mike deploy --push --rebase dev
+          folder: site                  # mkdocs default output dir
+          branch: gh-pages              # your Pages source branch
+          token: ${{ secrets.GITHUB_TOKEN }}   # automatic, no need to set manually
+          clean: false                  # IMPORTANT: false prevents wiping other folders (like dev/)
+          target-folder: ${{ github.ref_name == 'main' && '.' || github.ref_name }}
