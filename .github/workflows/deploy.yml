@@ -37,4 +37,4 @@ jobs:
           pip install mike
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          mike deploy --push dev
+          mike deploy --push --rebase dev
