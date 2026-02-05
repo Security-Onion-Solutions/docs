@@ -1,619 +1,619 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://securityonion.net/docs/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/about/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/about/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/accounts/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/accounts/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/active-query-management/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/active-query-management/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/adding-accounts/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/adding-accounts/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/additional-network-visibility/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/additional-network-visibility/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/administration/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/administration/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/af-packet/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/af-packet/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/airgap/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/airgap/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/alert-data-fields/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/alert-data-fields/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/alerts/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/alerts/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/appendix/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/appendix/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/architecture/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/architecture/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/attack-navigator/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/attack-navigator/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/backup/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/backup/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/best-practices/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/best-practices/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/bpf/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/bpf/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/cases/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/cases/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/cef/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/cef/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/cheat-sheet/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/cheat-sheet/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/chromium/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/chromium/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/cloud-amazon/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/cloud-amazon/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/cloud-azure/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/cloud-azure/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/cloud-google/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/cloud-google/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/community-id/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/community-id/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/community-support/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/community-support/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/configuration/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/configuration/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/connect-api/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/connect-api/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/console/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/console/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/customizing/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/customizing/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/cyberchef/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/cyberchef/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/dashboards/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/dashboards/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/data-fields/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/data-fields/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/detections/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/detections/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/directory/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/directory/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/disabling-accounts/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/disabling-accounts/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/dns/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/dns/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/docker/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/docker/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/download/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/download/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/downloads/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/downloads/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/elastalert-fields/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/elastalert-fields/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/elastalert/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/elastalert/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/elastic-agent/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/elastic-agent/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/elastic-fleet/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/elastic-fleet/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/elasticsearch/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/elasticsearch/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/email/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/email/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/endgame/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/endgame/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/eol/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/eol/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/faq/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/faq/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/fips/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/fips/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/firewall/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/firewall/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/first-time-users/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/first-time-users/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/full-packet-capture/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/full-packet-capture/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/getting-started/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/getting-started/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/grid/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/grid/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/hardware/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/hardware/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/help-wanted/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/help-wanted/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/help/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/help/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/host-visibility/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/host-visibility/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/hostname/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/hostname/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/hunt/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/hunt/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/hypervisor/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/hypervisor/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/idh/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/idh/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/influxdb/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/influxdb/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/ingest/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/ingest/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/installation/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/installation/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/introduction/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/introduction/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/ip/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/ip/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/iptables/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/iptables/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/jq/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/jq/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/jupyter/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/jupyter/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/kafka/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/kafka/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/kibana/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/kibana/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/kratos/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/kratos/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/license/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/license/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/listing-accounts/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/listing-accounts/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/logs/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/logs/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/logstash/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/logstash/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/luks/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/luks/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/manager-of-managers/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/manager-of-managers/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/mcp-server/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/mcp-server/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/mfa/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/mfa/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/netflow/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/netflow/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/network-installation/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/network-installation/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/network-visibility/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/network-visibility/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/networkminer/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/networkminer/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/new-disk/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/new-disk/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/nginx/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/nginx/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/nids/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/nids/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/notifications/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/notifications/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/ntp/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/ntp/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/oidc/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/oidc/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/onion-ai/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/onion-ai/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/opnsense/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/opnsense/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/osquery-manager/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/osquery-manager/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/passwords/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/passwords/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/pcap/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/pcap/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/pcaps/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/pcaps/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/performance/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/performance/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/pfsense/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/pfsense/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/post-installation/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/post-installation/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/proxmox/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/proxmox/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/proxy/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/proxy/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/rbac/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/rbac/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/redis/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/redis/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/release-notes/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/release-notes/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/removing-a-node/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/removing-a-node/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/reports/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/reports/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/rules/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/rules/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/salt/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/salt/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/security-onion-app-for-splunk/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/security-onion-app-for-splunk/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/security-onion-console-customization/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/security-onion-console-customization/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/security-onion-console-logs/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/security-onion-console-logs/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/security-onion-console/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/security-onion-console/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/security-onion-desktop/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/security-onion-desktop/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/security-onion-pro/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/security-onion-pro/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/security/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/security/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/services/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/services/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/sigma/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/sigma/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/so-allow/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/so-allow/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/so-elastic-auth-password-reset/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/so-elastic-auth-password-reset/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/so-elasticsearch-query/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/so-elasticsearch-query/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/so-import-evtx/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/so-import-evtx/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/so-import-pcap/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/so-import-pcap/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/so-monitor-add/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/so-monitor-add/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/so-status/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/so-status/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/so-test/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/so-test/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/so-user/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/so-user/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/soup/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/soup/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/ssh/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/ssh/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/stig/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/stig/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/strelka/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/strelka/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/support/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/support/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/suricata/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/suricata/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/syslog-output/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/syslog-output/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/syslog/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/syslog/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/sysmon/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/sysmon/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/telemetry/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/telemetry/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/third-party-integrations/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/third-party-integrations/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/time-zones/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/time-zones/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/tools/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/tools/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/tricks-and-tips/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/tricks-and-tips/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/trouble-booting/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/trouble-booting/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/unifi/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/unifi/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/updating/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/updating/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/url-base/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/url-base/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/use-cases/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/use-cases/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/utilities/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/utilities/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/virtualbox/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/virtualbox/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/vmware/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/vmware/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/wireshark/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/wireshark/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/yara/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/yara/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/zeek-fields/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/zeek-fields/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
     <url>
-         <loc>https://securityonion.net/docs/zeek/</loc>
+         <loc>https://security-onion-solutions.github.io/securityonion-3-docs/zeek/</loc>
          <lastmod>2026-02-05</lastmod>
     </url>
 </urlset>
