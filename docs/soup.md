@@ -6,7 +6,7 @@
 
 !!! WARNING
     
-    If you run `soup` via an [ssh](ssh.md) session and that [ssh](ssh.md) session terminates, then any processes running in that session would terminate. You should avoid leaving `soup` unattended especially if the machine you are SSHing from is configured to sleep after a period of time. You might also consider using something like screen or tmux so that if your [ssh](ssh.md) session terminates, the processes will continue running on the server.
+    If you run `soup` via an [SSH](ssh.md) session and that [SSH](ssh.md) session terminates, then any processes running in that session would terminate. You should avoid leaving `soup` unattended especially if the machine you are SSHing from is configured to sleep after a period of time. You might also consider using something like screen or tmux so that if your [SSH](ssh.md) session terminates, the processes will continue running on the server.
 
 ## Production Deployments
 
