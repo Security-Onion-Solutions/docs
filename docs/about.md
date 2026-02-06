@@ -53,5 +53,4 @@ New documentation pages should use the following naming convention:
 - all lowercase
 - `.md` file extension
 - ideally, the name of the page should be one simple word (for example: `suricata.md`)
-- try to avoid symbols if possible
-- if symbols are required, use hyphens (NOT underscores)
+- if necessary, the name of the page can be hyphenated (for example: network-visibility.md)
