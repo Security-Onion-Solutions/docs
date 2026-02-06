@@ -2,4 +2,4 @@
 
 Welcome to Security Onion!
 
-3/dev branch
+3/main branch
