@@ -1,5 +1,9 @@
 # Security Onion Documentation
 
+Welcome to Security Onion!
+
+This is the MAIN branch.
+
 ## Table of Contents
 
 - [About](about.md)
