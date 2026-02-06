@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: '3.x'
 
-      - run: pip install mkdocs mkdocs-material mkdocs-glightbox
+      - run: pip install mkdocs mkdocs-material mkdocs-glightbox mkdocs-to-pdf
 
       - run: mkdocs build --strict
 
