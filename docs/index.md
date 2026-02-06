@@ -2,7 +2,7 @@
 
 Welcome to Security Onion!
 
-This is the MAIN branch.
+This is the DEV branch.
 
 ## Table of Contents
 
