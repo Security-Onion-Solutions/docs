@@ -4,6 +4,12 @@ on:
     branches:
       - main
       - dev
+      - 3/dev
+      - 3/main
+      - 4/dev
+      - 4/main
+      - 5/dev
+      - 5/main
 jobs:
   deploy:
     runs-on: ubuntu-latest
