@@ -63,6 +63,16 @@ In the [Administration](administration.md) interface, navigate to the Users scre
 
 In the [Administration](administration.md) interface, navigate to the Users screen and click the > icon to the left of the email address needing adjusting. Check or uncheck the desired roles. 
 
+
+## Default Role Assignment
+
+When a user is created, they can optionally be automatically assigned to a specific role. To enable this automatic assignment, locate the `defaultRole` configuration setting and specify the desired default role name. This automatic assignment will occur when the user logs into SOC for the first time. 
+
+!!! NOTE
+
+  If an administrator removes all role assignments from a user and the user logs back in that user will again be automatically assigned the default role. Always lock inactive users instead of removing role assignments from a user.
+
+
 ## Creating Custom Roles
 
 !!! WARNING
