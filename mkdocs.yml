@@ -1,12 +1,12 @@
 site_name: Security Onion Documentation
-site_url: https://security-onion-solutions.github.io/securityonion-3-docs/
+site_url: https://security-onion-solutions.github.io/docs/
 site_author: Security Onion Solutions, LLC
 copyright: Security Onion Solutions, LLC
 
 theme:
   name: material
   logo: images/logo/so-logo.png
-  favicon: images/logo/so-logo.png
+  favicon: images/logo/favicon.ico
   features:
     - navigation.instant
     - navigation.tracking

@@ -39,7 +39,7 @@ A standard distributed deployment includes a **manager node**, one or more **sen
     
     If you install a dedicated manager node, you must also deploy one or more search nodes. Otherwise, all logs will queue on the manager and have no place to be stored. If you are limited on the number of nodes you can deploy, you can install a **manager search** node so that your manager node can act as a search node and store those logs. However, please keep in mind that overall performance and scalability of a **manager search** node will be lower compared to our recommended architecture of dedicated manager node and separate search nodes.
 
-![Image](images/diagrams/distributed-smaller.png)
+![Image](images/diagrams/distributed.png)
 
 ## Node Types
 
@@ -102,7 +102,7 @@ Receiver nodes were designed with 2 purposes in mind:
 
 Each receiver node runs [Logstash](logstash.md) and [Redis](redis.md) and allows for events to continue to be processed by search nodes in the event the manager node is offline. When a receiver node joins the Grid, [Elastic Agent](elastic-agent.md) on all nodes adds this new address as a load balanced [Logstash](logstash.md) output. The search nodes add this new node as another [Logstash](logstash.md) input. Receiver nodes are "active-active" and you can add as many as you want (within reason) and events will be balanced among them.
 
-![Image](images/diagrams/receiver-smaller.png)
+![Image](images/diagrams/receiver.png)
 
 If you don't have any receiver nodes and the manager goes down, the search nodes do not index anything because they cannot connect to [Redis](redis.md). The agents cannot connect to [Logstash](logstash.md) so the pipeline starts backing up on the agents. 
 
@@ -120,7 +120,7 @@ There are a couple of things to be aware of regarding receiver nodes and Elastic
 
 The [IDH](idh.md) node mimics common services such as HTTP, FTP, and SSH. Any interaction with these fake services will automatically result in an alert.
 
-![Image](images/diagrams/idh-smaller.png)
+![Image](images/diagrams/idh.png)
 
 ### Heavy Node
 
