@@ -7,7 +7,7 @@
         <meta name="author" content="Security Onion Solutions, LLC">
       
       
-        <link rel="canonical" href="https://security-onion-solutions.github.io/securityonion-3-docs/architecture/">
+        <link rel="canonical" href="https://security-onion-solutions.github.io/docs/architecture/">
       
       
         <link rel="prev" href="../use-cases/">
@@ -19,7 +19,7 @@
         
       
       
-      <link rel="icon" href="../images/logo/so-logo.png">
+      <link rel="icon" href="../images/logo/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
@@ -5833,7 +5833,7 @@
 <p class="admonition-title">Note</p>
 <p>If you install a dedicated manager node, you must also deploy one or more search nodes. Otherwise, all logs will queue on the manager and have no place to be stored. If you are limited on the number of nodes you can deploy, you can install a <strong>manager search</strong> node so that your manager node can act as a search node and store those logs. However, please keep in mind that overall performance and scalability of a <strong>manager search</strong> node will be lower compared to our recommended architecture of dedicated manager node and separate search nodes.</p>
 </div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/diagrams/distributed-smaller.png" data-desc-position="bottom"><img alt="Image" src="../images/diagrams/distributed-smaller.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/diagrams/distributed.png" data-desc-position="bottom"><img alt="Image" src="../images/diagrams/distributed.png"></a></p>
 <h2 id="node-types">Node Types<a class="headerlink" href="#node-types" title="Permanent link">¶</a></h2>
 <h3 id="management">Management<a class="headerlink" href="#management" title="Permanent link">¶</a></h3>
 <p>The <code>manager node</code> runs <a href="../security-onion-console/">Security Onion Console</a> and <a href="../kibana/">Kibana</a>. It has its own local instance of <a href="../elasticsearch/">Elasticsearch</a>, but that's mainly used for managing the <a href="../elasticsearch/">Elasticsearch</a> cluster once search nodes join the cluster. An analyst connects to the manager node from a client workstation (perhaps <a href="../security-onion-desktop/">Security Onion Desktop</a>) to execute queries and retrieve data. </p>
@@ -5881,7 +5881,7 @@
 <li>offer pipeline redundancy</li>
 </ul>
 <p>Each receiver node runs <a href="../logstash/">Logstash</a> and <a href="../redis/">Redis</a> and allows for events to continue to be processed by search nodes in the event the manager node is offline. When a receiver node joins the Grid, <a href="../elastic-agent/">Elastic Agent</a> on all nodes adds this new address as a load balanced <a href="../logstash/">Logstash</a> output. The search nodes add this new node as another <a href="../logstash/">Logstash</a> input. Receiver nodes are "active-active" and you can add as many as you want (within reason) and events will be balanced among them.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/diagrams/receiver-smaller.png" data-desc-position="bottom"><img alt="Image" src="../images/diagrams/receiver-smaller.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/diagrams/receiver.png" data-desc-position="bottom"><img alt="Image" src="../images/diagrams/receiver.png"></a></p>
 <p>If you don't have any receiver nodes and the manager goes down, the search nodes do not index anything because they cannot connect to <a href="../redis/">Redis</a>. The agents cannot connect to <a href="../logstash/">Logstash</a> so the pipeline starts backing up on the agents. </p>
 <p>In this same scenario with a receiver node, the agents would not be able to connect to <a href="../logstash/">Logstash</a> on the manager and so they would try to connect to the receiver node. Once connected, they would send their logs to the receiver. </p>
 <p>Search nodes connect to both the manager and receiver nodes and pull events from the <a href="../redis/">Redis</a> queue. If the manager goes down, search nodes will keep pulling the log events from the queue on the receiver node. This allows for scaling of the pipeline. More receivers + more search nodes = more event ingestion volume.</p>
@@ -5890,7 +5890,7 @@
 <p>There are a couple of things to be aware of regarding receiver nodes and Elastic Agents. The first is Fleet which handles things like updating the agents and scheduling searches. The other is the Elastic Agent log output, which in this case is <a href="../logstash/">Logstash</a> running on the manager or receiver node. Due to limitations in Elastic licensing we can only have a single output policy. That means that when you add a receiver or a fleet node it gets added to a list that is distributed to the agents. The agents go down that list and stop after a successful connection. The only way to direct agents to specific receivers is to use firewall rules to block agents to certain receivers. Again keep in mind that there is no bandwidth savings here because the search nodes still need to empty the <a href="../redis/">Redis</a> queue on the receiver nodes.</p>
 <h3 id="intrusion-detection-honeypot-idh-node">Intrusion Detection Honeypot (IDH) Node<a class="headerlink" href="#intrusion-detection-honeypot-idh-node" title="Permanent link">¶</a></h3>
 <p>The <a href="../idh/">IDH</a> node mimics common services such as HTTP, FTP, and SSH. Any interaction with these fake services will automatically result in an alert.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/diagrams/idh-smaller.png" data-desc-position="bottom"><img alt="Image" src="../images/diagrams/idh-smaller.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/diagrams/idh.png" data-desc-position="bottom"><img alt="Image" src="../images/diagrams/idh.png"></a></p>
 <h3 id="heavy-node">Heavy Node<a class="headerlink" href="#heavy-node" title="Permanent link">¶</a></h3>
 <p>There is also an option to have a <strong>manager node</strong> and one or more <strong>heavy nodes</strong>.</p>
 <div class="admonition warning">

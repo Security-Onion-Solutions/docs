@@ -7,7 +7,7 @@
         <meta name="author" content="Security Onion Solutions, LLC">
       
       
-        <link rel="canonical" href="https://security-onion-solutions.github.io/securityonion-3-docs/oidc/">
+        <link rel="canonical" href="https://security-onion-solutions.github.io/docs/oidc/">
       
       
         <link rel="prev" href="../security-onion-pro/">
@@ -19,7 +19,7 @@
         
       
       
-      <link rel="icon" href="../images/logo/so-logo.png">
+      <link rel="icon" href="../images/logo/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
@@ -5726,8 +5726,8 @@
 <h2 id="initial-login">Initial Login<a class="headerlink" href="#initial-login" title="Permanent link">¶</a></h2>
 <p>Upon the first login via OIDC the user will likely be returned back to the login screen. However, clicking on the <em>Continue with <sso></sso></em> the second time will take the newly linked user to the SOC interface. This additional login click is only required once.</p>
 <h2 id="roles">Roles<a class="headerlink" href="#roles" title="Permanent link">¶</a></h2>
-<p>When a new OIDC user logs into SOC, that user will not be assigned any roles. This greatly limits what functions the user will be capable of performing within SOC. For example, new users will be unable to see any alerts, hunt for events, view dashboard data, view or create cases, manage the Grid, or view other users. Attempting to view those role-protected screens will result in an error message.</p>
-<p>An administrator will need to login to SOC and assign roles to OIDC users via the Adminstration -&gt; Users screen. This is a one time operation, per user. </p>
+<p>When a new OIDC user logs into SOC, that user will not be assigned any roles, unless a <a href="../rbac/#default-role-assignment">default system role</a> has been configured. This greatly limits what functions the user will be capable of performing within SOC. For example, new users will be unable to see any alerts, hunt for events, view dashboard data, view or create cases, manage the grid, or view other users. Attempting to view those role-protected screens will result in an error message.</p>
+<p>If a default system role is not configured, an administrator will need to login to SOC and assign roles to OIDC users via the Adminstration -&gt; Users screen. This is a one time operation, per user. </p>
 <h2 id="managing-oidc-users">Managing OIDC Users<a class="headerlink" href="#managing-oidc-users" title="Permanent link">¶</a></h2>
 <p>Users created via an OIDC login should not have their credentials managed within SOC. When an administrator views an OIDC user in the Administration -&gt; Users screen, they will notice a message appears near Access Control panel, and cautions them against changing authentication settings for that user. </p>
 <div class="admonition note">
