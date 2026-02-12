@@ -1,4 +1,4 @@
-# Getting Started
+# Getting Started Overview
 
 If you're ready to get started with Security Onion, you may have questions like:
 
@@ -41,22 +41,3 @@ The [Configuration](configuration.md) section covers many different use cases.
 **Is there anything I need to do after configuration?**
 
 See the [Post Installation](post-installation.md) section.
-
-## Table of Contents
-
-- [Best Practices](best-practices.md)
-- [Use Cases](use-cases.md)
-- [Architecture](architecture.md)
-- [Hardware](hardware.md)
-- [Download](download.md)
-- [VMware](vmware.md)
-- [VirtualBox](virtualbox.md)
-- [Proxmox](proxmox.md)
-- [Trouble Booting](trouble-booting.md)
-- [Airgap](airgap.md)
-- [Installation](installation.md)
-- [Amazon Cloud](cloud-amazon.md)
-- [Azure Cloud](cloud-azure.md)
-- [Google Cloud](cloud-google.md)
-- [Configuration](configuration.md)
-- [Post Installation](post-installation.md)

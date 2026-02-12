@@ -1,4 +1,4 @@
-# Help
+# Help Overview
 
 Having problems? Try the suggestions below.
 
@@ -19,12 +19,3 @@ Having problems? Try the suggestions below.
 -  Are you able to duplicate the problem on a fresh Security Onion installation?
 -  Check the [Known Issues](https://github.com/security-onion-solutions/securityonion/issues) to see if this is a known issue that we are working on.
 -  If all else fails, please feel free to reach out for [support](support.md).
-
-## Table of Contents
-
-- [FAQ](faq.md)
-- [Directory](directory.md)
-- [Tools](tools.md)
-- [Support](support.md)
-- [Community Support](community-support.md)
-- [Help Wanted](help-wanted.md)

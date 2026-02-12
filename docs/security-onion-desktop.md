@@ -1,4 +1,4 @@
-# Security Onion Desktop
+# Security Onion Desktop Overview
 
 Full-time analysts may want to use a dedicated Security Onion desktop. This allows you to investigate pcaps, malware, and other potentially malicious artifacts without impacting your Security Onion deployment or your usual desktop environment.
 
@@ -40,9 +40,3 @@ workstation:
   gui:
     enabled: false
 ```
-
-## Table of Contents
-
-- [Chromium](chromium.md)
-- [NetworkMiner](networkminer.md)
-- [Wireshark](wireshark.md)
