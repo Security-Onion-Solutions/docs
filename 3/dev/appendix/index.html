@@ -434,7 +434,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Getting Started Overview
   
 
     
@@ -964,7 +964,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Security Onion Console Overview
   
 
     
@@ -1466,7 +1466,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Security Onion Desktop Overview
   
 
     
@@ -1632,7 +1632,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Network Visibility Overview
   
 
     
@@ -1910,7 +1910,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Additional Network Visibility Overview
   
 
     
@@ -2160,7 +2160,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Host Visibility Overview
   
 
     
@@ -2353,7 +2353,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Rules Overview
   
 
     
@@ -2519,7 +2519,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Logs Overview
   
 
     
@@ -2909,7 +2909,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Updating Overview
   
 
     
@@ -3047,7 +3047,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Accounts Overview
   
 
     
@@ -3352,7 +3352,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Customizing Overview
   
 
     
@@ -3770,7 +3770,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Tricks and Tips Overview
   
 
     
@@ -4188,7 +4188,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Utilities Overview
   
 
     
@@ -4550,7 +4550,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Help Overview
   
 
     
@@ -4800,7 +4800,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Security Onion Pro Overview
   
 
     
@@ -5402,106 +5402,27 @@
 
 
 <h1 id="appendix">Appendix<a class="headerlink" href="#appendix" title="Permanent link">¶</a></h1>
-<p>This appendix provides an overview of the process of migrating from the old Security Onion 2.3 to the new Security Onion 2.4.</p>
+<p>This appendix provides an overview of the process of migrating from the old Security Onion 2.4 to the new Security Onion 3.0.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>If you are a current Security Onion Solutions customer with Professional Services or Appliance coverage, contact SOS support and we can help you through this process.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Security Onion 2.4 is a MAJOR change, so please note the following:</p>
-<ul>
-<li>Security Onion 2.4 has higher hardware requirements, so you should check that your hardware meets those requirements. </li>
-<li>The /nsm partition must be on a separate disk.</li>
-<li>InfluxDB data is not migrated.</li>
-<li>If you have a distributed deployment, please note that 2.3 search nodes defaulted to cross cluster search whereas 2.4 defaults to full Elastic clustering. This means that you may need to rename or delete some Elasticsearch indices.</li>
-<li>We do not provide any guarantees that the upgrade process will work! If the upgrade fails, be prepared to perform a fresh installation of Security Onion 2.4.</li>
-</ul>
-</div>
-<p>For the reasons listed above, we recommend that most users procure new hardware and perform a fresh installation of Security Onion 2.4.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>If you're planning to purchase new hardware, please consider official Security Onion appliances from Security Onion Solutions (<a href="https://securityonionsolutions.com">https://securityonionsolutions.com</a>). Our custom appliances have already been designed for certain roles and traffic levels and have Security Onion 2 pre-installed.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
 <p>We recommend trying this process in a test environment before attempting in your production environment.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Please ensure that you have local access to the machine being upgraded via console, DRAC, IPMI, etc. Failure to do so could result in an unsuccessful upgrade, requiring a clean installation of Security Onion 2.4.</p>
 </div>
 <p>If you have reviewed all of the warnings above and still want to attempt migration, you should be able to do the following.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you have a distributed deployment, you will need to perform the steps on the manager first and then on each of the remaining nodes.</p>
 </div>
-<p>First, make sure that your 2.3 installation is fully updated via <a href="../soup/">soup</a>:</p>
+<p>First, make sure that your 2.4 installation is fully updated via <a href="../soup/">soup</a>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo soup
 </code></pre></div>
 <p>Next, make sure there is a backup in /nsm/backup:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo ls -alh /nsm/backup
 </code></pre></div>
-<p>Disable services and reboot:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo systemctl disable salt-minion
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo reboot
-</code></pre></div>
-<p>Make sure docker containers are stopped:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo su -c "systemctl stop docker docker.socket"
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo docker ps
-</code></pre></div>
-<p>If there are any remaining docker processes, stop them (replacing <code>$CONT_ID</code> with the actual ID):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo docker stop $CONT_ID
-</code></pre></div>
-<p>This can also be done in one command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo docker ps | awk '!/CONTAINER/ { system("sudo docker stop " $1 ) }'
-</code></pre></div>
-<p>Unmount /nsm:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo umount /nsm
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo vgchange -an /dev/mapper/nsm
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>sudo vgexport /dev/mapper/nsm
-</code></pre></div>
-<p>Boot the Security Onion 2.4 ISO image and go through the initial OS installation as shown in the <a href="../installation/">installation</a> section.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>During the OS installation, do NOT select the old NSM disk! It will be re-imported and used AFTER the OS install with LVM.</p>
-</div>
-<p>After installation and reboot, log in as the user you created during installation. Setup will automatically start, but you'll need to cancel setup and change partitioning (replacing <code>/home/user/</code> with your desired temporary location):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo cp -av /nsm/* /home/user/
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo umount /nsm
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>sudo lvremove /dev/system/nsm
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>sudo lvresize -L +XG /dev/system/root
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>sudo xfs_growfs /dev/system/root
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>sudo vgimport /dev/mapper/nsm
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>sudo vgchange -ay /dev/mapper/nsm
-</code></pre></div>
-<p>Add entry into /etc/fstab and then mount:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo mount -a 
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo systemctl daemon-reload
-</code></pre></div>
-<p>Remove /nsm/repo and /nsm/docker-registry from the old 2.3 /nsm.</p>
-<p>Copy the /nsm contents of /home/user/ (or wherever they were copied to) back to /nsm
-(repo, docker-registry, and Elastic Fleet)</p>
-<p>Run through setup as described in the <a href="../configuration/">Configuration</a> section.</p>
-<p>After setup, get the secrets pillar from /nsm/backup (replacing <code>2023_08_30</code> with the date of your most recent backup):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>tar -xvf /nsm/backup/so-config-backup-2023_08_30.tar opt/so/saltstack/local/pillar/secrets.sls
-</code></pre></div>
-<p>Replace the mysql secret in secrets.sls with the backed-up value:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>docker exec -it so-mysql  mysql -u root -p
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a># when prompted, enter the password from the 2.3 secrets.sls
-</code></pre></div>
-<p>At the mysql prompt, run the following query:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>SELECT User, Host from mysql.user;
-</code></pre></div>
-<p>If you get the error <code>mysql error 1130: 172.17.1.1' is not allowed to connect to this mysql server</code>, then run the following:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>UPDATE mysql.user SET Host = '172.17.1.1' WHERE User = 'root' AND Host = 'localhost';
-</code></pre></div>
-<p>Exit the mysql shell and restart the so-mysql container.</p>
-<p>Run a full checkin:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo so-checkin
-</code></pre></div>
+<p>TODO</p>
 
 
 
@@ -5620,7 +5541,7 @@
       
       
     
-    <a href="https://www.youtube.com/c/SecurityOnion" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+    <a href="https://securityonion.com/youtube" target="_blank" rel="noopener" title="securityonion.com" class="md-social__link">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M549.7 124.1c-6.2-23.7-24.8-42.3-48.3-48.6C458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5c-23.5 6.3-42 24.9-48.3 48.6C15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8C117.3 448 288.1 448 288.1 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6V175.2l142.7 81.2z"></path></svg>
     </a>
   
