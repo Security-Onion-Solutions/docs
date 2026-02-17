@@ -39,7 +39,7 @@ extra:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/securityonion
     - icon: fontawesome/brands/youtube
-      link: https://www.youtube.com/c/SecurityOnion
+      link: https://securityonion.com/youtube
 
 extra_css:
   - _static/theme_overrides.css
