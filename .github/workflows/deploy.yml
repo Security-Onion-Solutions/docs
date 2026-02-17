@@ -34,5 +34,5 @@ jobs:
           folder: site                  # mkdocs default output dir
           branch: gh-pages              # your Pages source branch
           token: ${{ secrets.GITHUB_TOKEN }}   # automatic, no need to set manually
-          clean: false                  # IMPORTANT: false prevents wiping other folders (like dev/)
-          target-folder: ${{ github.ref_name == 'main' && '.' || github.ref_name }}
+          clean: false                  # IMPORTANT: false prevents wiping other folders
+          target-folder: ${{ github.ref_name == 'main' && '.' || format('en/{0}', github.ref_name) }}
