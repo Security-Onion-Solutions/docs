@@ -1,6 +1,0 @@
-/* Add white background to diagram images for better visibility on dark themes */
-img[src*="images/diagrams/"] {
-    background-color: white;
-    padding: 10px;
-    border-radius: 4px;
-}
