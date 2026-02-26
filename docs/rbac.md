@@ -248,6 +248,7 @@ The available low-level Security Onion privileges are listed in the table below:
 | *assistant/read_authored* | View own Onion AI conversation history |
 | *assistant/write_authored* | Chat with Onion AI |
 | *assistant/delete_authored* | Delete own Onion AI conversation history |
+| *assistant/read_shared* | View shared Onion AI conversation history |
 | *assistant/read_all* | View all Onion AI conversation history |
 | *assistant/write_all* | Currently unused |
 | *assistant/delete_all* | Currently unused |
@@ -280,7 +281,8 @@ These discrete privileges are then collected into privilege groups as defined be
 | user-monitor | *roles/read*, *users/read* |
 | playbook-monitor | *playbooks/read* |
 | playbook-admin | *playbooks/read*, *playbooks/write*, *playbooks/delete* |
-| assistant-user | *assistant/read_authored*, *assistant/write_authored*, *assistant/delete_authored* |
-| assistant-admin | *assistant/read_authored*, *assistant/write_authored*, *assistant/delete_authored*, *assistant/read_all*, *assistant/write_all*, *assistant/delete_all* |
+| assistant-user | *assistant/read_authored*, *assistant/write_authored*, *assistant/delete_authored*, *assistant/read_shared* |
+| assistant-admin | *assistant/read_authored*, *assistant/write_authored*, *assistant/delete_authored*, *assistant/read_shared*, *assistant/read_all*, *assistant/write_all*, *assistant/delete_all* |
+| assistant-monitor | *assistant/read_authored*, *assistant/read_shared*, *assistant/read_all* |
 
 † intended for use by Sensoroni agents only
