@@ -80,4 +80,4 @@ To interact with subgrid data, while still communicating with the primary **Mana
     
     New releases of Security Onion may contain additional fields in API responses. Consequently, it is important that the API output be properly parsed by official libraries that can handle these scenarios. Using custom parsing of API outputs may lead to upgrade-related malfunctions.
 
-An interactive API view is available: [Interactive API](api/)
+An interactive API view is available for browser-based viewing: [Interactive API](api.md)

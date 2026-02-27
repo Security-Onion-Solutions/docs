@@ -42,6 +42,7 @@ extra:
 
 extra_css:
   - _static/theme_overrides.css
+  - _static/mkdocsoad.css
 
 extra_javascript:
   - _static/theme_overrides.js
@@ -49,8 +50,12 @@ extra_javascript:
 plugins:
   - search
   - glightbox
+  - neoteroi.mkdocsoad:
+     use_pymdownx: true
   - to-pdf:
       cover_subtitle: "3.0.0"
+      exclude_pages:
+        - api
 
 markdown_extensions:
   - admonition
