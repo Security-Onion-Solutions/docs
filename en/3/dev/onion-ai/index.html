@@ -5330,6 +5330,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#local-model-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Model Considerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hosting-local-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hosting Local Models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#credits" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5662,6 +5684,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#local-model-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Model Considerations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hosting-local-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hosting Local Models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#credits" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5891,6 +5935,20 @@
 <p class="admonition-title">Note</p>
 <p>If a provider offers models that aren't listed in availableModels, they will not be accessible within SOC.</p>
 </div>
+<h2 id="local-model-considerations">Local Model Considerations<a class="headerlink" href="#local-model-considerations" title="Permanent link">¶</a></h2>
+<p>Security Onion now supports local models through any OpenAI-compatible endpoint. Because the assistant relies on large context windows, the minimum recommended context length is 128k tokens. The following open-source models have been tested with OnionAI:</p>
+<ul>
+<li><strong>GPT OSS 120B</strong> -- (US) Fast inference but limited to a 128k context window. Accuracy is fair.</li>
+<li><strong>Kimi 2.5</strong> -- (China) A capable model with average accuracy and a 256k context window sufficient for most tasks. Note that this model requires significant VRAM to maintain performance.</li>
+<li><strong>GLM 5</strong> -- (China) Average accuracy with a 200k context window.</li>
+<li><strong>Qwen 3.5</strong> -- (China) Average accuracy with a 200k context window.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Local models will not match the performance of proprietary foundational models such as those from Anthropic, Google, or OpenAI.</p>
+</div>
+<h2 id="hosting-local-models">Hosting Local Models<a class="headerlink" href="#hosting-local-models" title="Permanent link">¶</a></h2>
+<p>Hosting your own models requires powerful and expensive hardware. For beginners we recommend using a tool such as LM Studio. <strong>You need at least 96GB of VRAM</strong> to host your own models locally. The speed and accuracy of OnionAI when hosted locally is based on the hardware that you are using. For the most accurate results we recommend using credits with OnionAI.</p>
 <h2 id="credits">Credits<a class="headerlink" href="#credits" title="Permanent link">¶</a></h2>
 <p>The Security Onion Pro license includes an initial amount of credits to get started. For long term usage planning contact your Security Onion account representative. They will assist with estimating credit usage rates as well as the provisioning of additional credits. Credits are consumed based on the number of tokens used in the conversation including user input, assistant output, and tool usage. Your organization's balance can be viewed at the top right of the assistant page or on the management page under Administration --&gt; AI Metrics.</p>
 <h2 id="available-tools">Available Tools<a class="headerlink" href="#available-tools" title="Permanent link">¶</a></h2>
