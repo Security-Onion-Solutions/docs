@@ -34,7 +34,7 @@ Listed below are the minimum suggested single-node instance quantities, sizes, a
 ### Standalone
 
 - Quantity: 1
-- Type: Standard_D4as_v4
+- Type: Standard_D8as_v4
 - Storage: 256GB Premium SSD
 
 ### Evaluation
@@ -59,13 +59,13 @@ Listed below are the minimum suggested distributed Grid instance quantities, siz
 ### Manager
 
 - Quantity: 1
-- Type: Standard_D4as_v4
+- Type: Standard_D8as_v4
 - Storage: 256GB Premium SSD
 
 ### Search Nodes
 
 - Quantity: 2 or more
-- Type: Standard_D4as_v4
+- Type: Standard_D8as_v4
 - Storage: 256GB Premium SSD
 
 ### Sensor monitoring the VPN ingress
