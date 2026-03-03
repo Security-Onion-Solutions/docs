@@ -1,0 +1,391 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suricata &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Zeek" href="zeek.html" />
+    <link rel="prev" title="Stenographer" href="stenographer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="network.html">Network Visibility</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="af-packet.html">AF-PACKET</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpf.html">BPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stenographer.html">Stenographer</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Suricata</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#community-id">Community ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vlan-tags">VLAN Tags</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#home-net">HOME_NET</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#external-net">EXTERNAL_NET</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stats">Stats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#performance">Performance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-extraction">File Extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pcap">PCAP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#switching-pcap-from-stenographer-to-suricata">Switching PCAP from Stenographer to Suricata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#differences-between-suricata-and-stenographer-for-pcap">Differences between Suricata and Stenographer for PCAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#conditional-pcap">Conditional PCAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pcap-configuration-options">PCAP Configuration Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#diagnostic-logging">Diagnostic Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing">Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-alerts">Troubleshooting Alerts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-rules">Testing Rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#variables">Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disabling">Disabling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="zeek.html">Zeek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strelka.html">Strelka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="idh.html">Intrusion Detection Honeypot</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="network.html">Network Visibility</a></li>
+      <li class="breadcrumb-item active">Suricata</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/suricata.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="suricata">
+<span id="id1"></span><h1>Suricata<a class="headerlink" href="#suricata" title="Link to this heading"></a></h1>
+<p>From <a class="reference external" href="https://suricata.io">https://suricata.io</a>:</p>
+<blockquote>
+<div><p>Suricata is a free and open source, mature, fast and robust network threat detection engine. Suricata inspects the network traffic using
+a powerful and extensive rules and signature language, and has powerful Lua scripting support for detection of complex threats.</p>
+</div></blockquote>
+<p>Suricata <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> alerts can be found in <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>, <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>, <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>, and <a class="reference internal" href="kibana.html#kibana"><span class="std std-ref">Kibana</span></a>.</p>
+<p>Here’s an example of Suricata <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> alerts in <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>:</p>
+<a class="reference external image-reference" href="_images/50_alerts.png"><img alt="_images/50_alerts.png" src="_images/50_alerts.png" />
+</a>
+<p>If enabled, Suricata metadata (protocol logs) can be found in <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>, <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>, and <a class="reference internal" href="kibana.html#kibana"><span class="std std-ref">Kibana</span></a>.</p>
+<section id="community-id">
+<h2>Community ID<a class="headerlink" href="#community-id" title="Link to this heading"></a></h2>
+<p>Security Onion enables Suricata’s built-in support for <a class="reference internal" href="community-id.html#community-id"><span class="std std-ref">Community ID</span></a>.</p>
+</section>
+<section id="vlan-tags">
+<h2>VLAN Tags<a class="headerlink" href="#vlan-tags" title="Link to this heading"></a></h2>
+<p>If your network traffic has VLAN tags, then Suricata will log them. <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a> has a VLAN dashboard which will show this data.</p>
+<p>If your network traffic has mixed VLAN tags (VLAN tags in one direction but not the other), then you may need to do the following:</p>
+<ul class="simple">
+<li><p>Navigate to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration.</p></li>
+<li><p>At the top of the page, click the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu and then enable the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">advanced</span> <span class="pre">settings</span></code> option.</p></li>
+<li><p>Navigate to suricata &gt; config &gt; vlan &gt; use-for-tracking and set it to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></li>
+</ul>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>You can configure Suricata by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; suricata.</p>
+<a class="reference external image-reference" href="_images/config-item-suricata.png"><img alt="_images/config-item-suricata.png" src="_images/config-item-suricata.png" />
+</a>
+<p>If you would like to configure <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> rules, take a look at the <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a> interface.</p>
+</section>
+<section id="home-net">
+<h2>HOME_NET<a class="headerlink" href="#home-net" title="Link to this heading"></a></h2>
+<p>The HOME_NET variable defines the networks that are considered home networks (those networks that you are monitoring and defending). The default value is RFC1918 private address space (10.0.0.0/8, 192.168.0.0/16, and 172.16.0.0/12). You can modify this default value by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; suricata –&gt; config –&gt; vars –&gt; address-groups –&gt; HOME_NET.</p>
+</section>
+<section id="external-net">
+<h2>EXTERNAL_NET<a class="headerlink" href="#external-net" title="Link to this heading"></a></h2>
+<p>By default, EXTERNAL_NET is set to <code class="docutils literal notranslate"><span class="pre">any</span></code> (which includes <code class="docutils literal notranslate"><span class="pre">HOME_NET</span></code>) to detect lateral movement inside your environment. You can modify this default value by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; suricata –&gt; config –&gt; vars –&gt; address-groups –&gt; EXTERNAL_NET.</p>
+</section>
+<section id="stats">
+<h2>Stats<a class="headerlink" href="#stats" title="Link to this heading"></a></h2>
+<p>For Suricata statistics, see <a class="reference internal" href="grid.html#grid"><span class="std std-ref">Grid</span></a>, <a class="reference internal" href="influxdb.html#influxdb"><span class="std std-ref">InfluxDB</span></a>, and <code class="docutils literal notranslate"><span class="pre">/opt/so/log/suricata/stats.log</span></code>.</p>
+</section>
+<section id="performance">
+<h2>Performance<a class="headerlink" href="#performance" title="Link to this heading"></a></h2>
+<p>If <a class="reference internal" href="grid.html#grid"><span class="std std-ref">Grid</span></a> shows that Suricata is experiencing packet loss, then you may need to do one or more of the following:</p>
+<ul class="simple">
+<li><p>Tune the <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> ruleset.</p></li>
+<li><p>Apply a <a class="reference internal" href="bpf.html#bpf"><span class="std std-ref">BPF</span></a>.</p></li>
+<li><p>Adjust <code class="docutils literal notranslate"><span class="pre">max-pending-packets</span></code> in <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; suricata –&gt; config –&gt; max-pending-packets.</p></li>
+<li><p>Adjust <a class="reference internal" href="af-packet.html#af-packet"><span class="std std-ref">AF-PACKET</span></a> workers in <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; suricata –&gt; config –&gt; af-packet –&gt; threads.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">For other tuning considerations, please see:</div>
+<div class="line"><a class="reference external" href="https://suricata.readthedocs.io/en/latest/performance/tuning-considerations.html">https://suricata.readthedocs.io/en/latest/performance/tuning-considerations.html</a></div>
+</div>
+</div>
+<p>If you have multiple physical CPUs, you’ll most likely want to pin sniffing processes to a CPU in the same Non-Uniform Memory Access (NUMA) domain that your sniffing NIC is bound to.  Accessing a CPU in the same NUMA domain is faster than across a NUMA domain.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">For more information about determining NUMA domains using <code class="docutils literal notranslate"><span class="pre">lscpu</span></code> and <code class="docutils literal notranslate"><span class="pre">lstopo</span></code>, please see:</div>
+<div class="line"><a class="reference external" href="https://github.com/brokenscripts/cpu_pinning">https://github.com/brokenscripts/cpu_pinning</a></div>
+</div>
+</div>
+</section>
+<section id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Link to this heading"></a></h2>
+<p>By default, Security Onion uses <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> to record protocol metadata. If you don’t need all of the protocol coverage that <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> provides, then you can switch to Suricata metadata to save some CPU cycles. If you choose to do this, then here are some of the kinds of metadata you can expect to see in <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a> or <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>:</p>
+<ul class="simple">
+<li><p>Connections</p></li>
+<li><p>DHCP</p></li>
+<li><p>DNS</p></li>
+<li><p>Files</p></li>
+<li><p>FTP</p></li>
+<li><p>HTTP</p></li>
+<li><p>SSL</p></li>
+</ul>
+<p>If you later find that some of that metadata is unnecessary, you can enable the SO_FILTERS ruleset to filter out unnecessary metadata. Navigate to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; soc –&gt; config –&gt; server –&gt; modules –&gt; suricataengine –&gt; rulesetSources and enable the SO_FILTERS ruleset.</p>
+<p>To change your grid’s metadata engine from <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> to Suricata, go to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; global –&gt; mdengine and change the value from <code class="docutils literal notranslate"><span class="pre">ZEEK</span></code> to <code class="docutils literal notranslate"><span class="pre">SURICATA</span></code>:</p>
+<a class="reference external image-reference" href="_images/config-item-global.png"><img alt="_images/config-item-global.png" src="_images/config-item-global.png" />
+</a>
+</section>
+<section id="file-extraction">
+<h2>File Extraction<a class="headerlink" href="#file-extraction" title="Link to this heading"></a></h2>
+<p>If you choose Suricata for metadata, it will extract files from network traffic and <a class="reference internal" href="strelka.html#strelka"><span class="std std-ref">Strelka</span></a> will then analyze those extracted files. The SO_EXTRACTIONS ruleset controls which file types are extracted and is enabled by default when Suricata is the metadata engine. You can customize file extraction by modifying rules in this ruleset.</p>
+</section>
+<section id="pcap">
+<h2>PCAP<a class="headerlink" href="#pcap" title="Link to this heading"></a></h2>
+<p>For new installations in either <code class="docutils literal notranslate"><span class="pre">Eval</span></code> or <code class="docutils literal notranslate"><span class="pre">Standalone</span></code> mode, full packet capture is written to <code class="docutils literal notranslate"><span class="pre">/nsm/suripcap/</span></code> by Suricata. For other deployments, full packet capture is written to disk by <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> but you can optionally switch this to Suricata.</p>
+<section id="switching-pcap-from-stenographer-to-suricata">
+<h3>Switching PCAP from Stenographer to Suricata<a class="headerlink" href="#switching-pcap-from-stenographer-to-suricata" title="Link to this heading"></a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are considering switching your existing deployment from <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> to Suricata PCAP, then we recommend that you test this feature thoroughly in a test environment first.</p>
+</div>
+<p>To switch from Stenographer to Suricata for PCAP, go to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; Global and select the <code class="docutils literal notranslate"><span class="pre">pcapengine</span></code> setting. That setting should default to <code class="docutils literal notranslate"><span class="pre">STENO</span></code> but you can change it to either <code class="docutils literal notranslate"><span class="pre">TRANSITION</span></code> or <code class="docutils literal notranslate"><span class="pre">SURICATA</span></code>. If you don’t need your old <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> PCAP at all, then you can immediately set <code class="docutils literal notranslate"><span class="pre">pcapengine</span></code> to <code class="docutils literal notranslate"><span class="pre">SURICATA</span></code> and manually delete the contents of the <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> PCAP and index directories. However, most folks will probably want to use the <code class="docutils literal notranslate"><span class="pre">TRANSITION</span></code> option as it will keep <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> running but not capturing traffic so that you can retrieve older <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> PCAP as well as new Suricata PCAP. <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> will then start purging its old PCAP as Suricata uses more space. Once your old <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> PCAP has fully aged off, you can change the <code class="docutils literal notranslate"><span class="pre">pcapengine</span></code> setting to <code class="docutils literal notranslate"><span class="pre">SURICATA</span></code> to fully disable <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a>.</p>
+</section>
+<section id="differences-between-suricata-and-stenographer-for-pcap">
+<h3>Differences between Suricata and Stenographer for PCAP<a class="headerlink" href="#differences-between-suricata-and-stenographer-for-pcap" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> indexes PCAP which allows instant retrieval of PCAP sessions from disk. When a Suricata PCAP is requested, a process searches the PCAP files and retrieves the appropriate packets for the flow.</p></li>
+<li><p>Since <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> indexes PCAP, it stores the PCAP in a special format. Suricata writes standard PCAP files which can be copied off to another system and then opened with any standard libpcap tool.</p></li>
+<li><p>Suricata can optionally compress PCAP using lz4 compression.</p></li>
+<li><p>Suricata supports conditional PCAP if you only want to write PCAP when certain conditions are met.</p></li>
+<li><p>Suricata has the ability to stop capturing PCAP once a flow reaches a specific stream depth. Security Onion sets this stream depth to 1MB by default. This means that once the PCAP flow reaches 1MB, Suricata will stop recording packets for that flow.</p></li>
+</ul>
+</section>
+<section id="conditional-pcap">
+<h3>Conditional PCAP<a class="headerlink" href="#conditional-pcap" title="Link to this heading"></a></h3>
+<p>If you switch to Suricata PCAP, it will write all network traffic to PCAP by default. If you would like to limit Suricata to only writing PCAP when certain conditions are met, you can go to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; Suricata -&gt; pcap -&gt; conditional and change it to to either <code class="docutils literal notranslate"><span class="pre">alerts</span></code> or <code class="docutils literal notranslate"><span class="pre">tag</span></code>:</p>
+<ul class="simple">
+<li><p>all: Capture all packets seen by Suricata (default).</p></li>
+<li><p>alerts: Capture only packets associated with a <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> alert.</p></li>
+<li><p>tag: Capture packets based on a rule that is tagged.</p></li>
+</ul>
+</section>
+<section id="pcap-configuration-options">
+<h3>PCAP Configuration Options<a class="headerlink" href="#pcap-configuration-options" title="Link to this heading"></a></h3>
+<p>Here are some other PCAP configuration options that can be found at <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; Suricata -&gt; pcap. Some settings are considered advanced settings so you will only see them if you enable the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">advanced</span> <span class="pre">settings</span></code> option.</p>
+<ul class="simple">
+<li><p>compression: Set to <code class="docutils literal notranslate"><span class="pre">none</span></code> to disable compression. Set to <code class="docutils literal notranslate"><span class="pre">lz4</span></code> to enable lz4 compression but note that this requires more CPU cycles.</p></li>
+<li><p>lz4-level: lz4 compression level of PCAP files. Set to <code class="docutils literal notranslate"><span class="pre">0</span></code> for no compression. Set to <code class="docutils literal notranslate"><span class="pre">16</span></code> for maximum compression.</p></li>
+<li><p>maxsize: Maximum size in GB for total disk usage of all PCAP files written by Suricata. If you originally installed version 2.4.60 or newer, then this value should have been set based on a percentage of your disk space. If you originally installed a version older than 2.4.60, then this value should have been set to <code class="docutils literal notranslate"><span class="pre">25</span></code> by default. You may need to adjust this value based on your disk space and desired pcap retention.</p></li>
+<li><p>filesize: Maximum file size for individual PCAP files written by Suricata. Increasing this number could improve write performance at the expense of pcap retrieval time.</p></li>
+<li><p>use-stream-depth: Set to <code class="docutils literal notranslate"><span class="pre">no</span></code> to ignore the stream depth and capture the entire flow. Set to <code class="docutils literal notranslate"><span class="pre">yes</span></code> to truncate the flow based on the stream depth.</p></li>
+</ul>
+</section>
+</section>
+<section id="diagnostic-logging">
+<h2>Diagnostic Logging<a class="headerlink" href="#diagnostic-logging" title="Link to this heading"></a></h2>
+<p>If you need to troubleshoot Suricata, check <code class="docutils literal notranslate"><span class="pre">/opt/so/log/suricata/suricata.log</span></code>. Depending on what you’re looking for, you may also need to look at the <a class="reference internal" href="docker.html#docker"><span class="std std-ref">Docker</span></a> logs for the container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">logs</span> <span class="n">so</span><span class="o">-</span><span class="n">suricata</span>
+</pre></div>
+</div>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h2>
+<p>The first and easiest way to test Suricata is to access <a class="reference external" href="http://testmynids.org/uid/index.html">http://testmynids.org/uid/index.html</a> from a machine that is being monitored by your Security Onion deployment. You can do so via the command line using <code class="docutils literal notranslate"><span class="pre">curl</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">testmynids</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">uid</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>If everything is working correctly, you should see a corresponding alert (<code class="docutils literal notranslate"><span class="pre">GPL</span> <span class="pre">ATTACK_RESPONSE</span> <span class="pre">id</span> <span class="pre">check</span> <span class="pre">returned</span> <span class="pre">root</span></code>) in <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>. You should also be able to find the alert in <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a> or <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>.</p>
+<p>If you do not see this alert, try checking to see if the rule is enabled by going to <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a> and searching for the SID of the rule which is <code class="docutils literal notranslate"><span class="pre">2100498</span></code>. One way to search for this rule is to specify it in the URL as follows:</p>
+<p><a class="reference external" href="/detections?q=2100498">/detections?q=2100498</a></p>
+<p>Another way to test Suricata is with a utility called <code class="docutils literal notranslate"><span class="pre">tmNIDS</span></code>. You can run the tool in interactive mode like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">sSL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="mi">0</span><span class="n">xtf</span><span class="o">/</span><span class="n">testmynids</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">tmNIDS</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">tmNIDS</span> <span class="o">&amp;&amp;</span> <span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">tmNIDS</span> <span class="o">&amp;&amp;</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">tmNIDS</span>
+</pre></div>
+</div>
+<p>Finally, you can also test Suricata alerting by replaying some test pcap files via <a class="reference internal" href="so-test.html#so-test"><span class="std std-ref">so-test</span></a>.</p>
+</section>
+<section id="troubleshooting-alerts">
+<h2>Troubleshooting Alerts<a class="headerlink" href="#troubleshooting-alerts" title="Link to this heading"></a></h2>
+<p>If you’re not seeing the Suricata alerts that you expect to see, here are some things that you can check:</p>
+<ul class="simple">
+<li><p>If you have metadata enabled, check to see if you have metadata for the connections. Depending on your configuration, this could be Suricata metadata or <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> metadata. Go to <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>, click the dropdown menu, select the <code class="docutils literal notranslate"><span class="pre">Connections</span> <span class="pre">seen</span> <span class="pre">by</span> <span class="pre">Zeek</span> <span class="pre">or</span> <span class="pre">Suricata</span></code> dashboard, and see if the connections you expect to see in your network traffic are listed there.</p></li>
+<li><p>If you have metadata enabled but aren’t seeing any metadata, then something may be preventing the process from seeing the traffic. Check to see if you have any <a class="reference internal" href="bpf.html#bpf"><span class="std std-ref">BPF</span></a> configuration that may cause the process to ignore the traffic. If you’re sniffing traffic from the network, verify that the traffic is reaching the NIC using tcpdump. If importing a pcap file, verify that file contains the traffic you expect and that the Suricata process can read the file and any parent directories.</p></li>
+<li><p>Check to see if you have mixed VLAN tags (VLAN tags in one direction but not the other). If so, see the VLAN Tags section above to configure Suricata appropriately.</p></li>
+<li><p>Check your HOME_NET configuration to make sure it includes the networks that you’re watching traffic for.</p></li>
+<li><p>Check to see if you have a full <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> ruleset with rules that should specifically alert on the traffic and that those rules are enabled.</p></li>
+<li><p>Check to see if you have any threshold or suppression configuration that might be preventing alerts.</p></li>
+<li><p>Check the Suricata log for additional clues.</p></li>
+<li><p>Check the <a class="reference internal" href="elastic-agent.html#elastic-agent"><span class="std std-ref">Elastic Agent</span></a>, <a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a>, and <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> logs for any pipeline issues that may be preventing the alerts from being written to <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>.</p></li>
+<li><p>Try installing a simple import node (perhaps in a VM) following the steps in the <a class="reference internal" href="first-time-users.html#first-time-users"><span class="std std-ref">First Time Users</span></a> section and see if you get alerts there. If so, compare the working system to the non-working system and determine where the differences are.</p></li>
+</ul>
+</section>
+<section id="testing-rules">
+<h2>Testing Rules<a class="headerlink" href="#testing-rules" title="Link to this heading"></a></h2>
+<p>To test a new rule, use the following utility on a node that runs Suricata (ie Sensor or Import).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">suricata</span><span class="o">-</span><span class="n">testrule</span> <span class="o">&lt;</span><span class="n">Filename</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">pcap</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">pcap</span>
+</pre></div>
+</div>
+<p>The file should contain the new rule that you would like to test. The pcap should contain network data that will trigger the rule.</p>
+</section>
+<section id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Link to this heading"></a></h2>
+<p>To add or modify Suricata Variables, navigate to <strong>suricata &gt; config &gt; vars &gt; address-groups</strong> or <strong>port-groups</strong>.</p>
+<p>You can assign a list of hosts, networks, or other customizations to a Suricata variable. The variable can then be re-used within Suricata rules and/or Overrides. This allows for a single adjustment to the variable that will affect all rules referencing it.</p>
+<p>### Address Groups</p>
+<p>Address groups define IP addresses or network ranges. Suricata comes with a number of common address groups already defined.</p>
+<p>#### Address Group Syntax</p>
+<p>Values can be specified using the following formats (single or multi-line):</p>
+<ul class="simple">
+<li><p>Single IP: <cite>192.168.1.100</cite></p></li>
+<li><p>CIDR notation: <cite>192.168.1.0/24</cite></p></li>
+<li><p>IP range: <cite>192.168.1.1-192.168.1.50</cite></p></li>
+<li><p>Multiple values: <cite>192.168.1.0/24,10.0.0.0/8</cite></p></li>
+<li><p>Negation: <cite>!192.168.1.100</cite> or <cite>!$OTHER_VAR</cite></p></li>
+<li><p>Variable reference: <cite>$HOME_NET</cite></p></li>
+</ul>
+<p>### Port Groups</p>
+<p>Port groups define TCP/UDP ports for specific services. Suricata comes with a number of common port groups already defined.</p>
+<p>#### Port Group Syntax</p>
+<p>Values can be specified using the following formats (single or multi-line):</p>
+<ul class="simple">
+<li><p>Single port: <cite>80</cite></p></li>
+<li><p>Port range: <cite>1024:65535</cite></p></li>
+<li><p>Multiple ports: <cite>80,443,8080</cite></p></li>
+<li><p>Negation: <cite>!80</cite></p></li>
+<li><p>Any port: <cite>any</cite></p></li>
+</ul>
+<p>### Custom Variables</p>
+<p>Create custom variables by selecting an existing Address Group or Port Group and clicking “Duplicate”. Enter a name using uppercase naming convention, then click “Create Setting”.</p>
+<p><strong>Note:</strong> The new variable is not saved until you modify its value and click the green “Save Changes” checkmark.</p>
+</section>
+<section id="disabling">
+<h2>Disabling<a class="headerlink" href="#disabling" title="Link to this heading"></a></h2>
+<p>If you need to disable Suricata, you can do so via <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; suricata –&gt; enabled.</p>
+</section>
+<section id="more-information">
+<h2>More Information<a class="headerlink" href="#more-information" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information about Suricata, please see <a class="reference external" href="https://suricata.io">https://suricata.io</a>.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="stenographer.html" class="btn btn-neutral float-left" title="Stenographer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="zeek.html" class="btn btn-neutral float-right" title="Zeek" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

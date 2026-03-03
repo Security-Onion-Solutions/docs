@@ -1,0 +1,184 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Backup &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Docker" href="docker.html" />
+    <link rel="prev" title="Tricks and Tips" href="tricks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tricks.html">Tricks and Tips</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Backup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#elasticsearch">Elasticsearch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html">Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new-disk.html">Adding Disk Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network-installation.html">Network Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcaps.html">PCAPs for Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">High Performance Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="removing-a-node.html">Removing a Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="salt.html">Salt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="syslog-output.html">Syslog Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timezones.html">UTC and Time Zones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="endgame.html">Endgame</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="tricks.html">Tricks and Tips</a></li>
+      <li class="breadcrumb-item active">Backup</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/backup.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="backup">
+<span id="id1"></span><h1>Backup<a class="headerlink" href="#backup" title="Link to this heading"></a></h1>
+<p>Security Onion performs a daily backup of some critical files so that you can recover your grid from a catastophic failure of the manager. Daily backups create a tar file located in the <code class="docutils literal notranslate"><span class="pre">/nsm/backup/</span></code> directory located on the manager. You may want to replicate this backup directory to a location outside of your manager in case the manager ever needs to be rebuilt.</p>
+<p>Here is what gets backed up automatically by default:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/etc/pki/</span></code> - All of the certs including the CA.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/etc/salt/</span></code> - Configuration for the <a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a> manager and minions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/nsm/kratos/</span></code> - Configuration for <a class="reference internal" href="kratos.html#kratos"><span class="std std-ref">Kratos</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/nsm/hydra/</span></code> - Configuration for Hydra (used for <a class="reference internal" href="connect.html#connect"><span class="std std-ref">Connect API</span></a>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/opt/so/saltstack/local/</span></code> - Customizations done via <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration.</p></li>
+</ul>
+<p>If you need to restore one or more files from backup, locate the tar backup file from the desired date and use the standard <code class="docutils literal notranslate"><span class="pre">tar</span></code> command to expand the file. For example, to expand the backup file from March 17, 2025:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="n">xvf</span> <span class="n">so</span><span class="o">-</span><span class="n">config</span><span class="o">-</span><span class="n">backup</span><span class="o">-</span><span class="mf">2025_03_17.</span><span class="n">tar</span>
+</pre></div>
+</div>
+<p>This will extract the config files from the tar file into subdirectories for <code class="docutils literal notranslate"><span class="pre">etc</span></code>, <code class="docutils literal notranslate"><span class="pre">nsm</span></code>, and <code class="docutils literal notranslate"><span class="pre">opt</span></code>. You can then copy the needed files from those expanded subdirectories to the actual directories.</p>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>You can configure backups by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; backup.</p>
+<a class="reference external image-reference" href="_images/config-item-backup.png"><img alt="_images/config-item-backup.png" src="_images/config-item-backup.png" />
+</a>
+</section>
+<section id="elasticsearch">
+<h2>Elasticsearch<a class="headerlink" href="#elasticsearch" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> data is not automatically backed up. This includes things that may be important to you like <a class="reference internal" href="kibana.html#kibana"><span class="std std-ref">Kibana</span></a> customizations and <a class="reference internal" href="cases.html#cases"><span class="std std-ref">Cases</span></a> data. <a class="reference internal" href="kibana.html#kibana"><span class="std std-ref">Kibana</span></a> customizations are located in the <code class="docutils literal notranslate"><span class="pre">.kibana</span></code> indices and  <a class="reference internal" href="cases.html#cases"><span class="std std-ref">Cases</span></a> data is stored in the <code class="docutils literal notranslate"><span class="pre">so-case</span></code> and <code class="docutils literal notranslate"><span class="pre">so-casehistory</span></code> indices. If you have a distributed deployment with <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> clustering, then you can enable replicas to have redundancy in case of a single node failure. Of course, please keep in mind that enabling replicas doubles your storage needs.</p>
+<p>Another option is to use <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>’s built-in support for snapshots:
+<a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html</a></p>
+<p>This option requires that you configure <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> with a <code class="docutils literal notranslate"><span class="pre">path.repo</span></code> setting where it can store the snapshots. Once <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> has the <code class="docutils literal notranslate"><span class="pre">path.repo</span></code> setting, you should be able to log into <a class="reference internal" href="kibana.html#kibana"><span class="std std-ref">Kibana</span></a> and configure snapshots as shown in the link above. Those snapshots will then be accessible in <code class="docutils literal notranslate"><span class="pre">/nsm/elasticsearch/repo/</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tricks.html" class="btn btn-neutral float-left" title="Tricks and Tips" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="docker.html" class="btn btn-neutral float-right" title="Docker" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

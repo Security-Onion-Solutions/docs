@@ -1,0 +1,356 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>soup &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="End Of Life" href="eol.html" />
+    <link rel="prev" title="Updating" href="updating.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="updating.html">Updating</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">soup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ssh">SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#production-deployments">Production Deployments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#updating">Updating</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#security-onion-version-updates">Security Onion Version Updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#security-onion-hotfixes">Security Onion Hotfixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#os-updates">OS Updates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#automatic-os-updates">Automatic OS Updates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#holding-os-updates">Holding OS Updates</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#local-configurations">Local Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#detections">Detections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#log">Log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#airgap">Airgap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#elastic">Elastic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kibana">Kibana</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#automation">Automation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#errors">Errors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#data-failed-to-compile">Data failed to compile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pillars-and-sls-files">Pillars and sls files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#downloading-images">Downloading images</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker-registry">Docker Registry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#highstate-already-running">Highstate already running</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#distributed-deployments">Distributed deployments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eol.html">End Of Life</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="updating.html">Updating</a></li>
+      <li class="breadcrumb-item active">soup</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/soup.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="soup">
+<span id="id1"></span><h1>soup<a class="headerlink" href="#soup" title="Link to this heading"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">soup</span></code> stands for <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Onion</span> <span class="pre">UPdater</span></code> and you can use it to update your Security Onion deployment.</p>
+<section id="ssh">
+<h2>SSH<a class="headerlink" href="#ssh" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you run <code class="docutils literal notranslate"><span class="pre">soup</span></code> via an <a class="reference internal" href="ssh.html#ssh"><span class="std std-ref">SSH</span></a> session and that <a class="reference internal" href="ssh.html#ssh"><span class="std std-ref">SSH</span></a> session terminates, then any processes running in that session would terminate. You should avoid leaving <code class="docutils literal notranslate"><span class="pre">soup</span></code> unattended especially if the machine you are SSHing from is configured to sleep after a period of time. You might also consider using something like screen or tmux so that if your <a class="reference internal" href="ssh.html#ssh"><span class="std std-ref">SSH</span></a> session terminates, the processes will continue running on the server.</p>
+</div>
+</section>
+<section id="production-deployments">
+<h2>Production Deployments<a class="headerlink" href="#production-deployments" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you have a production deployment, we recommend that you test the upgrade process on a test deployment if possible before deploying to production.</p>
+</div>
+</section>
+<section id="updating">
+<h2>Updating<a class="headerlink" href="#updating" title="Link to this heading"></a></h2>
+<p>To update your Security Onion deployment, run the <code class="docutils literal notranslate"><span class="pre">soup</span></code> command with sudo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">soup</span>
+</pre></div>
+</div>
+<p>If necessary, <code class="docutils literal notranslate"><span class="pre">soup</span></code> will update itself and then ask you to run <code class="docutils literal notranslate"><span class="pre">soup</span></code> again. Once <code class="docutils literal notranslate"><span class="pre">soup</span></code> is fully updated, it will then check for other updates. This includes Security Onion version updates, Security Onion hotfixes, and operating system (OS) updates.</p>
+<p>After running <code class="docutils literal notranslate"><span class="pre">soup</span></code> or rebooting a Security Onion node, it may take a few minutes for services to display an <code class="docutils literal notranslate"><span class="pre">OK</span></code> status on the <a class="reference internal" href="grid.html#grid"><span class="std std-ref">Grid</span></a> screen. This may be due to the intial on-boot <a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a> highstate running. If services do not appear to be fully up and running within 15 minutes, try running the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">checkin</span>
+</pre></div>
+</div>
+</section>
+<section id="security-onion-version-updates">
+<h2>Security Onion Version Updates<a class="headerlink" href="#security-onion-version-updates" title="Link to this heading"></a></h2>
+<p>When we release a new version of Security Onion, we update the <a class="reference internal" href="release-notes.html#release-notes"><span class="std std-ref">Release Notes</span></a> section and publish a blog post to <a class="reference external" href="https://blog.securityonion.net">https://blog.securityonion.net</a>. You’ll want to review these for any relevant information about the individual updates.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">soup</span></code> finds a full version update, then it will update the Security Onion version in <code class="docutils literal notranslate"><span class="pre">/etc/soversion</span></code>, all <a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a> code, and all <a class="reference internal" href="docker.html#docker"><span class="std std-ref">Docker</span></a> images.</p>
+<p><code class="docutils literal notranslate"><span class="pre">soup</span></code> automatically keeps the previous version of <a class="reference internal" href="docker.html#docker"><span class="std std-ref">Docker</span></a> images. These older unused <a class="reference internal" href="docker.html#docker"><span class="std std-ref">Docker</span></a> images will be automatically removed at the next version update. If you need to remove these older <a class="reference internal" href="docker.html#docker"><span class="std std-ref">Docker</span></a> images immediately, first verify that the upgrade completed successfully and that everything is working properly. You could then remove the older images individually or all at once using a command like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">system</span> <span class="n">prune</span> <span class="o">-</span><span class="n">a</span>
+</pre></div>
+</div>
+<p>However, please note that this an aggressive option and you should exercise caution if you have any non-standard <a class="reference internal" href="docker.html#docker"><span class="std std-ref">Docker</span></a> images or configuration. You may want to test it on a test system first.</p>
+</section>
+<section id="security-onion-hotfixes">
+<h2>Security Onion Hotfixes<a class="headerlink" href="#security-onion-hotfixes" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">soup</span></code> checks for Security Onion hotfixes. Hotfixes typically include updates to the <a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a> code and small configuration changes that do not warrant a full version update. This does not include Docker images since that would require a full version update.</p>
+<p>After applying a hotfix, you may notice that the Security Onion version in <code class="docutils literal notranslate"><span class="pre">/etc/soversion</span></code> stays the same. The application of the hotfix is tracked on the manager in the <code class="docutils literal notranslate"><span class="pre">/etc/sohotfix</span></code> file.</p>
+</section>
+<section id="os-updates">
+<h2>OS Updates<a class="headerlink" href="#os-updates" title="Link to this heading"></a></h2>
+<p>In addition to Security Onion docker image updates, <code class="docutils literal notranslate"><span class="pre">soup</span></code> also checks for missing OS updates and asks if you want to install them.</p>
+<section id="automatic-os-updates">
+<h3>Automatic OS Updates<a class="headerlink" href="#automatic-os-updates" title="Link to this heading"></a></h3>
+<p>You can configure automatic OS updates by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; patch.</p>
+<a class="reference external image-reference" href="_images/config-item-patch.png"><img alt="_images/config-item-patch.png" src="_images/config-item-patch.png" />
+</a>
+</section>
+<section id="holding-os-updates">
+<h3>Holding OS Updates<a class="headerlink" href="#holding-os-updates" title="Link to this heading"></a></h3>
+<p>If you would like to prevent certain packages from being upgraded automatically (commonly referred to as “locking” or “holding” packages), then you can do that via the <code class="docutils literal notranslate"><span class="pre">hold</span></code> setting. The most frequent use case is holding the kernel to prevent frequent system reboots. To hold a package, add the package name to the <code class="docutils literal notranslate"><span class="pre">hold</span></code> list in <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; versionlock –&gt; hold.</p>
+<a class="reference external image-reference" href="_images/config-item-versionlock.png"><img alt="_images/config-item-versionlock.png" src="_images/config-item-versionlock.png" />
+</a>
+</section>
+</section>
+<section id="local-configurations">
+<h2>Local Configurations<a class="headerlink" href="#local-configurations" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">soup</span></code> will check for local configurations in <code class="docutils literal notranslate"><span class="pre">/opt/so/saltstack/local/</span></code> that may cause issues and flag them with the message <code class="docutils literal notranslate"><span class="pre">Potentially</span> <span class="pre">breaking</span> <span class="pre">changes</span> <span class="pre">found</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">following</span> <span class="pre">files</span></code>. Please examine the output of <code class="docutils literal notranslate"><span class="pre">soup</span></code> and review any local configurations for possible issues.</p>
+</section>
+<section id="detections">
+<h2>Detections<a class="headerlink" href="#detections" title="Link to this heading"></a></h2>
+<p>If you are upgrading from a version older than 2.4.70, <code class="docutils literal notranslate"><span class="pre">soup</span></code> will do the following to prepare for migration to <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a>:</p>
+<ul class="simple">
+<li><p>Playbook Plays will be backed up to <code class="docutils literal notranslate"><span class="pre">/nsm/backup/detections-migration/</span></code> and any active Elastalert rules will be backed up and removed.</p></li>
+<li><p>Suricata tuning configurations will be backed to <code class="docutils literal notranslate"><span class="pre">/nsm/backup/detections-migration/</span></code> and any thresholds will be migrated over to <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a>.</p></li>
+</ul>
+</section>
+<section id="log">
+<h2>Log<a class="headerlink" href="#log" title="Link to this heading"></a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">soup</span></code> displays any errors, you can check <code class="docutils literal notranslate"><span class="pre">/root/soup.log</span></code> for additional clues.</p>
+</section>
+<section id="airgap">
+<h2>Airgap<a class="headerlink" href="#airgap" title="Link to this heading"></a></h2>
+<p>To update an <a class="reference internal" href="airgap.html#airgap"><span class="std std-ref">Airgap</span></a> deployment, you’ll need to get the latest ISO image to the airgapped manager and then run <code class="docutils literal notranslate"><span class="pre">soup</span></code> which will ask where to find it:</p>
+<ul class="simple">
+<li><p>burn the latest ISO image to a DVD and insert it in the DVD drive of the manager (example: <code class="docutils literal notranslate"><span class="pre">/dev/cdrom</span></code>)</p></li>
+<li><p>flash the ISO image to a USB drive and connect that USB drive to the manager (example: <code class="docutils literal notranslate"><span class="pre">/dev/sdb</span></code>)</p></li>
+<li><p>simply copy the ISO file itself to the manager (example: <code class="docutils literal notranslate"><span class="pre">/home/YourUser/securityonion-2.4.XYZ-YYYYMMDD.iso</span></code>)</p></li>
+</ul>
+<p>Instead of waiting for soup to prompt for the location, you can also specify the path on the command line using the <code class="docutils literal notranslate"><span class="pre">-f</span></code> option. For example (change this to reflect the actual path to the ISO file or disk device containing the ISO media):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">soup</span> <span class="o">-</span><span class="n">y</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">YourUser</span><span class="o">/</span><span class="n">securityonion</span><span class="o">-</span><span class="mf">2.4</span><span class="o">.</span><span class="n">XYZ</span><span class="o">-</span><span class="n">YYYYMMDD</span><span class="o">.</span><span class="n">iso</span>
+</pre></div>
+</div>
+</section>
+<section id="elastic">
+<h2>Elastic<a class="headerlink" href="#elastic" title="Link to this heading"></a></h2>
+<p>If <code class="docutils literal notranslate"><span class="pre">soup</span></code> updated to a new version of the Elastic stack, then you’ll want to go to <a class="reference internal" href="elastic-fleet.html#elastic-fleet"><span class="std std-ref">Elastic Fleet</span></a> and:</p>
+<ul class="simple">
+<li><p>drill into each of your active agent policies, check the Agent Binary Download setting, and adjust if necessary for your deployment</p></li>
+<li><p>check for any integrations that need to be upgraded</p></li>
+<li><p>check for any agents that need to be upgraded (grid node agents should automatically upgrade so you should just need to look for any additional endpoint agents that you’ve deployed)</p></li>
+</ul>
+</section>
+<section id="kibana">
+<h2>Kibana<a class="headerlink" href="#kibana" title="Link to this heading"></a></h2>
+<p>After <code class="docutils literal notranslate"><span class="pre">soup</span></code> completes, if <a class="reference internal" href="kibana.html#kibana"><span class="std std-ref">Kibana</span></a> says <code class="docutils literal notranslate"><span class="pre">Kibana</span> <span class="pre">server</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">ready</span> <span class="pre">yet</span></code> even after waiting a few minutes for it to fully initialize, then take a look at the Diagnostic Logging section of the <a class="reference internal" href="kibana.html#kibana"><span class="std std-ref">Kibana</span></a> page.</p>
+<p>If Kibana loads but the dashboards display errors that they didn’t before the upgrade, first shift-reload your browser to make sure there are no cache issues. If that doesn’t resolve the issue, then you may need to reload the dashboards on your manager:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">rm</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">so</span><span class="o">/</span><span class="n">state</span><span class="o">/</span><span class="n">kibana_</span><span class="o">*.</span><span class="n">txt</span>
+<span class="n">sudo</span> <span class="n">salt</span><span class="o">-</span><span class="n">call</span> <span class="n">state</span><span class="o">.</span><span class="n">apply</span> <span class="n">kibana</span><span class="o">.</span><span class="n">so_savedobjects_defaults</span> <span class="o">-</span><span class="n">l</span> <span class="n">info</span> <span class="n">queue</span><span class="o">=</span><span class="kc">True</span>
+</pre></div>
+</div>
+</section>
+<section id="automation">
+<h2>Automation<a class="headerlink" href="#automation" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">soup</span></code> can be automated as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">soup</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+<p>This will make <code class="docutils literal notranslate"><span class="pre">soup</span></code> proceed unattended, automatically answering <code class="docutils literal notranslate"><span class="pre">yes</span></code> to any prompt.  If you have an airgap installation, you can specify the path to the ISO image using the <code class="docutils literal notranslate"><span class="pre">-f</span></code> option as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">soup</span> <span class="o">-</span><span class="n">y</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">securityonion</span><span class="o">.</span><span class="n">iso</span>
+</pre></div>
+</div>
+</section>
+<section id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="Link to this heading"></a></h2>
+<section id="data-failed-to-compile">
+<h3>Data failed to compile<a class="headerlink" href="#data-failed-to-compile" title="Link to this heading"></a></h3>
+<p>Occasionally, <code class="docutils literal notranslate"><span class="pre">soup</span></code> may output a <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">failed</span> <span class="pre">to</span> <span class="pre">compile</span></code> error that says something like <code class="docutils literal notranslate"><span class="pre">Rendering</span> <span class="pre">SLS</span> <span class="pre">failed:</span> <span class="pre">Jinja</span> <span class="pre">variable</span> <span class="pre">'None'</span> <span class="pre">has</span> <span class="pre">no</span> <span class="pre">attribute</span></code>. In most cases, this error corrects itself on the next <a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a> run.</p>
+</section>
+<section id="pillars-and-sls-files">
+<h3>Pillars and sls files<a class="headerlink" href="#pillars-and-sls-files" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">soup</span></code> will check <a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a> pillars to make sure they can be rendered. If not, it will output a message like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">There</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">issue</span> <span class="n">rendering</span> <span class="n">the</span> <span class="n">manager</span><span class="s1">&#39;s pillars. Please correct the issues in the sls files mentioned below before running SOUP again.</span>
+</pre></div>
+</div>
+<p>This usually means that somebody has modified the <a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a> sls files and introduced a typo.</p>
+</section>
+<section id="downloading-images">
+<h3>Downloading images<a class="headerlink" href="#downloading-images" title="Link to this heading"></a></h3>
+<p>As <code class="docutils literal notranslate"><span class="pre">soup</span></code> is downloading container images, it may encounter errors if there are Internet connection issues or if the disk runs out of free space. Once you’ve resolved the underlying condition, you can manually refresh your container images using <code class="docutils literal notranslate"><span class="pre">so-docker-refresh</span></code>.</p>
+</section>
+<section id="docker-registry">
+<h3>Docker Registry<a class="headerlink" href="#docker-registry" title="Link to this heading"></a></h3>
+<p>If you see errors relating to <code class="docutils literal notranslate"><span class="pre">so-dockerregistry</span></code> (<a class="reference internal" href="docker.html#docker"><span class="std std-ref">Docker</span></a> Registry), then please take a look at the following discussions to see if your symptoms match and if their solutions may help you:</p>
+<p><a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/discussions/12078">https://github.com/Security-Onion-Solutions/securityonion/discussions/12078</a></p>
+<p><a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/discussions/12635">https://github.com/Security-Onion-Solutions/securityonion/discussions/12635</a></p>
+</section>
+<section id="highstate-already-running">
+<h3>Highstate already running<a class="headerlink" href="#highstate-already-running" title="Link to this heading"></a></h3>
+<p>Here are some other errors that you may see when running <code class="docutils literal notranslate"><span class="pre">soup</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">local</span><span class="p">:</span>
+    <span class="n">Data</span> <span class="n">failed</span> <span class="n">to</span> <span class="nb">compile</span><span class="p">:</span>
+<span class="o">----------</span>
+    <span class="n">Rendering</span> <span class="n">SLS</span> <span class="s1">&#39;base:common&#39;</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Jinja</span> <span class="n">variable</span> <span class="s1">&#39;list object&#39;</span> <span class="n">has</span> <span class="n">no</span> <span class="n">attribute</span> <span class="s1">&#39;values&#39;</span>
+</pre></div>
+</div>
+<p>and/or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">There</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">problem</span> <span class="n">downloading</span> <span class="n">the</span> <span class="n">so</span><span class="o">-</span><span class="n">xyz</span><span class="p">:</span><span class="mf">2.4.0</span> <span class="n">image</span><span class="o">.</span> <span class="n">Details</span><span class="p">:</span>
+<span class="n">gpg</span><span class="p">:</span> <span class="n">Signature</span> <span class="n">made</span> <span class="n">Thu</span> <span class="mi">18</span> <span class="n">Feb</span> <span class="mi">2021</span> <span class="mi">02</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">10</span> <span class="n">PM</span> <span class="n">UTC</span> <span class="n">using</span> <span class="n">RSA</span> <span class="n">key</span> <span class="n">ID</span> <span class="n">FE507013</span> <span class="n">gpg</span><span class="p">:</span> <span class="n">BAD</span> <span class="n">signature</span> <span class="kn">from</span><span class="w"> </span><span class="s2">&quot;Security Onion Solutions, LLC &lt;info@securityonionsolutions.com&gt;&quot;</span>
+</pre></div>
+</div>
+<p>If you see these errors, it most likely means that a salt highstate process was already running when <code class="docutils literal notranslate"><span class="pre">soup</span></code> began. You can wait a few minutes and then try <code class="docutils literal notranslate"><span class="pre">soup</span></code> again. Alternatively, you can run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">so-checkin</span></code> and wait for it to complete before running <code class="docutils literal notranslate"><span class="pre">soup</span></code> again.</p>
+</section>
+</section>
+<section id="distributed-deployments">
+<h2>Distributed deployments<a class="headerlink" href="#distributed-deployments" title="Link to this heading"></a></h2>
+<p>If you have a distributed deployment with a manager node and separate sensor nodes and/or search nodes, you <strong>only</strong> need to run <code class="docutils literal notranslate"><span class="pre">soup</span></code> on the manager. Once <code class="docutils literal notranslate"><span class="pre">soup</span></code> has completed, other nodes should update themselves at the next <a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a> highstate (typically within 15 minutes).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Just because the update completed on the manager does NOT mean the upgrade is complete on other nodes in the grid. Do not manually restart anything until you know that all the search nodes and heavy nodes are updated.</p>
+<p>Each minion is on a random 15 minute check-in period and things like network bandwidth can be a factor in how long the actual upgrade takes. If you have a heavy node on a slow link, it is going to take a while to get the containers to it. Depending on what changes happened between the versions, <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> might not be able to talk to said heavy node until the update is complete.</p>
+<p>If it looks like you’re missing data after the upgrade, please avoid restarting services and instead make sure at least one search node has completed its upgrade. The best way to do this is to run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">so-checkin</span></code> from a search node and make sure there are no errors. Typically if it works on one node it will work on the rest. Sensor nodes are less complex and will update as they check in so you can monitor those from the <a class="reference internal" href="grid.html#grid"><span class="std std-ref">Grid</span></a> section of <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a>.</p>
+</div>
+<p>When you run <code class="docutils literal notranslate"><span class="pre">soup</span></code> on the manager, it does the following:</p>
+<ul class="simple">
+<li><p>Checks to see if it is running on a manager.</p></li>
+<li><p>Checks to see if the grid is in <a class="reference internal" href="airgap.html#airgap"><span class="std std-ref">Airgap</span></a> mode. If so, it will then ask for the location of the ISO or mount point.</p></li>
+<li><p>Checks to see if we’re running the latest version of <code class="docutils literal notranslate"><span class="pre">soup</span></code>. If not, it will put the latest in the correct place and ask you to re-run <code class="docutils literal notranslate"><span class="pre">soup</span></code>.</p></li>
+<li><p>Compares the installed version with what is available on github or the ISO image.</p></li>
+<li><p>Checks to see if <a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a> needs to be updated (more on this later).</p></li>
+<li><p>Downloads the new <a class="reference internal" href="docker.html#docker"><span class="std std-ref">Docker</span></a> images or, if airgap, copies them from the ISO image.</p></li>
+<li><p>Stops the <a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a> master and minion and restarts it in a restricted mode. This mode only allows the manager to connect to it so that we make sure the manager is done before any of the minions are updated.</p></li>
+<li><p>Updates <a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a> if necessary. This will cause the master and minion services to restart but still in restricted mode.</p></li>
+<li><p>Makes any changes to pillars that are needed such as adding new settings or renaming values. This varies from release to release.</p></li>
+<li><p>If the grid is in <a class="reference internal" href="airgap.html#airgap"><span class="std std-ref">Airgap</span></a> mode, then it copies the latest ET Open rules and yara rules to the manager.</p></li>
+<li><p>The new <a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a> code is put into place on the manager.</p></li>
+<li><p>Runs a highstate on the manager which is the actual upgrade where it will use the new <a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a> code and <a class="reference internal" href="docker.html#docker"><span class="std std-ref">Docker</span></a> containers.</p></li>
+<li><p>Unlocks the <a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a> master service and allows minions to connect again.</p></li>
+<li><p>Issues a command to all minions to update <a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a> if necessary. This is important to note as it takes time to to update the <a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a> minion on all minions. If the minion doesn’t respond for whatever reason, it will not be upgraded at this time. This is not an issue because the first thing that gets checked when a minion talks to the master is if <a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a> needs to be updated and will apply the update if it does.</p></li>
+<li><p>Nodes connect back to the manager and actually perform the upgrade to the new version.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="updating.html" class="btn btn-neutral float-left" title="Updating" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="eol.html" class="btn btn-neutral float-right" title="End Of Life" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

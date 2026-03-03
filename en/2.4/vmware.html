@@ -1,0 +1,229 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VMware &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="VirtualBox" href="virtualbox.html" />
+    <link rel="prev" title="Download" href="download.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="getting-started.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use-cases.html">Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html">Hardware Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download.html">Download</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">VMware</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#workstation-pro">Workstation Pro</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fusion">Fusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#esxi">ESXi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vmware-tools">VMware Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="virtualbox.html">VirtualBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxmox.html">Proxmox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble-booting.html">Booting Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airgap.html">Airgap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-amazon.html">Amazon Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-azure.html">Azure Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-google.html">Google Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-installation.html">After Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="getting-started.html">Getting Started</a></li>
+      <li class="breadcrumb-item active">VMware</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/vmware.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="vmware">
+<span id="id1"></span><h1>VMware<a class="headerlink" href="#vmware" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>In this section, we’ll cover creating a virtual machine (VM) for our ISO image in VMware Workstation Pro and VMware Fusion. These steps should be fairly similar for most VMware installations.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to sniff live traffic, then you will need a second network interface dedicated to sniffing. You will need to set this sniffing interface to sniff from whatever network you want to monitor. With the sniffing interface in <code class="docutils literal notranslate"><span class="pre">bridged</span></code> mode, you should be able to see all traffic to and from the host machine’s physical NIC. If you would like to see <strong>ALL</strong> the traffic on your network, you will need a method of forwarding that traffic to the interface to which the virtual adapter is bridged. This can be achieved with a TAP or SPAN port. If you want to sniff traffic from other VMs, then the virtual sniffing interface needs to be set to the same virtual network that those VMs are set to (this may be <code class="docutils literal notranslate"><span class="pre">NAT</span></code> or <code class="docutils literal notranslate"><span class="pre">bridged</span></code> depending on how they are configured).</p>
+</div>
+</section>
+<section id="workstation-pro">
+<h2>Workstation Pro<a class="headerlink" href="#workstation-pro" title="Link to this heading"></a></h2>
+<p>VMware Workstation is available for many different host operating systems, including Windows and several popular Linux distros. Follow the steps below to create a VM in VMware Workstation Pro for our ISO image:</p>
+<ol class="arabic simple">
+<li><p>From the VMware main window, select File &gt;&gt; New Virtual Machine.</p></li>
+<li><p>Select Typical installation &gt;&gt; Click <code class="docutils literal notranslate"><span class="pre">Next</span></code>.</p></li>
+<li><p>Installer disc image file &gt;&gt; SO ISO file path &gt;&gt; Click <code class="docutils literal notranslate"><span class="pre">Next</span></code>.</p></li>
+<li><p>Choose Linux, then choose the closest Linux distribution and click <code class="docutils literal notranslate"><span class="pre">Next</span></code>.</p></li>
+<li><p>Specify virtual machine name and click <code class="docutils literal notranslate"><span class="pre">Next</span></code>.</p></li>
+<li><p>Specify disk size (minimum 200GB), store as single file, click <code class="docutils literal notranslate"><span class="pre">Next</span></code>.</p></li>
+<li><p>Customize hardware and increase Memory and Processors based on the <a class="reference internal" href="hardware.html#hardware"><span class="std std-ref">Hardware Requirements</span></a> section.</p></li>
+<li><p>Network Adapter (<code class="docutils literal notranslate"><span class="pre">NAT</span></code> or <code class="docutils literal notranslate"><span class="pre">Bridged</span></code> – if you want to be able to access your Security Onion machine from other devices in the network then choose Bridged, otherwise choose NAT to leave it behind the host). This will be the management interface.</p></li>
+<li><p>Add &gt;&gt; Network Adapter (<code class="docutils literal notranslate"><span class="pre">NAT</span></code> or <code class="docutils literal notranslate"><span class="pre">Bridged</span></code>). This will be the sniffing (monitor) interface.</p></li>
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">Close</span></code>.</p></li>
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">Finish</span></code>.</p></li>
+<li><p>Power on the virtual machine and then follow the installation steps for your desired installation type in the <a class="reference internal" href="installation.html#installation"><span class="std std-ref">Installation</span></a> section.</p></li>
+</ol>
+</section>
+<section id="fusion">
+<h2>Fusion<a class="headerlink" href="#fusion" title="Link to this heading"></a></h2>
+<p>VMware Fusion is available for Mac OS. For more information about VMware Fusion, please see <a class="reference external" href="https://www.vmware.com/products/fusion.html">https://www.vmware.com/products/fusion.html</a>.</p>
+<p>Follow the steps below to create a VM in VMware Fusion for our ISO image:</p>
+<ol class="arabic simple">
+<li><p>From the VMware Fusion main window, click <code class="docutils literal notranslate"><span class="pre">File</span></code> and then click <code class="docutils literal notranslate"><span class="pre">New</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">the</span> <span class="pre">Installation</span> <span class="pre">Method</span></code> appears. Click <code class="docutils literal notranslate"><span class="pre">Install</span> <span class="pre">from</span> <span class="pre">disc</span> <span class="pre">or</span> <span class="pre">image</span></code> and click <code class="docutils literal notranslate"><span class="pre">Continue</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">a</span> <span class="pre">New</span> <span class="pre">Virtual</span> <span class="pre">Machine</span></code> appears. Click <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">another</span> <span class="pre">disc</span> <span class="pre">or</span> <span class="pre">disc</span> <span class="pre">image...</span></code>, select our ISO image, click <code class="docutils literal notranslate"><span class="pre">Open</span></code>, then click <code class="docutils literal notranslate"><span class="pre">Continue</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Choose</span> <span class="pre">Operating</span> <span class="pre">System</span></code> appears. Click <code class="docutils literal notranslate"><span class="pre">Linux</span></code>, choose the closest Linux distribution, then click <code class="docutils literal notranslate"><span class="pre">Continue</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Choose</span> <span class="pre">Firmware</span> <span class="pre">Type</span></code> appears. Click <code class="docutils literal notranslate"><span class="pre">Legacy</span> <span class="pre">BIOS</span></code> and then click <code class="docutils literal notranslate"><span class="pre">Continue</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Finish</span></code> screen appears. Click the <code class="docutils literal notranslate"><span class="pre">Customize</span> <span class="pre">Settings</span></code> button.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">As</span></code> screen appears. Give the VM a name and click the <code class="docutils literal notranslate"><span class="pre">Save</span></code> button.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Settings</span></code> window appears. Click <code class="docutils literal notranslate"><span class="pre">Processors</span> <span class="pre">&amp;</span> <span class="pre">Memory</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Processors</span> <span class="pre">&amp;</span> <span class="pre">Memory</span></code> screen appears. Increase processors and memory based on the <a class="reference internal" href="hardware.html#hardware"><span class="std std-ref">Hardware Requirements</span></a> section. Click the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Device...</span></code> button.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Device</span></code> screen appears. Click <code class="docutils literal notranslate"><span class="pre">Network</span> <span class="pre">Adapter</span></code> and click the <code class="docutils literal notranslate"><span class="pre">Add...</span></code> button.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Network</span> <span class="pre">Adapter</span> <span class="pre">2</span></code> screen appears. This will be the sniffing (monitor) interface. Select your desired network adapter configuration. Click the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">All</span></code> button.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Settings</span></code> screen appears. Click <code class="docutils literal notranslate"><span class="pre">Hard</span> <span class="pre">Disk</span> <span class="pre">(SCSI)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Hard</span> <span class="pre">Disk</span> <span class="pre">(SCSI)</span></code> screen appears. Increase the disk size to at least <code class="docutils literal notranslate"><span class="pre">200GB</span></code> depending on your use case. Click the <code class="docutils literal notranslate"><span class="pre">Apply</span></code> button.</p></li>
+<li><p>Close the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> window.</p></li>
+<li><p>At the window for your new VM, click the <code class="docutils literal notranslate"><span class="pre">Play</span></code> button to power on the virtual machine.</p></li>
+<li><p>Follow the installation steps for your desired installation type in the <a class="reference internal" href="installation.html#installation"><span class="std std-ref">Installation</span></a> section.</p></li>
+</ol>
+</section>
+<section id="esxi">
+<h2>ESXi<a class="headerlink" href="#esxi" title="Link to this heading"></a></h2>
+<p>If you’re using VMware ESXi, then you’re likely familiar with VM creation and installation and so we won’t detail that here. There are a few things specific to ESXi that you might want to be aware of:</p>
+<ul class="simple">
+<li><p>You may need to set your monitoring interface in the vSwitch to VLAN ID 4095 to allow all traffic through. You can read more about this at <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/discussions/7185">https://github.com/Security-Onion-Solutions/securityonion/discussions/7185</a>.</p></li>
+<li><p>If you’re trying to monitor multiple network interfaces, then you may need to enable the <code class="docutils literal notranslate"><span class="pre">Allow</span> <span class="pre">MAC</span> <span class="pre">Changes</span></code> option at both the vSwitch and Port Group levels. You can read more about this at <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/discussions/2676">https://github.com/Security-Onion-Solutions/securityonion/discussions/2676</a>.</p></li>
+<li><p>If you happen to notice after rebooting that the <a class="reference internal" href="elastic-agent.html#elastic-agent"><span class="std std-ref">Elastic Agent</span></a> takes signifantly longer than 15 minutes to initialize, then you may need to enable the following option in ESXi: Settings &gt; VM Options &gt; VMWare Tools &gt; Synchronise Guest Time. You can read more about this at <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/discussions/13285">https://github.com/Security-Onion-Solutions/securityonion/discussions/13285</a>.</p></li>
+</ul>
+</section>
+<section id="vmware-tools">
+<h2>VMware Tools<a class="headerlink" href="#vmware-tools" title="Link to this heading"></a></h2>
+<p>If using a graphical desktop, you may want to install <code class="docutils literal notranslate"><span class="pre">open-vm-tools-desktop</span></code> to enable more screen resolution options and other features. For example, using our ISO image or standard Oracle Linux 9:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dnf</span> <span class="n">install</span> <span class="nb">open</span><span class="o">-</span><span class="n">vm</span><span class="o">-</span><span class="n">tools</span><span class="o">-</span><span class="n">desktop</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="download.html" class="btn btn-neutral float-left" title="Download" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="virtualbox.html" class="btn btn-neutral float-right" title="VirtualBox" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

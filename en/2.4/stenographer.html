@@ -1,0 +1,237 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stenographer &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Suricata" href="suricata.html" />
+    <link rel="prev" title="BPF" href="bpf.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="network.html">Network Visibility</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="af-packet.html">AF-PACKET</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpf.html">BPF</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Stenographer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#output">Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#analysis">Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-line">Command Line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disk-free-percentage">Disk Free Percentage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#maximum-files">Maximum Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#diagnostic-logging">Diagnostic Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disabling">Disabling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vlan-tags">VLAN Tags</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="suricata.html">Suricata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zeek.html">Zeek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strelka.html">Strelka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="idh.html">Intrusion Detection Honeypot</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="network.html">Network Visibility</a></li>
+      <li class="breadcrumb-item active">Stenographer</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/stenographer.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="stenographer">
+<span id="id1"></span><h1>Stenographer<a class="headerlink" href="#stenographer" title="Link to this heading"></a></h1>
+<p>Stenographer is one of the tools that Security Onion uses to write network traffic to disk. From <a class="reference external" href="https://github.com/google/stenographer">https://github.com/google/stenographer</a>:</p>
+<blockquote>
+<div><p>Stenographer is a full-packet-capture utility for buffering packets to disk for intrusion detection and incident response purposes. It provides a high-performance implementation of NIC-to-disk packet writing, handles deleting those files as disk fills up, and provides methods for reading back specific sets of packets quickly and easily.</p>
+</div></blockquote>
+<p>Stenographer uses <a class="reference internal" href="af-packet.html#af-packet"><span class="std std-ref">AF-PACKET</span></a> for packet acquisition. It’s important to note that Stenographer is totally independent from <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> and <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a>. This means that Stenographer has no impact on your <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> alerts and protocol metadata.</p>
+<p>For new installations in either <code class="docutils literal notranslate"><span class="pre">Eval</span></code> or <code class="docutils literal notranslate"><span class="pre">Standalone</span></code> mode, full packet capture is written to disk by <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a>. For other deployments, full packet capture is written to disk by Stenographer but you can optionally switch this to <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a>. For more information, please see the <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> section.</p>
+<section id="output">
+<h2>Output<a class="headerlink" href="#output" title="Link to this heading"></a></h2>
+<p>Stenographer writes full packet capture to <code class="docutils literal notranslate"><span class="pre">/nsm/pcap/</span></code>. It will automatically start purging old data once the partition reaches the DiskFreePercentage setting as shown below.</p>
+</section>
+<section id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Link to this heading"></a></h2>
+<p>You can access full packet capture via the <a class="reference internal" href="pcap.html#pcap"><span class="std std-ref">PCAP</span></a> interface:</p>
+<a class="reference external image-reference" href="_images/65_pcap_details.png"><img alt="_images/65_pcap_details.png" src="_images/65_pcap_details.png" />
+</a>
+<p><a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>, <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>, <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>, and <a class="reference internal" href="kibana.html#kibana"><span class="std std-ref">Kibana</span></a> allow you to easily pivot to the <a class="reference internal" href="pcap.html#pcap"><span class="std std-ref">PCAP</span></a> interface.</p>
+</section>
+<section id="command-line">
+<h2>Command Line<a class="headerlink" href="#command-line" title="Link to this heading"></a></h2>
+<p>You can also access packet capture from the command line of the box where the pcap is stored using a Stenographer query as defined at <a class="reference external" href="https://github.com/google/stenographer#querying">https://github.com/google/stenographer#querying</a>. In the following examples, replace “YourStenoQueryHere” with your actual Stenographer query.</p>
+<p>The first option is using docker to run <code class="docutils literal notranslate"><span class="pre">stenoread</span></code>. If the query succeeds, you can then find the resulting pcap file in <code class="docutils literal notranslate"><span class="pre">/nsm/pcaptmp/</span></code> in the host filesystem:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">so</span><span class="o">-</span><span class="n">steno</span> <span class="n">stenoread</span> <span class="s2">&quot;YourStenoQueryHere&quot;</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">new</span><span class="o">.</span><span class="n">pcap</span>
+</pre></div>
+</div>
+<p>We’ve included a wrapper script called <code class="docutils literal notranslate"><span class="pre">so-pcap-export</span></code> to make this a little easier. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">pcap</span><span class="o">-</span><span class="n">export</span> <span class="s2">&quot;YourStenoQueryHere&quot;</span> <span class="n">output</span>
+</pre></div>
+</div>
+<p>If the query succeeds, you can then find the resulting <code class="docutils literal notranslate"><span class="pre">output.pcap</span></code> file in <code class="docutils literal notranslate"><span class="pre">/nsm/pcapout/</span></code> in the host filesystem.</p>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>You can configure Stenographer by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; pcap.</p>
+<a class="reference external image-reference" href="_images/config-item-pcap.png"><img alt="_images/config-item-pcap.png" src="_images/config-item-pcap.png" />
+</a>
+</section>
+<section id="disk-free-percentage">
+<h2>Disk Free Percentage<a class="headerlink" href="#disk-free-percentage" title="Link to this heading"></a></h2>
+<p>An important configuration item to be aware of is steno’s DiskFreePercentage setting. From <a class="reference external" href="https://github.com/google/stenographer/blob/master/INSTALL.md#threads">https://github.com/google/stenographer/blob/master/INSTALL.md#threads</a>:</p>
+<blockquote>
+<div><p>DiskFreePercentage: The amount of space to keep free in the packets directory. <cite>stenographer</cite> will delete files in this thread’s packets directory when free disk space decreases below this percentage.</p>
+</div></blockquote>
+<p>You can find this setting at <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; pcap –&gt; config –&gt; diskfreepercentage.</p>
+<p>If you have a distributed deployment with dedicated sensor nodes, then the default value of 10 should be reasonable since Stenographer should be the main consumer of disk space in the /nsm partition. However, if you have systems that run both Stenographer and <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> at the same time (like eval and standalone installations), then you’ll want to make sure that this value is no lower than 21 so that you avoid <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> hitting its watermark setting at 80% disk usage. If you have an older standalone installation, then you may need to manually change this value to 21.</p>
+</section>
+<section id="maximum-files">
+<h2>Maximum Files<a class="headerlink" href="#maximum-files" title="Link to this heading"></a></h2>
+<p>By default, Stenographer limits the number of files in the pcap directory to <code class="docutils literal notranslate"><span class="pre">30000</span></code> to avoid limitations with the ext3 filesystem. However, if you’re using the ext4 or xfs filesystems, then it is safe to increase this value. So if you have a large amount of storage and find that you only have 3 weeks worth of PCAP on disk while still having plenty of free space, then you may want to increase this default setting. To do so, you can go to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; pcap –&gt; config –&gt; maxdirectoryfiles and set the value to something appropriate for your system.</p>
+</section>
+<section id="diagnostic-logging">
+<h2>Diagnostic Logging<a class="headerlink" href="#diagnostic-logging" title="Link to this heading"></a></h2>
+<p>Diagnostic logging for Stenographer can be found at <code class="docutils literal notranslate"><span class="pre">/opt/so/log/stenographer/</span></code>. Depending on what you’re looking for, you may also need to look at the <a class="reference internal" href="docker.html#docker"><span class="std std-ref">Docker</span></a> logs for the container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">logs</span> <span class="n">so</span><span class="o">-</span><span class="n">steno</span>
+</pre></div>
+</div>
+</section>
+<section id="disabling">
+<h2>Disabling<a class="headerlink" href="#disabling" title="Link to this heading"></a></h2>
+<p>Since Stenographer is totally independent from <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> and <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a>, you can disable it without impacting your NIDS alerts or protocol metadata. If you decide to disable Stenographer, you can do so by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; pcap –&gt; enabled.</p>
+</section>
+<section id="vlan-tags">
+<h2>VLAN Tags<a class="headerlink" href="#vlan-tags" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<div class="line-block">
+<div class="line">Please note that Stenographer should correctly record traffic on a VLAN but won’t log the actual VLAN tags due to the way that <a class="reference internal" href="af-packet.html#af-packet"><span class="std std-ref">AF-PACKET</span></a> works:</div>
+<div class="line"><a class="reference external" href="https://github.com/google/stenographer/issues/211">https://github.com/google/stenographer/issues/211</a></div>
+</div>
+</div>
+</section>
+<section id="more-information">
+<h2>More Information<a class="headerlink" href="#more-information" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information about stenographer, please see <a class="reference external" href="https://github.com/google/stenographer">https://github.com/google/stenographer</a>.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpf.html" class="btn btn-neutral float-left" title="BPF" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="suricata.html" class="btn btn-neutral float-right" title="Suricata" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

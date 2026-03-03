@@ -1,0 +1,236 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kibana &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Elastic Fleet" href="elastic-fleet.html" />
+    <link rel="prev" title="Administration" href="administration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="alerts.html">Alerts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html">Dashboards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hunt.html">Hunt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html">Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detections.html">Detections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcap.html">PCAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.html">Grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="downloads.html">Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administration.html">Administration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Kibana</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#authentication">Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kibana-dashboards">Kibana Dashboards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#search-results">Search Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#timestamps">Timestamps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#diagnostic-logging">Diagnostic Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="elastic-fleet.html">Elastic Fleet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osquery-manager.html">Osquery Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="influxdb.html">InfluxDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cyberchef.html">CyberChef</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attack-navigator.html">ATT&amp;CK Navigator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="soc.html">Security Onion Console (SOC)</a></li>
+      <li class="breadcrumb-item active">Kibana</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/kibana.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="kibana">
+<span id="id1"></span><h1>Kibana<a class="headerlink" href="#kibana" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> includes a link on the sidebar that takes you to Kibana.</p>
+<section id="authentication">
+<h2>Authentication<a class="headerlink" href="#authentication" title="Link to this heading"></a></h2>
+<p>Log into Kibana using the same username and password that you use for <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a>.</p>
+<p>You can add new user accounts to both Kibana and <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> at the same time as shown in the <a class="reference internal" href="adding-accounts.html#adding-accounts"><span class="std std-ref">Adding Accounts</span></a> section.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you create accounts directly in Kibana (rather than in SOC), then those accounts will NOT be able to log into SOC.</p>
+</div>
+</section>
+<section id="kibana-dashboards">
+<h2>Kibana Dashboards<a class="headerlink" href="#kibana-dashboards" title="Link to this heading"></a></h2>
+<p>We’ve included a simple set of dashboards in Kibana. These Kibana dashboards are not as comprehensive as those in SOC <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>.</p>
+<p>Once you log into Kibana, you should start on the <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Onion</span> <span class="pre">-</span> <span class="pre">Home</span></code> dashboard. Notice the visualization in the upper left is labeled <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Onion</span> <span class="pre">-</span> <span class="pre">Navigation</span></code>. This navigation panel contains links to other dashboards and will change depending on what dashboard you’re currently looking at. For example, when you’re on the <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Onion</span> <span class="pre">-</span> <span class="pre">Home</span></code> dashboard and click the <code class="docutils literal notranslate"><span class="pre">Alert</span></code> link, you will go to the <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Onion</span> <span class="pre">-</span> <span class="pre">Alerts</span></code> dashboard and the Navigation panel will then contain links to more specific alert dashboards for <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a>. When you’re done looking at alerts, you can click the <code class="docutils literal notranslate"><span class="pre">Home</span></code> link in the navigation panel to go back to the main <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Onion</span> <span class="pre">-</span> <span class="pre">Home</span></code> dashboard.</p>
+<p>If you ever need to reload Kibana dashboards, you can run the following command on your manager:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">kibana</span><span class="o">-</span><span class="n">config</span><span class="o">-</span><span class="n">load</span>
+</pre></div>
+</div>
+<p>If that doesn’t resolve the issue, then you may need to run the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">salt</span><span class="o">-</span><span class="n">call</span> <span class="n">state</span><span class="o">.</span><span class="n">apply</span> <span class="n">kibana</span><span class="o">.</span><span class="n">so_savedobjects_defaults</span> <span class="o">-</span><span class="n">l</span> <span class="n">info</span> <span class="n">queue</span><span class="o">=</span><span class="kc">True</span>
+</pre></div>
+</div>
+<p>If you try to modify a default Kibana dashboard, your change will get overwritten. Instead of modifying, copy the desired dashboard and edit the copy. You may also want to consider setting up Kibana Spaces as this will allow you to make whatever changes you want without them being overwritten. This includes not only dashboards but certain Kibana settings as well. You can read more about Kibana Spaces at <a class="reference external" href="https://www.elastic.co/guide/en/kibana/current/xpack-spaces.html">https://www.elastic.co/guide/en/kibana/current/xpack-spaces.html</a>.</p>
+</section>
+<section id="search-results">
+<h2>Search Results<a class="headerlink" href="#search-results" title="Link to this heading"></a></h2>
+<p>In Kibana, search results are limited to the first <code class="docutils literal notranslate"><span class="pre">100</span></code> results for a particular query. If you don’t feel like this is adequate after narrowing your search, you can adjust the value for <code class="docutils literal notranslate"><span class="pre">discover:sampleSize</span></code> in Kibana by navigating to <code class="docutils literal notranslate"><span class="pre">Stack</span> <span class="pre">Management</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">Advanced</span> <span class="pre">Settings</span></code> and changing the value. It may be best to change this value incrementally to see how it affects performance for your deployment.</p>
+</section>
+<section id="timestamps">
+<h2>Timestamps<a class="headerlink" href="#timestamps" title="Link to this heading"></a></h2>
+<p>By default, Kibana will display timestamps in the timezone of your local browser. If you would prefer timestamps in UTC, you can go to <code class="docutils literal notranslate"><span class="pre">Management</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">Advanced</span> <span class="pre">Settings</span></code> and set <code class="docutils literal notranslate"><span class="pre">dateFormat:tz</span></code> to <code class="docutils literal notranslate"><span class="pre">UTC</span></code>.</p>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>Most Kibana configuration settings are in Kibana itself. However, configuration settings that would traditionally be set in the Kibana configuration file can be configured by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; kibana.</p>
+<a class="reference external image-reference" href="_images/config-item-kibana.png"><img alt="_images/config-item-kibana.png" src="_images/config-item-kibana.png" />
+</a>
+</section>
+<section id="diagnostic-logging">
+<h2>Diagnostic Logging<a class="headerlink" href="#diagnostic-logging" title="Link to this heading"></a></h2>
+<p>Kibana logs to <code class="docutils literal notranslate"><span class="pre">/opt/so/log/kibana/kibana.log</span></code>. Depending on what you’re looking for, you may also need to look at the <a class="reference internal" href="docker.html#docker"><span class="std std-ref">Docker</span></a> logs for the container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">logs</span> <span class="n">so</span><span class="o">-</span><span class="n">kibana</span>
+</pre></div>
+</div>
+<p>If you try to access Kibana and it says <code class="docutils literal notranslate"><span class="pre">Kibana</span> <span class="pre">server</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">ready</span> <span class="pre">yet</span></code> even after waiting a few minutes for it to fully initialize, then check <code class="docutils literal notranslate"><span class="pre">/opt/so/log/kibana/kibana.log</span></code>. You may see something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Another</span> <span class="n">Kibana</span> <span class="n">instance</span> <span class="n">appears</span> <span class="n">to</span> <span class="n">be</span> <span class="n">migrating</span> <span class="n">the</span> <span class="n">index</span><span class="o">.</span> <span class="n">Waiting</span> <span class="k">for</span> <span class="n">that</span> <span class="n">migration</span> <span class="n">to</span> <span class="n">complete</span><span class="o">.</span> <span class="n">If</span> <span class="n">no</span> <span class="n">other</span> <span class="n">Kibana</span> <span class="n">instance</span> <span class="ow">is</span> <span class="n">attempting</span> <span class="n">migrations</span><span class="p">,</span> <span class="n">you</span> <span class="n">can</span> <span class="n">get</span> <span class="n">past</span> <span class="n">this</span> <span class="n">message</span> <span class="n">by</span> <span class="n">deleting</span> <span class="n">index</span> <span class="o">.</span><span class="n">kibana_6</span> <span class="ow">and</span> <span class="n">restarting</span> <span class="n">Kibana</span>
+</pre></div>
+</div>
+<p>If that’s the case, then you can do the following (replacing <code class="docutils literal notranslate"><span class="pre">.kibana_6</span></code> with the actual index name that was mentioned in the log):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">k</span> <span class="o">-</span><span class="n">XDELETE</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9200</span><span class="o">/.</span><span class="n">kibana_6</span>
+
+<span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">kibana</span><span class="o">-</span><span class="n">restart</span>
+</pre></div>
+</div>
+<p>If you then are able to login to Kibana but your dashboards don’t look right, you can reload them as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">so</span><span class="o">-</span><span class="n">kibana</span><span class="o">-</span><span class="n">config</span><span class="o">-</span><span class="n">load</span>
+</pre></div>
+</div>
+</section>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Link to this heading"></a></h2>
+<p>You can enable or disable specific features by clicking the main menu in the upper left corner, then click <code class="docutils literal notranslate"><span class="pre">Stack</span> <span class="pre">Management</span></code>, then click <code class="docutils literal notranslate"><span class="pre">Spaces</span></code>, then click <code class="docutils literal notranslate"><span class="pre">Default</span></code>. For more information, please see <a class="reference external" href="https://www.elastic.co/guide/en/kibana/current/xpack-spaces.html#spaces-control-feature-visibility">https://www.elastic.co/guide/en/kibana/current/xpack-spaces.html#spaces-control-feature-visibility</a>.</p>
+</section>
+<section id="more-information">
+<h2>More Information<a class="headerlink" href="#more-information" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information about Kibana, please see <a class="reference external" href="https://www.elastic.co/kibana">https://www.elastic.co/kibana</a>.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="administration.html" class="btn btn-neutral float-left" title="Administration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="elastic-fleet.html" class="btn btn-neutral float-right" title="Elastic Fleet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elastic Fleet &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Osquery Manager" href="osquery-manager.html" />
+    <link rel="prev" title="Kibana" href="kibana.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="alerts.html">Alerts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html">Dashboards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hunt.html">Hunt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html">Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detections.html">Detections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcap.html">PCAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.html">Grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="downloads.html">Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administration.html">Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kibana.html">Kibana</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Elastic Fleet</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agents">Agents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adding-agents">Adding Agents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#upgrading-agents">Upgrading Agents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#monitoring-agents">Monitoring Agents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agent-policies">Agent Policies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agent-policies-endpoints-initial">Agent Policies - endpoints-initial</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#elastic-defend-endpoints-elastic-defend-integration">elastic-defend-endpoints (<code class="docutils literal notranslate"><span class="pre">Elastic</span> <span class="pre">Defend</span></code> integration)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#osquery-endpoints-osquery-manager-integration">osquery-endpoints (<code class="docutils literal notranslate"><span class="pre">Osquery</span> <span class="pre">Manager</span></code> integration)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#system-endpoints-system-integration">system-endpoints (<code class="docutils literal notranslate"><span class="pre">System</span></code> integration)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#windows-endpoints-windows-integration">windows-endpoints (<code class="docutils literal notranslate"><span class="pre">Windows</span></code> integration)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#enrollment-tokens">Enrollment Tokens</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-streams">Data Streams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#settings">Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integrations">Integrations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-fqdn-url">Custom FQDN URL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="osquery-manager.html">Osquery Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="influxdb.html">InfluxDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cyberchef.html">CyberChef</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attack-navigator.html">ATT&amp;CK Navigator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="soc.html">Security Onion Console (SOC)</a></li>
+      <li class="breadcrumb-item active">Elastic Fleet</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/elastic-fleet.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="elastic-fleet">
+<span id="id1"></span><h1>Elastic Fleet<a class="headerlink" href="#elastic-fleet" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> includes a link on the sidebar that takes you to the Fleet page inside <a class="reference internal" href="kibana.html#kibana"><span class="std std-ref">Kibana</span></a>.</p>
+<p>Elastic Fleet is pre-configured during Security Onion setup. If you need to make changes to the configuration, you can do so via the Fleet page in <a class="reference internal" href="kibana.html#kibana"><span class="std std-ref">Kibana</span></a> as detailed below.</p>
+<p>The Fleet page has multiple tabs across the top: Agents, Agent policies, Enrollment tokens, Uninstall tokens, Data streams, and Settings. Each of these tabs is described below.</p>
+<section id="agents">
+<h2>Agents<a class="headerlink" href="#agents" title="Link to this heading"></a></h2>
+<p>The Agents tab displays registered Elastic agents.</p>
+<p>To view agent details, click the <code class="docutils literal notranslate"><span class="pre">Host</span></code> name.</p>
+<p>To assign the agent to a new policy, unenroll, upgrade the agent, or perform other actions, click the <code class="docutils literal notranslate"><span class="pre">Actions</span></code> menu on the right side of the agent listing and select the appropriate option.</p>
+<p>By default, Elastic Agent is installed on every Security Onion grid node. As a result, all grid node agents will be enrolled in the <code class="docutils literal notranslate"><span class="pre">SO-Grid-Nodes</span></code> agent policy.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We do not recommend removing policy settings for Security Onion grid node agents.</p>
+</div>
+<section id="adding-agents">
+<h3>Adding Agents<a class="headerlink" href="#adding-agents" title="Link to this heading"></a></h3>
+<p>To add a new agent to your deployment, see the <a class="reference internal" href="elastic-agent.html#elastic-agent"><span class="std std-ref">Elastic Agent</span></a> section.</p>
+</section>
+<section id="upgrading-agents">
+<h3>Upgrading Agents<a class="headerlink" href="#upgrading-agents" title="Link to this heading"></a></h3>
+<p>Fleet automatically checks to see if agents are the latest version. If not, agents will display <code class="docutils literal notranslate"><span class="pre">Upgrade</span> <span class="pre">available</span></code>. If you would like to upgrade an agent, click the <code class="docutils literal notranslate"><span class="pre">Actions</span></code> menu on the right side and select the <code class="docutils literal notranslate"><span class="pre">Upgrade</span> <span class="pre">agent</span></code> option. You will then have the opportunity to select which version to upgrade to. Please choose the version number that matches the version of the Elastic stack that you are currently running. For example, if you are currently running Elastic 8.18.4 then you should select the 8.18.4 agent version.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you try to upgrade to a version of the agent that is newer than the version of your Elastic stack, then you may run into errors. For example, if you are currently running Elastic 8.18.4 and try to upgrade to agent version 8.19.0 or 9.1.0 then you may run into errors.</p>
+</div>
+</section>
+<section id="monitoring-agents">
+<h3>Monitoring Agents<a class="headerlink" href="#monitoring-agents" title="Link to this heading"></a></h3>
+<p>Agent health can be monitored in Elastic Fleet under the Agents tab, however you may want to generate alerts when an Agent reports a degraded or offline state. Via <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; manager -&gt; agent_monitoring you can enable a script that will periodically poll Elastic Fleet. Agents in an offline or degraded state for longer than the configured threshold (default is 5h) will generate an Alert in the <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a> interface of SOC.</p>
+<p>For more granular control over what Agents generate an alert, you can leverage fleet ‘tags’ to tag those agents. Then under <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; manager -&gt; agent_monitoring -&gt; config -&gt; custom_kquery you can enter a kql search like <code class="docutils literal notranslate"><span class="pre">tags:</span> <span class="pre">critical</span></code>. Then only those Agents tagged as ‘critical’ would generate an Alert.</p>
+<p>For more information on Elastic Fleet tags see <a class="reference external" href="https://www.elastic.co/docs/reference/fleet/filter-agent-list-by-tags#add-tags-in-fleet">https://www.elastic.co/docs/reference/fleet/filter-agent-list-by-tags#add-tags-in-fleet</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Security Onion Pro users can configure external <a class="reference internal" href="notifications.html#notifications"><span class="std std-ref">Notifications</span></a>.</p>
+</div>
+</section>
+</section>
+<section id="agent-policies">
+<h2>Agent Policies<a class="headerlink" href="#agent-policies" title="Link to this heading"></a></h2>
+<p>Agent policies dictate what data each agent will ingest and forward to Elasticsearch. This could be through the use of an HTTP, log file, or TCP-based input.</p>
+<p>The individual components within each agent policy are called integrations (referred to as <code class="docutils literal notranslate"><span class="pre">package</span> <span class="pre">policies</span></code> at the API level), and refer to a specific input and settings pertinent to a data source.</p>
+<p>For example, the <code class="docutils literal notranslate"><span class="pre">SO-Grid-Nodes</span></code> agent policy is comprised of the following integrations:</p>
+<ul class="simple">
+<li><p>elasticsearch-logs (<code class="docutils literal notranslate"><span class="pre">Elasticsearch</span></code> integration)</p></li>
+<li><p>import-evtx-logs (<code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">Logs</span></code> integration)</p></li>
+<li><p>import-suricata-logs (<code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">Logs</span></code> integration)</p></li>
+<li><p>import-zeek-logs (<code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">Logs</span></code> integration)</p></li>
+<li><p>kratos-logs (<code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">Logs</span></code> integration)</p></li>
+<li><p>osquery-grid-nodes (<code class="docutils literal notranslate"><span class="pre">Osquery</span> <span class="pre">Manager</span></code> integration)</p></li>
+<li><p>redis-logs (<code class="docutils literal notranslate"><span class="pre">Redis</span></code> integration)</p></li>
+<li><p>strelka-logs (<code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">Logs</span></code> integration)</p></li>
+<li><p>suricata-logs (<code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">Logs</span></code> integration)</p></li>
+<li><p>syslog-tcp-514 (<code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">Logs</span></code> integration)</p></li>
+<li><p>syslog-udp-514 (<code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">Logs</span></code> integration)</p></li>
+<li><p>system-grid-nodes (<code class="docutils literal notranslate"><span class="pre">System</span></code> integration)</p></li>
+<li><p>zeek-logs (<code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">Logs</span></code> integration)</p></li>
+</ul>
+</section>
+<section id="agent-policies-endpoints-initial">
+<h2>Agent Policies - endpoints-initial<a class="headerlink" href="#agent-policies-endpoints-initial" title="Link to this heading"></a></h2>
+<p>Agent installers downloaded from <a class="reference internal" href="downloads.html#downloads"><span class="std std-ref">Downloads</span></a> are deployed using the <code class="docutils literal notranslate"><span class="pre">endpoints-initial</span></code> Agent Policy. This policy includes the <code class="docutils literal notranslate"><span class="pre">Elastic</span> <span class="pre">Defend</span></code>, <code class="docutils literal notranslate"><span class="pre">Osquery</span> <span class="pre">Manager</span></code>, <code class="docutils literal notranslate"><span class="pre">System</span></code>, and <code class="docutils literal notranslate"><span class="pre">Windows</span></code> integrations.</p>
+<section id="elastic-defend-endpoints-elastic-defend-integration">
+<h3>elastic-defend-endpoints (<code class="docutils literal notranslate"><span class="pre">Elastic</span> <span class="pre">Defend</span></code> integration)<a class="headerlink" href="#elastic-defend-endpoints-elastic-defend-integration" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Elastic</span> <span class="pre">Defend</span></code> integration has both free and paid features. By default, only the following free features are enabled:</p>
+<ul>
+<li><p>Event Collection - Windows</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Credential Access</p></li>
+<li><p>DLL and Driver Load</p></li>
+<li><p>DNS</p></li>
+<li><p>File</p></li>
+<li><p>Network</p></li>
+<li><p>Process</p></li>
+<li><p>Registry</p></li>
+<li><p>Security</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Event Collection - macOS</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>DNS</p></li>
+<li><p>File</p></li>
+<li><p>Process</p></li>
+<li><p>Network</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Event Collection - Linux</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>File</p></li>
+<li><p>Network</p></li>
+<li><p>Process</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you are upgrading from 2.4.160 or earlier you will need to manually enable the ‘DNS’ event collection feature for macOS found under the ‘endpoints-initial’ policy.</p>
+</div>
+</section>
+<section id="osquery-endpoints-osquery-manager-integration">
+<h3>osquery-endpoints (<code class="docutils literal notranslate"><span class="pre">Osquery</span> <span class="pre">Manager</span></code> integration)<a class="headerlink" href="#osquery-endpoints-osquery-manager-integration" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Osquery</span> <span class="pre">Manager</span></code> integration runs osquery as a daemon on the endpoint and makes the endpoint available for Live or Scheduled queries through the Osquery manager interface in Kibana.</p>
+</section>
+<section id="system-endpoints-system-integration">
+<h3>system-endpoints (<code class="docutils literal notranslate"><span class="pre">System</span></code> integration)<a class="headerlink" href="#system-endpoints-system-integration" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">System</span></code> integration collects the following logs from the endpoint, where applicable:</p>
+<ul>
+<li><p>System auth logs</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/var/log/auth.log*</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/var/log/secure*</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Syslog logs</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/var/log/messages*</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/var/log/syslog*</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/var/log/system*</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Windows Event Log - Application channel</p></li>
+<li><p>Windows Event Log - Security channel</p></li>
+<li><p>Windows Event Log - System channel</p></li>
+</ul>
+</section>
+<section id="windows-endpoints-windows-integration">
+<h3>windows-endpoints (<code class="docutils literal notranslate"><span class="pre">Windows</span></code> integration)<a class="headerlink" href="#windows-endpoints-windows-integration" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Windows</span></code> integration collects the following logs from the endpoint, where applicable:</p>
+<ul>
+<li><p>Windows Event Log:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>ForwardedEvents channel</p></li>
+<li><p>Windows Powershell channel</p></li>
+<li><p>Microsoft-Windows-Powershell/Operational channel</p></li>
+<li><p>Microsoft-Windows-Sysmon/Operational channel</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+</section>
+<section id="enrollment-tokens">
+<h2>Enrollment Tokens<a class="headerlink" href="#enrollment-tokens" title="Link to this heading"></a></h2>
+<p>An enrollment token allows an agent to enroll in Fleet, subscribe to a particular agent policy, and send data.</p>
+<p>Each agent policy typically uses its own enrollment token. It is recommended that these tokens are NOT to be changed, especially those generated by default Security Onion agent policies.</p>
+</section>
+<section id="data-streams">
+<h2>Data Streams<a class="headerlink" href="#data-streams" title="Link to this heading"></a></h2>
+<p>Data collected by Elastic Agent is sent to a data stream (<a class="reference external" href="https://www.elastic.co/guide/en/fleet/current/fleet-overview.html#data-streams-intro">https://www.elastic.co/guide/en/fleet/current/fleet-overview.html#data-streams-intro</a>) by default. This allows data to be efficiently categorized and managed across a variety of datasets. This section within the Fleet UI allows for a quick review of data streams generated by data from Elastic Agent.</p>
+</section>
+<section id="settings">
+<h2>Settings<a class="headerlink" href="#settings" title="Link to this heading"></a></h2>
+<p>The section provides details such as:</p>
+<ul class="simple">
+<li><p>Fleet server hosts in your deployment</p></li>
+<li><p>Configured outputs</p>
+<ul>
+<li><p>specifies where data will be sent</p></li>
+<li><p>this should include Elasticseach for the Fleet server and Logstash for Elastic Agent</p></li>
+</ul>
+</li>
+<li><p>Method in which agent binaries will be downloaded</p>
+<ul>
+<li><p>this will be a local artifact repository if running an airgapped deployment</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We do NOT recommend changing these settings, as they are managed by Security Onion.</p>
+</div>
+<p>If you want more granular control over which Fleet Server an Agent will send logs to, there are two options:</p>
+<ul class="simple">
+<li><p>The first option is to use firewall rules to only allow certain agents. Suppose you have two Fleet Server Nodes, one at 192.168.55.25 and the other at 192.168.58.25. If you want your endpoints in the 192.168.58.0/24 subnet to only connect to the Fleet server at 192.168.58.25, you would add custom firewall rules via <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; firewall –&gt; hostgroups –&gt; elastic_agent_endpoint. Select the 192.168.58.25 Fleet Node and add <code class="docutils literal notranslate"><span class="pre">192.168.58.0/24</span></code>. Endpoints in that subnet will still attempt to connect to the Fleet Server Node at 192.168.55.25, but since it is not accessible (no firewall rules that enable communication), they will connect to the Fleet Node at 192.168.58.25.</p></li>
+<li><p>The second option is to purchase an Elastic license. A paid Elastic license offers the ability to customize different Outputs per Agent Policy.</p></li>
+</ul>
+</section>
+<section id="integrations">
+<h2>Integrations<a class="headerlink" href="#integrations" title="Link to this heading"></a></h2>
+<p>Elastic Fleet supports integrations and you can read more in the <a class="reference internal" href="third-party-integrations.html#third-party-integrations"><span class="std std-ref">Third Party Integrations</span></a> section.</p>
+</section>
+<section id="custom-fqdn-url">
+<h2>Custom FQDN URL<a class="headerlink" href="#custom-fqdn-url" title="Link to this heading"></a></h2>
+<p>You can add custom FQDN for Agents to connect to (for both control traffic on port TCP/8220 and data traffic on port TCP/5055) by editing the config as follows.</p>
+<p>First, go to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; elasticfleet.</p>
+<a class="reference external image-reference" href="_images/config-item-elasticfleet.png"><img alt="_images/config-item-elasticfleet.png" src="_images/config-item-elasticfleet.png" />
+</a>
+<p>At the top of the page, click the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu and then enable the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">advanced</span> <span class="pre">settings</span></code> option. Then, navigate to elasticfleet –&gt; config –&gt; server –&gt; custom_fqdn and set your custom FQDN. Within 15 minutes, the grid will apply these new settings and you should see the new FQDNs show up in Elastic Fleet settings. New agent installers will also be regenerated to use this new setting.</p>
+</section>
+<section id="more-information">
+<h2>More Information<a class="headerlink" href="#more-information" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information about Fleet, please see <a class="reference external" href="https://www.elastic.co/guide/en/kibana/current/fleet.html">https://www.elastic.co/guide/en/kibana/current/fleet.html</a>.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="kibana.html" class="btn btn-neutral float-left" title="Kibana" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="osquery-manager.html" class="btn btn-neutral float-right" title="Osquery Manager" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

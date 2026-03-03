@@ -1,0 +1,209 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>After Installation &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Security Onion Console (SOC)" href="soc.html" />
+    <link rel="prev" title="Configuration" href="configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="getting-started.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use-cases.html">Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html">Hardware Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download.html">Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmware.html">VMware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtualbox.html">VirtualBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxmox.html">Proxmox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble-booting.html">Booting Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airgap.html">Airgap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-amazon.html">Amazon Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-azure.html">Azure Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-google.html">Google Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">After Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adjust-firewall-rules">Adjust firewall rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#services">Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ssh">SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data">Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other">Other</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="getting-started.html">Getting Started</a></li>
+      <li class="breadcrumb-item active">After Installation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/post-installation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="after-installation">
+<span id="post-installation"></span><h1>After Installation<a class="headerlink" href="#after-installation" title="Link to this heading"></a></h1>
+<section id="adjust-firewall-rules">
+<h2>Adjust firewall rules<a class="headerlink" href="#adjust-firewall-rules" title="Link to this heading"></a></h2>
+<p>Depending on what kind of installation you did, the Setup wizard may have already walked you through adding firewall rules to allow your analyst IP address(es). If you need to make other adjustments to firewall rules, you can do so by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; firewall –&gt; hostgroups.</p>
+<a class="reference external image-reference" href="_images/config-item-firewall.png"><img alt="_images/config-item-firewall.png" src="_images/config-item-firewall.png" />
+</a>
+<p>If for some reason you can’t access <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> at all, you can use the so-firewall command to allow the IP address of your web browser to connect (replacing <code class="docutils literal notranslate"><span class="pre">&lt;IP</span> <span class="pre">ADDRESS&gt;</span></code> with the actual IP address of your web browser):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">firewall</span> <span class="n">includehost</span> <span class="n">analyst</span> <span class="o">&lt;</span><span class="n">IP</span> <span class="n">ADDRESS</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>For more information, please see the <a class="reference internal" href="firewall.html#firewall"><span class="std std-ref">Firewall</span></a> section.</p>
+</section>
+<section id="services">
+<h2>Services<a class="headerlink" href="#services" title="Link to this heading"></a></h2>
+<p>You can check the <a class="reference internal" href="grid.html#grid"><span class="std std-ref">Grid</span></a> page to see if all services are running correctly.</p>
+<a class="reference external image-reference" href="_images/39_grid.png"><img alt="_images/39_grid.png" src="_images/39_grid.png" />
+</a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please note that new nodes start off showing a red Fault and may take a few minutes to fully initialize before they show a green OK.</p>
+</div>
+<p>You can also verify services are running from the command line with the <a class="reference internal" href="so-status.html#so-status"><span class="std std-ref">so-status</span></a> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">status</span>
+</pre></div>
+</div>
+</section>
+<section id="ssh">
+<h2>SSH<a class="headerlink" href="#ssh" title="Link to this heading"></a></h2>
+<p>You should be able to do most administration from <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> but if you need access to the command line then we recommend using <a class="reference internal" href="ssh.html#ssh"><span class="std std-ref">SSH</span></a> rather than the <a class="reference internal" href="console.html#console"><span class="std std-ref">Console</span></a>.</p>
+</section>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Review the <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> section to see if you need to change any of the default settings. In particular, if you have a multi-node deployment with one or more search nodes, we HIGHLY recommend configuring ILM to delete indices before Elasticsearch reaches its watermark setting and stops ingesting new data.</p></li>
+<li><p>Review the <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> and <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> sections to see if you need to change the PCAP retention settings.</p></li>
+</ul>
+</section>
+<section id="other">
+<h2>Other<a class="headerlink" href="#other" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Go to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> and then click Configuration to see some of the options that you may want to configure. For example, you may want to enable reverse DNS lookups when viewing IP addresses in <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a>. For more information, please see the <a class="reference internal" href="soc-customization.html#soc-customization"><span class="std std-ref">SOC Customization</span></a> section.</p></li>
+<li><p>While on the <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> page, you may want to set your preferred <a class="reference internal" href="ntp.html#ntp"><span class="std std-ref">NTP</span></a> server.</p></li>
+<li><p>Full-time analysts may want to connect using a dedicated <a class="reference internal" href="desktop.html#desktop"><span class="std std-ref">Security Onion Desktop</span></a>.</p></li>
+<li><p>Any IDS/NSM system needs to be tuned for the network it’s monitoring. Please see the <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a> and <a class="reference internal" href="rules.html#rules"><span class="std std-ref">Rules</span></a> sections.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="configuration.html" class="btn btn-neutral float-left" title="Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="soc.html" class="btn btn-neutral float-right" title="Security Onion Console (SOC)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

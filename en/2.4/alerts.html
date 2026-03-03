@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alerts &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Dashboards" href="dashboards.html" />
+    <link rel="prev" title="Security Onion Console (SOC)" href="soc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Alerts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#options">Options</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#toggles">Toggles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automatic-refresh-interval">Automatic Refresh Interval</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#time-zone">Time Zone</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#query-bar">Query Bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#time-picker">Time Picker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#details-panel">Details Panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-table">Data Table</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#guided-analysis">Guided Analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#grouped-view">Grouped View</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#detailed-view">Detailed View</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#context-menu">Context Menu</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#include">Include</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exclude">Exclude</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#only">Only</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#drilldown">Drilldown</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tune-detection">Tune Detection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#group-by">Group By</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#new-group-by">New Group By</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numeric-ops">Numeric Ops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#clipboard">Clipboard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#actions">Actions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html">Dashboards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hunt.html">Hunt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html">Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detections.html">Detections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcap.html">PCAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.html">Grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="downloads.html">Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administration.html">Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kibana.html">Kibana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic-fleet.html">Elastic Fleet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osquery-manager.html">Osquery Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="influxdb.html">InfluxDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cyberchef.html">CyberChef</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attack-navigator.html">ATT&amp;CK Navigator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="soc.html">Security Onion Console (SOC)</a></li>
+      <li class="breadcrumb-item active">Alerts</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/alerts.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="alerts">
+<span id="id1"></span><h1>Alerts<a class="headerlink" href="#alerts" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> includes an Alerts interface which gives you an overview of the alerts that Security Onion is generating. You can then quickly drill down into details, pivot to <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a> or the <a class="reference internal" href="pcap.html#pcap"><span class="std std-ref">PCAP</span></a> interface, and escalate alerts to <a class="reference internal" href="cases.html#cases"><span class="std std-ref">Cases</span></a>.</p>
+<a class="reference external image-reference" href="_images/50_alerts.png"><img alt="_images/50_alerts.png" src="_images/50_alerts.png" />
+</a>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h2>
+<p>At the top of the page, there is an Options menu that allows you to set several different options for the Alerts page.</p>
+<a class="reference external image-reference" href="_images/52_alerts_options.png"><img alt="_images/52_alerts_options.png" src="_images/52_alerts_options.png" />
+</a>
+<section id="toggles">
+<h3>Toggles<a class="headerlink" href="#toggles" title="Link to this heading"></a></h3>
+<p>The first toggle is labeled <code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">advanced</span> <span class="pre">interface</span> <span class="pre">features</span></code>. If you enable this option, then the interface will show more advanced features similar to <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a> and <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>. This includes an extra toggle labeled <code class="docutils literal notranslate"><span class="pre">Automatically</span> <span class="pre">apply</span> <span class="pre">filters,</span> <span class="pre">groupings,</span> <span class="pre">and</span> <span class="pre">date</span> <span class="pre">ranges</span></code>.</p>
+<p>Enabling the <code class="docutils literal notranslate"><span class="pre">Acknowledged</span></code> toggle will only show alerts that have previously been acknowledged by an analyst.</p>
+<p>Enabling the <code class="docutils literal notranslate"><span class="pre">Escalated</span></code> toggle will only show alerts that have previously been escalated by an analyst to <a class="reference internal" href="cases.html#cases"><span class="std std-ref">Cases</span></a>.</p>
+<p>Finally, the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">Details</span> <span class="pre">Panel</span></code> toggle controls the Details panel on the right side. For more information, see the Details Panel section below.</p>
+</section>
+<section id="automatic-refresh-interval">
+<h3>Automatic Refresh Interval<a class="headerlink" href="#automatic-refresh-interval" title="Link to this heading"></a></h3>
+<p>Another option is the Automatic Refresh Interval setting. When enabled, the Alerts page will automatically refresh at the time interval you select.</p>
+</section>
+<section id="time-zone">
+<h3>Time Zone<a class="headerlink" href="#time-zone" title="Link to this heading"></a></h3>
+<p>Alerts will try to detect your local time zone via your browser. You can manually specify your time zone if necessary.</p>
+</section>
+</section>
+<section id="query-bar">
+<h2>Query Bar<a class="headerlink" href="#query-bar" title="Link to this heading"></a></h2>
+<p>The query bar defaults to <code class="docutils literal notranslate"><span class="pre">Group</span> <span class="pre">By</span> <span class="pre">Name,</span> <span class="pre">Module</span></code> which groups the alerts by <code class="docutils literal notranslate"><span class="pre">rule.name</span></code> and <code class="docutils literal notranslate"><span class="pre">event.module</span></code>. You can click the dropdown box to select other queries which will group by other fields.</p>
+<p>On the right side of the query bar is a hunt button that will start a new hunt based on the current query.</p>
+<p>If you would like to save your own personal queries, you can bookmark them in your browser. If you would like to customize the default queries for all users, please see the <a class="reference internal" href="soc-customization.html#soc-customization"><span class="std std-ref">SOC Customization</span></a> section.</p>
+</section>
+<section id="time-picker">
+<h2>Time Picker<a class="headerlink" href="#time-picker" title="Link to this heading"></a></h2>
+<p>By default, Alerts searches the last 24 hours. If you want to search a different time frame, you can change it in the upper-right corner of the screen.</p>
+</section>
+<section id="details-panel">
+<h2>Details Panel<a class="headerlink" href="#details-panel" title="Link to this heading"></a></h2>
+<p>The details panel on the right side shows details for the currently selected alert. This includes an AI summary (if available) and options for tuning the rule that generated the alert. This functionality is part of <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a> so you can read more in that section. This panel can be disabled under the Options dropdown (see above).</p>
+</section>
+<section id="data-table">
+<h2>Data Table<a class="headerlink" href="#data-table" title="Link to this heading"></a></h2>
+<p>The remainder of the page is a data table that starts in the grouped view and can be switched to the detailed view. Both views have some functionality in common:</p>
+<ul class="simple">
+<li><p>Clicking the table headers allows you to sort ascending or descending.</p></li>
+<li><p>Starting from the left side of each row, there is an arrow which will expand the row to show more details.</p></li>
+<li><p>To the right of that arrow is a bell icon that acknowledges the alert. That alert can then be seen by selecting the <code class="docutils literal notranslate"><span class="pre">Acknowledged</span></code> toggle at the top of the page. In the <code class="docutils literal notranslate"><span class="pre">Acknowledged</span></code> view, clicking the bell icon removes the acknowledgement.</p></li>
+<li><p>To the right of that is a blue exclamation icon that escalates the alert to <a class="reference internal" href="cases.html#cases"><span class="std std-ref">Cases</span></a> and allows you to create a new case or add to an existing case. If you need to find that original escalated alert in the Alerts page, you can enable the <code class="docutils literal notranslate"><span class="pre">Escalated</span></code> toggle (which will automatically enable the <code class="docutils literal notranslate"><span class="pre">Acknowledged</span></code> toggle as well).</p></li>
+<li><p>To the right of that is an information icon that populates the Details Panel on the right with information about the alert.</p></li>
+<li><p>Security Onion Pro users will find one more button. The last is a computer chip icon that investigates the alert with <a class="reference internal" href="assistant.html#onionai"><span class="std std-ref">Onion AI</span></a>.</p></li>
+<li><p>Clicking a value in the table brings up a context menu of actions for that value. This allows you to refine your existing search, start a new search, or even pivot to external sites like Google and VirusTotal.</p></li>
+<li><p>You can adjust the <code class="docutils literal notranslate"><span class="pre">Rows</span> <span class="pre">per</span> <span class="pre">page</span></code> setting in the bottom right and use the left and right arrow icons to page through the table.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are in the grouped view and looking at an alert that has multiple instances (the Count column is greater than 1) and you then click the arrow to expand the alert, it will show you the details for the most recent instance of that alert. If you need to see details for the other instances of the alert, then you will need to switch from the grouped view to the detailed view.</p>
+</div>
+<section id="guided-analysis">
+<h3>Guided Analysis<a class="headerlink" href="#guided-analysis" title="Link to this heading"></a></h3>
+<p>When you click the arrow to expand the alert, it starts on the <code class="docutils literal notranslate"><span class="pre">ALERT</span> <span class="pre">DETAILS</span></code> tab but you can switch to the <code class="docutils literal notranslate"><span class="pre">GUIDED</span> <span class="pre">ANALYSIS</span></code> tab which leverages Playbooks to show you plays associated with the alert. These plays include questions which help guide your investigation. You can expand all questions at once using the maximize button on the right side of the <code class="docutils literal notranslate"><span class="pre">GUIDED</span> <span class="pre">ANALYSIS</span></code> tab.</p>
+<p>Each question has an associated query and the results of that query will be displayed to help you answer the question. A maximum of 5 query results will be displayed but if you want to see more, then you can click the crosshairs icon to open the query in <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>. This also allows you to tweak the query if necessary. If you don’t get any results, you could try changing the date range or other query parameters. In some cases, the query may be looking for data that you don’t currently collect. For example, the query may be looking for endpoint data and so you may need to deploy the <a class="reference internal" href="elastic-agent.html#elastic-agent"><span class="std std-ref">Elastic Agent</span></a> to start collecting this information.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To see Guided Analysis in action, check out our sneak peek video at <a class="reference external" href="https://youtu.be/SLGRB3PxB-o">https://youtu.be/SLGRB3PxB-o</a>.</p>
+</div>
+<p>For more information about Playbooks, please see the <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a> section.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Guided Analysis is a new experimental feature. Some of these playbooks were generated by AI and it’s possible that they may not be 100% accurate. Please let us know if you see any issues.</p>
+</div>
+<a class="reference external image-reference" href="_images/51_alerts_play.png"><img alt="_images/51_alerts_play.png" src="_images/51_alerts_play.png" />
+</a>
+</section>
+<section id="grouped-view">
+<h3>Grouped View<a class="headerlink" href="#grouped-view" title="Link to this heading"></a></h3>
+<p>By default, alerts are grouped by whatever criteria is selected in the query bar. Clicking a field value and then selecting the Drilldown option allows you to drill down into that value which switches to the detailed view. You can also click the value in the Count column to perform a quick drilldown. Note that this quick drilldown feature is only enabled for certain queries.</p>
+<p>If you’d like to remove a particular field from the grouped view, you can click the trash icon at the top of the table to the right of the field name.</p>
+</section>
+<section id="detailed-view">
+<h3>Detailed View<a class="headerlink" href="#detailed-view" title="Link to this heading"></a></h3>
+<p>If you click a value in the grouped view and then select the Drilldown option, the display will switch to the detailed view. This shows all search results and allows you to then drill into individual search results as necessary. Clicking the table headers allows you to sort ascending or descending. Starting from the left side of each row, there is an arrow which will expand the result to show all of its fields. To the right of that arrow is the <code class="docutils literal notranslate"><span class="pre">Timestamp</span></code> field. Next, a few standard fields are shown: <code class="docutils literal notranslate"><span class="pre">rule.name</span></code>, <code class="docutils literal notranslate"><span class="pre">event.severity_label</span></code>, <code class="docutils literal notranslate"><span class="pre">source.ip</span></code>, <code class="docutils literal notranslate"><span class="pre">source.port</span></code>, <code class="docutils literal notranslate"><span class="pre">destination.ip</span></code>, and <code class="docutils literal notranslate"><span class="pre">destination.port</span></code>. Depending on what kind of data you’re looking at, there may be some additional data-specific fields as well.</p>
+<p>When you click the arrow to expand a row in the Events table, it will show all of the individual fields from that event. Field names are shown on the left and field values on the right. When looking at the field names, there are two icons to the left. The Groupby icon, the left most icon, will add a new groupby table for that field. The Toggle Column icon, to the right of the Groupby icon, will toggle that column in the Events table, and the icon will be a blue color if the column is visible. You can click on values on the right to bring up the context menu to refine your search or pivot to other pages.</p>
+</section>
+</section>
+<section id="context-menu">
+<h2>Context Menu<a class="headerlink" href="#context-menu" title="Link to this heading"></a></h2>
+<p>Clicking a value in the page brings up a context menu that allows you to refine your existing search, start a new search, or even pivot to external sites like Google and VirusTotal.</p>
+<section id="include">
+<h3>Include<a class="headerlink" href="#include" title="Link to this heading"></a></h3>
+<p>Clicking the <code class="docutils literal notranslate"><span class="pre">Include</span></code> option will add the selected field:value pair to your existing search with an <code class="docutils literal notranslate"><span class="pre">AND</span></code>. This will only show search results that include that value in that field.</p>
+</section>
+<section id="exclude">
+<h3>Exclude<a class="headerlink" href="#exclude" title="Link to this heading"></a></h3>
+<p>Clicking the <code class="docutils literal notranslate"><span class="pre">Exclude</span></code> option will add the selected field:value pair to your existing search with an <code class="docutils literal notranslate"><span class="pre">AND</span> <span class="pre">NOT</span></code>. This will only show search results that do not include that value in that field.</p>
+</section>
+<section id="only">
+<h3>Only<a class="headerlink" href="#only" title="Link to this heading"></a></h3>
+<p>Clicking the <code class="docutils literal notranslate"><span class="pre">Only</span></code> option will start a new search for the selected value in any field. It will remove any existing filters but retain any existing groupby terms.</p>
+</section>
+<section id="drilldown">
+<h3>Drilldown<a class="headerlink" href="#drilldown" title="Link to this heading"></a></h3>
+<p>Clicking the <code class="docutils literal notranslate"><span class="pre">Drilldown</span></code> option will drill down into a group of alerts to show each individual alert.</p>
+</section>
+<section id="tune-detection">
+<h3>Tune Detection<a class="headerlink" href="#tune-detection" title="Link to this heading"></a></h3>
+<p>Clicking the <code class="docutils literal notranslate"><span class="pre">Tune</span> <span class="pre">Detection</span></code> option will take you to <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a> and allow you disable or modify the detection that fired the alert.</p>
+</section>
+<section id="group-by">
+<h3>Group By<a class="headerlink" href="#group-by" title="Link to this heading"></a></h3>
+<p>Clicking the <code class="docutils literal notranslate"><span class="pre">Group</span> <span class="pre">By</span></code> option will update the existing query and aggregate the results based on the selected field.</p>
+</section>
+<section id="new-group-by">
+<h3>New Group By<a class="headerlink" href="#new-group-by" title="Link to this heading"></a></h3>
+<p>Clicking the <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Group</span> <span class="pre">By</span></code> option will create a new data table for the selected field.</p>
+</section>
+<section id="numeric-ops">
+<h3>Numeric Ops<a class="headerlink" href="#numeric-ops" title="Link to this heading"></a></h3>
+<p>If the value you clicked is numeric, then the <code class="docutils literal notranslate"><span class="pre">Numeric</span> <span class="pre">Ops</span></code> sub-menu allows you to choose operations like less than, less than or equal, greater than, greater than or equal, or Between. Choosing the Between option displays a window so that you can specify a range of values.</p>
+</section>
+<section id="clipboard">
+<h3>Clipboard<a class="headerlink" href="#clipboard" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Clipboard</span></code> sub-menu has several options that allow you to copy selected data to your clipboard in different ways.</p>
+</section>
+<section id="actions">
+<h3>Actions<a class="headerlink" href="#actions" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Actions</span></code> sub-menu has several different options. Please note that some of these actions will only display on the Actions menu if you click on a specific log type.</p>
+<ul class="simple">
+<li><p>Clicking the <code class="docutils literal notranslate"><span class="pre">Hunt</span></code> option will start a new search for the selected value and will give you a good overview of what types of data are available for that indicator.</p></li>
+<li><p>Clicking the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">to</span> <span class="pre">Case</span></code> option will add an observable to a new or existing case.</p></li>
+<li><p>Clicking the <code class="docutils literal notranslate"><span class="pre">Correlate</span></code> option will find related logs based on Community ID, uid, fuid, etc.</p></li>
+<li><p>Clicking the <code class="docutils literal notranslate"><span class="pre">PCAP</span></code> option will pivot to the <a class="reference internal" href="pcap.html#pcap"><span class="std std-ref">PCAP</span></a> interface to retrieve full packet capture for the selected stream. This option will only appear if you click on a log that contains source IP, source port, destination IP, destination port, etc.</p></li>
+<li><p>Clicking the <code class="docutils literal notranslate"><span class="pre">Google</span></code> option will search Google for the selected value.</p></li>
+<li><p>Clicking the <code class="docutils literal notranslate"><span class="pre">VirusTotal</span></code> option will search VirusTotal for the selected value.</p></li>
+<li><p>Clicking the <code class="docutils literal notranslate"><span class="pre">Process</span> <span class="pre">Info</span></code> option will show all logs that include this process’s entity_id in the <code class="docutils literal notranslate"><span class="pre">process.entity_id</span></code> field. This option will only appear if you click on a log that contains the <code class="docutils literal notranslate"><span class="pre">process.entity_id</span></code> field.</p></li>
+<li><p>Clicking the <code class="docutils literal notranslate"><span class="pre">Process</span> <span class="pre">and</span> <span class="pre">Child</span> <span class="pre">Info</span></code> option will show all logs that include this process’s entity_id in either the <code class="docutils literal notranslate"><span class="pre">process.entity_id</span></code> or <code class="docutils literal notranslate"><span class="pre">process.parent.entity_id</span></code> fields. Depending on the process, this may show the same logs as the <code class="docutils literal notranslate"><span class="pre">Process</span> <span class="pre">Info</span></code> option or it may show more. This option will only appear if you click on a log that contains the <code class="docutils literal notranslate"><span class="pre">process.entity_id</span></code> field.</p></li>
+<li><p>Clicking the <code class="docutils literal notranslate"><span class="pre">Process</span> <span class="pre">All</span> <span class="pre">Info</span></code> option will show all logs that include this process’s entity_id in any field. Depending on the process, this may show the same logs as the <code class="docutils literal notranslate"><span class="pre">Process</span> <span class="pre">and</span> <span class="pre">Child</span> <span class="pre">Info</span></code> option or it may show more. This option will only appear if you click on a log that contains the <code class="docutils literal notranslate"><span class="pre">process.entity_id</span></code> field.</p></li>
+<li><p>Clicking the <code class="docutils literal notranslate"><span class="pre">Process</span> <span class="pre">Ancestors</span></code> option will show all parent processes for the selected process. This option will only appear if you click on a log that contains the <code class="docutils literal notranslate"><span class="pre">process.Ext.ancestry</span></code> field.</p></li>
+</ul>
+<p>If you’d like to add your own custom actions, see the <a class="reference internal" href="soc-customization.html#soc-customization"><span class="std std-ref">SOC Customization</span></a> section.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="soc.html" class="btn btn-neutral float-left" title="Security Onion Console (SOC)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dashboards.html" class="btn btn-neutral float-right" title="Dashboards" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

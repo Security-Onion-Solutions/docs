@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onion AI &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Security" href="security.html" />
+    <link rel="prev" title="Reports" href="reports.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="pro.html">Security Onion Pro</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="oidc.html">OpenID Connect (OIDC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="luks.html">LUKS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fips.html">FIPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stig.html">STIG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kafka.html">Kafka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="connect.html">Connect API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aqm.html">Active Query Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mom.html">Manager of Managers (MoM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcp.html">MCP Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="splunk.html">Security Onion App for Splunk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervisor.html">Hypervisor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">Reports</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Onion AI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adapters">Adapters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#soai">SOAI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gemini">Gemini</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#openai-responses">OpenAI Responses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#openai-chat">OpenAI Chat</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#available-models">Available Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#credits">Credits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#local-model-considerations">Local Model Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hosting-local-models">Hosting Local Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#available-tools">Available Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#permissions">Permissions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#auto-approve-read-only-tools">Auto Approve Read-Only Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#customizing-the-system-prompt">Customizing the System Prompt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metrics">Metrics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="pro.html">Security Onion Pro</a></li>
+      <li class="breadcrumb-item active">Onion AI</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/assistant.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="onion-ai">
+<span id="onionai"></span><h1>Onion AI<a class="headerlink" href="#onion-ai" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an enterprise-level feature of Security Onion. Contact Security Onion Solutions, LLC via our website at <a class="reference external" href="https://securityonion.com/pro">https://securityonion.com/pro</a> for more information about purchasing a <a class="reference internal" href="pro.html#pro"><span class="std std-ref">Security Onion Pro</span></a> license.</p>
+</div>
+<p>The Onion AI Assistant is your personal AI helper designed to assist you with a variety of tasks and provide information on demand. We support accessing LLMs from a variety of sources. Several tools help you interact with the assistant so it can access up-to-date information and resources.</p>
+<section id="adapters">
+<h2>Adapters<a class="headerlink" href="#adapters" title="Link to this heading"></a></h2>
+<p>There are a variety of adapters available to connect to different LLM providers. When configuring an adapter, you’re instructing SOC how to connect to an LLM provider. You configure the models seperately in <a class="reference internal" href="#available-models"><span class="std std-ref">Available Models</span></a> and tell each model which adapter to use. This allows you to connect to multiple providers at the same time and choose which models you want to use from each provider. The available adapters are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>SOAI</strong>: The Security Onion AI adapter connects to our own hosted gateway and provides access to a variety of models. This is the default adapter, and is hosted in the cloud with an allotted number of credits per Security Onion Pro licensed grids.</p></li>
+<li><p><strong>Gemini</strong>: Google’s Gemini models can be accessed through this adapter. You can connect through either the Gemini Developer API or the Vertex API. These models are hosted in Google’s cloud and require the use of your own Google Cloud key, or Gemini API key.</p></li>
+<li><p><strong>OpenAI Responses</strong>: This adapter can connect to the newest OpenAI compatible APIs that support the Responses protocol. This adapter allows Security Onion grids to connect to locally-hosted LLMs.</p></li>
+<li><p><strong>OpenAI Chat</strong>: This adapter can connect to any OpenAI Chat compatible APIs, an older protocol still supported by many AI providers. This adapter allows Security Onion grids to connect to locally-hosted LLMs.</p></li>
+</ul>
+</div></blockquote>
+<p>Most features are supported across all adapters, but capabilities may change depending on the model or provider you connect to. Credits are unique to SOAI, it’s the only adapter that responds with a credit balance. Multiple adapters can be configured at the same time.</p>
+<section id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h3>
+<p>A fresh install will come with the SOAI adapter pre-configured and ready to use. To connect to other providers or modify the SOAI adapter, go to Administration –&gt; Configuration page, be sure “Show advanced settings” is turned on in the Options at the top of the page, and check under soc –&gt; config –&gt; server –&gt; modules –&gt; assistant –&gt; adapters. Here you can add as many adapters as you need. Each adapter defines how to connect to a provider. Different adapters have different configuration requirements. Every adapter needs a unique name, the protocol it uses, and a Health Timeout measured in seconds. Below is a table of which fields are required for which adapters:</p>
+<table class="docutils align-default" id="assistant-config-table">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Adapter Name</p></th>
+<th class="head"><p>Protocol</p></th>
+<th class="head"><p>API Url</p></th>
+<th class="head"><p>API Key</p></th>
+<th class="head"><p>Service Account JSON</p></th>
+<th class="head"><p>Service Account Location</p></th>
+<th class="head"><p>Health Timeout Seconds</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SOAI</p></td>
+<td><p>R</p></td>
+<td><p>R</p></td>
+<td><p>R</p></td>
+<td><p>–</p></td>
+<td><p>–</p></td>
+<td><p>–</p></td>
+<td><p>R</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gemini</p></td>
+<td><p>R</p></td>
+<td><p>R</p></td>
+<td><p>–</p></td>
+<td><p>O</p></td>
+<td><p>O</p></td>
+<td><p>O</p></td>
+<td><p>R</p></td>
+</tr>
+<tr class="row-even"><td><p>OpenAI Responses</p></td>
+<td><p>R</p></td>
+<td><p>R</p></td>
+<td><p>R</p></td>
+<td><p>O</p></td>
+<td><p>–</p></td>
+<td><p>–</p></td>
+<td><p>R</p></td>
+</tr>
+<tr class="row-odd"><td><p>OpenAI Chat</p></td>
+<td><p>R</p></td>
+<td><p>R</p></td>
+<td><p>R</p></td>
+<td><p>O</p></td>
+<td><p>–</p></td>
+<td><p>–</p></td>
+<td><p>R</p></td>
+</tr>
+</tbody>
+</table>
+<p>R = Required, O = Optional, – = Not Used</p>
+</section>
+<section id="soai">
+<h3>SOAI<a class="headerlink" href="#soai" title="Link to this heading"></a></h3>
+<p>This adapter should not require any configuration, aside from the API Url, which will be different for Security Onion Pro customers located in different regions. If your license is setup to use an alternate cloud region this information will be included with the Security Onion license key. If it is not specified then use the default API url.</p>
+<p>Any additionally supplied fields are ignored. Generally at most one instance of this adapter should be configured at a time.</p>
+<p>Using models over this adapter will cost credits. Contact your account representative for more information.</p>
+</section>
+<section id="gemini">
+<h3>Gemini<a class="headerlink" href="#gemini" title="Link to this heading"></a></h3>
+<p>Security Onion supports connecting to Google’s Gemini models through either the Gemini Developer API or the Vertex API.</p>
+<p>To connect over the Gemini Developer API, you will need to generate an API Key in the Google Cloud Console or Google AI Studio, and provide it in the API Key field. To connect over the Vertex API, you will need to create a Service Account with the appropriate permissions for the models you would like to access, generate a JSON key for that account, paste the JSON into the Service Account JSON field, and you must also specify the Service Account Location. Some Gemini models may only be available in certain locations, such as <code class="docutils literal notranslate"><span class="pre">global</span></code>. The API Url field is not used for Gemini connections.</p>
+<p>If an API Key and Service Account JSON + Service Account Location are both provided, SOC will attempt to connect using the Service Account and the API Key will be ignored.</p>
+<p>This adapter will not use any credits from your Security Onion Pro license, but Google will charge you based on their pricing. Security Onion Solutions, LLC does not provide support for Google Gemini, aside from assisting with the adapter configuration referenced on this page.</p>
+</section>
+<section id="openai-responses">
+<h3>OpenAI Responses<a class="headerlink" href="#openai-responses" title="Link to this heading"></a></h3>
+<p>The <em>OpenAI Responses</em> adapter can connect to the newest OpenAI compatible APIs that support the Responses protocol. To connect, you will need to provide an API Url. The API Url should be the base url for the provider you are connecting to, for example <code class="docutils literal notranslate"><span class="pre">https://api.openai.com/v1/</span></code>. An API Key may or may not be required depending on the provider you are connecting to. If you’re unsure if your provider supports the Responses protocol, check with their support or try connecting with this adapter. If it doesn’t work, you can try the <em>OpenAI Chat</em> adapter which supports an older protocol that is still widely used.</p>
+</section>
+<section id="openai-chat">
+<h3>OpenAI Chat<a class="headerlink" href="#openai-chat" title="Link to this heading"></a></h3>
+<p>The <em>OpenAI Chat</em> adapter can connect to any OpenAI compatible API that supports the Chat protocol. To connect, you will need to provide an API Url. The API Url should be the base url for the provider you are connecting to, for example <code class="docutils literal notranslate"><span class="pre">https://api.openai.com/v1/</span></code>. An API Key may or may not be required depending on the provider you are connecting to.</p>
+</section>
+</section>
+<section id="available-models">
+<span id="id1"></span><h2>Available Models<a class="headerlink" href="#available-models" title="Link to this heading"></a></h2>
+<p>In order to control what models are available inside SOC, individual models must be configured. To configure a model, go to the Administration –&gt; Configuration page, be sure “Show advanced settings” is turned on in the Options at the top of the page, and check under soc –&gt; config –&gt; server –&gt; client –&gt; assistant –&gt; availableModels. Here you can add as many models as you need. Each model needs a unique name, the adapter it uses, and a model identifier which tells the adapter which model to connect to on the provider.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If a provider offers models that aren’t listed in availableModels, they will not be accessible within SOC.</p>
+</div>
+</section>
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading"></a></h2>
+<p>The Security Onion Pro license includes an initial amount of credits to get started. For long term usage planning contact your Security Onion account representative. They will assist with estimating credit usage rates as well as the provisioning of additional credits. Credits are consumed based on the number of tokens used in the conversation including user input, assistant output, and tool usage. Your organization’s balance can be viewed at the top right of the assistant page or on the management page under Administration –&gt; AI Metrics.</p>
+</section>
+<section id="local-model-considerations">
+<h2>Local Model Considerations<a class="headerlink" href="#local-model-considerations" title="Link to this heading"></a></h2>
+<p>Security Onion now supports local models through any OpenAI-compatible endpoint. Because the assistant relies on large context windows, the minimum recommended context length is 128k tokens. The following open-source models have been tested with OnionAI:</p>
+<ul class="simple">
+<li><p><strong>GPT OSS 120B</strong> – (US) Fast inference but limited to a 128k context window. Accuracy is fair.</p></li>
+<li><p><strong>Kimi 2.5</strong> – (China) A capable model with average accuracy and a 256k context window sufficient for most tasks. Note that this model requires significant VRAM to maintain performance.</p></li>
+<li><p><strong>GLM 5</strong> – (China) Average accuracy with a 200k context window.</p></li>
+<li><p><strong>Qwen 3.5</strong> – (China) Average accuracy with a 200k context window.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Local models will not match the performance of proprietary foundational models such as those from Anthropic, Google, or OpenAI.</p>
+</div>
+</section>
+<section id="hosting-local-models">
+<h2>Hosting Local Models<a class="headerlink" href="#hosting-local-models" title="Link to this heading"></a></h2>
+<p>Hosting your own models requires powerful and expensive hardware. For beginners we recommend using a tool such as LM Studio. <strong>You need at least 96GB of VRAM</strong> to host your own models locally. The speed and accuracy of OnionAI when hosted locally is based on the hardware that you are using. For the most accurate results we recommend using credits with OnionAI.</p>
+</section>
+<section id="available-tools">
+<h2>Available Tools<a class="headerlink" href="#available-tools" title="Link to this heading"></a></h2>
+<p>The assistant currently runs in the cloud. In order to reference local information, SOC makes the following tools available to the assistant:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>query_events</strong>: This read-only tool allows the assistant to query security events from your local Security Onion instance similar to how you would use the <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a> page.</p></li>
+<li><p><strong>query_cases</strong>: This tool allows the assistant to query cases from your local Security Onion instance similar to how you would use the <a class="reference internal" href="cases.html#cases"><span class="std std-ref">Cases</span></a> page.</p></li>
+<li><p><strong>query_detections</strong>: This tool allows the assistant to query detections from your local Security Onion instance similar to how you would use the <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a> page.</p></li>
+<li><p><strong>get_playbooks</strong>: When the assistant uses this read-only tool, SOC will gather the playbooks, execute their queries, and return all the data ready for analysis. This tool is read-only.</p></li>
+<li><p><strong>ack_alerts</strong>: The assistant can use this tool to query and acknowledge <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a> in your local Security Onion instance.</p></li>
+<li><p><strong>escalate_alerts</strong>: Similar to the ack tool, this tool allows the assistant to query for alerts and escalate them to a new case.</p></li>
+<li><p><strong>create_detection</strong>: The assistant will use this tool to create new detections in your local Security Onion instance.</p></li>
+<li><p><strong>add_overrides</strong>: This tool allows the assistant to tune existing detections by adding overrides to them.</p></li>
+<li><p><strong>toggle_detections</strong>: The assistant can use this tool to enable or disable existing detections in your local Security Onion instance.</p></li>
+<li><p><strong>update_detection_content</strong>: If a detection needs its content updated, the assistant can use this tool to update the content and keep the same metadata, overrides, and enabled status.</p></li>
+<li><p><strong>update_overrides</strong>: This tool allows the assistant to update existing overrides for detections.</p></li>
+</ul>
+</div></blockquote>
+<section id="permissions">
+<h3>Permissions<a class="headerlink" href="#permissions" title="Link to this heading"></a></h3>
+<p>When the assistant requests any of these tools, the user will be prompted to approve or reject the usage. Approval will have the tool run and the result entered into the conversation followed by a response from the AI. Rejection will notify the assistant and allow it to respond.</p>
+</section>
+<section id="auto-approve-read-only-tools">
+<h3>Auto Approve Read-Only Tools<a class="headerlink" href="#auto-approve-read-only-tools" title="Link to this heading"></a></h3>
+<p>The following read-only tools can be used by the assistant without requiring explicit user approval:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>query_events</p></li>
+<li><p>query_cases</p></li>
+<li><p>query_detections</p></li>
+<li><p>get_playbooks</p></li>
+</ul>
+</div></blockquote>
+<p>By default, permission must be granted for each tool request. However, users can enable auto-approval for read-only tools by toggling the slider in the Options dropdown at the top of the assistant page. With the option enabled, read-only tools will auto approve, while tools that modify data will still request explicit user approval.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Conversation data is stored locally and not used to train any models. However, be cautious about sharing sensitive or personal information during your interactions as others in your organization may have access to the conversation history.</p>
+</div>
+</section>
+</section>
+<section id="customizing-the-system-prompt">
+<h2>Customizing the System Prompt<a class="headerlink" href="#customizing-the-system-prompt" title="Link to this heading"></a></h2>
+<p>The system prompt sets the behavior and context for the AI assistant. Users can customize this prompt to tailor the assistant’s responses to their specific needs, such as describing network resources, environments, or workflows. The prompt is included in every session and can be modified at any time on the Administration –&gt; Configuration page under soc –&gt; config –&gt; server –&gt; modules –&gt; assistant –&gt; systemPromptAddendum.</p>
+<p>Your system prompt addendum will be added after Security Onion’s default system prompt.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Be cautious when customizing the system prompt, as it can significantly influence the assistant’s behavior and responses. A longer prompt will also use more credits.</p>
+</div>
+</section>
+<section id="metrics">
+<h2>Metrics<a class="headerlink" href="#metrics" title="Link to this heading"></a></h2>
+<p>Superusers can review token usage and conversation history for all users by going to Administration –&gt; AI Metrics. This page provides usage statistics for a given date range. The page starts with a table of usage by user. Clicking a user’s binoculars icon on the right hand side will show any sessions the user interacted with during the selected date range, even deleted sessions. Clicking on a session’s binoculars icon will show the full conversation. Administractors can adjust who has permissions via RBAC roles.</p>
+<p>To provide an accurate history, deleted sessions are retained on the metrics page even after being deleted by the user.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="reports.html" class="btn btn-neutral float-left" title="Reports" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="security.html" class="btn btn-neutral float-right" title="Security" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

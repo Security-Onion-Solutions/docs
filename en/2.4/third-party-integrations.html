@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Third Party Integrations &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Rules" href="rules.html" />
+    <link rel="prev" title="Sysmon" href="sysmon.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Third Party Integrations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#adding-an-integration">Adding an Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-a-custom-integration">Adding a Custom Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#managing-integration-upgrades">Managing Integration Upgrades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#managing-third-party-integration-index-templates">Managing Third Party Integration Index Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#supported-integrations">Supported Integrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Third Party Integrations</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/third-party-integrations.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="third-party-integrations">
+<span id="id1"></span><h1>Third Party Integrations<a class="headerlink" href="#third-party-integrations" title="Link to this heading"></a></h1>
+<p>In addition to <a class="reference internal" href="network.html#network"><span class="std std-ref">Network Visibility</span></a> and <a class="reference internal" href="host.html#host"><span class="std std-ref">Host Visibility</span></a>, you may want to pull in data from other third party systems. You can do that via Elastic integrations which support many of the most common products and services. You can read more about Elastic integrations at <a class="reference external" href="https://docs.elastic.co/integrations">https://docs.elastic.co/integrations</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Third party integrations are provided by Elastic and are not specifically tested by the Security Onion team. Support provided by the Security Onion team for third party integrations is considered best-effort.</p>
+</div>
+<section id="adding-an-integration">
+<h2>Adding an Integration<a class="headerlink" href="#adding-an-integration" title="Link to this heading"></a></h2>
+<p>New integrations can be added to existing policies to provide increased visibility and more comprehensive monitoring.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When adding a new integration, it is important that you add it to an appropriate policy.</p>
+<p>If an integration pulls the data, you should add it to the Fleet Server policy. Depending on complexity and log volume, it might make sense to stand up a Fleet Node and add your integrations to it.</p>
+<p>If an integration receives data pushed to it (for example: receiving syslog), consider adding it to the Fleet Server policy. If that is not feasible, then you can add it to the Grid Nodes policy but make sure to set the firewall rules correctly so that you are not opening ports on all of your nodes.</p>
+</div>
+<p>To add an integration to an existing policy:</p>
+<ul class="simple">
+<li><p>From the main Fleet page, click the <code class="docutils literal notranslate"><span class="pre">Agent</span> <span class="pre">policies</span></code> tab.</p></li>
+<li><p>Select the desired agent policy.</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Integration</span></code> button.</p></li>
+<li><p>Follow the steps for adding the integration.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the integration is designed to listen on a port to receive data, it will most likely default to listening on <code class="docutils literal notranslate"><span class="pre">localhost</span></code> only. Depending on how you are sending data to the integration, you may need to change that to <code class="docutils literal notranslate"><span class="pre">0.0.0.0</span></code> so that it can receive data from other hosts.</p>
+</div>
+<p>For examples of this process, please see the <a class="reference internal" href="netflow.html#netflow"><span class="std std-ref">NetFlow</span></a> and <a class="reference internal" href="pfsense.html#pfsense"><span class="std std-ref">pfSense</span></a> sections. The <a class="reference internal" href="pfsense.html#pfsense"><span class="std std-ref">pfSense</span></a> section includes a link to a video which illustrates the process.</p>
+</section>
+<section id="adding-a-custom-integration">
+<h2>Adding a Custom Integration<a class="headerlink" href="#adding-a-custom-integration" title="Link to this heading"></a></h2>
+<p>A custom integration can be added by adding an integration such as the <code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">Logs</span></code> integration. You can specify various settings relative to the data source and define additional actions to be performed.</p>
+</section>
+<section id="managing-integration-upgrades">
+<h2>Managing Integration Upgrades<a class="headerlink" href="#managing-integration-upgrades" title="Link to this heading"></a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>By default, integrations are not automatically kept up to date. This avoids potential log ingest downtime if there is an issue with the latest package or if the latest package requires a manual update to your integration configuration. If you would like to automatically upgrade integrations, you can change this behavior via <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> -&gt; Configuration -&gt; elasticfleet -&gt; config -&gt; auto_upgrade_integrations.</p>
+</div>
+<p>To find integrations that have upgrades available:</p>
+<ul class="simple">
+<li><p>Navigate to <a class="reference internal" href="elastic-fleet.html#elastic-fleet"><span class="std std-ref">Elastic Fleet</span></a>.</p></li>
+<li><p>At the top left corner, click the menu.</p></li>
+<li><p>Under <code class="docutils literal notranslate"><span class="pre">Management</span></code>, select <code class="docutils literal notranslate"><span class="pre">Integrations</span></code>.</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Installed</span> <span class="pre">Integrations</span></code> tab.</p></li>
+<li><p>Review any integrations listed under <code class="docutils literal notranslate"><span class="pre">Updates</span> <span class="pre">available</span></code>.</p></li>
+</ul>
+</section>
+<section id="managing-third-party-integration-index-templates">
+<h2>Managing Third Party Integration Index Templates<a class="headerlink" href="#managing-third-party-integration-index-templates" title="Link to this heading"></a></h2>
+<p>Index templates for third party integrations can be managed as described in the <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> section, but first <code class="docutils literal notranslate"><span class="pre">managed_integrations</span></code> must be updated by navigating to <a class="reference internal" href="administration.html#administration-advanced-settings"><span class="std std-ref">Advanced Settings</span></a> –&gt; Configuration –&gt; manager –&gt; managed_integrations.</p>
+</section>
+<section id="supported-integrations">
+<h2>Supported Integrations<a class="headerlink" href="#supported-integrations" title="Link to this heading"></a></h2>
+<p>The current release of Security Onion supports all standard Elastic integrations as shown at <a class="reference external" href="https://docs.elastic.co/integrations">https://docs.elastic.co/integrations</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These integrations have been added over the course of several different releases.</p>
+<p>Security Onion 2.4.10 supports the following Elastic integrations:</p>
+<ul class="simple">
+<li><p>aws</p></li>
+<li><p>azure</p></li>
+<li><p>cloudflare</p></li>
+<li><p>elasticsearch</p></li>
+<li><p>endpoint</p></li>
+<li><p>fleet_server</p></li>
+<li><p>fim</p></li>
+<li><p>github</p></li>
+<li><p>google_workspace</p></li>
+<li><p>log</p></li>
+<li><p>osquery_manager</p></li>
+<li><p>redis</p></li>
+<li><p>system</p></li>
+<li><p>tcp</p></li>
+<li><p>udp</p></li>
+<li><p>windows</p></li>
+<li><p>1password</p></li>
+</ul>
+<p>Security Onion 2.4.20 supports these additional Elastic integrations:</p>
+<ul class="simple">
+<li><p>apache</p></li>
+<li><p>auditd</p></li>
+<li><p>barracuda</p></li>
+<li><p>cisco_asa</p></li>
+<li><p>crowdstrike</p></li>
+<li><p>darktrace</p></li>
+<li><p>f5_bigip</p></li>
+<li><p>fortinet</p></li>
+<li><p>fortinet_fortigate</p></li>
+<li><p>gcp</p></li>
+<li><p>http_endpoint</p></li>
+<li><p>httpjson</p></li>
+<li><p>juniper</p></li>
+<li><p>juniper_srx</p></li>
+<li><p>kafka_log</p></li>
+<li><p>lastpass</p></li>
+<li><p>m365_defender</p></li>
+<li><p>microsoft_defender_endpoint</p></li>
+<li><p>microsoft_dhcp</p></li>
+<li><p>netflow</p></li>
+<li><p>o365</p></li>
+<li><p>okta</p></li>
+<li><p>panw</p></li>
+<li><p>pfsense</p></li>
+<li><p>sentinel_one</p></li>
+<li><p>sonicwall_firewall</p></li>
+<li><p>symantec_endpoint</p></li>
+<li><p>ti_abusech</p></li>
+<li><p>ti_misp</p></li>
+<li><p>ti_otx</p></li>
+<li><p>ti_recordedfuture</p></li>
+<li><p>zscaler_zia</p></li>
+<li><p>zscaler_zpa</p></li>
+</ul>
+<p>Security Onion 2.4.30 supports these additional Elastic integrations:</p>
+<ul class="simple">
+<li><p>auth0</p></li>
+<li><p>carbonblack_edr</p></li>
+<li><p>checkpoint</p></li>
+<li><p>cisco_duo</p></li>
+<li><p>cisco_meraki</p></li>
+<li><p>cisco_umbrella</p></li>
+<li><p>fireeye</p></li>
+<li><p>mimecast</p></li>
+<li><p>pulse_connect_secure</p></li>
+<li><p>snyk</p></li>
+<li><p>sophos</p></li>
+<li><p>sophos_central</p></li>
+<li><p>tenable_sc</p></li>
+<li><p>vsphere</p></li>
+</ul>
+<p>Security Onion 2.4.40 supports these additional Elastic integrations:</p>
+<ul class="simple">
+<li><p>cisco_ftd</p></li>
+<li><p>cisco_ios</p></li>
+<li><p>cisco_ise</p></li>
+<li><p>iis</p></li>
+<li><p>microsoft_sqlserver</p></li>
+<li><p>mysql</p></li>
+<li><p>proofpoint_tap</p></li>
+<li><p>snort</p></li>
+<li><p>ti_anomali</p></li>
+<li><p>ti_threatq</p></li>
+</ul>
+<p>Security Onion 2.4.50 supports these additional Elastic integrations:</p>
+<ul class="simple">
+<li><p>citrix_adc</p></li>
+<li><p>citrix_waf</p></li>
+<li><p>nginx</p></li>
+<li><p>winlog</p></li>
+</ul>
+<p>Security Onion 2.4.60 supports these additional Elastic integrations:</p>
+<ul class="simple">
+<li><p>journald</p></li>
+<li><p>ti_cybersixgill</p></li>
+</ul>
+<p>Security Onion 2.4.70 supports these additional Elastic integrations:</p>
+<ul class="simple">
+<li><p>CEF</p></li>
+</ul>
+<p>Security Onion 2.4.100 supports these additional Elastic integrations:</p>
+<ul class="simple">
+<li><p>tenable_io</p></li>
+</ul>
+<p>Security Onion 2.4.110 supports these additional Elastic integrations:</p>
+<ul class="simple">
+<li><p>barracuda_cloudgen_firewall</p></li>
+<li><p>imperva_cloud_waf</p></li>
+</ul>
+<p>Security Onion 2.4.120 supports these additional Elastic integrations:</p>
+<ul class="simple">
+<li><p>cisco_secure_email_gateway</p></li>
+<li><p>cloudflare_logpush</p></li>
+<li><p>ti_opencti</p></li>
+<li><p>ti_rapid7_threat_command</p></li>
+<li><p>trendmicro</p></li>
+<li><p>trend_micro_vision_one</p></li>
+</ul>
+<p>Security Onion 2.4.130 supports the remaining Elastic integrations.</p>
+</div>
+</section>
+<section id="more-information">
+<h2>More Information<a class="headerlink" href="#more-information" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can read more about Elastic integrations at <a class="reference external" href="https://docs.elastic.co/integrations">https://docs.elastic.co/integrations</a>.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sysmon.html" class="btn btn-neutral float-left" title="Sysmon" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rules.html" class="btn btn-neutral float-right" title="Rules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+.. _email:
+
+Email
+=====
+
+Some applications rely on having a mail server in the OS itself and other applications have their own mail configuration and so they don't rely on a mail server in the OS itself.
+
+Operating System
+----------------
+
+You can install and configure your favorite mail server. Depending on your needs, this could be something simple like ``nullmailer`` or something more complex like ``exim4``.
+
+Elastalert
+----------
+
+Follow the steps in the :ref:`elastalert` section.

@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hypervisor &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Reports" href="reports.html" />
+    <link rel="prev" title="Security Onion App for Splunk" href="splunk.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="pro.html">Security Onion Pro</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="oidc.html">OpenID Connect (OIDC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="luks.html">LUKS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fips.html">FIPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stig.html">STIG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kafka.html">Kafka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="connect.html">Connect API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aqm.html">Active Query Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mom.html">Manager of Managers (MoM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcp.html">MCP Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="splunk.html">Security Onion App for Splunk</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Hypervisor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#minimum-requirements">Minimum Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#host-hardware-reservation">Host Hardware Reservation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#airgap">Airgap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-manager-hypervisor">Adding a Manager + Hypervisor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-hypervisor">Adding a Hypervisor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vm-storage-options-for-nsm">VM Storage Options for /nsm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-security-onion-vm">Adding a Security Onion VM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vm-creation-status">VM Creation Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stopping-or-starting-a-vm">Stopping or Starting a VM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deleting-a-vm">Deleting a VM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assistant.html">Onion AI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="pro.html">Security Onion Pro</a></li>
+      <li class="breadcrumb-item active">Hypervisor</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/hypervisor.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="hypervisor">
+<span id="id1"></span><h1>Hypervisor<a class="headerlink" href="#hypervisor" title="Link to this heading"></a></h1>
+<p>Starting with Security Onion version 2.4.170, Security Onion Pro users can create a hypervisor node that can run virtualized instances of Security Onion. If you have eligible machines with extra horsepower, you can use this feature to spin up additional Security Onion virtual machines (VMs) to take advantage of that extra power. This supports most major Security Onion node types and is especially helpful if you want to optimize your hardware’s potential and expand your Elastic performance and retention. Contact your account manager to see if your hardware is supported.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an enterprise-level feature of Security Onion. Contact Security Onion Solutions, LLC via our website at <a class="reference external" href="https://securityonion.com/pro">https://securityonion.com/pro</a> for more information about purchasing a Security Onion Pro license to enable this feature.</p>
+</div>
+<section id="minimum-requirements">
+<h2>Minimum Requirements<a class="headerlink" href="#minimum-requirements" title="Link to this heading"></a></h2>
+<p>Please note the following MINIMUM requirements for a Hypervisor or Managerhype node:</p>
+<ul class="simple">
+<li><p>32 CPU cores</p></li>
+<li><p>64GB RAM</p></li>
+</ul>
+</section>
+<section id="host-hardware-reservation">
+<h2>Host Hardware Reservation<a class="headerlink" href="#host-hardware-reservation" title="Link to this heading"></a></h2>
+<p>The following resources will be reserved for the host machine and will be subtracted from the <code class="docutils literal notranslate"><span class="pre">Available</span></code> row under <code class="docutils literal notranslate"><span class="pre">Resource</span> <span class="pre">Summary</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Hypervisor</strong></p>
+<ul>
+<li><p>8 CPU cores</p></li>
+<li><p>16GB RAM</p></li>
+</ul>
+</li>
+<li><p><strong>Managerhype</strong></p>
+<ul>
+<li><p>16 CPU cores</p></li>
+<li><p>32GB RAM</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="airgap">
+<h2>Airgap<a class="headerlink" href="#airgap" title="Link to this heading"></a></h2>
+<p>If you are in an <a class="reference internal" href="airgap.html#airgap"><span class="std std-ref">Airgap</span></a> environment, you will need to perform these steps prior to accepting the new hypervisor node in SOC Grid Members:</p>
+<ol class="arabic simple">
+<li><p>Download the Oracle 9 Qcow2 image from <a class="reference external" href="https://download.securityonion.net/file/securityonion/OL9U5_x86_64-kvm-b253.qcow2">https://download.securityonion.net/file/securityonion/OL9U5_x86_64-kvm-b253.qcow2</a></p></li>
+<li><p>Place OL9U5_x86_64-kvm-b253.qcow2 into /nsm/libvirt/boot/ on your manager node</p></li>
+</ol>
+</section>
+<section id="adding-a-manager-hypervisor">
+<h2>Adding a Manager + Hypervisor<a class="headerlink" href="#adding-a-manager-hypervisor" title="Link to this heading"></a></h2>
+<p>Starting in 2.4.180, Security Onion Pro users can create a manager node that also has hypervisor capabilities. This node type is called a <code class="docutils literal notranslate"><span class="pre">managerhype</span></code>.</p>
+<p>Install a new node, select the <code class="docutils literal notranslate"><span class="pre">DISTRIBUTED</span></code> deployment option, choose <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Deployment</span></code>, and then select the <code class="docutils literal notranslate"><span class="pre">Managerhype</span></code> option:</p>
+<a class="reference external image-reference" href="_images/manhype-0.png"><img alt="_images/manhype-0.png" src="_images/manhype-0.png" />
+</a>
+<p>Once installation has completed, the new node will act as a manager node until a license key is added in SOC. After adding the license, it will take approximately 45 minutes for the hypervisor portion of the managerhype to be ready. This is due to the three highstates that are required to complete setup of the node.</p>
+<p>If this is an airgap installation, then the instructions above will need to be followed prior to adding the license to SOC. The user will need to run <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">/nsm/libvirt/boot</span></code>.</p>
+<p>The details under <code class="docutils literal notranslate"><span class="pre">Adding</span> <span class="pre">a</span> <span class="pre">Hypervisor</span></code>, regarding when the base domain is ready and VMs can be created, applies to the managerhype node as well as <code class="docutils literal notranslate"><span class="pre">Adding</span> <span class="pre">a</span> <span class="pre">Security</span> <span class="pre">Onion</span> <span class="pre">VM</span></code>.</p>
+</section>
+<section id="adding-a-hypervisor">
+<h2>Adding a Hypervisor<a class="headerlink" href="#adding-a-hypervisor" title="Link to this heading"></a></h2>
+<p>Install a new node, select the <code class="docutils literal notranslate"><span class="pre">DISTRIBUTED</span></code> deployment option, choose <code class="docutils literal notranslate"><span class="pre">Existing</span> <span class="pre">Deployment</span></code>, and then select the <code class="docutils literal notranslate"><span class="pre">Hypervisor</span></code> option:</p>
+<a class="reference external image-reference" href="_images/hyper-0.png"><img alt="_images/hyper-0.png" src="_images/hyper-0.png" />
+</a>
+<p>The manager will need to be able to connect to the hypervisor node by name so it will either need a DNS entry or you can manually add an entry in /etc/hosts on the manager.</p>
+<p>Once the new hypervisor node has been accepted into the grid, go to SOC Configuration, click the Options menu, enable advanced settings, and then navigate to <code class="docutils literal notranslate"><span class="pre">hypervisor</span></code> settings. It should look like this:</p>
+<a class="reference external image-reference" href="_images/hyper-1.png"><img alt="_images/hyper-1.png" src="_images/hyper-1.png" />
+</a>
+<p>Once the base domain has been configured on the hypervisor (allowing VMs to be created), it should look like this:</p>
+<a class="reference external image-reference" href="_images/hyper-2.png"><img alt="_images/hyper-2.png" src="_images/hyper-2.png" />
+</a>
+</section>
+<section id="vm-storage-options-for-nsm">
+<h2>VM Storage Options for /nsm<a class="headerlink" href="#vm-storage-options-for-nsm" title="Link to this heading"></a></h2>
+<p>The vast majority of data, for all node types, is stored in /nsm/. For a VM, there are three options available for /nsm storage.</p>
+<ol class="arabic">
+<li><p><strong>Directory under /</strong></p>
+<p>This option uses a simple directory structure within the root filesystem. This is the default option if neither disk pass through or virtual disk are selected. The default image used for the VMs is 220GB, so this leaves about 200GB for storage on a fresh VM.</p>
+</li>
+<li><p><strong>Disk pass through</strong></p>
+<p>This method passes a physical disk directly to the VM, providing a dedicated disk to the node. It provides near-native disk performance and is ideal for production environments with high throughput requirements.</p>
+</li>
+<li><p><strong>Virtual disk</strong></p>
+<p>Added in 2.4.190, a virtual disk is created based on the size specified by the user in the SOC Grid Configuration and the space is pre-allocated on the hypervisor. The disk image file is not removed when the VM is deleted. A user may decide to leave this data around for a while, or delete it manually from the hypervisor where it is stored under <code class="docutils literal notranslate"><span class="pre">/nsm/libvirt/volumes</span></code>.</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If a user selects both a disk pass through and assigns a size for the virtual disk, then the disk pass through will be used for /nsm and the virtual disk will be ignored.</p>
+</div>
+</section>
+<section id="adding-a-security-onion-vm">
+<h2>Adding a Security Onion VM<a class="headerlink" href="#adding-a-security-onion-vm" title="Link to this heading"></a></h2>
+<p>Please note that hardware for a vm cannot be modified once a vm is created.</p>
+<p>To create a new VM, click the plus sign. You should see a form like this. If using DHCP, please pay special attention to the DHCP notes:</p>
+<a class="reference external image-reference" href="_images/hyper-3.png"><img alt="_images/hyper-3.png" src="_images/hyper-3.png" />
+</a>
+<p>Fill out the form and then click the green check to save and create the VM:</p>
+<a class="reference external image-reference" href="_images/hyper-4.png"><img alt="_images/hyper-4.png" src="_images/hyper-4.png" />
+</a>
+<p>Once the VM is created and the first highstate is initiated, it should look like this:</p>
+<a class="reference external image-reference" href="_images/hyper-5.png"><img alt="_images/hyper-5.png" src="_images/hyper-5.png" />
+</a>
+</section>
+<section id="vm-creation-status">
+<h2>VM Creation Status<a class="headerlink" href="#vm-creation-status" title="Link to this heading"></a></h2>
+<p>After a user has created a VM by filling out the form and clicking the green check mark, the web browser can be periodically refreshed to check the status of the VM creation. This is shown in the status column of the previous screenshot showing the highstate initiated.</p>
+<dl class="simple">
+<dt>Processing</dt><dd><p>We detected that the user has requested to create a VM.</p>
+</dd>
+<dt>Hypervisor NSM Disk Full</dt><dd><p>If the user requested a virtual disk for /nsm and there is not enough space on /nsm of the hypervisor, then this error will be seen. The user should delete this VM from the SOC Grid Configuration and either free up space on the hypervisor or create a new VM with a smaller /nsm.</p>
+</dd>
+<dt>IP Configuration</dt><dd><p>Static or DHCP is being configured within the VM image before creation.</p>
+</dd>
+<dt>Starting Create</dt><dd><p>The hypervisor has cloned the base image and has created the new VM image.</p>
+</dd>
+<dt>Executing Deploy Script</dt><dd><p>The VM is being provisioned and the salt-minion is being bootstrapped.</p>
+</dd>
+<dt>Initialize Minion Pillars</dt><dd><p>The VM has told the Security Onion manager to create its minion pillars.</p>
+</dd>
+<dt>Created Instance</dt><dd><p>The VM creation process is complete.</p>
+</dd>
+<dt>Volume Creation</dt><dd><p>If the user chose a virtual disk for /nsm, then this process creates it and fully allocates the space on the hypervisor. This step may take a while depending on the size of /nsm that was requested.</p>
+</dd>
+<dt>Volume Configuration</dt><dd><p>The disk is being assigned to the VM.</p>
+</dd>
+<dt>Hardware Configuration</dt><dd><p>The requested hardware has assigned to the VM.</p>
+</dd>
+<dt>Highstate Initiated</dt><dd><p>The VM has been started and the first highstate is currently running. Subsequent highstates will not update the <code class="docutils literal notranslate"><span class="pre">Last</span> <span class="pre">Updated</span></code> column.</p>
+</dd>
+<dt>Destroyed Instance</dt><dd><p>The instance has been destroyed. This VM will be removed from the <code class="docutils literal notranslate"><span class="pre">Virtual</span> <span class="pre">Machines</span></code> table after 48 hours.</p>
+</dd>
+</dl>
+</section>
+<section id="stopping-or-starting-a-vm">
+<h2>Stopping or Starting a VM<a class="headerlink" href="#stopping-or-starting-a-vm" title="Link to this heading"></a></h2>
+<p>If you need to stop or start a VM, you can use the <code class="docutils literal notranslate"><span class="pre">Execute</span> <span class="pre">VM</span> <span class="pre">power</span> <span class="pre">operations</span></code> menu at the bottom of the VM form:</p>
+<a class="reference external image-reference" href="_images/hyper-6.png"><img alt="_images/hyper-6.png" src="_images/hyper-6.png" />
+</a>
+<p>Here is the list of VM power operations and what they actually do:</p>
+<ul class="simple">
+<li><p>Reboot: gracefully reboot the VM (virt.reboot)</p></li>
+<li><p>Reset: forcefully reset the VM (virt.reset)</p></li>
+<li><p>Shutdown: gracefully shut down the VM (virt.shutdown)</p></li>
+<li><p>Start: start the VM (virt.start)</p></li>
+<li><p>Stop: forcefully stop the VM (virt.stop)</p></li>
+</ul>
+</section>
+<section id="deleting-a-vm">
+<h2>Deleting a VM<a class="headerlink" href="#deleting-a-vm" title="Link to this heading"></a></h2>
+<p>To delete a VM, click the trash icon:</p>
+<a class="reference external image-reference" href="_images/hyper-6.png"><img alt="_images/hyper-6.png" src="_images/hyper-6.png" />
+</a>
+<p>It will ask for confirmation:</p>
+<a class="reference external image-reference" href="_images/hyper-7.png"><img alt="_images/hyper-7.png" src="_images/hyper-7.png" />
+</a>
+<p>Once you’ve confirmed, it will show that it is pending deletion:</p>
+<a class="reference external image-reference" href="_images/hyper-8.png"><img alt="_images/hyper-8.png" src="_images/hyper-8.png" />
+</a>
+<p>The backend then deletes the VM, releases the hardware used by the VM, and updates the hypervisor annotation used by SOC. This process should take less than 30 seconds.</p>
+<p>You will then need to refresh your web browser to see that CPU, memory, and free hardware have been updated. The deleted VM should then be listed as <code class="docutils literal notranslate"><span class="pre">Destroyed</span> <span class="pre">Instance</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you delete a VM and attempt to immediately create a new VM prior to the backend releasing the hardware, then you will not be able to pass through the hardware that was previously used by the deleted VM.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="splunk.html" class="btn btn-neutral float-left" title="Security Onion App for Splunk" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="reports.html" class="btn btn-neutral float-right" title="Reports" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

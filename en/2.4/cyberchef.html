@@ -1,0 +1,197 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberChef &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ATT&amp;CK Navigator" href="attack-navigator.html" />
+    <link rel="prev" title="InfluxDB" href="influxdb.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="alerts.html">Alerts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html">Dashboards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hunt.html">Hunt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html">Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detections.html">Detections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcap.html">PCAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.html">Grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="downloads.html">Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administration.html">Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kibana.html">Kibana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic-fleet.html">Elastic Fleet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osquery-manager.html">Osquery Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="influxdb.html">InfluxDB</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CyberChef</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#accessing">Accessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-extraction">File Extraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="attack-navigator.html">ATT&amp;CK Navigator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="soc.html">Security Onion Console (SOC)</a></li>
+      <li class="breadcrumb-item active">CyberChef</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/cyberchef.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cyberchef">
+<span id="id1"></span><h1>CyberChef<a class="headerlink" href="#cyberchef" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> includes a link on the sidebar that takes you to CyberChef.</p>
+<p>From <a class="reference external" href="https://github.com/gchq/CyberChef">https://github.com/gchq/CyberChef</a>:</p>
+<blockquote>
+<div><p>The Cyber Swiss Army Knife</p>
+<p>CyberChef is a simple, intuitive web app for carrying out all manner of “cyber” operations within a web browser. These operations include simple encoding like XOR or Base64, more complex encryption like AES, DES and Blowfish, creating binary and hexdumps, compression and decompression of data, calculating hashes and checksums, IPv6 and X.509 parsing, changing character encodings, and much more.</p>
+<p>The tool is designed to enable both technical and non-technical analysts to manipulate data in complex ways without having to deal with complex tools or algorithms.</p>
+<p>There are four main areas in CyberChef:</p>
+<ol class="arabic simple">
+<li><p>The input box in the top right, where you can paste, type or drag the text or file you want to operate on.</p></li>
+<li><p>The output box in the bottom right, where the outcome of your processing will be displayed.</p></li>
+<li><p>The operations list on the far left, where you can find all the operations that CyberChef is capable of in categorised lists, or by searching.</p></li>
+<li><p>The recipe area in the middle, where you can drag the operations that you want to use and specify arguments and options.</p></li>
+</ol>
+</div></blockquote>
+<section id="accessing">
+<h2>Accessing<a class="headerlink" href="#accessing" title="Link to this heading"></a></h2>
+<p>To access CyberChef, log into <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> and click the CyberChef hyperlink.</p>
+<p>You can send highlighted text from <a class="reference internal" href="pcap.html#pcap"><span class="std std-ref">PCAP</span></a> to CyberChef. When the CyberChef tab opens, you will see your highlighted text in both the Input box and the Output box.</p>
+<p>You can send all visible packet data from <a class="reference internal" href="pcap.html#pcap"><span class="std std-ref">PCAP</span></a> to CyberChef. When the CyberChef tab opens, it will automatically apply the <code class="docutils literal notranslate"><span class="pre">From</span> <span class="pre">Hexdump</span></code> recipe to render the hexdump that was sent.</p>
+</section>
+<section id="file-extraction">
+<h2>File Extraction<a class="headerlink" href="#file-extraction" title="Link to this heading"></a></h2>
+<p>Suppose you are looking at an interesting HTTP file download in <a class="reference internal" href="pcap.html#pcap"><span class="std std-ref">PCAP</span></a> and want to extract the file using CyberChef:</p>
+<ul class="simple">
+<li><p>Click the <a class="reference internal" href="pcap.html#pcap"><span class="std std-ref">PCAP</span></a> CyberChef button and CyberChef will launch in a new tab. It will then show the hexdump in the Input box, automatically apply the <code class="docutils literal notranslate"><span class="pre">From</span> <span class="pre">Hexdump</span></code> recipe, and show the HTTP transcript in the Output box.</p></li>
+<li><p>You may want to apply an operation from the left column. One option is to use the <code class="docutils literal notranslate"><span class="pre">Extract</span> <span class="pre">Files</span></code> operation and optionally specify certain file types for extraction. Another option is to instead remove the HTTP headers using the <code class="docutils literal notranslate"><span class="pre">Strip</span> <span class="pre">HTTP</span> <span class="pre">headers</span></code> operation.</p></li>
+<li><p>If a magic wand appears in the Output box, then CyberChef has detected some applicable operations and you can click the magic wand to automatically apply those operations. For example, CyberChef might automatically apply <code class="docutils literal notranslate"><span class="pre">Strip</span> <span class="pre">HTTP</span> <span class="pre">headers</span></code> and then render the file.</p></li>
+</ul>
+</section>
+<section id="more-information">
+<h2>More Information<a class="headerlink" href="#more-information" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information about CyberChef, please see <a class="reference external" href="https://github.com/gchq/CyberChef">https://github.com/gchq/CyberChef</a>.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="influxdb.html" class="btn btn-neutral float-left" title="InfluxDB" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="attack-navigator.html" class="btn btn-neutral float-right" title="ATT&amp;CK Navigator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

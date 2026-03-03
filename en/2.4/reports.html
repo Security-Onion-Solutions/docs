@@ -1,0 +1,428 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reports &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Onion AI" href="assistant.html" />
+    <link rel="prev" title="Hypervisor" href="hypervisor.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="pro.html">Security Onion Pro</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="oidc.html">OpenID Connect (OIDC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="luks.html">LUKS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fips.html">FIPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stig.html">STIG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kafka.html">Kafka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="connect.html">Connect API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aqm.html">Active Query Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mom.html">Manager of Managers (MoM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcp.html">MCP Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="splunk.html">Security Onion App for Splunk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervisor.html">Hypervisor</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Reports</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Reports</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#standard-reports">Standard Reports</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-reports">Custom Reports</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tabular-exports">Tabular Exports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#report-customization-reference">Report Customization Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pdf-render-instructions">PDF Render Instructions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#oql-query-instructions">OQL Query Instructions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-query-results">Accessing Query Results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#formatters">Formatters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sorters">Sorters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filters">Filters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="assistant.html">Onion AI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="pro.html">Security Onion Pro</a></li>
+      <li class="breadcrumb-item active">Reports</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/reports.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="reports">
+<span id="id1"></span><h1>Reports<a class="headerlink" href="#reports" title="Link to this heading"></a></h1>
+<p>Starting in version 2.4.180, Security Onion Pro added support for producing reports and data exports for analytical purposes. This is not a data migration or full data export feature but rather is intended for analysts to present relevant data to the broader team. Consequently, exports are limited in the amount of data that will be produced.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an enterprise-level feature of Security Onion. Contact Security Onion Solutions, LLC via our website at <a class="reference external" href="https://securityonion.com/pro">https://securityonion.com/pro</a> for more information about purchasing a Security Onion Pro license to enable this feature.</p>
+</div>
+<section id="id2">
+<h2>Reports<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>Reports are generated in Portable Document Format (PDF) in the background. Once a report is requested, a confirmation message will appear to notify the user that the report is being generated and will be available for download on the Reports screen.</p>
+<p>Two types of reports are available: standard and custom.</p>
+<section id="standard-reports">
+<h3>Standard Reports<a class="headerlink" href="#standard-reports" title="Link to this heading"></a></h3>
+<p>Standard reports are pre-built reports provided by the Security Onion team.</p>
+<p>A <em>Productivity Report</em> provides general team productivity metrics. This includes:</p>
+<ul class="simple">
+<li><p>Ingested event metrics</p></li>
+<li><p>Alert metrics (total, acknowledged, escalated, by severity, etc)</p></li>
+<li><p>Case metrics (total, by status, by assignee, comments by user, etc)</p></li>
+<li><p>Time tracking (total case hours, case hours by user)</p></li>
+</ul>
+<p>Productivity reports can be generated by navigating to the Reports interface and clicking the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Job</span></code> button near the top of the screen. A popup will appear allowing the user to select the Productivity report.</p>
+<p>A <em>Case Report</em> provides detailed information about a specific case. This includes:</p>
+<ul class="simple">
+<li><p>ID, Title, description</p></li>
+<li><p>Current status, assignee, etc</p></li>
+<li><p>Hours logged against the case</p></li>
+<li><p>All case comments and the date and author</p></li>
+<li><p>All detections involved in the case</p></li>
+<li><p>All attachments (excluding actual file content)</p></li>
+<li><p>Observable data</p></li>
+<li><p>Related events</p></li>
+<li><p>Case audit history</p></li>
+</ul>
+<p>Case reports can be generated by opening a case and clicking the Export icon above the Case title.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Customer feedback will help the Security Onion team determine which additional reports will be provided in future releases. Provide feedback by reaching out to our Support team.</p>
+</div>
+<p>Standard reports can be lightly customized via the Configuration screen. Search for the report name, such as “Case report”. Customizations include changing layout formatting, text content, and hiding or showing additional data. The ability to show additional data is limited to what the built-in report has already queried. For example, the built-in Case Report shows the TLP of each observable, but not the PAP. So if you want to see the PAP and not the TLP, then you could customize to do so. Remember to synchronize the grid after saving customizations.</p>
+</section>
+<section id="custom-reports">
+<h3>Custom Reports<a class="headerlink" href="#custom-reports" title="Link to this heading"></a></h3>
+<p>While the standard reports can be lightly customized, some customers may need more flexibility in customizing reports. For this, Security Onion Pro offers custom report types.</p>
+<p>Custom reports are generated by navigating to the Reports interface and clicking the Add Job button. The popup will show a list of available custom reports.</p>
+<p>Customers can create a limited number of custom reports by opening the Configuration screen and searching for <code class="docutils literal notranslate"><span class="pre">custom</span> <span class="pre">report</span></code>. Custom reports allow users to design their own report layout and choose which data is queried and then rendered on the report. Customizing these reports requires an understanding of markdown format (<a class="reference external" href="https://www.markdownguide.org/">https://www.markdownguide.org/</a>) and a general understanding of OQL syntax. For best results, report designers should build queries in the <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a> interface to ensure the data returned is what they want for their report. Then the report designer will copy that same OQL query into the custom report.</p>
+<p>A sample report is provided in the standard Security Onion Pro installation. Here is the content of this report file followed by a brief review of each section.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span><span class="o">-</span> <span class="o">/*</span> <span class="n">query</span><span class="o">.</span><span class="n">myDocEvents</span><span class="o">.</span><span class="n">Oql</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">type</span><span class="p">:</span> <span class="n">_doc</span> <span class="o">|</span> <span class="n">groupby</span> <span class="n">event</span><span class="o">.</span><span class="n">module</span><span class="p">,</span> <span class="n">event</span><span class="o">.</span><span class="n">dataset</span> <span class="o">|</span> <span class="n">sortby</span> <span class="nd">@timestamp</span> <span class="n">desc</span> <span class="o">*/</span> <span class="o">-</span><span class="p">}}</span>
+<span class="p">{{</span><span class="o">-</span> <span class="o">/*</span> <span class="n">query</span><span class="o">.</span><span class="n">myDocEvents</span><span class="o">.</span><span class="n">MetricLimit</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*/</span> <span class="o">-</span><span class="p">}}</span>
+<span class="p">{{</span><span class="o">-</span> <span class="o">/*</span> <span class="n">query</span><span class="o">.</span><span class="n">myDocEvents</span><span class="o">.</span><span class="n">EventLimit</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*/</span> <span class="o">-</span><span class="p">}}</span>
+
+<span class="n">Security</span> <span class="n">Onion</span> <span class="n">Custom</span> <span class="n">Report</span>
+<span class="o">============================</span>
+
+<span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Error</span> <span class="p">}}</span>
+<span class="o">**</span><span class="n">NOTE</span><span class="p">:</span> <span class="n">This</span> <span class="n">report</span> <span class="n">encountered</span> <span class="n">a</span> <span class="n">problem</span> <span class="n">extracting</span> <span class="n">the</span> <span class="n">relevant</span> <span class="n">data</span> <span class="ow">and</span> <span class="n">may</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">complete</span><span class="o">.**</span>
+
+<span class="o">**</span><span class="n">Error</span><span class="p">:</span><span class="o">**</span> <span class="p">{{</span><span class="o">.</span><span class="n">Error</span><span class="p">}}</span>
+<span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+
+
+<span class="n">Records</span> <span class="n">must</span> <span class="n">have</span> <span class="n">been</span> <span class="n">created</span> <span class="ow">or</span> <span class="n">updated</span> <span class="n">during</span> <span class="n">the</span> <span class="n">following</span> <span class="n">time</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">order</span> <span class="n">to</span> <span class="n">be</span> <span class="n">reflected</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">report</span><span class="o">.</span>
+
+<span class="o">**</span><span class="n">Report</span> <span class="n">Start</span> <span class="n">Date</span><span class="p">:</span><span class="o">**</span> <span class="p">{{</span><span class="n">formatDateTime</span> <span class="s2">&quot;Mon Jan 02 15:04:05 -0700 2006&quot;</span> <span class="o">.</span><span class="n">BeginDate</span><span class="p">}}</span>
+
+<span class="o">**</span><span class="n">Report</span> <span class="n">End</span> <span class="n">Date</span><span class="p">:</span><span class="o">**</span> <span class="p">{{</span><span class="n">formatDateTime</span> <span class="s2">&quot;Mon Jan 02 15:04:05 -0700 2006&quot;</span> <span class="o">.</span><span class="n">EndDate</span><span class="p">}}</span>
+
+<span class="c1">## Sample Doc Events</span>
+
+<span class="o">**</span><span class="n">Total</span> <span class="n">Events</span><span class="p">:</span><span class="o">**</span> <span class="p">{{</span> <span class="n">formatNumber</span> <span class="s2">&quot;</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="s2">&quot;en&quot;</span> <span class="o">.</span><span class="n">Results</span><span class="o">.</span><span class="n">myDocEvents</span><span class="o">.</span><span class="n">TotalEvents</span><span class="p">}}</span>
+
+<span class="c1">### Event Counts By Module and Dataset</span>
+
+<span class="o">|</span> <span class="n">Count</span> <span class="o">|</span> <span class="n">Proportion</span> <span class="o">|</span> <span class="n">Module</span> <span class="o">|</span> <span class="n">Dataset</span> <span class="o">|</span>
+<span class="o">|</span> <span class="o">-----</span> <span class="o">|</span> <span class="o">----------</span> <span class="o">|</span> <span class="o">------</span> <span class="o">|</span> <span class="o">-------</span> <span class="o">|</span>
+<span class="p">{{</span> <span class="nb">range</span> <span class="n">sortMetrics</span> <span class="s2">&quot;Value&quot;</span> <span class="s2">&quot;desc&quot;</span> <span class="o">.</span><span class="n">Results</span><span class="o">.</span><span class="n">myDocEvents</span><span class="o">.</span><span class="n">Metrics</span><span class="o">.</span><span class="n">groupby_0_event_module_event_dataset</span> <span class="o">-</span><span class="p">}}</span>
+<span class="o">|</span> <span class="p">{{</span> <span class="n">formatNumber</span> <span class="s2">&quot;</span><span class="si">%.0f</span><span class="s2">&quot;</span> <span class="s2">&quot;en&quot;</span> <span class="o">.</span><span class="n">Value</span><span class="p">}}</span> <span class="o">|</span> <span class="p">{{</span> <span class="n">formatNumber</span> <span class="s2">&quot;</span><span class="si">%.1f</span><span class="s2">&quot;</span> <span class="s2">&quot;en&quot;</span> <span class="o">.</span><span class="n">Percentage</span><span class="p">}}</span><span class="o">%</span> <span class="o">|</span> <span class="p">{{</span><span class="n">index</span> <span class="o">.</span><span class="n">Keys</span> <span class="mi">0</span><span class="p">}}</span> <span class="o">|</span> <span class="p">{{</span><span class="n">index</span> <span class="o">.</span><span class="n">Keys</span> <span class="mi">1</span><span class="p">}}</span> <span class="o">|</span>
+<span class="p">{{</span><span class="n">end</span><span class="p">}}</span>
+
+<span class="c1">### Individual Events (Limited to first {{.Results.myDocEvents.Criteria.EventLimit}})</span>
+
+<span class="o">|</span> <span class="n">Event</span> <span class="n">Time</span> <span class="o">|</span> <span class="n">Module</span> <span class="o">|</span> <span class="n">Dataset</span> <span class="o">|</span> <span class="n">Category</span> <span class="o">|</span>
+<span class="o">|</span> <span class="o">----------</span> <span class="o">|</span> <span class="o">------</span> <span class="o">|</span> <span class="o">-------</span> <span class="o">|</span> <span class="o">--------</span> <span class="o">|</span>
+<span class="p">{{</span> <span class="nb">range</span> <span class="o">.</span><span class="n">Results</span><span class="o">.</span><span class="n">myDocEvents</span><span class="o">.</span><span class="n">Events</span> <span class="o">-</span><span class="p">}}</span>
+<span class="o">|</span> <span class="p">{{</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">}}</span> <span class="o">|</span> <span class="p">{{</span><span class="o">.</span><span class="n">Payload</span><span class="o">.</span><span class="n">event_module</span><span class="p">}}</span> <span class="o">|</span> <span class="p">{{</span><span class="o">.</span><span class="n">Payload</span><span class="o">.</span><span class="n">event_dataset</span><span class="p">}}</span> <span class="o">|</span> <span class="p">{{</span><span class="o">.</span><span class="n">Payload</span><span class="o">.</span><span class="n">event_category</span><span class="p">}}</span> <span class="o">|</span>
+<span class="p">{{</span><span class="n">end</span><span class="p">}}</span>
+</pre></div>
+</div>
+<p>Starting at the top: The first three lines are internal instructions to the report generator. They tell the report generator to run the OQL query <code class="docutils literal notranslate"><span class="pre">metadata.type:</span> <span class="pre">_doc</span> <span class="pre">|</span> <span class="pre">groupby</span> <span class="pre">event.module,</span> <span class="pre">event.dataset</span> <span class="pre">|</span> <span class="pre">sortby</span> <span class="pre">&#64;timestamp</span> <span class="pre">desc</span></code> and store the results into the <code class="docutils literal notranslate"><span class="pre">.Results.myDocEvents</span></code> variable, for later reference in the report. The <code class="docutils literal notranslate"><span class="pre">MetricLimit</span> <span class="pre">=</span> <span class="pre">10</span></code> parameter limits the groupby metrics to the top 10 counts, and the <code class="docutils literal notranslate"><span class="pre">EventLimit</span> <span class="pre">=</span> <span class="pre">100</span></code> limits the raw event results to 100 at most. These are important parameters because without them you could end up with a PDF document hundreds of pages in length, and that much data is unlikely to be helpful when presenting security-related findings to others.</p>
+<p>Pay close attention to the traditional template <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">...</span> <span class="pre">}}</span></code> syntax as well as the <code class="docutils literal notranslate"><span class="pre">{{-</span> <span class="pre">/*</span> <span class="pre">...</span> <span class="pre">*/</span> <span class="pre">-}}</span></code> internal report instruction syntax. A missed character will cause the report generation to fail.</p>
+<p>Next is the title of the report. Notice how the full length of the title is followed by an equally long series of equal <code class="docutils literal notranslate"><span class="pre">=</span></code> characters. This denotes that the previous line is the report title, and will be the name that appears in the Add Job popup list on the Reports interface. Refer to the Markdown guide reference earlier in this section for more help with defining titles, headers, sections, and other styling within your report document.</p>
+<p>Following the title is a <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">if</span> <span class="pre">.Error</span> <span class="pre">}}</span> <span class="pre">...</span> <span class="pre">{{</span> <span class="pre">end</span> <span class="pre">}}</span></code> block. This is useful for presenting errors encountered during the rendering of the report. If there is no error then this section will not be visible in the final generated report.</p>
+<p>Next is the content of the report itself. You’ll see report text content mixed with data outputs. For example, if 12 events matched the OQL query provided at the top of this report, then the line containing <code class="docutils literal notranslate"><span class="pre">**Total</span> <span class="pre">Events:**</span></code> will be rendered as:</p>
+<p><strong>Total Events</strong>: 12</p>
+<p>Finally, there are two tabular outputs included. The first is showing “Event counts by Module and Dataset” and, according to markdown format, will be rendered in a table structure including the column headers “Count, Proportion, Module, and Dataset”. Note that those <code class="docutils literal notranslate"><span class="pre">|</span></code> characters are used to separate the column data. The first column will output the Value of the first groupby Metric (referenced as <code class="docutils literal notranslate"><span class="pre">groupby_0_event_module_event_dataset</span></code>), which will be a “count” value. The <code class="docutils literal notranslate"><span class="pre">%.0f</span></code> is instructing the output to hide the decimal place values, and the <code class="docutils literal notranslate"><span class="pre">en</span></code> is instructing that the number be formatted in the English locale (1,220 vs 1.220). The second column will show the proportion of events that matched this row out of the full set of events, the third column will show the event module for that row, and the last column will show the event dataset for that row.</p>
+<p>The second tabular output is showing the list of events (up to 100 as previously instructed at the top of the file). This is not a metric so there is no <code class="docutils literal notranslate"><span class="pre">.Value</span></code> count column on this table. Instead, the column will show the actual event field values. Notice how the first column is the event timestamp, which is useful for showing chronologically-ordered lists of events. The remaining columns can be any field that is associated with that event. Use <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a> to determine which fields are available for that query.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Customizing reports can be intimidating to those not familiar with this level of detail. Pro customers with professional service hours can utilize the experience of the Security Onion support team to help get you started.</p>
+</div>
+<p>Remember to synchronize the grid after saving custom reports.</p>
+</section>
+</section>
+<section id="tabular-exports">
+<h2>Tabular Exports<a class="headerlink" href="#tabular-exports" title="Link to this heading"></a></h2>
+<p>Also included with this feature is the ability to export data from several of the SOC screens, including:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a></p></li>
+<li><p><a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a></p></li>
+<li><p><a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a></p></li>
+<li><p><a class="reference internal" href="cases.html#cases"><span class="std std-ref">Cases</span></a> (listing)</p></li>
+<li><p><a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a> (listing)</p></li>
+</ul>
+<p>The exported data will be saved to a CSV file and include the headers as the first line of the CSV. The CSV will be generated in the background and will then be available for download in the Reports interface.</p>
+<p>Group and Event data can be exported by clicking on the data export icon, typically found in the top-left corner of the Group metric table or graph, or the event table. While the export icon is visible on the graph mode of a group metric, it will still export the underlying data in CSV format. It does not attempt to export the graph visualization. However, starting with this same version 2.4.180, users can now use the browser’s Print feature to send those graph visualizations and dashboards to a printer or PDF file.</p>
+<p>CSV exports will export all underlying data, up to a configured max. Therefore, while the <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a> interface could show 10 entries in a Group metric because of how the group limits are set, the CSV could contain more than the 10, if the backing data has more aggregated metrics available.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Exporting CSV data while in the relative time mode, such as 24 hours, will often result in exported CSV data that is different from what is on the screen at the time when the export was initiated. This is because the export is re-running the same query, using the same relative time but starting at the time of the export, versus when the dashboard was queried earlier. To export the identical data shown on the SOC interface first change the time range to absolute mode and define the start and end times prior to refreshing the results and clicking the export icon.</p>
+</div>
+<p>CSV exports are limited to 10,000 records by default.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This CSV export feature is not intended for Elasticsearch data migration purposes.</p>
+</div>
+</section>
+<section id="report-customization-reference">
+<h2>Report Customization Reference<a class="headerlink" href="#report-customization-reference" title="Link to this heading"></a></h2>
+<section id="pdf-render-instructions">
+<h3>PDF Render Instructions<a class="headerlink" href="#pdf-render-instructions" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Generate a table of contents at the beginning of the exported report:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span><span class="o">-</span> <span class="o">/*</span> <span class="n">pdf_param</span><span class="p">:</span> <span class="o">-</span><span class="n">generate</span><span class="o">-</span><span class="n">toc</span> <span class="o">*/</span> <span class="o">-</span><span class="p">}}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Disable TLS verification when reaching out to pull external images for inclusion in the report:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span><span class="o">-</span> <span class="o">/*</span> <span class="n">pdf_param</span><span class="p">:</span> <span class="o">-</span><span class="n">insecure</span> <span class="o">*/</span> <span class="o">-</span><span class="p">}}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Add a page break whenever it encounters a horizontal rule (HR) tag in the report, such as <code class="docutils literal notranslate"><span class="pre">---</span></code>:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span><span class="o">-</span> <span class="o">/*</span> <span class="n">pdf_param</span><span class="p">:</span> <span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">page</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="n">hr</span> <span class="o">*/</span> <span class="o">-</span><span class="p">}}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Change the report output layaout from <em>portrait</em> (default) to <em>landscape</em>:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span><span class="o">-</span> <span class="o">/*</span> <span class="n">pdf_param</span><span class="p">:</span> <span class="o">-</span><span class="n">orientation</span> <span class="o">*/</span> <span class="o">-</span><span class="p">}}</span>
+<span class="p">{{</span><span class="o">-</span> <span class="o">/*</span> <span class="n">pdf_param</span><span class="p">:</span> <span class="n">landscape</span> <span class="o">*/</span> <span class="o">-</span><span class="p">}}</span>
+</pre></div>
+</div>
+</section>
+<section id="oql-query-instructions">
+<h3>OQL Query Instructions<a class="headerlink" href="#oql-query-instructions" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Define a new OQL query that filters by <code class="docutils literal notranslate"><span class="pre">some.field</span></code> and <code class="docutils literal notranslate"><span class="pre">another.field</span></code>, and includes a single aggregated metric of counts by both <code class="docutils literal notranslate"><span class="pre">event.modules</span></code> and <code class="docutils literal notranslate"><span class="pre">event.dataset</span></code> with a max limit of no more than 10 aggregations per groupby and no more than 25 total event records returned:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span><span class="o">-</span> <span class="o">/*</span> <span class="n">query</span><span class="o">.</span><span class="n">mySpecialQuery</span><span class="o">.</span><span class="n">Oql</span> <span class="o">=</span> <span class="n">some</span><span class="o">.</span><span class="n">field</span><span class="p">:</span> <span class="mi">123</span> <span class="n">AND</span> <span class="n">another</span><span class="o">.</span><span class="n">field</span><span class="p">:</span> <span class="s2">&quot;Jason&quot;</span> <span class="o">|</span> <span class="n">groupby</span> <span class="n">event</span><span class="o">.</span><span class="n">module</span><span class="p">,</span> <span class="n">event</span><span class="o">.</span><span class="n">dataset</span> <span class="o">*/</span> <span class="o">-</span><span class="p">}}</span>
+<span class="p">{{</span><span class="o">-</span> <span class="o">/*</span> <span class="n">query</span><span class="o">.</span><span class="n">mySpecialQuery</span><span class="o">.</span><span class="n">MetricLimit</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*/</span> <span class="o">-</span><span class="p">}}</span>
+<span class="p">{{</span><span class="o">-</span> <span class="o">/*</span> <span class="n">query</span><span class="o">.</span><span class="n">mySpecialQuery</span><span class="o">.</span><span class="n">EventLimit</span> <span class="o">=</span> <span class="mi">25</span> <span class="o">*/</span> <span class="o">-</span><span class="p">}}</span>
+</pre></div>
+</div>
+</section>
+<section id="accessing-query-results">
+<h3>Accessing Query Results<a class="headerlink" href="#accessing-query-results" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Loop through a query’s event results. Note that all fields containing a period will have their periods replaced with an underscore to avoid colliding with the template syntax:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span> <span class="nb">range</span> <span class="o">.</span><span class="n">Results</span><span class="o">.</span><span class="n">mySpecialQuery</span><span class="o">.</span><span class="n">Events</span> <span class="o">-</span><span class="p">}}</span>
+<span class="p">{{</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">}}</span> <span class="o">|</span> <span class="p">{{</span><span class="o">.</span><span class="n">some_field</span><span class="p">}}</span> <span class="o">|</span> <span class="p">{{</span> <span class="o">.</span><span class="n">another_field</span> <span class="p">}}</span>
+<span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Loop through a query’s aggregation results. Note that aggregations have special fields available:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.Value</span></code>  The calculated aggregation, typically a summed count</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.Percentage</span></code>  The calculated ratio * 100 of this group’s occurrences compared to the total number of groups for this aggregation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.Keys</span> <span class="pre">&lt;index&gt;</span></code>  Where &lt;index&gt; is the 0-based index of the groupby fields. In this example, <code class="docutils literal notranslate"><span class="pre">.Keys</span> <span class="pre">0</span></code> will be the <code class="docutils literal notranslate"><span class="pre">event.module</span></code> value, and <code class="docutils literal notranslate"><span class="pre">.Keys</span> <span class="pre">1</span></code> will be the <code class="docutils literal notranslate"><span class="pre">event.dataset</span></code> value for this group.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span> <span class="nb">range</span> <span class="n">sortMetrics</span> <span class="s2">&quot;Value&quot;</span> <span class="s2">&quot;desc&quot;</span> <span class="o">.</span><span class="n">Results</span><span class="o">.</span><span class="n">mySpecialQuery</span><span class="o">.</span><span class="n">Metrics</span><span class="o">.</span><span class="n">groupby_0_event_module_event_dataset</span> <span class="o">-</span><span class="p">}}</span>
+<span class="p">{{</span> <span class="n">formatNumber</span> <span class="s2">&quot;</span><span class="si">%.0f</span><span class="s2">&quot;</span> <span class="s2">&quot;en&quot;</span> <span class="o">.</span><span class="n">Value</span> <span class="p">}}</span> <span class="o">|</span> <span class="p">{{</span> <span class="n">formatNumber</span> <span class="s2">&quot;</span><span class="si">%.1f</span><span class="s2">&quot;</span> <span class="s2">&quot;en&quot;</span> <span class="o">.</span><span class="n">Percentage</span> <span class="p">}}</span><span class="o">%</span> <span class="o">|</span> <span class="p">{{</span> <span class="n">index</span> <span class="o">.</span><span class="n">Keys</span> <span class="mi">0</span> <span class="p">}}</span> <span class="o">|</span> <span class="p">{{</span> <span class="n">index</span> <span class="o">.</span><span class="n">Keys</span> <span class="mi">1</span> <span class="p">}}</span> <span class="o">|</span>
+<span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+</pre></div>
+</div>
+<p>If there had been a second <code class="docutils literal notranslate"><span class="pre">groupby</span></code> clause then it would have been referenced as <code class="docutils literal notranslate"><span class="pre">groupby_1_fieldx</span></code>.</p>
+</section>
+<section id="formatters">
+<h3>Formatters<a class="headerlink" href="#formatters" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Format a date and time into a specific format of <em>Mon Jan 02 15:04:05 -0700 2006</em>. Always reuse the same date and time as shown below for the format template:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span> <span class="n">formatDateTime</span> <span class="s2">&quot;Mon Jan 02 15:04:05 -0700 2006&quot;</span> <span class="o">.</span><span class="n">SomeDataField</span> <span class="p">}}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Format a numeric value to an integer, decimal, etc output, following the given locale, in this case <em>English</em>:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span> <span class="n">formatNumber</span> <span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="s2">&quot;en&quot;</span> <span class="o">.</span><span class="n">SomeNumericField</span> <span class="p">}}</span>
+</pre></div>
+</div>
+</section>
+<section id="sorters">
+<h3>Sorters<a class="headerlink" href="#sorters" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Sort the given metrics by the .Value field in descending order:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span> <span class="nb">range</span> <span class="n">sortMetrics</span> <span class="o">.</span><span class="n">Value</span> <span class="s2">&quot;desc&quot;</span> <span class="o">.</span><span class="n">Results</span><span class="o">.</span><span class="n">mySpecialQuery</span><span class="o">.</span><span class="n">Metrics</span><span class="o">.</span><span class="n">groupby_1_fieldx</span> <span class="p">}}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Sort the given case data by the .CreateTime field (or event’s timestamp) in ascending order (applicable to Case Report):</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span> <span class="nb">range</span> <span class="n">sortComments</span> <span class="o">.</span><span class="n">CreateTime</span> <span class="s2">&quot;asc&quot;</span> <span class="o">.</span><span class="n">Comments</span> <span class="p">}}</span>
+<span class="p">{{</span> <span class="nb">range</span> <span class="n">sortDetections</span> <span class="o">.</span><span class="n">CreateTime</span> <span class="s2">&quot;asc&quot;</span> <span class="o">.</span><span class="n">Detections</span> <span class="p">}}</span>
+<span class="p">{{</span> <span class="nb">range</span> <span class="n">sortArtifacts</span> <span class="o">.</span><span class="n">CreateTime</span> <span class="s2">&quot;asc&quot;</span> <span class="o">.</span><span class="n">Attachments</span> <span class="p">}}</span>
+<span class="p">{{</span> <span class="nb">range</span> <span class="n">sortArtifacts</span> <span class="o">.</span><span class="n">CreateTime</span> <span class="s2">&quot;asc&quot;</span> <span class="o">.</span><span class="n">Observables</span> <span class="p">}}</span>
+<span class="p">{{</span> <span class="nb">range</span> <span class="n">sortRelatedEvents</span> <span class="s2">&quot;fields:soc_timestamp&quot;</span> <span class="s2">&quot;asc&quot;</span> <span class="o">.</span><span class="n">RelatedEvents</span> <span class="p">}}</span>
+<span class="p">{{</span> <span class="nb">range</span> <span class="n">sortHistory</span> <span class="o">.</span><span class="n">CreateTime</span> <span class="s2">&quot;asc&quot;</span> <span class="o">.</span><span class="n">History</span> <span class="p">}}</span>
+</pre></div>
+</div>
+</section>
+<section id="filters">
+<h3>Filters<a class="headerlink" href="#filters" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Convert the given user ID into the user’s email address. Applies to any valid user ID event field or indexed metric field:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span> <span class="o">.</span><span class="n">SomeField</span> <span class="o">|</span> <span class="n">getUserDetail</span> <span class="s2">&quot;email&quot;</span> <span class="p">}}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Convert the value to uppercase:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span> <span class="o">.</span><span class="n">SomeField</span> <span class="o">|</span> <span class="n">upper</span> <span class="p">}}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Convert the value to lowercase:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span> <span class="o">.</span><span class="n">SomeField</span> <span class="o">|</span> <span class="n">lower</span> <span class="p">}}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Join an array value into a string, separated by commas:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span> <span class="o">.</span><span class="n">SomeField</span> <span class="o">|</span> <span class="n">join</span> <span class="s2">&quot;,&quot;</span> <span class="p">}}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="hypervisor.html" class="btn btn-neutral float-left" title="Hypervisor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="assistant.html" class="btn btn-neutral float-right" title="Onion AI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

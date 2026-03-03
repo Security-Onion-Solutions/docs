@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intrusion Detection Honeypot &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Additional Network Visibility" href="additional-network.html" />
+    <link rel="prev" title="Strelka" href="strelka.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="network.html">Network Visibility</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="af-packet.html">AF-PACKET</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpf.html">BPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stenographer.html">Stenographer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="suricata.html">Suricata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zeek.html">Zeek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strelka.html">Strelka</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Intrusion Detection Honeypot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#technical-background">Technical Background</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#services-configuration">Services Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sshd">sshd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-configuration">Custom Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-configuration-example">Custom Configuration Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#activating-additional-network-interfaces">Activating Additional Network Interfaces</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="network.html">Network Visibility</a></li>
+      <li class="breadcrumb-item active">Intrusion Detection Honeypot</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/idh.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="intrusion-detection-honeypot">
+<span id="idh"></span><h1>Intrusion Detection Honeypot<a class="headerlink" href="#intrusion-detection-honeypot" title="Link to this heading"></a></h1>
+<p>Security Onion includes an Intrusion Detection Honeypot (IDH) node option. This allows you to build a node that mimics common services such as HTTP, FTP, and SSH. Any interaction with these fake services will automatically result in an alert.</p>
+<p>From the book, <em>Intrusion Detection Honeypots</em> (Sanders, C):</p>
+<blockquote>
+<div><p>An Intrusion Detection Honeypot (IDH) is a security resource placed inside your network perimeter that generates alerts when probed or attacked. These systems, services, and tokens rely on deception to lure attackers in and convince them to interact. Unbeknownst to the attacker, you’re alerted when that interaction occurs and can begin investigating the compromise.</p>
+</div></blockquote>
+<p>Chris Sanders and Josh Brower presented the IDH concept at Security Onion Conference 2021 and you can view the recording at <a class="reference external" href="https://www.youtube.com/watch?v=NzUhfARVfJk&amp;list=PLljFlTO9rB17mESq7Z9OeFKvVh39vJW34&amp;index=5">https://www.youtube.com/watch?v=NzUhfARVfJk&amp;list=PLljFlTO9rB17mESq7Z9OeFKvVh39vJW34&amp;index=5</a>.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>IDH nodes are dedicated to just being IDH nodes and cannot run any other services. Therefore, you must have a separate manager to connect to. You can join a new IDH node to an existing Standalone deployment or full distributed deployment. Our ISO image includes a boot menu option for IDH installs that will partition your disk appropriately with lower requirements than a full installation.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The IDH node is designed to be placed <em>inside</em> your network perimeter! It should not be accessible from the Internet!</p>
+</div>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Run Setup and select the <code class="docutils literal notranslate"><span class="pre">DISTRIBUTED</span></code> deployment option.</p></li>
+<li><p>Select the <code class="docutils literal notranslate"><span class="pre">Existing</span> <span class="pre">Deployment</span></code> option.</p></li>
+<li><p>Select the <code class="docutils literal notranslate"><span class="pre">IDH</span></code> option.</p></li>
+<li><p>You can optionally prevent the IDH services from listening on the management interface.</p></li>
+<li><p>Once Setup is complete and the IDH node is fully joined to the grid, you can do additional configuration by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; idh.</p></li>
+<li><p>After configuration is complete, connections to honeypot services will result in <code class="docutils literal notranslate"><span class="pre">SO</span> <span class="pre">IDH</span></code> alerts that can be seen in <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>.</p></li>
+</ul>
+</section>
+<section id="technical-background">
+<h2>Technical Background<a class="headerlink" href="#technical-background" title="Link to this heading"></a></h2>
+<p>The IDH node utilizes OpenCanary which is a modular opensource honeypot by Thinkst. You can read more about it at <a class="reference external" href="https://github.com/thinkst/opencanary">https://github.com/thinkst/opencanary</a>.</p>
+<p>OpenCanary logs can be found through <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>, <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>, or <a class="reference internal" href="kibana.html#kibana"><span class="std std-ref">Kibana</span></a> using the following queries:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">event</span><span class="o">.</span><span class="n">module</span><span class="p">:</span> <span class="n">opencanary</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">event</span><span class="o">.</span><span class="n">dataset</span><span class="p">:</span> <span class="n">idh</span>
+</pre></div>
+</div>
+<p>Sigma rules within <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a> look for certain logs emitted by OpenCanary to generate alerts, which can be viewed in the <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a> interface.</p>
+</section>
+<section id="services-configuration">
+<h2>Services Configuration<a class="headerlink" href="#services-configuration" title="Link to this heading"></a></h2>
+<p>The following services are available for use with the IDH node. Pay special attention to how an alert is triggered for a service as some of them require more than a simple connection request to trigger.</p>
+<ul class="simple">
+<li><p>FTP - a File Transfer Protocol server which alerts on login attempts</p></li>
+<li><p>Git - a Git server which alerts on repo cloning</p></li>
+<li><p>HTTP - an HTTP web server that alerts on login attempts</p></li>
+<li><p>HTTP Proxy - an HTTP web proxy that alerts when there is an attempt to proxy to another page</p></li>
+<li><p>MSSQL - an MS SQL server that alerts on login attempts</p></li>
+<li><p>MySQL - a MYSQL server that alerts on login attempts</p></li>
+<li><p>Telnet - a Telnet server that alerts on login attempts</p></li>
+<li><p>SNMP - an SNMP server which alerts on oid requests</p></li>
+<li><p>SSH - a Secure Shell server which alerts on login attempts</p></li>
+<li><p>SIP - a SIP server which alerts on sip requests</p></li>
+<li><p>VNC - a VNC server which alerts on login attempts</p></li>
+<li><p>Redis - a Redis server which alerts on actions</p></li>
+<li><p>TFTP - a tftp server which alerts on requests</p></li>
+<li><p>NTP - an NTP server which alerts on ntp requests</p></li>
+</ul>
+<p>This is based on the list at <a class="reference external" href="https://opencanary.readthedocs.io/en/latest/starting/configuration.html#services-configuration">https://opencanary.readthedocs.io/en/latest/starting/configuration.html#services-configuration</a>. RDP and SMB are not currently available for use within an IDH node.</p>
+<p>In addition to changing the default ports, some of these services have further configuration options. For instance, the HTTP server has the ability to use custom HTML pages (“skins”). For more information, please see the OpenCanary documentation at <a class="reference external" href="https://opencanary.readthedocs.io/en/latest/starting/configuration.html#default-configuration">https://opencanary.readthedocs.io/en/latest/starting/configuration.html#default-configuration</a>.</p>
+<p>These types of configuration changes can be made by modifying the minion pillar (see the Custom Configuration section below).</p>
+</section>
+<section id="sshd">
+<h2>sshd<a class="headerlink" href="#sshd" title="Link to this heading"></a></h2>
+<p>For IDH nodes, the local sshd is configured to listen on TCP/2222 and connections are only accepted from the Manager node. This allows TCP/22 to be used for honeypot services.</p>
+</section>
+<section id="custom-configuration">
+<h2>Custom Configuration<a class="headerlink" href="#custom-configuration" title="Link to this heading"></a></h2>
+<p>You can configure IDH by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; idh.</p>
+<a class="reference external image-reference" href="_images/config-item-idh.png"><img alt="_images/config-item-idh.png" src="_images/config-item-idh.png" />
+</a>
+</section>
+<section id="custom-configuration-example">
+<h2>Custom Configuration Example<a class="headerlink" href="#custom-configuration-example" title="Link to this heading"></a></h2>
+<p>For example, suppose that we already have the HTTP service running but we want to change the default port from <code class="docutils literal notranslate"><span class="pre">80</span></code> to <code class="docutils literal notranslate"><span class="pre">8080</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please be very careful when making changes!</p>
+</div>
+<ul class="simple">
+<li><p>Go to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration.</p></li>
+<li><p>At the top of the page, click the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu and enable the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">advanced</span> <span class="pre">settings</span></code> option.</p></li>
+<li><p>On the left side, navigate to idh –&gt; opencanary –&gt; config –&gt; http_x_port.</p></li>
+<li><p>On the right side, change the port value and then click the checkmark to save the change.</p></li>
+<li><p>At the top of the page, click the <code class="docutils literal notranslate"><span class="pre">SYNCHRONIZE</span> <span class="pre">GRID</span></code> button under the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu.</p></li>
+</ul>
+</section>
+<section id="activating-additional-network-interfaces">
+<h2>Activating Additional Network Interfaces<a class="headerlink" href="#activating-additional-network-interfaces" title="Link to this heading"></a></h2>
+<p>If you want to activate additional network interfaces after joining your IDH node to your grid, you can do so using standard Linux networking tools like nmtui. You can read more about nmtui at <a class="reference external" href="https://docs.oracle.com/en/operating-systems/oracle-linux/9/network/network-ConfiguringtheSystemsNetwork.html#ol-netconf-config-tui">https://docs.oracle.com/en/operating-systems/oracle-linux/9/network/network-ConfiguringtheSystemsNetwork.html#ol-netconf-config-tui</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="strelka.html" class="btn btn-neutral float-left" title="Strelka" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="additional-network.html" class="btn btn-neutral float-right" title="Additional Network Visibility" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

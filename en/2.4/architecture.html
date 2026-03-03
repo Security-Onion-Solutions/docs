@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architecture &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Hardware Requirements" href="hardware.html" />
+    <link rel="prev" title="Use Cases" href="use-cases.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="getting-started.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use-cases.html">Use Cases</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#import">Import</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluation">Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#standalone">Standalone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#desktop">Desktop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#distributed">Distributed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#node-types">Node Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#management">Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-node">Search Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manager-search">Manager Search</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sensor-node">Sensor Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elastic-fleet-standalone-node">Elastic Fleet Standalone Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#receiver-node">Receiver Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#intrusion-detection-honeypot-idh-node">Intrusion Detection Honeypot (IDH) Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#heavy-node">Heavy Node</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html">Hardware Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download.html">Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmware.html">VMware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtualbox.html">VirtualBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxmox.html">Proxmox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble-booting.html">Booting Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airgap.html">Airgap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-amazon.html">Amazon Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-azure.html">Azure Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-google.html">Google Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-installation.html">After Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="getting-started.html">Getting Started</a></li>
+      <li class="breadcrumb-item active">Architecture</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/architecture.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="architecture">
+<span id="id1"></span><h1>Architecture<a class="headerlink" href="#architecture" title="Link to this heading"></a></h1>
+<p>In the <a class="reference internal" href="use-cases.html#use-cases"><span class="std std-ref">Use Cases</span></a> section, we looked at a few of the most common use cases. This section will discuss what those different use cases look like from an architecture perspective.</p>
+<section id="import">
+<h2>Import<a class="headerlink" href="#import" title="Link to this heading"></a></h2>
+<p>The simplest architecture is an <code class="docutils literal notranslate"><span class="pre">Import</span></code> node. An import node is a single standalone box that runs just enough components to be able to import pcap or evtx files using the <a class="reference internal" href="grid.html#grid"><span class="std std-ref">Grid</span></a> page. It does <strong>not</strong> support adding Elastic agents or additional Security Onion nodes. For a full walkthrough of the <code class="docutils literal notranslate"><span class="pre">Import</span></code> option, please see the <a class="reference internal" href="first-time-users.html#first-time-users"><span class="std std-ref">First Time Users</span></a> section.</p>
+<a class="reference external image-reference" href="_images/import.png"><img alt="_images/import.png" class="align-center" src="_images/import.png" />
+</a>
+</section>
+<section id="evaluation">
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading"></a></h2>
+<p>The next architecture is <code class="docutils literal notranslate"><span class="pre">Evaluation</span></code>. It’s a little more complicated than <code class="docutils literal notranslate"><span class="pre">Import</span></code> because it has a network interface dedicated to sniffing live traffic from a TAP or SPAN port. Processes monitor the traffic on that sniffing interface and generate logs. <a class="reference internal" href="elastic-agent.html#elastic-agent"><span class="std std-ref">Elastic Agent</span></a> collects those logs and sends them directly to <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> where they are parsed and indexed. Evaluation mode is designed for a quick installation to temporarily test out Security Onion. It is <strong>not</strong> designed for production usage at all and it does not support adding Elastic agents or additional Security Onion nodes.</p>
+<a class="reference external image-reference" href="_images/eval.png"><img alt="_images/eval.png" class="align-center" src="_images/eval.png" />
+</a>
+</section>
+<section id="standalone">
+<h2>Standalone<a class="headerlink" href="#standalone" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Standalone</span></code> is similar to <code class="docutils literal notranslate"><span class="pre">Evaluation</span></code> in that all components run on one box. However, instead of <a class="reference internal" href="elastic-agent.html#elastic-agent"><span class="std std-ref">Elastic Agent</span></a> sending logs directly to <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>, it sends them to <a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a>, which sends them to <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a> for queuing. A second Logstash pipeline pulls the logs out of <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a> and sends them to <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>, where they are parsed and indexed.</p>
+<p>This type of deployment is typically used for testing, labs, POCs, or <strong>very</strong> low-throughput environments. It’s not as scalable as a distributed deployment.</p>
+<a class="reference external image-reference" href="_images/standalone.png"><img alt="_images/standalone.png" class="align-center" src="_images/standalone.png" />
+</a>
+</section>
+<section id="desktop">
+<h2>Desktop<a class="headerlink" href="#desktop" title="Link to this heading"></a></h2>
+<p>The installer includes a <a class="reference internal" href="desktop.html#desktop"><span class="std std-ref">Security Onion Desktop</span></a> option that builds a simple desktop environment. This environment includes a web browser which allows you to log into an existing Security Onion deployment. It also includes some analyst utilities like <a class="reference internal" href="wireshark.html#wireshark"><span class="std std-ref">Wireshark</span></a> and <a class="reference internal" href="networkminer.html#networkminer"><span class="std std-ref">NetworkMiner</span></a>.</p>
+<p>For more information, please see the <a class="reference internal" href="desktop.html#desktop"><span class="std std-ref">Security Onion Desktop</span></a> section.</p>
+</section>
+<section id="distributed">
+<h2>Distributed<a class="headerlink" href="#distributed" title="Link to this heading"></a></h2>
+<p>A standard distributed deployment includes a <strong>manager node</strong>, one or more <strong>sensor nodes</strong> running network sensor components, and one or more <strong>search nodes</strong> running Elastic search components. This architecture may cost more upfront, but it provides for greater scalability and performance, as you can simply add more nodes to handle more traffic or log sources.</p>
+<ul class="simple">
+<li><p>Recommended deployment type</p></li>
+<li><p>Consists of a manager node, one or more sensor nodes, and one or more search nodes</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you install a dedicated manager node, you must also deploy one or more search nodes. Otherwise, all logs will queue on the manager and have no place to be stored. If you are limited on the number of nodes you can deploy, you can install a <strong>manager search</strong> node so that your manager node can act as a search node and store those logs. However, please keep in mind that overall performance and scalability of a <strong>manager search</strong> node will be lower compared to our recommended architecture of dedicated manager node and separate search nodes.</p>
+</div>
+<a class="reference external image-reference" href="_images/distributed.png"><img alt="_images/distributed.png" class="align-center" src="_images/distributed.png" width="450" />
+</a>
+</section>
+<section id="node-types">
+<h2>Node Types<a class="headerlink" href="#node-types" title="Link to this heading"></a></h2>
+<section id="management">
+<h3>Management<a class="headerlink" href="#management" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">manager</span> <span class="pre">node</span></code> runs <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> and <a class="reference internal" href="kibana.html#kibana"><span class="std std-ref">Kibana</span></a>. It has its own local instance of <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>, but that’s mainly used for managing the <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> cluster once search nodes join the cluster. An analyst connects to the manager node from a client workstation (perhaps <a class="reference internal" href="desktop.html#desktop"><span class="std std-ref">Security Onion Desktop</span></a>) to execute queries and retrieve data.</p>
+<p>Please note that a dedicated manager node requires separate search nodes. Also note that a dedicated manager node has to start off with the <code class="docutils literal notranslate"><span class="pre">data</span></code> node role. When you later join a separate search node, then you may want to migrate the data from the manager to the search node and then remove the <code class="docutils literal notranslate"><span class="pre">data</span></code> node role from the manager. For more information, please see the <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> section.</p>
+<p>The manager node runs the following components:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a></p></li>
+<li><p><a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a></p></li>
+<li><p><a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a></p></li>
+<li><p><a class="reference internal" href="kibana.html#kibana"><span class="std std-ref">Kibana</span></a></p></li>
+<li><p><a class="reference internal" href="elastalert.html#elastalert"><span class="std std-ref">ElastAlert 2</span></a></p></li>
+<li><p><a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a></p></li>
+</ul>
+</section>
+<section id="search-node">
+<h3>Search Node<a class="headerlink" href="#search-node" title="Link to this heading"></a></h3>
+<p>Search nodes pull logs from the <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a> queue on the manager node and then parse and index those logs. When a user queries the manager node, the manager node then queries the search nodes, and they return search results.</p>
+<p>Search Nodes run the following components:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a></p></li>
+<li><p><a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a></p></li>
+</ul>
+</section>
+<section id="manager-search">
+<h3>Manager Search<a class="headerlink" href="#manager-search" title="Link to this heading"></a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">manager</span> <span class="pre">search</span></code> node is both a manager node and a search node at the same time. Since it is parsing, indexing, and searching data, it has higher hardware requirements than a normal manager node.</p>
+<p>A manager search node runs the following components:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a></p></li>
+<li><p><a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a></p></li>
+<li><p><a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a></p></li>
+<li><p><a class="reference internal" href="kibana.html#kibana"><span class="std std-ref">Kibana</span></a></p></li>
+<li><p><a class="reference internal" href="elastalert.html#elastalert"><span class="std std-ref">ElastAlert 2</span></a></p></li>
+<li><p><a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a></p></li>
+</ul>
+</section>
+<section id="sensor-node">
+<h3>Sensor Node<a class="headerlink" href="#sensor-node" title="Link to this heading"></a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">sensor</span> <span class="pre">node</span></code> forwards alerts and logs from <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> and <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> via <a class="reference internal" href="elastic-agent.html#elastic-agent"><span class="std std-ref">Elastic Agent</span></a> to <a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a> on the manager node, where they are stored in <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> on the manager node or a search node (if the manager node has been configured to use a search node). Full packet capture recorded by <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> or <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> remains on the sensor node itself.</p>
+<p>Sensor nodes run the following components:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a></p></li>
+<li><p><a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a></p></li>
+<li><p><a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a></p></li>
+</ul>
+</section>
+<section id="elastic-fleet-standalone-node">
+<h3>Elastic Fleet Standalone Node<a class="headerlink" href="#elastic-fleet-standalone-node" title="Link to this heading"></a></h3>
+<p>An Elastic Fleet Standalone Node is ideal when there is a large number of Elastic endpoints deployed. It reduces the amount of overhead on the Manager node by transferring the workload associated with managing endpoints to a dedicated system. It is also useful for off-network Elastic Agent endpoints that do not have remote access to the Manager node as it can be deployed to the DMZ and TCP/8220 (Elastic Agent Management network traffic) and TCP/5055 (Elastic Agent log shipping) made accessible to your off-network endpoints.</p>
+</section>
+<section id="receiver-node">
+<h3>Receiver Node<a class="headerlink" href="#receiver-node" title="Link to this heading"></a></h3>
+<p>Receiver nodes were designed with 2 purposes in mind:</p>
+<ul class="simple">
+<li><p>reduce the load on the manager</p></li>
+<li><p>offer pipeline redundancy</p></li>
+</ul>
+<p>Each receiver node runs <a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a> and <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a> and allows for events to continue to be processed by search nodes in the event the manager node is offline. When a receiver node joins the grid, <a class="reference internal" href="elastic-agent.html#elastic-agent"><span class="std std-ref">Elastic Agent</span></a> on all nodes adds this new address as a load balanced <a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a> output. The search nodes add this new node as another <a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a> input. Receiver nodes are “active-active” and you can add as many as you want (within reason) and events will be balanced among them.</p>
+<a class="reference external image-reference" href="_images/receiver.png"><img alt="_images/receiver.png" class="align-center" src="_images/receiver.png" width="450" />
+</a>
+<p>If you don’t have any receiver nodes and the manager goes down, the search nodes do not index anything because they cannot connect to <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a>. The agents cannot connect to <a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a> so the pipeline starts backing up on the agents.</p>
+<p>In this same scenario with a receiver node, the agents would not be able to connect to <a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a> on the manager and so they would try to connect to the receiver node. Once connected, they would send their logs to the receiver.</p>
+<p>Search nodes connect to both the manager and receiver nodes and pull events from the <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a> queue. If the manager goes down, search nodes will keep pulling the log events from the queue on the receiver node. This allows for scaling of the pipeline. More receivers + more search nodes = more event ingestion volume.</p>
+<p>If you have a manager or managersearch that is under heavy load due to handling a high volume of events, then system resources can be freed by directing the Elastic Agent to only output events to the receiver node(s) in the environment. Once all configurable and advanced settings are enabled, this feature can be set in SOC Configuration UI under <code class="docutils literal notranslate"><span class="pre">elasticfleet</span> <span class="pre">&gt;</span> <span class="pre">enable_manager_output</span></code>. Setting this to <code class="docutils literal notranslate"><span class="pre">False</span></code> will prevent the Elastic Agent from sending events to the manager, managersearch, or standalone nodes.</p>
+<p>Receiver nodes need to be close to the search nodes because when you add a new receiver node to the grid, the search nodes add the <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a> service as an input in their configs automatically. If you were to place a receiver node at a remote site, then ALL of your search nodes would be trying to access that <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a> queue remotely. You do not save any bandwidth by placing a receiver node at a remote site.</p>
+<p>There are a couple of things to be aware of regarding receiver nodes and Elastic Agents. The first is Fleet which handles things like updating the agents and scheduling searches. The other is the Elastic Agent log output, which in this case is <a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a> running on the manager or receiver node. Due to limitations in Elastic licensing we can only have a single output policy. That means that when you add a receiver or a fleet node it gets added to a list that is distributed to the agents. The agents go down that list and stop after a successful connection. The only way to direct agents to specific receivers is to use firewall rules to block agents to certain receivers. Again keep in mind that there is no bandwidth savings here because the search nodes still need to empty the <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a> queue on the receiver nodes.</p>
+</section>
+<section id="intrusion-detection-honeypot-idh-node">
+<h3>Intrusion Detection Honeypot (IDH) Node<a class="headerlink" href="#intrusion-detection-honeypot-idh-node" title="Link to this heading"></a></h3>
+<p>The <a class="reference internal" href="idh.html#idh"><span class="std std-ref">Intrusion Detection Honeypot</span></a> node mimics common services such as HTTP, FTP, and SSH. Any interaction with these fake services will automatically result in an alert.</p>
+<a class="reference external image-reference" href="_images/idh.png"><img alt="_images/idh.png" class="align-center" src="_images/idh.png" width="450" />
+</a>
+</section>
+<section id="heavy-node">
+<h3>Heavy Node<a class="headerlink" href="#heavy-node" title="Link to this heading"></a></h3>
+<p>There is also an option to have a <strong>manager node</strong> and one or more <strong>heavy nodes</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Heavy nodes are NOT recommended for most users due to performance reasons, and should only be used for testing purposes or in low-throughput environments.</p>
+</div>
+<ul class="simple">
+<li><p>Recommended only if a standard distributed deployment is not possible</p></li>
+<li><p>Consists of a manager node and one or more heavy nodes</p></li>
+<li><p>Each heavy node is an independent Elastic cluster that is queried from the manager via cross-cluster search</p></li>
+</ul>
+<a class="reference external image-reference" href="_images/heavy-distributed.png"><img alt="_images/heavy-distributed.png" class="align-center" src="_images/heavy-distributed.png" />
+</a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Heavy nodes do not consume from the <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a> queue on the manager. This means that if you just have a manager and heavy nodes, then the <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a> queue on the manager will grow and never be drained. To avoid this, you have two options. If you are starting a new deployment, you can make your <code class="docutils literal notranslate"><span class="pre">manager</span></code> a <code class="docutils literal notranslate"><span class="pre">manager</span> <span class="pre">search</span></code> so that it will drain its own <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a> queue. Alternatively, if you have an existing deployment with a <code class="docutils literal notranslate"><span class="pre">manager</span></code> and want to avoid rebuilding, then you can add a separate search node (NOT heavy node) to consume from the <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a> queue on the manager.</p>
+</div>
+<p>Heavy nodes perform sensor duties and store their own logs in their own local <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> instance. This results in higher hardware requirements and lower performance. Heavy nodes do NOT pull logs from the redis queue on the manager like search nodes do.</p>
+<p>Heavy Nodes run the following components:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a></p></li>
+<li><p><a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a></p></li>
+<li><p><a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a></p></li>
+<li><p><a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a></p></li>
+</ul>
+<p>There are two instances of Elastic Agent that run on a Heavy Node:</p>
+<p>Instance 1 - Not connected to Fleet (runs standalone), runs in a container, picks up /nsm/ logs and other local logs (soc) and sends them to the local Heavy Node ES cluster.</p>
+<p>Instance 2 - Connected to Grid Fleet Server, runs directly on the Heavy Node. Not currently picking up any logs, but has the osquery integration installed.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="use-cases.html" class="btn btn-neutral float-left" title="Use Cases" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hardware.html" class="btn btn-neutral float-right" title="Hardware Requirements" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PCAP &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Grid" href="grid.html" />
+    <link rel="prev" title="Detections" href="detections.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="alerts.html">Alerts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html">Dashboards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hunt.html">Hunt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html">Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detections.html">Detections</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PCAP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="grid.html">Grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="downloads.html">Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administration.html">Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kibana.html">Kibana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic-fleet.html">Elastic Fleet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osquery-manager.html">Osquery Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="influxdb.html">InfluxDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cyberchef.html">CyberChef</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attack-navigator.html">ATT&amp;CK Navigator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="soc.html">Security Onion Console (SOC)</a></li>
+      <li class="breadcrumb-item active">PCAP</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pcap.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pcap">
+<span id="id1"></span><h1>PCAP<a class="headerlink" href="#pcap" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> includes a PCAP interface which allows you to access your full packet capture that was written to disk by <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> or <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a>.</p>
+<p>You can access PCAP in two different ways. The first and most common option is to pivot to PCAP from a particular event in <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>, <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>, or <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a> by choosing the PCAP action on the action menu.</p>
+<a class="reference external image-reference" href="_images/61_actions.png"><img alt="_images/61_actions.png" src="_images/61_actions.png" />
+</a>
+<p>The second and less common option is to go directly to the PCAP interface, click the blue + button, and then put in your search criteria to search for a particular stream.</p>
+<a class="reference external image-reference" href="_images/73_jobs_add.png"><img alt="_images/73_jobs_add.png" src="_images/73_jobs_add.png" />
+</a>
+<p>Regardless of which of these two options you choose, Security Onion should then locate the stream and render a high level overview of the packets.</p>
+<a class="reference external image-reference" href="_images/62_pcap.png"><img alt="_images/62_pcap.png" src="_images/62_pcap.png" />
+</a>
+<p>If there are many packets in the stream, you can use the <code class="docutils literal notranslate"><span class="pre">LOAD</span> <span class="pre">MORE</span></code> button, <code class="docutils literal notranslate"><span class="pre">Rows</span> <span class="pre">per</span> <span class="pre">page</span></code> setting, and arrows to navigate through the list of packets.</p>
+<p>You can drill into individual rows to see the actual payload data. There are buttons at the top of the table that control what data is displayed in the individual rows. If you disable the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">all</span> <span class="pre">packet</span> <span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">HEX</span></code> buttons, then you get an ASCII transcript.</p>
+<a class="reference external image-reference" href="_images/65_pcap_details.png"><img alt="_images/65_pcap_details.png" src="_images/65_pcap_details.png" />
+</a>
+<p>You can select text with your mouse and then use the context menu to send that selected text to <a class="reference internal" href="cyberchef.html#cyberchef"><span class="std std-ref">CyberChef</span></a>, Google, or other destinations defined in the actions list.</p>
+<p>There are two buttons on the right side of the table header. The first will send all visible packet data to <a class="reference internal" href="cyberchef.html#cyberchef"><span class="std std-ref">CyberChef</span></a>. Please note that this only sends packet data that is currently being displayed, so if you are looking at a large stream you may need to use the <code class="docutils literal notranslate"><span class="pre">LOAD</span> <span class="pre">MORE</span></code> button to display all packets in the stream. The second button on the far right allows you to download the full pcap file. You can then open the pcap file using <a class="reference internal" href="networkminer.html#networkminer"><span class="std std-ref">NetworkMiner</span></a>, <a class="reference internal" href="wireshark.html#wireshark"><span class="std std-ref">Wireshark</span></a>, or any other standard libpcap tool. You should typically avoid doing pcap analysis on your normal desktop environment, so you may want to consider opening the pcap file in a <a class="reference internal" href="desktop.html#desktop"><span class="std std-ref">Security Onion Desktop</span></a> instance.</p>
+<p>Once you’ve viewed one or more PCAPs, you will see them listed on the main PCAP page.</p>
+<a class="reference external image-reference" href="_images/72_jobs.png"><img alt="_images/72_jobs.png" src="_images/72_jobs.png" />
+</a>
+<p>When you are done with a PCAP, you may want to delete it using the <code class="docutils literal notranslate"><span class="pre">X</span></code> button on the far right. This deletes the cached PCAP file saved at <code class="docutils literal notranslate"><span class="pre">/nsm/soc/jobs/</span></code>.</p>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<p>If you have trouble retrieving PCAP, here are some things to check:</p>
+<ul class="simple">
+<li><p>Verify that full packet capture is enabled via either <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> or <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a>.</p></li>
+<li><p>Check to see if you have any <a class="reference internal" href="bpf.html#bpf"><span class="std std-ref">BPF</span></a> configuration that may cause <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> or <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> to ignore the traffic.</p></li>
+<li><p>Check <a class="reference internal" href="grid.html#grid"><span class="std std-ref">Grid</span></a> and verify that all services are running properly.</p></li>
+<li><p>Check <a class="reference internal" href="influxdb.html#influxdb"><span class="std std-ref">InfluxDB</span></a> and verify that PCAP Retention is long enough to include the stream you’re looking for.</p></li>
+<li><p>Make sure that there is plenty of free space on <code class="docutils literal notranslate"><span class="pre">/nsm</span></code> to carve the stream and write the output to disk.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="detections.html" class="btn btn-neutral float-left" title="Detections" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="grid.html" class="btn btn-neutral float-right" title="Grid" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

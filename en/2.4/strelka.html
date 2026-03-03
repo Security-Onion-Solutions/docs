@@ -1,0 +1,193 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strelka &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Intrusion Detection Honeypot" href="idh.html" />
+    <link rel="prev" title="Zeek" href="zeek.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="network.html">Network Visibility</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="af-packet.html">AF-PACKET</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpf.html">BPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stenographer.html">Stenographer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="suricata.html">Suricata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zeek.html">Zeek</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Strelka</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#alerts">Alerts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logs">Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#diagnostic-logging">Diagnostic Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="idh.html">Intrusion Detection Honeypot</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="network.html">Network Visibility</a></li>
+      <li class="breadcrumb-item active">Strelka</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/strelka.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="strelka">
+<span id="id1"></span><h1>Strelka<a class="headerlink" href="#strelka" title="Link to this heading"></a></h1>
+<p>From <a class="reference external" href="https://github.com/target/strelka">https://github.com/target/strelka</a>:</p>
+<blockquote>
+<div><p>Strelka is a real-time file scanning system used for threat hunting, threat detection, and incident response. Based on the design established by Lockheed Martin’s Laika BOSS and similar projects (see: related projects), Strelka’s purpose is to perform file extraction and metadata collection at huge scale.</p>
+</div></blockquote>
+<p>If you are monitoring network traffic, then either <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> or <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> should be extracting certain files detected in unencrypted network traffic. Strelka then analyzes those files and they end up in <code class="docutils literal notranslate"><span class="pre">/nsm/strelka/processed/</span></code>.</p>
+<p>Security Onion checks file hashes before sending to Strelka to avoid analyzing the same file multiple times in a 48 hour period.</p>
+<section id="alerts">
+<h2>Alerts<a class="headerlink" href="#alerts" title="Link to this heading"></a></h2>
+<p>Strelka scans files using <a class="reference internal" href="yara.html#yara"><span class="std std-ref">YARA</span></a> rules. If it detects a match, then it will generate an alert that can be found in <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>, <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>, or <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>. You can configure <a class="reference internal" href="yara.html#yara"><span class="std std-ref">YARA</span></a> rules via <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a>.</p>
+</section>
+<section id="logs">
+<h2>Logs<a class="headerlink" href="#logs" title="Link to this heading"></a></h2>
+<p>Even if Strelka doesn’t detect a <a class="reference internal" href="yara.html#yara"><span class="std std-ref">YARA</span></a> match, it will still log metadata about the file. You can find Strelka logs in <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a> and <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>.</p>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>You can configure Strelka by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; strelka.</p>
+<a class="reference external image-reference" href="_images/config-item-strelka.png"><img alt="_images/config-item-strelka.png" src="_images/config-item-strelka.png" />
+</a>
+</section>
+<section id="diagnostic-logging">
+<h2>Diagnostic Logging<a class="headerlink" href="#diagnostic-logging" title="Link to this heading"></a></h2>
+<p>Strelka diagnostic logs are in <code class="docutils literal notranslate"><span class="pre">/nsm/strelka/log/</span></code>. Depending on what you’re looking for, you may also need to look at the <a class="reference internal" href="docker.html#docker"><span class="std std-ref">Docker</span></a> logs for the containers:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">logs</span> <span class="n">so</span><span class="o">-</span><span class="n">strelka</span><span class="o">-</span><span class="n">backend</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">logs</span> <span class="n">so</span><span class="o">-</span><span class="n">strelka</span><span class="o">-</span><span class="n">coordinator</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">logs</span> <span class="n">so</span><span class="o">-</span><span class="n">strelka</span><span class="o">-</span><span class="n">filestream</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">logs</span> <span class="n">so</span><span class="o">-</span><span class="n">strelka</span><span class="o">-</span><span class="n">frontend</span>
+<span class="n">sudo</span> <span class="n">docker</span> <span class="n">logs</span> <span class="n">so</span><span class="o">-</span><span class="n">strelka</span><span class="o">-</span><span class="n">manager</span>
+</pre></div>
+</div>
+</section>
+<section id="more-information">
+<h2>More Information<a class="headerlink" href="#more-information" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information about Strelka, please see <a class="reference external" href="https://github.com/target/strelka">https://github.com/target/strelka</a>.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="zeek.html" class="btn btn-neutral float-left" title="Zeek" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="idh.html" class="btn btn-neutral float-right" title="Intrusion Detection Honeypot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

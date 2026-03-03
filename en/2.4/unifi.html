@@ -1,0 +1,225 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UniFi &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pfSense" href="pfsense.html" />
+    <link rel="prev" title="iptables" href="iptables.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="netflow.html">NetFlow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cef.html">CEF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iptables.html">iptables</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">UniFi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#add-the-iptables-and-cef-integrations">Add the iptables and CEF integrations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-unifi">Configure UniFi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#allow-unifi-logs-through-security-onion-firewall">Allow UniFi logs through Security Onion firewall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unifi-dashboards">UniFi dashboards</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pfsense.html">pfSense</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opnsense.html">OPNsense</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="additional-network.html">Additional Network Visibility</a></li>
+      <li class="breadcrumb-item active">UniFi</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/unifi.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="unifi">
+<span id="id1"></span><h1>UniFi<a class="headerlink" href="#unifi" title="Link to this heading"></a></h1>
+<p>If you have UniFi firewalls on your network, you can send their logs to Security Onion. Typically, UniFi firewalls can send two different kinds of logs. The first is iptables firewall logs and the second is system logs in CEF format. To get all of these logs into <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>, you’ll need to add the Elastic integrations for iptables and CEF, configure the UniFi device to send those logs, and then configure the Security Onion firewall to allow those logs.</p>
+<section id="add-the-iptables-and-cef-integrations">
+<h2>Add the iptables and CEF integrations<a class="headerlink" href="#add-the-iptables-and-cef-integrations" title="Link to this heading"></a></h2>
+<p>First, add the Elastic integrations for iptables and CEF.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information about the iptables integration, see:
+<a class="reference external" href="https://www.elastic.co/docs/reference/integrations/iptables">https://www.elastic.co/docs/reference/integrations/iptables</a></p>
+<p>For more information about the CEF integration, see:
+<a class="reference external" href="https://www.elastic.co/docs/reference/integrations/cef">https://www.elastic.co/docs/reference/integrations/cef</a></p>
+</div>
+<ol class="arabic simple">
+<li><p>Go to <a class="reference internal" href="elastic-fleet.html#elastic-fleet"><span class="std std-ref">Elastic Fleet</span></a>, click the <code class="docutils literal notranslate"><span class="pre">Agent</span> <span class="pre">policies</span></code> tab, and then click the desired policy (for example <code class="docutils literal notranslate"><span class="pre">so-grid-nodes_general</span></code>).</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">integration</span></code> button.</p></li>
+<li><p>Search for <code class="docutils literal notranslate"><span class="pre">iptables</span></code> and then click on the <code class="docutils literal notranslate"><span class="pre">iptables</span></code> integration.</p></li>
+<li><p>The Elastic Integration page will show an overview of the iptables Integration. Review all information on the page and then click the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">iptables</span></code> button.</p></li>
+<li><p>On the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">iptables</span> <span class="pre">integration</span></code> screen, disable the options labeled <code class="docutils literal notranslate"><span class="pre">Collect</span> <span class="pre">iptables</span> <span class="pre">application</span> <span class="pre">logs</span> <span class="pre">(input:</span> <span class="pre">logfile)</span></code> and <code class="docutils literal notranslate"><span class="pre">Collect</span> <span class="pre">iptables</span> <span class="pre">application</span> <span class="pre">logs</span> <span class="pre">(input:</span> <span class="pre">journald)</span></code>. Make sure that <code class="docutils literal notranslate"><span class="pre">Collect</span> <span class="pre">iptables</span> <span class="pre">application</span> <span class="pre">logs</span> <span class="pre">(input:</span> <span class="pre">udp)</span></code> is enabled and then change the <code class="docutils literal notranslate"><span class="pre">Syslog</span> <span class="pre">host</span></code> setting from <code class="docutils literal notranslate"><span class="pre">localhost</span></code> to <code class="docutils literal notranslate"><span class="pre">0.0.0.0</span></code>. The <code class="docutils literal notranslate"><span class="pre">Syslog</span> <span class="pre">Port</span></code> should be set to <code class="docutils literal notranslate"><span class="pre">9001</span></code> by default. Click the <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">and</span> <span class="pre">continue</span></code> button and then click <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">and</span> <span class="pre">deploy</span> <span class="pre">changes</span></code>.</p></li>
+<li><p>Back at the desired policy screen, click the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">integration</span></code> button.</p></li>
+<li><p>Search for <code class="docutils literal notranslate"><span class="pre">cef</span></code> and then click on the <code class="docutils literal notranslate"><span class="pre">Common</span> <span class="pre">Event</span> <span class="pre">Format</span> <span class="pre">(CEF)</span></code> integration.</p></li>
+<li><p>The Elastic Integration page will show an overview of the CEF Integration. Review all information on the page and then click the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Common</span> <span class="pre">Event</span> <span class="pre">Format</span> <span class="pre">(CEF)</span></code> button.</p></li>
+<li><p>On the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Common</span> <span class="pre">Event</span> <span class="pre">Format</span> <span class="pre">(CEF)</span> <span class="pre">integration</span></code> screen, disable the options labeled <code class="docutils literal notranslate"><span class="pre">Collect</span> <span class="pre">CEF</span> <span class="pre">application</span> <span class="pre">logs</span> <span class="pre">(input:</span> <span class="pre">logfile)</span></code> and <code class="docutils literal notranslate"><span class="pre">Collect</span> <span class="pre">CEF</span> <span class="pre">application</span> <span class="pre">logs</span> <span class="pre">(input:</span> <span class="pre">tcp)</span></code>.  Make sure that <code class="docutils literal notranslate"><span class="pre">Collect</span> <span class="pre">CEF</span> <span class="pre">application</span> <span class="pre">logs</span> <span class="pre">(input:</span> <span class="pre">udp)</span></code> is enabled and then change the <code class="docutils literal notranslate"><span class="pre">Syslog</span> <span class="pre">Host</span></code> setting from <code class="docutils literal notranslate"><span class="pre">localhost</span></code> to <code class="docutils literal notranslate"><span class="pre">0.0.0.0</span></code>. The <code class="docutils literal notranslate"><span class="pre">Syslog</span> <span class="pre">Port</span></code> should be set to <code class="docutils literal notranslate"><span class="pre">9003</span></code> by default. Click the <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">and</span> <span class="pre">continue</span></code> button and then click <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">and</span> <span class="pre">deploy</span> <span class="pre">changes</span></code>.</p></li>
+</ol>
+</section>
+<section id="configure-unifi">
+<h2>Configure UniFi<a class="headerlink" href="#configure-unifi" title="Link to this heading"></a></h2>
+<p>Next, configure UniFi to send both types of logs to Security Onion.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>UniFi configuration may be different depending on what specific UniFi device you have and what software it is running. These instructions are based on a Cloud Gateway Fiber device running control plane version 4.2.12 and Network application version 9.3.43.</p>
+</div>
+<p>To configure UniFi to send iptables firewall logs to the Elastic integration for iptables:</p>
+<ol class="arabic simple">
+<li><p>In the UniFi web interface, navigate to Settings –&gt; CyberSecure –&gt; Traffic Logging.</p></li>
+<li><p>Next to <code class="docutils literal notranslate"><span class="pre">Activity</span> <span class="pre">Logging</span> <span class="pre">(Syslog)</span></code>, choose the <code class="docutils literal notranslate"><span class="pre">SIEM</span> <span class="pre">Server</span></code> option.</p></li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">Server</span> <span class="pre">Address</span></code> to the IP address of the Security Onion node to send the logs to.</p></li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">Port</span></code> to 9001.</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Apply</span> <span class="pre">Changes</span></code> button.</p></li>
+</ol>
+<p>To configure UniFi to send system logs to the Elastic integration for CEF:</p>
+<ol class="arabic simple">
+<li><p>In the UniFi web interface, navigate to Settings –&gt; Control Plane –&gt; Integrations.</p></li>
+<li><p>Next to <code class="docutils literal notranslate"><span class="pre">Activity</span> <span class="pre">Logging</span> <span class="pre">(Syslog)</span></code>, choose the <code class="docutils literal notranslate"><span class="pre">SIEM</span> <span class="pre">Server</span></code> option.</p></li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">Server</span> <span class="pre">Address</span></code> to the IP address of the Security Onion node to send the logs to.</p></li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">Port</span></code> to 9003.</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Apply</span> <span class="pre">Changes</span></code> button.</p></li>
+</ol>
+<p>While in UniFI, check your UniFi firewall rules and update if necessary:</p>
+<ol class="arabic simple">
+<li><p>In the UniFi web interface, navigate to Settings –&gt; Policy Engine.</p></li>
+<li><p>For any firewall rule that you want to see in Security Onion, make sure that <code class="docutils literal notranslate"><span class="pre">Syslog</span> <span class="pre">Logging</span></code> is enabled and the description starts with either <code class="docutils literal notranslate"><span class="pre">Block</span></code> or <code class="docutils literal notranslate"><span class="pre">Allow</span></code>.</p></li>
+</ol>
+</section>
+<section id="allow-unifi-logs-through-security-onion-firewall">
+<h2>Allow UniFi logs through Security Onion firewall<a class="headerlink" href="#allow-unifi-logs-through-security-onion-firewall" title="Link to this heading"></a></h2>
+<p>Finally, allow the traffic from the UniFi device through the Security Onion firewall to the Elastic integration ports.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following instructions assume that this is the first firewall change you have made and therefore refer to <code class="docutils literal notranslate"><span class="pre">customhostgroup0</span></code> and <code class="docutils literal notranslate"><span class="pre">customportgroup0</span></code>. If those have already been used, you can select the next available hostgroup and portgroup.</p>
+</div>
+<ol class="arabic simple">
+<li><p>Navigate to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration.</p></li>
+<li><p>At the top of the page, click the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu and then enable the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">advanced</span> <span class="pre">settings</span></code> option.</p></li>
+<li><p>On the left side, go to <code class="docutils literal notranslate"><span class="pre">firewall</span></code>, select <code class="docutils literal notranslate"><span class="pre">hostgroups</span></code>, and click the <code class="docutils literal notranslate"><span class="pre">customhostgroup0</span></code> group. On the right side, enter the IP address of the UniFi host and click the checkmark to save.</p></li>
+<li><p>On the left side, go to <code class="docutils literal notranslate"><span class="pre">firewall</span></code>, select <code class="docutils literal notranslate"><span class="pre">portgroups</span></code>, select the <code class="docutils literal notranslate"><span class="pre">customportgroup0</span></code> group, and then click <code class="docutils literal notranslate"><span class="pre">udp</span></code>. On the right side, enter <code class="docutils literal notranslate"><span class="pre">9001</span></code> and <code class="docutils literal notranslate"><span class="pre">9003</span></code> and then click the checkmark to save.</p></li>
+<li><p>On the left side, go to <code class="docutils literal notranslate"><span class="pre">firewall</span></code>, select <code class="docutils literal notranslate"><span class="pre">role</span></code>, and then select the node type that will receive the UniFi logs. Then drill into <code class="docutils literal notranslate"><span class="pre">chain</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">INPUT</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">hostgroups</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">customhostgroup0</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">portgroups</span></code>. On the right side, enter <code class="docutils literal notranslate"><span class="pre">customportgroup0</span></code> and click the checkmark to save.</p></li>
+<li><p>If you would like to apply the rules immediately, click the <code class="docutils literal notranslate"><span class="pre">SYNCHRONIZE</span> <span class="pre">GRID</span></code> button under the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu at the top of the page.</p></li>
+</ol>
+</section>
+<section id="unifi-dashboards">
+<h2>UniFi dashboards<a class="headerlink" href="#unifi-dashboards" title="Link to this heading"></a></h2>
+<p>Once all configuration is complete, you should be able to go to <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a> and select one of the <code class="docutils literal notranslate"><span class="pre">Firewall</span> <span class="pre">-</span> <span class="pre">UniFi</span></code> dashboards to see your UniFi logs.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="iptables.html" class="btn btn-neutral float-left" title="iptables" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pfsense.html" class="btn btn-neutral float-right" title="pfSense" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

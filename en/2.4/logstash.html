@@ -1,0 +1,329 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logstash &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Redis" href="redis.html" />
+    <link rel="prev" title="Ingest" href="ingest.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="logs.html">Logs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ingest.html">Ingest</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Logstash</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ls-pipeline-batch-size">ls_pipeline_batch_size</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ls-pipeline-workers">ls_pipeline_workers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lsheap">lsheap</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#parsing">Parsing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#forwarding-events-to-an-external-destination">Forwarding Events to an External Destination</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#original-event-forwarding">Original Event Forwarding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modified-event-forwarding">Modified Event Forwarding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#queue">Queue</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#memory-backed">Memory-backed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#persistent">Persistent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#queue-max-bytes">Queue Max Bytes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dead-letter-queue">Dead Letter Queue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#redis">Redis</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#diagnostic-logging">Diagnostic Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#errors">Errors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#read-only">Read-Only</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="redis.html">Redis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elasticsearch.html">Elasticsearch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastalert.html">ElastAlert 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data-fields.html">Data Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alert-data-fields.html">Alert Data Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastalert-fields.html">Elastalert Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zeek-fields.html">Zeek Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="community-id.html">Community ID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="soc-logs.html">SOC Logs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="logs.html">Logs</a></li>
+      <li class="breadcrumb-item active">Logstash</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/logstash.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="logstash">
+<span id="id1"></span><h1>Logstash<a class="headerlink" href="#logstash" title="Link to this heading"></a></h1>
+<p>From <a class="reference external" href="https://www.elastic.co/products/logstash">https://www.elastic.co/products/logstash</a> :</p>
+<blockquote>
+<div><p>Logstash is a free and open server-side data processing pipeline that ingests data from a multitude of sources, transforms it, and then sends it to your favorite “stash.”</p>
+</div></blockquote>
+<p>When Security Onion is running in Standalone mode or in a full distributed deployment, Logstash transports unparsed logs to <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> which then parses and stores those logs. It’s important to note that Logstash does NOT run when Security Onion is configured for Import or Eval mode. You can read more about that in the <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">Architecture</span></a> section.</p>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>You can configure Logstash by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; logstash.</p>
+<a class="reference external image-reference" href="_images/config-item-logstash.png"><img alt="_images/config-item-logstash.png" src="_images/config-item-logstash.png" />
+</a>
+<section id="ls-pipeline-batch-size">
+<h3>ls_pipeline_batch_size<a class="headerlink" href="#ls-pipeline-batch-size" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>The maximum number of events an individual worker thread will collect from inputs before attempting to execute its filters and outputs. Larger batch sizes are generally more efficient, but come at the cost of increased memory overhead. This is set to 125 by default.</p>
+</div></blockquote>
+</section>
+<section id="ls-pipeline-workers">
+<h3>ls_pipeline_workers<a class="headerlink" href="#ls-pipeline-workers" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>The number of workers that will, in parallel, execute the filter and output stages of the pipeline. If you find that events are backing up, or that the CPU is not saturated, consider increasing this number to better utilize machine processing power. By default this value is set to the number of cores in the system.</p>
+</div></blockquote>
+<p>For more information, please see <a class="reference external" href="https://www.elastic.co/guide/en/logstash/current/logstash-settings-file.html">https://www.elastic.co/guide/en/logstash/current/logstash-settings-file.html</a>.</p>
+</section>
+<section id="lsheap">
+<h3>lsheap<a class="headerlink" href="#lsheap" title="Link to this heading"></a></h3>
+<p>If total available memory is 8GB or greater, Setup sets the Logstash heap size to 25% of available memory, but no greater than 4GB.</p>
+<p>For more information, please see <a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html#compressed_oops">https://www.elastic.co/guide/en/elasticsearch/guide/current/heap-sizing.html#compressed_oops</a>.</p>
+<p>You may need to adjust the value depending on your system’s performance. The changes will be applied the next time the minion checks in. You can force it to happen immediately by running <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">salt-call</span> <span class="pre">state.apply</span> <span class="pre">logstash</span></code> on the actual node or by running <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">salt</span> <span class="pre">$SENSORNAME_$ROLE</span> <span class="pre">state.apply</span> <span class="pre">logstash</span></code> on the manager node.</p>
+</section>
+</section>
+<section id="parsing">
+<h2>Parsing<a class="headerlink" href="#parsing" title="Link to this heading"></a></h2>
+<p>Logstash does not parse logs in Security Onion, so modifying existing parsers or adding new parsers should be done via <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>.</p>
+</section>
+<section id="forwarding-events-to-an-external-destination">
+<h2>Forwarding Events to an External Destination<a class="headerlink" href="#forwarding-events-to-an-external-destination" title="Link to this heading"></a></h2>
+<p>Please keep in mind that we don’t provide free support for third party systems, so this section will be just a brief introduction to how you would send syslog to external syslog collectors. If you need commercial support, please see <a class="reference external" href="https://www.securityonionsolutions.com">https://www.securityonionsolutions.com</a>.</p>
+</section>
+<section id="original-event-forwarding">
+<h2>Original Event Forwarding<a class="headerlink" href="#original-event-forwarding" title="Link to this heading"></a></h2>
+<p>To forward events to an external destination with minimal modifications to the original event, create a new custom configuration file on the manager in <code class="docutils literal notranslate"><span class="pre">/opt/so/saltstack/local/salt/logstash/pipelines/config/custom/</span></code> for the applicable output. We recommend using either the <code class="docutils literal notranslate"><span class="pre">http</span></code>, <code class="docutils literal notranslate"><span class="pre">tcp</span></code>, <code class="docutils literal notranslate"><span class="pre">udp</span></code>, or <code class="docutils literal notranslate"><span class="pre">syslog</span></code> output plugin. At this time we only support the default bundled Logstash output plugins.</p>
+<p>For example, to forward all <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> events from the <code class="docutils literal notranslate"><span class="pre">dns</span></code> dataset, we could use a configuration like the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">[</span><span class="n">event</span><span class="p">][</span><span class="n">module</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;zeek&quot;</span> <span class="ow">and</span> <span class="p">[</span><span class="n">pipeline</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;dns&quot;</span> <span class="p">{</span>
+    <span class="n">udp</span> <span class="p">{</span>
+      <span class="nb">id</span> <span class="o">=&gt;</span> <span class="s2">&quot;cloned_events_out&quot;</span>
+      <span class="n">host</span> <span class="o">=&gt;</span> <span class="s2">&quot;192.168.x.x&quot;</span>
+      <span class="n">port</span> <span class="o">=&gt;</span> <span class="mi">1001</span>
+      <span class="n">codec</span> <span class="o">=&gt;</span> <span class="s2">&quot;json_lines&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When using the <code class="docutils literal notranslate"><span class="pre">tcp</span></code> output plugin, if the destination host or port is down, it will cause the Logstash pipeline to be blocked.  To avoid this, try using the other output options or consider having forwarded logs use a separate Logstash pipeline.</p>
+<p>Also keep in mind that when forwarding logs from the manager, some fields may not be set as expected since the events have not yet been processed by the Ingest Node configuration.</p>
+</div>
+<p>In <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a>, navigate to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration. At the top of the page, click the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu and then enable the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">advanced</span> <span class="pre">settings</span></code> option. Then navigate to logstash –&gt; defined_pipelines –&gt; manager and append the name of your newly created file to the list of config files used for the <code class="docutils literal notranslate"><span class="pre">manager</span></code> pipeline:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">custom</span><span class="o">/</span><span class="n">myfile</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>The configuration will be applied at the next 15-minute interval or you can apply it immediately by clicking the <code class="docutils literal notranslate"><span class="pre">SYNCHRONIZE</span> <span class="pre">GRID</span></code> button under the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu.</p>
+<p>You can monitor events flowing through the output by running the following command on the manager:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">s</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">9600</span><span class="o">/</span><span class="n">_node</span><span class="o">/</span><span class="n">stats</span> <span class="o">|</span> <span class="n">jq</span> <span class="o">.</span><span class="n">pipelines</span><span class="o">.</span><span class="n">manager</span>
+</pre></div>
+</div>
+</section>
+<section id="modified-event-forwarding">
+<h2>Modified Event Forwarding<a class="headerlink" href="#modified-event-forwarding" title="Link to this heading"></a></h2>
+<p>To forward events to an external destination AFTER they have traversed the Logstash pipelines (NOT ingest node pipelines), perform the same steps as above but instead of adding the reference for your Logstash output to the <code class="docutils literal notranslate"><span class="pre">manager</span></code> pipeline add it to <code class="docutils literal notranslate"><span class="pre">search</span></code> pipeline instead. The configuration will be applied at the next 15-minute interval or you can apply it immediately by clicking the <code class="docutils literal notranslate"><span class="pre">SYNCHRONIZE</span> <span class="pre">GRID</span></code> button under the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu.</p>
+<p>You can monitor events flowing through the output by running the following command on the search nodes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">s</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">9600</span><span class="o">/</span><span class="n">_node</span><span class="o">/</span><span class="n">stats</span> <span class="o">|</span> <span class="n">jq</span> <span class="o">.</span><span class="n">pipelines</span><span class="o">.</span><span class="n">search</span>
+</pre></div>
+</div>
+<p>Please keep in mind that events will be forwarded from all applicable search nodes, as opposed to just the manager.</p>
+</section>
+<section id="queue">
+<h2>Queue<a class="headerlink" href="#queue" title="Link to this heading"></a></h2>
+<section id="memory-backed">
+<h3>Memory-backed<a class="headerlink" href="#memory-backed" title="Link to this heading"></a></h3>
+<p>From <a class="reference external" href="https://www.elastic.co/guide/en/logstash/current/persistent-queues.html">https://www.elastic.co/guide/en/logstash/current/persistent-queues.html</a>:</p>
+<blockquote>
+<div><p>By default, Logstash uses in-memory bounded queues between pipeline stages (inputs → pipeline workers) to buffer events. The size of these in-memory queues is fixed and not configurable.</p>
+</div></blockquote>
+</section>
+<section id="persistent">
+<h3>Persistent<a class="headerlink" href="#persistent" title="Link to this heading"></a></h3>
+<p>If you experience adverse effects using the default memory-backed queue, you might consider a disk-based persistent queue. From <a class="reference external" href="https://www.elastic.co/guide/en/logstash/current/persistent-queues.html">https://www.elastic.co/guide/en/logstash/current/persistent-queues.html</a>:</p>
+<blockquote>
+<div><p>In order to protect against data loss during abnormal termination, Logstash has a persistent queue feature which will store the message queue on disk. Persistent queues provide durability of data within Logstash.</p>
+</div></blockquote>
+</section>
+<section id="queue-max-bytes">
+<h3>Queue Max Bytes<a class="headerlink" href="#queue-max-bytes" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>The total capacity of the queue in number of bytes. Make sure the capacity of your disk drive is greater than the value you specify here. If both queue.max_events and queue.max_bytes are specified, Logstash uses whichever criteria is reached first.</p>
+</div></blockquote>
+</section>
+<section id="dead-letter-queue">
+<h3>Dead Letter Queue<a class="headerlink" href="#dead-letter-queue" title="Link to this heading"></a></h3>
+<p>If you want to check for dropped events, you can enable the dead letter queue. This will write all records that are not able to make it into <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> into a sequentially-numbered file (for each start/restart of Logstash).</p>
+<p>This can be achieved by adding the following to the Logstash configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dead_letter_queue</span><span class="o">.</span><span class="n">enable</span><span class="p">:</span> <span class="n">true</span>
+</pre></div>
+</div>
+<p>and restarting Logstash:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">logstash</span><span class="o">-</span><span class="n">restart</span>
+</pre></div>
+</div>
+<p>The dead letter queue files are located in <code class="docutils literal notranslate"><span class="pre">/nsm/logstash/dead_letter_queue/main/</span></code>.</p>
+<div class="line-block">
+<div class="line">More information:</div>
+<div class="line"><a class="reference external" href="https://www.elastic.co/guide/en/logstash/current/dead-letter-queues.html">https://www.elastic.co/guide/en/logstash/current/dead-letter-queues.html</a></div>
+</div>
+</section>
+<section id="redis">
+<h3>Redis<a class="headerlink" href="#redis" title="Link to this heading"></a></h3>
+<p>When using search nodes, Logstash on the manager node outputs to <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a> (which also runs on the manager node). <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a> queues events from the Logstash output (on the manager node) and the Logstash input on the search node(s) pull(s) from <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a>. If you notice new events aren’t making it into <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>, you may want to first check Logstash on the manager node and then the <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a> queue.</p>
+</section>
+</section>
+<section id="diagnostic-logging">
+<h2>Diagnostic Logging<a class="headerlink" href="#diagnostic-logging" title="Link to this heading"></a></h2>
+<p>The Logstash log file is located at <code class="docutils literal notranslate"><span class="pre">/opt/so/log/logstash/logstash.log</span></code>. Log file settings can be adjusted in <code class="docutils literal notranslate"><span class="pre">/opt/so/conf/logstash/etc/log4j2.properties</span></code>. By default, logs are set to rollover daily and purged after 7 days. Depending on what you’re looking for, you may also need to look at the <a class="reference internal" href="docker.html#docker"><span class="std std-ref">Docker</span></a> logs for the container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">logs</span> <span class="n">so</span><span class="o">-</span><span class="n">logstash</span>
+</pre></div>
+</div>
+</section>
+<section id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="Link to this heading"></a></h2>
+<section id="read-only">
+<h3>Read-Only<a class="headerlink" href="#read-only" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">INFO</span> <span class="p">][</span><span class="n">logstash</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">elasticsearch</span><span class="p">]</span> <span class="n">retrying</span> <span class="n">failed</span> <span class="n">action</span> <span class="k">with</span> <span class="n">response</span> <span class="n">code</span><span class="p">:</span> <span class="mi">403</span> <span class="p">({</span><span class="s2">&quot;type&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;cluster_block_exception&quot;</span><span class="p">,</span> <span class="s2">&quot;reason&quot;</span><span class="o">=&gt;</span><span class="s2">&quot;blocked by: [FORBIDDEN/12/index read-only / allow delete (api)];&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>This error is usually caused by the <code class="docutils literal notranslate"><span class="pre">cluster.routing.allocation.disk.watermark</span></code> (<code class="docutils literal notranslate"><span class="pre">low</span></code>,<code class="docutils literal notranslate"><span class="pre">high</span></code>) being exceeded.</p>
+<p>You may want to check <code class="docutils literal notranslate"><span class="pre">/opt/so/log/elasticsearch/&lt;hostname&gt;.log</span></code> to see specifically which indices have been marked as read-only.</p>
+<p>Additionally, you can run the following command to allow writing to the affected indices:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">k</span> <span class="o">-</span><span class="n">XPUT</span> <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">9200</span><span class="o">/&lt;</span><span class="n">your_index</span><span class="o">&gt;/</span><span class="n">_settings</span> <span class="o">-</span><span class="n">d</span><span class="s1">&#39;{ &quot;index.blocks.read_only&quot;: false }&#39;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="more-information">
+<h2>More Information<a class="headerlink" href="#more-information" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information about Logstash, please see <a class="reference external" href="https://www.elastic.co/products/logstash">https://www.elastic.co/products/logstash</a>.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ingest.html" class="btn btn-neutral float-left" title="Ingest" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="redis.html" class="btn btn-neutral float-right" title="Redis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OPNsense &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Host Visibility" href="host.html" />
+    <link rel="prev" title="pfSense" href="pfsense.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="netflow.html">NetFlow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cef.html">CEF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iptables.html">iptables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unifi.html">UniFi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pfsense.html">pfSense</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">OPNsense</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sending-opnsense-firewall-logs-to-security-onion">Sending OPNsense Firewall Logs to Security Onion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sending-opnsense-netflow-data-to-security-onion">Sending OPNsense NetFlow data to Security Onion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integrating-opnsense-suricata-into-security-onion">Integrating OPNsense Suricata into Security Onion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#share-nids-rules">Share NIDS Rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-security-onion-ca">Import Security Onion CA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up-the-suricata-rules-repository">Setting Up the Suricata Rules Repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scheduling-rule-updates">Scheduling Rule Updates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="additional-network.html">Additional Network Visibility</a></li>
+      <li class="breadcrumb-item active">OPNsense</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/opnsense.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="opnsense">
+<span id="id1"></span><h1>OPNsense<a class="headerlink" href="#opnsense" title="Link to this heading"></a></h1>
+<p>OPNsense is a free and open firewall that can be found at <a class="reference external" href="https://opnsense.org/">https://opnsense.org/</a>. Similar to <a class="reference internal" href="pfsense.html#pfsense"><span class="std std-ref">pfSense</span></a>, there are a few different ways in which you can integrate OPNsense into your Security Onion deployment. First, you can configure OPNsense to send firewall logs to your Security Onion deployment. You can also configure OPNsense to send <a class="reference internal" href="netflow.html#netflow"><span class="std std-ref">NetFlow</span></a> data to your Security Onion deployment. Finally, a third option is to integrate OPNsense’s Suricata into Security Onion so that it pulls <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> rules from your Security Onion deployment and then sends those Suricata alerts to Security Onion. All three options are detailed below.</p>
+<section id="sending-opnsense-firewall-logs-to-security-onion">
+<h2>Sending OPNsense Firewall Logs to Security Onion<a class="headerlink" href="#sending-opnsense-firewall-logs-to-security-onion" title="Link to this heading"></a></h2>
+<p>Centralize your logging by sending OPNsense firewall logs to your grid.</p>
+<p><strong>Steps:</strong></p>
+<ol class="arabic simple">
+<li><p>Navigate to <strong>System</strong> → <strong>Settings</strong> → <strong>Logging</strong> in the OPNsense GUI.</p></li>
+<li><p>Click on the <strong>Remote Logging</strong> tab.</p></li>
+<li><p>Click the <strong>+</strong> button to add a new remote logging destination.</p></li>
+<li><p><strong>Configure Remote Logging:</strong></p>
+<ul class="simple">
+<li><p><strong>Transport</strong>: Select <strong>TCP</strong>.</p></li>
+<li><p><strong>Application Levels</strong>: Leave at default to send all logs or specify as needed.</p></li>
+<li><p><strong>Facilities</strong>: Leave at default to include all facilities or specify as needed.</p></li>
+<li><p><strong>Hostname/IP Address</strong>: Enter the IP address of the grid system where you set up the logging input.</p></li>
+<li><p><strong>Port</strong>: Enter the port number configured on the grid system.</p></li>
+<li><p><strong>Format</strong>: Choose the appropriate format (e.g., Syslog).</p></li>
+</ul>
+</li>
+<li><p>Click <strong>Save</strong> to apply the settings.</p></li>
+</ol>
+</section>
+<section id="sending-opnsense-netflow-data-to-security-onion">
+<h2>Sending OPNsense NetFlow data to Security Onion<a class="headerlink" href="#sending-opnsense-netflow-data-to-security-onion" title="Link to this heading"></a></h2>
+<p>To collect network flow data (similar to <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> connection logs), configure NetFlow on OPNsense to send data to your grid.</p>
+<p><strong>Steps:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Prepare Your Grid to Receive NetFlow Data:</strong></p>
+<ul class="simple">
+<li><p>Refer to the <a class="reference internal" href="netflow.html#netflow"><span class="std std-ref">NetFlow</span></a> section to set up your grid for receiving NetFlow data.</p></li>
+</ul>
+</li>
+<li><p><strong>Configure NetFlow on OPNsense:</strong></p>
+<ul class="simple">
+<li><p>Navigate to <strong>Reporting</strong> → <strong>NetFlow</strong> in the OPNsense GUI.</p></li>
+<li><p>Under <strong>Capture</strong>, select the internal interfaces you wish to monitor.</p></li>
+<li><p>Also, select your <strong>WAN</strong> interface to monitor external traffic.</p></li>
+<li><p>Under <strong>Destinations</strong>, add a new destination:</p>
+<ul>
+<li><p><strong>Hostname/IP Address</strong>: Enter the IP address of the grid node configured to accept NetFlow data.</p></li>
+<li><p><strong>Port</strong>: Enter the port number you set up on the grid node.</p></li>
+<li><p><strong>Format</strong>: Choose the appropriate NetFlow version (e.g., NetFlow v5 or v9).</p></li>
+</ul>
+</li>
+<li><p>Click <strong>Apply</strong> to save the settings.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="integrating-opnsense-suricata-into-security-onion">
+<h2>Integrating OPNsense Suricata into Security Onion<a class="headerlink" href="#integrating-opnsense-suricata-into-security-onion" title="Link to this heading"></a></h2>
+<p>You can integrate your OPNsense firewall with your Security Onion grid system to utilize it as a makeshift sensor, allowing management of Suricata <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> rules through <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a>. This is particularly useful for organizations that find it challenging to install a network TAP on their egress connection.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When OPNsense downloads rules from Security Onion, it can only enable and disable rules. Threshold settings are ignored.</p>
+</div>
+<section id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Security Onion Manager Access</strong>: Access to the manager of your grid.</p></li>
+<li><p><strong>Administrative Rights</strong>: Ability to modify settings in the OPNsense GUI.</p></li>
+<li><p><strong>SSH Access</strong>: You must have SSH access to your OPNsense firewall.</p></li>
+</ul>
+</section>
+<section id="share-nids-rules">
+<h3>Share NIDS Rules<a class="headerlink" href="#share-nids-rules" title="Link to this heading"></a></h3>
+<p>The <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a> module can now manage <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> rules for external Suricata instances. Please refer to the <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> section for detailed instructions on how to set this up.</p>
+</section>
+<section id="import-security-onion-ca">
+<h3>Import Security Onion CA<a class="headerlink" href="#import-security-onion-ca" title="Link to this heading"></a></h3>
+<p>To establish a secure connection between your OPNsense firewall and the grid manager, your firewall will need to trust the grid’s Certificate Authority (CA) certificate.</p>
+<p><strong>Steps:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Copy the Grid CA Certificate:</strong></p>
+<ul class="simple">
+<li><p>SSH into your grid manager.</p></li>
+<li><p>Run the command <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/etc/pki/ca.crt</span></code> to display the CA certificate.</p></li>
+<li><p>Copy the entire output of that command.</p></li>
+</ul>
+</li>
+<li><p><strong>Import the CA Certificate into OPNsense:</strong></p>
+<ul class="simple">
+<li><p>Log into the OPNsense GUI.</p></li>
+<li><p>Navigate to <strong>System</strong> → <strong>Trust</strong> → <strong>Authorities</strong>.</p></li>
+<li><p>Click the <strong>+</strong> button to add a new certificate authority.</p></li>
+<li><p>Set <strong>Method</strong> to <strong>Import an existing Certificate Authority</strong>.</p></li>
+<li><p><strong>Descriptive Name</strong>: Enter a name like “Security Onion CA”.</p></li>
+<li><p><strong>Certificate Data</strong>: Paste the copied CA certificate content.</p></li>
+<li><p>Click <strong>Save</strong>.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="setting-up-the-suricata-rules-repository">
+<h3>Setting Up the Suricata Rules Repository<a class="headerlink" href="#setting-up-the-suricata-rules-repository" title="Link to this heading"></a></h3>
+<p>Since OPNsense doesn’t allow enabling third-party repositories through the GUI, you’ll need to modify the configuration manually.</p>
+<p><strong>Steps:</strong></p>
+<ol class="arabic">
+<li><p><strong>Remove Existing Rule Repositories:</strong></p>
+<ul>
+<li><p>SSH into your OPNsense firewall and run the following:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>-rf<span class="w"> </span>/usr/local/opnsense/scripts/suricata/metadata/rules/*
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Create a New Repository File:</strong></p>
+<ul>
+<li><p>Create and edit the <code class="docutils literal notranslate"><span class="pre">onion.xml</span></code> file:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>vi<span class="w"> </span>/usr/local/opnsense/scripts/suricata/metadata/rules/onion.xml
+</pre></div>
+</div>
+</li>
+<li><p>Paste the following content into the file, replacing <code class="docutils literal notranslate"><span class="pre">YOURMANAGER</span></code> with the hostname or IP address of your grid manager:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ruleset</span><span class="w"> </span><span class="na">documentation_url=</span><span class="s">&quot;http://docs.opnsense.org/&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;location</span><span class="w"> </span><span class="na">url=</span><span class="s">&quot;https://YOURMANAGER:7789/&quot;</span><span class="w"> </span><span class="na">prefix=</span><span class="s">&quot;SecurityOnion&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;files&gt;</span>
+<span class="w">        </span><span class="nt">&lt;file</span><span class="w"> </span><span class="na">description=</span><span class="s">&quot;SecurityOnion rules&quot;</span><span class="nt">&gt;</span>all.rules<span class="nt">&lt;/file&gt;</span>
+<span class="w">        </span><span class="nt">&lt;file</span><span class="w"> </span><span class="na">description=</span><span class="s">&quot;SecurityOnion&quot;</span><span class="w"> </span><span class="na">url=</span><span class="s">&quot;inline::all.rules&quot;</span><span class="nt">&gt;</span>all.rules<span class="nt">&lt;/file&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/files&gt;</span>
+<span class="nt">&lt;/ruleset&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Save and exit the editor.</p></li>
+</ul>
+</li>
+<li><p><strong>Refresh Rule Sets in OPNsense:</strong></p>
+<ul class="simple">
+<li><p>Navigate to <strong>Services</strong> → <strong>Intrusion Detection</strong> → <strong>Administration</strong> → <strong>Download</strong> in the OPNsense GUI.</p></li>
+<li><p>You should see <strong>Security Onion</strong> listed as a ruleset.</p></li>
+<li><p>Select <strong>Security Onion</strong> and click <strong>Download &amp; Update Rules</strong>.</p></li>
+<li><p>Once updated, the rules will appear under the <strong>Rules</strong> tab.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="scheduling-rule-updates">
+<h3>Scheduling Rule Updates<a class="headerlink" href="#scheduling-rule-updates" title="Link to this heading"></a></h3>
+<p>To keep your Suricata rules up to date, schedule regular updates.</p>
+<p><strong>Steps:</strong></p>
+<ol class="arabic simple">
+<li><p>Navigate to <strong>Services</strong> → <strong>Intrusion Detection</strong> → <strong>Administration</strong> → <strong>Schedule</strong>.</p></li>
+<li><p>Click the <strong>+</strong> button to add a new schedule.</p></li>
+<li><p><strong>Configure the Schedule:</strong></p>
+<ul class="simple">
+<li><p><strong>Description</strong>: Enter a name like “Suricata Rule Update”.</p></li>
+<li><p><strong>Cron Expression</strong>: Set the frequency to every 15 minutes.</p></li>
+<li><p><strong>Type</strong>: Choose <strong>Update and reload intrusion detection rules</strong>.</p></li>
+</ul>
+</li>
+<li><p>Click <strong>Save</strong>.</p></li>
+</ol>
+<p>OPNsense will now automatically download and reload the rules every 15 minutes.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pfsense.html" class="btn btn-neutral float-left" title="pfSense" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="host.html" class="btn btn-neutral float-right" title="Host Visibility" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

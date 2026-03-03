@@ -1,0 +1,304 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Best Practices" href="best-practices.html" />
+    <link rel="prev" title="First Time Users" href="first-time-users.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use-cases.html">Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html">Hardware Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download.html">Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmware.html">VMware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtualbox.html">VirtualBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxmox.html">Proxmox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble-booting.html">Booting Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airgap.html">Airgap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-amazon.html">Amazon Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-azure.html">Azure Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-google.html">Google Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-installation.html">After Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Getting Started</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/getting-started.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started">
+<span id="id1"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
+<p>If you’re ready to get started with Security Onion, you may have questions like:</p>
+<p><strong>What are the recommended best practices?</strong></p>
+<p>See the <a class="reference internal" href="best-practices.html#best-practices"><span class="std std-ref">Best Practices</span></a> section.</p>
+<p><strong>How many machines do I need?</strong></p>
+<p>Depending on what you’re trying to do, you may need anywhere from one machine to thousands of machines. The <a class="reference internal" href="use-cases.html#use-cases"><span class="std std-ref">Use Cases</span></a> and <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">Architecture</span></a> sections will help you decide.</p>
+<p><strong>What kind of hardware does each of those machines need?</strong></p>
+<p>This could be anything from a small virtual machine to a large rack mount server with lots of CPU cores, lots of RAM, and lots of storage. The <a class="reference internal" href="hardware.html#hardware"><span class="std std-ref">Hardware Requirements</span></a> section provides further details.</p>
+<p><strong>If I just want to try Security Onion in a virtual machine, how do I create a virtual machine?</strong></p>
+<p>See the <a class="reference internal" href="vmware.html#vmware"><span class="std std-ref">VMware</span></a>, <a class="reference internal" href="virtualbox.html#virtualbox"><span class="std std-ref">VirtualBox</span></a>, and <a class="reference internal" href="proxmox.html#proxmox"><span class="std std-ref">Proxmox</span></a> sections.</p>
+<p><strong>How do I deploy Security Onion in the cloud?</strong></p>
+<p>See the <a class="reference internal" href="cloud-amazon.html#cloud-amazon"><span class="std std-ref">Amazon Cloud Image</span></a>, <a class="reference internal" href="cloud-azure.html#cloud-azure"><span class="std std-ref">Azure Cloud Image</span></a>, and <a class="reference internal" href="cloud-google.html#cloud-google"><span class="std std-ref">Google Cloud Image</span></a> sections.</p>
+<p><strong>What if I have trouble booting the ISO image?</strong></p>
+<p>Check out the <a class="reference internal" href="trouble-booting.html#trouble-booting"><span class="std std-ref">Booting Issues</span></a> section.</p>
+<p><strong>What if I’m on an airgap network?</strong></p>
+<p>Review the <a class="reference internal" href="airgap.html#airgap"><span class="std std-ref">Airgap</span></a> section.</p>
+<p><strong>Once I’ve booted the ISO image, how do I install it?</strong></p>
+<p>See the <a class="reference internal" href="installation.html#installation"><span class="std std-ref">Installation</span></a> section.</p>
+<p><strong>After installation, how do I configure Security Onion?</strong></p>
+<p>The <a class="reference internal" href="configuration.html#configuration"><span class="std std-ref">Configuration</span></a> section covers many different use cases.</p>
+<p><strong>Is there anything I need to do after configuration?</strong></p>
+<p>See the <a class="reference internal" href="post-installation.html#post-installation"><span class="std std-ref">After Installation</span></a> section.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="best-practices.html">Best Practices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#avoid-third-party-software-and-modifications">Avoid Third Party Software and Modifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html#stay-up-to-date">Stay Up To Date</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="use-cases.html">Use Cases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="use-cases.html#minimal-import">Minimal Import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use-cases.html#minimal-network-visibility">Minimal Network Visibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use-cases.html#minimal-network-visibility-with-opnsense-firewall-instead-of-tap-or-span">Minimal Network Visibility with OPNsense Firewall instead of TAP or SPAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use-cases.html#minimal-netflow-collector">Minimal Netflow Collector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use-cases.html#minimal-log-management">Minimal Log Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use-cases.html#minimal-network-and-host-visibility">Minimal Network and Host Visibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use-cases.html#minimal-enterprise-deployment">Minimal Enterprise Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use-cases.html#more-scalable-enterprise-deployment">More Scalable Enterprise Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use-cases.html#comprehensive-enterprise-deployment">Comprehensive Enterprise Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#import">Import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#evaluation">Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#standalone">Standalone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#desktop">Desktop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#distributed">Distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html#node-types">Node Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hardware.html">Hardware Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html#cpu-architecture">CPU Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html#minimum-specs">Minimum Specs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html#import">Import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html#eval">Eval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html#production-deployments">Production Deployments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html#storage">Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html#nic">NIC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html#ups">UPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html#elastic-stack">Elastic Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html#standalone-deployments">Standalone Deployments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html#manager-node-with-local-log-storage-and-search">Manager node with local log storage and search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html#manager-node-with-separate-search-nodes">Manager node with separate search nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html#search-node">Search Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html#sensor-node">Sensor Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html#heavy-node-sensor-with-elasticsearch-components">Heavy Node (Sensor with Elasticsearch components)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html#receiver-node">Receiver Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html#intrusion-detection-honeypot-idh-node">Intrusion Detection Honeypot (IDH) Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html#sensor-hardware-considerations">Sensor Hardware Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="download.html">Download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vmware.html">VMware</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vmware.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmware.html#workstation-pro">Workstation Pro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmware.html#fusion">Fusion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmware.html#esxi">ESXi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmware.html#vmware-tools">VMware Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="virtualbox.html">VirtualBox</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="virtualbox.html#creating-vm">Creating VM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtualbox.html#guest-additions">Guest Additions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="proxmox.html">Proxmox</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="proxmox.html#cpu">CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxmox.html#display">Display</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxmox.html#nic">NIC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="trouble-booting.html">Booting Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="airgap.html">Airgap</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="airgap.html#rule-updates">Rule Updates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud-amazon.html">Amazon Cloud Image</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cloud-amazon.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-amazon.html#create-monitoring-interface">Create Monitoring Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-amazon.html#create-security-onion-instances">Create Security Onion Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-amazon.html#manager-setup">Manager Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-amazon.html#search-node-setup">Search Node Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-amazon.html#aws-sensor-setup">AWS Sensor Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-amazon.html#remote-sensor-setup">Remote Sensor Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-amazon.html#aws-traffic-mirroring">AWS Traffic Mirroring</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cloud-azure.html">Azure Cloud Image</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cloud-azure.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-azure.html#create-monitoring-interface">Create Monitoring Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-azure.html#setup-virtual-network-tap">Setup Virtual Network TAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-azure.html#create-security-onion-instances">Create Security Onion Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-azure.html#manager-setup">Manager Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-azure.html#search-node-setup">Search Node Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-azure.html#remote-sensor-setup">Remote Sensor Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-azure.html#azure-sensor-setup">Azure Sensor Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cloud-google.html">Google Cloud Image</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cloud-google.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-google.html#setup-traffic-mirroring">Setup Traffic Mirroring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-google.html#create-security-onion-instances">Create Security Onion Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-google.html#manager-setup">Manager Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-google.html#search-node-setup">Search Node Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-google.html#gcp-sensor-setup">GCP Sensor Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-google.html#remote-sensor-setup">Remote Sensor Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-google.html#verifying-traffic-mirroring">Verifying Traffic Mirroring</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#import">Import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#evaluation">Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#production-server-standalone">Production Server - Standalone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#production-server-distributed-deployment">Production Server - Distributed Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="post-installation.html">After Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="post-installation.html#adjust-firewall-rules">Adjust firewall rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-installation.html#services">Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-installation.html#ssh">SSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-installation.html#data">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-installation.html#other">Other</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="first-time-users.html" class="btn btn-neutral float-left" title="First Time Users" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="best-practices.html" class="btn btn-neutral float-right" title="Best Practices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

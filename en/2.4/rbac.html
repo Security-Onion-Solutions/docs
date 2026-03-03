@@ -1,0 +1,784 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Role-Based Access Control (RBAC) &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Kratos" href="kratos.html" />
+    <link rel="prev" title="Disabling Accounts" href="disabling-accounts.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="accounts.html">Accounts</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="passwords.html">Passwords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mfa.html">MFA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding-accounts.html">Adding Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="listing-accounts.html">Listing Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="disabling-accounts.html">Disabling Accounts</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Role-Based Access Control (RBAC)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#system-roles">System Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#superusers">Superusers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-user-with-a-specific-role">Adding a User With a Specific Role</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modifying-user-roles">Modifying User Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default-role-assignment">Default Role Assignment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-custom-roles">Creating Custom Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#defining-security-onion-roles">Defining Security Onion Roles</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#security-onion-privileges-and-intermediate-roles">Security Onion Privileges and Intermediate Roles</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kratos.html">Kratos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="accounts.html">Accounts</a></li>
+      <li class="breadcrumb-item active">Role-Based Access Control (RBAC)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/rbac.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="role-based-access-control-rbac">
+<span id="rbac"></span><h1>Role-Based Access Control (RBAC)<a class="headerlink" href="#role-based-access-control-rbac" title="Link to this heading"></a></h1>
+<p>The ability to restrict or grant specific privileges to a subset of users is covered by role-based access control, or “RBAC” for short. RBAC is an authorization technique in which users are assigned one of a small set of roles, and then the roles are associated to many low-level privileges. This provides the ability to build software with fine-grained access control, but without the need to maintain complex associations of users to large numbers of privileges. Users are traditionally assigned a single role, one which correlates closely with their role in the organization. However, it’s possible to assign a user to multiple roles, if necessary.</p>
+<p>RBAC in Security Onion covers both Security Onion privileges and Elastic stack privileges. Security Onion privileges are only involved with functionality specifically provided by the components developed by Security Onion, while Elastic stack privileges are only involved with the <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>, <a class="reference internal" href="kibana.html#kibana"><span class="std std-ref">Kibana</span></a>, and related Elastic stack. For example, Security Onion will check if a user has permission to create a PCAP request, while Elastic will check if the same user has permission to view a particular index or document stored in <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>.</p>
+<section id="system-roles">
+<h2>System Roles<a class="headerlink" href="#system-roles" title="Link to this heading"></a></h2>
+<p>Security Onion ships with the following user roles: <code class="docutils literal notranslate"><span class="pre">superuser</span></code>, <code class="docutils literal notranslate"><span class="pre">analyst</span></code>, <code class="docutils literal notranslate"><span class="pre">limited-analyst</span></code>, <code class="docutils literal notranslate"><span class="pre">auditor</span></code>, and <code class="docutils literal notranslate"><span class="pre">limited-auditor</span></code>.</p>
+<p>See the table below which explains the specific Security Onion privileges granted to each role.</p>
+<table class="docutils align-default" id="role-table">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>superuser</p></th>
+<th class="head"><p>analyst</p></th>
+<th class="head"><p>limited-analyst</p></th>
+<th class="head"><p>auditor</p></th>
+<th class="head"><p>limited-auditor</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>View alerts</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+</tr>
+<tr class="row-odd"><td><p>Acknowledge alerts</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Escalate alerts and events</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>View detections</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+</tr>
+<tr class="row-even"><td><p>Modify (and Delete) detections</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>View events in Hunt</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+</tr>
+<tr class="row-even"><td><p>View own PCAP jobs</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>O</p></td>
+<td><p>O</p></td>
+</tr>
+<tr class="row-odd"><td><p>View all PCAP jobs</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td></td>
+<td><p>X</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Pivot to PCAP job from event</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Request arbitrary PCAP jobs</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Delete own PCAP job</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>O</p></td>
+<td><p>O</p></td>
+</tr>
+<tr class="row-odd"><td><p>Delete any PCAP job</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>View all nodes in grid</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+</tr>
+<tr class="row-odd"><td><p>View all users</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td></td>
+<td><p>X</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>View all users’ roles</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td></td>
+<td><p>X</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>View own user</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+</tr>
+<tr class="row-even"><td><p>View own user roles</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+</tr>
+<tr class="row-odd"><td><p>Change own password</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+</tr>
+<tr class="row-even"><td><p>Add, update, and reset SOC users</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Modify and synchronize grid config</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Manage grid membership of nodes</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Initiate node actions (Ex: reboot)</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Manage API clients</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>View and list existing API clients</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td><p>X</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Manage Active Queries</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>View Playbooks</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+</tr>
+<tr class="row-even"><td><p>Chat with Onion AI</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Delete Own Onion AI Sessions</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>View Own Onion AI History</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>View All Users’ Onion AI History</p></td>
+<td><p>X</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Both <code class="docutils literal notranslate"><span class="pre">auditor</span></code> and <code class="docutils literal notranslate"><span class="pre">limited-auditor</span></code> roles can interact with previously created PCAPs if they were created before a user was converted to that role (e.g. user was downgraded from <code class="docutils literal notranslate"><span class="pre">analyst</span></code> to <code class="docutils literal notranslate"><span class="pre">auditor</span></code>). This is denoted by <strong>O</strong> in the above table.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A system role called <code class="docutils literal notranslate"><span class="pre">agent</span></code> is used by the Security Onion agent that runs on each node of the Security Onion grid. This special role is given the  <em>jobs/process</em>, <em>nodes/read</em>, and <em>nodes/write</em> permissions (defined at the bottom of this page). Avoid creating custom roles that share the same name as Security Onion-provided roles.</p>
+</div>
+</section>
+<section id="superusers">
+<h2>Superusers<a class="headerlink" href="#superusers" title="Link to this heading"></a></h2>
+<p>After a new installation of Security Onion completes, a single administrator user will be created and assigned the <code class="docutils literal notranslate"><span class="pre">superuser</span></code> role. Additional users can also be assigned to the <code class="docutils literal notranslate"><span class="pre">superuser</span></code> role, if desired.</p>
+</section>
+<section id="adding-a-user-with-a-specific-role">
+<h2>Adding a User With a Specific Role<a class="headerlink" href="#adding-a-user-with-a-specific-role" title="Link to this heading"></a></h2>
+<p>In the <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> interface, navigate to the Users screen and click the + icon to add a new user. In the popup dialog you can check the roles you would like to assign to the new user.</p>
+</section>
+<section id="modifying-user-roles">
+<h2>Modifying User Roles<a class="headerlink" href="#modifying-user-roles" title="Link to this heading"></a></h2>
+<p>In the <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> interface, navigate to the Users screen and click the &gt; icon to the left of the email address needing adjusting. Check or uncheck the desired roles.</p>
+</section>
+<section id="default-role-assignment">
+<span id="default-system-role"></span><h2>Default Role Assignment<a class="headerlink" href="#default-role-assignment" title="Link to this heading"></a></h2>
+<p>When a user is created, they can optionally be automatically assigned to a specific role. To enable this automatic assignment, locate the <code class="docutils literal notranslate"><span class="pre">defaultRole</span></code> configuration setting and specify the desired default role name. This automatic assignment will occur when the user logs into SOC for the first time.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If an administrator removes all role assignments from a user and the user logs back in that user will again be automatically assigned the default role. Always lock inactive users instead of removing role assignments from a user.</p>
+</div>
+</section>
+<section id="creating-custom-roles">
+<h2>Creating Custom Roles<a class="headerlink" href="#creating-custom-roles" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The creation of custom RBAC roles is an advanced feature that is recommended only for experienced administrators.</p>
+</div>
+<p>These steps will guide you through an example where we wish to introduce a new role called <code class="docutils literal notranslate"><span class="pre">eastcoast-analyst</span></code>, which will inherit the same Security Onion permissions as a limited-analyst, but will be restricted to only view a subset of documents in the Elastic stack. We base this role on the <code class="docutils literal notranslate"><span class="pre">limited-analyst</span></code> instead of the <code class="docutils literal notranslate"><span class="pre">analyst</span></code> role so that the user does not have the ability to create arbitrary PCAPs on any sensor.</p>
+<ol class="arabic">
+<li><p>For the Security Onion role: Follow the instructions in the next section entitled “Defining Security Onion Roles” to create a new role named <code class="docutils literal notranslate"><span class="pre">eastcoast-analyst</span></code>.</p></li>
+<li><p>For the Elastic stack role: Create a new json role file named <code class="docutils literal notranslate"><span class="pre">eastcoast-analyst.json</span></code> under <code class="docutils literal notranslate"><span class="pre">/opt/so/saltstack/local/salt/elasticsearch/roles</span></code>. In this example we will define the new role that only allows access to documents from sensors on the east coast of the United States. Specifically, the role will include a query filter that limits search results to only include documents originating from sensors having a name prefixed with <code class="docutils literal notranslate"><span class="pre">nyc</span></code> (New York City) or <code class="docutils literal notranslate"><span class="pre">atl</span></code> (Atlanta).</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">eastcoast-analyst.json</span></code> :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;cluster&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;cancel_task&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;create_snapshot&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;monitor&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;monitor_data_frame_transforms&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;monitor_ml&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;monitor_rollup&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;monitor_snapshot&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;monitor_text_structure&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;monitor_transform&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;monitor_watcher&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;read_ccr&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;read_ilm&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;read_pipeline&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;read_slm&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;indices&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;names&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;so-*&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;privileges&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;index&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;maintenance&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;monitor&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;read&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;read_cross_cluster&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;view_index_metadata&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;{ </span><span class="se">\&quot;</span><span class="s2">bool</span><span class="se">\&quot;</span><span class="s2">: { </span><span class="se">\&quot;</span><span class="s2">should</span><span class="se">\&quot;</span><span class="s2">: [ { </span><span class="se">\&quot;</span><span class="s2">prefix</span><span class="se">\&quot;</span><span class="s2">: { </span><span class="se">\&quot;</span><span class="s2">observer.name</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">nyc</span><span class="se">\&quot;</span><span class="s2"> }}, { </span><span class="se">\&quot;</span><span class="s2">prefix</span><span class="se">\&quot;</span><span class="s2">: { </span><span class="se">\&quot;</span><span class="s2">observer.name</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">atl</span><span class="se">\&quot;</span><span class="s2"> }} ]}}&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;applications&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;kibana-.kibana&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;privileges&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;feature_discover.all&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;feature_dashboard.all&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;feature_canvas.all&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;feature_maps.all&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;feature_ml.all&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;feature_logs.read&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;feature_visualize.all&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;feature_infrastructure.read&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;feature_apm.read&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;feature_uptime.read&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;feature_siem.read&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;feature_dev_tools.read&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;feature_advancedSettings.read&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;feature_indexPatterns.read&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;feature_savedObjectsManagement.read&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;feature_savedObjectsTagging.read&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;feature_fleet.all&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;feature_actions.read&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;feature_stackAlerts.read&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;resources&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;*&quot;</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;run_as&quot;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Elasticsearch requires that a subscription be purchased in order to use field or document-level security, as referenced in the above example.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The format of the json in this file must match the request body outlined in the Elastic docs here: <a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html#security-api-put-role-request-body">https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html#security-api-put-role-request-body</a>.</p>
+<p>The available cluster and indices permissions are explained in the Elastic docs here: <a class="reference external" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html</a>.</p>
+<p>The available kibana permissions can be obtained by running the following command on the manager node:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">elasticsearch</span><span class="o">-</span><span class="n">query</span> <span class="n">_security</span><span class="o">/</span><span class="n">privilege</span><span class="o">/</span><span class="n">kibana</span><span class="o">-.</span><span class="n">kibana</span> <span class="o">|</span> <span class="n">jq</span> <span class="s1">&#39;. | map_values(keys)&#39;</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Run so-checkin from the manager:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">checkin</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="defining-security-onion-roles">
+<h2>Defining Security Onion Roles<a class="headerlink" href="#defining-security-onion-roles" title="Link to this heading"></a></h2>
+<p>There are two ways to define a custom Security Onion role:</p>
+<ol class="arabic simple">
+<li><p>Building it from scratch using the built-in permissions and system roles available as outlined later in this document, or</p></li>
+<li><p>Inheriting the permissions of another role, and optionally adding more permissions to the new custom role.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">custom_roles</span></code> file contains further instructions on modifying roles that are not within the scope of this documentation.</p>
+</div>
+<p>The common syntax for either method of defining a role is as such:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;existing role or permission&gt;:&lt;new role&gt;
+</pre></div>
+</div>
+<ol class="arabic">
+<li><p>Creating the role for the above east coast analyst using the first method, building the custom role from scratch, would be written like so:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">case</span><span class="o">-</span><span class="n">admin</span><span class="p">:</span><span class="n">eastcoast</span><span class="o">-</span><span class="n">analyst</span>
+<span class="n">event</span><span class="o">-</span><span class="n">admin</span><span class="p">:</span><span class="n">eastcoast</span><span class="o">-</span><span class="n">analyst</span>
+<span class="n">node</span><span class="o">-</span><span class="n">monitor</span><span class="p">:</span><span class="n">eastcoast</span><span class="o">-</span><span class="n">analyst</span>
+<span class="n">user</span><span class="o">-</span><span class="n">monitor</span><span class="p">:</span><span class="n">eastcoast</span><span class="o">-</span><span class="n">analyst</span>
+<span class="n">job</span><span class="o">-</span><span class="n">user</span><span class="p">:</span><span class="n">eastcoast</span><span class="o">-</span><span class="n">analyst</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Alternatively, the <code class="docutils literal notranslate"><span class="pre">eastcoast-analyst</span></code> role could be created by inheriting the permissions of the analyst role:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">limited</span><span class="o">-</span><span class="n">analyst</span><span class="p">:</span><span class="n">eastcoast</span><span class="o">-</span><span class="n">analyst</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+<section id="security-onion-privileges-and-intermediate-roles">
+<h3>Security Onion Privileges and Intermediate Roles<a class="headerlink" href="#security-onion-privileges-and-intermediate-roles" title="Link to this heading"></a></h3>
+<p>The available low-level Security Onion privileges are listed in the table below:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 66.7%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><em>cases/read</em></p></td>
+<td><p>Read all case-related information for all cases</p></td>
+</tr>
+<tr class="row-even"><td><p><em>cases/write</em></p></td>
+<td><p>Create and update cases, and escalate events to cases</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>clients/read</em></p></td>
+<td><p>List and view existing API clients. Client secrets are inaccessible.</p></td>
+</tr>
+<tr class="row-even"><td><p><em>clients/write</em></p></td>
+<td><p>Create and update API clients, and regenerate secrets</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>clients/delete</em></p></td>
+<td><p>Delete API clients</p></td>
+</tr>
+<tr class="row-even"><td><p><em>config/read</em></p></td>
+<td><p>Read system configuration parameters</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>config/write</em></p></td>
+<td><p>Update and in some cases duplicate system configuration parameters</p></td>
+</tr>
+<tr class="row-even"><td><p><em>detections/read</em></p></td>
+<td><p>Read all detection related details</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>detections/write</em></p></td>
+<td><p>Create and update detections and overrides</p></td>
+</tr>
+<tr class="row-even"><td><p><em>events/read</em></p></td>
+<td><p>Read from Elasticsearch</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>events/read</em></p></td>
+<td><p>Read from Elasticsearch</p></td>
+</tr>
+<tr class="row-even"><td><p><em>events/write</em></p></td>
+<td><p>Write to Elasticsearch</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>events/ack</em></p></td>
+<td><p>Acknowledge alerts</p></td>
+</tr>
+<tr class="row-even"><td><p><em>grid/read</em></p></td>
+<td><p>Read information about the grid and its node memberships</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>grid/write</em></p></td>
+<td><p>Accept and reject grid memberships from new and existing nodes</p></td>
+</tr>
+<tr class="row-even"><td><p><em>jobs/read</em></p></td>
+<td><p>View all PCAP jobs</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>jobs/pivot</em></p></td>
+<td><p>Pivot to PCAP job from event</p></td>
+</tr>
+<tr class="row-even"><td><p><em>jobs/write</em></p></td>
+<td><p>Request arbitrary PCAP jobs</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>jobs/delete</em></p></td>
+<td><p>Delete any PCAP job</p></td>
+</tr>
+<tr class="row-even"><td><p><em>jobs/process</em></p></td>
+<td><p>Update, read, and attach packets to all pending PCAP jobs †</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>nodes/read</em></p></td>
+<td><p>View all nodes in grid</p></td>
+</tr>
+<tr class="row-even"><td><p><em>nodes/write</em></p></td>
+<td><p>Update node information †</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>roles/read</em></p></td>
+<td><p>View all users’ roles</p></td>
+</tr>
+<tr class="row-even"><td><p><em>roles/write</em></p></td>
+<td><p>Change any user’s role</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>queries/delete</em></p></td>
+<td><p>Cancel active queries</p></td>
+</tr>
+<tr class="row-even"><td><p><em>queries/read</em></p></td>
+<td><p>View active queries</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>users/read</em></p></td>
+<td><p>View all users</p></td>
+</tr>
+<tr class="row-even"><td><p><em>users/write</em></p></td>
+<td><p>Change any user’s password</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>users/delete</em></p></td>
+<td><p>Delete any user</p></td>
+</tr>
+<tr class="row-even"><td><p><em>playbooks/read</em></p></td>
+<td><p>View all playbooks</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>playbooks/write</em></p></td>
+<td><p>Currently unused</p></td>
+</tr>
+<tr class="row-even"><td><p><em>playbooks/delete</em></p></td>
+<td><p>Currently unused</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>assistant/read_authored</em></p></td>
+<td><p>View own Onion AI conversation history</p></td>
+</tr>
+<tr class="row-even"><td><p><em>assistant/write_authored</em></p></td>
+<td><p>Chat with Onion AI</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>assistant/delete_authored</em></p></td>
+<td><p>Delete own Onion AI conversation history</p></td>
+</tr>
+<tr class="row-even"><td><p><em>assistant/read_shared</em></p></td>
+<td><p>View shared Onion AI conversation history</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>assistant/read_all</em></p></td>
+<td><p>View all Onion AI conversation history</p></td>
+</tr>
+<tr class="row-even"><td><p><em>assistant/write_all</em></p></td>
+<td><p>Currently unused</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>assistant/delete_all</em></p></td>
+<td><p>Currently unused</p></td>
+</tr>
+</tbody>
+</table>
+<p>These discrete privileges are then collected into privilege groups as defined below:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 66.7%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>case-admin</p></td>
+<td><p><em>cases/read</em>, <em>cases/write</em></p></td>
+</tr>
+<tr class="row-even"><td><p>case-monitor</p></td>
+<td><p><em>cases/read</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>client-admin</p></td>
+<td><p><em>clients/read</em>, <em>clients/write</em>, <em>clients/delete</em></p></td>
+</tr>
+<tr class="row-even"><td><p>client-monitor</p></td>
+<td><p><em>clients/read</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>config-admin</p></td>
+<td><p><em>config/read</em>, <em>config/write</em></p></td>
+</tr>
+<tr class="row-even"><td><p>config-monitor</p></td>
+<td><p><em>config/read</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>detections-admin</p></td>
+<td><p><em>detections/read</em>, <em>detections/write</em></p></td>
+</tr>
+<tr class="row-even"><td><p>detections-monitor</p></td>
+<td><p><em>detections/read</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>event-admin</p></td>
+<td><p><em>events/read</em>, <em>events/write</em>, <em>events/ack</em></p></td>
+</tr>
+<tr class="row-even"><td><p>event-monitor</p></td>
+<td><p><em>events/read</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>grid-admin</p></td>
+<td><p><em>grid/read</em>, <em>grid/write</em></p></td>
+</tr>
+<tr class="row-even"><td><p>grid-monitor</p></td>
+<td><p><em>grid/read</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>job-admin</p></td>
+<td><p><em>jobs/read</em>, <em>jobs/pivot</em>, <em>jobs/write</em>, <em>jobs/delete</em></p></td>
+</tr>
+<tr class="row-even"><td><p>job-monitor</p></td>
+<td><p><em>jobs/read</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>job-user</p></td>
+<td><p><em>jobs/pivot</em></p></td>
+</tr>
+<tr class="row-even"><td><p>job-processor</p></td>
+<td><p><em>jobs/process</em> †</p></td>
+</tr>
+<tr class="row-odd"><td><p>node-admin</p></td>
+<td><p><em>nodes/read</em>, <em>nodes/write</em></p></td>
+</tr>
+<tr class="row-even"><td><p>node-monitor</p></td>
+<td><p><em>nodes/read</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>query-admin</p></td>
+<td><p><em>queries/read</em>, <em>queries/delete</em></p></td>
+</tr>
+<tr class="row-even"><td><p>query-monitor</p></td>
+<td><p><em>queries/read</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>user-admin</p></td>
+<td><p><em>roles/read</em>, <em>roles/write</em>, <em>users/read</em>, <em>users/write</em>, <em>users/delete</em></p></td>
+</tr>
+<tr class="row-even"><td><p>user-monitor</p></td>
+<td><p><em>roles/read</em>, <em>users/read</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>playbook-monitor</p></td>
+<td><p><em>playbooks/read</em></p></td>
+</tr>
+<tr class="row-even"><td><p>playbook-admin</p></td>
+<td><p><em>playbooks/read</em>, <em>playbooks/write</em>, <em>playbooks/delete</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>assistant-user</p></td>
+<td><p><em>assistant/read_authored</em>, <em>assistant/write_authored</em>, <em>assistant/delete_authored</em>, <em>assistant/read_shared</em></p></td>
+</tr>
+<tr class="row-even"><td><p>assistant-admin</p></td>
+<td><p><em>assistant/read_authored</em>, <em>assistant/write_authored</em>, <em>assistant/delete_authored</em>, <em>assistant/read_shared</em>, <em>assistant/read_all</em>, <em>assistant/write_all</em>, <em>assistant/delete_all</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>assistant-monitor</p></td>
+<td><p><em>assistant/read_authored</em>, <em>assistant/read_shared</em>, <em>assistant/read_all</em></p></td>
+</tr>
+</tbody>
+</table>
+<p>† intended for use by Sensoroni agents only</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="disabling-accounts.html" class="btn btn-neutral float-left" title="Disabling Accounts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="kratos.html" class="btn btn-neutral float-right" title="Kratos" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

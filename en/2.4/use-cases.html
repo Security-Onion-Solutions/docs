@@ -1,0 +1,228 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Use Cases &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Architecture" href="architecture.html" />
+    <link rel="prev" title="Best Practices" href="best-practices.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="getting-started.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html">Best Practices</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Use Cases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#minimal-import">Minimal Import</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#minimal-network-visibility">Minimal Network Visibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#minimal-network-visibility-with-opnsense-firewall-instead-of-tap-or-span">Minimal Network Visibility with OPNsense Firewall instead of TAP or SPAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#minimal-netflow-collector">Minimal Netflow Collector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#minimal-log-management">Minimal Log Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#minimal-network-and-host-visibility">Minimal Network and Host Visibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#minimal-enterprise-deployment">Minimal Enterprise Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-scalable-enterprise-deployment">More Scalable Enterprise Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comprehensive-enterprise-deployment">Comprehensive Enterprise Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html">Hardware Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download.html">Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmware.html">VMware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtualbox.html">VirtualBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxmox.html">Proxmox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble-booting.html">Booting Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airgap.html">Airgap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-amazon.html">Amazon Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-azure.html">Azure Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-google.html">Google Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-installation.html">After Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="getting-started.html">Getting Started</a></li>
+      <li class="breadcrumb-item active">Use Cases</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/use-cases.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="use-cases">
+<span id="id1"></span><h1>Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading"></a></h1>
+<p>If you’re going to deploy Security Onion, you should first decide what your use case is. In this section, we’ll discuss some common use cases and how they map to our different kinds of architecture. This could be anything from a temporary Import installation in a small virtual machine on your personal laptop all the way to a large scalable enterprise deployment consisting of a manager node, multiple search nodes, and lots of sensor nodes.</p>
+<section id="minimal-import">
+<h2>Minimal Import<a class="headerlink" href="#minimal-import" title="Link to this heading"></a></h2>
+<p>Suppose you just want to import PCAP or EVTX files or suppose that you have limited hardware and just want the minimal installation to get some experience with Security Onion. Install Security Onion and choose the <code class="docutils literal notranslate"><span class="pre">Import</span></code> option. This can be done in a minimal virtual machine with as little as 4GB RAM. You can read more about the <code class="docutils literal notranslate"><span class="pre">Import</span></code> option in the <a class="reference internal" href="first-time-users.html#first-time-users"><span class="std std-ref">First Time Users</span></a> section and in the <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">Architecture</span></a> section.</p>
+</section>
+<section id="minimal-network-visibility">
+<h2>Minimal Network Visibility<a class="headerlink" href="#minimal-network-visibility" title="Link to this heading"></a></h2>
+<p>Suppose you have a small network where you just want some basic network visibility. This might be monitoring traffic from a TAP or SPAN port on a homelab or other small network that doesn’t require a production installation. Install Security Onion and choose the <code class="docutils literal notranslate"><span class="pre">Evaluation</span></code> option. You can read more about the <code class="docutils literal notranslate"><span class="pre">Evaluation</span></code> option in the <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">Architecture</span></a> section.</p>
+</section>
+<section id="minimal-network-visibility-with-opnsense-firewall-instead-of-tap-or-span">
+<h2>Minimal Network Visibility with OPNsense Firewall instead of TAP or SPAN<a class="headerlink" href="#minimal-network-visibility-with-opnsense-firewall-instead-of-tap-or-span" title="Link to this heading"></a></h2>
+<p>Suppose you have a small network segment where you just want some basic network visibility but you don’t have the ability to collect traffic via TAP or SPAN port but you do have an <a class="reference internal" href="opnsense.html#opnsense"><span class="std std-ref">OPNsense</span></a> firewall. Install Security Onion, choose the <code class="docutils literal notranslate"><span class="pre">ManagerSearch</span></code> option, and then follow the <a class="reference internal" href="opnsense.html#opnsense"><span class="std std-ref">OPNsense</span></a> section to collect firewall logs, <a class="reference internal" href="netflow.html#netflow"><span class="std std-ref">NetFlow</span></a> data, and Suricata <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> alerts. You can read more about the <code class="docutils literal notranslate"><span class="pre">ManagerSearch</span></code> option in the <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">Architecture</span></a> section.</p>
+</section>
+<section id="minimal-netflow-collector">
+<h2>Minimal Netflow Collector<a class="headerlink" href="#minimal-netflow-collector" title="Link to this heading"></a></h2>
+<p>Suppose you have a small network where you just want to collect some <a class="reference internal" href="netflow.html#netflow"><span class="std std-ref">NetFlow</span></a> data. Install Security Onion, choose the <code class="docutils literal notranslate"><span class="pre">ManagerSearch</span></code> option, and then follow the <a class="reference internal" href="netflow.html#netflow"><span class="std std-ref">NetFlow</span></a> section. You can read more about the <code class="docutils literal notranslate"><span class="pre">ManagerSearch</span></code> option in the <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">Architecture</span></a> section.</p>
+</section>
+<section id="minimal-log-management">
+<h2>Minimal Log Management<a class="headerlink" href="#minimal-log-management" title="Link to this heading"></a></h2>
+<p>Suppose you have a small network where you just want some basic host visibility. This might be deploying agents to a small number of desktops and servers and/or collecting syslog from firewall or other devices. Install Security Onion, choose the <code class="docutils literal notranslate"><span class="pre">ManagerSearch</span></code> option, and then deploy the <a class="reference internal" href="elastic-agent.html#elastic-agent"><span class="std std-ref">Elastic Agent</span></a> to your hosts and review the <a class="reference internal" href="host.html#host"><span class="std std-ref">Host Visibility</span></a> and <a class="reference internal" href="third-party-integrations.html#third-party-integrations"><span class="std std-ref">Third Party Integrations</span></a> sections. You can read more about the <code class="docutils literal notranslate"><span class="pre">ManagerSearch</span></code> option in the <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">Architecture</span></a> section.</p>
+</section>
+<section id="minimal-network-and-host-visibility">
+<h2>Minimal Network and Host Visibility<a class="headerlink" href="#minimal-network-and-host-visibility" title="Link to this heading"></a></h2>
+<p>Suppose you have a small network where you want both network visibility and host visibility. Install Security Onion and choose the <code class="docutils literal notranslate"><span class="pre">Standalone</span></code> option. This machine will then sniff network traffic from your TAP or SPAN port and also support deploying the <a class="reference internal" href="elastic-agent.html#elastic-agent"><span class="std std-ref">Elastic Agent</span></a> to other hosts. You can read more about the <code class="docutils literal notranslate"><span class="pre">Standalone</span></code> option in the <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">Architecture</span></a> section.</p>
+</section>
+<section id="minimal-enterprise-deployment">
+<h2>Minimal Enterprise Deployment<a class="headerlink" href="#minimal-enterprise-deployment" title="Link to this heading"></a></h2>
+<p>Suppose you have a small or medium network where you want some visibility for both network and hosts. A minimal enterprise deployment would look like this:</p>
+<ul class="simple">
+<li><p>Install the first Security Onion instance and choose the <code class="docutils literal notranslate"><span class="pre">ManagerSearch</span></code> option.</p></li>
+<li><p>Deploy the <a class="reference internal" href="elastic-agent.html#elastic-agent"><span class="std std-ref">Elastic Agent</span></a> to hosts.</p></li>
+<li><p>Install Security Onion on one or more additional machines and join them to the grid as sensor nodes. They will analyze network traffic from your TAP or SPAN port.</p></li>
+</ul>
+<p>You can read more about distributed deployments in the <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">Architecture</span></a> section.</p>
+</section>
+<section id="more-scalable-enterprise-deployment">
+<h2>More Scalable Enterprise Deployment<a class="headerlink" href="#more-scalable-enterprise-deployment" title="Link to this heading"></a></h2>
+<p>Suppose you have a medium or large network where you want some visibility for both network and hosts. A more scalable enterprise deployment would look like this:</p>
+<ul class="simple">
+<li><p>Install the first Security Onion instance and choose the <code class="docutils literal notranslate"><span class="pre">Manager</span></code> option.</p></li>
+<li><p>Install Security Onion on one or more additional machines and join them to the grid as search nodes. They will store logs and allow you to search them.</p></li>
+<li><p>Deploy the <a class="reference internal" href="elastic-agent.html#elastic-agent"><span class="std std-ref">Elastic Agent</span></a> to hosts. They will collect logs and send them to the grid.</p></li>
+<li><p>Install Security Onion on one or more additional machines and join them to the grid as sensor nodes. They will analyze network traffic from your TAP or SPAN port.</p></li>
+</ul>
+<p>You can read more about distributed deployments in the <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">Architecture</span></a> section.</p>
+</section>
+<section id="comprehensive-enterprise-deployment">
+<h2>Comprehensive Enterprise Deployment<a class="headerlink" href="#comprehensive-enterprise-deployment" title="Link to this heading"></a></h2>
+<p>Suppose you have a large network where you want maximum visibility for both network and hosts. A comprehensive distributed deployment would look like this:</p>
+<ul class="simple">
+<li><p>Install the first Security Onion instance and choose the <code class="docutils literal notranslate"><span class="pre">Manager</span></code> option.</p></li>
+<li><p>Install Security Onion on one or more additional machines and join them to the grid as search nodes. They will store logs and allow you to search them.</p></li>
+<li><p>Install Security Onion on a machine in your DMZ and join it to the grid as a Fleet node. This node will manage your Elastic agents whether they are onsite or offsite.</p></li>
+<li><p>Deploy the <a class="reference internal" href="elastic-agent.html#elastic-agent"><span class="std std-ref">Elastic Agent</span></a> to hosts. They will collect logs and send them to the grid.</p></li>
+<li><p>Install Security Onion on one or more additional machines and join them to the grid as sensor nodes. They will analyze network traffic from your TAP or SPAN port.</p></li>
+<li><p>Install Security Onion on one or more additional machines and join them to the grid as receiver nodes. This provides load balancing and pipeline redundancy.</p></li>
+<li><p>Install Security Onion on one or more additional machines and join them to the grid as <a class="reference internal" href="idh.html#idh"><span class="std std-ref">Intrusion Detection Honeypot</span></a> nodes. They will provide honeypot and deception capabilities.</p></li>
+</ul>
+<p>You can read more about distributed deployments in the <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">Architecture</span></a> section.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="best-practices.html" class="btn btn-neutral float-left" title="Best Practices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="architecture.html" class="btn btn-neutral float-right" title="Architecture" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

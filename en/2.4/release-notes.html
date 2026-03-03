@@ -1,0 +1,1319 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Release Notes &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Appendix" href="appendix.html" />
+    <link rel="prev" title="Telemetry" href="telemetry.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#known-issues">Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#release-history">Release History</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#changes">2.4.210 [20260302] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id35">2.4.201 [20260114] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id40">2.4.200 [20251215] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id69">2.4.190 [20251024] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id96">2.4.180 [20250916] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id117">2.4.170 [20250812] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id140">2.4.160 [20250625] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hotfix-20250522-changes">2.4.150 Hotfix [20250522] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id170">2.4.150 [20250512] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id197">2.4.141 [20250331] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id202">2.4.140 [20250324] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id219">2.4.130 [20250311] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id243">2.4.120 [20250212] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#patch-20241217-changes">2.4.111 Patch [20241217] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hotfix-20241010-changes">2.4.110 Hotfix [20241010] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id280">2.4.110 [20241004] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hotfix-20240903-changes">2.4.100 Hotfix [20240903] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id301">2.4.100 [20240829] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id334">2.4.90 [20240729] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id349">2.4.80 [20240624] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id374">2.4.70 [20240529] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id433">2.4.60 [20240320] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id454">2.4.50 [20240220] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id475">2.4.40 [20240116] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hotfix-20231228-changes">2.4.30 Hotfix [20231228] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hotfix-20231219-changes">2.4.30 Hotfix [20231219] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hotfix-20231204-changes">2.4.30 Hotfix [20231204] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hotfix-20231121-changes">2.4.30 Hotfix [20231121] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hotfix-20231117-changes">2.4.30 Hotfix [20231117] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id516">2.4.30 [20231113] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hotfix-20231012-changes">2.4.20 Hotfix [20231012] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id540">2.4.20 [20231006] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hotfix-20230821-changes">2.4.10 Hotfix [20230821] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id595">2.4.10 [20230815] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rc2-20230807-changes">2.4.5 RC2 [20230807] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rc1-20230728-changes">2.4.4 RC1 [20230728] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#beta-4-20230711-changes">2.4.3 Beta 4 [20230711] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#beta-3-20230531-changes">2.4.2 Beta 3 [20230531] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#beta-2-20230424-changes">2.4.1 Beta 2 [20230424] Changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#beta-1-20230328-changes">2.4.0 Beta 1 [20230328] Changes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Release Notes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/release-notes.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="release-notes">
+<span id="id1"></span><h1>Release Notes<a class="headerlink" href="#release-notes" title="Link to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Security Onion 2.4.210 upgrades Salt to version 3006.19. This version of Salt has a configuration option minimum_auth_version for the Salt master. By default, this value is set to 3 and only minions on version 3006.12 or later support that version and are able to authenticate with the salt-master service. For this reason, during the soup to 2.4.210, we set the minimum_auth_version to 0. Since minions automatically update every 15 minutes, this allows older minion versions to authenticate, run a highstate, and upgrade to 3006.19.</p>
+<p>After seven days, a background process will change the minimum_auth_version from 0 to 3 and restart the salt-master service. Once this is done, any minions in the environment that have not upgraded to a version greater than 3006.12 will be unable to authenticate with the salt-master. The likely cause of this would be a minion that is offline. Additionally, if a user attempts to install a new node, using a version less than 2.4.200 (salt-minion 3006.16), the install will fail since the salt-minion will not be able to authenticate with the salt-master.</p>
+<p>If one of your nodes was unable to update by the time the minimum_auth_version was changed, then you may notice that the SOC Grid screen shows that you have a node running an older version of Security Onion that never updates. You can verify the issue by checking the following logs:</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">/opt/so/log/salt/minion</span></code> on the remote node:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>2026-02-20 14:36:43,479 [salt.crypt       :884 ][ERROR   ][2215] Sign-in attempt failed: bad load
+2026-02-20 14:36:43,480 [salt.minion      :1155][ERROR   ][2215] Error while bringing up minion for multi-master. Is master at soman1 responding? The error message was Unable to sign_in to master: Attempt to authenticate with the salt master failed
+</pre></div>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">/opt/so/log/salt/master</span></code> on the Security Onion manager:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2026</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">20</span> <span class="mi">14</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mi">13</span><span class="p">,</span><span class="mi">515</span> <span class="p">[</span><span class="n">salt</span><span class="o">.</span><span class="n">channel</span><span class="o">.</span><span class="n">server</span><span class="p">:</span><span class="mi">147</span> <span class="p">][</span><span class="n">WARNING</span> <span class="p">][</span><span class="mi">2313166</span><span class="p">]</span> <span class="n">Rejected</span> <span class="n">authentication</span> <span class="n">attempt</span> <span class="n">using</span> <span class="n">protocol</span> <span class="n">version</span> <span class="mi">2</span> <span class="p">(</span><span class="n">minimum</span> <span class="n">required</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To force the node to update salt, you can connect to the remote node via ssh and then run the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dnf</span> <span class="n">versionlock</span> <span class="n">delete</span> <span class="n">salt</span><span class="o">-*</span> <span class="p">;</span> <span class="n">sudo</span> <span class="n">yum</span> <span class="n">clean</span> <span class="nb">all</span> <span class="p">;</span> <span class="n">sudo</span> <span class="n">sh</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">bootstrap</span><span class="o">-</span><span class="n">salt</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">X</span> <span class="o">-</span><span class="n">r</span> <span class="n">stable</span> <span class="mf">3006.19</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Security Onion 2.4.200 changed the way Suricata detections are synchronized. Grids with custom Suricata rulesets will pause all Suricata detection syncing. For more information and required steps, see the <a class="reference internal" href="nids.html#syncblock"><span class="std std-ref">Sync Block</span></a> section.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Security Onion 2.4.150 included changes for the <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> deletion process. <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> indices are managed by both the <code class="docutils literal notranslate"><span class="pre">so-elasticsearch-indices-delete</span></code> utility and Index Lifecycle Management (ILM). The <code class="docutils literal notranslate"><span class="pre">so-elasticsearch-indices-delete</span></code> utility is primarily designed for single-node deployments like EVAL and STANDALONE configurations. Running it on a multi-node deployment with one or more search nodes has the possibility of getting into a corner case state where more data is deleted than intended.</p>
+<p>If you have a multi-node deployment and haven’t already updated to 2.4.150, then <code class="docutils literal notranslate"><span class="pre">so-elasticsearch-indices-delete</span></code> will be disabled when you update. You will need to ensure that ILM is configured properly to delete indices before disk usage reaches the <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> watermark setting. Otherwise, <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> may stop ingesting new data. For more information, please see the <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> section.</p>
+</div>
+<section id="known-issues">
+<h2>Known Issues<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
+<p>If you haven’t viewed cases in a while, then escalating from Onion AI to an existing case will fail.</p>
+<p>For all known issues, please see <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues">https://github.com/Security-Onion-Solutions/securityonion/issues</a>.</p>
+</section>
+<section id="release-history">
+<h2>Release History<a class="headerlink" href="#release-history" title="Link to this heading"></a></h2>
+<section id="changes">
+<h3>2.4.210 [20260302] Changes<a class="headerlink" href="#changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Add graphs/charts to AI Metrics page</p></li>
+<li><p>FEATURE: Add support for default user roles <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15471">#15471</a></p></li>
+<li><p>FEATURE: Allow non-airgap soup to use ISO for all large files <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15467">#15467</a></p></li>
+<li><p>FEATURE: Gemini Adapter</p></li>
+<li><p>FEATURE: Model Thoughts</p></li>
+<li><p>FEATURE: multi-step ES upgrades smoother for airgap</p></li>
+<li><p>FEATURE: Onion AI model metrics</p></li>
+<li><p>FEATURE: OpenAI Chat Adapter</p></li>
+<li><p>FEATURE: OpenAI Responses Adapter</p></li>
+<li><p>FEATURE: Record user that acks and/or escalates events <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15373">#15373</a></p></li>
+<li><p>FEATURE: Show context used on each request/response pair</p></li>
+<li><p>FEATURE: Use new suricata.capture_file to improve PCAP lookups <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15398">#15398</a></p></li>
+<li><p>FIX: Appliance kickstart</p></li>
+<li><p>FIX: Change context indicator to m/k format</p></li>
+<li><p>FIX: Cleanup remaining idstools code <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15477">#15477</a></p></li>
+<li><p>FIX: Collection-backed config fields don’t respect forcedType</p></li>
+<li><p>FIX: Disable redis on heavynodes <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15422">#15422</a></p></li>
+<li><p>FIX: Expanding alert with long unbreaking message content causes extra wide table <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15437">#15437</a></p></li>
+<li><p>FIX: Give message field focus when user navigates to Onion AI page</p></li>
+<li><p>FIX: Grid node elastic agent install state</p></li>
+<li><p>FIX: Hide Grid/Client menu links when unavailable to non-superusers <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15446">#15446</a></p></li>
+<li><p>FIX: If you haven’t viewed cases in a while, then escalating from Onion AI to an existing case will fail</p></li>
+<li><p>FIX: Improve alert icon severity colors <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15450">#15450</a></p></li>
+<li><p>FIX: Kratos field mappings include unnecessary templates <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15354">#15354</a></p></li>
+<li><p>FIX: managed soc annotations migration</p></li>
+<li><p>FIX: Migrate off logs integration to filestream integration <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15364">#15364</a></p></li>
+<li><p>FIX: MoM subgrid showing Detection status pending <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15305">#15305</a></p></li>
+<li><p>FIX: Multiple lines of consecutive comments causes the BPF compile to error <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14908">#14908</a></p></li>
+<li><p>FIX: Pending status should not show crosshairs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15376">#15376</a></p></li>
+<li><p>FIX: Rename to remaining “Forward” references to “Sensor” nodes <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15403">#15403</a></p></li>
+<li><p>FIX: Review Kratos field parsing <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/7567">#7567</a></p></li>
+<li><p>FIX: Sensor and Heavynode Fail to install <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15441">#15441</a></p></li>
+<li><p>FIX: SOC Config - Apply Changes to the correct node <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15395">#15395</a></p></li>
+<li><p>FIX: SOC login form expiring without notifying user <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15346">#15346</a></p></li>
+<li><p>FIX: so-elastic-agent-grid-upgrade upgrade heavynode agents <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15434">#15434</a></p></li>
+<li><p>FIX: Soup fails if salt-relay.sh isn’t running <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15518">#15518</a></p></li>
+<li><p>FIX: Successful logins sometimes would show a 403 error banner <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15527">#15527</a></p></li>
+<li><p>FIX: Telegraf logstash metrics <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15423">#15423</a></p></li>
+<li><p>FIX: Update redis-logs integration file path <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15425">#15425</a></p></li>
+<li><p>FIX: url_base annotation description <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15483">#15483</a></p></li>
+<li><p>FIX: Zeek excluded_files <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15439">#15439</a></p></li>
+<li><p>UPGRADE: Analyzer dependencies <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15512">#15512</a></p></li>
+<li><p>UPGRADE: Docker to 29.2.1 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15495">#15495</a></p></li>
+<li><p>UPGRADE: Elasticsearch to 9.0.8</p></li>
+<li><p>UPGRADE: Go dependencies to latest versions <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15474">#15474</a></p></li>
+<li><p>UPGRADE: ISO base image to Oracle 9.7 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15352">#15352</a></p></li>
+<li><p>UPGRADE: Pcapfix to 1.1.7 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15421">#15421</a></p></li>
+<li><p>UPGRADE: Salt to 3006.19 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15490">#15490</a></p></li>
+<li><p>UPGRADE: Zeek to 8.0.6 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15445">#15445</a></p></li>
+</ul>
+</section>
+<section id="id35">
+<h3>2.4.201 [20260114] Changes<a class="headerlink" href="#id35" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FIX: Update OnionAI video <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15380">#15380</a></p></li>
+<li><p>FIX: Validate Suricata Overrides <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15372">#15372</a></p></li>
+<li><p>UPGRADE: Suricata to 8.0.3 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15377">#15377</a></p></li>
+<li><p>UPGRADE: Zeek to 8.0.5 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15378">#15378</a></p></li>
+</ul>
+</section>
+<section id="id40">
+<h3>2.4.200 [20251215] Changes<a class="headerlink" href="#id40" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Elastic agent high performance tuning in SOC <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14965">#14965</a></p></li>
+<li><p>FEATURE: Add QWEN 235B as a lower cost option for an OnionAI model</p></li>
+<li><p>FEATURE: Add info icon to the right of sync error states on detection header bar <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15256">#15256</a></p></li>
+<li><p>FEATURE: Additional ILM config via SOC ui</p></li>
+<li><p>FEATURE: Make OnionAI more accurate and curious</p></li>
+<li><p>FEATURE: Notify user of hypervisor environment setup failures <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15245">#15245</a></p></li>
+<li><p>FEATURE: Onion AI add tool for creating / updating / disabling / enabling detections</p></li>
+<li><p>FEATURE: Onion AI auto compact context support</p></li>
+<li><p>FEATURE: Onion AI escalate to existing case</p></li>
+<li><p>FEATURE: Onion AI model metrics</p></li>
+<li><p>FEATURE: OnionAI additional UI metrics</p></li>
+<li><p>FEATURE: Refactor SOC Detections NIDS for idstools removal <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15306">#15306</a></p></li>
+<li><p>FEATURE: Remember Configuration screen Advanced toggle <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15215">#15215</a></p></li>
+<li><p>FEATURE: Stop retrying PCAP jobs after 5 failures (configurable) <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15227">#15227</a></p></li>
+<li><p>FEATURE: so-elasticsearch-retention-estimate <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15178">#15178</a></p></li>
+<li><p>FIX: “Context Starts Here” line sometimes disappears depending on screen width</p></li>
+<li><p>FIX: Add guardrails for when users are allowed to click context compression button</p></li>
+<li><p>FIX: Compaction throws server error</p></li>
+<li><p>FIX: Creating VM with virtual disk fails with “Hypervisor NSM Disk Full” error <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15179">#15179</a></p></li>
+<li><p>FIX: Do not prompt to continue if memory capacity is too low for certain install types <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15255">#15255</a></p></li>
+<li><p>FIX: Docker registry may not be ready for connections when Salt pulls first container <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15058">#15058</a></p></li>
+<li><p>FIX: Failed setup a while ago <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14945">#14945</a></p></li>
+<li><p>FIX: Failure to download the OL9 qcow2 image can cause the setup_hypervisor runner to hang <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15246">#15246</a></p></li>
+<li><p>FIX: Ignore control characters in minion install.txt <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15315">#15315</a></p></li>
+<li><p>FIX: ISO swap partition on multi disk install <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15158">#15158</a></p></li>
+<li><p>FIX: Improved chat input field</p></li>
+<li><p>FIX: List of users empty in SOC interface after a sort on a column <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15249">#15249</a></p></li>
+<li><p>FIX: OIDC Link and Unlink <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15214">#15214</a></p></li>
+<li><p>FIX: Onion AI improve error handling from API gateway</p></li>
+<li><p>FIX: Reduce Sensoroni pcapMaxCount default setting <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15208">#15208</a></p></li>
+<li><p>FIX: Refactor Playbooks variable substitution</p></li>
+<li><p>FIX: Remove newline that appears for “&amp;nbsp;” tool responses</p></li>
+<li><p>FIX: Rename Forward to Sensor <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15172">#15172</a></p></li>
+<li><p>FIX: Reserve group IDs to prevent collisions <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15288">#15288</a></p></li>
+<li><p>FIX: Show message when Onion AI is experiencing an outage</p></li>
+<li><p>FIX: Stop collecting PCAP packets if filter covers multiple stream paths <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15226">#15226</a></p></li>
+<li><p>FIX: Tool Calls with OnionAI time out</p></li>
+<li><p>FIX: UI needs to be notified if context compaction fails <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15295">#15295</a></p></li>
+<li><p>FIX: VM is created without virtual disk mounted <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15250">#15250</a></p></li>
+<li><p>FIX: get_playbooks tool doesn’t respect aggregate: true</p></li>
+<li><p>FIX: longer timeout for esindexsize.sh telegraf script <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15149">#15149</a></p></li>
+<li><p>FIX: so-setup bond0 being recreated <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15233">#15233</a></p></li>
+<li><p>UPGRADE: Salt to 3006.16 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15173">#15173</a></p></li>
+<li><p>UPGRADE: Strelka to 1.0.1</p></li>
+<li><p>UPGRADE: Suricata to 8.0.2 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15203">#15203</a></p></li>
+<li><p>UPGRADE: Zeek to 8.0.4 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15060">#15060</a></p></li>
+<li><p>UPGRADE: golang.org/x/crypto from 0.42.0 to 0.45.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15258">#15258</a></p></li>
+</ul>
+</section>
+<section id="id69">
+<h3>2.4.190 [20251024] Changes<a class="headerlink" href="#id69" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Add ability to force a fleet agent installer via the –force flag <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15146">#15146</a></p></li>
+<li><p>FEATURE: Allow customization of export CSV delimiter <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15129">#15129</a></p></li>
+<li><p>FEATURE: Allow user to map a virtual disk to /nsm when creating a VM <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15121">#15121</a></p></li>
+<li><p>FEATURE: BYOD hypervisor and managerhype <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15102">#15102</a></p></li>
+<li><p>FEATURE: New grain: nsm_total <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15120">#15120</a></p></li>
+<li><p>FEATURE: Provide notice with option to sync recently modified module <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15119">#15119</a></p></li>
+<li><p>FEATURE: Remember Auto-Refresh Interval for Hunt, Alerts, Dashboards, etc <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15077">#15077</a></p></li>
+<li><p>FEATURE: Security Onion AI Assistant</p></li>
+<li><p>FEATURE: Show query name under query input <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15128">#15128</a></p></li>
+<li><p>FIX: Action links should replace all vars <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15084">#15084</a></p></li>
+<li><p>FIX: Add event.module to Elasticsearch logs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15074">#15074</a></p></li>
+<li><p>FIX: Import node fleet output policy <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15037">#15037</a></p></li>
+<li><p>FIX: Logstash fleet output corrupt ssl config <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15101">#15101</a></p></li>
+<li><p>FIX: PCAP Upload validation issues <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15143">#15143</a></p></li>
+<li><p>FIX: Setup occasionally fails if the registry container takes more than a couple seconds to start. <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15073">#15073</a></p></li>
+<li><p>FIX: Subgrid count calculation <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15078">#15078</a></p></li>
+<li><p>FIX: so-hypervisor bridge not created during setup <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15050">#15050</a></p></li>
+<li><p>UPGRADE: SOC Dependencies <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15059">#15059</a></p></li>
+<li><p>UPGRADE: Attack Navigator to 5.1.1 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15097">#15097</a></p></li>
+<li><p>UPGRADE: Docker base images to latest respective versions <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15093">#15093</a></p></li>
+<li><p>UPGRADE: ElastAlert 2 to 2.26.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15094">#15094</a></p></li>
+<li><p>UPGRADE: Elastic to 8.18.8 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15117">#15117</a></p></li>
+<li><p>UPGRADE: Golang to 1.25.1 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15079">#15079</a></p></li>
+<li><p>UPGRADE: Nginx to 1.29.1 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15096">#15096</a></p></li>
+<li><p>UPGRADE: Redis to 7.2.11 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15116">#15116</a></p></li>
+<li><p>UPGRADE: Telegraf to 1.36.1 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15095">#15095</a></p></li>
+<li><p>UPGRADE: Zeek to 7.0.11 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15135">#15135</a></p></li>
+</ul>
+</section>
+<section id="id96">
+<h3>2.4.180 [20250916] Changes<a class="headerlink" href="#id96" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Add contextual help buttons to screen toolbars <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15027">#15027</a></p></li>
+<li><p>FEATURE: Alert on offline agent <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14898">#14898</a></p></li>
+<li><p>FEATURE: Allow alerts, dashboards, hunt query to be canceled by the submitter</p></li>
+<li><p>FEATURE: Enable static hostname mapping without reverse DNS lookups <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14900">#14900</a></p></li>
+<li><p>FEATURE: Kafka output policy</p></li>
+<li><p>FEATURE: Manager with hypervisor capabilities <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14997">#14997</a></p></li>
+<li><p>FEATURE: Preparation work for upcoming features</p></li>
+<li><p>FEATURE: Reporting and Exporting</p></li>
+<li><p>FIX: Autofocus OTP field <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14984">#14984</a></p></li>
+<li><p>FIX: Disable Elastic Telemetry by default <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14924">#14924</a></p></li>
+<li><p>FIX: Elastalert - verify that empty file has not been written <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14822">#14822</a></p></li>
+<li><p>FIX: Filter out salt INFO logs for ingest <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14447">#14447</a></p></li>
+<li><p>FIX: Hypervisor firewall rules don’t get applied to Managersearch or Standalone <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14923">#14923</a></p></li>
+<li><p>FIX: Receiver custom_fqdn <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15023">#15023</a></p></li>
+<li><p>FIX: Refactor IDH Dockerfile <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14473">#14473</a></p></li>
+<li><p>FIX: Review additional STIGs</p></li>
+<li><p>FIX: Set NIC Channels combined to 1 for monitor interfaces <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14951">#14951</a></p></li>
+<li><p>FIX: Spacing issue on certain Configuration screens <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14989">#14989</a></p></li>
+<li><p>FIX: Subgrid PCAP downloads <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15030">#15030</a></p></li>
+<li><p>FIX: Suricata metadata index rollover <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15021">#15021</a></p></li>
+<li><p>FIX: Unable to remove passkey for passwordless logins <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14926">#14926</a></p></li>
+<li><p>FIX: Zeek DNS ingest error</p></li>
+<li><p>UPGRADE: Analyzer dependencies</p></li>
+<li><p>UPGRADE: Elasticsearch 8.18.6 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15014">#15014</a></p></li>
+<li><p>UPGRADE: ISO base image to Oracle 9.6 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15007">#15007</a></p></li>
+<li><p>UPGRADE: Kafka base image</p></li>
+<li><p>UPGRADE: Suricata to 7.0.12 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/15038">#15038</a></p></li>
+<li><p>UPGRADE: Zeek to 7.0.10 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14967">#14967</a></p></li>
+</ul>
+</section>
+<section id="id117">
+<h3>2.4.170 [20250812] Changes<a class="headerlink" href="#id117" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Add JA4 Support <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14864">#14864</a></p></li>
+<li><p>FEATURE: Add SOC dashboard for CEF logs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14837">#14837</a></p></li>
+<li><p>FEATURE: Add SOC dashboard for iptables logs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14836">#14836</a></p></li>
+<li><p>FEATURE: Add SOC dashboards for UniFi logs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14838">#14838</a></p></li>
+<li><p>FEATURE: Allow Custom Playbook Repo Import <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14780">#14780</a></p></li>
+<li><p>FEATURE: Elasticsearch troubleshooting helper script <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14523">#14523</a></p></li>
+<li><p>FEATURE: Playbooks UI - AutoExpand &amp; Styling <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14851">#14851</a></p></li>
+<li><p>FEATURE: Zeek JA4+ parsing <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14465">#14465</a></p></li>
+<li><p>FIX: Add reminder to API Client dialog about permissions <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14847">#14847</a></p></li>
+<li><p>FIX: Analyst permissions for Playbooks <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14811">#14811</a></p></li>
+<li><p>FIX: Config Backup should exclude agent installers <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14351">#14351</a></p></li>
+<li><p>FIX: Duplicate Detections when using local git repo <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14829">#14829</a></p></li>
+<li><p>FIX: IDH startup message not parsed correctly <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11467">#11467</a></p></li>
+<li><p>FIX: Incorrect file ownership for idstools/idh scripts</p></li>
+<li><p>FIX: JS error during Playbook usage <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14802">#14802</a></p></li>
+<li><p>FIX: Remove atop from ISO build to address CVE-2025-31160 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14642">#14642</a></p></li>
+<li><p>FIX: Review ISO Size</p></li>
+<li><p>FIX: Sorting in the Alerts Interface Causing Duplicate Data to Appear <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14786">#14786</a></p></li>
+<li><p>FIX: Update common pipeline to rename geoip ASN data <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14884">#14884</a></p></li>
+<li><p>UPGRADE: Elastic to 8.18.4 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14799">#14799</a></p></li>
+<li><p>UPGRADE: Suricata to 7.0.11 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14817">#14817</a></p></li>
+<li><p>UPGRADE: Ubuntu 24.10 base images switch to LTS 24.04 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14798">#14798</a></p></li>
+<li><p>UPGRADE: Zeek Ethercat plugin <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14783">#14783</a></p></li>
+<li><p>UPGRADE: Zeek to 7.0.9 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14861">#14861</a></p></li>
+</ul>
+</section>
+<section id="id140">
+<h3>2.4.160 [20250625] Changes<a class="headerlink" href="#id140" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Keyboard Accessibility and Screen Reader Support <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14715">#14715</a></p></li>
+<li><p>FEATURE: Playbooks <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14694">#14694</a></p></li>
+<li><p>FEATURE: Splunk App</p></li>
+<li><p>FEATURE: so-elasticsearch-indices-growth script <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14699">#14699</a></p></li>
+<li><p>FIX: Disallow upper case email addresses on new user form <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14655">#14655</a></p></li>
+<li><p>FIX: Improve annotation for Elasticsearch index deletion <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14682">#14682</a></p></li>
+<li><p>FIX: Improve subgrid error handling</p></li>
+<li><p>FIX: License system improvements</p></li>
+<li><p>FIX: Provide HSTS header on initial page redirect <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14713">#14713</a></p></li>
+<li><p>FIX: SOC PCAP jobs page doesn’t remember the Items per page setting <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14630">#14630</a></p></li>
+<li><p>FIX: Show OIDC users message if attempting to login with same email as a local user <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14726">#14726</a></p></li>
+<li><p>FIX: Sigma rule repos can’t have same name <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14615">#14615</a></p></li>
+<li><p>FIX: <code class="docutils literal notranslate"><span class="pre">global&#64;custom</span></code> pipeline overwriting system integration timestamps <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14693">#14693</a></p></li>
+<li><p>FIX: so-elasticsearch-ilm-start needs shebang <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14688">#14688</a></p></li>
+<li><p>FIX: so-suricata-testrule should disable pcap logging <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14685">#14685</a></p></li>
+<li><p>UPGRADE: Alpine base image to 3.21.3 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14710">#14710</a></p></li>
+<li><p>UPGRADE: Base image for so-strelka-filestream <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14678">#14678</a></p></li>
+<li><p>UPGRADE: Base image for so-strelka-frontend <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14679">#14679</a></p></li>
+<li><p>UPGRADE: Base image for so-strelka-manager <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14680">#14680</a></p></li>
+<li><p>UPGRADE: Docker registry to 3.0.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14702">#14702</a></p></li>
+<li><p>UPGRADE: ElastAlert2 to 2.24.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14671">#14671</a></p></li>
+<li><p>UPGRADE: Hydra to 2.3.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14692">#14692</a></p></li>
+<li><p>UPGRADE: IDS tool base image update to 3.13.3-slim <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14707">#14707</a></p></li>
+<li><p>UPGRADE: ISO base image to Oracle Linux 9.5 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14681">#14681</a></p></li>
+<li><p>UPGRADE: InfluxDB to 2.7.12 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14670">#14670</a></p></li>
+<li><p>UPGRADE: Nginx base image to 1.27.5 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14709">#14709</a></p></li>
+<li><p>UPGRADE: PCAP Tools docker base image to 3.13.3-slim <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14708">#14708</a></p></li>
+<li><p>UPGRADE: Redis docker to 7.2.9 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14706">#14706</a></p></li>
+<li><p>UPGRADE: SOC related dependencies <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14672">#14672</a></p></li>
+<li><p>UPGRADE: Telegraf to 1.34.4 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14705">#14705</a></p></li>
+<li><p>UPGRADE: Zeek to 7.0.8 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14616">#14616</a></p></li>
+</ul>
+</section>
+<section id="hotfix-20250522-changes">
+<h3>2.4.150 Hotfix [20250522] Changes<a class="headerlink" href="#hotfix-20250522-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FIX: Remove python docker module from so-docker-prune <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14647">#14647</a></p></li>
+</ul>
+</section>
+<section id="id170">
+<h3>2.4.150 [20250512] Changes<a class="headerlink" href="#id170" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Additional grid management (MoM) <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14552">#14552</a></p></li>
+<li><p>FEATURE: Add refresh button to more SOC screens</p></li>
+<li><p>FEATURE: Add setting direct hyperlink copy-to-clipboard button icon</p></li>
+<li><p>FEATURE: Collect ES index metrics</p></li>
+<li><p>FEATURE: Convert Kratos identity_id to user.name <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14598">#14598</a></p></li>
+<li><p>FEATURE: Disable auto-upgrading non-default integrations <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14516">#14516</a></p></li>
+<li><p>FEATURE: Enable external access to Kafka <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13754">#13754</a></p></li>
+<li><p>FEATURE: Support wrapping UI config entries at top/bottom of list</p></li>
+<li><p>FIX: Add log.origin.file.line to base templates <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14417">#14417</a></p></li>
+<li><p>FIX: Allow configuration of background actions via config UI <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14503">#14503</a></p></li>
+<li><p>FIX: Correct joblookup route for Connect API <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14515">#14515</a></p></li>
+<li><p>FIX: Detection Overrides should not trigger “updated” state during sync <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14361">#14361</a></p></li>
+<li><p>FIX: Detections index refresh_interval <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14572">#14572</a></p></li>
+<li><p>FIX: Disable import pcap button on SOC UI for heavynodes <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14430">#14430</a></p></li>
+<li><p>FIX: Elastic Delete Cleanup Changes <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14491">#14491</a></p></li>
+<li><p>FIX: First highstate failure after reboot <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14442">#14442</a></p></li>
+<li><p>FIX: Influxdb not properly calculating root partition usage on STIG installations</p></li>
+<li><p>FIX: Issue Reboot request as async when submitted via SOC UI <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14553">#14553</a></p></li>
+<li><p>FIX: Kafka server logs</p></li>
+<li><p>FIX: Logstash log rollover <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14065">#14065</a></p></li>
+<li><p>FIX: null pointer exception in global custom pipeline <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14602">#14602</a></p></li>
+<li><p>FIX: PCAP filter is unable to collect IPV6 ICMP <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14492">#14492</a></p></li>
+<li><p>FIX: Remove unmaintained archiver dependency <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14597">#14597</a></p></li>
+<li><p>FIX: SOC PCAP Rows per page setting is not remembered <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14487">#14487</a></p></li>
+<li><p>FIX: so-import-pcap should not be installed on heavy nodes <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14431">#14431</a></p></li>
+<li><p>FIX: Strelka backend scanner yaml config syntax error <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14406">#14406</a></p></li>
+<li><p>FIX: Strelka containers restart when the config changes <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14498">#14498</a></p></li>
+<li><p>FIX: Suricata Regex not working as expected <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14571">#14571</a></p></li>
+<li><p>FIX: Configuration screen default toggle value hard to read when disabled</p></li>
+<li><p>FIX: Web server cert should include the url_base in alternate subject <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14573">#14573</a></p></li>
+<li><p>FIX: x509_v2.py TypeError: list indices must be integers or slices, not str <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14452">#14452</a></p></li>
+<li><p>UPGRADE: Analyzer dependencies <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14606">#14606</a></p></li>
+<li><p>UPGRADE: Kafka 3.9.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14485">#14485</a></p></li>
+<li><p>UPGRADE: SOC Go external libraries</p></li>
+</ul>
+</section>
+<section id="id197">
+<h3>2.4.141 [20250331] Changes<a class="headerlink" href="#id197" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FIX: Clicking Absolute DateRange Drop Down Refreshes the Page <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14450">#14450</a></p></li>
+<li><p>FIX: Config toggles fail to save if original value is raw boolean <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14449">#14449</a></p></li>
+<li><p>FIX: Dark mode disabled toggles difficult to read <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14454">#14454</a></p></li>
+<li><p>FIX: Improve handling of Elastic Fleet integration upgrades <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14455">#14455</a></p></li>
+</ul>
+</section>
+<section id="id202">
+<h3>2.4.140 [20250324] Changes<a class="headerlink" href="#id202" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Allow moving configuration entries up or down</p></li>
+<li><p>FIX: Adding new user with non-analyst role will default to analyst role <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14395">#14395</a></p></li>
+<li><p>FIX: Allow single entry for Zeek file extracts</p></li>
+<li><p>FIX: AQM menu option should only be visible to superusers when Pro license is applied <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14393">#14393</a></p></li>
+<li><p>FIX: Creating a PCAP job with the new popup calendar fails to retrieve PCAP <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14387">#14387</a></p></li>
+<li><p>FIX: Detection title under Alert Details panel overflows beyond border <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14369">#14369</a></p></li>
+<li><p>FIX: Grid Configuration Zoom Level <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14366">#14366</a></p></li>
+<li><p>FIX: limited-analyst and limited-auditor roles receive 403 error upon login <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14392">#14392</a></p></li>
+<li><p>FIX: Pro license message invisible in light mode <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14382">#14382</a></p></li>
+<li><p>FIX: Salt bootstrap <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14435">#14435</a></p></li>
+<li><p>FIX: Unable to add more than one Suricata tuning rule without navigating away <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14374">#14374</a></p></li>
+<li><p>FIX: Unable to extract PCAP from imported PCAPs when using Suricata for PCAP <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14426">#14426</a></p></li>
+<li><p>FIX: Unable to import PCAP on remote sensor nodes via SOC UI <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14424">#14424</a></p></li>
+<li><p>FIX: Unable to load YARA rules with multiline comments <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14400">#14400</a></p></li>
+<li><p>FIX: Update global.pipeline annotation</p></li>
+<li><p>FIX: Zeek ldap_search missing observer.name <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14370">#14370</a></p></li>
+<li><p>UPGRADE: SOC golang.org/x/net to 0.36.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14399">#14399</a></p></li>
+<li><p>UPGRADE: Suricata to 7.0.9 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14401">#14401</a></p></li>
+<li><p>UPGRADE: Zeek to 7.0.6 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14421">#14421</a></p></li>
+</ul>
+</section>
+<section id="id219">
+<h3>2.4.130 [20250311] Changes<a class="headerlink" href="#id219" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Add a pop-up calendar for the start and end time in the PCAP interface <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14115">#14115</a></p></li>
+<li><p>FEATURE: Add notes to SOC Config about Elasticsearch ILM rollover <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14353">#14353</a></p></li>
+<li><p>FEATURE: Add sankey chart to Elastic Agent API dashboard to show relationship between process.name and process.Ext.api.name <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14339">#14339</a></p></li>
+<li><p>FEATURE: Additional licensing enhancements</p></li>
+<li><p>FEATURE: Allow query cancelation from Security Onion Console <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/4161">#4161</a></p></li>
+<li><p>FEATURE: Allow users to switch Alerts to advanced interface permanently <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14348">#14348</a></p></li>
+<li><p>FEATURE: Enhance config UI Element capabilities</p></li>
+<li><p>FEATURE: Improve management of ES index templates for integrations</p></li>
+<li><p>FEATURE: Review ES field mapping conflicts</p></li>
+<li><p>FEATURE: Use new annotations to improve configuration interface <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14209">#14209</a></p></li>
+<li><p>FEATURE: Zeek parsing</p></li>
+<li><p>FIX: API unauthorized vs forbidden response <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14304">#14304</a></p></li>
+<li><p>FIX: Add TLSv1.3 to nginx config <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14252">#14252</a></p></li>
+<li><p>FIX: Alert Overview summary overflows beyond border <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14365">#14365</a></p></li>
+<li><p>FIX: Check for metrics indices with replicas configured causing ES to go YELLOW</p></li>
+<li><p>FIX: Elastic Agent Security Events dashboard should reference user.effective.name <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14325">#14325</a></p></li>
+<li><p>FIX: No license file in repo <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14266">#14266</a></p></li>
+<li><p>FIX: Reduce so-setup and soup console output <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14330">#14330</a></p></li>
+<li><p>FIX: SOC Actions for process.entity_id value must be quoted <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14311">#14311</a></p></li>
+<li><p>FIX: SOC Alerts Column Sorting <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14242">#14242</a></p></li>
+<li><p>FIX: SOC Detections table showing incorrect numbers <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14317">#14317</a></p></li>
+<li><p>FIX: SOC Grid Members improve REVIEW button in light mode <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14332">#14332</a></p></li>
+<li><p>FIX: SOC Light Mode Icon Colors <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14237">#14237</a></p></li>
+<li><p>FIX: SOC PCAP Transcript Context Menu <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14294">#14294</a></p></li>
+<li><p>FIX: SOC PCAP column headers hidden from view <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14234">#14234</a></p></li>
+<li><p>FIX: SOC logging 404 requests with url field that should be a string <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14293">#14293</a></p></li>
+<li><p>FIX: Verify geoip database</p></li>
+<li><p>FIX: pfSense Suricata integration</p></li>
+<li><p>FIX: so-import-pcap not working on STIG installation</p></li>
+<li><p>UPGRADE: Elastic Fleet to support Elastic Defend on macOS 15.x (Sequoia) <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14010">#14010</a></p></li>
+<li><p>UPGRADE: Elastic to 8.17.3 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14356">#14356</a></p></li>
+<li><p>UPGRADE: SOC Golang to 1.24 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14230">#14230</a></p></li>
+</ul>
+</section>
+<section id="id243">
+<h3>2.4.120 [20250212] Changes<a class="headerlink" href="#id243" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Additional supported integrations</p></li>
+<li><p>FEATURE: Add template Sigma &amp; YARA local custom repo</p></li>
+<li><p>FEATURE: Allow users to prevent the kernel and other packages from being upgraded</p></li>
+<li><p>FEATURE: API Clients <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13928">#13928</a></p></li>
+<li><p>FEATURE: ATT&amp;CK Layer for Detections <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13885">#13885</a></p></li>
+<li><p>FEATURE: Custom Local IP to Hostname Mapping</p></li>
+<li><p>FEATURE: Elastic Agent MSI <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13744">#13744</a></p></li>
+<li><p>FEATURE: Expose new rule summary to Alerts page <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13770">#13770</a></p></li>
+<li><p>FEATURE: Extract additional metadata - Created &amp; Updated</p></li>
+<li><p>FEATURE: Improve Operational Notes &amp; Overrides</p></li>
+<li><p>FEATURE: Make TRACK column visible</p></li>
+<li><p>FEATURE: More configurable options to enable|disable Sigma rules on import</p></li>
+<li><p>FEATURE: Override Note <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13766">#13766</a></p></li>
+<li><p>FEATURE: Show available Pro features on unprovisioned license screen <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14072">#14072</a></p></li>
+<li><p>FEATURE: Suppress the Context Menu when highlighting text <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13184">#13184</a></p></li>
+<li><p>FEATURE: Toggle Enabled|Disabled for Detection Engine syncs</p></li>
+<li><p>FEATURE: Trend Micro Integration</p></li>
+<li><p>FEATURE: When Clicking a Detection Engine Status, Run a Specific, Configurable Hunt Query <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13865">#13865</a></p></li>
+<li><p>FEATURE: Zeek HTTP2</p></li>
+<li><p>FEATURE: Zeek IPSec <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14006">#14006</a></p></li>
+<li><p>FEATURE: Zeek LDAP</p></li>
+<li><p>FEATURE: Zeek OpenVPN <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14005">#14005</a></p></li>
+<li><p>FEATURE: Zeek QUIC <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/6925">#6925</a></p></li>
+<li><p>FIX: Better handling of Detections’ custom git repo errors</p></li>
+<li><p>FIX: Cloud installs should use pre-installed docker registry data <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14044">#14044</a></p></li>
+<li><p>FIX: Configuration YAML validator fails on valid YAML <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13965">#13965</a></p></li>
+<li><p>FIX: Detections - Overrides list only displays 10 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13950">#13950</a></p></li>
+<li><p>FIX: Ensure createrepo_c is installed on airgapped manager nodes <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13857">#13857</a></p></li>
+<li><p>FIX: Flickering Sankey chart <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14215">#14215</a></p></li>
+<li><p>FIX: Have soup ensure that top.sls is in normal mode even if there are no soup changes <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13808">#13808</a></p></li>
+<li><p>FIX: Invalidate a user’s sessions when an administrator changes the user’s password <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14076">#14076</a></p></li>
+<li><p>FIX: Non Oracle nodes failing soup / Salt upgrade <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13926">#13926</a></p></li>
+<li><p>FIX: null pointer exception in <a class="reference external" href="mailto:global&#37;&#52;&#48;custom">global<span>&#64;</span>custom</a> pipeline <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14117">#14117</a></p></li>
+<li><p>FIX: Okta index template missing okta-mappings component template <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14106">#14106</a></p></li>
+<li><p>FIX: Records being partially displayed in the Alerts interface when expanded <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14108">#14108</a></p></li>
+<li><p>FIX: Review ILM settings for Detection History index</p></li>
+<li><p>FIX: rsync error during non-airgapped manager setup <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13860">#13860</a></p></li>
+<li><p>FIX: Salt Repo has moved <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13898">#13898</a></p></li>
+<li><p>FIX: Salt state warnings <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13851">#13851</a></p></li>
+<li><p>FIX: so-repo-sync errors on non Oracle OS <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13919">#13919</a></p></li>
+<li><p>FIX: Suricata Integrity Check fails when Suricata Metadata rules are enabled</p></li>
+<li><p>FIX: Update crowdstrike integration support <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13913">#13913</a></p></li>
+<li><p>UPGRADE: ATT&amp;CK Navigator to 5.1.0</p></li>
+<li><p>UPGRADE: CyberChef to 10.19.4 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14131">#14131</a></p></li>
+<li><p>UPGRADE: ElastAlert 2 to 2.22.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14082">#14082</a></p></li>
+<li><p>UPGRADE: Go dependencies in SOC <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14020">#14020</a></p></li>
+<li><p>UPGRADE: InfluxDB to 2.7.10 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14084">#14084</a></p></li>
+<li><p>UPGRADE: Kratos to 1.3.1 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14083">#14083</a></p></li>
+<li><p>UPGRADE: NGINX to 1.26.2 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14086">#14086</a></p></li>
+<li><p>UPGRADE: Vue.js front-end UI framework to v3 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13806">#13806</a></p></li>
+<li><p>UPGRADE: Zeek 7</p></li>
+</ul>
+</section>
+<section id="patch-20241217-changes">
+<h3>2.4.111 Patch [20241217] Changes<a class="headerlink" href="#patch-20241217-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>UPGRADE: Suricata 7.0.8 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/14024">#14024</a></p></li>
+</ul>
+</section>
+<section id="hotfix-20241010-changes">
+<h3>2.4.110 Hotfix [20241010] Changes<a class="headerlink" href="#hotfix-20241010-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FIX: Use ID instead of name for getting integrations from agent policies <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13795">#13795</a></p></li>
+</ul>
+</section>
+<section id="id280">
+<h3>2.4.110 [20241004] Changes<a class="headerlink" href="#id280" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Activate generated detection summaries <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13454">#13454</a></p></li>
+<li><p>FEATURE: Add Elastic Integration for Barracuda CloudGen Firewall</p></li>
+<li><p>FEATURE: Add Elastic Integration for Imperva Cloud WAF</p></li>
+<li><p>FEATURE: Add new alerts for changes in SOC status <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13654">#13654</a></p></li>
+<li><p>FEATURE: AI-Generated Rule analysis / summary</p></li>
+<li><p>FEATURE: Allow external access to suricata rules managed by Detections <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13655">#13655</a></p></li>
+<li><p>FEATURE: Allow for users to add custom skins for IDH http</p></li>
+<li><p>FEATURE: Create ISO install options for SOS Appliances</p></li>
+<li><p>FEATURE: Desktop ISO install STIG support</p></li>
+<li><p>FEATURE: For improved upgrade experience, tag Elasticsearch image with Elastic version <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13606">#13606</a></p></li>
+<li><p>FEATURE: Handle Custom Integration Policy Upgrades <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13560">#13560</a></p></li>
+<li><p>FEATURE: SOS Process Filters for Elastic Agent</p></li>
+<li><p>FEATURE: Standalone use Suricata for PCAP by default <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13650">#13650</a></p></li>
+<li><p>FIX: Add additional warning text in Configuration screen when trying to disable key components</p></li>
+<li><p>FIX: Analysts should be able to modify and disable Suricata rules <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13668">#13668</a></p></li>
+<li><p>FIX: Elastic integration field mappings <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13725">#13725</a></p></li>
+<li><p>FIX: Intermittent soup errors causing soup to exit with failure message <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13247">#13247</a></p></li>
+<li><p>FIX: Minion overrides in Config screen show global override values <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13689">#13689</a></p></li>
+<li><p>FIX: Resolve missing CA certs in Kratos container <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13722">#13722</a></p></li>
+<li><p>FIX: Sensor age in grid screen sometimes shows incorrect age of node <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13628">#13628</a></p></li>
+<li><p>FIX: Since OIDC emails can have uppercase, force lowercase prior to server side dispatch <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13730">#13730</a></p></li>
+<li><p>FIX: Stenographer packet loss differs from influxdb <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13626">#13626</a></p></li>
+<li><p>FIX: Update Parsing of Suricata logs from pfSense and OPNsense</p></li>
+<li><p>FIX: When NIDS rules update, ask Suricata to reload rules rather than restart</p></li>
+<li><p>UPGRADE: CyberChef 10.19.2 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13637">#13637</a></p></li>
+<li><p>UPGRADE: Docker 27.2.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13566">#13566</a></p></li>
+<li><p>UPGRADE: ElastAlert 2 to 2.20.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13700">#13700</a></p></li>
+<li><p>UPGRADE: Kratos to 1.3.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13758">#13758</a></p></li>
+<li><p>UPGRADE: Suricata to 7.0.7 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13760">#13760</a></p></li>
+<li><p>UPGRADE: Zeek 6.0.8 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13600">#13600</a></p></li>
+</ul>
+</section>
+<section id="hotfix-20240903-changes">
+<h3>2.4.100 Hotfix [20240903] Changes<a class="headerlink" href="#hotfix-20240903-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FIX: Missing mappings for WEL Templates</p></li>
+</ul>
+</section>
+<section id="id301">
+<h3>2.4.100 [20240829] Changes<a class="headerlink" href="#id301" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Add breadcrumbs to Grid Configuration</p></li>
+<li><p>FEATURE: Add SOC Config Quick Link to allow Security Onion Desktop installations through firewall <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13412">#13412</a></p></li>
+<li><p>FEATURE: Add warning to soup about ssh <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13466">#13466</a></p></li>
+<li><p>FEATURE: Elastic Integration for tenable.io</p></li>
+<li><p>FEATURE: Optional setting to force users to setup OTP/MFA upon login <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13388">#13388</a></p></li>
+<li><p>FEATURE: Enhanced notifications (Pro) and related configuration updates</p></li>
+<li><p>FIX: Admin resetting of a user’s password is not removing MFA <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13468">#13468</a></p></li>
+<li><p>FIX: Appliance kickstart updates</p></li>
+<li><p>FIX: Detections: YARA Detection tuning pivot should take user to detection source instead of tuning</p></li>
+<li><p>FIX: Duplicate variable causing Suricata failure <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13461">#13461</a></p></li>
+<li><p>FIX: Elastic Fleet disable TLS 1.1 by default</p></li>
+<li><p>FIX: Exempt desktop nodes from license node count</p></li>
+<li><p>FIX: Firewall annotations for Kafka</p></li>
+<li><p>FIX: Reduce size of SOC image due to git</p></li>
+<li><p>FIX: Reduce SOC Config Loading Time</p></li>
+<li><p>FIX: Review and disable outdated ciphers for Fleet  <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11145">#11145</a></p></li>
+<li><p>FIX: Salt packages not versionlocked <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13438">#13438</a></p></li>
+<li><p>FIX: SOC logs ILM policy doesn’t exist <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13555">#13555</a></p></li>
+<li><p>FIX: Suricata Alerts missing kafka.id field</p></li>
+<li><p>FIX: Syntax Check before submitting New Rule <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13385">#13385</a></p></li>
+<li><p>FIX: Tuning details should be included as part of the history item <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13225">#13225</a></p></li>
+<li><p>FIX: Update Agent Builder Dependencies <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13142">#13142</a></p></li>
+<li><p>FIX: Update pipeline version for EVTX <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13563">#13563</a></p></li>
+<li><p>UPGRADE: Docker Registry 2.8.3 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13510">#13510</a></p></li>
+<li><p>UPGRADE: ElastAlert 2.19.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13496">#13496</a></p></li>
+<li><p>UPGRADE: Elastic 8.14.3 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13263">#13263</a></p></li>
+<li><p>UPGRADE: Kratos 1.2.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13471">#13471</a></p></li>
+<li><p>UPGRADE: Salt 3006.9 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13423">#13423</a></p></li>
+<li><p>UPGRADE: SOC dependencies to latest versions <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13488">#13488</a></p></li>
+<li><p>UPGRADE: so-elastic-agent-builder base image <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13505">#13505</a></p></li>
+<li><p>UPGRADE: so-elastic-fleet-package-registry base image</p></li>
+<li><p>UPGRADE: so-idh base image <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13503">#13503</a></p></li>
+<li><p>UPGRADE: so-idstools base image <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13500">#13500</a></p></li>
+<li><p>UPGRADE: so-influxdb base image and InfluxDB 2.7.9 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13494">#13494</a></p></li>
+<li><p>UPGRADE: so-kafka base image and Kafka 3.8.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13497">#13497</a></p></li>
+<li><p>UPGRADE: so-nginx base image <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13491">#13491</a></p></li>
+<li><p>UPGRADE: so-pcaptools base image <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13495">#13495</a></p></li>
+<li><p>UPGRADE: so-redis base image and Redis 7.2.5 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13501">#13501</a></p></li>
+<li><p>UPGRADE: so-steno base image <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13498">#13498</a></p></li>
+<li><p>UPGRADE: so-strelka-backend base image</p></li>
+<li><p>UPGRADE: so-strelka base images <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13504">#13504</a></p></li>
+<li><p>UPGRADE: so-suricata base image <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13492">#13492</a></p></li>
+<li><p>UPGRADE: so-tcpreplay base image <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13499">#13499</a></p></li>
+<li><p>UPGRADE: so-telegraf base image and Telegraf 1.31.3 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13502">#13502</a></p></li>
+<li><p>UPGRADE: so-zeek base image <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13493">#13493</a></p></li>
+</ul>
+</section>
+<section id="id334">
+<h3>2.4.90 [20240729] Changes<a class="headerlink" href="#id334" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Add new action to SOC Actions list to allow users to more easily add their own actions <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13346">#13346</a></p></li>
+<li><p>FEATURE: Include new Security Onion appliance images for v2 refresh</p></li>
+<li><p>FEATURE: Provide maximize button on configuration screen</p></li>
+<li><p>FEATURE: Support suricata regex enable | disable</p></li>
+<li><p>FEATURE: Visualize diff of history edits</p></li>
+<li><p>FIX: Better Timeout Error message <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12534">#12534</a></p></li>
+<li><p>FIX: Custom defined template causes SLS rendering error in base:elasticsearch.enabled <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13328">#13328</a></p></li>
+<li><p>FIX: Detections - Bulk Performance Revisit</p></li>
+<li><p>FIX: Disable logstash on heavynodes <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13073">#13073</a></p></li>
+<li><p>FIX: Exclude policy phases if not defined in defaults <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13354">#13354</a></p></li>
+<li><p>FIX: Heavynode architecture documentation</p></li>
+<li><p>FIX: Improve displayed metrics for Kafka in influxdb <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13235">#13235</a></p></li>
+<li><p>FIX: Refactor Sync Process</p></li>
+<li><p>FIX: Update MOTD <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13317">#13317</a></p></li>
+<li><p>FIX: Update SOC MOTD <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13320">#13320</a></p></li>
+<li><p>UPGRADE: Base image for so-steno container to oracle9:latest <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13344">#13344</a></p></li>
+<li><p>UPGRADE: Base image for so-tcpreplay container to oracle9:latest <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13345">#13345</a></p></li>
+<li><p>UPGRADE: CyberChef 10.19.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13267">#13267</a></p></li>
+<li><p>UPGRADE: so-idh to newer base image <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13265">#13265</a></p></li>
+<li><p>UPGRADE: so-nginx to nginx:1.26.1-alpine <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13264">#13264</a></p></li>
+<li><p>UPGRADE: Suricata 7.0.6 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13283">#13283</a></p></li>
+</ul>
+</section>
+<section id="id349">
+<h3>2.4.80 [20240624] Changes<a class="headerlink" href="#id349" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Add <cite>IP/VAR</cite> column to Suricata Overrides view</p></li>
+<li><p>FEATURE: Add more links and descriptions to SOC MOTD <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13216">#13216</a></p></li>
+<li><p>FEATURE: Add new Process actions <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13226">#13226</a></p></li>
+<li><p>FEATURE: Add SOC Config Quick Links for Cold and Warm ILM Phases <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13203">#13203</a></p></li>
+<li><p>FEATURE: Bulk Delete Custom Detections <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13151">#13151</a></p></li>
+<li><p>FEATURE: Create Detection - Preload Rule Templates  <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13152">#13152</a></p></li>
+<li><p>FEATURE: Guaranteed Message Delivery <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13201">#13201</a></p></li>
+<li><p>FEATURE: Show notice in SOC if license will expire within 45 days</p></li>
+<li><p>FEATURE: Support Custom Suricata Rulesets via URL and local file <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13195">#13195</a></p></li>
+<li><p>FEATURE: Support Suricata VARs for Overrides <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13194">#13194</a></p></li>
+<li><p>FEATURE: Syntax Highlighting</p></li>
+<li><p>FEATURE: Toggle full query visibility in hunt screens</p></li>
+<li><p>FIX: Add duplicate check to Integrity Check</p></li>
+<li><p>FIX: Add file transfer status to ISO output</p></li>
+<li><p>FIX: Bulk Actions - No banner at start <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13177">#13177</a></p></li>
+<li><p>FIX: Can not use suricata address-book names in address-group definitions <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13136">#13136</a></p></li>
+<li><p>FIX: Custom Sigma Detection - Description field <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13159">#13159</a></p></li>
+<li><p>FIX: Detections - Suricata Integrity Check <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13180">#13180</a></p></li>
+<li><p>FIX: Elasticsearch index templates not loading <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13161">#13161</a></p></li>
+<li><p>FIX: .items and .lists indices are created with a replica <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13111">#13111</a></p></li>
+<li><p>FIX: Page limit for Fleet Agent Policies <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13131">#13131</a></p></li>
+<li><p>FIX: Proxy support in Detections <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13153">#13153</a></p></li>
+<li><p>FIX: Quoting when duplication Suricata Detection <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13241">#13241</a></p></li>
+<li><p>FIX: Receiver nodes should allow connections from Elastic Agents <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13167">#13167</a></p></li>
+<li><p>FIX: Refactor DetectionParameters</p></li>
+<li><p>FIX: Separate Suricata indices into alerts and metadata <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12868">#12868</a></p></li>
+<li><p>FIX: so-test and so-tcpreplay fail when manager offline <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13104">#13104</a></p></li>
+<li><p>FIX: Unable to add additional Suricata Overrides without page refresh <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13188">#13188</a></p></li>
+<li><p>FIX: Visual Glitch - dupe operational notes when updating custom rule <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13199">#13199</a></p></li>
+<li><p>UPGRADE: CyberChef 10.18.6 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13174">#13174</a></p></li>
+<li><p>UPGRADE: Docker <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13181">#13181</a></p></li>
+</ul>
+</section>
+<section id="id374">
+<h3>2.4.70 [20240529] Changes<a class="headerlink" href="#id374" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Add confirmation dialog for “revert to default” button in Configuration</p></li>
+<li><p>FEATURE: Add dashboard for NetFlow <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13009">#13009</a></p></li>
+<li><p>FEATURE: Add dashboard for SOC Login Failures <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12738">#12738</a></p></li>
+<li><p>FEATURE: Add dashboards specific to Elastic Agent <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12746">#12746</a></p></li>
+<li><p>FEATURE: Add event.dataset to all Events table layouts <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12641">#12641</a></p></li>
+<li><p>FEATURE: Add Events table columns for event.module elastic_agent <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12666">#12666</a></p></li>
+<li><p>FEATURE: Add Events table columns for event.module kratos <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12740">#12740</a></p></li>
+<li><p>FEATURE: Add Events table columns for event.module opencanary <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12655">#12655</a></p></li>
+<li><p>FEATURE: Add Events table columns for event.module playbook <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12703">#12703</a></p></li>
+<li><p>FEATURE: Add Events table columns for event.module sigma <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12743">#12743</a></p></li>
+<li><p>FEATURE: Add Events table columns for event.module strelka <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12716">#12716</a></p></li>
+<li><p>FEATURE: Add Events table columns for event.module system <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12628">#12628</a></p></li>
+<li><p>FEATURE: Add Events table columns for stun logs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12940">#12940</a></p></li>
+<li><p>FEATURE: Add Events table columns for tunnel logs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12937">#12937</a></p></li>
+<li><p>FEATURE: Add Events table columns for zeek ssl and suricata ssl <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12697">#12697</a></p></li>
+<li><p>FEATURE: Add groupby fields to Dashboards relating to sankey diagrams <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12657">#12657</a></p></li>
+<li><p>FEATURE: Add hyperlink to airgap screen in setup <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12925">#12925</a></p></li>
+<li><p>FEATURE: Add individual dashboards for Zeek SSL and Suricata SSL logs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12699">#12699</a></p></li>
+<li><p>FEATURE: Additional Supported Integrations #6</p></li>
+<li><p>FEATURE: Add more fields to the SOC Dashboards URL for so-import-pcap <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12972">#12972</a></p></li>
+<li><p>FEATURE: Add process.command_line to Process Info and Process Ancestry dashboards <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12694">#12694</a></p></li>
+<li><p>FEATURE: Add queue=True to so-checkin so that it will wait for any running states <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12815">#12815</a></p></li>
+<li><p>FEATURE: Add SOC Quick Link for Elasticsearch ILM Deletion <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12854">#12854</a></p></li>
+<li><p>FEATURE: Allow duplication of certain config settings</p></li>
+<li><p>FEATURE: Allow users to disable Elasticsearch cleanup script <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12856">#12856</a></p></li>
+<li><p>FEATURE: Change default timeout period for Elastic Agent installation</p></li>
+<li><p>FEATURE: Continuation of new Detections module rollout <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12903">#12903</a></p></li>
+<li><p>FEATURE: Delayed enrollment for Elastic Agents</p></li>
+<li><p>FEATURE: Enable license checks for enterprise features <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12839">#12839</a></p></li>
+<li><p>FEATURE: Eval use Suricata for PCAP by default <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12878">#12878</a></p></li>
+<li><p>FEATURE: Hunting for SOC logs should show relevant columns</p></li>
+<li><p>FEATURE: Introduce new readOnlyUi annotation</p></li>
+<li><p>FEATURE: Kismet integration <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12849">#12849</a></p></li>
+<li><p>FEATURE: Lower EVAL memory requirement to 8GB RAM <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12896">#12896</a></p></li>
+<li><p>FEATURE: pfSense Suricata logs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12653">#12653</a></p></li>
+<li><p>FEATURE: SOC Telemetry to provide feature usage feedback to dev team</p></li>
+<li><p>FEATURE: SOS Sigma ruleset</p></li>
+<li><p>FIX: Add annotations for BPF and Suricata PCAP <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12626">#12626</a></p></li>
+<li><p>FIX: Add missing options to Suricata af-packet config <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12637">#12637</a></p></li>
+<li><p>FIX: Add the write privilege to the analyst and limited-analyst roles to enable acking of alerts <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12770">#12770</a></p></li>
+<li><p>FIX: Adjust so-import-pcap so that suricata works when it is pcapengine <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12969">#12969</a></p></li>
+<li><p>FIX: Change Elasticsearch min_age setting for cold phase <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12890">#12890</a></p></li>
+<li><p>FIX: Configuration screen search filter causes long delays <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12923">#12923</a></p></li>
+<li><p>FIX: Detections alerts indices <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13005">#13005</a></p></li>
+<li><p>FIX: Detections alerts template not being loaded because load script is trying to match names <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13048">#13048</a></p></li>
+<li><p>FIX: Elastic retention setting not being honored when manager hostname is a subset of search node hostname <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12819">#12819</a></p></li>
+<li><p>FIX: Elasticsearch annotation file for ILM index settings <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12726">#12726</a></p></li>
+<li><p>FIX: Elasticsearch cleanup script should avoid Suricata alerts <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12855">#12855</a></p></li>
+<li><p>FIX: Elasticsearch min_age regex <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12885">#12885</a></p></li>
+<li><p>FIX: GitHub discussion/issue curator workflows fail on repo forks</p></li>
+<li><p>FIX: IDH node installs, but won’t configure <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12991">#12991</a></p></li>
+<li><p>FIX: idh.services is displayed in SOC Grid Configuration as an advanced setting  <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13012">#13012</a></p></li>
+<li><p>FIX: Improve File dashboard <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12914">#12914</a></p></li>
+<li><p>FIX: Input Validation for IPv6 addresses in Zeek and Suricata vars <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12675">#12675</a></p></li>
+<li><p>FIX: mapping conflict with field http.response.status_code <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12543">#12543</a></p></li>
+<li><p>FIX: Remove errant max_age setting from Elastic SOC config <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12851">#12851</a></p></li>
+<li><p>FIX: Rendering SLS ‘base:elasticsearch.enabled’ failed: Jinja error: Cannot update using non-dict types in dictupdate.update() <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13030">#13030</a></p></li>
+<li><p>FIX: Resetting a customized file to default should restore the default <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13008">#13008</a></p></li>
+<li><p>FIX: so-elasticsearch-ilm-policy-load trying to set policy for indices not managed by ILM <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13021">#13021</a></p></li>
+<li><p>FIX: so-index-list not working correctly <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12988">#12988</a></p></li>
+<li><p>FIX: Sorting for older and newer indices in Elasticsearch cleanup <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12857">#12857</a></p></li>
+<li><p>FIX: so-verify detects rare false error <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12811">#12811</a></p></li>
+<li><p>FIX: Specify that static IP address is recommended <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12643">#12643</a></p></li>
+<li><p>FIX: Update expected timestamp formats in ingest pipeline <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12887">#12887</a></p></li>
+<li><p>FIX: Update so-whiptail to make installation screen more consistent <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12921">#12921</a></p></li>
+<li><p>UPGRADE: CyberChef 10.17.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12798">#12798</a></p></li>
+<li><p>UPGRADE: Suricata 7.0.5 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12843">#12843</a></p></li>
+<li><p>UPGRADE: Zeek 6.0.4 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13027">#13027</a></p></li>
+</ul>
+</section>
+<section id="id433">
+<h3>2.4.60 [20240320] Changes<a class="headerlink" href="#id433" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Add Suricata classification.config for editing  <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12391">#12391</a></p></li>
+<li><p>FEATURE: Add Suricata support for full PCAP <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12571">#12571</a></p></li>
+<li><p>FEATURE: Add default columns for endpoint.events datasets <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12425">#12425</a></p></li>
+<li><p>FEATURE: Add new SOC action for Process Info <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12421">#12421</a></p></li>
+<li><p>FEATURE: Add new endpoint dashboards <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12428">#12428</a></p></li>
+<li><p>FEATURE: Additional Supported Integrations #5</p></li>
+<li><p>FEATURE: Improve Grid page Reboot indicators <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12546">#12546</a></p></li>
+<li><p>FEATURE: Initial implementation of the new Detections system (currently disabled)</p></li>
+<li><p>FIX: Accept Uppercase emails <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12559">#12559</a></p></li>
+<li><p>FIX: Change the default setting for steno diskfreepercentage on standalone installations to 21 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12541">#12541</a></p></li>
+<li><p>FIX: Download only newest packages for network installs</p></li>
+<li><p>FIX: EA packages are not downloadable once STIGs have been applied</p></li>
+<li><p>FIX: Endpoint diagnostic template pattern <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12433">#12433</a></p></li>
+<li><p>FIX: Exclude templates from global overrides when necessary <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12382">#12382</a></p></li>
+<li><p>FIX: Improve the accuracy of the stenoloss script <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12477">#12477</a></p></li>
+<li><p>FIX: Receiver node Redis queue fills up using Managersearch without a Searchnode <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12535">#12535</a></p></li>
+<li><p>FIX: Support Oinkcode values containing leading 0’s <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12506">#12506</a></p></li>
+<li><p>FIX: Update SOC annotations for Stenographer PCAP <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12539">#12539</a></p></li>
+<li><p>FIX: Update correlate quick action with new icon <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12387">#12387</a></p></li>
+<li><p>FIX: Update ks.cfg for appliances</p></li>
+<li><p>FIX: error.message mapping for system.syslog <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12518">#12518</a></p></li>
+<li><p>FIX: so-saltstack-update should use the proper repo in 2.4 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12570">#12570</a></p></li>
+<li><p>UPGRADE: CyberChef 10.8.2 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12454">#12454</a></p></li>
+<li><p>UPGRADE: Kratos to 1.1.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12479">#12479</a></p></li>
+<li><p>UPGRADE: Suricata 7.0.4 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12609">#12609</a></p></li>
+</ul>
+</section>
+<section id="id454">
+<h3>2.4.50 [20240220] Changes<a class="headerlink" href="#id454" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Add Suricata PCAP module to Sensoroni (currently disabled) <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12255">#12255</a></p></li>
+<li><p>FEATURE: Add new SOC action to show process ancestry <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12345">#12345</a></p></li>
+<li><p>FEATURE: Add new dashboards for community_id and firewall auth <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12323">#12323</a></p></li>
+<li><p>FEATURE: Additional Supported Integrations #4</p></li>
+<li><p>FEATURE: Allow user to create custom elastic search pipelines without copying them over via ssh</p></li>
+<li><p>FEATURE: Allow user to create custom logstash pipelines without copying them over via ssh</p></li>
+<li><p>FEATURE: Dedicated Fleet node should have an nginx entry and cert that works for /artifacts <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11346">#11346</a></p></li>
+<li><p>FEATURE: Determine if Elastic is on its own mount point if so adjust size for watermark <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12364">#12364</a></p></li>
+<li><p>FEATURE: Improve Correlate and Hunt actions on SOC Actions menu <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12315">#12315</a></p></li>
+<li><p>FEATURE: RITA Logs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12226">#12226</a></p></li>
+<li><p>FEATURE: Support PCAP pivots for ICMP packets in SOC</p></li>
+<li><p>FIX:  suricata.ike ingest pipeline does not exist <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12174">#12174</a></p></li>
+<li><p>FIX: Add stenographer logging <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12282">#12282</a></p></li>
+<li><p>FIX: Change field groupby button to new groupby <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12228">#12228</a></p></li>
+<li><p>FIX: Correct SOC error messages related to malformed queries <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12269">#12269</a></p></li>
+<li><p>FIX: Endpoint diagnostic collection index created with replicas <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12256">#12256</a></p></li>
+<li><p>FIX: Expose node Reboot status as its own state; other grid/feature improvements</p></li>
+<li><p>FIX: Network Transport for suricata alerts should be lowercase <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12217">#12217</a></p></li>
+<li><p>FIX: Strelka scan.pe.flags mapping <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12251">#12251</a></p></li>
+<li><p>FIX: Sync the event.dataset values between the Windows Sysmon and ElasticAgent defend logs</p></li>
+<li><p>FIX: Syntax error running elastic fleet scripts during highstate</p></li>
+<li><p>FIX: User count logic providing inconsistent results <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12258">#12258</a></p></li>
+<li><p>UPGRADE: CyberChef 10.6.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12310">#12310</a></p></li>
+<li><p>UPGRADE: Salt 3006.6 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12304">#12304</a></p></li>
+<li><p>UPGRADE: Strelka 0.24.01.18 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12229">#12229</a></p></li>
+<li><p>UPGRADE: Suricata 7.0.3 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12327">#12327</a></p></li>
+<li><p>UPGRADE: Zeek 6.0.3 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12225">#12225</a></p></li>
+</ul>
+</section>
+<section id="id475">
+<h3>2.4.40 [20240116] Changes<a class="headerlink" href="#id475" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Add geoip support to Suricata <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11901">#11901</a></p></li>
+<li><p>FEATURE: Additional Supported Integrations #2 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11958">#11958</a></p></li>
+<li><p>FEATURE: Additional Supported Integrations #3 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12056">#12056</a></p></li>
+<li><p>FEATURE: Add server reboot notification to SOC  <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11852">#11852</a></p></li>
+<li><p>FEATURE: Allow an easy way to disable incoming events to a manager <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12033">#12033</a></p></li>
+<li><p>FEATURE: Carve out the cert_chain_fps value from SSL traffic <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11806">#11806</a></p></li>
+<li><p>FEATURE: Echotrail, Elasticsearch, MalwareBazaar, and ThreatFox Analyzers <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12014">#12014</a></p></li>
+<li><p>FEATURE: Grid page status/metric enhancements <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11971">#11971</a></p></li>
+<li><p>FEATURE: Manipulate event table columns <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12145">#12145</a></p></li>
+<li><p>FEATURE: Sublime Platform Analyzer <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11883">#11883</a></p></li>
+<li><p>FIX: Add force option to integrations <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12017">#12017</a></p></li>
+<li><p>FIX: Adding extra_hosts for SOC, Elasticsearch and Logstash Docker containers fails <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12015">#12015</a></p></li>
+<li><p>FIX: Begin kickstart consolidation</p></li>
+<li><p>FIX: Corrupt job files should not cause SOC to exit during startup <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12082">#12082</a></p></li>
+<li><p>FIX: Disable Elastic Agent Downloads for Import and Eval mode</p></li>
+<li><p>FIX: Docker service sometimes not started or enabled on remote nodes during setup <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12101">#12101</a></p></li>
+<li><p>FIX: Documentation links under SOC - Administration - Configuration need updating <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11828">#11828</a></p></li>
+<li><p>FIX: FIM Integration <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11847">#11847</a></p></li>
+<li><p>FIX: Ignore Zeek analyzer log <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11892">#11892</a></p></li>
+<li><p>FIX: Improve salt-relay reponse integrity</p></li>
+<li><p>FIX: ISO image should default to 1GB /boot partition <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12002">#12002</a></p></li>
+<li><p>FIX: Logstash pipeline to point to self instead of manager <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12038">#12038</a></p></li>
+<li><p>FIX: Make sure optional integration pillar values are merged with defaults <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12163">#12163</a></p></li>
+<li><p>FIX: Playbook Navigator Layer <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11380">#11380</a></p></li>
+<li><p>FIX: Remove Curator</p></li>
+<li><p>FIX: Remove sudo entry for so-setup after setup completes</p></li>
+<li><p>FIX: Rerunning setup should uninstall local Elastic Agent <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12030">#12030</a></p></li>
+<li><p>FIX: Show more readable column names for default Case list screen <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12162">#12162</a></p></li>
+<li><p>FIX: SOC Hunt HTTP EXE query <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11784">#11784</a></p></li>
+<li><p>FIX: so-elastic-fleet-reset non-destructive <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12142">#12142</a></p></li>
+<li><p>FIX: so-playbook-reset <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11790">#11790</a></p></li>
+<li><p>FIX: Update clear scripts <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11991">#11991</a></p></li>
+<li><p>FIX: Update dashboard and hunt query for firewall logs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12021">#12021</a></p></li>
+<li><p>FIX: Update NIDS rule.reference in common.nids pipeline <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11846">#11846</a></p></li>
+<li><p>UPGRADE: Salt 3006.5 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12143">#12143</a></p></li>
+<li><p>UPGRADE: SOC dependencies to latest versions <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12041">#12041</a></p></li>
+<li><p>UPGRADE: Strelka 0.23.12.01 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11770">#11770</a></p></li>
+</ul>
+</section>
+<section id="hotfix-20231228-changes">
+<h3>2.4.30 Hotfix [20231228] Changes<a class="headerlink" href="#hotfix-20231228-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FIX: Appliance kickstart files are not copying Elastic Agent tarballs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12081">#12081</a></p></li>
+</ul>
+</section>
+<section id="hotfix-20231219-changes">
+<h3>2.4.30 Hotfix [20231219] Changes<a class="headerlink" href="#hotfix-20231219-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FIX: Update appliance kickstart scripts to fix issue with package copy <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/12044">#12044</a></p></li>
+</ul>
+</section>
+<section id="hotfix-20231204-changes">
+<h3>2.4.30 Hotfix [20231204] Changes<a class="headerlink" href="#hotfix-20231204-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FIX: Choosing Desktop or IDH from ISO GRUB menu results in failure <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11865">#11865</a></p></li>
+<li><p>FIX: Ensure airgap rule updates are being copied to the proper location <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11932">#11932</a></p></li>
+<li><p>FIX: outdated import-evtx-logs pipeline versions <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11889">#11889</a></p></li>
+<li><p>FIX: x509.pem_managed errors</p></li>
+</ul>
+</section>
+<section id="hotfix-20231121-changes">
+<h3>2.4.30 Hotfix [20231121] Changes<a class="headerlink" href="#hotfix-20231121-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FIX: Salt minion service disabled highstate in upgrade to 2.4.30 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11851">#11851</a></p></li>
+</ul>
+</section>
+<section id="hotfix-20231117-changes">
+<h3>2.4.30 Hotfix [20231117] Changes<a class="headerlink" href="#hotfix-20231117-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FIX: Elastic Defend Integration Policy Downgrade  <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11810">#11810</a></p></li>
+<li><p>FIX: Update SSL cert to avoid Google Chrome error (2.4) <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11824">#11824</a></p></li>
+</ul>
+</section>
+<section id="id516">
+<h3>2.4.30 [20231113] Changes<a class="headerlink" href="#id516" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Additional Supported Integrations <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11513">#11513</a></p></li>
+<li><p>FEATURE: Allow for BPF comments in SOC <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11738">#11738</a></p></li>
+<li><p>FEATURE: OpenID Connect (OIDC) support</p></li>
+<li><p>FEATURE: so-elastic-fleet-reset <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11697">#11697</a></p></li>
+<li><p>FEATURE: Sublime Platform Integration <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11579">#11579</a></p></li>
+<li><p>FIX: Add -watch to soctopus saltstate for file SOCtopus.conf. Makes container restart &#64; highstate if file is updated. <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11700">#11700</a></p></li>
+<li><p>FIX: Allow ICMP to allow a node to respond to ping <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11495">#11495</a></p></li>
+<li><p>FIX: Allow standalone install type to work with 16GB of ram <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11699">#11699</a></p></li>
+<li><p>FIX: Allow the setting up of data_warm to the nodes list in ES</p></li>
+<li><p>FIX: Data not returned from mine for network.ip_addrs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11502">#11502</a></p></li>
+<li><p>FIX: Delete all obsolete scripts and unused code (also check so-setup, so-functions)</p></li>
+<li><p>FIX: Fail so-setup if Elastic Fleet Setup encounters an error <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11696">#11696</a></p></li>
+<li><p>FIX: Global BPF prevents new sensor from applying highstate <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11610">#11610</a></p></li>
+<li><p>FIX: Improve error handling of Elasticsearch pipeline and template load scripts <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11728">#11728</a></p></li>
+<li><p>FIX: Logs not parsed correctly when shipped from Fleet Node <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11698">#11698</a></p></li>
+<li><p>FIX: Only heavy nodes should be treated as remote Elastic clusters in SOC <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11553">#11553</a></p></li>
+<li><p>FIX: Reduce ISO size <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11510">#11510</a></p></li>
+<li><p>FIX: Set days for warm for all so-* indices</p></li>
+<li><p>FIX: Show container download status during soup <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11550">#11550</a></p></li>
+<li><p>FIX: Sigma DNS mapping <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11498">#11498</a></p></li>
+<li><p>FIX: Suricata 7 pkt_src field needs to be parsed <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11566">#11566</a></p></li>
+<li><p>FIX: The values for specific nodes in zeek.config.local.load are being populated incorrectly <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11472">#11472</a></p></li>
+<li><p>UPGRADE: NetworkMiner 2.8.1 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11457">#11457</a></p></li>
+<li><p>UPGRADE: Salt 3006.3 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11529">#11529</a></p></li>
+<li><p>UPGRADE: SOC dependency Axios to 1.6.1 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11763">#11763</a></p></li>
+<li><p>UPGRADE: Sophos Integration <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11548">#11548</a></p></li>
+<li><p>UPGRADE: Upgrade Elastic to 8.10.4</p></li>
+<li><p>UPGRADE: Upgrade InfluxDB to 2.7.1 and Telegraf to 1.28.2</p></li>
+<li><p>UPGRADE: Upgrade Suricata to 7.0.2</p></li>
+<li><p>UPGRADE: Zeek 6.0.2</p></li>
+</ul>
+</section>
+<section id="hotfix-20231012-changes">
+<h3>2.4.20 Hotfix [20231012] Changes<a class="headerlink" href="#hotfix-20231012-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FIX: Elastic Defend Integration Policy Corrupted <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11527">#11527</a></p></li>
+</ul>
+</section>
+<section id="id540">
+<h3>2.4.20 [20231006] Changes<a class="headerlink" href="#id540" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Add ingest parser for pfSense OpenVPN logs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/7656">#7656</a></p></li>
+<li><p>FEATURE: Add new so-log-check tool to scan SO logging for anomalies</p></li>
+<li><p>FEATURE: Enable Analyzers to be managed through SOC <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11211">#11211</a></p></li>
+<li><p>FEATURE: Grid screen improvements; support for desktop nodes</p></li>
+<li><p>FEATURE: Provide global replica value for index templates <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10998">#10998</a></p></li>
+<li><p>FEATURE: SOC Grid Members should prompt for confirmation before actually deleting <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11223">#11223</a></p></li>
+<li><p>FIX: Adding custom action to SOC causes the Endgame action to be replicated <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11210">#11210</a></p></li>
+<li><p>FIX: Add Transform Role <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11309">#11309</a></p></li>
+<li><p>FIX: CentOS stream 9 installation <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11168">#11168</a></p></li>
+<li><p>FIX: Clean component template directory <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11331">#11331</a></p></li>
+<li><p>FIX: Desktop via network install fails <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10975">#10975</a></p></li>
+<li><p>FIX: Disable conn stats from being generated by default <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11410">#11410</a></p></li>
+<li><p>FIX: Docker custom_bind_mounts not working for some containers <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11122">#11122</a></p></li>
+<li><p>FIX: Duplicate cronjobs for filecheck <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11400">#11400</a></p></li>
+<li><p>FIX: Elastic Agent - Installation “Not Accessible” Message <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11191">#11191</a></p></li>
+<li><p>FIX: Elastic Fleet key and cert errors on heavynode <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11026">#11026</a></p></li>
+<li><p>FIX: Exclude Zeek console log ingestion <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11082">#11082</a></p></li>
+<li><p>FIX: Features pillar not showing all enabled features <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11130">#11130</a></p></li>
+<li><p>FIX: Fleet plugin logs ERROR during kibana restart <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10955">#10955</a></p></li>
+<li><p>FIX: Force nginx to run as user nobody <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11402">#11402</a></p></li>
+<li><p>FIX: Heavy nodes are missing ElasticFleet integration policies <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11189">#11189</a></p></li>
+<li><p>FIX: Heavy Nodes are not properly added to the soc.json <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11192">#11192</a></p></li>
+<li><p>FIX: Improve consistency in cert storage across OS families <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11162">#11162</a></p></li>
+<li><p>FIX: Improve default settings to avoid Elasticsearch hitting watermark <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11305">#11305</a></p></li>
+<li><p>FIX: Kibana Elastic Agent Dashboard 404 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11018">#11018</a></p></li>
+<li><p>FIX: Maintain minion log in INFO level, add logrotate <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10921">#10921</a></p></li>
+<li><p>FIX: Make sure a data stream is created for syslog <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11209">#11209</a></p></li>
+<li><p>FIX: Make sure Elastic packages are loaded when changed <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11428">#11428</a></p></li>
+<li><p>FIX: Minimum system requirements checks during setup <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11324">#11324</a></p></li>
+<li><p>FIX: Minion log appears to show timezone bouncing <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10922">#10922</a></p></li>
+<li><p>FIX: osquery not working on macOS</p></li>
+<li><p>FIX: Pre-load Integration Templates <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11146">#11146</a></p></li>
+<li><p>FIX: Prevent repeated creation of unused Docker volumes <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/9941">#9941</a></p></li>
+<li><p>FIX: Remove default component templates to prevent conflicts <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11260">#11260</a></p></li>
+<li><p>FIX: Remove OSSEC and add Playbook mappings for the SOC Alerts Event Table <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11015">#11015</a></p></li>
+<li><p>FIX: Remove telegraf beats EPS script <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11412">#11412</a></p></li>
+<li><p>FIX: Rename some SOC log fields to more unique field names <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11429">#11429</a></p></li>
+<li><p>FIX: Reposync and yara rules shot not run in airgap <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11427">#11427</a></p></li>
+<li><p>FIX: SOC Config pcap doc links should point to steno docs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11302">#11302</a></p></li>
+<li><p>FIX: SOC Config sensoroni doc links should point to correct docs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11362">#11362</a></p></li>
+<li><p>FIX: SOC doesn’t return user to login page after session expires <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11438">#11438</a></p></li>
+<li><p>FIX: SOC fails to parse incomplete Elastic error response <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11435">#11435</a></p></li>
+<li><p>FIX: SOC Grid Import inconsistency with larger files <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11143">#11143</a></p></li>
+<li><p>FIX: Some packages are installed/removed and upgraded/downgraded every 15min <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11458">#11458</a></p></li>
+<li><p>FIX: so-import-evtx incorrect dates <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11332">#11332</a></p></li>
+<li><p>FIX: so-salt-minion-check not rendering as jinja <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11390">#11390</a></p></li>
+<li><p>FIX: Stop zeek from trying to email reports <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11407">#11407</a></p></li>
+<li><p>FIX: Strelka ingest pipeline should properly index entropy 0 values and float values in the same field</p></li>
+<li><p>FIX: Suricata filter and extraction rules are not properly updated <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11229">#11229</a></p></li>
+<li><p>FIX: Update firewall docs for custom port and host groups <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11053">#11053</a></p></li>
+<li><p>FIX: Update IDH Opencanary Modules to indicate they only apply to IDH nodes <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10170">#10170</a></p></li>
+<li><p>UPGRADE: Kratos to v1.0.0</p></li>
+<li><p>UPGRADE: Suricata 6.0.14 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11319">#11319</a></p></li>
+<li><p>UPGRADE: Zeek 5.0.10 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11301">#11301</a></p></li>
+</ul>
+</section>
+<section id="hotfix-20230821-changes">
+<h3>2.4.10 Hotfix [20230821] Changes<a class="headerlink" href="#hotfix-20230821-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FIX: Component templates not updated when packages are updated <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11065">#11065</a></p></li>
+<li><p>FIX: Importing both PCAP and EVTX files fails <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11030">#11030</a></p></li>
+<li><p>FIX: Logstash container missing on distributed receiver <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11099">#11099</a></p></li>
+<li><p>FIX: pipeline with id logs-system.syslog-1.6.4 does not exist <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11038">#11038</a></p></li>
+<li><p>FIX: Suricata permissions on Heavy Nodes are incorrect <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11031">#11031</a></p></li>
+</ul>
+</section>
+<section id="id595">
+<h3>2.4.10 [20230815] Changes<a class="headerlink" href="#id595" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Auto-Upgrade Node Agents <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10949">#10949</a></p></li>
+<li><p>FEATURE: Customize desktop environment <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10957">#10957</a></p></li>
+<li><p>FIX: Custom actions, queries, tools can cause SOC restart to fail <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11022">#11022</a></p></li>
+<li><p>FIX: Elastic Agents won’t upgrade without Internet connection <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10981">#10981</a></p></li>
+<li><p>FIX: Elastic Integrations not upgrading during SOUP <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10984">#10984</a></p></li>
+<li><p>FIX: Elastic index settings annotations need synchronized with those specified in defaults <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10999">#10999</a></p></li>
+<li><p>FIX: File extraction not working after switching from Zeek metadata to Suricata metadata <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10973">#10973</a></p></li>
+<li><p>FIX: Fleet - url_base not working in cert CN <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/11003">#11003</a></p></li>
+<li><p>FIX: Improve wording for Firewall entries under Grid Administration Quick Links <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10990">#10990</a></p></li>
+<li><p>FIX: Influx reporting No Results for Zeek Capture Loss <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10956">#10956</a></p></li>
+<li><p>FIX: Suricata should not assume the interface will always be bond0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10954">#10954</a></p></li>
+<li><p>FIX: Sysmon Events Table Field Rendering <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10985">#10985</a></p></li>
+<li><p>FIX: so-desktop-install needs to change from Rocky to Oracle <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10962">#10962</a></p></li>
+<li><p>FIX: soup may fail while trying to query Fleet server <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10974">#10974</a></p></li>
+</ul>
+</section>
+<section id="rc2-20230807-changes">
+<h3>2.4.5 RC2 [20230807] Changes<a class="headerlink" href="#rc2-20230807-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Add NetworkMiner to Security Onion Desktop <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10865">#10865</a></p></li>
+<li><p>FEATURE: Add value from record in Hunt, etc as an observable to an existing or new case <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/7992">#7992</a></p></li>
+<li><p>FEATURE: Enable CommunityID for Elastic Defend Logs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10811">#10811</a></p></li>
+<li><p>FEATURE: Heavy Node Support <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10671">#10671</a></p></li>
+<li><p>FEATURE: so-import-evtx - timeshift <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10743">#10743</a></p></li>
+<li><p>FEATURE: soup should rotate its log file <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10951">#10951</a></p></li>
+<li><p>FIX: Dashboards with multiple groupby charts always filter by the first chart’s, first groupby field <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10856">#10856</a></p></li>
+<li><p>FIX: Disable offload on monitor NICs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10900">#10900</a></p></li>
+<li><p>FIX: EQL Field Mappings <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10783">#10783</a></p></li>
+<li><p>FIX: Elastic Fleet Improvements <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10846">#10846</a></p></li>
+<li><p>FIX: Firewall state custom host group assignments for single portgroup entry <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10917">#10917</a></p></li>
+<li><p>FIX: IDH node <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10882">#10882</a></p></li>
+<li><p>FIX: IPTables Persistence <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10884">#10884</a></p></li>
+<li><p>FIX: Install Error: so-yara-download failed <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10880">#10880</a></p></li>
+<li><p>FIX: Install screen - Firewall <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10945">#10945</a></p></li>
+<li><p>FIX: List settings updated with blank values should be stored as empty lists <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10936">#10936</a></p></li>
+<li><p>FIX: Login page shows error banner briefly on initial page load <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10911">#10911</a></p></li>
+<li><p>FIX: RAID status on Grid page <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10935">#10935</a></p></li>
+<li><p>FIX: SOC Auth dashboard <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10878">#10878</a></p></li>
+<li><p>FIX: Security Onion Desktop state should default to Gnome Classic <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10958">#10958</a></p></li>
+<li><p>FIX: sensor MTU setting in SOC Config should be read only <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10883">#10883</a></p></li>
+<li><p>FIX: so-status taking several seconds to complete <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10909">#10909</a></p></li>
+<li><p>FIX: soup <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10902">#10902</a></p></li>
+<li><p>FIX: syslog not working <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10896">#10896</a></p></li>
+<li><p>FIX: verbiage and links in soc_sensor.yaml <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10906">#10906</a></p></li>
+<li><p>UPGRADE: Elastic 8.8.2 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10864">#10864</a></p></li>
+</ul>
+</section>
+<section id="rc1-20230728-changes">
+<h3>2.4.4 RC1 [20230728] Changes<a class="headerlink" href="#rc1-20230728-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Add DNS lookup action to SOC <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/8655">#8655</a></p></li>
+<li><p>FEATURE: Add Oracle Linux Support <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10844">#10844</a></p></li>
+<li><p>FEATURE: Add pivots for relational operators on numbers <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/8024">#8024</a></p></li>
+<li><p>FEATURE: Add relative Timeframe and Refresh Interval as URL Parameters to Hunt <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/3352">#3352</a></p></li>
+<li><p>FEATURE: Cases - Add ability to enable dynamic observable extraction <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/7972">#7972</a></p></li>
+<li><p>FEATURE: Oracle Linux ISO <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10845">#10845</a></p></li>
+<li><p>FEATURE: Security Onion Desktop <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10862">#10862</a></p></li>
+<li><p>FIX: Add retry to Elastic Agent installer <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10488">#10488</a></p></li>
+<li><p>FIX: Case status code 404 error <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10759">#10759</a></p></li>
+<li><p>FIX: Intermittent pcap retrieval <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10750">#10750</a></p></li>
+<li><p>FIX: Navigator Errors <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10742">#10742</a></p></li>
+<li><p>FIX: Remove .security subfield <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10745">#10745</a></p></li>
+<li><p>UPGRADE: CyberChef 10.5.2 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10781">#10781</a></p></li>
+<li><p>UPGRADE: so-registry docker image <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10727">#10727</a></p></li>
+</ul>
+</section>
+<section id="beta-4-20230711-changes">
+<h3>2.4.3 Beta 4 [20230711] Changes<a class="headerlink" href="#beta-4-20230711-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Add link to Downloads page for convenient access to firewall settings <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10702">#10702</a></p></li>
+<li><p>FEATURE: Add more SOC Config quick links <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10563">#10563</a></p></li>
+<li><p>FEATURE: Add time zone selection to Grid page <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/8629">#8629</a></p></li>
+<li><p>FEATURE: Add webauthn support to SOC <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10608">#10608</a></p></li>
+<li><p>FEATURE: Allow import of PCAP and EVTX via SOC UI <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10413">#10413</a></p></li>
+<li><p>FEATURE: Elastic Fleet - Automatically Update Logstash Outputs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10746">#10746</a></p></li>
+<li><p>FEATURE: Elastic Fleet Server URL - Custom Domain <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10744">#10744</a></p></li>
+<li><p>FEATURE: Supported Integrations <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10590">#10590</a></p></li>
+<li><p>FEATURE: so-import-evtx <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10673">#10673</a></p></li>
+<li><p>FIX: Strelka rule path <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10715">#10715</a></p></li>
+<li><p>FIX: 2.4 ISO image won’t install on Virtualbox <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10534">#10534</a></p></li>
+<li><p>FIX: Account for Suricata XFF function in parsing and ingestion <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/8643">#8643</a></p></li>
+<li><p>FIX: Add more Zeek logs to excluded list <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10569">#10569</a></p></li>
+<li><p>FIX: Analyzer requests and whoisit updates <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10524">#10524</a></p></li>
+<li><p>FIX: Change Playbook index to data stream and update event.severity_label <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10523">#10523</a></p></li>
+<li><p>FIX: Cleanup log-rotate.conf <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10545">#10545</a></p></li>
+<li><p>FIX: Curator should ignore empty list <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10512">#10512</a></p></li>
+<li><p>FIX: Don’t override default integration ingest node pipelines <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10542">#10542</a></p></li>
+<li><p>FIX: Ensure operations on records with “Missing” fields use correct search <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/8025">#8025</a></p></li>
+<li><p>FIX: Ensure packages aren’t installed from default Rocky repos <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10630">#10630</a></p></li>
+<li><p>FIX: Exclude System logs from Hunt/Dashboard Queries. <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10122">#10122</a></p></li>
+<li><p>FIX: Finish SSL cert integration into SOC config UI <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10533">#10533</a></p></li>
+<li><p>FIX: Improve SOC login error message for disabled users <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/8908">#8908</a></p></li>
+<li><p>FIX: Increase net.core.wmem_default value <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10602">#10602</a></p></li>
+<li><p>FIX: InfluxDB NSM Disk Usage visualization <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10520">#10520</a></p></li>
+<li><p>FIX: Integration logs not parsed correctly <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10672">#10672</a></p></li>
+<li><p>FIX: Logstash soc.fields.query warning <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10528">#10528</a></p></li>
+<li><p>FIX: Node description config setting should only apply at the node level <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10562">#10562</a></p></li>
+<li><p>FIX: Remove default excluded rules from YARA repo <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10718">#10718</a></p></li>
+<li><p>FIX: Review Kibana Dashboards <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10664">#10664</a></p></li>
+<li><p>FIX: Rework dataset name and add tags based on suffix <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10526">#10526</a></p></li>
+<li><p>FIX: Rework field to account for missing classifiers <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10420">#10420</a></p></li>
+<li><p>FIX: SOC Config NTP quick link <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10519">#10519</a></p></li>
+<li><p>FIX: Scheduled jobs trying to run during setup <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10468">#10468</a></p></li>
+<li><p>FIX: Set Elastic Fleet certs to use url_base <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10510">#10510</a></p></li>
+<li><p>FIX: Setup re-runs when SSH’ing into a successfully installed minion node <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10498">#10498</a></p></li>
+<li><p>FIX: Strelka rule exclusions <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10716">#10716</a></p></li>
+<li><p>FIX: Suricata DHCP logs not ingesting <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10565">#10565</a></p></li>
+<li><p>FIX: Suricata dataset values for certain types of metadata <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10551">#10551</a></p></li>
+<li><p>FIX: Update README.md <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10554">#10554</a></p></li>
+<li><p>FIX: Update cheat sheet for 2.4 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10532">#10532</a></p></li>
+<li><p>UPGRADE: CyberChef 10.4.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10581">#10581</a></p></li>
+<li><p>UPGRADE: Suricata 6.0.13 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10594">#10594</a></p></li>
+</ul>
+</section>
+<section id="beta-3-20230531-changes">
+<h3>2.4.2 Beta 3 [20230531] Changes<a class="headerlink" href="#beta-3-20230531-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FEATURE: Add additional alerts for Influxdb <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10388">#10388</a></p></li>
+<li><p>FEATURE: Add link to SOC error messages that takes user to hunt and auto-searches for recent SOC-related errors. <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10283">#10283</a></p></li>
+<li><p>FEATURE: Add Protected checkbox on Attachment upload form <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10203">#10203</a></p></li>
+<li><p>FEATURE: Add support for Apple Silicon Elastic Agent Installer <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10473">#10473</a></p></li>
+<li><p>FEATURE: Add support for EQL to Playbook <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10471">#10471</a></p></li>
+<li><p>FEATURE: Allow for any docker container to have extra hosts and custom binds <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10301">#10301</a></p></li>
+<li><p>FEATURE: Allow users to switch between airgap and non airgap. <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10470">#10470</a></p></li>
+<li><p>FEATURE: Dedicated Elastic Fleet Node <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10474">#10474</a></p></li>
+<li><p>FEATURE: Enable Elastic Defend Integration on Endpoints Policy <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10475">#10475</a></p></li>
+<li><p>FEATURE: Integrate Elastic Artifact Repo <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10053">#10053</a></p></li>
+<li><p>FEATURE: Integrate Elastic Package Registry <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10472">#10472</a></p></li>
+<li><p>FEATURE: ISO image <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10476">#10476</a></p></li>
+<li><p>FEATURE: Link the Grid Interface with Docker container log files <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10149">#10149</a></p></li>
+<li><p>FEATURE: Prompt user to verify the manager nodes IP address if a DNS record if found during setup. <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10334">#10334</a></p></li>
+<li><p>FEATURE: Quicklinks to common configs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10395">#10395</a></p></li>
+<li><p>FEATURE: SOC config UI should process each line individually with regex when multiline: True is set <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10243">#10243</a></p></li>
+<li><p>FEATURE: Support authentication rate limiting <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10308">#10308</a></p></li>
+<li><p>FIX: AWS Instances with forced IMDSv2 enabled fail to detect running in AWS <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10205">#10205</a></p></li>
+<li><p>FIX: Cluster delete script should use different disk space logic when /nsm is shared among services <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10418">#10418</a></p></li>
+<li><p>FIX: Correct SOC Annotations for idstools in Grid Configuration. <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10208">#10208</a></p></li>
+<li><p>FIX: Correct SOC Annotations of Zeek in Grid Configuration. <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10211">#10211</a></p></li>
+<li><p>FIX: Hunt Quick Drilldown <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10377">#10377</a></p></li>
+<li><p>FIX: If mdengine is changed to Suricata, Zeek is still shown in so-status <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10232">#10232</a></p></li>
+<li><p>FIX: Improve SOC configuration handling of lists <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10219">#10219</a></p></li>
+<li><p>FIX: Improve soup’s local file modification logic <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/8972">#8972</a></p></li>
+<li><p>FIX: In distributed deployment, Dashboards/Kibana only show data from the first sensor added. <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10231">#10231</a></p></li>
+<li><p>FIX: Influxdb Elasticsearch cells showing duplicate data. <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10336">#10336</a></p></li>
+<li><p>FIX: Kibana: Ensure _id fields beginning with a hyphen work properly when pivoting to SOC from Kibana <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10305">#10305</a></p></li>
+<li><p>FIX: Logstash WARN logstash.outputs.elasticsearch on searchnode <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10291">#10291</a></p></li>
+<li><p>FIX: Prepare SOUP for 2.4 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10056">#10056</a></p></li>
+<li><p>FIX: Prevent duplicate observables from being automatically created when attaching events to a case. <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10123">#10123</a></p></li>
+<li><p>FIX: Review 2.4 file permissions and other local security changes <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/9110">#9110</a></p></li>
+<li><p>FIX: Setting CPU affinity or number of threads for Suricata not being applied. <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10240">#10240</a></p></li>
+<li><p>FIX: Simplify cloud detection <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10261">#10261</a></p></li>
+<li><p>FIX: Some SOC Config settings are only visible when Advanced is enabled <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10429">#10429</a></p></li>
+<li><p>FIX: Strelka YARA Compilation <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10271">#10271</a></p></li>
+<li><p>FIX: Suricata ignores the threads and always is set to 1 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10230">#10230</a></p></li>
+<li><p>FIX: Unable to disable PCAP via web configuration <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10229">#10229</a></p></li>
+<li><p>FIX: Use pillar values to allow Zeek log ingestion selection from the UI <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10322">#10322</a></p></li>
+<li><p>FIX: Zeek local policies are not being updated when changed in Current Grid value. <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10209">#10209</a></p></li>
+<li><p>FIX: Zeek not ignoring lb_procs when Zeek pins configured <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10215">#10215</a></p></li>
+<li><p>UPGRADE: Elastic 8.7.1 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10269">#10269</a></p></li>
+<li><p>UPGRADE: Kratos to 0.13.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10309">#10309</a></p></li>
+<li><p>UPGRADE: SOC external dependencies <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10268">#10268</a></p></li>
+<li><p>UPGRADE: Suricata 6.0.12 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10311">#10311</a></p></li>
+<li><p>UPGRADE: Zeek 5.0.9 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10374">#10374</a></p></li>
+</ul>
+</section>
+<section id="beta-2-20230424-changes">
+<h3>2.4.1 Beta 2 [20230424] Changes<a class="headerlink" href="#beta-2-20230424-changes" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>FIX: Add Dedicated Fleet Node <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10054">#10054</a></p></li>
+<li><p>FIX: Don’t create curl.config on Forward Nodes <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10057">#10057</a></p></li>
+<li><p>FIX: Force case attachments to be downloaded <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10186">#10186</a></p></li>
+<li><p>FIX: Improve Elasticsearch index deletion - so-elastic-clear <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10109">#10109</a></p></li>
+<li><p>FIX: Improve Elasticsearch index deletion - so-elastic-cluster-delete-delete <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10110">#10110</a></p></li>
+<li><p>FIX: Make sure Setup image downloads populate the screen and the log <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10052">#10052</a></p></li>
+<li><p>FIX: Overview Customization link <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10173">#10173</a></p></li>
+<li><p>FIX: Prevent Jinja syntax from being entered into config values via UI/API <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10187">#10187</a></p></li>
+<li><p>FIX: Prevent Zeek from using a large amount of memory <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10190">#10190</a></p></li>
+<li><p>FIX: Remove legacy Kibana dashboards <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/8555">#8555</a></p></li>
+<li><p>FIX: Remove template load from search nodes in distrib <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10060">#10060</a></p></li>
+<li><p>FIX: SOC only displaying data for users assigned the superuser role <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10068">#10068</a></p></li>
+<li><p>FIX: Sort grid members lists <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10185">#10185</a></p></li>
+<li><p>FIX: Suricata DNS A and CNAME parsing <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10117">#10117</a></p></li>
+<li><p>FIX: Using SOC Configuration to change mdengine from ZEEK to SURICATA fails <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10189">#10189</a></p></li>
+<li><p>FIX: Zeek &#64;local and &#64;local-sigs need to strip the &#64; for config but replace in local.zeek <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10050">#10050</a></p></li>
+<li><p>FIX: Zeek is not honoring lbprocs <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10062">#10062</a></p></li>
+<li><p>UPGRADE: Elastic 8.7.0 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10059">#10059</a></p></li>
+<li><p>UPGRADE: Suricata 6.0.11 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10067">#10067</a></p></li>
+<li><p>UPGRADE: Zeek 5.0.8 <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/10107">#10107</a></p></li>
+</ul>
+</section>
+<section id="beta-1-20230328-changes">
+<h3>2.4.0 Beta 1 [20230328] Changes<a class="headerlink" href="#beta-1-20230328-changes" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://blog.securityonion.net/2023/03/security-onion-24-beta-release-now.html">https://blog.securityonion.net/2023/03/security-onion-24-beta-release-now.html</a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="telemetry.html" class="btn btn-neutral float-left" title="Telemetry" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="appendix.html" class="btn btn-neutral float-right" title="Appendix" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

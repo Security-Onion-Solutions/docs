@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security Onion Console (SOC) &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Alerts" href="alerts.html" />
+    <link rel="prev" title="After Installation" href="post-installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Security Onion Console (SOC)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="alerts.html">Alerts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html">Dashboards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hunt.html">Hunt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html">Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detections.html">Detections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcap.html">PCAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.html">Grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="downloads.html">Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administration.html">Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kibana.html">Kibana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic-fleet.html">Elastic Fleet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osquery-manager.html">Osquery Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="influxdb.html">InfluxDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cyberchef.html">CyberChef</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attack-navigator.html">ATT&amp;CK Navigator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Security Onion Console (SOC)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/soc.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="security-onion-console-soc">
+<span id="soc"></span><h1>Security Onion Console (SOC)<a class="headerlink" href="#security-onion-console-soc" title="Link to this heading"></a></h1>
+<a class="reference external image-reference" href="_images/analyst.png"><img alt="_images/analyst.png" src="_images/analyst.png" />
+</a>
+<p>Once all configuration is complete, you can then connect to Security Onion Console (SOC) with your web browser. We recommend chromium-based browsers such as Google Chrome. Other browsers may work, but fully updated chromium-based browsers provide the best compatibility.</p>
+<p>Depending on the options you chose in the installer, connect to the IP address or hostname of your Security Onion installation. Then login using the email address and password that you specified in the installer.</p>
+<a class="reference external image-reference" href="_images/37_login.png"><img alt="_images/37_login.png" src="_images/37_login.png" />
+</a>
+<p>Once logged in, you’ll notice the user menu in the upper-right corner. This allows you to manage your user settings and access documentation and other resources.</p>
+<a class="reference external image-reference" href="_images/94_usermenu.png"><img alt="_images/94_usermenu.png" src="_images/94_usermenu.png" />
+</a>
+<p>On the left side of the page, you’ll see links for analyst tools like <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>, <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>, <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>, <a class="reference internal" href="cases.html#cases"><span class="std std-ref">Cases</span></a>, <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a>, <a class="reference internal" href="pcap.html#pcap"><span class="std std-ref">PCAP</span></a>, <a class="reference internal" href="kibana.html#kibana"><span class="std std-ref">Kibana</span></a>, <a class="reference internal" href="cyberchef.html#cyberchef"><span class="std std-ref">CyberChef</span></a>, and <a class="reference internal" href="attack-navigator.html#attack-navigator"><span class="std std-ref">ATT&amp;CK Navigator</span></a>. While <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>, <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>, <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>, <a class="reference internal" href="cases.html#cases"><span class="std std-ref">Cases</span></a>, <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a>, and <a class="reference internal" href="pcap.html#pcap"><span class="std std-ref">PCAP</span></a> are built into SOC itself, the remaining tools are external and will spawn separate browser tabs.</p>
+<p>If you’d like to customize SOC, please see the <a class="reference internal" href="soc-customization.html#soc-customization"><span class="std std-ref">SOC Customization</span></a> section. If you’d like to learn more about SOC logs, please see the <a class="reference internal" href="soc-logs.html#soc-logs"><span class="std std-ref">SOC Logs</span></a> section.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="alerts.html">Alerts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="alerts.html#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alerts.html#query-bar">Query Bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alerts.html#time-picker">Time Picker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alerts.html#details-panel">Details Panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alerts.html#data-table">Data Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alerts.html#context-menu">Context Menu</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dashboards.html">Dashboards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html#query-bar">Query Bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html#time-picker">Time Picker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html#basic-metrics">Basic Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html#group-metrics">Group Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html#events">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html#statistics">Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html#context-menu">Context Menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html#oql">OQL</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hunt.html">Hunt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cases.html">Cases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cases.html#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html#query-bar">Query Bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html#time-picker">Time Picker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html#data-table">Data Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html#creating-a-new-case">Creating a New Case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html#comments">Comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html#attachments">Attachments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html#observables">Observables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html#events">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html#history">History</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html#data">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html#analyzers">Analyzers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html#templates">Templates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="detections.html">Detections</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="detections.html#rule-engine-status">Rule Engine Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detections.html#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detections.html#query-bar">Query Bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detections.html#group-metrics">Group Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detections.html#data-table">Data Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detections.html#detection-details">Detection Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detections.html#more-information">More Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detections.html#technical-background">Technical Background</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pcap.html">PCAP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pcap.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="grid.html">Grid</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="grid.html#node-status">Node Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.html#container-status">Container Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.html#appliance-images">Appliance Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.html#other-grid-pages">Other Grid Pages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="downloads.html">Downloads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="administration.html">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="administration.html#users">Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administration.html#grid-members">Grid Members</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administration.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administration.html#license-key">License Key</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kibana.html">Kibana</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="kibana.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kibana.html#kibana-dashboards">Kibana Dashboards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kibana.html#search-results">Search Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kibana.html#timestamps">Timestamps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kibana.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kibana.html#diagnostic-logging">Diagnostic Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kibana.html#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kibana.html#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="elastic-fleet.html">Elastic Fleet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="elastic-fleet.html#agents">Agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic-fleet.html#agent-policies">Agent Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic-fleet.html#agent-policies-endpoints-initial">Agent Policies - endpoints-initial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic-fleet.html#enrollment-tokens">Enrollment Tokens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic-fleet.html#data-streams">Data Streams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic-fleet.html#settings">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic-fleet.html#integrations">Integrations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic-fleet.html#custom-fqdn-url">Custom FQDN URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic-fleet.html#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="osquery-manager.html">Osquery Manager</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="osquery-manager.html#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="influxdb.html">InfluxDB</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="influxdb.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="influxdb.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="influxdb.html#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cyberchef.html">CyberChef</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cyberchef.html#accessing">Accessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cyberchef.html#file-extraction">File Extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cyberchef.html#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="attack-navigator.html">ATT&amp;CK Navigator</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="attack-navigator.html#accessing">Accessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attack-navigator.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attack-navigator.html#more-information">More Information</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="post-installation.html" class="btn btn-neutral float-left" title="After Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="alerts.html" class="btn btn-neutral float-right" title="Alerts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,336 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenID Connect (OIDC) &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="LUKS" href="luks.html" />
+    <link rel="prev" title="Security Onion Pro" href="pro.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="pro.html">Security Onion Pro</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">OpenID Connect (OIDC)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#microsoft-entra-id-azure-active-directory">Microsoft Entra ID (Azure Active Directory)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#active-directory-self-hosted">Active Directory (Self-hosted)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#google">Google</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#github">GitHub</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#auth0">Auth0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generic-ex-ping">Generic (Ex: Ping)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enabling-oidc">Enabling OIDC</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#initial-login">Initial Login</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#roles">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-oidc-users">Managing OIDC Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#oidc-self-service">OIDC Self Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#external-tools">External Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="luks.html">LUKS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fips.html">FIPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stig.html">STIG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kafka.html">Kafka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="connect.html">Connect API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aqm.html">Active Query Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mom.html">Manager of Managers (MoM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcp.html">MCP Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="splunk.html">Security Onion App for Splunk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervisor.html">Hypervisor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assistant.html">Onion AI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="pro.html">Security Onion Pro</a></li>
+      <li class="breadcrumb-item active">OpenID Connect (OIDC)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/oidc.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="openid-connect-oidc">
+<span id="oidc"></span><h1>OpenID Connect (OIDC)<a class="headerlink" href="#openid-connect-oidc" title="Link to this heading"></a></h1>
+<p>Starting with Security Onion version 2.4.30, SOC supports single sign-on (SSO) authentication via OpenID Connect (OIDC) to one of several OIDC-compatible identity providers. For example, users can login to Security Onion using an Active Directory user, a GitHub user, a Google account, an Auth0 account, etc. Only one OIDC provider can be active at a time.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an enterprise-level feature of Security Onion. Contact Security Onion Solutions, LLC via our website at <a class="reference external" href="https://securityonion.com/pro">https://securityonion.com/pro</a> for more information about purchasing a Security Onion Pro license to enable this feature.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>LDAP and SAML integrations are not supported.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Integrating Security Onion into an organization’s global identity management platform is generally not recommended. If an attacker compromises the identity management platform, which is typically a high priority target, then that attacker could use compromised SSO credentials to access Security Onion and potentially undermine the benefits provided by Security Onion. This integration is made available for those who understand these risks and have appropriate mitigations in place.</p>
+</div>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>OIDC configuration can be complex and we recommend taking advantage of the official Security Onion support team. Note that purchases of a Security Onion license include some level of support. This will help avoid time-consuming problems that can occur when configuring OIDC.</p>
+<p>The first step in configuration OIDC is to determine which provider the grid will use, and collecting the required configuration inputs necessary for that specific provider.</p>
+<p>Next, in Security Onion Console, while logged in as an administrator, navigate to the Administration -&gt; Configuration screen and enter <code class="docutils literal notranslate"><span class="pre">oidc</span></code> into the filter field. Then click the <em>Expand All</em> icon.</p>
+<p>Review the following instructions for the applicable provider.</p>
+<section id="microsoft-entra-id-azure-active-directory">
+<h3>Microsoft Entra ID (Azure Active Directory)<a class="headerlink" href="#microsoft-entra-id-azure-active-directory" title="Link to this heading"></a></h3>
+<p>Locate the <code class="docutils literal notranslate"><span class="pre">provider</span></code> setting in the SOC configuration screen. Specify the value <code class="docutils literal notranslate"><span class="pre">microsoft</span></code> for this setting.</p>
+<p>In a separate browser tab, login to the Microsoft Azure account you plan to use for the integration. Navigate to the Microsoft Entra ID service and find the <code class="docutils literal notranslate"><span class="pre">Tenant</span> <span class="pre">ID</span></code>, which will resemble a UUID similar to <code class="docutils literal notranslate"><span class="pre">abcdef12-1234-abcd-5678-a1b2c3d4e5f6</span></code>.</p>
+<a class="reference external image-reference" href="_images/microsoft_tenant_id.png"><img alt="_images/microsoft_tenant_id.png" src="_images/microsoft_tenant_id.png" />
+</a>
+<p>Locate the <code class="docutils literal notranslate"><span class="pre">microsoft_tenant</span></code> setting in the SOC configuration screen back on the SOC browser tab. Specify the UUID value for this setting.</p>
+<p>Back in the Azure tab, under the desired Azure Tenant, register a new App named <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Onion</span></code>. Most organizations will only desire organization accounts to have access to Security Onion so be sure to choose the correct account type option. Failure to choose this correctly could expose your Security Onion installation to users outside of your organization. Specify the application as Web, with Redirect URI using the URL that the analysts will use to access SOC after finalizing their login to Azure. This is typically going to resemble the following pattern: <code class="docutils literal notranslate"><span class="pre">https://&lt;my-soc-base-url&gt;/auth/self-service/methods/oidc/callback/SSO</span></code>. Omit the <cite>/SSO</cite> suffix if forcing PKCE (Proof Key Code Exchange). Click <em>Register</em>, and on the resulting screen find the application ID for this new app registration. It will also resemble a UUID.</p>
+<a class="reference external image-reference" href="_images/microsoft_app_registration.png"><img alt="_images/microsoft_app_registration.png" src="_images/microsoft_app_registration.png" />
+</a>
+<p>Locate the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> setting in the SOC configuration screen back on the SOC browser tab. Specify the above application ID for this setting.</p>
+<p>Add a new client secret to the app registration created above. Specify the secret name as <code class="docutils literal notranslate"><span class="pre">so-oidc</span></code> and choose the expiration that makes the most sense for your organization. If you choose to use a short or medium term expiration, a good practice is to make it very short, so that it forces your rotation processes to be well-known and documented. Choosing a medium expiration of two years will likely cause more trouble when the secret expires and the knowledge of how to resolve it is lost among the administrative team. Copy the generated secret to your clipboard. You will only have this one chance to copy the secret. Returning to this secret later will not provide access to the original secret.</p>
+<a class="reference external image-reference" href="_images/microsoft_secret.png"><img alt="_images/microsoft_secret.png" src="_images/microsoft_secret.png" />
+</a>
+<p>Locate the <code class="docutils literal notranslate"><span class="pre">client_secret</span></code> setting in the SOC configuration screen back on the SOC browser tab. Specify the above client secret for this setting.</p>
+<p>If forcing PKCE (Proof Key Code Exchange) to be enabled, set the <code class="docutils literal notranslate"><span class="pre">pkce</span></code> setting in the SOC configuration screen to <code class="docutils literal notranslate"><span class="pre">force</span></code>. When forcing PKCE, the redirect URI should omit the trailing <code class="docutils literal notranslate"><span class="pre">/SSO</span></code> suffix.</p>
+<p>Next, skip to the <em>Enabling OIDC</em> section to enable the newly configured OIDC authentication.</p>
+</section>
+<section id="active-directory-self-hosted">
+<h3>Active Directory (Self-hosted)<a class="headerlink" href="#active-directory-self-hosted" title="Link to this heading"></a></h3>
+<p>Contact the Security Onion Solutions support team to determine the specific configuration changes required to integrate your Security Onion grid with your organization’s Active Directory installation. They will review your current Windows Server version, assist with TLS certificate configurations applicable to your organization, and walk you through the steps needed to complete the integration.</p>
+<p>Integration with on-premise Active Directory has several prerequisites:</p>
+<ul class="simple">
+<li><p>Fully-functioning installation of Active Directory on Windows Server 2022</p></li>
+<li><p>Administrator access to Windows Active Directory server</p></li>
+<li><p>Administrator access to Security Onion manager via SSH and SOC</p></li>
+<li><p>Ability to obtain TLS certificates that are trusted on client and SO systems</p></li>
+<li><p>Ability to activate Active Directory Federated Services (ADFS) on Active Directory server</p></li>
+<li><p>HTTPS access from Security Onion analyst browsers to the ADFS server.</p></li>
+<li><p>HTTPS access from the Security Onion manager to the ADFS server</p></li>
+</ul>
+</section>
+<section id="google">
+<h3>Google<a class="headerlink" href="#google" title="Link to this heading"></a></h3>
+<p>Locate the <code class="docutils literal notranslate"><span class="pre">provider</span></code> setting in the SOC configuration screen. Specify the value <code class="docutils literal notranslate"><span class="pre">google</span></code> for this setting.</p>
+<p>In a separate browser tab, login to the Google Cloud Console and select or create a project under your Google organization containing the workspace users you plan to use for the integration. Navigate to the Credentials screen and add a new OAuth 2.0 Client ID named <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Onion</span></code>, of type <code class="docutils literal notranslate"><span class="pre">Web</span></code>. Specify the web Redirect URI using the URL that the analysts will use to access SOC after finalizing their login to Azure. This is typically going to resemble the following pattern: <code class="docutils literal notranslate"><span class="pre">https://&lt;my-soc-base-url&gt;/auth/self-service/methods/oidc/callback/SSO</span></code>.</p>
+<a class="reference external image-reference" href="_images/google_client_id.png"><img alt="_images/google_client_id.png" src="_images/google_client_id.png" />
+</a>
+<p>When the client ID is added a popup will appear with the new Client ID and Secret. These values must be entered into the SOC configuration screen.</p>
+<p>Locate the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> setting in the SOC configuration screen back on the SOC browser tab. Specify the above client ID for this setting.</p>
+<p>Locate the <code class="docutils literal notranslate"><span class="pre">client_secret</span></code> setting in the SOC configuration screen back on the SOC browser tab. Specify the above client secret for this setting.</p>
+<p>Next, skip to the <em>Enabling OIDC</em> section to enable the newly configured OIDC authentication.</p>
+</section>
+<section id="github">
+<h3>GitHub<a class="headerlink" href="#github" title="Link to this heading"></a></h3>
+<p>Locate the <code class="docutils literal notranslate"><span class="pre">provider</span></code> setting in the SOC configuration screen. Specify the value <code class="docutils literal notranslate"><span class="pre">github</span></code> for this setting.</p>
+<p>In a separate browser tab, login to the GitHub account you plan to use for the integration. Navigate to the Organization Settings and then Developer Settings -&gt; OAuth Apps. Click the <em>New Org OAuth App</em> button. Enter <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Onion</span></code> for the Application name, the login URL to your SOC grid for the Homepage URL, and optional description, and then the authorization callback URL, which will resemble the following pattern: <code class="docutils literal notranslate"><span class="pre">https://&lt;my-soc-base-url&gt;/auth/self-service/methods/oidc/callback/SSO</span></code>. Click <em>Register Application</em>.</p>
+<a class="reference external image-reference" href="_images/github_app_registration.png"><img alt="_images/github_app_registration.png" src="_images/github_app_registration.png" />
+</a>
+<p>Once the app is created a new screen will show the newly create OAuth application settings, including the generated client ID and secret.</p>
+<a class="reference external image-reference" href="_images/github_client_id_secret.png"><img alt="_images/github_client_id_secret.png" src="_images/github_client_id_secret.png" />
+</a>
+<p>Be sure to copy the secret before refreshing or navigating away from this screen. These two values must be entered into the SOC configuration screen.</p>
+<p>Locate the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> setting in the SOC configuration screen back on the SOC browser tab. Specify the above client ID for this setting.</p>
+<p>Locate the <code class="docutils literal notranslate"><span class="pre">client_secret</span></code> setting in the SOC configuration screen back on the SOC browser tab. Specify the above client secret for this setting.</p>
+<p>Next, skip to the <em>Enabling OIDC</em> section to enable the newly configured OIDC authentication.</p>
+</section>
+<section id="auth0">
+<h3>Auth0<a class="headerlink" href="#auth0" title="Link to this heading"></a></h3>
+<p>Locate the <code class="docutils literal notranslate"><span class="pre">provider</span></code> setting in the SOC configuration screen. Specify the value <code class="docutils literal notranslate"><span class="pre">auth0</span></code> for this setting.</p>
+<p>In a separate browser tab, login to the Auth0 account you plan to use for the integration. Create a new application named <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Onion</span></code>. After it’s created, navigate to the Settings tab. Scroll down to the Application URIs section and enter <code class="docutils literal notranslate"><span class="pre">https://&lt;my-soc-base-url&gt;</span></code> for the Application Login URI and Logout URL, and then enter the callback URL, which wiill resemble the following pattern: <code class="docutils literal notranslate"><span class="pre">https://&lt;my-soc-base-url&gt;/auth/self-service/methods/oidc/callback/SSO</span></code>. Click <em>Save Changes</em>.</p>
+<a class="reference external image-reference" href="_images/auth0_urls.png"><img alt="_images/auth0_urls.png" src="_images/auth0_urls.png" />
+</a>
+<p>Scroll back to the top of the Auth0 Settings page where the Client ID and Secret are shown.</p>
+<a class="reference external image-reference" href="_images/auth0_app.png"><img alt="_images/auth0_app.png" src="_images/auth0_app.png" />
+</a>
+<p>Be sure to copy the secret before refreshing or navigating away from this screen. These two values must be entered into the SOC configuration screen.</p>
+<p>Locate the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> setting in the SOC configuration screen back on the SOC browser tab. Specify the above client ID for this setting.</p>
+<p>Locate the <code class="docutils literal notranslate"><span class="pre">client_secret</span></code> setting in the SOC configuration screen back on the SOC browser tab. Specify the above client secret for this setting.</p>
+<p>Back in the Auth0 tab, scroll down to the Advance Settings section, and click on <em>Endpoints</em>. Copy the OAuth Authorization URL, but without the <code class="docutils literal notranslate"><span class="pre">/authorize</span></code> path. Locate the <code class="docutils literal notranslate"><span class="pre">issuer_url</span></code> setting in the SOC configuration screen back on the SOC browser tab. Paste the copied URL into this setting. It should resemble the following: <code class="docutils literal notranslate"><span class="pre">https://dev-xyz123abc456.us.auth0.com</span></code></p>
+<p>Next, skip to the <em>Enabling OIDC</em> section to enable the newly configured OIDC authentication.</p>
+</section>
+<section id="generic-ex-ping">
+<h3>Generic (Ex: Ping)<a class="headerlink" href="#generic-ex-ping" title="Link to this heading"></a></h3>
+<p>Security Onion can work with most OIDC providers, even if not mentioned as an explicitly-supported provider above. To show an example of how to configure a generic provider the below instructions will show how <a class="reference external" href="https://pingone.com">Ping SSO</a> can be used as an OIDC provider for Security Onion.</p>
+<p>Locate the <code class="docutils literal notranslate"><span class="pre">provider</span></code> setting in the SOC configuration screen. Specify the value <code class="docutils literal notranslate"><span class="pre">generic</span></code> for this setting.</p>
+<p>In a separate browser tab, login to a Ping Identity console and, under the desired workspace environment, create a new application called Security Onion. Choose the <code class="docutils literal notranslate"><span class="pre">OIDC</span> <span class="pre">Web</span> <span class="pre">App</span></code> and click Save. On the Configuration tab, specify a Redirect URI using the following pattern: <code class="docutils literal notranslate"><span class="pre">https://&lt;my-soc-base-url&gt;/auth/self-service/methods/oidc/callback/SSO</span></code>.</p>
+<a class="reference external image-reference" href="_images/ping_redirect.png"><img alt="_images/ping_redirect.png" src="_images/ping_redirect.png" />
+</a>
+<p>Locate the <code class="docutils literal notranslate"><span class="pre">client_id</span></code> setting in the SOC configuration screen back on the SOC browser tab. Specify the Ping <code class="docutils literal notranslate"><span class="pre">Client</span> <span class="pre">ID</span></code> for this setting. That ID can be located on the Ping configuration tab, as shown above.</p>
+<p>Generate a new client secret under the Ping <code class="docutils literal notranslate"><span class="pre">Client</span> <span class="pre">ID</span></code> field. Copy the generated secret to your clipboard.</p>
+<p>Locate the <code class="docutils literal notranslate"><span class="pre">client_secret</span></code> setting in the SOC configuration screen back on the SOC browser tab. Specify the above client secret for this setting.</p>
+<p>On the Ping console browser tab, under the configuration tab, expend the URLs section, near the top. Copy and paste the three following URLs into the appopriate SOC configuration screen settings:</p>
+<ul class="simple">
+<li><p>Authorization URL -&gt; auth_url</p></li>
+<li><p>Issuer -&gt; issuer_url</p></li>
+<li><p>Token Endpoint -&gt; token_url</p></li>
+</ul>
+<p>If forcing PKCE (Proof Key Code Exchange) to be enabled, set the <code class="docutils literal notranslate"><span class="pre">PKCE</span> <span class="pre">Enforcement</span></code> setting in the Ping console’s configuration tab to <code class="docutils literal notranslate"><span class="pre">S256_REQUIRED</span></code>.</p>
+<p>In the Ping console browser tab, navigate to the Resources tab and add <code class="docutils literal notranslate"><span class="pre">email</span></code> as an additional scope.</p>
+<a class="reference external image-reference" href="_images/ping_resource.png"><img alt="_images/ping_resource.png" src="_images/ping_resource.png" />
+</a>
+<p>Locate the <code class="docutils literal notranslate"><span class="pre">scope</span></code> setting in the SOC configuration screen back on the SOC browser tab. Change the default <code class="docutils literal notranslate"><span class="pre">profile</span></code> scope to <code class="docutils literal notranslate"><span class="pre">openid</span></code>. There should now be both <code class="docutils literal notranslate"><span class="pre">email</span></code> and <code class="docutils literal notranslate"><span class="pre">openid</span></code> scopes listed.</p>
+<p>Next, skip to the <em>Enabling OIDC</em> section to enable the newly configured OIDC authentication.</p>
+</section>
+<section id="enabling-oidc">
+<h3>Enabling OIDC<a class="headerlink" href="#enabling-oidc" title="Link to this heading"></a></h3>
+<p>Finally, enable OIDC by locating the <code class="docutils literal notranslate"><span class="pre">enabled</span></code> setting in the SOC configuration and specify the value of <code class="docutils literal notranslate"><span class="pre">true</span></code> for this setting.</p>
+<a class="reference external image-reference" href="_images/oidc_enabled.png"><img alt="_images/oidc_enabled.png" src="_images/oidc_enabled.png" />
+</a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not enable OIDC until all required configuration settings have been entered and double-checked for accuracy. Once enabled the backend system will automatically synchronize the settings across the grid, typically within 15 minutes. If some settings are incorrect or missing the backend authentication services could be left in an error state and make it impossible to fix via the Configuration screen, as the SOC UI may no longer be accessible. If this occurs an SSH session will be required to access the underlying configuration files on the manager node. Contact support for assistance if needed.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Once OIDC is enabled, any user of the selected external identity provider will be able to login to SOC, provided they have network access to do so. However, once logged in the new user will have no assigned roles and cannot view or modify sensitive SOC data. See the <em>Roles</em> section below for more information.</p>
+</div>
+</section>
+</section>
+<section id="initial-login">
+<h2>Initial Login<a class="headerlink" href="#initial-login" title="Link to this heading"></a></h2>
+<p>Upon the first login via OIDC the user will likely be returned back to the login screen. However, clicking on the <em>Continue with &lt;SSO&gt;</em> the second time will take the newly linked user to the SOC interface. This additional login click is only required once.</p>
+</section>
+<section id="roles">
+<h2>Roles<a class="headerlink" href="#roles" title="Link to this heading"></a></h2>
+<p>When a new OIDC user logs into SOC, that user will not be assigned any roles, unless a <a class="reference internal" href="rbac.html#default-system-role"><span class="std std-ref">Default Role Assignment</span></a> has been configured. This greatly limits what functions the user will be capable of performing within SOC. For example, new users will be unable to see any alerts, hunt for events, view dashboard data, view or create cases, manage the grid, or view other users. Attempting to view those role-protected screens will result in an error message.</p>
+<p>If a default system role is not configured, an administrator will need to login to SOC and assign roles to OIDC users via the Adminstration -&gt; Users screen. This is a one time operation, per user.</p>
+</section>
+<section id="managing-oidc-users">
+<h2>Managing OIDC Users<a class="headerlink" href="#managing-oidc-users" title="Link to this heading"></a></h2>
+<p>Users created via an OIDC login should not have their credentials managed within SOC. When an administrator views an OIDC user in the Administration -&gt; Users screen, they will notice a message appears near Access Control panel, and cautions them against changing authentication settings for that user.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Authentication relates to obtaining access to a system, whereas authorization relates to permissions a user has within the system. While <em>authentication</em> settings of OIDC users should not be managed within SOC, <em>authorization</em> settings can be managed within SOC for OIDC users. See the <em>Roles</em> section above for more information about granting roles to OIDC users.</p>
+</div>
+</section>
+<section id="oidc-self-service">
+<h2>OIDC Self Service<a class="headerlink" href="#oidc-self-service" title="Link to this heading"></a></h2>
+<p>Users will continue to have access to their own Security Settings via the User Settings -&gt; Security screen. A user could set a local SOC password via this screen, which would allow logins to SOC for that user without using SSO. After setting a local password, a user could then unlink the SSO account, which would disallow the user from logging in via SSO but still allow the user to login via the local password.</p>
+<a class="reference external image-reference" href="_images/oidc_unlink.png"><img alt="_images/oidc_unlink.png" src="_images/oidc_unlink.png" />
+</a>
+<p>Conversely, locally logged in users that have not logged in via SSO yet can link to their SSO user.</p>
+<a class="reference external image-reference" href="_images/oidc_link.png"><img alt="_images/oidc_link.png" src="_images/oidc_link.png" />
+</a>
+<p>If you would like to ensure that all logins go through the external OIDC provider, then you can disable password logins. In <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a>, navigate to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration. At the top of the page, click the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu and then enable the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">advanced</span> <span class="pre">settings</span></code> option. Then filter for <code class="docutils literal notranslate"><span class="pre">password.enabled</span></code> to locate the setting.</p>
+<p>Similarly, the TOTP MFA and Passwordless options can also be disabled, if there is a desire to prevent users from altering all local authentication methods. Search for <code class="docutils literal notranslate"><span class="pre">totp.enabled</span></code> and <code class="docutils literal notranslate"><span class="pre">webauthn.enabled</span></code>, respectively, to disable those authentication methods.</p>
+<p>When all local authentication methods have been disabled, users will have no security settings to modify in their self-service screen:</p>
+<a class="reference external image-reference" href="_images/oidc_sso_only.png"><img alt="_images/oidc_sso_only.png" src="_images/oidc_sso_only.png" />
+</a>
+</section>
+<section id="external-tools">
+<h2>External Tools<a class="headerlink" href="#external-tools" title="Link to this heading"></a></h2>
+<p>Tools included with Security Onion, but provided by other vendors, will not utilize SOC single sign-on. This includes tools such as InfluxDB, Kibana and other Elastic-provided tools. If users need to access these tools the password authentication method must be enabled and a local password setup. The users can then login to those tools using their SSO email address and the local SOC password.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pro.html" class="btn btn-neutral float-left" title="Security Onion Pro" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="luks.html" class="btn btn-neutral float-right" title="LUKS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,448 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hardware Requirements &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Download" href="download.html" />
+    <link rel="prev" title="Architecture" href="architecture.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="getting-started.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use-cases.html">Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Hardware Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cpu-architecture">CPU Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#minimum-specs">Minimum Specs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#import">Import</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#eval">Eval</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#production-deployments">Production Deployments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storage">Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nic">NIC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ups">UPS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#elastic-stack">Elastic Stack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#standalone-deployments">Standalone Deployments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manager-node-with-local-log-storage-and-search">Manager node with local log storage and search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manager-node-with-separate-search-nodes">Manager node with separate search nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#search-node">Search Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sensor-node">Sensor Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#heavy-node-sensor-with-elasticsearch-components">Heavy Node (Sensor with Elasticsearch components)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#receiver-node">Receiver Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#intrusion-detection-honeypot-idh-node">Intrusion Detection Honeypot (IDH) Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sensor-hardware-considerations">Sensor Hardware Considerations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#virtualization">Virtualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cpu">CPU</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ram">RAM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Storage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#packets">Packets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#further-reading">Further Reading</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="download.html">Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmware.html">VMware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtualbox.html">VirtualBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxmox.html">Proxmox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble-booting.html">Booting Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airgap.html">Airgap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-amazon.html">Amazon Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-azure.html">Azure Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-google.html">Google Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-installation.html">After Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="getting-started.html">Getting Started</a></li>
+      <li class="breadcrumb-item active">Hardware Requirements</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/hardware.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="hardware-requirements">
+<span id="hardware"></span><h1>Hardware Requirements<a class="headerlink" href="#hardware-requirements" title="Link to this heading"></a></h1>
+<p>The <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">Architecture</span></a> section should have helped you determine how many machines you will need for your deployment. This section will help you determine what kind of hardware specs each of those machines will need.</p>
+<section id="cpu-architecture">
+<h2>CPU Architecture<a class="headerlink" href="#cpu-architecture" title="Link to this heading"></a></h2>
+<p>Security Onion only supports x86-64 architecture (standard Intel or AMD 64-bit processors).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We do not support ARM or any other non-x86-64 processors!</p>
+</div>
+</section>
+<section id="minimum-specs">
+<h2>Minimum Specs<a class="headerlink" href="#minimum-specs" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Node Type</p></th>
+<th class="head"><p>CPU cores</p></th>
+<th class="head"><p>RAM</p></th>
+<th class="head"><p>Storage</p></th>
+<th class="head"><p>NICs</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Import</p></td>
+<td><p>2</p></td>
+<td><p>4GB</p></td>
+<td><p>50GB</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Eval</p></td>
+<td><p>4</p></td>
+<td><p>8GB</p></td>
+<td><p>200GB</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>Standalone</p></td>
+<td><p>4</p></td>
+<td><p>24GB</p></td>
+<td><p>200GB</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Manager</p></td>
+<td><p>4</p></td>
+<td><p>16GB</p></td>
+<td><p>200GB</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>ManagerSearch</p></td>
+<td><p>8</p></td>
+<td><p>16GB</p></td>
+<td><p>200GB</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Search node</p></td>
+<td><p>4</p></td>
+<td><p>16GB</p></td>
+<td><p>200GB</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>Sensor</p></td>
+<td><p>4</p></td>
+<td><p>12GB</p></td>
+<td><p>200GB</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Heavy node</p></td>
+<td><p>4</p></td>
+<td><p>16GB</p></td>
+<td><p>200GB</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>IDH node</p></td>
+<td><p>2</p></td>
+<td><p>1GB</p></td>
+<td><p>12GB</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fleet node</p></td>
+<td><p>4</p></td>
+<td><p>4GB</p></td>
+<td><p>200GB</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>Receiver node</p></td>
+<td><p>2</p></td>
+<td><p>8GB</p></td>
+<td><p>200GB</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please note these are the absolute bare minimum requirements. Your requirements may increase drastically as you enable more services, monitor more traffic, and consume more logs. For more information, please see the detailed sections below.</p>
+</div>
+</section>
+<section id="import">
+<h2>Import<a class="headerlink" href="#import" title="Link to this heading"></a></h2>
+<p>An Import installation runs the minimal processes required to import PCAP or EVTX files and view the results. As such, it has the lowest hardware requirements as shown in the table above. You can read more about Import in the <a class="reference internal" href="first-time-users.html#first-time-users"><span class="std std-ref">First Time Users</span></a> section.</p>
+</section>
+<section id="eval">
+<h2>Eval<a class="headerlink" href="#eval" title="Link to this heading"></a></h2>
+<p>An Eval installation runs the minimal processes required for a single machine to sniff live network traffic from a TAP or SPAN port and view the results. Therefore, its hardware requirements are higher than Import as shown in the table above. Eval is designed for temporary installations or homelab installations on a budget. Unlike a full Standalone installation, Evaluation is NOT designed for production usage.</p>
+<p>In order to minimize RAM usage, Eval does not run <a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a> or <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a> at all. Also, Eval defaults to using <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> for writing full packet capture to disk (instead of <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a>).</p>
+</section>
+<section id="production-deployments">
+<h2>Production Deployments<a class="headerlink" href="#production-deployments" title="Link to this heading"></a></h2>
+<p>For best results, we recommend purchasing new hardware that meets the hardware requirements detailed below.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you’re planning to purchase new hardware, please consider official Security Onion appliances from Security Onion Solutions (<a class="reference external" href="https://securityonionsolutions.com">https://securityonionsolutions.com</a>). Our custom appliances have already been designed for certain roles and traffic levels and have Security Onion pre-installed. Purchasing from Security Onion Solutions will save you time and effort <strong>and</strong> help to support development of Security Onion as a free and open platform!</p>
+</div>
+</section>
+<section id="storage">
+<h2>Storage<a class="headerlink" href="#storage" title="Link to this heading"></a></h2>
+<p>We only support local storage. Remote storage like SAN/iSCSI/FibreChannel/NFS increases complexity and points of failure, and has serious performance implications. You may be able to make remote storage work, but we do not provide any support for it. By using local storage, you keep everything self-contained and you don’t have to worry about competing for resources. Local storage is usually the most cost efficient solution as well.</p>
+</section>
+<section id="nic">
+<h2>NIC<a class="headerlink" href="#nic" title="Link to this heading"></a></h2>
+<p>You’ll need one wired network interface dedicated to management (preferably connected to a dedicated management network). We recommend using static IP addresses where possible. To keep things simple, we recommend only one network interface with an IP address. If you have multiple network interfaces with IP addresses, then Security Onion traffic will default to the interface with the default gateway.</p>
+<p>If you plan to sniff network traffic from a TAP or SPAN port, then you will need one or more interfaces dedicated to sniffing (no IP address). The installer will automatically disable NIC offloading functions such as <code class="docutils literal notranslate"><span class="pre">tso</span></code>, <code class="docutils literal notranslate"><span class="pre">gso</span></code>, and <code class="docutils literal notranslate"><span class="pre">gro</span></code> on sniffing interfaces to ensure that <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> and <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> get an accurate view of the traffic.</p>
+<p>Make sure you get good quality network cards, especially for sniffing. Most users report good experiences with Intel cards.</p>
+<p>Security Onion is designed to use wired interfaces. You may be able to make wireless interfaces work, but we don’t recommend or support it.</p>
+</section>
+<section id="ups">
+<h2>UPS<a class="headerlink" href="#ups" title="Link to this heading"></a></h2>
+<p>As with most computer systems, you’ll want to avoid power outages or other ungraceful shutdowns. Please consider a UPS (Uninterruptible Power Supply) for production deployments.</p>
+</section>
+<section id="elastic-stack">
+<h2>Elastic Stack<a class="headerlink" href="#elastic-stack" title="Link to this heading"></a></h2>
+<p>We recommend placing all Elastic storage (/nsm/elasticsearch) on SSD or fast spinning disk in a RAID 10 configuration.</p>
+<p>Please see the <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">Architecture</span></a> section for detailed deployment scenarios.</p>
+</section>
+<section id="standalone-deployments">
+<h2>Standalone Deployments<a class="headerlink" href="#standalone-deployments" title="Link to this heading"></a></h2>
+<p>In a standalone deployment, the manager components and the sensor components all run on a single box so your hardware requirements will reflect that. You’ll need at minimum 24GB RAM, 4 CPU cores, and 200GB storage. At the bare minimum of 24GB RAM, you may need swap space to avoid issues. Consider 32GB of RAM or more if you plan on monitoring even a small amount of network traffic. More network traffic means higher hardware requirements.</p>
+<p>This deployment type is recommended for evaluation purposes, POCs (proof-of-concept) and small to medium size single sensor deployments. Although you can deploy Security Onion in this manner, it is recommended that you separate the backend components and sensor components.</p>
+<ul class="simple">
+<li><p>CPU: Used to parse incoming events, index incoming events, search metatadata, capture PCAP, analyze packets, and run the frontend components. As data and event consumption increases, a greater amount of CPU will be required.</p></li>
+<li><p>RAM: Used for <a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a>, <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>, disk cache for Lucene, <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a>, <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a>, etc. The amount of available RAM will directly impact search speeds and reliability, as well as ability to process and capture traffic.</p></li>
+<li><p>Disk: Used for storage of indexed metadata. A larger amount of storage allows for a longer retention period. It is typically recommended to retain no more than 30 days of hot <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> indices.</p></li>
+</ul>
+<p>Please refer to the <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">Architecture</span></a> section for detailed deployment scenarios.</p>
+</section>
+<section id="manager-node-with-local-log-storage-and-search">
+<h2>Manager node with local log storage and search<a class="headerlink" href="#manager-node-with-local-log-storage-and-search" title="Link to this heading"></a></h2>
+<p>In an enterprise distributed deployment, a manager node will store logs from itself and sensor nodes. It can also act as a syslog destination for other log sources to be indexed into <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>. An enterprise manager node should have 8 CPU cores at a minimum, 16-128GB RAM, and enough disk space (multiple terabytes recommended) to meet your retention requirements.</p>
+<ul class="simple">
+<li><p>CPU: Used to parse incoming events, index incoming events, and search metadata. As consumption of data and events increases, more CPU will be required.</p></li>
+<li><p>RAM: Used for <a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a>, <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>, and disk cache for Lucene. The amount of available RAM will directly impact search speeds and reliability.</p></li>
+<li><p>Disk: Used for storage of indexed metadata. A larger amount of storage allows for a longer retention period. It is typically recommended to retain no more than 30 days of hot <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> indices.</p></li>
+</ul>
+<p>Please refer to the <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">Architecture</span></a> section for detailed deployment scenarios.</p>
+</section>
+<section id="manager-node-with-separate-search-nodes">
+<h2>Manager node with separate search nodes<a class="headerlink" href="#manager-node-with-separate-search-nodes" title="Link to this heading"></a></h2>
+<p>This deployment type utilizes search nodes to parse and index events. As a result, the hardware requirements of the manager node are reduced. An enterprise manager node should have at least 4-8 CPU cores, 16GB RAM, and 200GB to 1TB of disk space. Many folks choose to host their manager node in their VM farm since it has lower hardware requirements than sensors but needs higher reliability and availability.</p>
+<ul class="simple">
+<li><p>CPU: Used to receive incoming events and place them into <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a>. Used to run all the front end web components and aggregate search results from the search nodes.</p></li>
+<li><p>RAM: Used for <a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a> and <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a>.</p></li>
+<li><p>Disk: Used for general OS purposes.</p></li>
+</ul>
+<p>Please refer to the <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">Architecture</span></a> section for detailed deployment scenarios.</p>
+</section>
+<section id="search-node">
+<h2>Search Node<a class="headerlink" href="#search-node" title="Link to this heading"></a></h2>
+<p>Search nodes increase search and retention capacity with regard to <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>. These nodes parse and index events, and provide the ability to scale horizontally as overall data intake increases. Search nodes should have at least 4-8 CPU cores, 16-64GB RAM, and 200GB of disk space or more depending on your logging requirements.</p>
+<ul class="simple">
+<li><p>CPU: Used to parse incoming events and index incoming events. As consumption of data and events increases, more CPU will be required.</p></li>
+<li><p>RAM: Used for <a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a>, <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>, and disk cache for Lucene. The amount of available RAM will directly impact search speeds and reliability.</p></li>
+<li><p>Disk: Used for storage of indexed metadata. A larger amount of storage allows for a longer retention period. It is typically recommended to retain no more than 30 days of hot <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> indices.</p></li>
+</ul>
+<p>Please refer to the <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">Architecture</span></a> section for detailed deployment scenarios.</p>
+</section>
+<section id="sensor-node">
+<h2>Sensor Node<a class="headerlink" href="#sensor-node" title="Link to this heading"></a></h2>
+<p>A sensor node runs sensor components only, and forwards metadata to the manager node. All PCAP stays local to the sensor, and is accessed through use of an agent.</p>
+<ul class="simple">
+<li><p>CPU: Used for analyzing and storing network traffic. As monitored bandwidth increases, a greater amount of CPU will be required. See below.</p></li>
+<li><p>RAM: Used for write cache and processing traffic.</p></li>
+<li><p>Disk: Used for storage of PCAP and metadata. A larger amount of storage allows for a longer retention period.</p></li>
+</ul>
+<p>Please refer to the <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">Architecture</span></a> section for detailed deployment scenarios.</p>
+</section>
+<section id="heavy-node-sensor-with-elasticsearch-components">
+<h2>Heavy Node (Sensor with Elasticsearch components)<a class="headerlink" href="#heavy-node-sensor-with-elasticsearch-components" title="Link to this heading"></a></h2>
+<p>A heavy node runs all the sensor components AND Elastic components locally. This dramatically increases the hardware requirements. In this case, all indexed metadata and PCAP are retained locally. When a search is performed through <a class="reference internal" href="kibana.html#kibana"><span class="std std-ref">Kibana</span></a>, the manager node queries this node’s <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> instance. You’ll need at minimum 16GB RAM, 4 CPU cores, and 200GB storage. At the bare minimum of 16GB RAM, you will need swap space to avoid issues. We recommend a minimum of 24GB of RAM if you plan on monitoring traffic. The more traffic you plan on monitoring this RAM requirement will also increase.</p>
+<ul class="simple">
+<li><p>CPU: Used to parse incoming events, index incoming events, and search metadata. As monitored bandwidth (and the amount of overall data/events) increases, a greater amount of CPU will be required.</p></li>
+<li><p>RAM: Used for <a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a>, <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>, and disk cache for Lucene. The amount of available RAM will directly impact search speeds and reliability.</p></li>
+<li><p>Disk: Used for storage of indexed metadata. A larger amount of storage allows for a longer retention period. It is typically recommended to retain no more than 30 days of hot <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> indices.</p></li>
+</ul>
+<p>Please refer to the <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">Architecture</span></a> section for detailed deployment scenarios.</p>
+</section>
+<section id="receiver-node">
+<h2>Receiver Node<a class="headerlink" href="#receiver-node" title="Link to this heading"></a></h2>
+<p>Since receiver nodes only run <a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a> and <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a>, they don’t require much CPU or disk space. However, more RAM means you can set a larger queue size for <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a>.</p>
+</section>
+<section id="intrusion-detection-honeypot-idh-node">
+<h2>Intrusion Detection Honeypot (IDH) Node<a class="headerlink" href="#intrusion-detection-honeypot-idh-node" title="Link to this heading"></a></h2>
+<p>For an <a class="reference internal" href="idh.html#idh"><span class="std std-ref">Intrusion Detection Honeypot</span></a> node, the overall system requirements are low: 1GB RAM, 2 CPU cores, 1 NIC, and 100GB disk space.</p>
+</section>
+<section id="sensor-hardware-considerations">
+<h2>Sensor Hardware Considerations<a class="headerlink" href="#sensor-hardware-considerations" title="Link to this heading"></a></h2>
+<p>The following hardware considerations apply to sensors. If you are using a heavy node or standalone deployment type, please note that it will dramatically increase CPU/RAM/Storage requirements.</p>
+<section id="virtualization">
+<h3>Virtualization<a class="headerlink" href="#virtualization" title="Link to this heading"></a></h3>
+<p>We recommend dedicated physical hardware (especially if you’re monitoring lots of traffic) to avoid competing for resources. Sensors can be virtualized, but you’ll have to ensure that they are allocated sufficient resources.</p>
+</section>
+<section id="cpu">
+<h3>CPU<a class="headerlink" href="#cpu" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> and <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> are very CPU intensive. The more traffic you are monitoring, the more CPU cores you’ll need. A very rough ballpark estimate would be 200Mbps per <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> worker or <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> worker. So if you have a fully saturated 1Gbps link and are running <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> for <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> alerts and <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> for metadata, then you’ll want at least 5 <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> workers and 5 <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> workers. This means you’ll need at least 10 CPU cores for <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> and <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> with additional CPU cores for <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> and/or other services. If you are monitoring a high amount of traffic and/or have a small number of CPU cores, you might consider using <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> for both alerts and metadata. This eliminates the need for <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> and allows for more efficient CPU usage.</p>
+</section>
+<section id="ram">
+<h3>RAM<a class="headerlink" href="#ram" title="Link to this heading"></a></h3>
+<p>RAM usage is highly dependent on several variables:</p>
+<ul class="simple">
+<li><p>the services that you enable</p></li>
+<li><p>the <strong>kinds</strong> of traffic you’re monitoring</p></li>
+<li><p>the <strong>actual amount of traffic</strong> you’re monitoring (example: you may be monitoring a 1Gbps link but it’s only using 200Mbps most of the time)</p></li>
+<li><p>the amount of packet loss that is “acceptable” to your organization</p></li>
+</ul>
+<p>For best performance, over provision RAM so that you can fully disable swap.</p>
+<p>The following RAM estimates are a rough guideline and assume that you’re going to be running <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a>, <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a>, and <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> (full packet capture) and want to minimize/eliminate packet loss. Your mileage may vary!</p>
+<ul class="simple">
+<li><p>If you just want to quickly evaluate Security Onion in a VM, the bare minimum amount of RAM needed is 12GB. More is obviously better!</p></li>
+<li><p>If you’re deploying Security Onion in production on a small network (100Mbps or less), you should plan on 16GB RAM or more. Again, more is obviously better!</p></li>
+<li><p>If you’re deploying Security Onion in production to a medium network (100Mbps - 1000Mbps), you should plan on 16GB - 128GB RAM or more.</p></li>
+<li><p>If you’re deploying Security Onion in production to a large network (1000Mbps - 10Gbps), you should plan on 128GB - 256GB RAM or more.</p></li>
+<li><p>If you’re buying a new server, go ahead and max out the RAM (it’s cheap!). As always, more is obviously better!</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Storage<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Sensors that have full packet capture enabled need LOTS of storage. For example, suppose you are monitoring a link that averages 50Mbps, here are some quick calculations: 50Mb/s = 6.25 MB/s = 375 MB/minute = 22,500 MB/hour = 540,000 MB/day. So you’re going to need about 540GB for one day’s worth of pcaps (multiply this by the number of days of pcap you want to keep). The more disk space you have, the more PCAP retention you’ll have for doing investigations after the fact. Disk is cheap, get all you can!</p>
+</section>
+<section id="packets">
+<h3>Packets<a class="headerlink" href="#packets" title="Link to this heading"></a></h3>
+<p>You’ll need some way of getting packets into your sensor interface(s). If you’re just evaluating Security Onion, you can replay <a class="reference internal" href="pcaps.html#pcaps"><span class="std std-ref">PCAPs for Testing</span></a>. For a production deployment, you’ll need a SPAN port on an existing switch or a dedicated TAP. We recommend using a dedicated TAP where possible. If collecting traffic near a NAT boundary, make sure you collect from inside the NAT boundary so that you see the true internal IP addresses.</p>
+<p>Inexpensive TAP/SPAN options (listed alphabetically):</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.dualcomm.com/collections/network-tap">Dualcomm</a></p></li>
+<li><p><a class="reference external" href="https://www.midbittech.com">Midbit SharkTap</a></p></li>
+<li><p><a class="reference external" href="https://mikrotik.com/product/RB260GS">Mikrotik</a></p></li>
+<li><p><a class="reference external" href="https://www.netgear.com/support/product/GS105Ev2">Netgear GS105Ev2</a></p></li>
+</ul>
+<p>Enterprise TAP options (listed alphabetically):</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.apcon.com/products">APCON</a></p></li>
+<li><p><a class="reference external" href="https://www.arista.com/">Arista</a></p></li>
+<li><p><a class="reference external" href="https://cpacket.com">cPacket</a></p></li>
+<li><p><a class="reference external" href="https://www.garlandtechnology.com/products">Garland</a></p></li>
+<li><p><a class="reference external" href="https://gigamon.com">Gigamon</a></p></li>
+<li><p><a class="reference external" href="https://www.keysight.com/us/en/cmp/2020/network-visibility-network-test.html">KeySight / Ixia / Net Optics</a></p></li>
+<li><p><a class="reference external" href="https://www.profitap.com">Profitap</a></p></li>
+</ul>
+</section>
+<section id="further-reading">
+<h3>Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For large networks and/or deployments, please also see <a class="reference external" href="https://github.com/pevma/SEPTun">https://github.com/pevma/SEPTun</a>.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="architecture.html" class="btn btn-neutral float-left" title="Architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="download.html" class="btn btn-neutral float-right" title="Download" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

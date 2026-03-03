@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Cloud Image &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Configuration" href="configuration.html" />
+    <link rel="prev" title="Azure Cloud Image" href="cloud-azure.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="getting-started.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use-cases.html">Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html">Hardware Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download.html">Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmware.html">VMware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtualbox.html">VirtualBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxmox.html">Proxmox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="trouble-booting.html">Booting Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airgap.html">Airgap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-amazon.html">Amazon Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-azure.html">Azure Cloud Image</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Google Cloud Image</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#single-node-grid">Single Node Grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#distributed-grid">Distributed Grid</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#setup-traffic-mirroring">Setup Traffic Mirroring</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-vpc-for-the-monitored-network">Create a VPC for the Monitored Network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-vpc-for-the-security-onion-network">Create a VPC for the Security Onion Network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-sensor-instance-group">Create Sensor Instance Group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-internal-load-balancer">Create Internal Load Balancer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-packet-mirroring-policy">Create Packet Mirroring Policy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#create-security-onion-instances">Create Security Onion Instances</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#instance-creation">Instance Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prepare-nodes-with-ephemeral-local-disk-storage">Prepare Nodes with Ephemeral, Local Disk Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#manager-setup">Manager Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#search-node-setup">Search Node Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gcp-sensor-setup">GCP Sensor Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#remote-sensor-setup">Remote Sensor Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verifying-traffic-mirroring">Verifying Traffic Mirroring</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-installation.html">After Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="getting-started.html">Getting Started</a></li>
+      <li class="breadcrumb-item active">Google Cloud Image</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/cloud-google.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="google-cloud-image">
+<span id="cloud-google"></span><h1>Google Cloud Image<a class="headerlink" href="#google-cloud-image" title="Link to this heading"></a></h1>
+<p>If you would like to deploy Security Onion in Google Cloud Platform (GCP), choose the Security Onion 2 image listed on the Google Marketplace:
+<a class="reference external" href="https://securityonion.net/google/?ref=_ptnr_soc_docs_230824">https://securityonion.net/google/?ref=_ptnr_soc_docs_230824</a></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Existing 2.4 RC1 or newer Security Onion Google Image installations should use the <a class="reference internal" href="soup.html#soup"><span class="std std-ref">soup</span></a> command to upgrade to newer versions of Security Onion. Attempting to switch to a newer image from the Google Marketplace could cause loss of data and require full grid re-installation. Upgrading from Security Onion 2.3 or beta versions of 2.4 is unsupported.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section does not cover network connectivity to the Security Onion node. This can be achieved through configuring an external IP for the node’s management interface, or through the use of a VPN connection via OpenVPN.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section does not cover all aspects of how to set up a VPC in GCP, as each deployments is typically unique for the user. For more details about setting up a VPC, please see <a class="reference external" href="https://cloud.google.com/vpc/docs/vpc">https://cloud.google.com/vpc/docs/vpc</a>. Ensure that all Security Onion nodes can access the manager node over the necessary ports. This could require adding rules to your GCP Virtual Private Cloud and/or VMs in order to satisfy the Security Onion <a class="reference internal" href="firewall.html#firewall"><span class="std std-ref">Firewall</span></a> Node Communication requirements.</p>
+</div>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
+<p>Before proceeding, determine the grid architecture desired. Choose from a single-node grid versus a distributed, multi-node grid. Additionally, determine if the lower latency of local instance storage is needed (typically when there is high-volume of traffic being monitored, which is most production scenarios), or if persistent disks can be used for increased redundancy.</p>
+<section id="single-node-grid">
+<h3>Single Node Grid<a class="headerlink" href="#single-node-grid" title="Link to this heading"></a></h3>
+<p>For simple, low-volume production monitoring, a single node grid can be used. Persistent disks must be used for <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> data storage if used for production purposes. Single node grids cannot use local disks without being at risk of losing <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> data. However, for temporary evaluation installations, where there is little concern for data loss, local disks can be used.</p>
+<p>Listed below are the minimum suggested single-node instance quantities, sizes, and storage requirements for either standalone or evaluation installations (choose one, not both). Note that when using virtual machines with the minimum RAM requirements you may need to enable memory swapping.</p>
+<p>Standalone:</p>
+<ul class="simple">
+<li><p>Quantity: 1</p></li>
+<li><p>Type: n2-standard-8</p></li>
+<li><p>Storage: 256GB Balanced Persistent Disk</p></li>
+</ul>
+<p>Evaluation*:</p>
+<ul class="simple">
+<li><p>Quantity: 1</p></li>
+<li><p>Type: n2-standard-8</p></li>
+<li><p>Storage: 256GB SSD Persistent Disk</p></li>
+</ul>
+<ul class="simple">
+<li><p>Assuming evaluation of performance as well as functionality, therefore higher minimums compared to standalone.</p></li>
+</ul>
+</section>
+<section id="distributed-grid">
+<h3>Distributed Grid<a class="headerlink" href="#distributed-grid" title="Link to this heading"></a></h3>
+<p>For high volume production monitoring, choose a multi-node grid architecture. At least two search nodes must be used in this architecture. This is required due to the use of local disks for <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> data storage, where each of the search nodes retains a replica of another search node, for disaster recovery.</p>
+<p>Listed below are the minimum suggested distributed grid instance quantities, sizes, and storage requirements. Prefer increasing VM memory over enabling swap memory, for best performance. High volume networks will need more powerful VM types with more storage than those listed below.</p>
+<p>VPN Node</p>
+<ul class="simple">
+<li><p>Quantity: 1</p></li>
+<li><p>Type: e2.micro</p></li>
+<li><p>Storage: 50GB Balanced Persistent Disk</p></li>
+</ul>
+<p>Manager</p>
+<ul class="simple">
+<li><p>Quantity: 1</p></li>
+<li><p>Type: n2-standard-8</p></li>
+<li><p>Storage: 300GB Balanced Persistent Disk</p></li>
+</ul>
+<p>Search Nodes</p>
+<ul class="simple">
+<li><p>Quantity: 2 or more</p></li>
+<li><p>Type: n2-standard-8</p></li>
+<li><p>Storage: 256GB Balanced Persistent Disk</p></li>
+<li><p>Storage: 375GB Local Disk (NVMe) [optional]</p></li>
+</ul>
+<p>Sensor monitoring the VPN ingress</p>
+<ul class="simple">
+<li><p>Quantity: 1</p></li>
+<li><p>Type: n2-standard-4</p></li>
+<li><p>Storage: 500GB Balanced Persistent Disk</p></li>
+</ul>
+</section>
+</section>
+<section id="setup-traffic-mirroring">
+<h2>Setup Traffic Mirroring<a class="headerlink" href="#setup-traffic-mirroring" title="Link to this heading"></a></h2>
+<p>To accomplish traffic mirroring in GCP, a packet mirroring policy must be created and assigned to an internal load balancer. Google supports multiple methods for selecting what traffic to mirror. For example, a special tag keyword can be configured on the mirror policy, such as “so-mirror”, and any VM that should have its traffic monitored can be given that special tag. The mirrored traffic will be forwarded to the internal load balancer, and a Security Onion sensor VM will be a member of that load balancer’s instance group.</p>
+<p>Follow the steps below to setup a traffic mirroring configuration. You will need to be logged into the Google Cloud Console, and somewhat familiar with GCP and how zones and regions are used. Note that these steps are only one of many ways to do this. For example, your scenario may require more advanced configuration, such as packet filtering, or additional VPCs.</p>
+<section id="create-a-vpc-for-the-monitored-network">
+<h3>Create a VPC for the Monitored Network<a class="headerlink" href="#create-a-vpc-for-the-monitored-network" title="Link to this heading"></a></h3>
+<p>Create a new Virtual Private Cloud (VPC) network for collection of monitored network traffic. This will be referred to below as the Monitored VPC network. Define one subnet within this VPC that will be dedicated to receiving monitored traffic.</p>
+<p>Add a new firewall rule to this VPC network to allow all incoming mirrored traffic. Specify a target tag of <code class="docutils literal notranslate"><span class="pre">so-collector</span></code> and a source tag of <code class="docutils literal notranslate"><span class="pre">so-mirror</span></code>. This will allow all mirrored traffic originating from a VM NIC tagged with <code class="docutils literal notranslate"><span class="pre">so-mirror</span></code>, and residing in this same VPC network, to be delivered to the sensor VM’s monitoring NIC tagged with <code class="docutils literal notranslate"><span class="pre">so-collector</span></code>.</p>
+</section>
+<section id="create-a-vpc-for-the-security-onion-network">
+<h3>Create a VPC for the Security Onion Network<a class="headerlink" href="#create-a-vpc-for-the-security-onion-network" title="Link to this heading"></a></h3>
+<p>Create a new Virtual Private Cloud (VPC) network where the Security Onion grid will communicate. Configure the subnets as desired, however, at least one subnet is required, and this VPC cannot overlap IP space with the above Monitored VPC network. Ensure that SSH access (port TCP/22) and HTTPS (port TCP/443) is enabled so that you have the ability to connect to VMs from your external network. For security purposes it’s recommended to limit inbound access from trusted IPs.</p>
+<p>Add a new firewall rule to allow all traffic originating from any VM instance within the Security Onion VPC network. Choose a source IP range that encapsulates the IP ranges of the subnet(s) created above. This is necessary for connectivity between the manager and minion nodes. You can also choose to be more specific about traffic within the VPC however the rules must satisfy the Security Onion <a class="reference internal" href="firewall.html#firewall"><span class="std std-ref">Firewall</span></a> Node Communication requirements.</p>
+</section>
+<section id="create-sensor-instance-group">
+<h3>Create Sensor Instance Group<a class="headerlink" href="#create-sensor-instance-group" title="Link to this heading"></a></h3>
+<p>Create an unmanaged Instance Group. This is found under the Compute Engine section of the Google Cloud Console. Use the Security Onion VPC as the selected network. Leave the VM instances blank; later in this document the Security Onion sensor node will be added to this group. Port mapping is not required for this group.</p>
+</section>
+<section id="create-internal-load-balancer">
+<h3>Create Internal Load Balancer<a class="headerlink" href="#create-internal-load-balancer" title="Link to this heading"></a></h3>
+<p>Under Network services, within the Google Cloud Console, create a Load Balancer. Choose TCP Load Balancer and select the <code class="docutils literal notranslate"><span class="pre">Only</span> <span class="pre">between</span> <span class="pre">my</span> <span class="pre">VMs</span></code> option. Click Continue and then select the Monitoring VPC network.</p>
+<p>For the Backend configuration, choose the Instance Group created above. Ignore the informative box that explains the need to use additional NICs in the group instances. Specify that the backend is a failover group for backup. Create a new Health check that uses port TCP/22 (SSH) as the health test, with the following timing settings:</p>
+<ul class="simple">
+<li><p>Check Interval: 300</p></li>
+<li><p>Timeout: 1</p></li>
+<li><p>Healthy Threshold: 1</p></li>
+<li><p>Unhealthy Threshold: 1</p></li>
+</ul>
+<p>Note that this health check is put in place only to satisfy the GCP requirement that all backends have a health check assigned. Since the backend group is marked as a failover, it will always forward traffic, regardless of the health check result.</p>
+<p>For the Frontend configuration, select the subnet in the Monitoring VPC network that you created specifically for receiving monitored traffic. Choose non-shared IP. If there you would like to forward all traffic, choose All ports and enable global access. Under Advanced Configurations, enable the <code class="docutils literal notranslate"><span class="pre">Load</span> <span class="pre">Balancer</span> <span class="pre">for</span> <span class="pre">Packet</span> <span class="pre">mirroring</span></code> checkbox.</p>
+</section>
+<section id="create-packet-mirroring-policy">
+<h3>Create Packet Mirroring Policy<a class="headerlink" href="#create-packet-mirroring-policy" title="Link to this heading"></a></h3>
+<p>Traffic mirroring allows you to copy the traffic to/from an instance (or multiple instances) and send it to the sniffing interface of a network security monitoring sensor or a group of interfaces using a network load balancer.  For more details about GCP Traffic Mirroring please see: <a class="reference external" href="https://cloud.google.com/vpc/docs/packet-mirroring">https://cloud.google.com/vpc/docs/packet-mirroring</a></p>
+<p>Create a Packet Mirroring policy. This can be found in the Google Cloud Console under the VPC network section. When selecting the VPC network, choose the option that denotes the mirrored source and collector destination are in the same VPC network and select the Mirrored VPC network created earlier.</p>
+<p>Under Select mirrored source, check the box next to the “Select with network tag” label. Then enter a tag named <code class="docutils literal notranslate"><span class="pre">so-mirror</span></code>. Once completed with the grid setup, you can later tag all your VMs, whose traffic you want monitored, with the same <code class="docutils literal notranslate"><span class="pre">so-mirror</span></code> tag.</p>
+<p>Under Select collector destination, choose the front end forwarding rule that was created during the Load Balancer setup earlier.</p>
+<p>Finally, choose to mirror all traffic, unless you prefer to filter specific traffic for mirroring.</p>
+</section>
+</section>
+<section id="create-security-onion-instances">
+<h2>Create Security Onion Instances<a class="headerlink" href="#create-security-onion-instances" title="Link to this heading"></a></h2>
+<section id="instance-creation">
+<h3>Instance Creation<a class="headerlink" href="#instance-creation" title="Link to this heading"></a></h3>
+<p>To configure a Security Onion instance (repeat for each node in a distributed grid), follow these steps:</p>
+<ul class="simple">
+<li><p>Access the Google Cloud Marketplace at <a class="reference external" href="https://console.cloud.google.com/marketplace">https://console.cloud.google.com/marketplace</a>.</p></li>
+<li><p>Ensure you have a means of authenticating to VM instances over SSH. One method to authenticate is via a project-wide SSH key, which can be defined in Compute Engine -&gt; Metadata -&gt; SSH Keys.</p></li>
+<li><p>Search the Marketplace for <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Onion</span></code> and Launch the latest version of the Security Onion 2 official VM image. This may require clicking the “Get Started” button.</p></li>
+<li><p>Choose the appropriate machine type based on the desired hardware requirements.  For assistance on determining resource requirements please review the Requirements section above.</p></li>
+<li><p>Under the Networking interfaces section, expand the pre-added Network interface and select the Security Onion VPC network and desired subnet. External ephemeral IP is sufficient, unless you are planning to use a VPN to access the Security Onion Console, in which case no external ephemeral IP is necessary. Using a VPN is recommended, but setup of a VPN in GCP is out of scope of this guide.</p></li>
+<li><p>(Distributed “Sensor” node or Single-Node grid only) Add a second Network interface and select the monitoring VPC network, and the appropriate subnet. No external ephemeral IP is necessary for this interface.</p></li>
+<li><p>(Distributed “Manager” node or Single-Node grid only) If not using a VPN, enable the Allow SSH and HTTPS traffic from the the desired IPs/CIDRs.</p></li>
+<li><p>Adjust the boot disk size and type as necessary, using the guidance in the above Requirements section and elsewhere in the Security Onion documentation.</p></li>
+<li><p>(Distributed “Search” node or Evaluation grid only) If high-speed local NVMe disks are needed a manual Terraform deployment will be required, with local disks added to the compute instance. Note that the local disks support 375GB only, so if larger volumes are required the system will need to be configured to present the multiple local disks as one virtual disk. This is out of scope of this document. Also, be aware that local disks are not replicated and will result in data loss if the instance is deleted.</p></li>
+<li><p>If requested, review GCP Marketplace Terms, and if acceptable click the corresponding checkbox.</p></li>
+<li><p>Select: <code class="docutils literal notranslate"><span class="pre">Create</span></code></p></li>
+</ul>
+</section>
+<section id="prepare-nodes-with-ephemeral-local-disk-storage">
+<h3>Prepare Nodes with Ephemeral, Local Disk Storage<a class="headerlink" href="#prepare-nodes-with-ephemeral-local-disk-storage" title="Link to this heading"></a></h3>
+<p>For distributed search nodes, or an evaluation node if using local disk storage, SSH into the node and cancel out of the setup. Prepare the local disk partition by executing the following command:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This assumes a single NVMe disk will be used for storing all search data. Combining multiple disks into a single partition mount is out of scope of this document.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">prepare</span><span class="o">-</span><span class="n">fs</span>
+</pre></div>
+</div>
+<p>By default, this command expects the local disk device to be located at <code class="docutils literal notranslate"><span class="pre">/dev/nvme1n1</span></code> and will mount that device at <code class="docutils literal notranslate"><span class="pre">/nsm/elasticsearch</span></code>. If this fails run <code class="docutils literal notranslate"><span class="pre">lsblk</span></code> to determine which disk to use. To override either of those two defaults, specify them as arguments. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">prepare</span><span class="o">-</span><span class="n">fs</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">nvme0n1</span> <span class="o">/</span><span class="n">nsm</span><span class="o">/</span><span class="n">elasticsearch</span>
+</pre></div>
+</div>
+<p>Restart the Security Onion setup by running the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">securityonion</span>
+<span class="n">sudo</span> <span class="o">./</span><span class="n">so</span><span class="o">-</span><span class="n">setup</span><span class="o">-</span><span class="n">network</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="manager-setup">
+<h2>Manager Setup<a class="headerlink" href="#manager-setup" title="Link to this heading"></a></h2>
+<p>If this is an evaluation node with a local disk, ensure the node has been prepared as described in the preceding section.</p>
+<p>After SSH’ing into the node, setup will begin automatically. Follow the prompts, selecting the appropriate install options. Most distributed installations will use the <code class="docutils literal notranslate"><span class="pre">hostname</span></code> or <code class="docutils literal notranslate"><span class="pre">other</span></code> web access method, due to the need for both cluster nodes inside the private network, and analyst users across the public Internet to reach the manager. This allows for custom DNS entries to define the correct IP (private vs public) depending on whether it’s a cluster node or an analyst user. Users evaluating Security Onion for the first time should consider choosing the <code class="docutils literal notranslate"><span class="pre">other</span></code> option and specifying the node’s public cloud IP.</p>
+<p>GCP provides a built-in NTP server at hostname <code class="docutils literal notranslate"><span class="pre">metadata.google.internal</span></code>. This can be specified in the SOC Configuration screen after setup completes. By default the server will use the time servers at <code class="docutils literal notranslate"><span class="pre">ntp.org</span></code>.</p>
+<p>For distributed manager nodes using ephemeral storage, go to SOC Configuration. Search for <code class="docutils literal notranslate"><span class="pre">number_of_replicas</span></code> and change to 1. This will double the storage cost but will ensure at least two VMs have the data, in case of an ephemeral disk loss.</p>
+<p>Optionally, adjust <a class="reference internal" href="elastalert.html#elastalert"><span class="std std-ref">ElastAlert 2</span></a> indices so that they have a replica. This will cause them to turn yellow but that will be fixed when search nodes come online:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">so</span><span class="o">-</span><span class="n">elasticsearch</span><span class="o">-</span><span class="n">query</span> <span class="n">elastalert</span><span class="o">*/</span><span class="n">_settings</span> <span class="o">-</span><span class="n">X</span> <span class="n">PUT</span> <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;{&quot;index&quot; : { &quot;number_of_replicas&quot; : 1 }}&#39;</span>
+</pre></div>
+</div>
+<p>This is an optional step due to the ElastAlert indices being used primarily for short-term/recent alert history. In the event of a data loss when ElastAlert 2 restarts the indices will be regenerated.</p>
+</section>
+<section id="search-node-setup">
+<h2>Search Node Setup<a class="headerlink" href="#search-node-setup" title="Link to this heading"></a></h2>
+<p>Follow standard Security Onion search node installation, answering the setup prompts as applicable. If you are using local disk storage be sure to first prepare the instance as directed earlier in this section.</p>
+</section>
+<section id="gcp-sensor-setup">
+<h2>GCP Sensor Setup<a class="headerlink" href="#gcp-sensor-setup" title="Link to this heading"></a></h2>
+<p>In the GCP console, under Compute Engine go to the Instance Group page and edit the instance group that was created earlier. Use the dropdown list to add the new sensor VM instance to this group.</p>
+<p>SSH into the sensor node and run through setup to set this node up as a sensor. Choose <code class="docutils literal notranslate"><span class="pre">ens4</span></code> as the main interface and <code class="docutils literal notranslate"><span class="pre">ens5</span></code> as the monitoring interface.</p>
+</section>
+<section id="remote-sensor-setup">
+<h2>Remote Sensor Setup<a class="headerlink" href="#remote-sensor-setup" title="Link to this heading"></a></h2>
+<p>Setup the VPN (out of scope for this guide) and connect the sensor node to the VPN.
+When prompted to choose the management interface, select the VPN tunnel interface, such as <code class="docutils literal notranslate"><span class="pre">tun0</span></code>. Use the internal IP (not the ephemeral IP) address of the manager inside GCP when prompted for the manager IP.</p>
+<p>If connecting sensors through the VPN instance you will need to add the inside interface of your VPN concentrator to the <code class="docutils literal notranslate"><span class="pre">sensor</span></code> firewall hostgroup. For instance, assuming the following architecture:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SO</span> <span class="n">Sensor</span>        <span class="o">-&gt;</span> <span class="n">VPN</span> <span class="n">Endpoint</span>     <span class="o">-&gt;</span> <span class="n">Internet</span> <span class="o">-&gt;</span> <span class="n">VPN</span> <span class="n">Endpoint</span>  <span class="o">-&gt;</span> <span class="n">SO</span> <span class="n">Manager</span>
+<span class="n">Location</span><span class="p">:</span> <span class="n">Remote</span>    <span class="n">Location</span><span class="p">:</span> <span class="n">Remote</span>                <span class="n">Location</span><span class="p">:</span> <span class="n">Googe</span>  <span class="n">Location</span><span class="p">:</span> <span class="n">Google</span>
+<span class="mf">192.168.33.13</span>       <span class="mf">192.168.33.10</span>                   <span class="mf">10.55.1.10</span>       <span class="mf">10.55.1.20</span>
+</pre></div>
+</div>
+<p>In order to add the Remote Network Sensor Node to the Grid, you would have to add <code class="docutils literal notranslate"><span class="pre">10.55.1.10</span></code> to the <code class="docutils literal notranslate"><span class="pre">sensor</span></code> firewall hostgroup.</p>
+<p>This change can be done in the SOC Configuration screen. Then, either wait up to 15 minutes for the scheduled configuration sync to run, or force a synchronization immediately via the SOC Configuration Options. Once the firewall hostgroup configuration has been synchronized your Manager will be ready for remote minions to start connecting.</p>
+</section>
+<section id="verifying-traffic-mirroring">
+<h2>Verifying Traffic Mirroring<a class="headerlink" href="#verifying-traffic-mirroring" title="Link to this heading"></a></h2>
+<p>Deploy a temporary test VM instance, using a e2.micro, debian-based instance in the Monitored VPC network, and in the same region used in the rest of this guide. Add the <code class="docutils literal notranslate"><span class="pre">so-mirror</span></code> network tag to the VM.</p>
+<p>SSH into the sensor node created earlier in this guide, and run the following command to watch mirrored traffic:</p>
+<p><code class="docutils literal notranslate"><span class="pre">tcpdump</span> <span class="pre">-nni</span> <span class="pre">ens5</span></code></p>
+<p>While that is running, in another terminal, SSH into this new test VM and run a curl command to a popular website. You should see that HTTP/HTTPS traffic appear in the tcpdump output.</p>
+<p>Login to Security Onion and verify that the traffic also appears in the Hunt user interface.</p>
+<p>Delete the temporary test VM instance when the verification is completed.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cloud-azure.html" class="btn btn-neutral float-left" title="Azure Cloud Image" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="configuration.html" class="btn btn-neutral float-right" title="Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

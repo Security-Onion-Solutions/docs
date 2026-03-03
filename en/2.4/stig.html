@@ -1,0 +1,226 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STIG &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Notifications" href="notifications.html" />
+    <link rel="prev" title="FIPS" href="fips.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="pro.html">Security Onion Pro</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="oidc.html">OpenID Connect (OIDC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="luks.html">LUKS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fips.html">FIPS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">STIG</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stig-during-the-iso-install">STIG During the ISO Install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-stig">Enabling STIG</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#openscap">OpenSCAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kafka.html">Kafka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="connect.html">Connect API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aqm.html">Active Query Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mom.html">Manager of Managers (MoM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcp.html">MCP Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="splunk.html">Security Onion App for Splunk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervisor.html">Hypervisor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assistant.html">Onion AI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="pro.html">Security Onion Pro</a></li>
+      <li class="breadcrumb-item active">STIG</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/stig.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="stig">
+<span id="id1"></span><h1>STIG<a class="headerlink" href="#stig" title="Link to this heading"></a></h1>
+<p>STIG stands for Security Technical Implementation Guide. For more information about STIGs, please see <a class="reference external" href="https://public.cyber.mil/stigs/">https://public.cyber.mil/stigs/</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an enterprise-level feature of Security Onion. Contact Security Onion Solutions, LLC via our website at <a class="reference external" href="https://securityonion.com/pro">https://securityonion.com/pro</a> for more information about purchasing a Security Onion Pro license to enable this feature.</p>
+</div>
+<section id="stig-during-the-iso-install">
+<h2>STIG During the ISO Install<a class="headerlink" href="#stig-during-the-iso-install" title="Link to this heading"></a></h2>
+<p>The recommended way to use STIG with Security Onion is to install via our Security Onion ISO image. From the <a class="reference internal" href="installation.html#installation"><span class="std std-ref">Installation</span></a> menu you’ll select the <code class="docutils literal notranslate"><span class="pre">Install</span> <span class="pre">Security</span> <span class="pre">Onion</span> <span class="pre">Pro</span></code> option.</p>
+<p>Installing using the Security Onion Pro menu options will create additional partitions on your system to meet the STIG requirements. The partitions created include:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Partition</p></th>
+<th class="head"><p>Storage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/home</p></td>
+<td><p>25GB</p></td>
+</tr>
+<tr class="row-odd"><td><p>/tmp</p></td>
+<td><p>2GB</p></td>
+</tr>
+<tr class="row-even"><td><p>/var</p></td>
+<td><p>50GB</p></td>
+</tr>
+<tr class="row-odd"><td><p>/var/log</p></td>
+<td><p>5GB</p></td>
+</tr>
+<tr class="row-even"><td><p>/var/log/audit</p></td>
+<td><p>2GB</p></td>
+</tr>
+<tr class="row-odd"><td><p>/var/tmp</p></td>
+<td><p>2GB</p></td>
+</tr>
+</tbody>
+</table>
+<p>In addition to the required partitions, using the STIG menu option will also configure the system to use <a class="reference internal" href="fips.html#fips"><span class="std std-ref">FIPS</span></a> mode, and enable <a class="reference internal" href="luks.html#luks"><span class="std std-ref">LUKS</span></a> disk encryption. Both of these options can be used independently of the STIG menu option depending on your requirements.</p>
+</section>
+<section id="enabling-stig">
+<h2>Enabling STIG<a class="headerlink" href="#enabling-stig" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<div class="line-block">
+<div class="line">Before enabling STIGs on your production Security Onion deployment, we recommend testing in a development environment. With different environments and configurations, there may be unexpected errors.</div>
+</div>
+</div>
+<p>To enable STIGs you’ll first need setup your Security Onion grid and apply your <a class="reference internal" href="pro.html#pro"><span class="std std-ref">Security Onion Pro</span></a> license. You can then navigate to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; stig –&gt; enabled and set the value to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">You will need to enable the <a class="reference internal" href="administration.html#administration-advanced-settings"><span class="std std-ref">Advanced Settings</span></a> option to modify this setting.</div>
+</div>
+</div>
+</section>
+<section id="openscap">
+<h2>OpenSCAP<a class="headerlink" href="#openscap" title="Link to this heading"></a></h2>
+<p>In order to apply STIGs on Security Onion we use a combination of our existing Saltstack configuration managment and OpenSCAP. Currently, OpenSCAP is using a draft version of STIGs for Oracle Linux 9.</p>
+<p>OpenScap can be configured to run at different time intervals. By default, OpenSCAP will run a remediation every 12 hours meaning any changes made to the system that bring it out of compliance will be reverted back to the STIG compliant state. This setting can be lowered or increased by modifying the <code class="docutils literal notranslate"><span class="pre">run_interval</span></code> setting found under <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; stig</p>
+<p>With the STIG feature enabled, you can find OpenSCAP reports under <code class="docutils literal notranslate"><span class="pre">/opt/so/log/stig</span></code>. Currently, the expected compliance score is 86%.</p>
+</section>
+<section id="more-information">
+<h2>More information<a class="headerlink" href="#more-information" title="Link to this heading"></a></h2>
+<p>For more information about OpenSCAP see: <a class="reference external" href="https://www.open-scap.org/">https://www.open-scap.org/</a>
+For more information about STIGs see: <a class="reference external" href="https://public.cyber.mil/stigs/">https://public.cyber.mil/stigs/</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fips.html" class="btn btn-neutral float-left" title="FIPS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="notifications.html" class="btn btn-neutral float-right" title="Notifications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,408 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grid &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Downloads" href="downloads.html" />
+    <link rel="prev" title="PCAP" href="pcap.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="alerts.html">Alerts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html">Dashboards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hunt.html">Hunt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html">Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detections.html">Detections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcap.html">PCAP</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Grid</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#node-status">Node Status</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id">ID</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#role">Role</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#address">Address</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#version">Version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#model">Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#date-created">Date Created</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#earliest-pcap">Earliest PCAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#last-heard-from">Last Heard From</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#age">Age</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#os-uptime">OS Uptime</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#last-synchronized">Last Synchronized</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#process-status">Process Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#connection-status">Connection Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elasticsearch-status">Elasticsearch Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raid-status">RAID Status</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#consumption-eps">Consumption EPS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#memory-usage">Memory Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#swap-usage">Swap Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cpu-usage">CPU Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#i-o-wait">I/O Wait</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#capture-loss">Capture Loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#zeek-loss">Zeek Loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#suricata-loss">Suricata Loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stenographer-loss">Stenographer Loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#root-partition-usage">Root Partition Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nsm-partition-usage">NSM Partition Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#elastic-storage-used">Elastic Storage Used</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#influxdb-storage-used">InfluxDB Storage Used</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pcap-retention">PCAP Retention</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#load-average">Load Average</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#redis-queue-size">Redis Queue Size</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inbound-monitor-traffic">Inbound Monitor Traffic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dropped-monitor-traffic">Dropped Monitor Traffic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inbound-mgmt-traffic">Inbound Mgmt Traffic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outbound-mgmt-traffic">Outbound Mgmt Traffic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filter-keywords">Filter Keywords</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#icons-in-lower-left-corner">Icons in Lower Left Corner</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#container-status">Container Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#appliance-images">Appliance Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-grid-pages">Other Grid Pages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="downloads.html">Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administration.html">Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kibana.html">Kibana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic-fleet.html">Elastic Fleet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osquery-manager.html">Osquery Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="influxdb.html">InfluxDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cyberchef.html">CyberChef</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attack-navigator.html">ATT&amp;CK Navigator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="soc.html">Security Onion Console (SOC)</a></li>
+      <li class="breadcrumb-item active">Grid</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/grid.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="grid">
+<span id="id1"></span><h1>Grid<a class="headerlink" href="#grid" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> includes a Grid interface which allows you to quickly check the status of all nodes in your grid.</p>
+<a class="reference external image-reference" href="_images/39_grid.png"><img alt="_images/39_grid.png" src="_images/39_grid.png" />
+</a>
+<p>Starting at the top of the page, there is a <code class="docutils literal notranslate"><span class="pre">Grid</span> <span class="pre">EPS</span></code> value in the upper-right corner that shows the sum of all <code class="docutils literal notranslate"><span class="pre">Consumption</span> <span class="pre">EPS</span></code> measurements in the entire grid. Below that you will find a list of all nodes in your grid.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please note that new nodes start off showing a red <code class="docutils literal notranslate"><span class="pre">Fault</span></code> and may take a few minutes to fully initialize before they show a green OK.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">EPS</span></code> column represents Events Per Second consumed, so it will only be relevant on nodes that ingest data. Pure sensors do not ingest events, so those nodes will show 0 EPS. If you want to identify sensors that are generating large volumes of events, you can sort by the <code class="docutils literal notranslate"><span class="pre">Mgmt</span> <span class="pre">Out</span></code> column, which shows the outbound traffic throughput on the management network interface.</p>
+</div>
+<p>The options dropdown near the top of the page includes a checkbox which will show additional sensor-related columns in the table. You can use these sortable columns to help identify sensors that may be underperforming or due for a hardware upgrade. As these additional columns take up significant screen area, they will only be visible on wide displays where the SOC web browser window is wide enough to show a large number of tabular columns.</p>
+<a class="reference external image-reference" href="_images/76_grid_options.png"><img alt="_images/76_grid_options.png" src="_images/76_grid_options.png" />
+</a>
+<p>You can drill into individual nodes to see detailed information including Node Status, Container Status, and Appliance Images.</p>
+<section id="node-status">
+<h2>Node Status<a class="headerlink" href="#node-status" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Node</span> <span class="pre">Status</span></code> section displays many different fields relating to each node’s status.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If a node has not checked in recently then the metrics and statuses for that node will be slightly grayed out, to indicate that the values are stale.</p>
+</div>
+<section id="id">
+<h3>ID<a class="headerlink" href="#id" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">ID</span></code> field shows the hostname assigned to the node.</p>
+</section>
+<section id="role">
+<h3>Role<a class="headerlink" href="#role" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Role</span></code> field shows the type of Security Onion node that was selected during Security Onion setup.</p>
+</section>
+<section id="address">
+<h3>Address<a class="headerlink" href="#address" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Address</span></code> field shows the network IP address assigned to the management interface of the node.</p>
+</section>
+<section id="version">
+<h3>Version<a class="headerlink" href="#version" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Version</span></code> field shows the version of Security Onion installed on this node.</p>
+</section>
+<section id="model">
+<h3>Model<a class="headerlink" href="#model" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Model</span></code> field shows the official Security Onion Solutions appliance model number. For non-SOS devices, this field will show <code class="docutils literal notranslate"><span class="pre">N/A</span></code>.</p>
+</section>
+<section id="date-created">
+<h3>Date Created<a class="headerlink" href="#date-created" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Date</span> <span class="pre">Created</span></code> field shows the date the node was created. This date is based on the node’s filesystem timestamps, so replacing partition data or manually recreating core areas of the filesystem can interfere with assessing a node’s true age.</p>
+</section>
+<section id="earliest-pcap">
+<h3>Earliest PCAP<a class="headerlink" href="#earliest-pcap" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Earliest</span> <span class="pre">PCAP</span></code> field shows the earliest PCAP that is available on a sensor node and is only visible on sensor nodes which capture live packet data.</p>
+</section>
+<section id="last-heard-from">
+<h3>Last Heard From<a class="headerlink" href="#last-heard-from" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Last</span> <span class="pre">Heard</span> <span class="pre">From</span></code> field shows the last time that the node checked-in with the manager. Note that a check-in doesn’t always include updated node metrics.</p>
+</section>
+<section id="age">
+<h3>Age<a class="headerlink" href="#age" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Age</span></code> field shows how long the node has been part of the grid and is based on the <code class="docutils literal notranslate"><span class="pre">Date</span> <span class="pre">Created</span></code> value.</p>
+</section>
+<section id="os-uptime">
+<h3>OS Uptime<a class="headerlink" href="#os-uptime" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">OS</span> <span class="pre">Uptime</span></code> field shows how long the node has been running since the last power-on or reboot event.</p>
+<p>If the node needs to be restarted to apply kernel updates then a message will appear next to the uptime value indicating this. The reboot button at the bottom of the grid page allows administrators to remotely reboot a node via the SOC web interface.</p>
+</section>
+<section id="last-synchronized">
+<h3>Last Synchronized<a class="headerlink" href="#last-synchronized" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Last</span> <span class="pre">Synchronized</span></code> field shows how long ago the node was synchronized to the manager node. This is equivalent to the last Salt highstate run. Knowing this value can be helpful when making configuration changes to the grid and determining whether a specific node has received those changes.</p>
+</section>
+<section id="process-status">
+<h3>Process Status<a class="headerlink" href="#process-status" title="Link to this heading"></a></h3>
+<p>If the <code class="docutils literal notranslate"><span class="pre">Process</span> <span class="pre">Status</span></code> field shows <code class="docutils literal notranslate"><span class="pre">Fault</span></code>, you can check the other status indicators as well as the <code class="docutils literal notranslate"><span class="pre">Container</span> <span class="pre">Status</span></code> section to determine which process has failed.</p>
+</section>
+<section id="connection-status">
+<h3>Connection Status<a class="headerlink" href="#connection-status" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">Status</span></code> field shows whether or not the node is currently connected to the grid.</p>
+</section>
+<section id="elasticsearch-status">
+<h3>Elasticsearch Status<a class="headerlink" href="#elasticsearch-status" title="Link to this heading"></a></h3>
+<p>If the node runs <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>, then the <code class="docutils literal notranslate"><span class="pre">Elasticsearch</span> <span class="pre">Status</span></code> field will show the status of it. If the status is anything other than OK, then see the <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> section to troubleshoot.</p>
+</section>
+<section id="raid-status">
+<h3>RAID Status<a class="headerlink" href="#raid-status" title="Link to this heading"></a></h3>
+<p>If you are using an official Security Onion Solutions appliance with RAID support, then you will see the corresponding status appear in this field.</p>
+</section>
+<section id="consumption-eps">
+<h3>Consumption EPS<a class="headerlink" href="#consumption-eps" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Consumption</span> <span class="pre">EPS</span></code> field is the number of Events Per Second consumed.</p>
+</section>
+<section id="memory-usage">
+<h3>Memory Usage<a class="headerlink" href="#memory-usage" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Memory</span> <span class="pre">Usage</span></code> field shows the system memory percentage used, as well as the total memory, in gigabytes. If this value is consistently in the red, then it may be time to add more system memory. Consistently red usage will likely end up causing node faults due to some services being automatically shutdown to recover memory for more critical processes.</p>
+</section>
+<section id="swap-usage">
+<h3>Swap Usage<a class="headerlink" href="#swap-usage" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Swap</span> <span class="pre">Usage</span></code> field shows the system swap percentage used, as well as the total swap, in gigabytes. Systems that do not have swap enabled will remain at 0.0%. If this value is consistently in the red, then it may be time to increase the system memory and potentially the swap size.</p>
+</section>
+<section id="cpu-usage">
+<h3>CPU Usage<a class="headerlink" href="#cpu-usage" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">CPU</span> <span class="pre">Usage</span></code> field shows the system CPU percentage used, across all cores. If this value is consistently in the red, then it may be time to upgrade the node hardware or distribute the load across additional nodes.</p>
+</section>
+<section id="i-o-wait">
+<h3>I/O Wait<a class="headerlink" href="#i-o-wait" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">I/O</span> <span class="pre">Wait</span></code> field shows the system I/O wait percentage. Higher values indicate the system is spending more time waiting for network or disk data transfer. If this value is consistently in the red, then it may be time to replace slow disks or expand network throughput capacity.</p>
+</section>
+<section id="capture-loss">
+<h3>Capture Loss<a class="headerlink" href="#capture-loss" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Capture</span> <span class="pre">Loss</span></code> field shows the percentage of packet capture loss reported by <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a>. Higher values indicate a reduced visibility into packets traversing the network. If <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> is reporting capture loss but no packet loss, this usually means that the capture loss is happening upstream in the TAP or SPAN port itself.</p>
+</section>
+<section id="zeek-loss">
+<h3>Zeek Loss<a class="headerlink" href="#zeek-loss" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Zeek</span> <span class="pre">Loss</span></code> field shows the percentage of dropped packets due to <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> being unable to keep up with the flow of network data.</p>
+</section>
+<section id="suricata-loss">
+<h3>Suricata Loss<a class="headerlink" href="#suricata-loss" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Suricata</span> <span class="pre">Loss</span></code> field shows the percentage of dropped packets due to <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> being unable to keep up with the flow of network data.</p>
+</section>
+<section id="stenographer-loss">
+<h3>Stenographer Loss<a class="headerlink" href="#stenographer-loss" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Stenographer</span> <span class="pre">Loss</span></code> field shows the percentage of dropped packets due to <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> being unable to keep up with the flow of network data. <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> is responsible for writing down all packets to disk, as well as indexing these packets.</p>
+</section>
+<section id="root-partition-usage">
+<h3>Root Partition Usage<a class="headerlink" href="#root-partition-usage" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Root</span> <span class="pre">Partition</span> <span class="pre">Usage</span></code> field shows the percentage of the root OS disk utilization, as well as the total capacity of that disk (or partition). If this value is consistently in the red, then it can lead to problems including being unable to upgrade OS packages and Security Onion, the inability to save system logs, and other critical issues.</p>
+</section>
+<section id="nsm-partition-usage">
+<h3>NSM Partition Usage<a class="headerlink" href="#nsm-partition-usage" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">NSM</span> <span class="pre">Partition</span> <span class="pre">Usage</span></code> field shows the percentage of the NSM disk utilization, as well as the total capacity of that disk (or partition). If this value is consistently in the red, then it can lead to problems including being unable to ingest new events, store PCAP on disk, detect anomalous events, and other critical issues.</p>
+</section>
+<section id="elastic-storage-used">
+<h3>Elastic Storage Used<a class="headerlink" href="#elastic-storage-used" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Elastic</span> <span class="pre">Storage</span> <span class="pre">Used</span></code> field shows the total gigabytes used by <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> to store the ingested events, across all indices.</p>
+</section>
+<section id="influxdb-storage-used">
+<h3>InfluxDB Storage Used<a class="headerlink" href="#influxdb-storage-used" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">InfluxDB</span> <span class="pre">Storage</span> <span class="pre">Used</span></code> field shows the total gigabytes used by <a class="reference internal" href="influxdb.html#influxdb"><span class="std std-ref">InfluxDB</span></a> to store the current and historic metric data collected from all nodes in the grid.</p>
+</section>
+<section id="pcap-retention">
+<h3>PCAP Retention<a class="headerlink" href="#pcap-retention" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">PCAP</span> <span class="pre">Retention</span></code> field shows the number of historic days of available packet capture data which can be viewed by analysts using the SOC <a class="reference internal" href="pcap.html#pcap"><span class="std std-ref">PCAP</span></a> tool.</p>
+</section>
+<section id="load-average">
+<h3>Load Average<a class="headerlink" href="#load-average" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Load</span> <span class="pre">Average</span></code> field shows the 1 minute, 5 minute, and 15 minute load averages for the node. Note that on systems with high numbers of CPU cores, this average can be equally as high. For example, if a system has 128 cores then a load average of 128 generally indicates that all 128 cores are working at the peak capacity. Exceeding that number can indicate that some cores are bottlenecked due to waiting on I/O.</p>
+</section>
+<section id="redis-queue-size">
+<h3>Redis Queue Size<a class="headerlink" href="#redis-queue-size" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Redis</span> <span class="pre">Queue</span> <span class="pre">Size</span></code> field shows the number of events queued in <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a> waiting to be ingested into <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>. If this number is either steady or falling then it indicates the system is able to keep up with the current traffic flow. If this number is continually increasing then it can indicate a problem with ingest times taking too long for the amount of events that are being generated. Occasional increases are expected during traffic bursts but should eventually start to decrease once the high traffic flow period ends.</p>
+</section>
+<section id="inbound-monitor-traffic">
+<h3>Inbound Monitor Traffic<a class="headerlink" href="#inbound-monitor-traffic" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Inbound</span> <span class="pre">Monitor</span> <span class="pre">Traffic</span></code> field shows the throughput of inbound bytes reaching the sensor’s monitoring interface.</p>
+</section>
+<section id="dropped-monitor-traffic">
+<h3>Dropped Monitor Traffic<a class="headerlink" href="#dropped-monitor-traffic" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Dropped</span> <span class="pre">Monitor</span> <span class="pre">Traffic</span></code> field shows the throughput of inbound bytes intended for the sensor’s monitoring interface but are instead dropped, typically due to insufficient network capacity.</p>
+</section>
+<section id="inbound-mgmt-traffic">
+<h3>Inbound Mgmt Traffic<a class="headerlink" href="#inbound-mgmt-traffic" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Inbound</span> <span class="pre">Mgmt</span> <span class="pre">Traffic</span></code> field shows the throughput of inbound bytes intended for the node’s management interface. This is the internal interface that the node uses to communicate with other nodes in the Security Onion grid.</p>
+</section>
+<section id="outbound-mgmt-traffic">
+<h3>Outbound Mgmt Traffic<a class="headerlink" href="#outbound-mgmt-traffic" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Outbound</span> <span class="pre">Mgmt</span> <span class="pre">Traffic</span></code> field shows the throughput of outbound bytes being transmitted from the node’s management interface. This is the internal interface that the node uses to communicate with other nodes in the Security Onion grid.</p>
+</section>
+<section id="filter-keywords">
+<h3>Filter Keywords<a class="headerlink" href="#filter-keywords" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Filter</span> <span class="pre">Keywords</span></code> fields shows the list of keywords that are associated with this node type. These keywords are useful for filtering to only show nodes of a certain type.</p>
+</section>
+<section id="description">
+<h3>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Description</span></code> field shows the optional description you may have entered during Setup or set in <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; sensoroni –&gt; config –&gt; node_description.</p>
+</section>
+<section id="icons-in-lower-left-corner">
+<h3>Icons in Lower Left Corner<a class="headerlink" href="#icons-in-lower-left-corner" title="Link to this heading"></a></h3>
+<p>There are a few icons in the lower left of the <code class="docutils literal notranslate"><span class="pre">Node</span> <span class="pre">Status</span></code> section depending on what kind of node you are looking at:</p>
+<ul>
+<li><p>Clicking the first icon takes you to the <a class="reference internal" href="influxdb.html#influxdb"><span class="std std-ref">InfluxDB</span></a> dashboard for that particular node, to view historic health metrics and trends.</p></li>
+<li><p>If the node is a network sensor, then there will be an additional icon for sending test traffic to the sensor.</p></li>
+<li><p>Depending on the node type, there may be an additional icon for uploading your own PCAP or EVTX file. Clicking this icon results in an upload form. Once you’ve selected a file and initiated the upload, a status message appears. Uploaded PCAP files are automatically imported via <a class="reference internal" href="so-import-pcap.html#so-import-pcap"><span class="std std-ref">so-import-pcap</span></a> and EVTX files are automatically imported via <a class="reference internal" href="so-import-evtx.html#so-import-evtx"><span class="std std-ref">so-import-evtx</span></a>. Once the import is complete, a message will appear containing a hyperlink to view the logs from the import. Please note that import is not supported on heavy nodes. Also note that this import method is designed for smaller files. If you need to import files larger than the default max upload size then you will need to either change the max upload size via the Configuration screen, or manually import via <a class="reference internal" href="so-import-pcap.html#so-import-pcap"><span class="std std-ref">so-import-pcap</span></a> or <a class="reference internal" href="so-import-evtx.html#so-import-evtx"><span class="std std-ref">so-import-evtx</span></a>.</p>
+<a class="reference external image-reference" href="_images/40_upload.png"><img alt="_images/40_upload.png" src="_images/40_upload.png" />
+</a>
+</li>
+<li><p>The reboot button allows for remotely rebooting a grid node. This may be necessary when scheduled OS/kernel updates are automatically applied and require a restart to take effect. Review the notes on the confirmation dialog thoroughly before confirming a reboot. Rebooting a manager node will likely cause the SOC web interface to become temporarily unavailable.</p></li>
+<li><p>Clicking the question mark button takes you to this help document.</p></li>
+</ul>
+</section>
+</section>
+<section id="container-status">
+<h2>Container Status<a class="headerlink" href="#container-status" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Restarting a node can take several minutes for all containers to return to a running state.</p>
+</div>
+<p>If any containers show anything other than <code class="docutils literal notranslate"><span class="pre">running</span></code> click the cross-hair icon next to the container name. This will bring up the Hunt screen showing logs specific to that container, and may help determine why the container is not running.</p>
+</section>
+<section id="appliance-images">
+<h2>Appliance Images<a class="headerlink" href="#appliance-images" title="Link to this heading"></a></h2>
+<p>If a node is running on an official Security Onion Solutions appliance then the grid page will show pictures of the front and rear of the appliance. This is useful for walking through connectivity discussions with personnel in the data center. When not using official Security Onion Solutions appliances it will simply display a message to that effect.</p>
+</section>
+<section id="other-grid-pages">
+<h2>Other Grid Pages<a class="headerlink" href="#other-grid-pages" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can manage Grid members and Grid configuration in the <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> section.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pcap.html" class="btn btn-neutral float-left" title="PCAP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="downloads.html" class="btn btn-neutral float-right" title="Downloads" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notifications &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Kafka" href="kafka.html" />
+    <link rel="prev" title="STIG" href="stig.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="pro.html">Security Onion Pro</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="oidc.html">OpenID Connect (OIDC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="luks.html">LUKS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fips.html">FIPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stig.html">STIG</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Notifications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#elastalert-2-alerters">ElastAlert 2 Alerters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#slack">Slack</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#email-smtp">Email (SMTP)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#soc-detections">SOC Detections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#severity-based-notifications">Severity-Based Notifications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user-defined-notifications">User-Defined Notifications</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#notification-formatting">Notification Formatting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#applying-changes">Applying Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kafka.html">Kafka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="connect.html">Connect API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aqm.html">Active Query Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mom.html">Manager of Managers (MoM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcp.html">MCP Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="splunk.html">Security Onion App for Splunk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervisor.html">Hypervisor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assistant.html">Onion AI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="pro.html">Security Onion Pro</a></li>
+      <li class="breadcrumb-item active">Notifications</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/notifications.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="notifications">
+<span id="id1"></span><h1>Notifications<a class="headerlink" href="#notifications" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an enterprise-level feature of Security Onion. Contact Security Onion Solutions, LLC via our website at <a class="reference external" href="https://securityonion.com/pro">https://securityonion.com/pro</a> for more information about purchasing a Security Onion Pro license to enable this feature.</p>
+</div>
+<p>The <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a> module, specifically <a class="reference internal" href="sigma.html#sigma"><span class="std std-ref">Sigma</span></a> rules, can be enabled to send outbound notifications upon an alert being created. By default, no outbound notifications are enabled in a Security Onion installation. However, with the Pro license applied to a grid, notifications can be quickly configured via the Configuration screen.</p>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>Configuring notifications involves adjusting configuration in two areas:</p>
+<ol class="arabic simple">
+<li><p>ElastAlert 2 Alerters</p></li>
+<li><p>SOC Detections</p></li>
+</ol>
+<section id="elastalert-2-alerters">
+<h3>ElastAlert 2 Alerters<a class="headerlink" href="#elastalert-2-alerters" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="elastalert.html#elastalert"><span class="std std-ref">ElastAlert 2</span></a> includes a large number of alerters that can reach out to remote systems to deliver notifications. As each alerter supports a unique protocol the alerter requires its own set of supporting parameters in order for the alerter to know how to reach out to the remote endpoint. For example, to send a notification to a Slack channel, a webhook URL must be provided.</p>
+<p>Navigate to the <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> -&gt; Configuration screen. Next, locate the <code class="docutils literal notranslate"><span class="pre">elastalert</span></code> settings.</p>
+<a class="reference external image-reference" href="_images/config-item-elastalert-alerter.png"><img alt="_images/config-item-elastalert-alerter.png" src="_images/config-item-elastalert-alerter.png" />
+</a>
+<p>Notice there are special settings for Jira and SMTP notifications. These are unique in that <a class="reference internal" href="elastalert.html#elastalert"><span class="std std-ref">ElastAlert 2</span></a> requires those two alerters to read their credentials from a file. Security Onion has simplified this process by presenting these Configuration fields to enter the optional credential data, and the backend process will take care of generating the required files for <a class="reference internal" href="elastalert.html#elastalert"><span class="std std-ref">ElastAlert 2</span></a>.</p>
+<p>The files subtree includes a list of several file settings, which allows for populating the contents of certain files that the alerters can optionally utilize. Most alerters use the files for specifying a custom Certificate Authority, so that <a class="reference internal" href="elastalert.html#elastalert"><span class="std std-ref">ElastAlert 2</span></a> can securely and confidently connect to remote servers that may be using custom SSL/TLS certificates. Again, Security Onion’s backend process will handle generating these files from the supplied configuration data provided in the user interface.</p>
+<p>Next, the <strong>soc &gt; config &gt; server &gt; modules &gt; elastalertengine &gt; Notifications: Sev 0/Default Parameters</strong> setting is used to customize each alerter’s own parameters. As <a class="reference internal" href="elastalert.html#elastalert"><span class="std std-ref">ElastAlert 2</span></a> already provides detailed documentation on the required parameters for each alerter, this documentation will not cover the same information, but instead will focus on two popular alerters: Slack and SMTP.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reference the alerter parameters at <a class="reference external" href="https://elastalert2.readthedocs.io/en/latest/alerts.html#alert-types">https://elastalert2.readthedocs.io/en/latest/alerts.html#alert-types</a>.</p>
+</div>
+</section>
+<section id="slack">
+<h3>Slack<a class="headerlink" href="#slack" title="Link to this heading"></a></h3>
+<p>To have <a class="reference internal" href="sigma.html#sigma"><span class="std std-ref">Sigma</span></a> rules send notifications to Slack, add the following line to the <strong>soc &gt; config &gt; server &gt; modules &gt; elastalertengine &gt; Notifications: Sev 0/Default Parameters</strong> configuration setting:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">slack_webhook_url</span><span class="p">:</span> <span class="s2">&quot;https://hooks.slack.com/services/YOUR_WEBHOOK_URI&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="email-smtp">
+<h3>Email (SMTP)<a class="headerlink" href="#email-smtp" title="Link to this heading"></a></h3>
+<p>To have <a class="reference internal" href="sigma.html#sigma"><span class="std std-ref">Sigma</span></a> rules send notifications via email, add the following lines to the <strong>soc &gt; config &gt; server &gt; modules &gt; elastalertengine &gt; Notifications: Sev 0/Default Parameters</strong> configuration setting:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">email</span><span class="p">:</span> <span class="n">youremail</span><span class="nd">@yourcompany</span><span class="o">.</span><span class="n">com</span>
+<span class="n">smtp_host</span><span class="p">:</span> <span class="s2">&quot;your_company_smtp_server&quot;</span>
+<span class="n">from_addr</span><span class="p">:</span> <span class="s2">&quot;elastalert@yourcompany.com&quot;</span>
+</pre></div>
+</div>
+<p>If the SMTP server requires authentication make sure the special <strong>SMTP Username</strong> and <strong>SMTP Password</strong> configuration settings are also specified.</p>
+</section>
+<section id="soc-detections">
+<h3>SOC Detections<a class="headerlink" href="#soc-detections" title="Link to this heading"></a></h3>
+<p>Once the alerter parameters are configured, as described above, the next step is to configure <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a> in order to activate one or more notification alerters.</p>
+<p>Navigate to the <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> -&gt; Configuration screen. Next, locate the <code class="docutils literal notranslate"><span class="pre">soc</span> <span class="pre">&gt;</span> <span class="pre">config</span> <span class="pre">&gt;</span> <span class="pre">server</span> <span class="pre">&gt;</span> <span class="pre">modules</span> <span class="pre">&gt;</span> <span class="pre">elastalertengine</span></code> settings.</p>
+<p>In the <strong>Notifications: Sev 0/Default Alerters</strong> configuration setting, add the name of each alerter that should be activated, one alerter name per line. For example, to add both slack and email:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">slack</span>
+<span class="n">email</span>
+</pre></div>
+</div>
+<a class="reference external image-reference" href="_images/config-item-soc-additionalAlerters.png"><img alt="_images/config-item-soc-additionalAlerters.png" src="_images/config-item-soc-additionalAlerters.png" />
+</a>
+<p>Important! After activating (or removing) an alerter from this setting, the <a class="reference internal" href="elastalert.html#elastalert"><span class="std std-ref">ElastAlert 2</span></a> engine must be fully updated. This can be done via the <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a> screen, under the Options dropdown.</p>
+<a class="reference external image-reference" href="_images/58_detections_options.png"><img alt="_images/58_detections_options.png" src="_images/58_detections_options.png" />
+</a>
+</section>
+<section id="severity-based-notifications">
+<h3>Severity-Based Notifications<a class="headerlink" href="#severity-based-notifications" title="Link to this heading"></a></h3>
+<p>The instructions above setup the default notification settings, for all outbound notifications. However, as of Security Onion 2.4.100, notification settings can be customized for higher level severities. Severities are specified in Sigma <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a>.</p>
+<p>Severity levels progress as follows, starting with the lowest, least significant severity:</p>
+<ol class="arabic simple" start="0">
+<li><p>Unknown Severity</p></li>
+<li><p>Informational Severity</p></li>
+<li><p>Low Severity</p></li>
+<li><p>Medium Severity</p></li>
+<li><p>High Severity</p></li>
+<li><p>Critical Severity</p></li>
+</ol>
+<p>If notification settings are not specified for a particular severity level then it will use whatever settings are specified at the next lower severity. If that severity is also not specified, then it continues looking for lower severity settings.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Higher severity levels do not inherit parameters or alerters from lower severities. Consequently, if <code class="docutils literal notranslate"><span class="pre">email</span></code> is specified as the default (Severity 0) alerter, and it’s desired to have both <code class="docutils literal notranslate"><span class="pre">email</span></code> and <code class="docutils literal notranslate"><span class="pre">slack</span></code> notifications sent with <strong>High/Sev 4</strong> severity or above, then both <code class="docutils literal notranslate"><span class="pre">email</span></code> and <code class="docutils literal notranslate"><span class="pre">slack</span></code> will need to be specified for the <code class="docutils literal notranslate"><span class="pre">Notifications:</span> <span class="pre">Sev</span> <span class="pre">4/Default</span> <span class="pre">Alerters</span></code> setting, one per line. This same principle applies to the parameters, which are also not inherited. In order to inherit default parameters across all severities, the parameters can be specified in the <code class="docutils literal notranslate"><span class="pre">elastalert</span> <span class="pre">&gt;</span> <span class="pre">Custom</span> <span class="pre">Configuration</span> <span class="pre">Parameters</span></code> setting.</p>
+</div>
+</section>
+<section id="user-defined-notifications">
+<h3>User-Defined Notifications<a class="headerlink" href="#user-defined-notifications" title="Link to this heading"></a></h3>
+<p>As of Security Onion 2.4.100, individual Sigma detections can be tagged to change the detection’s alerting behavior. The tags are set inside the detection source. Tag details are defined below:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">so.notification</span></code>: When this tag is present inside of a Sigma tag list, the detection will only perform outbound notifications. It will not add an alert to the SOC Alerts screen.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">so.alerters.customAlerters</span></code>: When this tag is present inside of a Sigma tag list, the detection will perform notifications for an alternate set of ElastAlert 2 alerters. More information on how to choose these alerters is provided below.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">so.params.customAlertersParams</span></code>: When this tag is present inside of a Sigma tag list, and when the above tag is also included, then an alternate set of custom parameters will be applied to the ElastAlert 2 alerters.</p></li>
+</ul>
+<p>To customize the alerters and parameters to use when these tags are specified in a Sigma detection, navigate to the Configuration screen. Find the <code class="docutils literal notranslate"><span class="pre">soc</span> <span class="pre">&gt;</span> <span class="pre">config</span> <span class="pre">&gt;</span> <span class="pre">server</span> <span class="pre">&gt;</span> <span class="pre">modules</span> <span class="pre">&gt;</span> <span class="pre">elastalertengine</span> <span class="pre">&gt;</span> <span class="pre">additionalUserDefinedNotifications</span> <span class="pre">&gt;</span> <span class="pre">customAlerters</span></code> setting and add the custom alerters, one per line, similar to what is done for the Severity-Based notifications above. Similarly, find the sibling setting to define custom alerter parameters: <code class="docutils literal notranslate"><span class="pre">soc</span> <span class="pre">&gt;</span> <span class="pre">config</span> <span class="pre">&gt;</span> <span class="pre">server</span> <span class="pre">&gt;</span> <span class="pre">modules</span> <span class="pre">&gt;</span> <span class="pre">elastalertengine</span> <span class="pre">&gt;</span> <span class="pre">additionalUserDefinedNotifications</span> <span class="pre">&gt;</span> <span class="pre">customAlertersParams</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>User-defined alerters will override severity-based alerters, provided the user-defined alerters are properly configured. If the Sigma tags specify custom alerters but the corresponding setting does not exist in the Configuration then the severity-based notifications will continue to be used.</p>
+</div>
+<p>To create additional user-defined alerter configurations, enable Advanced mode and navigate to the same <code class="docutils literal notranslate"><span class="pre">customAlerters</span></code> and <code class="docutils literal notranslate"><span class="pre">customAlertersParams</span></code> settings mentioned above. With Advanced mode enabled there will be a “Create Duplicate” button that allows for duplicating these settings. Follow the on-screen instructions to create the duplicate settings. Then, to make use of these new settings, in the Sigma tag list replace the <code class="docutils literal notranslate"><span class="pre">so.alerters.customAlerters</span></code> tag suffix with the name (case-sensitive) of the duplicated setting. For example, if the duplicated settings are named <code class="docutils literal notranslate"><span class="pre">SysAdminAlerters</span></code> and <code class="docutils literal notranslate"><span class="pre">SysAdminParams</span></code> then the two tags to specify in the Sigma detection source are <code class="docutils literal notranslate"><span class="pre">so.alerters.SysAdminAlerters</span></code> and <code class="docutils literal notranslate"><span class="pre">so.params.SysAdminParams</span></code>. Only one user-defined alerters and parameters setting will be used if multiple tags match the <code class="docutils literal notranslate"><span class="pre">so.alerters.</span></code> and <code class="docutils literal notranslate"><span class="pre">so.params.</span></code> prefixes. In other words, attempting to specify multiple user-defined alerters within a single Sigma detection will result in an ambiguous outcome.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span><span class="p">:</span> <span class="n">Security</span> <span class="n">Onion</span> <span class="o">-</span> <span class="n">Grid</span> <span class="n">Node</span> <span class="n">Login</span> <span class="n">Failure</span> <span class="p">(</span><span class="n">SSH</span><span class="p">)</span> <span class="p">(</span><span class="n">copy</span><span class="p">)</span>
+<span class="nb">id</span><span class="p">:</span> <span class="mi">0</span><span class="n">c880a39</span><span class="o">-</span><span class="n">f2cc</span><span class="o">-</span><span class="mf">4e80</span><span class="o">-</span><span class="n">af26</span><span class="o">-</span><span class="n">eb08e2fe4b0a</span>
+<span class="n">status</span><span class="p">:</span> <span class="n">experimental</span>
+<span class="n">description</span><span class="p">:</span> <span class="n">Detects</span> <span class="n">when</span> <span class="n">a</span> <span class="n">user</span> <span class="n">fails</span> <span class="n">to</span> <span class="n">login</span> <span class="n">to</span> <span class="n">a</span> <span class="n">grid</span> <span class="n">node</span> <span class="n">via</span> <span class="n">SSH</span><span class="o">.</span> <span class="n">Review</span> <span class="n">associated</span> <span class="n">logs</span> <span class="k">for</span> <span class="n">username</span> <span class="ow">and</span> <span class="n">source</span> <span class="n">IP</span><span class="o">.</span>
+<span class="n">author</span><span class="p">:</span> <span class="n">Security</span> <span class="n">Onion</span> <span class="n">Solutions</span>
+<span class="n">date</span><span class="p">:</span> <span class="mi">2024</span><span class="o">/</span><span class="mi">08</span><span class="o">/</span><span class="mi">27</span>
+<span class="n">logsource</span><span class="p">:</span>
+    <span class="n">product</span><span class="p">:</span> <span class="n">linux</span>
+    <span class="n">service</span><span class="p">:</span> <span class="n">auth</span>
+<span class="n">detection</span><span class="p">:</span>
+    <span class="n">selection</span><span class="p">:</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">outcome</span><span class="p">:</span> <span class="n">failure</span>
+        <span class="n">process</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">sshd</span>
+        <span class="n">tags</span><span class="o">|</span><span class="n">contains</span><span class="p">:</span> <span class="n">so</span><span class="o">-</span><span class="n">grid</span><span class="o">-</span><span class="n">node</span>
+    <span class="nb">filter</span><span class="p">:</span>
+        <span class="n">system</span><span class="o">.</span><span class="n">auth</span><span class="o">.</span><span class="n">ssh</span><span class="o">.</span><span class="n">method</span><span class="p">:</span> <span class="s1">&#39;*&#39;</span>
+    <span class="n">condition</span><span class="p">:</span> <span class="n">selection</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">filter</span>
+<span class="n">tags</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">so</span><span class="o">.</span><span class="n">alerters</span><span class="o">.</span><span class="n">SysAdminAlerters</span>
+    <span class="o">-</span> <span class="n">so</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">SysAdminParams</span>
+    <span class="o">-</span> <span class="n">so</span><span class="o">.</span><span class="n">notification</span>
+<span class="n">falsepositives</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">none</span>
+<span class="n">level</span><span class="p">:</span> <span class="n">high</span>
+<span class="n">license</span><span class="p">:</span> <span class="n">Elastic</span><span class="o">-</span><span class="mf">2.0</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="notification-formatting">
+<h2>Notification Formatting<a class="headerlink" href="#notification-formatting" title="Link to this heading"></a></h2>
+<p>There are a wide range of capabilities to format notification messages to the various endpoints supported by ElastAlert 2. Refer to the ElastAlert 2 documentation for all available formatting parameters: <a class="reference external" href="https://elastalert2.readthedocs.io/en/latest/alerts.html#alert-subject">https://elastalert2.readthedocs.io/en/latest/alerts.html#alert-subject</a></p>
+<p>Below is an example of customizing the notification message. This format is compatible with most of the ElastAlert 2 alerters but may only work with specific connection-related alerts, due to it referencing specific connection fields. To use, paste these settings into the desired configuration alerter params field, as discussed earlier in this section. Change the hostname as necessary in the included URLs.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alert_subject</span><span class="p">:</span> <span class="s2">&quot;Alert: </span><span class="si">{0}</span><span class="s2"> </span><span class="si">{1}</span><span class="s2">&quot;</span>
+<span class="n">alert_subject_args</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">rule</span><span class="o">.</span><span class="n">name</span>
+<span class="o">-</span> <span class="s2">&quot;@timestamp&quot;</span>
+<span class="n">alert_text</span><span class="p">:</span> <span class="o">|</span>
+  <span class="n">Alert</span> <span class="n">details</span> <span class="n">are</span> <span class="n">available</span> <span class="ow">in</span> <span class="n">Security</span> <span class="n">Onion</span> <span class="n">Console</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">manager</span><span class="o">/</span><span class="c1">#/hunt?q=log.id.uid%3A{0}&amp;rt=1&amp;rtu=days</span>
+
+  <span class="n">Source</span><span class="p">:</span> <span class="p">{</span><span class="mi">1</span><span class="p">}:{</span><span class="mi">2</span><span class="p">}</span>
+  <span class="n">Destination</span><span class="p">:</span> <span class="p">{</span><span class="mi">3</span><span class="p">}:{</span><span class="mi">4</span><span class="p">}</span>
+
+  <span class="n">Investigate</span> <span class="n">the</span> <span class="n">network</span> <span class="n">community</span> <span class="n">ID</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">manager</span><span class="o">/</span><span class="c1">#/hunt?q=network.community_id%3A&quot;{5}&quot;&amp;rt=1&amp;rtu=days</span>
+<span class="n">alert_text_type</span><span class="p">:</span> <span class="n">alert_text_only</span>
+<span class="n">alert_text_args</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;log.id.uid&quot;</span><span class="p">,</span> <span class="s2">&quot;source.ip&quot;</span><span class="p">,</span> <span class="s2">&quot;source.port&quot;</span><span class="p">,</span> <span class="s2">&quot;destination.ip&quot;</span><span class="p">,</span> <span class="s2">&quot;destination.port&quot;</span><span class="p">,</span> <span class="s2">&quot;network.community_id&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="applying-changes">
+<h2>Applying Changes<a class="headerlink" href="#applying-changes" title="Link to this heading"></a></h2>
+<p>In order for alerters and parameters to take effect, multiple synchronizations must occur. These are done automatically on a set schedule, but it is possible to force them earlier, if needed. Specifically, the following must take place for the changes to be applied to the ElastAlert 2 rules:</p>
+<ol class="arabic simple">
+<li><p>Changes are saved in Configuration screen by the SOC Admin.</p></li>
+<li><p>Configuration is synchronized across the grid. To manually force a grid sync, go to the Configuration screen, open the <code class="docutils literal notranslate"><span class="pre">Options</span></code> dropdown at the top, and click <code class="docutils literal notranslate"><span class="pre">Synchronize</span></code>.</p></li>
+<li><p>Sigma Detection edits are saved, such as adding the user-defined notification tags, or changing the severity.</p></li>
+<li><p>Sigma Detections are synchronized. Click Full Synchronize for ElastAlert rules, or to force a single detection sync go to the Detection Source tab, make an edit to the source, and click <code class="docutils literal notranslate"><span class="pre">Update</span></code>.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It may take a minute or two for the ElastAlert 2 process to detect the changed rules, and then another few minutes for ElastAlert 2 to run that rule.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="stig.html" class="btn btn-neutral float-left" title="STIG" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="kafka.html" class="btn btn-neutral float-right" title="Kafka" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

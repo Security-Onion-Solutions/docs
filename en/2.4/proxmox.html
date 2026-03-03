@@ -1,0 +1,207 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proxmox &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Booting Issues" href="trouble-booting.html" />
+    <link rel="prev" title="VirtualBox" href="virtualbox.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="getting-started.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="best-practices.html">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use-cases.html">Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware.html">Hardware Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="download.html">Download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vmware.html">VMware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtualbox.html">VirtualBox</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Proxmox</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cpu">CPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display">Display</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nic">NIC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#passthrough-physical-nic">Passthrough Physical NIC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virtual-nic">Virtual NIC</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trouble-booting.html">Booting Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="airgap.html">Airgap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-amazon.html">Amazon Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-azure.html">Azure Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloud-google.html">Google Cloud Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="post-installation.html">After Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="getting-started.html">Getting Started</a></li>
+      <li class="breadcrumb-item active">Proxmox</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/proxmox.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="proxmox">
+<span id="id1"></span><h1>Proxmox<a class="headerlink" href="#proxmox" title="Link to this heading"></a></h1>
+<p>Proxmox Virtual Environment is a virtualization platform similar to <a class="reference internal" href="vmware.html#vmware"><span class="std std-ref">VMware</span></a> or <a class="reference internal" href="virtualbox.html#virtualbox"><span class="std std-ref">VirtualBox</span></a>. You can read more about Proxmox VE at <a class="reference external" href="https://www.proxmox.com/en/proxmox-ve">https://www.proxmox.com/en/proxmox-ve</a>. If you would like to run Security Onion in a Proxmox VM, then here are some additional things you need to be aware of.</p>
+<section id="cpu">
+<h2>CPU<a class="headerlink" href="#cpu" title="Link to this heading"></a></h2>
+<p>Proxmox defaults to a VM CPU which may not include all of the features of your host CPU. You may need to change this to <code class="docutils literal notranslate"><span class="pre">host</span></code> to pass through the host CPU type.</p>
+</section>
+<section id="display">
+<h2>Display<a class="headerlink" href="#display" title="Link to this heading"></a></h2>
+<p>If you plan to use <a class="reference internal" href="networkminer.html#networkminer"><span class="std std-ref">NetworkMiner</span></a> or other Mono-based applications in a Proxmox VM, then you may need to set the VM Display to <code class="docutils literal notranslate"><span class="pre">VMware</span> <span class="pre">compatible</span> <span class="pre">(vmware)</span></code>.</p>
+</section>
+<section id="nic">
+<h2>NIC<a class="headerlink" href="#nic" title="Link to this heading"></a></h2>
+<p>If you’re going to install Security Onion in Proxmox and sniff live network traffic, you may need to do some additional configuration in Proxmox itself. You can either passthrough a physical NIC to the VM or you can use a virtual NIC.</p>
+<section id="passthrough-physical-nic">
+<h3>Passthrough Physical NIC<a class="headerlink" href="#passthrough-physical-nic" title="Link to this heading"></a></h3>
+<p>The first option is to sniff traffic from a physical NIC that has been passed through to the VM. For more information about Proxmox passthrough, please see:</p>
+<p><a class="reference external" href="https://www.servethehome.com/how-to-pass-through-pcie-nics-with-proxmox-ve-on-intel-and-amd/">https://www.servethehome.com/how-to-pass-through-pcie-nics-with-proxmox-ve-on-intel-and-amd/</a></p>
+<p><a class="reference external" href="https://pve.proxmox.com/wiki/PCI_Passthrough">https://pve.proxmox.com/wiki/PCI_Passthrough</a></p>
+<p><a class="reference external" href="https://pve.proxmox.com/wiki/PCI(e)_Passthrough">https://pve.proxmox.com/wiki/PCI(e)_Passthrough</a></p>
+<p>Once the physical NIC is passed through to the Security Onion VM, then Security Onion should be able to correctly configure the NIC for sniffing.</p>
+</section>
+<section id="virtual-nic">
+<h3>Virtual NIC<a class="headerlink" href="#virtual-nic" title="Link to this heading"></a></h3>
+<p>The second option is to sniff traffic from a Proxmox virtual NIC. For more details, please see the discussion at <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/discussions/8245">https://github.com/Security-Onion-Solutions/securityonion/discussions/8245</a>.</p>
+<p>Keep in mind you may need to manually disable NIC offloading features on any Proxmox NIC used for sniffing (the physical interface and any related bridge interface). One way to do this is to add a post-up command to each sniffing interface in /etc/network/interfaces on the Proxmox host.</p>
+<p>For example, if you have a Proxmox physical interface called <code class="docutils literal notranslate"><span class="pre">enp2s0</span></code> with a bridge interface called <code class="docutils literal notranslate"><span class="pre">vmbr1</span></code>, then you might log into Proxmox and edit /etc/network/interfaces by adding the following to the <code class="docutils literal notranslate"><span class="pre">enp2s0</span></code> section:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>post-up for i in rx tx sg tso ufo gso gro lro; do ethtool -K enp2s0 $i off; done
+</pre></div>
+</div>
+<p>and the following to the <code class="docutils literal notranslate"><span class="pre">vmbr1</span></code> section:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>post-up for i in rx tx sg tso ufo gso gro lro; do ethtool -K vmbr1 $i off; done
+</pre></div>
+</div>
+<p>For more information about NIC offloading, please see <a class="reference external" href="https://blog.securityonion.net/2011/10/when-is-full-packet-capture-not-full.html">https://blog.securityonion.net/2011/10/when-is-full-packet-capture-not-full.html</a>.</p>
+<p>If you are running Proxmox 9 or higher, then you may also need to set <code class="docutils literal notranslate"><span class="pre">mtu</span> <span class="pre">9000</span></code> for the Proxmox physical sniffing interface and its corresponding bridge interface.</p>
+<p>Once your Security Onion VM is receiving traffic as expecte, if <a class="reference internal" href="grid.html#grid"><span class="std std-ref">Grid</span></a> reports Capture Loss but no Zeek Loss and you are confident that the loss is not occuring in your tap or span port, then it may be related to the Proxmox host physical interface. Certain NICs like the Intel X710 may have pre-set channels and you can check with the <code class="docutils literal notranslate"><span class="pre">ethtool</span> <span class="pre">-l</span></code> command. For more information, please see the <code class="docutils literal notranslate"><span class="pre">ethtool</span></code> man page at <a class="reference external" href="https://man7.org/linux/man-pages/man8/ethtool.8.html">https://man7.org/linux/man-pages/man8/ethtool.8.html</a>.</p>
+<p>If this is the case for your host physical interface, then you can add an additional post-up command to run <code class="docutils literal notranslate"><span class="pre">ethtool</span> <span class="pre">-L</span></code> with the <code class="docutils literal notranslate"><span class="pre">combined</span> <span class="pre">1</span></code> option. For example, if you have a physical interface called <code class="docutils literal notranslate"><span class="pre">enp3s0f1np1</span></code>, then the corresponding section of /etc/network/interfaces would look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>post-up ethtool -L enp3s0f1np1 combined 1; for i in rx tx sg tso ufo gso gro lro; do ethtool -K enp3s0f1np1 $i off; done
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="virtualbox.html" class="btn btn-neutral float-left" title="VirtualBox" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="trouble-booting.html" class="btn btn-neutral float-right" title="Booting Issues" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,231 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BPF &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Stenographer" href="stenographer.html" />
+    <link rel="prev" title="AF-PACKET" href="af-packet.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="network.html">Network Visibility</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="af-packet.html">AF-PACKET</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">BPF</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#multiple-conditions">Multiple Conditions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vlan">VLAN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-comments">Adding Comments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#troubleshooting-bpf-using-tcpdump">Troubleshooting BPF using tcpdump</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="stenographer.html">Stenographer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="suricata.html">Suricata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zeek.html">Zeek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="strelka.html">Strelka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="idh.html">Intrusion Detection Honeypot</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="network.html">Network Visibility</a></li>
+      <li class="breadcrumb-item active">BPF</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/bpf.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bpf">
+<span id="id1"></span><h1>BPF<a class="headerlink" href="#bpf" title="Link to this heading"></a></h1>
+<p>BPF stands for Berkeley Packet Filter. From <a class="reference external" href="https://en.wikipedia.org/wiki/Berkeley_Packet_Filter">https://en.wikipedia.org/wiki/Berkeley_Packet_Filter</a>:</p>
+<blockquote>
+<div><p>BPF supports filtering packets, allowing a userspace process to supply a filter program that specifies which packets it wants to receive. For example, a tcpdump process may want to receive only packets that initiate a TCP connection. BPF returns only packets that pass the filter that the process supplies. This avoids copying unwanted packets from the operating system kernel to the process, greatly improving performance.</p>
+</div></blockquote>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>You can modify your BPF configuration by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; bpf. You can apply BPF configuration to the PCAP engine (either <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> or <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a>), <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a>, or <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a>. If you configure a BPF for the PCAP engine and your PCAP engine is <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a>, then it will only apply to the PCAP and NOT alerts or metadata.</p>
+<a class="reference external image-reference" href="_images/config-item-bpf.png"><img alt="_images/config-item-bpf.png" src="_images/config-item-bpf.png" />
+</a>
+<section id="multiple-conditions">
+<h3>Multiple Conditions<a class="headerlink" href="#multiple-conditions" title="Link to this heading"></a></h3>
+<p>If your BPF contains multiple conditions you can join them with a logical <code class="docutils literal notranslate"><span class="pre">and</span></code> or logical <code class="docutils literal notranslate"><span class="pre">or</span></code>.</p>
+<p>Here’s an example of joining conditions with a logical <code class="docutils literal notranslate"><span class="pre">and</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">not</span> <span class="n">host</span> <span class="mf">192.168.1.2</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">host</span> <span class="mf">192.168.1.3</span>
+</pre></div>
+</div>
+<p>Here’s an example of joining conditions with a logical <code class="docutils literal notranslate"><span class="pre">or</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">host</span> <span class="mf">192.168.1.2</span> <span class="ow">or</span> <span class="n">host</span> <span class="mf">192.168.1.3</span>
+</pre></div>
+</div>
+</section>
+<section id="vlan">
+<h3>VLAN<a class="headerlink" href="#vlan" title="Link to this heading"></a></h3>
+<p>If you have traffic that has VLAN tags, you can craft a BPF as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">your</span> <span class="nb">filter</span><span class="o">&gt;</span> <span class="ow">or</span> <span class="p">(</span><span class="n">vlan</span> <span class="ow">and</span> <span class="o">&lt;</span><span class="n">your</span> <span class="nb">filter</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Notice that you must include your filter on both sides of the vlan tag.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="ow">not</span> <span class="p">(</span><span class="n">host</span> <span class="mf">192.168.1.2</span> <span class="ow">or</span> <span class="n">host</span> <span class="mf">192.168.1.3</span> <span class="ow">or</span> <span class="n">host</span> <span class="mf">192.168.1.4</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="n">vlan</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="p">(</span><span class="n">host</span> <span class="mf">192.168.1.2</span> <span class="ow">or</span> <span class="n">host</span> <span class="mf">192.168.1.3</span> <span class="ow">or</span> <span class="n">host</span> <span class="mf">192.168.1.4</span><span class="p">)))</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<div class="line-block">
+<div class="line">Please note that <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> should correctly record traffic on a VLAN but won’t log the actual VLAN tags due to the way that <a class="reference internal" href="af-packet.html#af-packet"><span class="std std-ref">AF-PACKET</span></a> works:</div>
+<div class="line"><a class="reference external" href="https://github.com/google/stenographer/issues/211">https://github.com/google/stenographer/issues/211</a></div>
+</div>
+</div>
+</section>
+<section id="adding-comments">
+<h3>Adding Comments<a class="headerlink" href="#adding-comments" title="Link to this heading"></a></h3>
+<p>To provide more context to your filters, you can add comments. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># lab-east</span>
+<span class="ow">not</span> <span class="n">host</span> <span class="mf">192.168.1.2</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">host</span> <span class="mf">192.168.1.3</span> <span class="o">&amp;&amp;</span>
+<span class="c1"># lab-west</span>
+<span class="ow">not</span> <span class="n">host</span> <span class="mf">192.168.1.4</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">host</span> <span class="mf">192.168.1.5</span> <span class="o">&amp;&amp;</span>
+<span class="c1"># lab-central</span>
+<span class="ow">not</span> <span class="n">host</span> <span class="mf">192.168.1.6</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">host</span> <span class="mf">192.168.1.27</span>
+</pre></div>
+</div>
+</section>
+<section id="troubleshooting-bpf-using-tcpdump">
+<h3>Troubleshooting BPF using tcpdump<a class="headerlink" href="#troubleshooting-bpf-using-tcpdump" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">If you need to troubleshoot BPF, you can use <code class="docutils literal notranslate"><span class="pre">tcpdump</span></code> as shown in the following articles:</div>
+<div class="line"><a class="reference external" href="https://taosecurity.blogspot.com/2004/09/understanding-tcpdumps-d-option-have.html">https://taosecurity.blogspot.com/2004/09/understanding-tcpdumps-d-option-have.html</a></div>
+<div class="line"><a class="reference external" href="https://taosecurity.blogspot.com/2004/12/understanding-tcpdumps-d-option-part-2.html">https://taosecurity.blogspot.com/2004/12/understanding-tcpdumps-d-option-part-2.html</a></div>
+<div class="line"><a class="reference external" href="https://taosecurity.blogspot.com/2008/12/bpf-for-ip-or-vlan-traffic.html">https://taosecurity.blogspot.com/2008/12/bpf-for-ip-or-vlan-traffic.html</a></div>
+</div>
+</section>
+</section>
+<section id="more-information">
+<h2>More Information<a class="headerlink" href="#more-information" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">For more information about BPF, please see:</div>
+<div class="line"><a class="reference external" href="https://en.wikipedia.org/wiki/Berkeley_Packet_Filter">https://en.wikipedia.org/wiki/Berkeley_Packet_Filter</a></div>
+<div class="line"><a class="reference external" href="https://biot.com/capstats/bpf.html">https://biot.com/capstats/bpf.html</a></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="af-packet.html" class="btn btn-neutral float-left" title="AF-PACKET" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="stenographer.html" class="btn btn-neutral float-right" title="Stenographer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

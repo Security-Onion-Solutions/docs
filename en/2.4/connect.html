@@ -1,0 +1,239 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connect API &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Active Query Management" href="aqm.html" />
+    <link rel="prev" title="Kafka" href="kafka.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="pro.html">Security Onion Pro</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="oidc.html">OpenID Connect (OIDC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="luks.html">LUKS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fips.html">FIPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stig.html">STIG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kafka.html">Kafka</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Connect API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-connect-api">Enabling Connect API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api-client-credentials">API Client Credentials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authorization-rbac">Authorization / RBAC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#oauth-2-0-authentication-flow">OAuth 2.0 Authentication Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#exchange-client-credentials-for-an-access-token">Exchange Client Credentials for an Access Token</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#authorize-api-requests-with-an-access-token">Authorize API Requests with an Access Token</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#manager-of-managers">Manager of Managers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api-reference">API Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aqm.html">Active Query Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mom.html">Manager of Managers (MoM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcp.html">MCP Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="splunk.html">Security Onion App for Splunk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervisor.html">Hypervisor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assistant.html">Onion AI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="pro.html">Security Onion Pro</a></li>
+      <li class="breadcrumb-item active">Connect API</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/connect.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="connect-api">
+<span id="connect"></span><h1>Connect API<a class="headerlink" href="#connect-api" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an enterprise-level feature of Security Onion. Contact Security Onion Solutions, LLC via our website at <a class="reference external" href="https://securityonion.com/pro">https://securityonion.com/pro</a> for more information about purchasing a Security Onion Pro license to enable this feature.</p>
+</div>
+<p>The Security Onion Connect API allows other servers to integrate with Security Onion, and access the same functionality that the Security Onion Console user-interface provides. Access to the Connect API is permitted through API Clients, which can be created by SOC administrators via the SOC UI -&gt; Administration -&gt; API Clients screen.</p>
+<p>The Connect API currently provides functionality exposed by the Security Onion Console server. It does not provide full access to third-party applications included with the Security Onion platform. Specifically, while you can read events from Elasticsearch, you cannot manipulate Kibana settings via the Security Onion Connect API, unless those settings are already exposed via the SOC Configuration system.</p>
+<section id="enabling-connect-api">
+<h2>Enabling Connect API<a class="headerlink" href="#enabling-connect-api" title="Link to this heading"></a></h2>
+<p>By default, newly setup grids will not be configured for API client access. To enable API client access, the following steps must be taken:</p>
+<ol class="arabic simple">
+<li><p>A license key must be applied to the grid. The license key must include the API feature.</p></li>
+<li><p>The Hydra feature must be enabled via the <code class="docutils literal notranslate"><span class="pre">hydra</span> <span class="pre">&gt;</span> <span class="pre">enabled</span></code> setting in the Configuration screen.</p></li>
+<li><p>Synchronize the grid to apply the license key and configuration changes. This can be done via the Configuration screen options dropdown.</p></li>
+</ol>
+</section>
+<section id="api-client-credentials">
+<h2>API Client Credentials<a class="headerlink" href="#api-client-credentials" title="Link to this heading"></a></h2>
+<p>In order to communicate with the Connect API, an API Client must be created. Navigate to the Administration menu using a superuser account. Under the Administration menu click the API Clients menu option. Create a new API client using a short name that reflects the intended usage of this client. Use the Notes field to provide more information, if desired. Upon saving the new client a generated secret will be issued. This client ID and secret pair is needed to authenticate to the Connect API. Protect these credentials using industry best practices.</p>
+</section>
+<section id="authorization-rbac">
+<h2>Authorization / RBAC<a class="headerlink" href="#authorization-rbac" title="Link to this heading"></a></h2>
+<p>API clients are permitted access to various components within Security Onion using the same RBAC system for users.
+However, rather than assign <em>roles</em> to API clients, the more granular <em>permissions</em> are assigned.
+For example, while a <em>user</em> might be assigned the <code class="docutils literal notranslate"><span class="pre">analyst</span></code> role, an API <em>client</em> would be assigned the <code class="docutils literal notranslate"><span class="pre">events/read</span></code>, <code class="docutils literal notranslate"><span class="pre">events/write</span></code>, <code class="docutils literal notranslate"><span class="pre">cases/read</span></code>, etc.
+This ensures that remote systems will only have access to the minimum necessary permissions required for the integration.</p>
+<p>Currently OAuth 2.0 scopes are not utilized, since these permissions are assigned outside of the OAuth 2.0 flow.</p>
+</section>
+<section id="oauth-2-0-authentication-flow">
+<h2>OAuth 2.0 Authentication Flow<a class="headerlink" href="#oauth-2-0-authentication-flow" title="Link to this heading"></a></h2>
+<p>API clients must use The OAuth 2.0 client credentials flow to authenticate to the Security Onion manager node.</p>
+<section id="exchange-client-credentials-for-an-access-token">
+<h3>Exchange Client Credentials for an Access Token<a class="headerlink" href="#exchange-client-credentials-for-an-access-token" title="Link to this heading"></a></h3>
+<p>Obtain an access token by submitting a POST request to <code class="docutils literal notranslate"><span class="pre">https://BASE_URL/oauth2/token</span></code>, and providing the client ID and client secret via the <em>Basic</em> authentication scheme. The body of the request must contain <code class="docutils literal notranslate"><span class="pre">grant_type=client_credentials</span></code>.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">cacert</span> <span class="n">ca</span><span class="o">.</span><span class="n">crt</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="o">-</span><span class="n">u</span> <span class="n">socl_my_new_client</span><span class="p">:</span><span class="n">hwKHspsX2bMuoIs7kGwN</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">BASE_URL</span><span class="o">/</span><span class="n">oauth2</span><span class="o">/</span><span class="n">token</span> <span class="o">-</span><span class="n">d</span> <span class="n">grant_type</span><span class="o">=</span><span class="n">client_credentials</span>
+</pre></div>
+</div>
+<p>Where you will replace:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ca.crt</span></code> with your manager’s certificate authority. If a custom certificate has been applied to your grid after setup completed, you can access it via the Configuration screen (requires superuser role) from the <code class="docutils literal notranslate"><span class="pre">nginx</span> <span class="pre">&gt;</span> <span class="pre">ssl</span> <span class="pre">&gt;</span> <span class="pre">SSL/TLS</span> <span class="pre">Cert</span> <span class="pre">File</span> <span class="pre">[adv]</span></code> config setting, or if using the default generated certificate authority, retrieve the <code class="docutils literal notranslate"><span class="pre">/etc/pki/ca.crt</span></code> certificate file via SSH from the manager node.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">socl_my_new_client</span></code> with your client ID (generated by SOC during API client creation)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hwKHspsX2bMuoIs7kGwN</span></code> with your API client’s generated secret</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BASE_URL</span></code> with your manager’s IP or hostname, depending on which option you selected during Security Onion setup</p></li>
+</ul>
+<p>The response will resemble the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;access_token&quot;</span><span class="p">:</span><span class="s2">&quot;ory_at_xI1_2FVvoWR60GHAXZXAcDW7V3qEi2mIB8RKnpqN0fk.Hy5LaHPqh9sfWVEtDXDhs8Gj-9YZ85FJHp6pyD0eeNw&quot;</span><span class="p">,</span><span class="s2">&quot;expires_in&quot;</span><span class="p">:</span><span class="mi">3599</span><span class="p">,</span><span class="s2">&quot;scope&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="s2">&quot;token_type&quot;</span><span class="p">:</span><span class="s2">&quot;bearer&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The access token will expire in 2 hours, by default, after which a new access token must be requested using this same credential exchange method again.</p>
+</section>
+<section id="authorize-api-requests-with-an-access-token">
+<h3>Authorize API Requests with an Access Token<a class="headerlink" href="#authorize-api-requests-with-an-access-token" title="Link to this heading"></a></h3>
+<p>Now that the access token has been retrieved, the API requests can be submitted. These requests will utilize the access token via the HTTP Authorization header, using the <em>Bearer</em> scheme.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">--</span><span class="n">cacert</span> <span class="n">ca</span><span class="o">.</span><span class="n">crt</span> <span class="o">-</span><span class="n">X</span> <span class="n">GET</span> <span class="o">--</span><span class="n">oauth2</span><span class="o">-</span><span class="n">bearer</span> <span class="n">ory_at_U74544Scqho5KGOci</span><span class="o">-</span><span class="n">qemWsOjxOU8TALqddAnrfxAGg</span><span class="mf">.7</span><span class="n">GlO4SYPUAllO23LVqs9e_FXl0tAdRlUk3AH9IplWRU</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">BASE_URL</span><span class="o">/</span><span class="n">connect</span><span class="o">/</span><span class="n">info</span>
+</pre></div>
+</div>
+<p>Where the provided bearer token above must be replaced with the access token extracted from the client credential exchange response.</p>
+</section>
+</section>
+<section id="manager-of-managers">
+<h2>Manager of Managers<a class="headerlink" href="#manager-of-managers" title="Link to this heading"></a></h2>
+<p>To interact with subgrid data, while still communicating with the primary <strong>Manager of Managers (MoM)</strong> node, include an additional query string parameter on the API URL. The parameter key is <code class="docutils literal notranslate"><span class="pre">gridId</span></code> and the value should be set to the desired subgrid ID.</p>
+</section>
+<section id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>New releases of Security Onion may contain additional fields in API responses. Consequently, it is important that the API output be properly parsed by official libraries that can handle these scenarios. Using custom parsing of API outputs may lead to upgrade-related malfunctions.</p>
+</div>
+<p>An interactive API view is available: <a class="reference external" href="api/">Interactive API</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="kafka.html" class="btn btn-neutral float-left" title="Kafka" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="aqm.html" class="btn btn-neutral float-right" title="Active Query Management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

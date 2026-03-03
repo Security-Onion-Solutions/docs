@@ -1,0 +1,513 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cases &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Detections" href="detections.html" />
+    <link rel="prev" title="Hunt" href="hunt.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="alerts.html">Alerts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html">Dashboards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hunt.html">Hunt</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Cases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#options">Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#query-bar">Query Bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#time-picker">Time Picker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-table">Data Table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-case">Creating a New Case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comments">Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#attachments">Attachments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#observables">Observables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#events">Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#history">History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data">Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#analyzers">Analyzers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#supported-analyzers-and-data-types">Supported Analyzers and Data Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-analyzers">Running Analyzers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analyzer-output">Analyzer Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-analyzers">Configuring Analyzers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#developing-analyzers">Developing Analyzers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#templates">Templates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="detections.html">Detections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcap.html">PCAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.html">Grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="downloads.html">Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administration.html">Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kibana.html">Kibana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic-fleet.html">Elastic Fleet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osquery-manager.html">Osquery Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="influxdb.html">InfluxDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cyberchef.html">CyberChef</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attack-navigator.html">ATT&amp;CK Navigator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="soc.html">Security Onion Console (SOC)</a></li>
+      <li class="breadcrumb-item active">Cases</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/cases.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cases">
+<span id="id1"></span><h1>Cases<a class="headerlink" href="#cases" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> includes our Cases interface for case management. It allows you to escalate logs from <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>, <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>, and <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>, and then assign analysts, add comments and attachments, and track observables.</p>
+<p>On a new deployment, Cases will be empty until you create a new case. Once you have one or more cases, you can use the main Cases page to get an overview of all cases.</p>
+<a class="reference external image-reference" href="_images/57_0_cases.png"><img alt="_images/57_0_cases.png" src="_images/57_0_cases.png" />
+</a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check out our Cases video at <a class="reference external" href="https://youtu.be/y_kr_hrtqVc">https://youtu.be/y_kr_hrtqVc</a>!</p>
+</div>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h2>
+<a class="reference external image-reference" href="_images/57_1_cases_options.png"><img alt="_images/57_1_cases_options.png" src="_images/57_1_cases_options.png" />
+</a>
+<p>Starting at the top of the main Cases page, the Options menu allows you to set options such as Automatic Refresh Interval and Time Zone.</p>
+<p>There is also a toggle labeled <code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">advanced</span> <span class="pre">interface</span> <span class="pre">features</span></code>. If you enable this option, then the interface will show more advanced features similar to <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a> and <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>.</p>
+</section>
+<section id="query-bar">
+<h2>Query Bar<a class="headerlink" href="#query-bar" title="Link to this heading"></a></h2>
+<p>The query bar defaults to Open Cases. Clicking the drop-down box reveals other options such as Closed Cases, My Open Cases, My Closed Cases, and Templates. If you want to send your current query to Hunt, you can click the crosshairs icon to the right of the query bar.</p>
+<p>Under the query bar, you’ll notice colored bubbles that represent the individual components of the query and the fields to group by. If you want to remove part of the query, you can click the X in the corresponding bubble to remove it and run a new search.</p>
+<p>If you would like to save your own personal queries, you can bookmark them in your browser. If you would like to customize the default queries for all users, please see the <a class="reference internal" href="soc-customization.html#soc-customization"><span class="std std-ref">SOC Customization</span></a> section.</p>
+</section>
+<section id="time-picker">
+<h2>Time Picker<a class="headerlink" href="#time-picker" title="Link to this heading"></a></h2>
+<p>The time picker is to the right of the query bar. By default, Cases searches the last 12 months. If you want to search a different time frame, you can change it here.</p>
+</section>
+<section id="data-table">
+<h2>Data Table<a class="headerlink" href="#data-table" title="Link to this heading"></a></h2>
+<p>The remainder of the main Cases page is a data table that shows a high level overview of the cases matching the current search criteria.</p>
+<ul class="simple">
+<li><p>Clicking the table headers allows you to sort ascending or descending.</p></li>
+<li><p>Clicking a value in the table brings up a context menu of actions for that value. This allows you to refine your existing search, start a new search, or even pivot to external sites like Google and VirusTotal.</p></li>
+<li><p>You can adjust the Rows per page setting in the bottom right and use the left and right arrow icons to page through the table.</p></li>
+<li><p>When you click the arrow to expand a row in the data table, it will show the high level fields from that case. Field names are shown on the left and field values on the right. When looking at the field names, there is an icon to the left that will add that field to the <code class="docutils literal notranslate"><span class="pre">groupby</span></code> section of your query. You can click on values on the right to bring up the context menu to refine your search.</p></li>
+<li><p>To the right of the arrow is a binoculars icon. Clicking this will display the full case including the Comments, Attachments, Observables, Events, and History tabs.</p></li>
+</ul>
+</section>
+<section id="creating-a-new-case">
+<h2>Creating a New Case<a class="headerlink" href="#creating-a-new-case" title="Link to this heading"></a></h2>
+<p>To create a new case, click the + icon and then fill out the Title and Description and optionally the fields on the right side including Assignee, Status, Severity, Priority, TLP, PAP, Category, and Tags. Clicking the fields on the right side reveals drop-down boxes with standard options. The Assignee field will only list user accounts that are currently enabled.</p>
+<a class="reference external image-reference" href="_images/57_2_cases_create.png"><img alt="_images/57_2_cases_create.png" src="_images/57_2_cases_create.png" />
+</a>
+<p>Alternatively, if you find events of interest in <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>, <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>, or <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>, you can escalate directly to Cases using the escalate button (blue triangle with exclamation point). Clicking the escalate button will escalate the data from the row as it is displayed. This means that if you’re looking at an aggregated view, you will get limited details in the resulting escalated case. If you want more details to be included in the case, then first drill into the aggregation and escalate one of the individual items in that aggregation. Once you click the escalate button, you can choose to escalate to a new case or an existing case.</p>
+</section>
+<section id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Link to this heading"></a></h2>
+<p>On the Comments tab, you can add comments about the case. The Comments field uses markdown syntax and you can read more about that at <a class="reference external" href="https://www.markdownguide.org/cheat-sheet/">https://www.markdownguide.org/cheat-sheet/</a>.</p>
+<p>If you’ve enabled <a class="reference internal" href="pro.html#pro"><span class="std std-ref">Security Onion Pro</span></a>, then when adding a comment you can also specify how many hours you spent working on that activity. You can then see the total time spent by all analysts in the Summary in the upper-right corner.</p>
+</section>
+<section id="attachments">
+<h2>Attachments<a class="headerlink" href="#attachments" title="Link to this heading"></a></h2>
+<p>On the Attachments tab, you can upload attachments. For each attachment, you can optionally define TLP and add tags. Cases will automatically generate SHA256, SHA1, and MD5 hash values for each attachment. Buttons next to the hash values allow you to copy the value or add it as an observable.</p>
+</section>
+<section id="observables">
+<h2>Observables<a class="headerlink" href="#observables" title="Link to this heading"></a></h2>
+<p>On the Observables tab, you can track observables like IP addresses, domain names, hashes, etc. You can add observables directly on this tab or you can add them from the Events tab as well.</p>
+<p>You can add multiple observables of the same type by selecting the option labeled <code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">this</span> <span class="pre">checkbox</span> <span class="pre">to</span> <span class="pre">have</span> <span class="pre">a</span> <span class="pre">separate</span> <span class="pre">observable</span> <span class="pre">added</span> <span class="pre">for</span> <span class="pre">each</span> <span class="pre">line</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">provided</span> <span class="pre">value</span> <span class="pre">above</span></code>.</p>
+<p>For each observable, you can click the icon on the far left of the row to drill into the observable and see more information about it. To the right of that is the the hunt icon which will start a new hunt for the observable. Clicking the lightning bolt icon will analyze the observable (see the Analyzers section later).</p>
+<p>You can also add observables directly from <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>, <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>, or <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>. Click the observable and select the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">to</span> <span class="pre">Case</span></code> option. You’ll then have the option of adding the observable to a new case or an existing case.</p>
+</section>
+<section id="events">
+<h2>Events<a class="headerlink" href="#events" title="Link to this heading"></a></h2>
+<p>On the Events tab, you can see any events that have been escalated to the case. This could be <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> alerts, network metadata from <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> or <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a>, or endpoint logs.</p>
+<p>For each event, you can click the icon on the far left of the row to drill in and see all the fields included in that event.</p>
+<p>If you find something that you would like to track as an Observable, you can click the eye icon on the far left of the row to add it to the Observables tab. It will attempt to automatically identify well known data types such as IP addresses.</p>
+<p>To the right of the eye icon is a Hunt icon that can be used to start a new hunt for that particular value.</p>
+</section>
+<section id="history">
+<h2>History<a class="headerlink" href="#history" title="Link to this heading"></a></h2>
+<p>On the History tab, you can see the history of the case itself, including any changes made by each user. For each row of history, you can click the icon on the far left of the row to drill in and see more information.</p>
+</section>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Link to this heading"></a></h2>
+<p>Cases data is stored in <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>. You can view it in <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a> or <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a> by clicking the Options menu and disabling the <code class="docutils literal notranslate"><span class="pre">Exclude</span> <span class="pre">case</span> <span class="pre">data</span></code> option. You can then search the <code class="docutils literal notranslate"><span class="pre">so-case</span></code> index with the following query:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">_index</span><span class="p">:</span><span class="s2">&quot;*:so-case&quot;</span>
+</pre></div>
+</div>
+<p>You can also use this query in <a class="reference internal" href="kibana.html#kibana"><span class="std std-ref">Kibana</span></a>.</p>
+<p>You might want to backup this data as described in the <a class="reference internal" href="backup.html#backup"><span class="std std-ref">Backup</span></a> section.</p>
+</section>
+<section id="analyzers">
+<h2>Analyzers<a class="headerlink" href="#analyzers" title="Link to this heading"></a></h2>
+<p>We have included analyzers which allow you to quickly gather context around an observable.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check out our Analyzers video at <a class="reference external" href="https://youtu.be/99LXr7UmtKI">https://youtu.be/99LXr7UmtKI</a>!</p>
+</div>
+<section id="supported-analyzers-and-data-types">
+<h3>Supported Analyzers and Data Types<a class="headerlink" href="#supported-analyzers-and-data-types" title="Link to this heading"></a></h3>
+<p>The following is a summary of the built-in analyzers and their supported data types:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Domain</p></th>
+<th class="head"><p>EML</p></th>
+<th class="head"><p>Hash</p></th>
+<th class="head"><p>IP</p></th>
+<th class="head"><p>Mail</p></th>
+<th class="head"><p>Other</p></th>
+<th class="head"><p>URI</p></th>
+<th class="head"><p>URL</p></th>
+<th class="head"><p>User Agent</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Alienvault OTX</p></td>
+<td><p>✓</p></td>
+<td></td>
+<td><p>✓</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>Echotrail</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✓</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Elasticsearch</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>EmailRep</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✓</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Greynoise</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✓</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>LocalFile</p></td>
+<td><p>✓</p></td>
+<td></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td></td>
+<td><p>✓</p></td>
+<td></td>
+<td><p>✓</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Malwarebazaar</p></td>
+<td></td>
+<td></td>
+<td><p>✓</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Malware Hash Registry</p></td>
+<td></td>
+<td></td>
+<td><p>✓</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Pulsedive</p></td>
+<td><p>✓</p></td>
+<td></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td></td>
+<td></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>Spamhaus</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✓</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Sublime Platform</p></td>
+<td></td>
+<td><p>✓</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Threatfox</p></td>
+<td><p>✓</p></td>
+<td></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Urlhaus</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✓</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Urlscan</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✓</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Virustotal</p></td>
+<td><p>✓</p></td>
+<td></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>✓</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>WhoisLookup</p></td>
+<td><p>✓</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">malwarehashregistry</span></code> analyzer is no longer working as of 2.4.100. This is due to a stale third-party library that is incompatible with the latest Python version. <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/issues/13571">#13571</a></p>
+</div>
+</section>
+<section id="running-analyzers">
+<h3>Running Analyzers<a class="headerlink" href="#running-analyzers" title="Link to this heading"></a></h3>
+<p>To enqueue an analyzer job, click the lightning bolt icon on the left side of the observable menu. All configured analyzers supporting the observable’s data type will then run and return their analysis.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Observable values must be formatted to correctly match the observable type in order for analyzers to properly execute against them. For example, an IP observable type should not contain more than one IP address.</p>
+</div>
+</section>
+<section id="analyzer-output">
+<h3>Analyzer Output<a class="headerlink" href="#analyzer-output" title="Link to this heading"></a></h3>
+<p>The collapsed job view for an analyzer will return a summary view of the analysis. Expanding the collapsed row will reveal a more detailed view of the analysis.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you try to run the Malware Hash Registry analyzer but it results in a “Name or service not known” error, then it may be a DNS issue. Folks using 8.8.4.4 or 8.8.8.8 as their DNS resolver have reported this issue. A potential workaround is to switch to another DNS resolver like 1.1.1.1.</p>
+</div>
+</section>
+<section id="configuring-analyzers">
+<h3>Configuring Analyzers<a class="headerlink" href="#configuring-analyzers" title="Link to this heading"></a></h3>
+<p>Some analyzers require authentication or other details to be configured before use. If analysis is requested for an observable and an analyzer supports that observable type but the analyzer is left unconfigured, then it will not run.</p>
+<p>The following analyzers require users to configure authentication or other parameters in order for the analyzer to work correctly:</p>
+<ul class="simple">
+<li><p>AlienVault OTX</p></li>
+<li><p>Echotrail</p></li>
+<li><p>Elasticsearch</p></li>
+<li><p>EmailRep</p></li>
+<li><p>GreyNoise</p></li>
+<li><p>LocalFile</p></li>
+<li><p>Malwarebazaar</p></li>
+<li><p>Pulsedive</p></li>
+<li><p>Threatfox</p></li>
+<li><p>Urlscan</p></li>
+<li><p>VirusTotal</p></li>
+</ul>
+<p>To configure an analyzer, navigate to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; sensoroni.</p>
+<a class="reference external image-reference" href="_images/config-item-sensoroni.png"><img alt="_images/config-item-sensoroni.png" src="_images/config-item-sensoroni.png" />
+</a>
+<p>At the top of the page, click the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu and then enable the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">advanced</span> <span class="pre">settings</span></code> option. Then navigate to sensoroni –&gt; analyzers.</p>
+</section>
+<section id="developing-analyzers">
+<h3>Developing Analyzers<a class="headerlink" href="#developing-analyzers" title="Link to this heading"></a></h3>
+<p>If you’d like to develop a custom analyzer, take a look at the developer’s guide at <a class="reference external" href="https://github.com/Security-Onion-Solutions/securityonion/tree/2.4/main/salt/sensoroni/files/analyzers">https://github.com/Security-Onion-Solutions/securityonion/tree/2.4/main/salt/sensoroni/files/analyzers</a>.</p>
+</section>
+</section>
+<section id="templates">
+<h2>Templates<a class="headerlink" href="#templates" title="Link to this heading"></a></h2>
+<p>SOC can use case templates to auto-populate default values of new cases. A template is itself a case, with its category set to <code class="docutils literal notranslate"><span class="pre">template</span></code>. To utilize that template case, the new case should specify the template case ID in the <code class="docutils literal notranslate"><span class="pre">template</span></code> field of the case object.</p>
+<p>SOC automatically populates new case template fields with the value stored in the <code class="docutils literal notranslate"><span class="pre">rule.case_template</span></code> field of the alert being escalated. This allows for specific templates to be assigned to certain detection rules. For example, if alerts triggered from a certain rule are known to require a consistent set of resolution steps then the description of a case template can be prepopulated with that checklist (in markdown format). Then, the backing rule that triggered the alert can have its <code class="docutils literal notranslate"><span class="pre">case_template</span></code> field set to that case template ID.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="hunt.html" class="btn btn-neutral float-left" title="Hunt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="detections.html" class="btn btn-neutral float-right" title="Detections" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

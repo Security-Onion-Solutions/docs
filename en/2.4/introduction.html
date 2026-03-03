@@ -1,0 +1,249 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="License" href="license.html" />
+    <link rel="prev" title="About" href="about.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#network-visibility">Network Visibility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#intrusion-detection">Intrusion Detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#network-metadata">Network Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#full-packet-capture">Full Packet Capture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-analysis">File Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#intrusion-detection-honeypot-idh">Intrusion Detection Honeypot (IDH)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#host-visibility">Host Visibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#analysis-tools">Analysis Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#security-onion-console-soc">Security Onion Console (SOC)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cyberchef">CyberChef</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#workflow">Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deployment-scenarios">Deployment Scenarios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introduction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/introduction.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction">
+<span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
+<p>Security Onion is a free and open platform built by defenders for defenders. It includes <a class="reference internal" href="network.html#network"><span class="std std-ref">network visibility</span></a>, <a class="reference internal" href="host.html#host"><span class="std std-ref">host visibility</span></a>, <a class="reference internal" href="idh.html#idh"><span class="std std-ref">intrusion detection honeypots</span></a>, <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">log management</span></a>, and <a class="reference internal" href="cases.html#cases"><span class="std std-ref">case management</span></a>.</p>
+<p>For network visibility, we offer signature based detection via <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a>, rich protocol metadata and file extraction using either <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> or <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a>, full packet capture using either <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> or <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a>, and file analysis. For host visibility, we offer the <a class="reference internal" href="elastic-agent.html#elastic-agent"><span class="std std-ref">Elastic Agent</span></a> which provides data collection, live queries via <a class="reference internal" href="osquery-manager.html#osquery-manager"><span class="std std-ref">osquery</span></a>, and centralized management using <a class="reference internal" href="elastic-fleet.html#elastic-fleet"><span class="std std-ref">Elastic Fleet</span></a>. <a class="reference internal" href="idh.html#idh"><span class="std std-ref">Intrusion detection honeypots</span></a> based on OpenCanary can be added to your deployment for even more enterprise visibility. All of these logs flow into <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> and we’ve built our own user interfaces for <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">alerts</span></a>, <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">dashboards</span></a>, <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">threat hunting</span></a>, <a class="reference internal" href="cases.html#cases"><span class="std std-ref">case management</span></a>, and <a class="reference internal" href="grid.html#grid"><span class="std std-ref">grid management</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check out our Introduction to Security Onion video at <a class="reference external" href="https://securityonion.com/demo">https://securityonion.com/demo</a>!</p>
+</div>
+<p>In the diagram below, we see Security Onion in a traditional enterprise network with a firewall, workstations, and servers. You can use Security Onion to monitor north/south traffic to detect an adversary entering an environment, establishing command-and-control (C2), or perhaps data exfiltration. You’ll probably also want to monitor east/west traffic to detect lateral movement. As more and more of our network traffic becomes encrypted, it’s important to fill in those blind spots with additional visibility in the form of endpoint telemetry. Security Onion can consume logs from your servers and workstations so that you can then hunt across all of your network and host logs at the same time.</p>
+<a class="reference external image-reference" href="_images/network-horiz.png"><img alt="_images/network-horiz.png" src="_images/network-horiz.png" />
+</a>
+<section id="network-visibility">
+<h2>Network Visibility<a class="headerlink" href="#network-visibility" title="Link to this heading"></a></h2>
+<p>From a network visibility standpoint, Security Onion seamlessly weaves together intrusion detection, network metadata, full packet capture, file analysis, and intrusion detection honeypots.</p>
+<section id="intrusion-detection">
+<h3>Intrusion Detection<a class="headerlink" href="#intrusion-detection" title="Link to this heading"></a></h3>
+<p>Security Onion generates <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> (Network Intrusion Detection System) alerts by monitoring your network traffic and looking for specific fingerprints and identifiers that match known malicious, anomalous, or otherwise suspicious traffic. This is signature-based detection so you might say that it’s similar to antivirus signatures for the network, but it’s a bit deeper and more flexible than that. <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> alerts are generated by <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a>.</p>
+</section>
+<section id="network-metadata">
+<h3>Network Metadata<a class="headerlink" href="#network-metadata" title="Link to this heading"></a></h3>
+<p>Unlike signature-based intrusion detection that looks for specific needles in the haystack of data, network metadata provides you with logs of connections and standard protocols like DNS, HTTP, FTP, SMTP, SSH, and SSL. This provides a real depth and visibility into the context of data and events on your network. Security Onion provides network metadata using your choice of either <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> or <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a>.</p>
+</section>
+<section id="full-packet-capture">
+<h3>Full Packet Capture<a class="headerlink" href="#full-packet-capture" title="Link to this heading"></a></h3>
+<p>Full packet capture is like a video camera for your network, but better because not only can it tell us who came and went, but also exactly where they went and what they brought or took with them (exploit payloads, phishing emails, file exfiltration). It’s a crime scene recorder that can tell us a lot about the victim and the white chalk outline of a compromised host on the ground. There is certainly valuable evidence to be found on the victim’s body, but evidence at the host can be destroyed or manipulated; the camera doesn’t lie, is hard to deceive, and can capture a bullet in transit. Full packet capture can be written to disk using either <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> or <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a>.</p>
+</section>
+<section id="file-analysis">
+<h3>File Analysis<a class="headerlink" href="#file-analysis" title="Link to this heading"></a></h3>
+<p>As <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> and <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> are monitoring your network traffic, they can extract files transferred across the network. <a class="reference internal" href="strelka.html#strelka"><span class="std std-ref">Strelka</span></a> can then analyze those files and provide additional metadata.</p>
+</section>
+<section id="intrusion-detection-honeypot-idh">
+<h3>Intrusion Detection Honeypot (IDH)<a class="headerlink" href="#intrusion-detection-honeypot-idh" title="Link to this heading"></a></h3>
+<p>We also have an <a class="reference internal" href="idh.html#idh"><span class="std std-ref">Intrusion Detection Honeypot</span></a> node that allows you to build a node that mimics services. Connections to these services automatically generate alerts.</p>
+</section>
+</section>
+<section id="host-visibility">
+<h2>Host Visibility<a class="headerlink" href="#host-visibility" title="Link to this heading"></a></h2>
+<p>In addition to network visibility, Security Onion provides endpoint visibility via the <a class="reference internal" href="elastic-agent.html#elastic-agent"><span class="std std-ref">Elastic Agent</span></a> which provides data collection, live queries via <a class="reference internal" href="osquery-manager.html#osquery-manager"><span class="std std-ref">osquery</span></a>, and centralized management using <a class="reference internal" href="elastic-fleet.html#elastic-fleet"><span class="std std-ref">Elastic Fleet</span></a>.</p>
+<p>For devices like firewalls and routers that don’t support the installation of agents, Security Onion can consume standard <a class="reference internal" href="syslog.html#syslog"><span class="std std-ref">Syslog</span></a>.</p>
+</section>
+<section id="analysis-tools">
+<h2>Analysis Tools<a class="headerlink" href="#analysis-tools" title="Link to this heading"></a></h2>
+<p>With all of the data sources mentioned above, there is an incredible amount of data available at your fingertips. Fortunately, Security Onion tightly integrates the following tools to help make sense of this data.</p>
+<section id="security-onion-console-soc">
+<h3>Security Onion Console (SOC)<a class="headerlink" href="#security-onion-console-soc" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> is the first thing you see when you log into Security Onion. It includes our <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a> interface which allows you to see all of your <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> alerts from <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a>.</p>
+<a class="reference external image-reference" href="_images/50_alerts.png"><img alt="_images/50_alerts.png" src="_images/50_alerts.png" />
+</a>
+<p><a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> also includes our <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a> interface which gives you a nice overview of not only your <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> alerts but also network metadata logs from <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a> or <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> and any other logs that you may be collecting.</p>
+<a class="reference external image-reference" href="_images/53_dashboards.png"><img alt="_images/53_dashboards.png" src="_images/53_dashboards.png" />
+</a>
+<p><a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a> is similar to <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a> but its default queries are more focused on threat hunting.</p>
+<a class="reference external image-reference" href="_images/56_hunt.png"><img alt="_images/56_hunt.png" src="_images/56_hunt.png" />
+</a>
+<p><a class="reference internal" href="cases.html#cases"><span class="std std-ref">Cases</span></a> is the case management interface. As you are working in <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>, <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>, or <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>, you may find alerts or logs that are interesting enough to send to <a class="reference internal" href="cases.html#cases"><span class="std std-ref">Cases</span></a> and create a case. Other analysts can collaborate with you as you work to close that case.</p>
+<a class="reference external image-reference" href="_images/57_0_cases.png"><img alt="_images/57_0_cases.png" src="_images/57_0_cases.png" />
+</a>
+<p><a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> also includes an interface for full packet capture (<a class="reference internal" href="pcap.html#pcap"><span class="std std-ref">PCAP</span></a>) retrieval.</p>
+<a class="reference external image-reference" href="_images/62_pcap.png"><img alt="_images/62_pcap.png" src="_images/62_pcap.png" />
+</a>
+<p><a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> also includes <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a> which makes it quick and easy to tune your <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a>, <a class="reference internal" href="sigma.html#sigma"><span class="std std-ref">Sigma</span></a>, and <a class="reference internal" href="yara.html#yara"><span class="std std-ref">YARA</span></a> rules.</p>
+<a class="reference external image-reference" href="_images/57_detections.png"><img alt="_images/57_detections.png" src="_images/57_detections.png" />
+</a>
+</section>
+<section id="cyberchef">
+<h3>CyberChef<a class="headerlink" href="#cyberchef" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="cyberchef.html#cyberchef"><span class="std std-ref">CyberChef</span></a> allows you to decode, decompress, and analyze artifacts. <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>, <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>, <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>, and <a class="reference internal" href="pcap.html#pcap"><span class="std std-ref">PCAP</span></a> all allow you to quickly and easily send data to <a class="reference internal" href="cyberchef.html#cyberchef"><span class="std std-ref">CyberChef</span></a> for further analysis.</p>
+</section>
+</section>
+<section id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Link to this heading"></a></h2>
+<p>All of these analysis tools work together to provide efficient and comprehensive analysis capabilities. For example, here’s one potential workflow:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Go to the <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a> page and review any unacknowledged alerts.</p></li>
+<li><p>Use <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a> to tune your rules to increase the signal-to-noise ratio.</p></li>
+<li><p>Review <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a> for anything that looks suspicious.</p></li>
+<li><p>Once you’ve found something that you want to investigate, you might want to pivot to <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a> to expand your search and look for additional logs relating to the source and destination IP addresses.</p></li>
+<li><p>If any of those alerts or logs look interesting, you might want to pivot to <a class="reference internal" href="pcap.html#pcap"><span class="std std-ref">PCAP</span></a> to review the full packet capture for the entire stream.</p></li>
+<li><p>Depending on what you see in the stream, you might want to send it to <a class="reference internal" href="cyberchef.html#cyberchef"><span class="std std-ref">CyberChef</span></a> for further analysis and decoding.</p></li>
+<li><p>Escalate alerts and logs to <a class="reference internal" href="cases.html#cases"><span class="std std-ref">Cases</span></a> and document any observables. Pivot to <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a> to cast a wider net for those observables.</p></li>
+<li><p>If you have the <a class="reference internal" href="elastic-agent.html#elastic-agent"><span class="std std-ref">Elastic Agent</span></a> deployed, then you might want to search for additional host logs or run live queries against your endpoints using <a class="reference internal" href="osquery-manager.html#osquery-manager"><span class="std std-ref">osquery</span></a>.</p></li>
+<li><p>Finally, return to <a class="reference internal" href="cases.html#cases"><span class="std std-ref">Cases</span></a> and document the entire investigation and close the case.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="deployment-scenarios">
+<h2>Deployment Scenarios<a class="headerlink" href="#deployment-scenarios" title="Link to this heading"></a></h2>
+<p>Analysts around the world are using Security Onion today for many different <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">architectures</span></a>.  The Security Onion Setup wizard allows you to easily configure the best deployment scenario to suit your needs.</p>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h2>
+<p>After you install Security Onion, you will have comprehensive network and host visibility for your enterprise. Our analyst tools will enable you to use all of that data to detect intruders more quickly and paint a more complete picture of what they’re doing in your environment. Get ready to peel back the layers of your enterprise and make your adversaries cry!</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="about.html" class="btn btn-neutral float-left" title="About" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="license.html" class="btn btn-neutral float-right" title="License" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

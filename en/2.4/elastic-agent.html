@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elastic Agent &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Syslog" href="syslog.html" />
+    <link rel="prev" title="Host Visibility" href="host.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="host.html">Host Visibility</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Elastic Agent</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#elastic-agent-options-non-msi">Elastic Agent Options (Non-MSI)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#elastic-agent-options-msi">Elastic Agent Options (MSI)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-elastic-agent-on-linux">Installing Elastic Agent on Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-elastic-agent-on-macos">Installing Elastic Agent on MacOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-elastic-agent-on-windows-via-msi">Installing Elastic Agent on Windows via MSI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logs">Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#management">Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#live-queries">Live Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integrations">Integrations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reinstalling">Reinstalling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More Information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="syslog.html">Syslog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sysmon.html">Sysmon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="host.html">Host Visibility</a></li>
+      <li class="breadcrumb-item active">Elastic Agent</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/elastic-agent.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="elastic-agent">
+<span id="id1"></span><h1>Elastic Agent<a class="headerlink" href="#elastic-agent" title="Link to this heading"></a></h1>
+<p>From <a class="reference external" href="https://www.elastic.co/elastic-agent">https://www.elastic.co/elastic-agent</a>:</p>
+<blockquote>
+<div><p>With Elastic Agent you can collect all forms of data from anywhere with a single unified agent per host. One thing to install, configure, and scale.</p>
+</div></blockquote>
+<p>Each Security Onion node uses the Elastic Agent to transport logs to <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>. You can also deploy the Elastic Agent to your endpoints to transport logs to your Security Onion deployment.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to receive logs from the Elastic Agent, Security Onion must be running <a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a>. Evaluation Mode and Import Mode do not run <a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a>, so you’ll need Standalone or a full Distributed Deployment. In a Distributed Deployment, sensor nodes do not run <a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a>, so you’ll need to configure agents to send to your manager or receiver nodes. For more information, please see the <a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">Architecture</span></a> section.</p>
+</div>
+<p>To deploy an Elastic agent to an endpoint, go to the <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> <a class="reference internal" href="downloads.html#downloads"><span class="std std-ref">Downloads</span></a> page and download the proper Elastic agent for the operating system of that endpoint.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Within the <a class="reference internal" href="elastic-fleet.html#elastic-fleet"><span class="std std-ref">Elastic Fleet</span></a> interface, there is an <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Agent</span></code> button - it is not recommended to use this particular method to install the Elastic Agent, as it requires much more manual configuration.</p>
+</div>
+<p>Don’t forget to allow the agent to connect through the firewall by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; firewall –&gt; hostgroups.</p>
+<a class="reference external image-reference" href="_images/config-item-firewall.png"><img alt="_images/config-item-firewall.png" src="_images/config-item-firewall.png" />
+</a>
+<p>Once there, select the <code class="docutils literal notranslate"><span class="pre">elastic_agent_endpoint</span></code> option.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check out our Elastic Agent video at <a class="reference external" href="https://youtu.be/cGmQMsFuAvw">https://youtu.be/cGmQMsFuAvw</a>!</p>
+</div>
+<section id="elastic-agent-options-non-msi">
+<h2>Elastic Agent Options (Non-MSI)<a class="headerlink" href="#elastic-agent-options-non-msi" title="Link to this heading"></a></h2>
+<p>There are additional installer runtime options:</p>
+<p><code class="docutils literal notranslate"><span class="pre">-token=$TOKEN</span></code></p>
+<p>This option allows you to override the agent policy that the installer uses by default. The token comes from the <a class="reference internal" href="elastic-fleet.html#elastic-fleet"><span class="std std-ref">Elastic Fleet</span></a> interface under <code class="docutils literal notranslate"><span class="pre">Enrollment</span> <span class="pre">Tokens</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">-fleet=$FLEETHOST</span></code></p>
+<p>This option allows you to override the default Fleet host used for enrollment.</p>
+<p><code class="docutils literal notranslate"><span class="pre">-delay-enroll=true|false</span></code></p>
+<p>Defaults to false. If set to true, it adds the builtin <code class="docutils literal notranslate"><span class="pre">delay-enroll</span></code> flag when enrolling the agent.</p>
+<p><code class="docutils literal notranslate"><span class="pre">-timeout=$MINUTES</span></code></p>
+<p>Defaults to 5 minutes.</p>
+</section>
+<section id="elastic-agent-options-msi">
+<h2>Elastic Agent Options (MSI)<a class="headerlink" href="#elastic-agent-options-msi" title="Link to this heading"></a></h2>
+<p>When using the MSI installer runtime options are:</p>
+<p><code class="docutils literal notranslate"><span class="pre">TOKEN=$TOKEN</span></code></p>
+<p>This option allows you to override the agent policy that the installer uses by default. The token comes from the <a class="reference internal" href="elastic-fleet.html#elastic-fleet"><span class="std std-ref">Elastic Fleet</span></a> interface under <code class="docutils literal notranslate"><span class="pre">Enrollment</span> <span class="pre">Tokens</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">FLEET=$FLEETHOST</span></code></p>
+<p>This option allows you to override the default Fleet host used for enrollment.</p>
+<p><code class="docutils literal notranslate"><span class="pre">DELAYENROLL=true|false</span></code></p>
+<p>This option allows you to override the default Fleet host used for enrollment.</p>
+<p><code class="docutils literal notranslate"><span class="pre">TIMEOUT=$MINUTES</span></code></p>
+<p>Defaults to 5 minutes.</p>
+</section>
+<section id="installing-elastic-agent-on-linux">
+<h2>Installing Elastic Agent on Linux<a class="headerlink" href="#installing-elastic-agent-on-linux" title="Link to this heading"></a></h2>
+<p>If deploying the Elastic Agent to a Linux host, make the file executable and then execute using sudo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="o">./</span><span class="n">so</span><span class="o">-</span><span class="n">elastic</span><span class="o">-</span><span class="n">agent_linux_amd64</span>
+<span class="n">sudo</span> <span class="o">./</span><span class="n">so</span><span class="o">-</span><span class="n">elastic</span><span class="o">-</span><span class="n">agent_linux_amd64</span>
+</pre></div>
+</div>
+</section>
+<section id="installing-elastic-agent-on-macos">
+<h2>Installing Elastic Agent on MacOS<a class="headerlink" href="#installing-elastic-agent-on-macos" title="Link to this heading"></a></h2>
+<p>If deploying the Elastic Agent to macOS, you will need to take a few steps. First, remove the quarantine attribute. Then, make the file executable. Finally, execute the file using sudo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xattr</span> <span class="o">-</span><span class="n">d</span> <span class="n">com</span><span class="o">.</span><span class="n">apple</span><span class="o">.</span><span class="n">quarantine</span> <span class="o">./</span><span class="n">so</span><span class="o">-</span><span class="n">elastic</span><span class="o">-</span><span class="n">agent_darwin_amd64</span>
+<span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="o">./</span><span class="n">so</span><span class="o">-</span><span class="n">elastic</span><span class="o">-</span><span class="n">agent_darwin_amd64</span>
+<span class="n">sudo</span> <span class="o">./</span><span class="n">so</span><span class="o">-</span><span class="n">elastic</span><span class="o">-</span><span class="n">agent_darwin_amd64</span>
+</pre></div>
+</div>
+<p>After the installer has completed, review the Elastic docs for your version of macOS and approve the required settings (system extension and full drive access) as shown at <a class="reference external" href="https://www.elastic.co/guide/en/security/current/elastic-endpoint-deploy-reqs.html">https://www.elastic.co/guide/en/security/current/elastic-endpoint-deploy-reqs.html</a>.</p>
+</section>
+<section id="installing-elastic-agent-on-windows-via-msi">
+<h2>Installing Elastic Agent on Windows via MSI<a class="headerlink" href="#installing-elastic-agent-on-windows-via-msi" title="Link to this heading"></a></h2>
+<p>When deploying via MSI, installation can be as simple as double-clicking the MSI installer. If you require additional runtime flags, use <code class="docutils literal notranslate"><span class="pre">msiexec</span> <span class="pre">/i</span></code> :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>msiexec /i so-elastic-agent_windows_amd64_msi TOKEN=$TOKEN TIMEOUT=10m
+</pre></div>
+</div>
+</section>
+<section id="logs">
+<h2>Logs<a class="headerlink" href="#logs" title="Link to this heading"></a></h2>
+<p>Once the agent starts sending logs, you should be able to find them in <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>, <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>, or <a class="reference internal" href="kibana.html#kibana"><span class="std std-ref">Kibana</span></a>.</p>
+</section>
+<section id="management">
+<h2>Management<a class="headerlink" href="#management" title="Link to this heading"></a></h2>
+<p>You can manage your agents using <a class="reference internal" href="elastic-fleet.html#elastic-fleet"><span class="std std-ref">Elastic Fleet</span></a>.</p>
+</section>
+<section id="live-queries">
+<h2>Live Queries<a class="headerlink" href="#live-queries" title="Link to this heading"></a></h2>
+<p>You can query your agents in realtime using <a class="reference internal" href="osquery-manager.html#osquery-manager"><span class="std std-ref">Osquery Manager</span></a>.</p>
+</section>
+<section id="integrations">
+<h2>Integrations<a class="headerlink" href="#integrations" title="Link to this heading"></a></h2>
+<p>You can read more about integrations in the <a class="reference internal" href="elastic-fleet.html#elastic-fleet"><span class="std std-ref">Elastic Fleet</span></a> section and at <a class="reference external" href="https://docs.elastic.co/integrations">https://docs.elastic.co/integrations</a>.</p>
+</section>
+<section id="reinstalling">
+<h2>Reinstalling<a class="headerlink" href="#reinstalling" title="Link to this heading"></a></h2>
+<p>If for some reason you need to uninstall and reinstall the Elastic Agent on one of your Security Onion grid members, you can do so as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">elastic</span><span class="o">-</span><span class="n">agent</span> <span class="n">uninstall</span>
+<span class="n">sudo</span> <span class="n">salt</span><span class="o">-</span><span class="n">call</span> <span class="n">state</span><span class="o">.</span><span class="n">apply</span> <span class="n">elasticfleet</span><span class="o">.</span><span class="n">install_agent_grid</span>
+</pre></div>
+</div>
+</section>
+<section id="more-information">
+<h2>More Information<a class="headerlink" href="#more-information" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information about the Elastic Agent, please see <a class="reference external" href="https://www.elastic.co/guide/en/fleet/current/fleet-overview.html">https://www.elastic.co/guide/en/fleet/current/fleet-overview.html</a>.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="host.html" class="btn btn-neutral float-left" title="Host Visibility" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="syslog.html" class="btn btn-neutral float-right" title="Syslog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

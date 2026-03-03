@@ -1,0 +1,238 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kafka &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Connect API" href="connect.html" />
+    <link rel="prev" title="Notifications" href="notifications.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="pro.html">Security Onion Pro</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="oidc.html">OpenID Connect (OIDC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="luks.html">LUKS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fips.html">FIPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stig.html">STIG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Kafka</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#guaranteed-message-delivery">Guaranteed Message Delivery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#high-availability">High Availability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#controllers">Controllers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#brokers">Brokers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enabling-kafka">Enabling Kafka</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="connect.html">Connect API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aqm.html">Active Query Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mom.html">Manager of Managers (MoM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcp.html">MCP Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="splunk.html">Security Onion App for Splunk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervisor.html">Hypervisor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assistant.html">Onion AI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="pro.html">Security Onion Pro</a></li>
+      <li class="breadcrumb-item active">Kafka</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/kafka.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="kafka">
+<span id="id1"></span><h1>Kafka<a class="headerlink" href="#kafka" title="Link to this heading"></a></h1>
+<p>From <a class="reference external" href="https://kafka.apache.org">https://kafka.apache.org</a> :</p>
+<blockquote>
+<div><p>Apache Kafka is an open-source distributed event streaming platform used by thousands of companies for high-performance data pipelines, streaming analytics, data integration, and mission-critical applications.</p>
+</div></blockquote>
+<p>If you need guaranteed message delivery, then you can enable Kafka which replaces <a class="reference internal" href="redis.html#redis"><span class="std std-ref">Redis</span></a> and <a class="reference internal" href="logstash.html#logstash"><span class="std std-ref">Logstash</span></a> on the Security Onion Manager node and Receiver nodes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an enterprise-level feature of Security Onion. Contact Security Onion Solutions, LLC via our website at <a class="reference external" href="https://securityonion.com/pro">https://securityonion.com/pro</a> for more information about purchasing a Security Onion Pro license to enable this feature.</p>
+</div>
+<section id="guaranteed-message-delivery">
+<h2>Guaranteed Message Delivery<a class="headerlink" href="#guaranteed-message-delivery" title="Link to this heading"></a></h2>
+<p>By leveraging Kafka, you can ensure that messages sent to the Kafka cluster are written to disk on the partition leader and replicated to other physical brokers before acknowledging receipt to the producer.</p>
+<p>For more information, please see <a class="reference external" href="https://kafka.apache.org/documentation/#producerconfigs_acks">https://kafka.apache.org/documentation/#producerconfigs_acks</a>.</p>
+</section>
+<section id="high-availability">
+<h2>High Availability<a class="headerlink" href="#high-availability" title="Link to this heading"></a></h2>
+<p>With a properly configured Kafka cluster, data integrity and data availability are maintained even in the event of a Kafka broker or controller failure. In order to start taking advantage of Kafka, we’d recommend three Kafka controllers and a minimum of three Kafka brokers. With this configuration, you can increase your replication factor to ensure that messages are replicated to multiple brokers.</p>
+<p>For more information about replication, please see <a class="reference external" href="https://kafka.apache.org/documentation/#replication">https://kafka.apache.org/documentation/#replication</a>.</p>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Before configuring Kafka, it is recommened you build your grid as you would normally. This includes adding any receiver nodes that will later be repurposed as Kafka brokers or controllers.</p>
+<p>Also note that <a class="reference internal" href="#kafka"><span class="std std-ref">Guaranteed Message Delivery</span></a> which leverages Kafka, requires a valid Security Onion Pro license. See the <a class="reference internal" href="pro.html#pro"><span class="std std-ref">Security Onion Pro</span></a> section.</p>
+</div>
+<p>You can modify your Kafka configuration by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; Kafka.</p>
+<a class="reference external image-reference" href="_images/config-item-kafka.png"><img alt="_images/config-item-kafka.png" src="_images/config-item-kafka.png" />
+</a>
+<section id="controllers">
+<h3>Controllers<a class="headerlink" href="#controllers" title="Link to this heading"></a></h3>
+<p>Controllers are responsible for managing the Kafka cluster. This includes electing a leader and managing the cluster metadata.</p>
+<p>Controllers can be relatively lightweight virtual machines or physical machines. A system with 4 CPU cores, 8GB of RAM, and 200GB storage should be sufficient for a single Kafka controller.</p>
+<p>Controllers are assigned by adding the hostnames to the <code class="docutils literal notranslate"><span class="pre">controllers</span></code> configuration option separated by a comma.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hostname1</span><span class="p">,</span><span class="n">hostname2</span><span class="p">,</span><span class="n">hostname3</span>
+</pre></div>
+</div>
+<p>We recommend that you have at least three controllers. This allows for a single controller to fail and the cluster to continue to operate.</p>
+<p>For more information about controllers, please see <a class="reference external" href="https://kafka.apache.org/documentation/#kraft_voter">https://kafka.apache.org/documentation/#kraft_voter</a>.</p>
+</section>
+<section id="brokers">
+<h3>Brokers<a class="headerlink" href="#brokers" title="Link to this heading"></a></h3>
+<p>Brokers are responsible for the storage and replication of messages. With Kafka enabled, the Elastic Agent will begin to act as a producer and write its messages to topics stored on the Kafka broker(s).</p>
+<p>Brokers require much more resources than controllers as they are responsible for managing the data and providing the data to consumers. Sizing brokers depends heavily on expected message volume. A system with 8 CPU cores, 32GB of RAM, and 500GB storage should be sufficient for a single Kafka broker.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The above hardware recommendations should be used as a minimum. Increasing the number of brokers and the resources available to each broker will increase the overall performance of the Kafka cluster. Additionally, without sufficient storage space on each broker, the cluster may run out of space and stop accepting messages. The brokers <code class="docutils literal notranslate"><span class="pre">log.retention.hours</span></code> setting can be configured to delete messages after a certain amount of time to prevent this from happening.</p>
+</div>
+<p>Broker configuration can be modified by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; Kafka –&gt; config –&gt; broker.</p>
+<p>For more information about broker configuration, please see <a class="reference external" href="https://kafka.apache.org/documentation/#brokerconfigs">https://kafka.apache.org/documentation/#brokerconfigs</a>.</p>
+</section>
+<section id="enabling-kafka">
+<h3>Enabling Kafka<a class="headerlink" href="#enabling-kafka" title="Link to this heading"></a></h3>
+<p>Once you have the appropriate configuration in place, you can enable Kafka by navigating to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; global –&gt; pipeline and setting the value to <code class="docutils literal notranslate"><span class="pre">KAFKA</span></code>.</p>
+<p>There is no need to click on the <code class="docutils literal notranslate"><span class="pre">SYNCHRONIZE</span> <span class="pre">GRID</span></code> button. Once you have set the global pipeline value to <code class="docutils literal notranslate"><span class="pre">KAFKA</span></code>, the changes will begin to take effect in the background before finally switching the grid to the new pipeline.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">In order to change the global pipeline you will need to enable the <a class="reference internal" href="administration.html#administration-advanced-settings"><span class="std std-ref">Advanced Settings</span></a> option.</div>
+</div>
+</div>
+</section>
+</section>
+<section id="more-information">
+<h2>More information<a class="headerlink" href="#more-information" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">For more information about Kafka, please see: <a class="reference external" href="https://kafka.apache.org/documentation/#gettingStarted">https://kafka.apache.org/documentation/#gettingStarted</a></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="notifications.html" class="btn btn-neutral float-left" title="Notifications" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="connect.html" class="btn btn-neutral float-right" title="Connect API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

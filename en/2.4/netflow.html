@@ -1,0 +1,188 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NetFlow &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CEF" href="cef.html" />
+    <link rel="prev" title="Additional Network Visibility" href="additional-network.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">NetFlow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#add-the-netflow-records-integration">Add the NetFlow Records integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#allow-netflow-traffic-through-firewall">Allow NetFlow traffic through firewall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#netflow-dashboard">NetFlow dashboard</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cef.html">CEF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iptables.html">iptables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unifi.html">UniFi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pfsense.html">pfSense</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opnsense.html">OPNsense</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="additional-network.html">Additional Network Visibility</a></li>
+      <li class="breadcrumb-item active">NetFlow</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/netflow.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="netflow">
+<span id="id1"></span><h1>NetFlow<a class="headerlink" href="#netflow" title="Link to this heading"></a></h1>
+<p>You may have devices on your network such as firewalls, routers, and switches that are capable of exporting NetFlow records. If you would like to collect these NetFlow records, add the Elastic integration for <code class="docutils literal notranslate"><span class="pre">NetFlow</span> <span class="pre">Records</span></code> and then allow the Netflow traffic through the firewall.</p>
+<section id="add-the-netflow-records-integration">
+<h2>Add the NetFlow Records integration<a class="headerlink" href="#add-the-netflow-records-integration" title="Link to this heading"></a></h2>
+<p>First, add the Elastic integration for <code class="docutils literal notranslate"><span class="pre">NetFlow</span> <span class="pre">Records</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information about the <code class="docutils literal notranslate"><span class="pre">NetFlow</span> <span class="pre">Records</span></code> integration, please see <a class="reference external" href="https://docs.elastic.co/en/integrations/netflow">https://docs.elastic.co/en/integrations/netflow</a>.</p>
+</div>
+<ol class="arabic simple">
+<li><p>Go to <a class="reference internal" href="elastic-fleet.html#elastic-fleet"><span class="std std-ref">Elastic Fleet</span></a>, click the <code class="docutils literal notranslate"><span class="pre">Agent</span> <span class="pre">policies</span></code> tab, and then click the desired policy (for example <code class="docutils literal notranslate"><span class="pre">so-grid-nodes_general</span></code>).</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">integration</span></code> button.</p></li>
+<li><p>Search for <code class="docutils literal notranslate"><span class="pre">netflow</span></code> and then click on the <code class="docutils literal notranslate"><span class="pre">NetFlow</span> <span class="pre">Records</span></code> integration.</p></li>
+<li><p>The Elastic Integration page will show an overview of the NetFlow Integration. Review all information on the page and then click the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">NetFlow</span> <span class="pre">Records</span></code> button.</p></li>
+<li><p>On the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">NetFlow</span> <span class="pre">Records</span> <span class="pre">integration</span></code> screen, go to the <code class="docutils literal notranslate"><span class="pre">UDP</span> <span class="pre">host</span> <span class="pre">to</span> <span class="pre">listen</span> <span class="pre">on</span></code> field and change <code class="docutils literal notranslate"><span class="pre">localhost</span></code> to <code class="docutils literal notranslate"><span class="pre">0.0.0.0</span></code>. Verify the <code class="docutils literal notranslate"><span class="pre">UDP</span> <span class="pre">port</span> <span class="pre">to</span> <span class="pre">listen</span> <span class="pre">on</span></code> field matches what your NetFlow exporter will be sending to. Click the <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">and</span> <span class="pre">continue</span></code> button and then click <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">and</span> <span class="pre">deploy</span> <span class="pre">changes</span></code>.</p></li>
+</ol>
+</section>
+<section id="allow-netflow-traffic-through-firewall">
+<h2>Allow NetFlow traffic through firewall<a class="headerlink" href="#allow-netflow-traffic-through-firewall" title="Link to this heading"></a></h2>
+<p>Next, allow the traffic from the NetFlow exporter through the firewall to the NetFlow listener port.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following instructions assume that this is the first firewall change you have made and therefore refer to <code class="docutils literal notranslate"><span class="pre">customhostgroup0</span></code> and <code class="docutils literal notranslate"><span class="pre">customportgroup0</span></code>. If those have already been used, you can select the next available hostgroup and portgroup.</p>
+</div>
+<ol class="arabic simple">
+<li><p>Navigate to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration.</p></li>
+<li><p>At the top of the page, click the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu and then enable the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">advanced</span> <span class="pre">settings</span></code> option.</p></li>
+<li><p>On the left side, go to <code class="docutils literal notranslate"><span class="pre">firewall</span></code>, select <code class="docutils literal notranslate"><span class="pre">hostgroups</span></code>, and click the <code class="docutils literal notranslate"><span class="pre">customhostgroup0</span></code> group. On the right side, enter the IP address of the NetFlow exporter and click the checkmark to save.</p></li>
+<li><p>On the left side, go to <code class="docutils literal notranslate"><span class="pre">firewall</span></code>, select <code class="docutils literal notranslate"><span class="pre">portgroups</span></code>, select the <code class="docutils literal notranslate"><span class="pre">customportgroup0</span></code> group, and then click <code class="docutils literal notranslate"><span class="pre">udp</span></code>. On the right side, enter your desired NetFlow listener port (2055 by default) and click the checkmark to save.</p></li>
+<li><p>On the left side, go to <code class="docutils literal notranslate"><span class="pre">firewall</span></code>, select <code class="docutils literal notranslate"><span class="pre">role</span></code>, and then select the node type that will receive the NetFlow records. Then drill into <code class="docutils literal notranslate"><span class="pre">chain</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">INPUT</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">hostgroups</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">customhostgroup0</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">portgroups</span></code>. On the right side, enter <code class="docutils literal notranslate"><span class="pre">customportgroup0</span></code> and click the checkmark to save.</p></li>
+<li><p>If you would like to apply the rules immediately, click the <code class="docutils literal notranslate"><span class="pre">SYNCHRONIZE</span> <span class="pre">GRID</span></code> button under the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu at the top of the page.</p></li>
+</ol>
+</section>
+<section id="netflow-dashboard">
+<h2>NetFlow dashboard<a class="headerlink" href="#netflow-dashboard" title="Link to this heading"></a></h2>
+<p>Once all configuration is complete, you should be able to go to <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a> and select the <code class="docutils literal notranslate"><span class="pre">NetFlow</span></code> dashboard to see your NetFlow records.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="additional-network.html" class="btn btn-neutral float-left" title="Additional Network Visibility" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cef.html" class="btn btn-neutral float-right" title="CEF" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Directory Structure" href="directory.html" />
+    <link rel="prev" title="Help" href="help.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="help.html">Help</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">FAQ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-update-upgrade">Install / Update / Upgrade</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#why-won-t-the-iso-image-boot-on-my-machine">Why won’t the ISO image boot on my machine?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-s-the-recommended-procedure-for-installing-security-onion">What’s the recommended procedure for installing Security Onion?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-s-the-recommended-procedure-for-configuring-security-onion">What’s the recommended procedure for configuring Security Onion?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-if-i-receive-a-the-ip-being-routed-by-linux-is-not-the-ip-address-assigned-to-the-management-interface-error-message">What if I receive a <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">IP</span> <span class="pre">being</span> <span class="pre">routed</span> <span class="pre">by</span> <span class="pre">Linux</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">the</span> <span class="pre">IP</span> <span class="pre">address</span> <span class="pre">assigned</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">management</span> <span class="pre">interface</span></code> error message?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-languages-are-supported">What languages are supported?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-do-i-install-security-onion-updates">How do I install Security Onion updates?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-connectivity-does-security-onion-need-to-stay-up-to-date">What connectivity does Security Onion need to stay up to date?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-do-i-need-to-do-if-i-m-behind-a-proxy">What do I need to do if I’m behind a proxy?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#can-i-run-security-onion-on-raspberry-pi-or-some-other-non-x86-box">Can I run Security Onion on Raspberry Pi or some other non-x86 box?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#users-passwords">Users / Passwords</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-is-the-password">What is the password?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-do-i-add-a-new-user-account">How do I add a new user account?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#support-help">Support / Help</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#where-do-i-send-questions-problems-suggestions">Where do I send questions/problems/suggestions?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-commercial-support-available-for-security-onion">Is commercial support available for Security Onion?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ids-engines">IDS engines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#can-security-onion-run-in-ips-mode">Can Security Onion run in <code class="docutils literal notranslate"><span class="pre">IPS</span></code> mode?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#security-onion-internals">Security Onion internals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#where-can-i-read-more-about-the-tools-contained-within-security-onion">Where can I read more about the tools contained within Security Onion?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-s-the-directory-structure-of-nsm">What’s the directory structure of <code class="docutils literal notranslate"><span class="pre">/nsm</span></code>?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#why-does-security-onion-use-utc">Why does Security Onion use <code class="docutils literal notranslate"><span class="pre">UTC</span></code>?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#why-are-the-timestamps-in-kibana-not-in-utc">Why are the <code class="docutils literal notranslate"><span class="pre">timestamps</span></code> in Kibana not in UTC?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#why-is-my-disk-filling-up">Why is my disk filling up?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-is-my-data-kept-secure">How is my data kept secure?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tuning">Tuning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-do-i-configure-email-for-alerting-and-reporting">How do I configure email for alerting and reporting?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-do-i-configure-a-bpf">How do I configure a <code class="docutils literal notranslate"><span class="pre">BPF</span></code>?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-do-i-filter-traffic">How do I filter traffic?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-do-i-exclude-traffic">How do I exclude traffic?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-are-the-default-firewall-settings-and-how-do-i-change-them">What are the default firewall settings and how do I change them?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-do-i-need-to-modify-in-order-to-have-the-log-files-stored-on-a-different-mount-point">What do I need to modify in order to have the log files stored on a different mount point?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#common-problems">Common Problems</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#why-do-containers-go-missing">Why do containers go missing?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#why-does-elastalert-often-go-missing-on-my-grid">Why does ElastAlert often go missing on my grid?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#why-does-elasticsearch-go-to-the-unhealthy-state">Why does Elasticsearch go to the unhealthy state?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#miscellaneous">Miscellaneous</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#where-can-i-find-interesting-pcaps-to-replay">Where can I find interesting pcaps to replay?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#why-is-security-onion-connecting-to-an-ip-address-on-the-internet-over-port-123">Why is Security Onion connecting to an IP address on the Internet over port 123?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#should-i-backup-my-security-onion-box">Should I backup my Security Onion box?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-happened-to-filebeat">What happened to Filebeat?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-happened-to-grafana">What happened to Grafana?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-happened-to-playbook">What happened to Playbook?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-happened-to-wazuh">What happened to Wazuh?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-i-add-local-rules">How can I add local rules?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#can-i-connect-security-onion-to-active-directory-or-another-oidc-provider">Can I connect Security Onion to Active Directory or another OIDC provider?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="directory.html">Directory Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="community-support.html">Community Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="help-wanted.html">Help Wanted</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="help.html">Help</a></li>
+      <li class="breadcrumb-item active">FAQ</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/faq.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="faq">
+<span id="id1"></span><h1>FAQ<a class="headerlink" href="#faq" title="Link to this heading"></a></h1>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><a class="reference external" href="#install-update-upgrade">Install / Update / Upgrade</a></div>
+<div class="line"><a class="reference external" href="#users-passwords">Users / Passwords</a></div>
+<div class="line"><a class="reference external" href="#support-help">Support / Help</a></div>
+<div class="line"><a class="reference external" href="#ids-engines">IDS engines</a></div>
+<div class="line"><a class="reference external" href="#security-onion-internals">Security Onion internals</a></div>
+<div class="line"><a class="reference external" href="#tuning">Tuning</a></div>
+<div class="line"><a class="reference external" href="#common-problems">Common Problems</a></div>
+<div class="line"><a class="reference external" href="#miscellaneous">Miscellaneous</a></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<section id="install-update-upgrade">
+<h2>Install / Update / Upgrade<a class="headerlink" href="#install-update-upgrade" title="Link to this heading"></a></h2>
+<section id="why-won-t-the-iso-image-boot-on-my-machine">
+<h3>Why won’t the ISO image boot on my machine?<a class="headerlink" href="#why-won-t-the-iso-image-boot-on-my-machine" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="trouble-booting.html#trouble-booting"><span class="std std-ref">Booting Issues</span></a> section.</p>
+</section>
+<section id="what-s-the-recommended-procedure-for-installing-security-onion">
+<h3>What’s the recommended procedure for installing Security Onion?<a class="headerlink" href="#what-s-the-recommended-procedure-for-installing-security-onion" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="installation.html#installation"><span class="std std-ref">Installation</span></a> section.</p>
+</section>
+<section id="what-s-the-recommended-procedure-for-configuring-security-onion">
+<h3>What’s the recommended procedure for configuring Security Onion?<a class="headerlink" href="#what-s-the-recommended-procedure-for-configuring-security-onion" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="configuration.html#configuration"><span class="std std-ref">Configuration</span></a> section.</p>
+</section>
+<section id="what-if-i-receive-a-the-ip-being-routed-by-linux-is-not-the-ip-address-assigned-to-the-management-interface-error-message">
+<h3>What if I receive a <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">IP</span> <span class="pre">being</span> <span class="pre">routed</span> <span class="pre">by</span> <span class="pre">Linux</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">the</span> <span class="pre">IP</span> <span class="pre">address</span> <span class="pre">assigned</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">management</span> <span class="pre">interface</span></code> error message?<a class="headerlink" href="#what-if-i-receive-a-the-ip-being-routed-by-linux-is-not-the-ip-address-assigned-to-the-management-interface-error-message" title="Link to this heading"></a></h3>
+<p>Please see the warning about this in the <a class="reference internal" href="configuration.html#configuration"><span class="std std-ref">Configuration</span></a> section.</p>
+</section>
+<section id="what-languages-are-supported">
+<h3>What languages are supported?<a class="headerlink" href="#what-languages-are-supported" title="Link to this heading"></a></h3>
+<p>We only support the English language at this time.</p>
+</section>
+<section id="how-do-i-install-security-onion-updates">
+<h3>How do I install Security Onion updates?<a class="headerlink" href="#how-do-i-install-security-onion-updates" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="soup.html#soup"><span class="std std-ref">soup</span></a> section.</p>
+</section>
+<section id="what-connectivity-does-security-onion-need-to-stay-up-to-date">
+<h3>What connectivity does Security Onion need to stay up to date?<a class="headerlink" href="#what-connectivity-does-security-onion-need-to-stay-up-to-date" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="firewall.html#firewall"><span class="std std-ref">Firewall</span></a> section.</p>
+</section>
+<section id="what-do-i-need-to-do-if-i-m-behind-a-proxy">
+<h3>What do I need to do if I’m behind a proxy?<a class="headerlink" href="#what-do-i-need-to-do-if-i-m-behind-a-proxy" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="proxy.html#proxy"><span class="std std-ref">Proxy</span></a> section.</p>
+</section>
+<section id="can-i-run-security-onion-on-raspberry-pi-or-some-other-non-x86-box">
+<h3>Can I run Security Onion on Raspberry Pi or some other non-x86 box?<a class="headerlink" href="#can-i-run-security-onion-on-raspberry-pi-or-some-other-non-x86-box" title="Link to this heading"></a></h3>
+<p>No, we only support x86-64 (standard Intel/AMD 64-bit architectures). Please see the <a class="reference internal" href="hardware.html#hardware"><span class="std std-ref">Hardware Requirements</span></a> section.</p>
+<p><a class="reference external" href="#top">back to top</a></p>
+</section>
+</section>
+<section id="users-passwords">
+<h2>Users / Passwords<a class="headerlink" href="#users-passwords" title="Link to this heading"></a></h2>
+<section id="what-is-the-password">
+<h3>What is the password?<a class="headerlink" href="#what-is-the-password" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="passwords.html#passwords"><span class="std std-ref">Passwords</span></a> section.</p>
+</section>
+<section id="how-do-i-add-a-new-user-account">
+<h3>How do I add a new user account?<a class="headerlink" href="#how-do-i-add-a-new-user-account" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="adding-accounts.html#adding-accounts"><span class="std std-ref">Adding Accounts</span></a> section.</p>
+<p><a class="reference external" href="#top">back to top</a></p>
+</section>
+</section>
+<section id="support-help">
+<h2>Support / Help<a class="headerlink" href="#support-help" title="Link to this heading"></a></h2>
+<section id="where-do-i-send-questions-problems-suggestions">
+<h3>Where do I send questions/problems/suggestions?<a class="headerlink" href="#where-do-i-send-questions-problems-suggestions" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="community-support.html#community-support"><span class="std std-ref">Community Support</span></a> section.</p>
+</section>
+<section id="is-commercial-support-available-for-security-onion">
+<h3>Is commercial support available for Security Onion?<a class="headerlink" href="#is-commercial-support-available-for-security-onion" title="Link to this heading"></a></h3>
+<p>Yes, we offer commercial support at <a class="reference external" href="https://securityonionsolutions.com">https://securityonionsolutions.com</a>.</p>
+<p><a class="reference external" href="#top">back to top</a></p>
+</section>
+</section>
+<section id="ids-engines">
+<h2>IDS engines<a class="headerlink" href="#ids-engines" title="Link to this heading"></a></h2>
+<section id="can-security-onion-run-in-ips-mode">
+<h3>Can Security Onion run in <code class="docutils literal notranslate"><span class="pre">IPS</span></code> mode?<a class="headerlink" href="#can-security-onion-run-in-ips-mode" title="Link to this heading"></a></h3>
+<p>No, Security Onion does not support blocking traffic. Most organizations have some sort of Next Generation Firewall (NGFW) with IPS features and that is the proper place for blocking to occur. Security Onion is designed to monitor the traffic that makes it through your firewall.</p>
+<p><a class="reference external" href="#top">back to top</a></p>
+</section>
+</section>
+<section id="security-onion-internals">
+<h2>Security Onion internals<a class="headerlink" href="#security-onion-internals" title="Link to this heading"></a></h2>
+<section id="where-can-i-read-more-about-the-tools-contained-within-security-onion">
+<h3>Where can I read more about the tools contained within Security Onion?<a class="headerlink" href="#where-can-i-read-more-about-the-tools-contained-within-security-onion" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="tools.html#tools"><span class="std std-ref">Tools</span></a> section.</p>
+</section>
+<section id="what-s-the-directory-structure-of-nsm">
+<h3>What’s the directory structure of <code class="docutils literal notranslate"><span class="pre">/nsm</span></code>?<a class="headerlink" href="#what-s-the-directory-structure-of-nsm" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="directory.html#directory"><span class="std std-ref">Directory Structure</span></a> section.</p>
+</section>
+<section id="why-does-security-onion-use-utc">
+<h3>Why does Security Onion use <code class="docutils literal notranslate"><span class="pre">UTC</span></code>?<a class="headerlink" href="#why-does-security-onion-use-utc" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="timezones.html#timezones"><span class="std std-ref">UTC and Time Zones</span></a> section.</p>
+</section>
+<section id="why-are-the-timestamps-in-kibana-not-in-utc">
+<h3>Why are the <code class="docutils literal notranslate"><span class="pre">timestamps</span></code> in Kibana not in UTC?<a class="headerlink" href="#why-are-the-timestamps-in-kibana-not-in-utc" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="timezones.html#timezones"><span class="std std-ref">UTC and Time Zones</span></a> section.</p>
+</section>
+<section id="why-is-my-disk-filling-up">
+<h3>Why is my disk filling up?<a class="headerlink" href="#why-is-my-disk-filling-up" title="Link to this heading"></a></h3>
+<p>In general, Security Onion attempts to make use of as much disk space as you give it. Depending on installation type, it should continue writing data to disk until disk usage reaches 80-90% at which point it should begin purging old data. Most disk space is used by <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> or full packet capture written to disk via <a class="reference internal" href="stenographer.html#stenographer"><span class="std std-ref">Stenographer</span></a> or <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a>.</p>
+</section>
+<section id="how-is-my-data-kept-secure">
+<h3>How is my data kept secure?<a class="headerlink" href="#how-is-my-data-kept-secure" title="Link to this heading"></a></h3>
+<p>Standard network connections to or from Security Onion are encrypted. This includes SSH, HTTPS, <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> network queries, and <a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a> minion traffic. All endpoint agent (Elastic Agent) traffic is encrypted except for binary updates, which are served from the Manager over http - these update files are cryptographically signed by Elastic and are verified before they are used. There is also the option to pull these updates via https directly from Elastic. SOC user account passwords are hashed via bcrypt in Kratos and you can read more about that at <a class="reference external" href="https://github.com/ory/kratos">https://github.com/ory/kratos</a>.</p>
+<p><a class="reference external" href="#top">back to top</a></p>
+</section>
+</section>
+<section id="tuning">
+<h2>Tuning<a class="headerlink" href="#tuning" title="Link to this heading"></a></h2>
+<section id="how-do-i-configure-email-for-alerting-and-reporting">
+<h3>How do I configure email for alerting and reporting?<a class="headerlink" href="#how-do-i-configure-email-for-alerting-and-reporting" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="email.html#email"><span class="std std-ref">Email</span></a> section.</p>
+</section>
+<section id="how-do-i-configure-a-bpf">
+<h3>How do I configure a <code class="docutils literal notranslate"><span class="pre">BPF</span></code>?<a class="headerlink" href="#how-do-i-configure-a-bpf" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="bpf.html#bpf"><span class="std std-ref">BPF</span></a> section.</p>
+</section>
+<section id="how-do-i-filter-traffic">
+<h3>How do I filter traffic?<a class="headerlink" href="#how-do-i-filter-traffic" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="bpf.html#bpf"><span class="std std-ref">BPF</span></a> section.</p>
+</section>
+<section id="how-do-i-exclude-traffic">
+<h3>How do I exclude traffic?<a class="headerlink" href="#how-do-i-exclude-traffic" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="bpf.html#bpf"><span class="std std-ref">BPF</span></a> section.</p>
+</section>
+<section id="what-are-the-default-firewall-settings-and-how-do-i-change-them">
+<h3>What are the default firewall settings and how do I change them?<a class="headerlink" href="#what-are-the-default-firewall-settings-and-how-do-i-change-them" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="firewall.html#firewall"><span class="std std-ref">Firewall</span></a> section.</p>
+</section>
+<section id="what-do-i-need-to-modify-in-order-to-have-the-log-files-stored-on-a-different-mount-point">
+<h3>What do I need to modify in order to have the log files stored on a different mount point?<a class="headerlink" href="#what-do-i-need-to-modify-in-order-to-have-the-log-files-stored-on-a-different-mount-point" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="new-disk.html#new-disk"><span class="std std-ref">Adding Disk Space</span></a> section.</p>
+<blockquote>
+<div><p><a class="reference external" href="#top">back to top</a></p>
+</div></blockquote>
+</section>
+</section>
+<section id="common-problems">
+<h2>Common Problems<a class="headerlink" href="#common-problems" title="Link to this heading"></a></h2>
+<section id="why-do-containers-go-missing">
+<h3>Why do containers go missing?<a class="headerlink" href="#why-do-containers-go-missing" title="Link to this heading"></a></h3>
+<p>Docker containers that stop running, due to exiting from errors or other reasons, will be automatically removed by the scheduled cleanup process.</p>
+<p>Most container logs are redirected to their application log directory, located in <code class="docutils literal notranslate"><span class="pre">/opt/so/log</span></code>. In some cases the logs may not get written to disk, and instead must be viewed via <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">logs</span> <span class="pre">&lt;container-name&gt;</span></code> before the container is cleaned up.</p>
+</section>
+<section id="why-does-elastalert-often-go-missing-on-my-grid">
+<h3>Why does ElastAlert often go missing on my grid?<a class="headerlink" href="#why-does-elastalert-often-go-missing-on-my-grid" title="Link to this heading"></a></h3>
+<p>ElastAlert 2 will exit upon encountering syntax errors with rules or when Elasticsearch is not in a healthy state.</p>
+</section>
+<section id="why-does-elasticsearch-go-to-the-unhealthy-state">
+<h3>Why does Elasticsearch go to the unhealthy state?<a class="headerlink" href="#why-does-elasticsearch-go-to-the-unhealthy-state" title="Link to this heading"></a></h3>
+<p>Elasticsearch will become unhealthy for a variety of reasons, but the most common reasons are running out of disk space and having indices with unallocated shards.</p>
+<p><a class="reference external" href="#top">back to top</a></p>
+</section>
+</section>
+<section id="miscellaneous">
+<h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Link to this heading"></a></h2>
+<section id="where-can-i-find-interesting-pcaps-to-replay">
+<h3>Where can I find interesting pcaps to replay?<a class="headerlink" href="#where-can-i-find-interesting-pcaps-to-replay" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="pcaps.html#pcaps"><span class="std std-ref">PCAPs for Testing</span></a> section.</p>
+</section>
+<section id="why-is-security-onion-connecting-to-an-ip-address-on-the-internet-over-port-123">
+<h3>Why is Security Onion connecting to an IP address on the Internet over port 123?<a class="headerlink" href="#why-is-security-onion-connecting-to-an-ip-address-on-the-internet-over-port-123" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="ntp.html#ntp"><span class="std std-ref">NTP</span></a> section.</p>
+</section>
+<section id="should-i-backup-my-security-onion-box">
+<h3>Should I backup my Security Onion box?<a class="headerlink" href="#should-i-backup-my-security-onion-box" title="Link to this heading"></a></h3>
+<p>Security Onion automatically backs up some important configuration as described in the <a class="reference internal" href="backup.html#backup"><span class="std std-ref">Backup</span></a> section. However, there is no automated data backup. Network Security Monitoring as a whole is considered “best effort”. It is not a “mission critical” resource like a file server or web server. Since we’re dealing with “big data” (potentially terabytes of full packet capture) of a transient nature, backing up the data would be prohibitively expensive. Most organizations don’t do any data backups and instead just rebuild boxes when necessary.</p>
+</section>
+<section id="what-happened-to-filebeat">
+<h3>What happened to Filebeat?<a class="headerlink" href="#what-happened-to-filebeat" title="Link to this heading"></a></h3>
+<p>Filebeat has been replaced by <a class="reference internal" href="elastic-agent.html#elastic-agent"><span class="std std-ref">Elastic Agent</span></a>.</p>
+</section>
+<section id="what-happened-to-grafana">
+<h3>What happened to Grafana?<a class="headerlink" href="#what-happened-to-grafana" title="Link to this heading"></a></h3>
+<p>Grafana has been replaced by <a class="reference internal" href="grid.html#grid"><span class="std std-ref">Grid</span></a>.</p>
+</section>
+<section id="what-happened-to-playbook">
+<h3>What happened to Playbook?<a class="headerlink" href="#what-happened-to-playbook" title="Link to this heading"></a></h3>
+<p>Playbook has been replaced by <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a>.</p>
+</section>
+<section id="what-happened-to-wazuh">
+<h3>What happened to Wazuh?<a class="headerlink" href="#what-happened-to-wazuh" title="Link to this heading"></a></h3>
+<p>Wazuh has been replaced by <a class="reference internal" href="elastic-agent.html#elastic-agent"><span class="std std-ref">Elastic Agent</span></a>.</p>
+</section>
+<section id="how-can-i-add-local-rules">
+<h3>How can I add local rules?<a class="headerlink" href="#how-can-i-add-local-rules" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a> section.</p>
+</section>
+<section id="can-i-connect-security-onion-to-active-directory-or-another-oidc-provider">
+<h3>Can I connect Security Onion to Active Directory or another OIDC provider?<a class="headerlink" href="#can-i-connect-security-onion-to-active-directory-or-another-oidc-provider" title="Link to this heading"></a></h3>
+<p>Please see the <a class="reference internal" href="oidc.html#oidc"><span class="std std-ref">OpenID Connect (OIDC)</span></a> section.</p>
+<p><a class="reference external" href="#top">back to top</a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="help.html" class="btn btn-neutral float-left" title="Help" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="directory.html" class="btn btn-neutral float-right" title="Directory Structure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

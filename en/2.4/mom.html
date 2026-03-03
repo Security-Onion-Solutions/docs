@@ -1,0 +1,239 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manager of Managers (MoM) &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="MCP Server" href="mcp.html" />
+    <link rel="prev" title="Active Query Management" href="aqm.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="pro.html">Security Onion Pro</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="oidc.html">OpenID Connect (OIDC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="luks.html">LUKS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fips.html">FIPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stig.html">STIG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kafka.html">Kafka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="connect.html">Connect API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aqm.html">Active Query Management</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Manager of Managers (MoM)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mom-requirements">MoM Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-isolation">Data Isolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subgrid-outages">Subgrid Outages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#api-client">API Client</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subgrid-config">Subgrid Config</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#licensing">Licensing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mcp.html">MCP Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="splunk.html">Security Onion App for Splunk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hypervisor.html">Hypervisor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reports.html">Reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assistant.html">Onion AI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="pro.html">Security Onion Pro</a></li>
+      <li class="breadcrumb-item active">Manager of Managers (MoM)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/mom.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="manager-of-managers-mom">
+<span id="mom"></span><h1>Manager of Managers (MoM)<a class="headerlink" href="#manager-of-managers-mom" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an enterprise-level feature of Security Onion. Contact Security Onion Solutions, LLC via our website at <a class="reference external" href="https://securityonion.com/pro">https://securityonion.com/pro</a> for more information about purchasing a <a class="reference internal" href="pro.html#pro"><span class="std std-ref">Security Onion Pro</span></a> license with the necessary subgrid allocations to use this feature.</p>
+</div>
+<p>If you are an enterprise customer responsible for managing multiple grids, then you may benefit from the new Manager of Managers feature introduced with version 2.4.150!</p>
+<p>This feature allows you to elect a special grid manager (MoM) to be configured with knowledge of remote grids (subgrids) allowing the MoM to reach out to the subgrid to query and/or modify grid state, events, configuration, etc.</p>
+<p>Appropriately privileged users logging into the MoM will be able to interact with those subgrids from a single user interface. A Subgrid selection list will be available in the top-right of the <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> UI. Users can choose which grid they would like to interact with. Additionally, fault states will automatically propagate up to the MoM user interface giving those users the quick updates of new fault states within subgrids, regardless of which subgrid is currently selected. If the subgrid list becomes disabled that will indicate the current screen does not support subgrid interaction.</p>
+<p>Users logging into a subgrid <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> user interface will have no knowledge or visibility into other sibling grids or the MoM grid.</p>
+<section id="mom-requirements">
+<h2>MoM Requirements<a class="headerlink" href="#mom-requirements" title="Link to this heading"></a></h2>
+<p>The Manager of Managers feature has been designed such that only the MoM grid node requires network access to the subgrid manager nodes. This simplifies network and firewall configuration by ensuring end-user connections are isolated to a single endpoint. Therefore, users logged into the MoM <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> only need web access to the MoM manager.</p>
+<p>Please note that Manager of Managers is intended for production deployments so it is only supported on MANAGER, MANAGERSEARCH, and STANDALONE installations. It is not supported for IMPORT or EVAL installations.</p>
+</section>
+<section id="data-isolation">
+<h2>Data Isolation<a class="headerlink" href="#data-isolation" title="Link to this heading"></a></h2>
+<p>In a Manager of Managers configuration the data from each subgrid resides at rest within the subgrid only. If a MoM user requests information of a subgrid then that returned data will transit through the MoM node and from there move to the user’s web browser.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Manager of Managers currently does not attempt to merge data from multiple grids into a single <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> view.</p>
+<p>The suggested method for accessing data across multiple grids, such as when searching for alerts across all grids, is to utilize cross-cluster search (CCS). Keep in mind that this should be configured such that internal Security Onion indices are excluded from CCS, otherwise there is a risk of data duplication and/or corruption of internal <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> entities such as Cases, Detections, etc.</p>
+</div>
+</section>
+<section id="subgrid-outages">
+<h2>Subgrid Outages<a class="headerlink" href="#subgrid-outages" title="Link to this heading"></a></h2>
+<p>The MoM node will expect all subgrids to be reachable. In the event a subgrid is not reachable, or is in a state where it cannot respond successfully to incoming MoM requests, the MoM <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> interface will display an error notifying the logged in users that it cannot complete the request. Subgrid outages could delay retrieving state information from other subgrids.</p>
+<p>If a subgrid is expected to remain in a disconnected state for a longer period it is recommended to disable that subgrid in the Configuration screen and then synchronize the MoM grid state. This scenario can occur more frequently with subgrid “kits” that are transported between field locations for forensic collection purposes.</p>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not proceed with the configuration step until an appropriate <a class="reference internal" href="pro.html#pro"><span class="std std-ref">Security Onion Pro</span></a> license has been applied to each grid. Configuring subgrids on a <a class="reference internal" href="pro.html#pro"><span class="std std-ref">Security Onion Pro</span></a> license that does not have sufficient subgrid allocations can cause that license to be exceeded which can disable all other Pro features.</p>
+</div>
+<p>Configuration of Manager of Managers requires two steps:</p>
+<ol class="arabic simple">
+<li><p>API Client: Creation of an API Client on each subgrid manager via the subgrid’s <a class="reference internal" href="connect.html#connect"><span class="std std-ref">Connect API</span></a> Client screen</p></li>
+<li><p>Subgrid Config: Configuration of the subgrids on the MoM Configuration screen</p></li>
+</ol>
+<section id="api-client">
+<h3>API Client<a class="headerlink" href="#api-client" title="Link to this heading"></a></h3>
+<p>Create a new, dedicated <a class="reference internal" href="connect.html#connect"><span class="std std-ref">Connect API</span></a> Client on each subgrid and assign all permissions that the MoM will need to perform the desired functions. For example, if the MoM users will need complete management and visibility (effectively <code class="docutils literal notranslate"><span class="pre">superuser</span></code> access) then grant all permissions. However, if the MoM users will only be monitoring the subgrid health then the API Client permissions can be limited to <code class="docutils literal notranslate"><span class="pre">read</span></code> permission on specific resources, such as <code class="docutils literal notranslate"><span class="pre">grid</span></code>, <code class="docutils literal notranslate"><span class="pre">nodes</span></code>, etc.</p>
+<p>The API Client ID and Secret will be needed on the next step, so ensure those are recorded for each of the subgrids.</p>
+<p>While on the API Client screen, click the ⤓ icon to download the Certificate Authority (CA) certificate file. This file is in a text format and the contents will be pasted into the subgrid setting in the next step.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please be aware that any users in the MoM grid will be able to connect to the subgrid using the permissions defined for the API client. For example, suppose that you create an API client ID in the subgrid called <code class="docutils literal notranslate"><span class="pre">supermom</span></code> and you grant it all permissions. Once the MoM is configured to connect to the subgrid as shown in the next section, then any users in the MoM grid will connect to the subgrid as <code class="docutils literal notranslate"><span class="pre">supermom</span></code> and have all permissions to the subgrid regardless of whether the user has equivalent permissions in the MoM.</p>
+</div>
+</section>
+<section id="subgrid-config">
+<h3>Subgrid Config<a class="headerlink" href="#subgrid-config" title="Link to this heading"></a></h3>
+<p>Once the subgrid API Client credentials are known that subgrid can then be added to the MoM’s <code class="docutils literal notranslate"><span class="pre">Subordinate</span> <span class="pre">Grids</span></code> Configuration screen.</p>
+<a class="reference external image-reference" href="_images/config-item-soc-subgrids.png"><img alt="_images/config-item-soc-subgrids.png" src="_images/config-item-soc-subgrids.png" />
+</a>
+<ul class="simple">
+<li><p>As a superuser, log into the MoM <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> interface and navigate to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> -&gt; Configuration.</p></li>
+<li><p>Find the <code class="docutils literal notranslate"><span class="pre">soc</span> <span class="pre">&gt;</span> <span class="pre">config</span> <span class="pre">&gt;</span> <span class="pre">server</span> <span class="pre">&gt;</span> <span class="pre">Subordinate</span> <span class="pre">Grids</span></code> setting.</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">+</span></code> icon to add a new subgrid.</p></li>
+<li><p>Give the new subgrid a unique ID that accurately describes this subgrid from the MoM’s perspective.</p></li>
+<li><p>Enter in the subgrid’s Manager URL (reference the subgrid’s <code class="docutils literal notranslate"><span class="pre">base_url</span></code> value in this fully formed URL). Ex: <code class="docutils literal notranslate"><span class="pre">https://mysubgrid</span></code>. Note that this URL must be accessible from the MoM grid node.</p></li>
+<li><p>Paste or enter the subgrid’s API Client credentials. This refers to the Client API ID and generated secret.</p></li>
+<li><p>Paste the subgrid’s API Client Certificate Authority (CA) contents into the <code class="docutils literal notranslate"><span class="pre">Subgrid</span> <span class="pre">CA</span> <span class="pre">Certificate</span></code> field.</p></li>
+<li><p>If this subgrid is ready, enable it.</p></li>
+</ul>
+<p>Add additional subgrids as your <a class="reference internal" href="pro.html#pro"><span class="std std-ref">Security Onion Pro</span></a> license allows, and then click the green checkmark to save the configuration.</p>
+<p>The configuration will be applied at the next 15-minute interval or you can apply it immediately on the MoM grid by clicking the <code class="docutils literal notranslate"><span class="pre">SYNCHRONIZE</span> <span class="pre">GRID</span></code> button under the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu.</p>
+</section>
+</section>
+<section id="licensing">
+<h2>Licensing<a class="headerlink" href="#licensing" title="Link to this heading"></a></h2>
+<p>The Manager of Managers feature requires that all involved grids have a valid <a class="reference internal" href="pro.html#pro"><span class="std std-ref">Security Onion Pro</span></a> license applied.</p>
+<p>The MoM grid will require a special <a class="reference internal" href="pro.html#pro"><span class="std std-ref">Security Onion Pro</span></a> license with an allocation of subgrids encoded into the license that meets or exceeds the number of configured subgrids. Exceeding the licensed subgrid allocation will cause the MoM <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> to show an “Exceeded” license state which will disable <a class="reference internal" href="pro.html#pro"><span class="std std-ref">Security Onion Pro</span></a> features.</p>
+<p>Contact Security Onion Solutions, LLC via our website at <a class="reference external" href="https://securityonion.com/pro">https://securityonion.com/pro</a> for more information about purchasing a <a class="reference internal" href="pro.html#pro"><span class="std std-ref">Security Onion Pro</span></a> license with the appopriate subgrid allocations.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="aqm.html" class="btn btn-neutral float-left" title="Active Query Management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mcp.html" class="btn btn-neutral float-right" title="MCP Server" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

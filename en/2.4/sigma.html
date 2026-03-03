@@ -1,0 +1,275 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sigma &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="YARA" href="yara.html" />
+    <link rel="prev" title="NIDS" href="nids.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="rules.html">Rules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="nids.html">NIDS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sigma</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-existing-sigma-rules">Managing Existing Sigma Rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-new-sigma-rules">Adding New Sigma Rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sigma-configuration">Sigma Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sigma-update-frequency">Sigma Update Frequency</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sigma-packages">Sigma Packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-sigma-repositories">Custom Sigma Repositories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enable-sigma-rules-on-import">Enable Sigma Rules on Import</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="yara.html">YARA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="rules.html">Rules</a></li>
+      <li class="breadcrumb-item active">Sigma</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/sigma.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sigma">
+<span id="id1"></span><h1>Sigma<a class="headerlink" href="#sigma" title="Link to this heading"></a></h1>
+<p>Sigma rules are loaded into <a class="reference internal" href="elastalert.html#elastalert"><span class="std std-ref">ElastAlert 2</span></a> to monitor incoming logs for suspicious or noteworthy activity. Active sigma rules generate alerts that can then be found in <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>.</p>
+<p>From <a class="reference external" href="https://github.com/SigmaHQ/sigma">https://github.com/SigmaHQ/sigma</a>:</p>
+<blockquote>
+<div><p>Sigma is a generic and open signature format that allows you to describe relevant log events in a straightforward manner. The rule format is very flexible, easy to write and applicable to any type of log file. The main purpose of this project is to provide a structured form in which researchers or analysts can describe their once developed detection methods and make them shareable with others. Sigma is for log files what Snort is for network traffic and YARA is for files.</p>
+</div></blockquote>
+<section id="managing-existing-sigma-rules">
+<h2>Managing Existing Sigma Rules<a class="headerlink" href="#managing-existing-sigma-rules" title="Link to this heading"></a></h2>
+<p>You can manage existing Sigma rules via <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a>. There are two ways to do so:</p>
+<ul class="simple">
+<li><p>From the main <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a> interface, you can search for the desired detection and click the binoculars icon.</p></li>
+<li><p>From the <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a> interface, you can click an alert and then click the <code class="docutils literal notranslate"><span class="pre">Tune</span> <span class="pre">Detection</span></code> menu item.</p></li>
+</ul>
+<p>Once you’ve used one of these methods to reach the detection detail page, you can check the Status field in the upper-right corner and use the slider to enable or disable the detection.</p>
+<a class="reference external image-reference" href="_images/60_detection_sigma.png"><img alt="_images/60_detection_sigma.png" src="_images/60_detection_sigma.png" />
+</a>
+<p>To tune the detection:</p>
+<ul class="simple">
+<li><p>click the TUNING tab</p></li>
+<li><p>click the blue + button</p></li>
+<li><p>select the type of tuning (Custom Filter)</p></li>
+<li><p>enter your custom filter in the Custom Filter field</p></li>
+<li><p>click the <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> button to create and enable the Override</p></li>
+</ul>
+<a class="reference external image-reference" href="_images/60_detection_sigma_2_tuning_2_add.png"><img alt="_images/60_detection_sigma_2_tuning_2_add.png" src="_images/60_detection_sigma_2_tuning_2_add.png" />
+</a>
+<p>Custom Filters are Sigma Search Identifiers and will be applied like so: <code class="docutils literal notranslate"><span class="pre">&quot;($ORIGINAL_CONDITION)</span> <span class="pre">and</span> <span class="pre">not</span> <span class="pre">1</span> <span class="pre">of</span> <span class="pre">sofilter*&quot;</span></code></p>
+<p>For example, suppose that you have an <a class="reference internal" href="idh.html#idh"><span class="std std-ref">Intrusion Detection Honeypot</span></a> node installed with the HTTP webserver enabled. Your nightly vulnerablity scan is connecting to it and generating an alert from the <code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Onion</span> <span class="pre">IDH</span> <span class="pre">-</span> <span class="pre">HTTP</span> <span class="pre">Access</span></code> detection. To filter out connection attempts from this scanner, you would add the following Custom Filter to this detection:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sofilter</span><span class="p">:</span>
+  <span class="n">src_ip</span><span class="o">|</span><span class="n">cidr</span><span class="p">:</span> <span class="mf">192.168.55.45</span><span class="o">/</span><span class="mi">32</span>
+</pre></div>
+</div>
+<p>Once you save this filter, it is enabled by default for this detection. Clicking on the <code class="docutils literal notranslate"><span class="pre">Detection</span> <span class="pre">Source</span></code> tab and then on <code class="docutils literal notranslate"><span class="pre">Convert</span></code> will show you what the new EQL query looks like, which should include a filter for the IP address.</p>
+<p>For more information on Sigma rule syntax, please see the Sigma documentation at <a class="reference external" href="https://sigmahq.io/docs/basics/rules.html#detection">https://sigmahq.io/docs/basics/rules.html#detection</a>.</p>
+</section>
+<section id="adding-new-sigma-rules">
+<h2>Adding New Sigma Rules<a class="headerlink" href="#adding-new-sigma-rules" title="Link to this heading"></a></h2>
+<p>To add a new Sigma rule, go to the main <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a> page and click the blue + button between Options and the query bar. A form will appear where you will:</p>
+<ul class="simple">
+<li><p>click the Language drop-down and select <code class="docutils literal notranslate"><span class="pre">Sigma</span></code></p></li>
+<li><p>optionally specify a license</p></li>
+<li><p>add the signature</p></li>
+<li><p>click the <code class="docutils literal notranslate"><span class="pre">CREATE</span></code> button and the detection should deploy to your grid at the next 15-minute cycle</p></li>
+</ul>
+<a class="reference external image-reference" href="_images/59_detection_create.png"><img alt="_images/59_detection_create.png" src="_images/59_detection_create.png" />
+</a>
+</section>
+<section id="sigma-configuration">
+<h2>Sigma Configuration<a class="headerlink" href="#sigma-configuration" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Navigate to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration.</p></li>
+<li><p>At the top of the page, click the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu and then enable the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">advanced</span> <span class="pre">settings</span></code> option.</p></li>
+<li><p>Navigate to soc –&gt; config –&gt; server –&gt; modules –&gt; elastalertengine.</p></li>
+</ul>
+<p>Once you’ve reached this location, here are some common settings.</p>
+<section id="sigma-update-frequency">
+<h3>Sigma Update Frequency<a class="headerlink" href="#sigma-update-frequency" title="Link to this heading"></a></h3>
+<p>By default, Security Onion checks for new Sigma rules every 24 hours. You can change this value at elastalertengine –&gt; communityRulesImportFrequencySeconds.</p>
+</section>
+<section id="sigma-packages">
+<h3>Sigma Packages<a class="headerlink" href="#sigma-packages" title="Link to this heading"></a></h3>
+<p>You can choose from different Sigma packages:</p>
+<p><a class="reference external" href="https://github.com/SigmaHQ/sigma/blob/master/Releases.md">https://github.com/SigmaHQ/sigma/blob/master/Releases.md</a></p>
+<p>You can modify this setting via elastalertengine –&gt; sigmaRulePackages.</p>
+</section>
+<section id="custom-sigma-repositories">
+<h3>Custom Sigma Repositories<a class="headerlink" href="#custom-sigma-repositories" title="Link to this heading"></a></h3>
+<p>You can configure Security Onion to pull Sigma rules from custom git repos via elastalertengine –&gt; rulesRepos –&gt; default.</p>
+<p>Repos can be accessed via https or from the local filesystem. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">file</span><span class="p">:</span><span class="o">///</span><span class="n">nsm</span><span class="o">/</span><span class="n">rules</span><span class="o">/</span><span class="n">detect</span><span class="o">-</span><span class="n">sigma</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">custom</span><span class="o">-</span><span class="n">rep</span>
+</pre></div>
+</div>
+</section>
+<section id="enable-sigma-rules-on-import">
+<h3>Enable Sigma Rules on Import<a class="headerlink" href="#enable-sigma-rules-on-import" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">soc</span> <span class="o">&gt;</span> <span class="n">config</span> <span class="o">&gt;</span> <span class="n">server</span> <span class="o">&gt;</span> <span class="n">modules</span> <span class="o">&gt;</span> <span class="n">elastalertengine</span> <span class="o">&gt;</span> <span class="n">enabledSigmaRules</span> <span class="o">&gt;</span> <span class="n">default</span>
+</pre></div>
+</div>
+<p>This configuration options allows you to specify which rules are automatically enabled upon initial import. The format for this filter is a YAML list that supports flexible filtering criteria based on a number of fields in a Sigma rule. A rule is enabled only if it matches all specified filters - if there is more than one filter for a field, then it has to match at least one.</p>
+<p>Configuration Format</p>
+<p>Each item in the YAML list represents a set of filters, using the following fields:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>ruleset</dt><dd><ul class="simple">
+<li><p>Type: List of strings</p></li>
+<li><p>Description: Specifies the ruleset(s) to filter by (e.g., “core”, “securityonion-resources”,  “*” for any ruleset).</p></li>
+</ul>
+</dd>
+<dt>level</dt><dd><ul class="simple">
+<li><p>Type: List of strings</p></li>
+<li><p>Description: Specifies the severity level(s) (e.g., “critical”, “high”,  “*” for any level. This is not a greater than or equal check - just a string match).</p></li>
+</ul>
+</dd>
+<dt>product</dt><dd><ul class="simple">
+<li><p>Type: List of strings</p></li>
+<li><p>Description: Specifies the product(s) to filter by (e.g., “windows”, “*” for any products).</p></li>
+</ul>
+</dd>
+<dt>category</dt><dd><ul class="simple">
+<li><p>Type: List of strings</p></li>
+<li><p>Description: Specifies the event category or categories (e.g., “process_creation”, “registry_event”,  “*” for any category).</p></li>
+</ul>
+</dd>
+<dt>service</dt><dd><ul class="simple">
+<li><p>Type: List of strings</p></li>
+<li><p>Description: Specifies the service(s) to filter by (e.g., “security”, “dns-client”, “*” for any service).</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enable all critical and high rules from the &quot;securityonion-resources&quot; ruleset</span>
+<span class="o">-</span> <span class="n">ruleset</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;securityonion-resources&quot;</span><span class="p">]</span>
+  <span class="n">level</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;critical&quot;</span><span class="p">,</span> <span class="s2">&quot;high&quot;</span><span class="p">]</span>
+  <span class="n">product</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span>
+  <span class="n">category</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span>
+  <span class="n">service</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="nids.html" class="btn btn-neutral float-left" title="NIDS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="yara.html" class="btn btn-neutral float-right" title="YARA" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

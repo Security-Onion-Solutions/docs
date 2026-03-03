@@ -1,0 +1,235 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOC Customization &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="nginx" href="nginx.html" />
+    <link rel="prev" title="Customizing for Your Environment" href="customizing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SOC Customization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#login-page">Login Page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overview-page">Overview Page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#links">Links</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reverse-dns">Reverse DNS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#local-lookups">Local Lookups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cases">Cases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#session-timeout">Session Timeout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-queries">Custom Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#action-menu">Action Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#escalation">Escalation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">nginx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxy.html">Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firewall.html">Firewall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ntp.html">NTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="console.html">Console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssh.html">SSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hostname.html">Hostname</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ip.html">IP Address</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dns.html">DNS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="url-base.html">Web Access URL</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="customizing.html">Customizing for Your Environment</a></li>
+      <li class="breadcrumb-item active">SOC Customization</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/soc-customization.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="soc-customization">
+<span id="id1"></span><h1>SOC Customization<a class="headerlink" href="#soc-customization" title="Link to this heading"></a></h1>
+<p>You can customize <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; soc.</p>
+<a class="reference external image-reference" href="_images/config-item-soc.png"><img alt="_images/config-item-soc.png" src="_images/config-item-soc.png" />
+</a>
+<p>Below are some ways in which you can customize SOC. Once all customizations are complete, you can make the changes take effect by clicking the <code class="docutils literal notranslate"><span class="pre">Options</span></code> bar at the top and then clicking the <code class="docutils literal notranslate"><span class="pre">SYNCHRONIZE</span> <span class="pre">GRID</span></code> button.</p>
+<a class="reference external image-reference" href="_images/88_config_options.png"><img alt="_images/88_config_options.png" src="_images/88_config_options.png" />
+</a>
+<section id="login-page">
+<h2>Login Page<a class="headerlink" href="#login-page" title="Link to this heading"></a></h2>
+<p>You can customize the SOC login page with a login banner by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; soc –&gt; files –&gt; soc –&gt; Login Banner. The login banner uses the common Markdown (.md) format and you can learn more about that at <a class="reference external" href="https://markdownguide.org">https://markdownguide.org</a>.</p>
+</section>
+<section id="overview-page">
+<h2>Overview Page<a class="headerlink" href="#overview-page" title="Link to this heading"></a></h2>
+<p>After logging into SOC, you’ll start on the main SOC Overview page which can be customized as well. You can customize this by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; soc –&gt; files –&gt; soc –&gt; Overview Page. This uses Markdown format as mentioned above.</p>
+<p>You can add images but they must be hosted from another host that is accessible by the user’s browser. For example, let’s use one of the images from our online documentation. The markdown to add that image would look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>![SOC Dashboards](https://docs.securityonion.net/en/2.4/_images/53_dashboards.png)
+</pre></div>
+</div>
+</section>
+<section id="links">
+<h2>Links<a class="headerlink" href="#links" title="Link to this heading"></a></h2>
+<p>You can also customize the links on the left side. To do so, go to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; soc –&gt; server –&gt; client –&gt; tools.</p>
+</section>
+<section id="reverse-dns">
+<h2>Reverse DNS<a class="headerlink" href="#reverse-dns" title="Link to this heading"></a></h2>
+<p>When you are viewing IP addresses in <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>, <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>, or <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>, you might want to enable automatic reverse DNS lookups to provide more information. You can do so by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; soc –&gt; config –&gt; server –&gt; enableReverseLookup.</p>
+</section>
+<section id="local-lookups">
+<h2>Local Lookups<a class="headerlink" href="#local-lookups" title="Link to this heading"></a></h2>
+<p>If you don’t want to enable reverse DNS lookups for all IP addresses but do have a subset of IP addresses that you would like to resolve to hostnames in SOC, then you can create a CSV file at <code class="docutils literal notranslate"><span class="pre">/nsm/custom-mappings/ip-descriptions.csv</span></code> on your Manager and populate the file with IP addresses and descriptions as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IP</span><span class="p">,</span><span class="n">Description</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> will then ingest the CSV and use the contents to populate a new index called <code class="docutils literal notranslate"><span class="pre">so-ip-mappings</span></code>.</p>
+<p>When you are viewing IP addresses in <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>, <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>, or <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>, <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> will check the local mappings first. If it doesn’t find a match, then it will attempt a reverse DNS lookup (if enabled).</p>
+<p>If you later need to make changes to your local IP/Descriptions mappings, make the changes in <code class="docutils literal notranslate"><span class="pre">/nsm/custom-mappings/ip-descriptions.csv</span></code> and <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> will automatically update the <code class="docutils literal notranslate"><span class="pre">so-ip-mappings</span></code> index.</p>
+</section>
+<section id="cases">
+<h2>Cases<a class="headerlink" href="#cases" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="cases.html#cases"><span class="std std-ref">Cases</span></a> comes with presets for things like category, severity, TLP, PAP, tags, and status. You can modify these presets by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; soc –&gt; server –&gt; client –&gt; case –&gt; presets.</p>
+</section>
+<section id="session-timeout">
+<h2>Session Timeout<a class="headerlink" href="#session-timeout" title="Link to this heading"></a></h2>
+<p>The default timeout for user login sessions is 24 hours. This is a fixed timespan and will expire regardless of whether the user is active or idle in SOC. You can configure this by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; kratos –&gt; config –&gt; session –&gt; lifespan.</p>
+</section>
+<section id="custom-queries">
+<h2>Custom Queries<a class="headerlink" href="#custom-queries" title="Link to this heading"></a></h2>
+<p>If you’d like to add your own custom queries to <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>, <a class="reference internal" href="cases.html#cases"><span class="std std-ref">Cases</span></a>, <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>, <a class="reference internal" href="detections.html#detections"><span class="std std-ref">Detections</span></a> or <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a>, you can go to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; soc –&gt; config –&gt; server –&gt; client and then select the specific app you’d like to modify.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When you save your custom queries, SOC saves the entire list of queries (including our default queries included in the product). So if you update to a new version which includes new or updated default queries, you won’t see the new or updated default queries since your custom query list is overriding the default.</p>
+</div>
+<p>To see all available fields for your queries, go down to the Events table and then click the arrow to expand a row. It will show all of the individual fields from that particular event.</p>
+<p>For example, suppose you want to add GeoIP information like <code class="docutils literal notranslate"><span class="pre">source.geo.region_iso_code</span></code> or <code class="docutils literal notranslate"><span class="pre">destination.geo.region_iso_code</span></code> to <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>. You would go to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; soc –&gt; config –&gt; server –&gt; client –&gt; alerts –&gt; queries and insert the following line wherever you want it show up in the query list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Group By Source IP/Port/Geo, Destination IP/Port/Geo, Name&quot;</span><span class="p">,</span> <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;* | groupby source.ip source.port source.geo.region_iso_code destination.ip destination.port destination.geo.region_iso_code rule.name&quot;</span> <span class="p">},</span>
+</pre></div>
+</div>
+<p>Please note that some events may not have GeoIP information and this query would only show those alerts that do have GeoIP information.</p>
+</section>
+<section id="action-menu">
+<h2>Action Menu<a class="headerlink" href="#action-menu" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>, <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>, and <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a> have an action menu with several default actions. If you’d like to add your own custom HTTP GET or POST actions, you can go to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; soc –&gt; actions and click the plus sign at the bottom of the list. Then fill out the fields and save the new action.</p>
+</section>
+<section id="escalation">
+<h2>Escalation<a class="headerlink" href="#escalation" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>, <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a>, and <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a> display logs with a blue triangle that allows you to escalate the event. This defaults to our <a class="reference internal" href="cases.html#cases"><span class="std std-ref">Cases</span></a> interface. If for some reason you want to escalate to a different case management system, you can change this setting. You can go to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; soc –&gt; server –&gt; modules –&gt; cases and specify one of the following values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">soc</span></code> - Enables the built-in Case Management, with our Escalation menu (default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">elasticcases</span></code> - Enables escalation to the <a class="reference external" href="https://www.elastic.co/guide/en/security/current/cases-overview.html">Elastic Cases</a> tool. Escalations will always open a new case; there will not be an advanced escalation menu popup.  This module will use the same user/pass that SOC uses to talk to Elastic. Note, however, that Elastic cases is actually a Kibana feature, therefore, when this setting is used, SOC will be communicating with the local Kibana service (via its API) for case escalations.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="customizing.html" class="btn btn-neutral float-left" title="Customizing for Your Environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nginx.html" class="btn btn-neutral float-right" title="nginx" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

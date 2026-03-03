@@ -1,0 +1,357 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Firewall &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Email" href="email.html" />
+    <link rel="prev" title="Proxy" href="proxy.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="soc-customization.html">SOC Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">nginx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxy.html">Proxy</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Firewall</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#network-firewalls">Network Firewalls</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#internet-communication">Internet Communication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#node-communication">Node Communication</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#host-firewall">Host Firewall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-host-firewall">Configuring Host Firewall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reviewing-host-firewall">Reviewing Host Firewall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#port-groups">Port Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#host-groups">Host Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#function">Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-firewall-config">Advanced Firewall Config</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#modifying-a-default-port-group">Modifying a default port group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-custom-host-group-with-a-custom-port-group">Creating a custom host group with a custom port group</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ntp.html">NTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="console.html">Console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssh.html">SSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hostname.html">Hostname</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ip.html">IP Address</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dns.html">DNS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="url-base.html">Web Access URL</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="customizing.html">Customizing for Your Environment</a></li>
+      <li class="breadcrumb-item active">Firewall</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/firewall.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="firewall">
+<span id="id1"></span><h1>Firewall<a class="headerlink" href="#firewall" title="Link to this heading"></a></h1>
+<p>This section will cover both network firewalls outside of Security Onion and the host-based firewall built into Security Onion.</p>
+<section id="network-firewalls">
+<h2>Network Firewalls<a class="headerlink" href="#network-firewalls" title="Link to this heading"></a></h2>
+<p>This first sub-section will discuss network firewalls outside of Security Onion.</p>
+<section id="internet-communication">
+<h3>Internet Communication<a class="headerlink" href="#internet-communication" title="Link to this heading"></a></h3>
+<p>When configuring network firewalls for Internet-connected deployments (non-<a class="reference internal" href="airgap.html#airgap"><span class="std std-ref">Airgap</span></a>), you’ll want to ensure that the deployment can connect outbound (TCP/443) to the following:</p>
+<ul class="simple">
+<li><p>raw.githubusercontent.com (Security Onion public key)</p></li>
+<li><p>sigs.securityonion.net (Signature files for Security Onion containers)</p></li>
+<li><p>ghcr.io (Container downloads)</p></li>
+<li><p>pkg-containers.githubusercontent.com (Container downloads)</p></li>
+<li><p>rules.emergingthreatspro.com (Emerging Threats IDS rules)</p></li>
+<li><p>rules.emergingthreats.net (Emerging Threats IDS open rules)</p></li>
+<li><p>github.com (Strelka and Sigma rules updates)</p></li>
+<li><p>objects.githubusercontent.com (Strelka and Sigma rules updates)</p></li>
+</ul>
+<p>If you are using our ISO image, you will also need access to the following:</p>
+<ul class="simple">
+<li><p>repo.securityonion.net (primary repo for Oracle Linux package updates)</p></li>
+<li><p>repo-alt.securityonion.net (secondary repo for Oracle Linux package updates)</p></li>
+<li><p>so-repo-east.s3.us-east-005.backblazeb2.com (secondary repo for Oracle Linux package updates)</p></li>
+</ul>
+<p>If you are not using our ISO image and are instead performing a <a class="reference internal" href="network-installation.html#network-installation"><span class="std std-ref">Network Installation</span></a>, you will also need access to the following:</p>
+<ul class="simple">
+<li><p>update repo for whatever base OS you’re installing on (OS packages)</p></li>
+<li><p>download.docker.com (<a class="reference internal" href="docker.html#docker"><span class="std std-ref">Docker</span></a> packages)</p></li>
+<li><p>repo.saltstack.com (<a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a> packages)</p></li>
+</ul>
+<p>If you choose to enable GeoIP updates for <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a>, you will also need access to the following:</p>
+<ul class="simple">
+<li><p>geoip.elastic.co</p></li>
+<li><p>storage.googleapis.com</p></li>
+</ul>
+<p>If you choose to enable the Snort Talos ruleset, you will also need access to the following:</p>
+<ul class="simple">
+<li><p>www.snort.org</p></li>
+</ul>
+</section>
+<section id="node-communication">
+<h3>Node Communication<a class="headerlink" href="#node-communication" title="Link to this heading"></a></h3>
+<p>When configuring network firewalls for distributed deployments, you’ll want to ensure that nodes can connect as shown in the table below. Please note that some of the sources and destinations listed in the table have specific definitions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Security</span> <span class="pre">Onion</span> <span class="pre">grid</span> <span class="pre">nodes</span></code> includes any node joined to your manager. This includes search nodes, sensors, fleet nodes, receiver nodes, and IDH nodes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Search</span> <span class="pre">nodes</span></code> are grid nodes that run Elasticsearch and join to the manager to enlarge its Elastic cluster.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Elastic</span> <span class="pre">cluster</span> <span class="pre">nodes</span></code> include the search nodes and the manager itself.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Endpoint</span> <span class="pre">Elastic</span> <span class="pre">Agents</span></code> includes any endpoint where you have deployed the Elastic Agent and want to send the data to your Security Onion grid.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Source (SRC)</p></th>
+<th class="head"><p>Destination (DST)</p></th>
+<th class="head"><p>Destination Port(s) (TCP)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Security Onion grid nodes</p></td>
+<td><p>Manager</p></td>
+<td><p>443, 4505, 4506, 5000, 5055, 8086, 8220, 8443</p></td>
+<td><p>Management, Registry, Salt, Updates</p></td>
+</tr>
+<tr class="row-odd"><td><p>Security Onion grid nodes</p></td>
+<td><p>Fleet node</p></td>
+<td><p>5055, 8220</p></td>
+<td><p>Elastic Agent data and management</p></td>
+</tr>
+<tr class="row-even"><td><p>Security Onion grid nodes</p></td>
+<td><p>Receiver node</p></td>
+<td><p>5055</p></td>
+<td><p>Elastic Agent data</p></td>
+</tr>
+<tr class="row-odd"><td><p>Search nodes</p></td>
+<td><p>Manager</p></td>
+<td><p>443, 4505, 4506, 5000, 5055, 8086, 8220, 8443, 9696</p></td>
+<td><p>Management, Registry, Salt, Updates, Redis</p></td>
+</tr>
+<tr class="row-even"><td><p>Elastic cluster nodes</p></td>
+<td><p>Elastic cluster nodes</p></td>
+<td><p>9200, 9300</p></td>
+<td><p>Logstash to Elasticsearch and Elasticsearch node-to-node</p></td>
+</tr>
+<tr class="row-odd"><td><p>Endpoint Elastic Agents</p></td>
+<td><p>Manager</p></td>
+<td><p>8220, 8443, 5055</p></td>
+<td><p>Elastic Agent management, binary updates, data</p></td>
+</tr>
+<tr class="row-even"><td><p>Endpoint Elastic Agents</p></td>
+<td><p>Fleet node</p></td>
+<td><p>5055, 8220</p></td>
+<td><p>Elastic Agent management and data</p></td>
+</tr>
+<tr class="row-odd"><td><p>Endpoint Elastic Agents</p></td>
+<td><p>Receiver node</p></td>
+<td><p>5055</p></td>
+<td><p>Elastic Agent data</p></td>
+</tr>
+<tr class="row-even"><td><p>Fleet node</p></td>
+<td><p>Receiver node</p></td>
+<td><p>5056</p></td>
+<td><p>Logstash-to-Logstash</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fleet node</p></td>
+<td><p>Manager</p></td>
+<td><p>5056, 9200</p></td>
+<td><p>Logstash-to-Logstash and Elasticsearch node-to-node</p></td>
+</tr>
+<tr class="row-even"><td><p>Manager</p></td>
+<td><p>IDH node</p></td>
+<td><p>2222</p></td>
+<td><p>SSH for management</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="host-firewall">
+<h2>Host Firewall<a class="headerlink" href="#host-firewall" title="Link to this heading"></a></h2>
+<p>The remainder of this section will cover the host firewall built into Security Onion.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Security Onion locks down the firewall by default.</p>
+</div>
+</section>
+<section id="configuring-host-firewall">
+<h2>Configuring Host Firewall<a class="headerlink" href="#configuring-host-firewall" title="Link to this heading"></a></h2>
+<p>You can configure the firewall by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; firewall –&gt; hostgroups.</p>
+<a class="reference external image-reference" href="_images/config-item-firewall.png"><img alt="_images/config-item-firewall.png" src="_images/config-item-firewall.png" />
+</a>
+<p>If for some reason you can’t access <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> at all, you can use the so-firewall command to allow the IP address of your web browser to connect (replacing <code class="docutils literal notranslate"><span class="pre">&lt;IP</span> <span class="pre">ADDRESS&gt;</span></code> with the actual IP address of your web browser):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">firewall</span> <span class="n">includehost</span> <span class="n">analyst</span> <span class="o">&lt;</span><span class="n">IP</span> <span class="n">ADDRESS</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="reviewing-host-firewall">
+<h2>Reviewing Host Firewall<a class="headerlink" href="#reviewing-host-firewall" title="Link to this heading"></a></h2>
+<p>You can view the entire firewall configuration from the command line using the <code class="docutils literal notranslate"><span class="pre">iptables</span></code> command like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">nvL</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You can use this command to view the iptables configuration, but please do not modify the firewall manually using iptables as it is managed by <a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a>. You should only make changes via the Configuration screen as shown above.</p>
+</div>
+</section>
+<section id="port-groups">
+<h2>Port Groups<a class="headerlink" href="#port-groups" title="Link to this heading"></a></h2>
+<p>Port groups are a way of grouping together ports similar to a firewall port/service alias. For example, if you have a web server you might add ports 80 and 443 into a port group.</p>
+</section>
+<section id="host-groups">
+<h2>Host Groups<a class="headerlink" href="#host-groups" title="Link to this heading"></a></h2>
+<p>Host groups are similar to port groups but for storing lists of hosts that will be allowed to connect to the associated port groups.</p>
+</section>
+<section id="function">
+<h2>Function<a class="headerlink" href="#function" title="Link to this heading"></a></h2>
+<p>The firewall state is designed with the idea of creating port groups and host groups, each with their own alias or name, and associating the two in order to create an allow rule. A node that has a port group and host group association assigned to it will allow those hosts to connect to those ports on that node.</p>
+<p>The default allow rules for each node are defined by its role (manager, searchnode, sensor, heavynode, etc) in the grid. Host groups and port groups can be created or modified from the manager node by going to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; firewall –&gt; hostgroups. When setup is run on a new node, it will ask the manager to add itself to the appropriate host groups. All node types are added to the minion host group to allow <a class="reference internal" href="salt.html#salt"><span class="std std-ref">Salt</span></a> communication. If you were to add a search node, you would see its IP appear in both the <code class="docutils literal notranslate"><span class="pre">minion</span></code> and the <code class="docutils literal notranslate"><span class="pre">search_node</span></code> host groups.</p>
+</section>
+<section id="advanced-firewall-config">
+<h2>Advanced Firewall Config<a class="headerlink" href="#advanced-firewall-config" title="Link to this heading"></a></h2>
+<p>When you go to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; firewall, you will only see <code class="docutils literal notranslate"><span class="pre">hostgroups</span></code> by default. If you need to modify port groups, then you will need to click the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu and then enable the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">advanced</span> <span class="pre">settings</span></code> option.</p>
+<section id="modifying-a-default-port-group">
+<h3>Modifying a default port group<a class="headerlink" href="#modifying-a-default-port-group" title="Link to this heading"></a></h3>
+<p>The analyst hostgroup is allowed access to the nginx ports which are 80 and 443 by default. In this example, we will extend the default nginx port group to include a custom port.</p>
+<ol class="arabic simple">
+<li><p>At the top of the page, click the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu and then enable the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">advanced</span> <span class="pre">settings</span></code> option.</p></li>
+<li><p>On the left side, go to <code class="docutils literal notranslate"><span class="pre">firewall</span></code>, select <code class="docutils literal notranslate"><span class="pre">portgroups</span></code>, locate the <code class="docutils literal notranslate"><span class="pre">nginx</span></code> portgroup, and then select <code class="docutils literal notranslate"><span class="pre">tcp</span></code>.</p></li>
+<li><p>On the right side, select the manager node, specify your custom port to be added, and then click the checkmark to save the value.</p></li>
+<li><p>If you would like to apply the rules immediately, click the <code class="docutils literal notranslate"><span class="pre">SYNCHRONIZE</span> <span class="pre">GRID</span></code> button under the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu at the top of the page.</p></li>
+</ol>
+</section>
+<section id="creating-a-custom-host-group-with-a-custom-port-group">
+<h3>Creating a custom host group with a custom port group<a class="headerlink" href="#creating-a-custom-host-group-with-a-custom-port-group" title="Link to this heading"></a></h3>
+<p>In this example, we will add a new custom hostgroup to allow a custom set of hosts to connect to a custom port on an IDH node.</p>
+<ol class="arabic simple">
+<li><p>At the top of the page, click the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu and then enable the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">advanced</span> <span class="pre">settings</span></code> option.</p></li>
+<li><p>On the left side, go to <code class="docutils literal notranslate"><span class="pre">firewall</span></code>, select <code class="docutils literal notranslate"><span class="pre">hostgroups</span></code>, and then select <code class="docutils literal notranslate"><span class="pre">customhostgroup0</span></code>.</p></li>
+<li><p>On the right side, select the IDH node that you want to allow access to, add the list of hosts that require access, and then click the checkmark to save the value.</p></li>
+<li><p>On the left side, go to <code class="docutils literal notranslate"><span class="pre">firewall</span></code>, select <code class="docutils literal notranslate"><span class="pre">portgroups</span></code>, select <code class="docutils literal notranslate"><span class="pre">customportgroup0</span></code>, and then select the appropriate protocol.</p></li>
+<li><p>On the right side, select the IDH node that you want to allow access to, add your custom port, and then click the checkmark to save the value.</p></li>
+<li><p>On the left side, go to <code class="docutils literal notranslate"><span class="pre">firewall</span></code>, <code class="docutils literal notranslate"><span class="pre">role</span></code>, and then select <code class="docutils literal notranslate"><span class="pre">idh</span></code>, <code class="docutils literal notranslate"><span class="pre">chain</span></code>, <code class="docutils literal notranslate"><span class="pre">DOCKER-USER</span></code>, <code class="docutils literal notranslate"><span class="pre">hostgroups</span></code>, <code class="docutils literal notranslate"><span class="pre">customhostgroup0</span></code>, <code class="docutils literal notranslate"><span class="pre">portgroups</span></code>.</p></li>
+<li><p>On the right side, select the IDH node that you want to allow access to, add the portgroup <code class="docutils literal notranslate"><span class="pre">customportgroup0</span></code>, and then click the checkmark to save the value.</p></li>
+<li><p>The next time the IDH node checks in, it should get the appropriate firewall rules.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="proxy.html" class="btn btn-neutral float-left" title="Proxy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="email.html" class="btn btn-neutral float-right" title="Email" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

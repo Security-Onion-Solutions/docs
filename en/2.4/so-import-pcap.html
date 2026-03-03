@@ -1,0 +1,194 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>so-import-pcap &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="so-import-evtx" href="so-import-evtx.html" />
+    <link rel="prev" title="so-elasticsearch-query" href="so-elasticsearch-query.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="utilities.html">Utilities</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="jq.html">jq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="so-allow.html">so-allow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="so-elastic-auth-password-reset.html">so-elastic-auth-password-reset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="so-elasticsearch-query.html">so-elasticsearch-query</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">so-import-pcap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="so-import-evtx.html">so-import-evtx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="so-monitor-add.html">so-monitor-add</a></li>
+<li class="toctree-l2"><a class="reference internal" href="so-status.html">so-status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="so-test.html">so-test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="so-user.html">so-user</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="utilities.html">Utilities</a></li>
+      <li class="breadcrumb-item active">so-import-pcap</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/so-import-pcap.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="so-import-pcap">
+<span id="id1"></span><h1>so-import-pcap<a class="headerlink" href="#so-import-pcap" title="Link to this heading"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">so-import-pcap</span></code> will import one or more pcaps into Security Onion and preserve original timestamps. It will do the following:</p>
+<ul class="simple">
+<li><p>generate IDS alerts using <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a></p></li>
+<li><p>generate network metadata using <a class="reference internal" href="zeek.html#zeek"><span class="std std-ref">Zeek</span></a></p></li>
+<li><p>store IDS alerts and network metadata in <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> with original timestamps</p></li>
+<li><p>store pcaps where <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> can find them</p></li>
+<li><p>provide a hyperlink for you to view all alerts and logs in <a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a></p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can run this command manually, but for most use cases it’s easier to upload a pcap via <a class="reference internal" href="grid.html#grid"><span class="std std-ref">Grid</span></a> and it will automatically run <code class="docutils literal notranslate"><span class="pre">so-import-pcap</span></code> for you.</p>
+</div>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>so-import-pcap requires you to run through Setup and choose a configuration that supports so-import-pcap. This includes Import Node and other nodes that include sensor services like Eval and Standalone. The quickest and easiest option is to choose Import Node which gives you the minimal services necessary to import a pcap.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please note that so-import-pcap is not supported on heavy nodes.</p>
+</div>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
+<p>Once Setup completes, you can then run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">so-import-pcap</span></code> and supply the full path to at least one pcap file. For example, to import a single pcap named <code class="docutils literal notranslate"><span class="pre">import.pcap</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">import</span><span class="o">-</span><span class="n">pcap</span> <span class="o">/</span><span class="n">full</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">import</span><span class="o">.</span><span class="n">pcap</span>
+</pre></div>
+</div>
+<p>To import multiple pcaps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">so</span><span class="o">-</span><span class="n">import</span><span class="o">-</span><span class="n">pcap</span> <span class="o">/</span><span class="n">full</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">import1</span><span class="o">.</span><span class="n">pcap</span> <span class="o">/</span><span class="n">full</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">import2</span><span class="o">.</span><span class="n">pcap</span>
+</pre></div>
+</div>
+<p>Please note that if you import multiple pcaps at one time, so-import-pcap currently only provides a hyperlink for the last pcap in the list. If you need a hyperlink for each pcap, then you can run one pcap file per so-import-pcap and use a for-loop to iterate over your collection of pcap files.</p>
+<p>so-import-pcap calculates the MD5 hash of the imported pcap and creates a directory in <code class="docutils literal notranslate"><span class="pre">/nsm/import/</span></code> for that hash. This is where so-import-pcap stores the alerts and logs generated by the traffic in the pcap. If you try to import that same pcap again, it will tell you that it has already imported that pcap. If for some reason you really do need to import that pcap again, you can remove that pcap’s directory in <code class="docutils literal notranslate"><span class="pre">/nsm/import/</span></code> and then try again.</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h2>
+<p>If you don’t already have some pcap files to import, see <a class="reference internal" href="pcaps.html#pcaps"><span class="std std-ref">PCAPs for Testing</span></a> for a list of sites where you can download sample pcaps.</p>
+<p>Our Quick Malware Analysis series at <a class="reference external" href="https://blog.securityonion.net/search/label/quick%20malware%20analysis">https://blog.securityonion.net/search/label/quick%20malware%20analysis</a> uses so-import-pcap to import pcaps from <a class="reference external" href="https://www.malware-traffic-analysis.net/">https://www.malware-traffic-analysis.net/</a> and other sites. Following along with these blog posts in your own so-import-pcap VM is a great way to practice your skills!</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="so-elasticsearch-query.html" class="btn btn-neutral float-left" title="so-elasticsearch-query" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="so-import-evtx.html" class="btn btn-neutral float-right" title="so-import-evtx" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

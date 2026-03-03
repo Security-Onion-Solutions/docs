@@ -1,0 +1,240 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administration &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Kibana" href="kibana.html" />
+    <link rel="prev" title="Downloads" href="downloads.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="alerts.html">Alerts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html">Dashboards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hunt.html">Hunt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html">Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="detections.html">Detections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pcap.html">PCAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.html">Grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="downloads.html">Downloads</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Administration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#users">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#grid-members">Grid Members</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-settings">Advanced Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#duplicate-settings">Duplicate Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#license-key">License Key</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kibana.html">Kibana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic-fleet.html">Elastic Fleet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osquery-manager.html">Osquery Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="influxdb.html">InfluxDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cyberchef.html">CyberChef</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attack-navigator.html">ATT&amp;CK Navigator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="soc.html">Security Onion Console (SOC)</a></li>
+      <li class="breadcrumb-item active">Administration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/administration.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="administration">
+<span id="id1"></span><h1>Administration<a class="headerlink" href="#administration" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> includes an Administration section which allows you to administer Users, Grid Members, Configuration, and the License Key.</p>
+<section id="users">
+<h2>Users<a class="headerlink" href="#users" title="Link to this heading"></a></h2>
+<p>The Users page shows all user accounts that have been created for the grid.</p>
+<a class="reference external image-reference" href="_images/81_users.png"><img alt="_images/81_users.png" src="_images/81_users.png" />
+</a>
+<p>The Note column allows administrators to include a short note on a user’s account.</p>
+<p>The Role column lists roles assigned to the user as defined in the <a class="reference internal" href="rbac.html#rbac"><span class="std std-ref">Role-Based Access Control (RBAC)</span></a> section.</p>
+<p>The Status column will show different icons depending on the status of the account:</p>
+<ul class="simple">
+<li><p>orange exclamation point - account enabled but has not yet changed their password and does not have <a class="reference internal" href="mfa.html#mfa"><span class="std std-ref">MFA</span></a> enabled</p></li>
+<li><p>blue icon with shield - account enabled with <a class="reference internal" href="mfa.html#mfa"><span class="std std-ref">MFA</span></a> enabled</p></li>
+<li><p>no icon - account enabled and has changed their password but does not have <a class="reference internal" href="mfa.html#mfa"><span class="std std-ref">MFA</span></a> enabled</p></li>
+<li><p>grey user with slash - account locked</p></li>
+</ul>
+<p>Hovering over the icon in the Status column will show you these details as well.</p>
+</section>
+<section id="grid-members">
+<h2>Grid Members<a class="headerlink" href="#grid-members" title="Link to this heading"></a></h2>
+<p>The Grid Members page shows nodes that have attempted to join the grid and whether or not they have been accepted into the grid by an administrator.</p>
+<a class="reference external image-reference" href="_images/84_gridmembers.png"><img alt="_images/84_gridmembers.png" src="_images/84_gridmembers.png" />
+</a>
+<p>Unaccepted members are displayed on the left side and broken into three sections: Pending Members, Denied Members, and Rejected Members. When you accept a member, it will then move to the right side under Accepted Members.</p>
+<p>For accepted members, you can click the REVIEW button to show additional information about the grid member. If you want to remove the member, you can then click the DELETE button and review the confirmation.</p>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>The Configuration page allows you to configure various components of your grid.</p>
+<a class="reference external image-reference" href="_images/87_config.png"><img alt="_images/87_config.png" src="_images/87_config.png" />
+</a>
+<p>The most common configuration options are shown in the quick links on the right side. On the left side, click on a component in the tree view to drill into it and show all available settings for that component. You can then click on a setting to show the current setting or modify it if necessary. If you make a mistake, you can easily revert back to the default value. If a blue question mark appears on the setting page, click it to go to the documentation for that component.</p>
+<p>If unsure of which component a particular setting may belong to, use the Filter at the top of the list to look for a particular setting. To the right of the Filter field are buttons that do the following:</p>
+<ul class="simple">
+<li><p>apply the search filter</p></li>
+<li><p>expand all settings</p></li>
+<li><p>collapse all settings</p></li>
+<li><p>show settings that have been modified from the default value</p></li>
+<li><p>show settings that have a unique value specified for one or more nodes in the grid</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Keys that include <code class="docutils literal notranslate"><span class="pre">_x_</span></code> indicate a placeholder value used to represent a period (<code class="docutils literal notranslate"><span class="pre">.</span></code>).</p>
+</div>
+<p>Some settings can be applied across the entire grid or to specific nodes. Applying a setting to a specific node will override the grid setting.</p>
+<section id="advanced-settings">
+<span id="administration-advanced-settings"></span><h3>Advanced Settings<a class="headerlink" href="#advanced-settings" title="Link to this heading"></a></h3>
+<p>By default, the Configuration page excludes settings that are not intended to be adjusted by most grid administrators. These advanced settings can cause loss of data and other issues if adjusted incorrectly. To see the advanced settings, go to the Options bar at the top of the page and then click the toggle labeled <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">advanced</span> <span class="pre">settings</span></code>.</p>
+<p>Enabling advanced settings will result in longer load times when viewing the Configuration screen.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Changing advanced settings is unsupported and could result in requiring a full cluster re-installation.</p>
+</div>
+<a class="reference external image-reference" href="_images/88_config_options.png"><img alt="_images/88_config_options.png" src="_images/88_config_options.png" />
+</a>
+</section>
+<section id="duplicate-settings">
+<h3>Duplicate Settings<a class="headerlink" href="#duplicate-settings" title="Link to this heading"></a></h3>
+<p>Some settings can be duplicated to more easily create new settings. If a setting is eligible for duplication, then it will have a DUPLICATE button on the right side of the page, provided the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">advanced</span> <span class="pre">settings</span></code> option is enabled at the top of the screen. Creating a duplicate setting is a TWO-STEP process.</p>
+<ol class="arabic simple">
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">DUPLICATE</span></code> button, provide a name for the new setting, and then click the <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">SETTING</span></code> button.</p></li>
+<li><p>The new setting will automatically be shown in the Configuration screen. At this point it is not yet saved to the server. The setting’s value must be modified explicitly to persist this new setting. Once the value has been modified, click the green checkmark button to save it.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Duplicated settings do not retain their original setting’s full behavior. For example, if the original setting only allowed for CIDR values, this new setting will not have the same protections on later views in the Configuration screen. Further, duplicated settings are marked as advanced settings. In order to see the new setting at a later time the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">advanced</span> <span class="pre">settings</span></code> option must be enabled under the Configuration Options at the top of the Configuration screen. Finally, please note that duplicated settings cannot be removed or renamed via the SOC user interface.</p>
+</div>
+</section>
+</section>
+<section id="license-key">
+<h2>License Key<a class="headerlink" href="#license-key" title="Link to this heading"></a></h2>
+<a class="reference external image-reference" href="_images/91_licensekey.png"><img alt="_images/91_licensekey.png" src="_images/91_licensekey.png" />
+</a>
+<p>The License Key screen allows you to add a license key for <a class="reference internal" href="pro.html#pro"><span class="std std-ref">Security Onion Pro</span></a>. Once you’ve added a license key, the screen will show details about your license key.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="downloads.html" class="btn btn-neutral float-left" title="Downloads" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="kibana.html" class="btn btn-neutral float-right" title="Kibana" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

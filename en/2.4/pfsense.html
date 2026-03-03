@@ -1,0 +1,192 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pfSense &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="OPNsense" href="opnsense.html" />
+    <link rel="prev" title="UniFi" href="unifi.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="netflow.html">NetFlow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cef.html">CEF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iptables.html">iptables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unifi.html">UniFi</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">pfSense</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simple-parser">Simple Parser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#elastic-integration-for-pfsense">Elastic Integration for pfSense</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="opnsense.html">OPNsense</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="additional-network.html">Additional Network Visibility</a></li>
+      <li class="breadcrumb-item active">pfSense</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pfsense.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pfsense">
+<span id="id1"></span><h1>pfSense<a class="headerlink" href="#pfsense" title="Link to this heading"></a></h1>
+<p>pfSense is a free and open firewall that can be found at <a class="reference external" href="https://www.pfsense.org/">https://www.pfsense.org/</a>. There are a few different ways in which you can integrate pfSense into your Security Onion deployment.</p>
+<p>The simplest method of integrating pfSense into your Security Onion deployment is to configure pfSense to send its firewall logs to Security Onion. Security Onion has a couple of options for ingesting logs from pfSense firewalls: a simple parser and the more comprehensive Elastic Integration for pfSense. We recommend using the more comprehensive option by following the steps in the Elastic Integration section below. You can also follow along with our video at <a class="reference external" href="https://www.youtube.com/watch?v=aoH8qZwAxek">https://www.youtube.com/watch?v=aoH8qZwAxek</a>.</p>
+<p>You can also configure pfSense to send <a class="reference internal" href="netflow.html#netflow"><span class="std std-ref">NetFlow</span></a> data to your Security Onion deployment. This may provide some additional visibility if you can’t deploy a full Security Onion network sensor to monitor that network segment.</p>
+<section id="simple-parser">
+<h2>Simple Parser<a class="headerlink" href="#simple-parser" title="Link to this heading"></a></h2>
+<p>The first option for collecting pfSense firewall logs is to use our simple parser. Please note that this only supports filterlog (actual firewall logs) and no other logs.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This simple parser will be phased out over time in favor of the more comprehensive Elastic Integration for pfSense below.</p>
+</div>
+<p>To use the simple parser, first go to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration –&gt; firewall –&gt; hostgroups.</p>
+<a class="reference external image-reference" href="_images/config-item-firewall.png"><img alt="_images/config-item-firewall.png" src="_images/config-item-firewall.png" />
+</a>
+<p>Once there, select the <code class="docutils literal notranslate"><span class="pre">syslog</span></code> option, specify the IP address of the pfSense firewall, and click the checkmark to save. Then click the <code class="docutils literal notranslate"><span class="pre">SYNCHRONIZE</span> <span class="pre">GRID</span></code> button under the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu at the top of the page.</p>
+<p>Next, configure your pfSense firewall to send syslog to the IP address of your Security Onion box. If you are using pfSense 2.6.0 or higher, make sure that <code class="docutils literal notranslate"><span class="pre">Log</span> <span class="pre">Message</span> <span class="pre">Format</span></code> is set to <code class="docutils literal notranslate"><span class="pre">BSD</span> <span class="pre">(RFC</span> <span class="pre">3164,</span> <span class="pre">default)</span></code>.</p>
+<p>Once all configuration is complete, you should be able to go to <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a> and select the Firewall dashboard to see your firewall logs.</p>
+</section>
+<section id="elastic-integration-for-pfsense">
+<h2>Elastic Integration for pfSense<a class="headerlink" href="#elastic-integration-for-pfsense" title="Link to this heading"></a></h2>
+<p>The second option for collecting pfSense firewall logs is using the Elastic Integration for pfSense (<a class="reference external" href="https://docs.elastic.co/integrations/pfsense">https://docs.elastic.co/integrations/pfsense</a>). This integration is more comprehensive than the simple parser above and supports more log types.</p>
+<p>First, add the pfSense integration and configure the pfSense firewall:</p>
+<ol class="arabic simple">
+<li><p>Go to <a class="reference internal" href="elastic-fleet.html#elastic-fleet"><span class="std std-ref">Elastic Fleet</span></a>, click the <code class="docutils literal notranslate"><span class="pre">Agent</span> <span class="pre">policies</span></code> tab, and then click the desired policy (for example <code class="docutils literal notranslate"><span class="pre">so-grid-nodes_general</span></code>).</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">integration</span></code> button.</p></li>
+<li><p>Search for <code class="docutils literal notranslate"><span class="pre">pfSense</span></code> and then click on the <code class="docutils literal notranslate"><span class="pre">pfSense</span></code> integration.</p></li>
+<li><p>The Elastic Integration page will show instructions for configuring pfSense. Follow these instructions but please note that the Elastic Integration expects to receive pfSense logs on port 9001 by default.</p></li>
+<li><p>Once you’ve configured pfSense, then go back to the Elastic screen and click the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">pfSense</span></code> button.</p></li>
+<li><p>On the <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">pfSense</span> <span class="pre">integration</span></code> screen, go to the <code class="docutils literal notranslate"><span class="pre">Syslog</span> <span class="pre">Host</span></code> field and change <code class="docutils literal notranslate"><span class="pre">localhost</span></code> to <code class="docutils literal notranslate"><span class="pre">0.0.0.0</span></code>.</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">and</span> <span class="pre">continue</span></code> button and then click <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">and</span> <span class="pre">deploy</span> <span class="pre">changes</span></code>.</p></li>
+</ol>
+<p>Next, allow the traffic from the pfSense firewall to port 9001. These instructions assume that this is the first firewall change you have made and therefore refer to <code class="docutils literal notranslate"><span class="pre">customhostgroup0</span></code> and <code class="docutils literal notranslate"><span class="pre">customportgroup0</span></code>. If those have already been used, select the next available hostgroup and portgroup.</p>
+<ol class="arabic simple">
+<li><p>Navigate to <a class="reference internal" href="administration.html#administration"><span class="std std-ref">Administration</span></a> –&gt; Configuration.</p></li>
+<li><p>At the top of the page, click the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu and then enable the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">advanced</span> <span class="pre">settings</span></code> option.</p></li>
+<li><p>On the left side, go to <code class="docutils literal notranslate"><span class="pre">firewall</span></code>, select <code class="docutils literal notranslate"><span class="pre">hostgroups</span></code>, and click the <code class="docutils literal notranslate"><span class="pre">customhostgroup0</span></code> group. On the right side, enter the IP address of the pfSense firewall and click the checkmark to save.</p></li>
+<li><p>On the left side, go to <code class="docutils literal notranslate"><span class="pre">firewall</span></code>, select <code class="docutils literal notranslate"><span class="pre">portgroups</span></code>, select the <code class="docutils literal notranslate"><span class="pre">customportgroup0</span></code> group, and then click <code class="docutils literal notranslate"><span class="pre">udp</span></code>. On the right side, enter <code class="docutils literal notranslate"><span class="pre">9001</span></code> and click the checkmark to save.</p></li>
+<li><p>On the left side, go to <code class="docutils literal notranslate"><span class="pre">firewall</span></code>, select <code class="docutils literal notranslate"><span class="pre">role</span></code>, and then select the node type that will receive the pfSense logs. Then drill into <code class="docutils literal notranslate"><span class="pre">chain</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">INPUT</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">hostgroups</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">customhostgroup0</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">portgroups</span></code>. On the right side, enter <code class="docutils literal notranslate"><span class="pre">customportgroup0</span></code> and click the checkmark to save.</p></li>
+<li><p>If you would like to apply the rules immediately, click the <code class="docutils literal notranslate"><span class="pre">SYNCHRONIZE</span> <span class="pre">GRID</span></code> button under the <code class="docutils literal notranslate"><span class="pre">Options</span></code> menu at the top of the page.</p></li>
+</ol>
+<p>Once all configuration is complete, you should be able to go to <a class="reference internal" href="dashboards.html#dashboards"><span class="std std-ref">Dashboards</span></a> and select the <code class="docutils literal notranslate"><span class="pre">Firewall</span> <span class="pre">-</span> <span class="pre">pfSense</span></code> dashboard to see your firewall logs.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="unifi.html" class="btn btn-neutral float-left" title="UniFi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="opnsense.html" class="btn btn-neutral float-right" title="OPNsense" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

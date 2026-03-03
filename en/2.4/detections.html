@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detections &mdash; Security Onion Documentation 2.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/theme_overrides.css?v=af92d3d0" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9caaf7ed"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/theme_overrides.js?v=f7c5b6c3"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="PCAP" href="pcap.html" />
+    <link rel="prev" title="Cases" href="cases.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: black" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/so-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-time-users.html">First Time Users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="soc.html">Security Onion Console (SOC)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="alerts.html">Alerts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboards.html">Dashboards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hunt.html">Hunt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cases.html">Cases</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Detections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rule-engine-status">Rule Engine Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#options">Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#query-bar">Query Bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#group-metrics">Group Metrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-table">Data Table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#detection-details">Detection Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#technical-background">Technical Background</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#enable-and-disable-bulk-and-individual-operations">Enable and Disable (Bulk and Individual) Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tuning">Tuning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ruleset-changes">Ruleset Changes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pcap.html">PCAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.html">Grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="downloads.html">Downloads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="administration.html">Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kibana.html">Kibana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elastic-fleet.html">Elastic Fleet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osquery-manager.html">Osquery Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="influxdb.html">InfluxDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cyberchef.html">CyberChef</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attack-navigator.html">ATT&amp;CK Navigator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="desktop.html">Security Onion Desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-network.html">Additional Network Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="host.html">Host Visibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="third-party-integrations.html">Third Party Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="updating.html">Updating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customizing.html">Customizing for Your Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tricks.html">Tricks and Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="help.html">Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pro.html">Security Onion Pro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telemetry.html">Telemetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheat-sheet.html">Cheat Sheet</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Security Onion Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="soc.html">Security Onion Console (SOC)</a></li>
+      <li class="breadcrumb-item active">Detections</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/detections.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="detections">
+<span id="id1"></span><h1>Detections<a class="headerlink" href="#detections" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="soc.html#soc"><span class="std std-ref">Security Onion Console (SOC)</span></a> includes our Detections interface for managing all of your rules:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> rules that get loaded into <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a></p></li>
+<li><p><a class="reference internal" href="sigma.html#sigma"><span class="std std-ref">Sigma</span></a> rules that get loaded into <a class="reference internal" href="elastalert.html#elastalert"><span class="std std-ref">ElastAlert 2</span></a></p></li>
+<li><p><a class="reference internal" href="yara.html#yara"><span class="std std-ref">YARA</span></a> rules that get loaded into <a class="reference internal" href="strelka.html#strelka"><span class="std std-ref">Strelka</span></a></p></li>
+</ul>
+<a class="reference external image-reference" href="_images/57_detections.png"><img alt="_images/57_detections.png" src="_images/57_detections.png" />
+</a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check out our Detections video at <a class="reference external" href="https://youtu.be/DelAmqtU2hg">https://youtu.be/DelAmqtU2hg</a>!</p>
+</div>
+<section id="rule-engine-status">
+<h2>Rule Engine Status<a class="headerlink" href="#rule-engine-status" title="Link to this heading"></a></h2>
+<p>The upper-right corner shows a count of detections that matched the search query. To the left of that is a status indicator for each of the detection engines. The status can show whether a sync is in process, as well as whether the engine has detected errors.</p>
+<p>Here is the list of possible status messages and what they mean:</p>
+<ul class="simple">
+<li><p><strong>Pending</strong>: The browser is waiting for the server to send an initial status report.</p></li>
+<li><p><strong>Import Pending</strong>: The import will start once the system stabilizes, usually within twenty minutes. Imports take place only once, after upgrading to Security Onion 2.4.70+.</p></li>
+<li><p><strong>Importing</strong>: The previous version of Security Onion’s rules are being imported into the new Detections system. This can take an hour or more on some systems.</p></li>
+<li><p><strong>Migrating</strong>: Rules will be migrated between Security Onion versions following system upgrades. This can take some time if upgrading from a much older version.</p></li>
+<li><p><strong>Migration Failed</strong>: A failure occurred during the migration. The migration will stop on the first error and will not attempt to migrate to newer versions until the issue is resolved.</p></li>
+<li><p><strong>Synchronizing</strong>: A rule synchronization is in progress. This occurs daily, to ensure the Security Onion grid has the latest rules.</p></li>
+<li><p><strong>Sync Failed</strong>: A failure occurred during the synchronization procedure. The next sync will retry within a few minutes.</p></li>
+<li><p><strong>Sync Blocked</strong>: Rule synchronization is currently blocked.</p></li>
+<li><p><strong>Rule Mismatch</strong>: An integrity check process detected a mismatch between the deployed rules and the enabled rules. The SOC log will note the specific mismatched rules. One possible reason is that <a class="reference internal" href="elasticsearch.html#elasticsearch"><span class="std std-ref">Elasticsearch</span></a> has reached its disk watermark setting and is no longer allowing updates to the Detections indices.</p></li>
+<li><p><strong>OK</strong>: No known issues with the rule engine.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Clicking the status text will navigate to <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a> and attempt to find related logs. If the status is reporting some kind of failure, then you might want to use <a class="reference internal" href="hunt.html#hunt"><span class="std std-ref">Hunt</span></a> to hone in on things like <code class="docutils literal notranslate"><span class="pre">integrity</span> <span class="pre">check</span> <span class="pre">failed</span></code> or other errors.</p>
+</div>
+<p>As part of the sync process, Detections checks for duplicates. If duplicates are found, Detections will log information about the duplicate.</p>
+<p>The Detections menu option on the left side of the application will show an exclamation mark if there is a recent failure in any of the detection engines. In this situation the web browser tab will also show an exclamation indicator. If no failures are detected, and if any of the detection engines has an import pending or is performing a rule import, synchronization, or migration, then a blue hourglass will appear next to the Detections menu option.</p>
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h2>
+<p>The Options menu allows you to synchronize a particular detection engine such as <a class="reference internal" href="elastalert.html#elastalert"><span class="std std-ref">ElastAlert 2</span></a>, <a class="reference internal" href="strelka.html#strelka"><span class="std std-ref">Strelka</span></a>, or <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a>.</p>
+<a class="reference external image-reference" href="_images/58_detections_options.png"><img alt="_images/58_detections_options.png" src="_images/58_detections_options.png" />
+</a>
+<p>Once you’ve selected the detection engine that you want to synchronize, you can then click either the <code class="docutils literal notranslate"><span class="pre">DIFFERENTIAL</span> <span class="pre">UPDATE</span></code> or <code class="docutils literal notranslate"><span class="pre">FULL</span> <span class="pre">UPDATE</span></code> button.</p>
+<p>The differential update is a lightweight sync that will skip the thorough sync and comparison of each individual rule. For example, with <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> it will compute and compare the hash of the source rule list with the hash of the deployed rules, and only if there’s a mismatch will it perform the full sync.</p>
+<p>A full sync can involve inspecting and comparing individual rules, of which there can be thousands. This more thorough sync can take much longer than the differential sync. Note that each engine has its own unique synchronization process.</p>
+</section>
+<section id="query-bar">
+<h2>Query Bar<a class="headerlink" href="#query-bar" title="Link to this heading"></a></h2>
+<p>The query bar defaults to <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">Detections</span></code>. Clicking the drop-down box reveals other options such as <code class="docutils literal notranslate"><span class="pre">Custom</span> <span class="pre">Detections</span></code>, <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">Detections</span> <span class="pre">-</span> <span class="pre">Enabled</span></code>, and <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">Detections</span> <span class="pre">-</span> <span class="pre">Disabled</span></code>.</p>
+<p>Under the query bar, you’ll notice colored bubbles that represent the individual components of the query. If you want to remove part of the query, you can click the X in the corresponding bubble to remove it and run a new search.</p>
+<p>If you would like to save your own personal queries, you can bookmark them in your browser. If you would like to customize the default queries for all users, please see the <a class="reference internal" href="soc-customization.html#soc-customization"><span class="std std-ref">SOC Customization</span></a> section.</p>
+</section>
+<section id="group-metrics">
+<h2>Group Metrics<a class="headerlink" href="#group-metrics" title="Link to this heading"></a></h2>
+<p>The Group Metrics section of output consists of one or more data tables or visualizations that allow you to stack (aggregate) arbitrary fields.</p>
+</section>
+<section id="data-table">
+<h2>Data Table<a class="headerlink" href="#data-table" title="Link to this heading"></a></h2>
+<p>The remainder of the main Detections page is a data table that shows a high level overview of the detections matching the current search criteria.</p>
+<ul class="simple">
+<li><p>Clicking the table headers allows you to sort ascending or descending.</p></li>
+<li><p>Clicking a value in the table brings up a context menu of actions for that value. This allows you to refine your existing search or copy text to the clipboard.</p></li>
+<li><p>You can adjust the Rows per page setting in the bottom right and use the left and right arrow icons to page through the table.</p></li>
+<li><p>When you click the arrow to expand a row in the data table, it will show the high level fields from that detection. Field names are shown on the left and field values on the right. You can click on values on the right to bring up the context menu to refine your search.</p></li>
+<li><p>To the right of the arrow is a binoculars icon. Clicking this will take you to the detection details page.</p></li>
+</ul>
+</section>
+<section id="detection-details">
+<h2>Detection Details<a class="headerlink" href="#detection-details" title="Link to this heading"></a></h2>
+<p>There are two ways to reach the detail page for an individual detection:</p>
+<ul class="simple">
+<li><p>From the main <a class="reference internal" href="#detections"><span class="std std-ref">Detections</span></a> interface, you can search for the desired detection and click the binoculars icon.</p></li>
+<li><p>From the <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a> interface, you can click an alert and then click the <code class="docutils literal notranslate"><span class="pre">Tune</span> <span class="pre">Detection</span></code> menu item.</p></li>
+</ul>
+<p>Once you’ve used one of these methods to reach the detection detail page, you can check the Status field in the upper-right corner and use the slider to enable or disable the detection.</p>
+<p>To the left of the Status field are several tabs.</p>
+<p>The OVERVIEW tab displays the Summary, References, and Detection Logic for the detection. The Summary field may contain an AI summary of the rule if one is available. These AI summaries are pre-generated so nothing is ever sent from your system to generate this information. That also means that AI summaries only exist for our default rules and will not exist for any of your custom rules.</p>
+<a class="reference external image-reference" href="_images/60_detection_nids.png"><img alt="_images/60_detection_nids.png" src="_images/60_detection_nids.png" />
+</a>
+<p>The OPERATIONAL NOTES tab allows you to add your own local notes to the detection in markdown format.</p>
+<a class="reference external image-reference" href="_images/60_detection_nids_0_comments.png"><img alt="_images/60_detection_nids_0_comments.png" src="_images/60_detection_nids_0_comments.png" />
+</a>
+<p>The DETECTION SOURCE tab shows the full content of the detection.</p>
+<a class="reference external image-reference" href="_images/60_detection_nids_1_signature.png"><img alt="_images/60_detection_nids_1_signature.png" src="_images/60_detection_nids_1_signature.png" />
+</a>
+<p>The TUNING tab allows you to tune the detection. For <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> rules, you can modify, suppress, or threshold. For <a class="reference internal" href="sigma.html#sigma"><span class="std std-ref">Sigma</span></a> rules, you can create a custom filter.</p>
+<a class="reference external image-reference" href="_images/60_detection_nids_2_tuning_1.png"><img alt="_images/60_detection_nids_2_tuning_1.png" src="_images/60_detection_nids_2_tuning_1.png" />
+</a>
+<p>The PLAYBOOKS tab shows any applicable plays for this detection. These playbooks are used for the Guided Analysis tab in <a class="reference internal" href="alerts.html#alerts"><span class="std std-ref">Alerts</span></a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Some playbooks were generated by AI and it’s possible that they may not be 100% accurate. Please let us know if you see any issues.</p>
+</div>
+<a class="reference external image-reference" href="_images/60_detection_nids_3_playbook.png"><img alt="_images/60_detection_nids_3_playbook.png" src="_images/60_detection_nids_3_playbook.png" />
+</a>
+<p>The HISTORY tab shows the history of the detection since it was added to your deployment.</p>
+<a class="reference external image-reference" href="_images/60_detection_nids_4_history.png"><img alt="_images/60_detection_nids_4_history.png" src="_images/60_detection_nids_4_history.png" />
+</a>
+</section>
+<section id="more-information">
+<h2>More Information<a class="headerlink" href="#more-information" title="Link to this heading"></a></h2>
+<p>For more information about managing <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> rules for <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a>, please see the <a class="reference internal" href="nids.html#nids"><span class="std std-ref">NIDS</span></a> section.</p>
+<p>For more information about managing <a class="reference internal" href="sigma.html#sigma"><span class="std std-ref">Sigma</span></a> rules for <a class="reference internal" href="elastalert.html#elastalert"><span class="std std-ref">ElastAlert 2</span></a>, please see the <a class="reference internal" href="sigma.html#sigma"><span class="std std-ref">Sigma</span></a> section.</p>
+<p>For more information about managing <a class="reference internal" href="yara.html#yara"><span class="std std-ref">YARA</span></a> rules for <a class="reference internal" href="strelka.html#strelka"><span class="std std-ref">Strelka</span></a>, please see the <a class="reference internal" href="yara.html#yara"><span class="std std-ref">YARA</span></a> section.</p>
+</section>
+<section id="technical-background">
+<h2>Technical Background<a class="headerlink" href="#technical-background" title="Link to this heading"></a></h2>
+<p>Detections abstracts the underlying alerting engine and simplifies writing detections for different rule types. Here’s what happens behind the scenes.</p>
+<section id="enable-and-disable-bulk-and-individual-operations">
+<h3>Enable and Disable (Bulk and Individual) Operations<a class="headerlink" href="#enable-and-disable-bulk-and-individual-operations" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>Elastalert/Sigma</dt><dd><ul class="simple">
+<li><p>Immediate change in the UI and on disk</p></li>
+</ul>
+</dd>
+<dt>Suricata/NIDS</dt><dd><ul class="simple">
+<li><p>UI Bulk and Individual: Immediate change in the UI and on disk</p></li>
+<li><p>Regex: UI and disk change once the <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> engine syncs</p></li>
+</ul>
+</dd>
+<dt>Strelka/YARA</dt><dd><ul class="simple">
+<li><p>Immediate change in the UI, disk change once the <cite>strelka</cite> state runs again</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="tuning">
+<h3>Tuning<a class="headerlink" href="#tuning" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>Elastalert/Sigma</dt><dd><ul class="simple">
+<li><p>Immediate change in the UI and on disk</p></li>
+</ul>
+</dd>
+<dt>Suricata/NIDS</dt><dd><ul class="simple">
+<li><p>Immediate change in the UI and on disk</p></li>
+</ul>
+</dd>
+<dt>Strelka/YARA</dt><dd><ul class="simple">
+<li><p>N/A</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="ruleset-changes">
+<h3>Ruleset Changes<a class="headerlink" href="#ruleset-changes" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>Elastalert/Sigma</dt><dd><ul class="simple">
+<li><p>Sigma Ruleset Packages: UI and disk change once the <cite>soc</cite> state runs again and the <a class="reference internal" href="elastalert.html#elastalert"><span class="std std-ref">ElastAlert 2</span></a> engine syncs</p></li>
+<li><p>Git repo (https or disk): UI and disk change once the <cite>soc</cite> state runs again and the <a class="reference internal" href="elastalert.html#elastalert"><span class="std std-ref">ElastAlert 2</span></a> engine syncs</p></li>
+</ul>
+</dd>
+<dt>Suricata/NIDS</dt><dd><ul class="simple">
+<li><p>All ruleset sources (ETOPEN, ETPRO, custom URL, local directory): UI and disk change once the <a class="reference internal" href="suricata.html#suricata"><span class="std std-ref">Suricata</span></a> engine syncs</p></li>
+</ul>
+</dd>
+<dt>Strelka/YARA</dt><dd><ul class="simple">
+<li><p>Git repo (https or disk): UI and disk change once the <cite>soc</cite> state runs again and the <a class="reference internal" href="strelka.html#strelka"><span class="std std-ref">Strelka</span></a> engine syncs</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cases.html" class="btn btn-neutral float-left" title="Cases" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pcap.html" class="btn btn-neutral float-right" title="PCAP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
