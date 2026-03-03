@@ -3525,6 +3525,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#nids-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NIDS Rules
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5491,6 +5502,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#nids-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NIDS Rules
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5588,12 +5610,14 @@
 </code></pre></div>
 <h2 id="sudo">sudo<a class="headerlink" href="#sudo" title="Permanent link">¶</a></h2>
 <p>If you're going to run something using sudo, remember to use the <code>-i</code> option to force it to process the environment variables. For example:</p>
-<div class="highlight"><pre><span></span><code>sudo -i so-rule-update
+<div class="highlight"><pre><span></span><code>sudo -i so-suricata-restart
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Using <code>sudo su -</code> will ignore <code>/etc/environment</code>, instead use <code>sudo su</code> if you need to operate as root.</p>
 </div>
+<h2 id="nids-rules">NIDS Rules<a class="headerlink" href="#nids-rules" title="Permanent link">¶</a></h2>
+<p>If you are using a proxy and need to download NIDS rulesets, you will also need to configure proxy settings for the NIDS ruleset downloads. These settings are separate from the system-wide proxy configuration above. See the <a href="../nids/">NIDS</a> documentation for details on configuring the Proxy URL, Proxy Username, Proxy Password, and Proxy CA Path for ruleset downloads.</p>
 
 
 
