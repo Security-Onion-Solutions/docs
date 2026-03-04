@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../images/logo/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
     
     
       
@@ -51,6 +51,8 @@
     
     
       <link rel="stylesheet" href="../_static/theme_overrides.css">
+    
+      <link rel="stylesheet" href="../_static/mkdocsoad.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -6205,6 +6207,10 @@
 <td>Delete own Onion AI conversation history</td>
 </tr>
 <tr>
+<td><em>assistant/read_shared</em></td>
+<td>View shared Onion AI conversation history</td>
+</tr>
+<tr>
 <td><em>assistant/read_all</em></td>
 <td>View all Onion AI conversation history</td>
 </tr>
@@ -6325,11 +6331,15 @@
 </tr>
 <tr>
 <td>assistant-user</td>
-<td><em>assistant/read_authored</em>, <em>assistant/write_authored</em>, <em>assistant/delete_authored</em></td>
+<td><em>assistant/read_authored</em>, <em>assistant/write_authored</em>, <em>assistant/delete_authored</em>, <em>assistant/read_shared</em></td>
 </tr>
 <tr>
 <td>assistant-admin</td>
-<td><em>assistant/read_authored</em>, <em>assistant/write_authored</em>, <em>assistant/delete_authored</em>, <em>assistant/read_all</em>, <em>assistant/write_all</em>, <em>assistant/delete_all</em></td>
+<td><em>assistant/read_authored</em>, <em>assistant/write_authored</em>, <em>assistant/delete_authored</em>, <em>assistant/read_shared</em>, <em>assistant/read_all</em>, <em>assistant/write_all</em>, <em>assistant/delete_all</em></td>
+</tr>
+<tr>
+<td>assistant-monitor</td>
+<td><em>assistant/read_authored</em>, <em>assistant/read_shared</em>, <em>assistant/read_all</em></td>
 </tr>
 </tbody>
 </table>
