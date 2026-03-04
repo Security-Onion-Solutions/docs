@@ -6,7 +6,7 @@ copyright: Security Onion Solutions, LLC
 theme:
   name: material
   logo: images/logo/so-logo.png
-  favicon: images/logo/so-logo.png
+  favicon: images/logo/favicon.ico
   features:
     - navigation.instant
     - navigation.tracking
