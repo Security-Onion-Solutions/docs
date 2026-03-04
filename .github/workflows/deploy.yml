@@ -4,6 +4,12 @@ on:
     branches:
       - main
       - dev
+      - 3/dev
+      - 3/main
+      - 4/dev
+      - 4/main
+      - 5/dev
+      - 5/main
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -18,9 +24,9 @@ jobs:
         with:
           python-version: '3.x'
 
-      - run: pip install mkdocs mkdocs-material mkdocs-glightbox
+      - run: pip install mkdocs mkdocs-material mkdocs-glightbox mkdocs-to-pdf neoteroi-mkdocs
 
-      - run: mkdocs build --strict
+      - run: mkdocs build
 
       - name: Generate GitHub App Token
         id: generate_token
@@ -35,5 +41,5 @@ jobs:
           folder: site                  # mkdocs default output dir
           branch: gh-pages              # your Pages source branch
           token: ${{ steps.generate_token.outputs.token }}
-          clean: false                  # IMPORTANT: false prevents wiping other folders (like dev/)
-          target-folder: ${{ github.ref_name == 'main' && '.' || github.ref_name }}
+          clean: false                  # IMPORTANT: false prevents wiping other folders
+          target-folder: ${{ github.ref_name == 'main' && '.' || format('en/{0}', github.ref_name) }}
