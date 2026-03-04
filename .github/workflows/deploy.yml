@@ -22,11 +22,18 @@ jobs:
 
       - run: mkdocs build --strict
 
+      - name: Generate GitHub App Token
+        id: generate_token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: site                  # mkdocs default output dir
           branch: gh-pages              # your Pages source branch
-          token: ${{ secrets.GITHUB_TOKEN }}   # automatic, no need to set manually
+          token: ${{ steps.generate_token.outputs.token }}
           clean: false                  # IMPORTANT: false prevents wiping other folders (like dev/)
           target-folder: ${{ github.ref_name == 'main' && '.' || github.ref_name }}
