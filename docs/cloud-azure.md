@@ -5,7 +5,7 @@ Azure users can deploy an official Security Onion virtual machine image found on
 
 !!! WARNING
     
-    Existing 2.4 RC1 or newer Security Onion Azure Image installations should use the [Soup](soup.md) command to upgrade to newer versions of Security Onion. Attempting to switch to a newer image from the Azure Marketplace could cause loss of data and require full Grid re-installation. Upgrading from Security Onion 2.3 or beta versions of 2.4 is unsupported.
+    Existing Security Onion cloud image installations should use the [soup](soup.md) command to upgrade. If your grid is still running 2.4.x, use ``soup`` to upgrade to 2.4.210, and then use ``soupto3`` to proceed to 3.0.0, after which continue using ``soup`` again. Attempting to switch to a newer Security Onion image from the cloud marketplace could cause loss of data and require full Grid re-installation; use the ``soup`` procedure to upgrade instead.
 
 !!! NOTE
     
@@ -121,7 +121,7 @@ To configure a Security Onion instance (repeat for each node in a distributed Gr
 - Choose or create a new Resource group.
 - Enter a suitable name for this virtual machine, such as `so-vm-manager`.
 - Choose the desired Region and Availability options. (Use `East US 2` for Ultra SSD support, if needed.)
-- Choose the `Security Onion 2 VM Image`. If this option is not listed on the Image dropdown, select `See all images` and search for `onion`.
+- Choose the `Security Onion VM Image`. If this option is not listed on the Image dropdown, select `See all images` and search for `onion`.
 - Choose the appropriate Size based on the desired hardware requirements. For assistance on determining resource requirements please review the Requirements section above.
 - Change the Username to `onion`. Note that this is not mandatory -- if you accidentally leave it to the default `azureuser`, that's ok, you'll simply use the `azureuser` username any place where the documentation states to use the `onion` username.
 - Select an existing SSH public key if one already exists, otherwise select the option to `Generate new key pair`.

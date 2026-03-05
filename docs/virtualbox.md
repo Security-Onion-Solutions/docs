@@ -5,7 +5,7 @@ In this section, we'll cover installing Security Onion on VirtualBox. You can do
 ## Creating VM
 
 - Launch VirtualBox and click the `New` button.
-- Provide a name for the virtual machine (`Security Onion 2.4` for example) and then select the ISO image. It should automatically set type to `Linux` and version to `Oracle Linux 9.x`. Click the checkbox for `Skip Unattended Installation` and then click the `Next` button.
+- Provide a name for the virtual machine (`Security Onion` for example) and then select the ISO image. It should automatically set type to `Linux` and version to `Oracle Linux 9.x`. Click the checkbox for `Skip Unattended Installation` and then click the `Next` button.
 - Specify RAM and Processors as needed per the [Hardware](hardware.md) section and then click the `Next` button.
 - Specify virtual hard disk size as needed per the [Hardware](hardware.md) section and then click the `Next` button.
 - Confirm options and then click the `Finish` button.
