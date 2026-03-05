@@ -5,6 +5,7 @@ copyright: Security Onion Solutions, LLC
 
 theme:
   name: material
+  custom_dir: overrides #override 404.html
   logo: images/logo/so-logo.png
   favicon: images/logo/favicon.ico
   features:
