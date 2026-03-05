@@ -5959,7 +5959,7 @@
 <a href="https://securityonion.net/azure">https://securityonion.net/azure</a></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Existing 2.4 RC1 or newer Security Onion Azure Image installations should use the <a href="../soup/">Soup</a> command to upgrade to newer versions of Security Onion. Attempting to switch to a newer image from the Azure Marketplace could cause loss of data and require full Grid re-installation. Upgrading from Security Onion 2.3 or beta versions of 2.4 is unsupported.</p>
+<p>Existing Security Onion cloud image installations should use the <a href="../soup/">soup</a> command to upgrade. If your grid is still running 2.4.x, use <code>soup</code> to upgrade to 2.4.210, and then use <code>soupto3</code> to proceed to 3.0.0, after which continue using <code>soup</code> again. Attempting to switch to a newer Security Onion image from the cloud marketplace could cause loss of data and require full Grid re-installation; use the <code>soup</code> procedure to upgrade instead.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -6057,7 +6057,7 @@
 <li>Choose or create a new Resource group.</li>
 <li>Enter a suitable name for this virtual machine, such as <code>so-vm-manager</code>.</li>
 <li>Choose the desired Region and Availability options. (Use <code>East US 2</code> for Ultra SSD support, if needed.)</li>
-<li>Choose the <code>Security Onion 2 VM Image</code>. If this option is not listed on the Image dropdown, select <code>See all images</code> and search for <code>onion</code>.</li>
+<li>Choose the <code>Security Onion VM Image</code>. If this option is not listed on the Image dropdown, select <code>See all images</code> and search for <code>onion</code>.</li>
 <li>Choose the appropriate Size based on the desired hardware requirements. For assistance on determining resource requirements please review the Requirements section above.</li>
 <li>Change the Username to <code>onion</code>. Note that this is not mandatory -- if you accidentally leave it to the default <code>azureuser</code>, that's ok, you'll simply use the <code>azureuser</code> username any place where the documentation states to use the <code>onion</code> username.</li>
 <li>Select an existing SSH public key if one already exists, otherwise select the option to <code>Generate new key pair</code>.</li>
