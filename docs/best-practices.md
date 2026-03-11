@@ -4,9 +4,9 @@ Security Onion provides lots of options and flexibility, but for best results we
 
 ## Installation
 
-- Download and verify our ISO image as shown in the [download](download.md) section.
+- Download and verify our ISO image as shown in the [Download](download.md) section.
 
-- For production deployments, prefer dedicated hardware to VMs when possible (see the [hardware](hardware.md) section).
+- For production deployments, prefer dedicated hardware to VMs when possible (see the [Hardware](hardware.md) section).
 
 - If VMs must be used, ensure that resources are properly dedicated to VMs to avoid resource contention.
 
@@ -16,7 +16,7 @@ Security Onion provides lots of options and flexibility, but for best results we
 
 - When possible, we recommend using a dedicated TAP rather than SPAN ports.
 
-- Make sure that any network firewalls have the proper firewall rules in place to allow ongoing operation and updates (see the [firewall](firewall.md) section).
+- Make sure that any network firewalls have the proper firewall rules in place to allow ongoing operation and updates (see the [Firewall](firewall.md) section).
 
 ## Configuration
 
@@ -30,9 +30,9 @@ Security Onion provides lots of options and flexibility, but for best results we
 
 - Security Onion is a free and open platform based on standard Linux distros, but we recommend treating it as an appliance and avoid installing third party software as this may conflict with our components and cause issues when updating.
 
-- Avoid installing automation tools such as Puppet and Chef as these may conflict with our existing [salt](salt.md) automation.
+- Avoid installing automation tools such as Puppet and Chef as these may conflict with our existing [Salt](salt.md) automation.
 
-- Avoid installing monitoring tools such as Zabbix as this may conflict with our existing [influxdb](influxdb.md) monitoring.
+- Avoid installing monitoring tools such as Zabbix as this may conflict with our existing [Influxdb](influxdb.md) monitoring.
 
 - Avoid installing third-party endpoint security agents as they may break functionality or introduce unacceptable performance overhead.
 
