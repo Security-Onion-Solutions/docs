@@ -6432,9 +6432,9 @@
 
 
 <h1 id="grid">Grid<a class="headerlink" href="#grid" title="Permanent link">¶</a></h1>
-<p><a href="../security-onion-console/">Security Onion Console</a> includes a Grid interface which allows you to quickly check the status of all nodes in your Grid.</p>
+<p><a href="../security-onion-console/">Security Onion Console</a> includes a grid interface which allows you to quickly check the status of all nodes in your grid.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/39_grid.png" data-desc-position="bottom"><img alt="Image" src="../images/39_grid.png"></a></p>
-<p>Starting at the top of the page, there is a <code>Grid EPS</code> value in the upper-right corner that shows the sum of all <code>Consumption EPS</code> measurements in the entire Grid. Below that you will find a list of all nodes in your Grid.</p>
+<p>Starting at the top of the page, there is a <code>Grid EPS</code> value in the upper-right corner that shows the sum of all <code>Consumption EPS</code> measurements in the entire Grid. Below that you will find a list of all nodes in your grid.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Please note that new nodes start off showing a red <code>Fault</code> and may take a few minutes to fully initialize before they show a green OK.</p>
@@ -6469,16 +6469,16 @@
 <h3 id="last-heard-from">Last Heard From<a class="headerlink" href="#last-heard-from" title="Permanent link">¶</a></h3>
 <p>The <code>Last Heard From</code> field shows the last time that the node checked-in with the manager. Note that a check-in doesn't always include updated node metrics. </p>
 <h3 id="age">Age<a class="headerlink" href="#age" title="Permanent link">¶</a></h3>
-<p>The <code>Age</code> field shows how long the node has been part of the Grid and is based on the <code>Date Created</code> value.</p>
+<p>The <code>Age</code> field shows how long the node has been part of the grid and is based on the <code>Date Created</code> value.</p>
 <h3 id="os-uptime">OS Uptime<a class="headerlink" href="#os-uptime" title="Permanent link">¶</a></h3>
 <p>The <code>OS Uptime</code> field shows how long the node has been running since the last power-on or reboot event.</p>
 <p>If the node needs to be restarted to apply kernel updates then a message will appear next to the uptime value indicating this. The reboot button at the bottom of the Grid page allows administrators to remotely reboot a node via the Security Onion Console web interface.</p>
 <h3 id="last-synchronized">Last Synchronized<a class="headerlink" href="#last-synchronized" title="Permanent link">¶</a></h3>
-<p>The <code>Last Synchronized</code> field shows how long ago the node was synchronized to the manager node. This is equivalent to the last Salt highstate run. Knowing this value can be helpful when making configuration changes to the Grid and determining whether a specific node has received those changes.</p>
+<p>The <code>Last Synchronized</code> field shows how long ago the node was synchronized to the manager node. This is equivalent to the last Salt highstate run. Knowing this value can be helpful when making configuration changes to the grid and determining whether a specific node has received those changes.</p>
 <h3 id="process-status">Process Status<a class="headerlink" href="#process-status" title="Permanent link">¶</a></h3>
 <p>If the <code>Process Status</code> field shows <code>Fault</code>, you can check the other status indicators as well as the <code>Container Status</code> section to determine which process has failed.</p>
 <h3 id="connection-status">Connection Status<a class="headerlink" href="#connection-status" title="Permanent link">¶</a></h3>
-<p>The <code>Connection Status</code> field shows whether or not the node is currently connected to the Grid.</p>
+<p>The <code>Connection Status</code> field shows whether or not the node is currently connected to the grid.</p>
 <h3 id="elasticsearch-status">Elasticsearch Status<a class="headerlink" href="#elasticsearch-status" title="Permanent link">¶</a></h3>
 <p>If the node runs <a href="../elasticsearch/">Elasticsearch</a>, then the <code>Elasticsearch Status</code> field will show the status of it. If the status is anything other than OK, then see the <a href="../elasticsearch/">Elasticsearch</a> section to troubleshoot.</p>
 <h3 id="raid-status">RAID Status<a class="headerlink" href="#raid-status" title="Permanent link">¶</a></h3>
@@ -6506,7 +6506,7 @@
 <h3 id="elastic-storage-used">Elastic Storage Used<a class="headerlink" href="#elastic-storage-used" title="Permanent link">¶</a></h3>
 <p>The <code>Elastic Storage Used</code> field shows the total gigabytes used by <a href="../elasticsearch/">Elasticsearch</a> to store the ingested events, across all indices.</p>
 <h3 id="influxdb-storage-used">InfluxDB Storage Used<a class="headerlink" href="#influxdb-storage-used" title="Permanent link">¶</a></h3>
-<p>The <code>InfluxDB Storage Used</code> field shows the total gigabytes used by <a href="../influxdb/">InfluxDB</a> to store the current and historic metric data collected from all nodes in the Grid.</p>
+<p>The <code>InfluxDB Storage Used</code> field shows the total gigabytes used by <a href="../influxdb/">InfluxDB</a> to store the current and historic metric data collected from all nodes in the grid.</p>
 <h3 id="pcap-retention">PCAP Retention<a class="headerlink" href="#pcap-retention" title="Permanent link">¶</a></h3>
 <p>The <code>PCAP Retention</code> field shows the number of historic days of available packet capture data which can be viewed by analysts using the Security Onion Console <a href="../pcap/">PCAP</a> tool.</p>
 <h3 id="load-average">Load Average<a class="headerlink" href="#load-average" title="Permanent link">¶</a></h3>
@@ -6541,7 +6541,7 @@
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/40_upload.png" data-desc-position="bottom"><img alt="Image" src="../images/40_upload.png"></a></p>
 <ul>
 <li>
-<p>The reboot button allows for remotely rebooting a Grid node. This may be necessary when scheduled OS/kernel updates are automatically applied and require a restart to take effect. Review the notes on the confirmation dialog thoroughly before confirming a reboot. Rebooting a manager node will likely cause the Security Onion Console web interface to become temporarily unavailable.</p>
+<p>The reboot button allows for remotely rebooting a grid node. This may be necessary when scheduled OS/kernel updates are automatically applied and require a restart to take effect. Review the notes on the confirmation dialog thoroughly before confirming a reboot. Rebooting a manager node will likely cause the Security Onion Console web interface to become temporarily unavailable.</p>
 </li>
 <li>
 <p>Clicking the question mark button takes you to this help document.</p>

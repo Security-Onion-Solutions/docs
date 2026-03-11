@@ -6243,7 +6243,7 @@
 <p>If a detection would be matched by both an enable and disable regex, it is enabled. If a detection's status is changed via the <a href="../detections/">Detections</a> interface but it is currently matched by a regex pattern, the change initiated from the <a href="../detections/">Detections</a> interface is reverted and a message is shown.</p>
 <p>Enable and disable operations that are based on regex patterns are actioned during the daily rule update. If you have made a change to the regex patterns and would like to have it implemented more immediately:</p>
 <ul>
-<li>Under Grid Configuration, click the <code>SYNCHRONIZE Grid</code> button and wait about 5 minutes for it to complete.</li>
+<li>Under Grid Configuration, click the <code>SYNCHRONIZE GRID</code> button and wait about 5 minutes for it to complete.</li>
 <li>Navigate to <a href="../detections/">Detections</a>, click the Options menu, select <a href="../suricata/">Suricata</a> in the dropdown menu, click the <code>FULL UPDATE</code> button, and then wait for it to complete.</li>
 <li>Refresh the <a href="../detections/">Detections</a> page and you should see the relevant rule statuses have changed.</li>
 </ul>
@@ -6355,7 +6355,7 @@
 <li>Click the Language drop-down and select <code>Suricata</code>.</li>
 <li>Optionally specify a license.</li>
 <li>Add the signature.</li>
-<li>Click the <code>CREATE</code> button and the detection should deploy to your Grid at the next 15-minute cycle.</li>
+<li>Click the <code>CREATE</code> button and the detection should deploy to your grid at the next 15-minute cycle.</li>
 </ol>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/59_detection_create.png" data-desc-position="bottom"><img alt="Image" src="../images/59_detection_create.png"></a></p>
 <h2 id="update-frequency">Update Frequency<a class="headerlink" href="#update-frequency" title="Permanent link">¶</a></h2>
@@ -6372,8 +6372,8 @@
 <li>At the top of the page, click the <code>Options</code> menu and then enable the <code>Show advanced settings</code> option.</li>
 <li>Navigate to Nginx --&gt; config --&gt; external_suricata.</li>
 <li>On the right side of the page, change the value to <code>true</code> and then click the checkmark to save the new setting.</li>
-<li>You can wait for the next Grid update or click the <code>SYNCHRONIZE Grid</code> button under Options.</li>
-<li>Once the Grid is fully synchronized, the Manager should listen on port 7789 for https connections from hosts defined in the <code>external_suricata</code> host group.</li>
+<li>You can wait for the next Grid update or click the <code>SYNCHRONIZE GRID</code> button under Options.</li>
+<li>Once the grid is fully synchronized, the Manager should listen on port 7789 for https connections from hosts defined in the <code>external_suricata</code> host group.</li>
 </ul>
 <h2 id="configuring-rulesets">Configuring Rulesets<a class="headerlink" href="#configuring-rulesets" title="Permanent link">¶</a></h2>
 <p>Security Onion allows you to configure multiple NIDS rulesets. You can manage these rulesets by navigating to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; <code>SOC</code> --&gt; <code>config</code> --&gt; <code>server</code> --&gt; <code>modules</code> --&gt; <code>suricataengine</code> --&gt; <code>rulesetSources</code>. This setting is also available via the Configuration quicklinks.</p>

@@ -5725,7 +5725,7 @@
 <h3 id="configuring">Configuring<a class="headerlink" href="#configuring" title="Permanent link">¶</a></h3>
 <p>During setup, or during non-automated <a href="../soup/">soup</a> invocations, the user must choose to enable or disable SOC telemetry collection.</p>
 <p>After installation, Grid administrators can enable or disable SOC Telemetry via the configuration interface. Search for <code>SOC Telemetry</code> in the Configuration screen.</p>
-<p>After changing the <code>SOC Telemetry</code> configuration setting, the Grid must be resynchronized. This happens automatically once every 15 minutes, or manually if the Grid administrator clicks the Synchronize Grid option, at the top of the Configuration screen. Grid synchronization can take several minutes to complete.</p>
+<p>After changing the <code>SOC Telemetry</code> configuration setting, the grid must be resynchronized. This happens automatically once every 15 minutes, or manually if the grid administrator clicks the Synchronize Grid option, at the top of the Configuration screen. Grid synchronization can take several minutes to complete.</p>
 <p>Also, the browser will cache the previous configuration setting. Therefore, to ensure the browser is using the new setting value, make sure Grid synchronization completes, and then perform a hard browser refresh on the SOC UI. This can be performed via CTRL+SHIFT+R or CMD+SHIFT+R.</p>
 <h3 id="included-data">Included Data<a class="headerlink" href="#included-data" title="Permanent link">¶</a></h3>
 <p>The primary objective of the SOC Telemetry data collection is to understand what features are being used in <a href="../security-onion-console/">SOC</a>. Specifically, the data being collected relates to user interface navigation flows. Additional context data, such as the version of the software, the viewed page path, etc. may also be included.</p>
@@ -5745,7 +5745,7 @@
 <p>Security Onion periodically checks for package updates to ensure the operating system (OS) and related applications are kept patched and updated. These updates are critical to protecting the OS and installed packages from recently exposed vulnerabilities. This is different from Security Onion product upgrades via <a href="../soup/">soup</a>, which is manually invoked. When the OS package updates begin, the request to the Security Onion repository server(s) can include a limited set of telemetry data.</p>
 <h3 id="configuring_1">Configuring<a class="headerlink" href="#configuring_1" title="Permanent link">¶</a></h3>
 <p>Automatic package updates can be enabled or disabled via the configuration interface. Search for <code>patch</code> in the Configuration screen.</p>
-<p>After changing this configuration setting, the Grid must be resynchronized. This happens automatically once every 15 minutes, or manually if the Grid administrator clicks the Synchronize Grid option, at the top of the Configuration screen. Grid synchronization can take several minutes to complete.</p>
+<p>After changing this configuration setting, the grid must be resynchronized. This happens automatically once every 15 minutes, or manually if the grid administrator clicks the Synchronize Grid option, at the top of the Configuration screen. Grid synchronization can take several minutes to complete.</p>
 <h3 id="included-data_1">Included Data<a class="headerlink" href="#included-data_1" title="Permanent link">¶</a></h3>
 <p>The primary objective of the included telemetry data is to understand which versions of Security Onion are deployed and on which platforms. This information helps the Security Onion development team determine how to prioritize support for older versions, and whether there is justification to start testing or stop testing on various operating systems and architectures.</p>
 <p>Additional data may be included to provide the development team with information about which features have been enabled. This data can change from release to release as it often relates to new development work.</p>
@@ -5763,7 +5763,7 @@
 <p>Grids installed within airgapped environments will automatically disable telemetry. In this scenario, the <code>SOC Telemetry</code> configuration setting will have no effect and the automatic package updates will be disabled. See the <a href="../airgap/">airgap</a> section for more information about environments detached from the internet.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If a Grid is switched from airgap to non-airgap, and if the SOC Telemetry is not explicitly disabled in the Grid by an administrator, the SOC app running in the browser will send telemetry.</p>
+<p>If a grid is switched from airgap to non-airgap, and if the SOC Telemetry is not explicitly disabled in the grid by an administrator, the SOC app running in the browser will send telemetry.</p>
 </div>
 
 

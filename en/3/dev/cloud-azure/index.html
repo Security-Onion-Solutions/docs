@@ -6001,7 +6001,7 @@
 <p>This section does not cover how to set up a virtual network in Azure. For more details about setting up a virtual network, please see <a href="https://docs.microsoft.com/en-us/azure/virtual-network/">https://docs.microsoft.com/en-us/azure/virtual-network/</a>. Ensure that all Security Onion nodes can access the manager node over the necessary ports. This could require adding rules to your Azure Virtual Network and/or VMs in order to satisfy the Security Onion <a href="../firewall/">Firewall</a> Node Communication requirements.</p>
 </div>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">¶</a></h2>
-<p>Before proceeding, determine the Grid architecture desired. Choose from a single-node Grid versus a distributed, multi-node Grid. </p>
+<p>Before proceeding, determine the grid architecture desired. Choose from a single-node Grid versus a distributed, multi-node Grid. </p>
 <p>Security Onion recommends using either Premium SSD disks, or the more expensive Ultra SSD disks, with suitable IOPS and throughput matched to your expected network monitoring requirements.</p>
 <h2 id="single-node-grid">Single Node Grid<a class="headerlink" href="#single-node-grid" title="Permanent link">¶</a></h2>
 <p>For simple, low-volume production monitoring, a single node Grid can be used.</p>
@@ -6091,7 +6091,7 @@
 <li>Choose <code>Other</code> for Licensing type.</li>
 <li>Select <code>Next: Disks</code></li>
 <li>Ensure <code>Premium SSD</code> is selected.</li>
-<li>For single-node grids, distributed sensor nodes, or distributed search nodes: If you would like to separate the <code>/nsm</code> partition into its own disk, create and attach a data disk for this purpose, with a minimum size of 100GB, or more depending on predicted storage needs. Note that the size of the <code>/nsm</code> partition determines the rate that old packet and event data is pruned. Separating the /nsm partition can provide more flexibility with scaling up the Grid node sizes, but requires a little more setup, which is described later.</li>
+<li>For single-node grids, distributed sensor nodes, or distributed search nodes: If you would like to separate the <code>/nsm</code> partition into its own disk, create and attach a data disk for this purpose, with a minimum size of 100GB, or more depending on predicted storage needs. Note that the size of the <code>/nsm</code> partition determines the rate that old packet and event data is pruned. Separating the /nsm partition can provide more flexibility with scaling up the grid node sizes, but requires a little more setup, which is described later.</li>
 <li>Select <code>Next: Networking</code></li>
 <li>Choose the virtual network for this virtual machine.</li>
 <li>Choose a public IP if you intend to access this virtual machine directly (not recommended for production grids).</li>

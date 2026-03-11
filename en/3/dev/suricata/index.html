@@ -6029,7 +6029,7 @@
 <li>SSL</li>
 </ul>
 <p>If you later find that some of that metadata is unnecessary, you can enable the SO_FILTERS ruleset to filter out unnecessary metadata. Navigate to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; SOC --&gt; config --&gt; server --&gt; modules --&gt; suricataengine --&gt; rulesetSources and enable the SO_FILTERS ruleset.</p>
-<p>To change your Grid's metadata engine from <a href="../zeek/">Zeek</a> to Suricata, go to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; global --&gt; mdengine and change the value from <code>Zeek</code> to <code>Suricata</code>:</p>
+<p>To change your grid's metadata engine from <a href="../zeek/">Zeek</a> to Suricata, go to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; global --&gt; mdengine and change the value from <code>Zeek</code> to <code>Suricata</code>:</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/config-item-global.png" data-desc-position="bottom"><img alt="Image" src="../images/config-item-global.png"></a></p>
 <h2 id="file-extraction">File Extraction<a class="headerlink" href="#file-extraction" title="Permanent link">¶</a></h2>
 <p>If you choose Suricata for metadata, it will extract files from network traffic and <a href="../strelka/">Strelka</a> will then analyze those extracted files. The SO_EXTRACTIONS ruleset controls which file types are extracted and is enabled by default when Suricata is the metadata engine. You can customize file extraction by modifying rules in this ruleset.</p>

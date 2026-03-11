@@ -5708,7 +5708,7 @@
 <h1 id="opnsense">OPNsense<a class="headerlink" href="#opnsense" title="Permanent link">¶</a></h1>
 <p>OPNsense is a free and open firewall that can be found at <a href="https://opnsense.org/">https://opnsense.org/</a>. Similar to <a href="../pfsense/">pfSense</a>, there are a few different ways in which you can integrate OPNsense into your Security Onion deployment. First, you can configure OPNsense to send firewall logs to your Security Onion deployment. You can also configure OPNsense to send <a href="../netflow/">NetFlow</a> data to your Security Onion deployment. Finally, a third option is to integrate OPNsense's Suricata into Security Onion so that it pulls <a href="../nids/">NIDS</a> rules from your Security Onion deployment and then sends those Suricata alerts to Security Onion. All three options are detailed below.</p>
 <h2 id="sending-opnsense-firewall-logs-to-security-onion">Sending OPNsense Firewall Logs to Security Onion<a class="headerlink" href="#sending-opnsense-firewall-logs-to-security-onion" title="Permanent link">¶</a></h2>
-<p>Centralize your logging by sending OPNsense firewall logs to your Grid.</p>
+<p>Centralize your logging by sending OPNsense firewall logs to your grid.</p>
 <p><strong>Steps:</strong></p>
 <ol>
 <li>Navigate to <strong>System</strong> → <strong>Settings</strong> → <strong>Logging</strong> in the OPNsense GUI.</li>
@@ -5722,8 +5722,8 @@
 </li>
 <li><strong>Application Levels</strong>: Leave at default to send all logs or specify as needed.</li>
 <li><strong>Facilities</strong>: Leave at default to include all facilities or specify as needed.</li>
-<li><strong>Hostname/IP Address</strong>: Enter the IP address of the Grid system where you set up the logging input.</li>
-<li><strong>Port</strong>: Enter the port number configured on the Grid system.</li>
+<li><strong>Hostname/IP Address</strong>: Enter the IP address of the grid system where you set up the logging input.</li>
+<li><strong>Port</strong>: Enter the port number configured on the grid system.</li>
 <li>
 <p><strong>Format</strong>: Choose the appropriate format (e.g., Syslog).</p>
 </li>
@@ -5732,14 +5732,14 @@
 </li>
 </ol>
 <h2 id="sending-opnsense-netflow-data-to-security-onion">Sending OPNsense NetFlow data to Security Onion<a class="headerlink" href="#sending-opnsense-netflow-data-to-security-onion" title="Permanent link">¶</a></h2>
-<p>To collect network flow data (similar to <a href="../zeek/">Zeek</a> connection logs), configure NetFlow on OPNsense to send data to your Grid.</p>
+<p>To collect network flow data (similar to <a href="../zeek/">Zeek</a> connection logs), configure NetFlow on OPNsense to send data to your grid.</p>
 <p><strong>Steps:</strong></p>
 <ol>
 <li>
 <p><strong>Prepare Your Grid to Receive NetFlow Data:</strong></p>
 </li>
 <li>
-<p>Refer to the <a href="../netflow/">NetFlow</a> section to set up your Grid for receiving NetFlow data.</p>
+<p>Refer to the <a href="../netflow/">NetFlow</a> section to set up your grid for receiving NetFlow data.</p>
 </li>
 <li>
 <p><strong>Configure NetFlow on OPNsense:</strong></p>
@@ -5752,8 +5752,8 @@
 <li>
 <p>Under <strong>Destinations</strong>, add a new destination:</p>
 <ul>
-<li><strong>Hostname/IP Address</strong>: Enter the IP address of the Grid node configured to accept NetFlow data.</li>
-<li><strong>Port</strong>: Enter the port number you set up on the Grid node.</li>
+<li><strong>Hostname/IP Address</strong>: Enter the IP address of the grid node configured to accept NetFlow data.</li>
+<li><strong>Port</strong>: Enter the port number you set up on the grid node.</li>
 <li><strong>Format</strong>: Choose the appropriate NetFlow version (e.g., NetFlow v5 or v9).</li>
 </ul>
 </li>
@@ -5769,21 +5769,21 @@
 </div>
 <h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h3>
 <ul>
-<li><strong>Security Onion Manager Access</strong>: Access to the manager of your Grid.</li>
+<li><strong>Security Onion Manager Access</strong>: Access to the manager of your grid.</li>
 <li><strong>Administrative Rights</strong>: Ability to modify settings in the OPNsense GUI.</li>
 <li><strong>SSH Access</strong>: You must have SSH access to your OPNsense firewall.</li>
 </ul>
 <h3 id="share-nids-rules">Share NIDS Rules<a class="headerlink" href="#share-nids-rules" title="Permanent link">¶</a></h3>
 <p>The <a href="../detections/">Detections</a> module can now manage <a href="../nids/">NIDS</a> rules for external Suricata instances. Please refer to the <a href="../nids/">NIDS</a> section for detailed instructions on how to set this up.</p>
 <h3 id="import-security-onion-ca">Import Security Onion CA<a class="headerlink" href="#import-security-onion-ca" title="Permanent link">¶</a></h3>
-<p>To establish a secure connection between your OPNsense firewall and the Grid manager, your firewall will need to trust the Grid's Certificate Authority (CA) certificate.</p>
+<p>To establish a secure connection between your OPNsense firewall and the grid manager, your firewall will need to trust the grid's Certificate Authority (CA) certificate.</p>
 <p><strong>Steps:</strong></p>
 <ol>
 <li>
-<p><strong>Copy the Grid CA Certificate:</strong></p>
+<p><strong>Copy the grid CA Certificate:</strong></p>
 </li>
 <li>
-<p>SSH into your Grid manager.</p>
+<p>SSH into your grid manager.</p>
 </li>
 <li>Run the command <code>cat /etc/pki/ca.crt</code> to display the CA certificate.</li>
 <li>
@@ -5826,7 +5826,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>vi /usr/local/opnsense/scripts/suricata/metadata/rules/onion.xml
 </code></pre></div>
 <ul>
-<li>Paste the following content into the file, replacing <code>YOURMANAGER</code> with the hostname or IP address of your Grid manager:</li>
+<li>Paste the following content into the file, replacing <code>YOURMANAGER</code> with the hostname or IP address of your grid manager:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">&lt;?xml version="1.0"?&gt;</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">&lt;ruleset</span><span class="w"> </span><span class="na">documentation_url=</span><span class="s">"http://docs.opnsense.org/"</span><span class="nt">&gt;</span>
