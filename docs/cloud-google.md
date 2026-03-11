@@ -1,7 +1,7 @@
 # Google Cloud Image
 
 If you would like to deploy Security Onion in Google Cloud Platform (GCP), choose the Security Onion image listed on the Google Marketplace:
-<https://securityonion.net/google/?ref=_ptnr_soc_docs_230824>
+<https://securityonion.net/google/?ref=_ptnr_soc_docs_260311>
 
 !!! WARNING
     
