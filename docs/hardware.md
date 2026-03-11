@@ -36,9 +36,7 @@ An Import installation runs the minimal processes required to import PCAP or EVT
 
 ## Eval
 
-An Eval installation runs the minimal processes required for a single machine to sniff live network traffic from a TAP or SPAN port and view the results. Therefore, its hardware requirements are higher than Import as shown in the table above. Eval is designed for temporary installations or homelab installations on a budget. Unlike a full Standalone installation, Evaluation is NOT designed for production usage.
-
-In order to minimize RAM usage, Eval does not run [Logstash](logstash.md) or [Redis](redis.md) at all. Also, Eval uses [Suricata](suricata.md) for writing full packet capture to disk.
+An Eval installation runs the minimal processes required for a single machine to sniff live network traffic from a TAP or SPAN port and view the results. Therefore, its hardware requirements are higher than Import as shown in the table above. Eval is designed for temporary installations or homelab installations on a budget. Unlike a full Standalone installation, Evaluation is NOT designed for production usage. In order to minimize RAM usage, Eval does not run [Logstash](logstash.md) or [Redis](redis.md) at all.
 
 ## Production Deployments
 
@@ -185,7 +183,6 @@ Inexpensive TAP/SPAN options (listed alphabetically):
 
 - [Dualcomm](https://www.dualcomm.com/collections/network-tap)
 - [Midbit SharkTap](https://www.midbittech.com)
-- [Mikrotik](https://mikrotik.com/product/rb260gs)
 - [Netgear GS105Ev2](https://www.netgear.com/support/product/gs105ev2)
 
 Enterprise TAP options (listed alphabetically):
