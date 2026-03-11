@@ -51,7 +51,7 @@ To find integrations that have upgrades available:
 
 ## Managing Third Party Integration Index Templates
 
-Index templates for third party integrations can be managed as described in the [Elasticsearch](elasticsearch.md) section, but first `managed_integrations` must be updated by navigating to [Administration](administration.md) --> Configuration --> Manager --> managed_integrations.
+Index templates for third party integrations can be managed as described in the [Elasticsearch](elasticsearch.md) section, but first `managed_integrations` must be updated by navigating to [Administration](administration.md) --> Configuration --> manager --> managed_integrations.
 
 ## Supported Integrations
 

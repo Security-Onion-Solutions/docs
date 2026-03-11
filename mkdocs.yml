@@ -176,15 +176,15 @@ nav:
     - Customizing Overview: customizing.md
     - Security Onion Console Customization: security-onion-console-customization.md
     - nginx: nginx.md
-    - proxy: proxy.md
-    - firewall: firewall.md
-    - email: email.md
-    - ntp: ntp.md
-    - console: console.md
-    - ssh: ssh.md
-    - hostname: hostname.md
-    - ip: ip.md
-    - dns: dns.md
+    - Proxy: proxy.md
+    - Firewall: firewall.md
+    - Email: email.md
+    - NTP: ntp.md
+    - Console: console.md
+    - SSH: ssh.md
+    - Hostname: hostname.md
+    - IP Address: ip-address.md
+    - DNS: dns.md
     - URL Base: url-base.md
   - Tricks and Tips:
     - Tricks and Tips Overview: tricks-and-tips.md
