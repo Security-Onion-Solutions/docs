@@ -6,7 +6,7 @@ Before downloading, we highly recommend that you review the [Release Notes](rele
     
     **ALWAYS verify the checksum of the ISO image before booting!** This ensures that the ISO image hasn't been tampered with or corrupted during download. If it fails to verify, try downloading again. If it still fails to verify, try downloading from another computer or another network.
 
-    Download and verify our ISO image as shown at <https://github.com/Security-Onion-Solutions/securityonion/blob/2.4/main/DOWNLOAD_AND_VERIFY_ISO.md>.
+    Download and verify our ISO image as shown at <https://github.com/Security-Onion-Solutions/securityonion/blob/3/main/DOWNLOAD_AND_VERIFY_ISO.md>.
 
 !!! WARNING
     
