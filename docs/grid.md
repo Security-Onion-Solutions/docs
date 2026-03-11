@@ -1,10 +1,10 @@
 # Grid
 
-[Security Onion Console](security-onion-console.md) includes a Grid interface which allows you to quickly check the status of all nodes in your Grid.
+[Security Onion Console](security-onion-console.md) includes a grid interface which allows you to quickly check the status of all nodes in your grid.
 
 ![Image](images/39_grid.png)
 
-Starting at the top of the page, there is a `Grid EPS` value in the upper-right corner that shows the sum of all `Consumption EPS` measurements in the entire Grid. Below that you will find a list of all nodes in your Grid.
+Starting at the top of the page, there is a `Grid EPS` value in the upper-right corner that shows the sum of all `Consumption EPS` measurements in the entire Grid. Below that you will find a list of all nodes in your grid.
 
 !!! WARNING
     
@@ -62,7 +62,7 @@ The `Last Heard From` field shows the last time that the node checked-in with th
 
 ### Age
 
-The `Age` field shows how long the node has been part of the Grid and is based on the `Date Created` value.
+The `Age` field shows how long the node has been part of the grid and is based on the `Date Created` value.
 
 ### OS Uptime
 
@@ -72,7 +72,7 @@ If the node needs to be restarted to apply kernel updates then a message will ap
 
 ### Last Synchronized
 
-The `Last Synchronized` field shows how long ago the node was synchronized to the manager node. This is equivalent to the last Salt highstate run. Knowing this value can be helpful when making configuration changes to the Grid and determining whether a specific node has received those changes.
+The `Last Synchronized` field shows how long ago the node was synchronized to the manager node. This is equivalent to the last Salt highstate run. Knowing this value can be helpful when making configuration changes to the grid and determining whether a specific node has received those changes.
 
 ### Process Status
 
@@ -80,7 +80,7 @@ If the `Process Status` field shows `Fault`, you can check the other status indi
 
 ### Connection Status
 
-The `Connection Status` field shows whether or not the node is currently connected to the Grid.
+The `Connection Status` field shows whether or not the node is currently connected to the grid.
 
 ### Elasticsearch Status
 
@@ -138,7 +138,7 @@ The `Elastic Storage Used` field shows the total gigabytes used by [Elasticsearc
 
 ### InfluxDB Storage Used
 
-The `InfluxDB Storage Used` field shows the total gigabytes used by [InfluxDB](influxdb.md) to store the current and historic metric data collected from all nodes in the Grid.
+The `InfluxDB Storage Used` field shows the total gigabytes used by [InfluxDB](influxdb.md) to store the current and historic metric data collected from all nodes in the grid.
 
 ### PCAP Retention
 
@@ -188,7 +188,7 @@ There are a few icons in the lower left of the `Node Status` section depending o
 
 ![Image](images/40_upload.png)
 
-- The reboot button allows for remotely rebooting a Grid node. This may be necessary when scheduled OS/kernel updates are automatically applied and require a restart to take effect. Review the notes on the confirmation dialog thoroughly before confirming a reboot. Rebooting a manager node will likely cause the Security Onion Console web interface to become temporarily unavailable.
+- The reboot button allows for remotely rebooting a grid node. This may be necessary when scheduled OS/kernel updates are automatically applied and require a restart to take effect. Review the notes on the confirmation dialog thoroughly before confirming a reboot. Rebooting a manager node will likely cause the Security Onion Console web interface to become temporarily unavailable.
 
 - Clicking the question mark button takes you to this help document.
 

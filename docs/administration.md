@@ -4,7 +4,7 @@
 
 ## Users
 
-The Users page shows all user accounts that have been created for the Grid.
+The Users page shows all user accounts that have been created for the grid.
 
 ![Image](images/81_users.png)
 
@@ -23,17 +23,17 @@ Hovering over the icon in the Status column will show you these details as well.
 
 ## Grid Members
 
-The Grid Members page shows nodes that have attempted to join the Grid and whether or not they have been accepted into the Grid by an administrator.
+The Grid Members page shows nodes that have attempted to join the grid and whether or not they have been accepted into the grid by an administrator.
 
 ![Image](images/84_gridmembers.png)
 
 Unaccepted members are displayed on the left side and broken into three sections: Pending Members, Denied Members, and Rejected Members. When you accept a member, it will then move to the right side under Accepted Members.
 
-For accepted members, you can click the REVIEW button to show additional information about the Grid member. If you want to remove the member, you can then click the DELETE button and review the confirmation.
+For accepted members, you can click the REVIEW button to show additional information about the grid member. If you want to remove the member, you can then click the DELETE button and review the confirmation.
 
 ## Configuration
 
-The Configuration page allows you to configure various components of your Grid.
+The Configuration page allows you to configure various components of your grid.
 
 ![Image](images/87_config.png)
 
@@ -45,13 +45,13 @@ If unsure of which component a particular setting may belong to, use the Filter 
 - expand all settings
 - collapse all settings
 - show settings that have been modified from the default value
-- show settings that have a unique value specified for one or more nodes in the Grid
+- show settings that have a unique value specified for one or more nodes in the grid
 
 !!! NOTE
     
     Keys that include `_x_` indicate a placeholder value used to represent a period (`.`).
 
-Some settings can be applied across the entire Grid or to specific nodes. Applying a setting to a specific node will override the Grid setting.
+Some settings can be applied across the entire Grid or to specific nodes. Applying a setting to a specific node will override the grid setting.
 
 ### Advanced Settings
 

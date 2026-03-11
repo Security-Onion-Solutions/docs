@@ -32,7 +32,7 @@ Suppose you have a small or medium network where you want some visibility for bo
 
 - Install the first Security Onion instance and choose the `ManagerSearch` option.
 - Deploy the [Elastic Agent](elastic-agent.md) to hosts.
-- Install Security Onion on one or more additional machines and join them to the Grid as sensor nodes. They will analyze network traffic from your TAP or SPAN port.
+- Install Security Onion on one or more additional machines and join them to the grid as sensor nodes. They will analyze network traffic from your TAP or SPAN port.
 
 You can read more about distributed deployments in the [Architecture](architecture.md) section.
 
@@ -41,9 +41,9 @@ You can read more about distributed deployments in the [Architecture](architectu
 Suppose you have a medium or large network where you want some visibility for both network and hosts. A more scalable enterprise deployment would look like this:
 
 - Install the first Security Onion instance and choose the `Manager` option.
-- Install Security Onion on one or more additional machines and join them to the Grid as search nodes. They will store logs and allow you to search them.
-- Deploy the [Elastic Agent](elastic-agent.md) to hosts. They will collect logs and send them to the Grid.
-- Install Security Onion on one or more additional machines and join them to the Grid as sensor nodes. They will analyze network traffic from your TAP or SPAN port.
+- Install Security Onion on one or more additional machines and join them to the grid as search nodes. They will store logs and allow you to search them.
+- Deploy the [Elastic Agent](elastic-agent.md) to hosts. They will collect logs and send them to the grid.
+- Install Security Onion on one or more additional machines and join them to the grid as sensor nodes. They will analyze network traffic from your TAP or SPAN port.
 
 You can read more about distributed deployments in the [Architecture](architecture.md) section.
 
@@ -52,11 +52,11 @@ You can read more about distributed deployments in the [Architecture](architectu
 Suppose you have a large network where you want maximum visibility for both network and hosts. A comprehensive distributed deployment would look like this:
 
 - Install the first Security Onion instance and choose the `Manager` option.
-- Install Security Onion on one or more additional machines and join them to the Grid as search nodes. They will store logs and allow you to search them.
-- Install Security Onion on a machine in your DMZ and join it to the Grid as a Fleet node. This node will manage your Elastic agents whether they are onsite or offsite.
-- Deploy the [Elastic Agent](elastic-agent.md) to hosts. They will collect logs and send them to the Grid.
-- Install Security Onion on one or more additional machines and join them to the Grid as sensor nodes. They will analyze network traffic from your TAP or SPAN port.
-- Install Security Onion on one or more additional machines and join them to the Grid as receiver nodes. This provides load balancing and pipeline redundancy.
-- Install Security Onion on one or more additional machines and join them to the Grid as [IDH](idh.md) nodes. They will provide honeypot and deception capabilities.
+- Install Security Onion on one or more additional machines and join them to the grid as search nodes. They will store logs and allow you to search them.
+- Install Security Onion on a machine in your DMZ and join it to the grid as a Fleet node. This node will manage your Elastic agents whether they are onsite or offsite.
+- Deploy the [Elastic Agent](elastic-agent.md) to hosts. They will collect logs and send them to the grid.
+- Install Security Onion on one or more additional machines and join them to the grid as sensor nodes. They will analyze network traffic from your TAP or SPAN port.
+- Install Security Onion on one or more additional machines and join them to the grid as receiver nodes. This provides load balancing and pipeline redundancy.
+- Install Security Onion on one or more additional machines and join them to the grid as [IDH](idh.md) nodes. They will provide honeypot and deception capabilities.
 
 You can read more about distributed deployments in the [Architecture](architecture.md) section.

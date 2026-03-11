@@ -81,7 +81,7 @@ By default, Security Onion uses [Zeek](zeek.md) to record protocol metadata. If 
 
 If you later find that some of that metadata is unnecessary, you can enable the SO_FILTERS ruleset to filter out unnecessary metadata. Navigate to [Administration](administration.md) --> Configuration --> SOC --> config --> server --> modules --> suricataengine --> rulesetSources and enable the SO_FILTERS ruleset.
 
-To change your Grid's metadata engine from [Zeek](zeek.md) to Suricata, go to [Administration](administration.md) --> Configuration --> global --> mdengine and change the value from `Zeek` to `Suricata`:
+To change your grid's metadata engine from [Zeek](zeek.md) to Suricata, go to [Administration](administration.md) --> Configuration --> global --> mdengine and change the value from `Zeek` to `Suricata`:
 
 ![Image](images/config-item-global.png)
 

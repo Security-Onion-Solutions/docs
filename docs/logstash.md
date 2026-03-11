@@ -71,7 +71,7 @@ In [SOC](security-onion-console.md), navigate to [Administration](administration
 custom/myfile.conf
 ```
 
-The configuration will be applied at the next 15-minute interval or you can apply it immediately by clicking the `SYNCHRONIZE Grid` button under the `Options` menu.
+The configuration will be applied at the next 15-minute interval or you can apply it immediately by clicking the `SYNCHRONIZE GRID` button under the `Options` menu.
 
 You can monitor events flowing through the output by running the following command on the manager:
 
@@ -82,7 +82,7 @@ curl -s localhost:9600/_node/stats | jq .pipelines.manager
 
 ## Modified Event Forwarding
 
-To forward events to an external destination AFTER they have traversed the Logstash pipelines (NOT ingest node pipelines), perform the same steps as above but instead of adding the reference for your Logstash output to the `manager` pipeline add it to `search` pipeline instead. The configuration will be applied at the next 15-minute interval or you can apply it immediately by clicking the `SYNCHRONIZE Grid` button under the `Options` menu.
+To forward events to an external destination AFTER they have traversed the Logstash pipelines (NOT ingest node pipelines), perform the same steps as above but instead of adding the reference for your Logstash output to the `manager` pipeline add it to `search` pipeline instead. The configuration will be applied at the next 15-minute interval or you can apply it immediately by clicking the `SYNCHRONIZE GRID` button under the `Options` menu.
 
 You can monitor events flowing through the output by running the following command on the search nodes:
 

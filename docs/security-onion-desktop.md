@@ -24,9 +24,9 @@ There are a few different ways to install Security Onion Desktop:
 
 **Joining to Grid**
 
-You can optionally join your Desktop installation to your Grid. This allows it to pull updates from the Grid and automatically trust the Grid's HTTPS certificate. It also updates the manager's firewall to allow the Desktop installation to connect. Starting with Security Onion 2.4.20, Desktop nodes will now display on the [Grid](grid.md) page along with the other Grid nodes.
+You can optionally join your Desktop installation to your grid. This allows it to pull updates from the grid and automatically trust the grid's HTTPS certificate. It also updates the manager's firewall to allow the Desktop installation to connect. Starting with Security Onion 2.4.20, Desktop nodes will now display on the [Grid](grid.md) page along with the other Grid nodes.
 
-If you choose not to join your Desktop installation to your Grid, then you may need to allow the traffic through the host-based [firewall](firewall.md) by going to [Administration](administration.md) --> Configuration --> firewall --> hostgroups --> analyst.
+If you choose not to join your Desktop installation to your grid, then you may need to allow the traffic through the host-based [firewall](firewall.md) by going to [Administration](administration.md) --> Configuration --> firewall --> hostgroups --> analyst.
 
 ![Image](images/config-item-firewall.png)
 

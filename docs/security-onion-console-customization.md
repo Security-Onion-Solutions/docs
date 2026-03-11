@@ -4,7 +4,7 @@ You can customize [Security Onion Console](security-onion-console.md) by going t
 
 ![Image](images/config-item-soc.png)
 
-Below are some ways in which you can customize SOC. Once all customizations are complete, you can make the changes take effect by clicking the `Options` bar at the top and then clicking the `SYNCHRONIZE Grid` button.
+Below are some ways in which you can customize SOC. Once all customizations are complete, you can make the changes take effect by clicking the `Options` bar at the top and then clicking the `SYNCHRONIZE GRID` button.
 
 ![Image](images/88_config_options.png)
 

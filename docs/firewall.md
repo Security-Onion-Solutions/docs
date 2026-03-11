@@ -103,7 +103,7 @@ Host groups are similar to port groups but for storing lists of hosts that will 
 
 The firewall state is designed with the idea of creating port groups and host groups, each with their own alias or name, and associating the two in order to create an allow rule. A node that has a port group and host group association assigned to it will allow those hosts to connect to those ports on that node.
 
-The default allow rules for each node are defined by its role (manager, searchnode, sensor, heavynode, etc) in the Grid. Host groups and port groups can be created or modified from the manager node by going to [Administration](administration.md) --> Configuration --> firewall --> hostgroups. When setup is run on a new node, it will ask the manager to add itself to the appropriate host groups. All node types are added to the minion host group to allow [salt](salt.md) communication. If you were to add a search node, you would see its IP appear in both the `minion` and the `search_node` host groups.
+The default allow rules for each node are defined by its role (manager, searchnode, sensor, heavynode, etc) in the grid. Host groups and port groups can be created or modified from the manager node by going to [Administration](administration.md) --> Configuration --> firewall --> hostgroups. When setup is run on a new node, it will ask the manager to add itself to the appropriate host groups. All node types are added to the minion host group to allow [salt](salt.md) communication. If you were to add a search node, you would see its IP appear in both the `minion` and the `search_node` host groups.
 
 ## Advanced Firewall Config
 
@@ -116,7 +116,7 @@ The analyst hostgroup is allowed access to the nginx ports which are 80 and 443 
 - At the top of the page, click the `Options` menu and then enable the `Show advanced settings` option.
 - On the left side, go to `firewall`, select `portgroups`, locate the `nginx` portgroup, and then select `tcp`.
 - On the right side, select the manager node, specify your custom port to be added, and then click the checkmark to save the value.
-- If you would like to apply the rules immediately, click the `SYNCHRONIZE Grid` button under the `Options` menu at the top of the page.
+- If you would like to apply the rules immediately, click the `SYNCHRONIZE GRID` button under the `Options` menu at the top of the page.
 
 ### Creating a custom host group with a custom port group
 

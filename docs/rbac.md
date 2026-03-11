@@ -226,7 +226,7 @@ The available low-level Security Onion privileges are listed in the table below:
 | *events/read* | Read from Elasticsearch |
 | *events/write* | Write to Elasticsearch |
 | *events/ack* | Acknowledge alerts |
-| *Grid/read* | Read information about the Grid and its node memberships |
+| *Grid/read* | Read information about the grid and its node memberships |
 | *Grid/write* | Accept and reject Grid memberships from new and existing nodes |
 | *jobs/read* | View all PCAP jobs |
 | *jobs/pivot* | Pivot to PCAP job from event |

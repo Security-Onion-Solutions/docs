@@ -10,7 +10,7 @@ During setup, or during non-automated [soup](soup.md) invocations, the user must
 
 After installation, Grid administrators can enable or disable SOC Telemetry via the configuration interface. Search for `SOC Telemetry` in the Configuration screen.
 
-After changing the `SOC Telemetry` configuration setting, the Grid must be resynchronized. This happens automatically once every 15 minutes, or manually if the Grid administrator clicks the Synchronize Grid option, at the top of the Configuration screen. Grid synchronization can take several minutes to complete.
+After changing the `SOC Telemetry` configuration setting, the grid must be resynchronized. This happens automatically once every 15 minutes, or manually if the grid administrator clicks the Synchronize Grid option, at the top of the Configuration screen. Grid synchronization can take several minutes to complete.
 
 Also, the browser will cache the previous configuration setting. Therefore, to ensure the browser is using the new setting value, make sure Grid synchronization completes, and then perform a hard browser refresh on the SOC UI. This can be performed via CTRL+SHIFT+R or CMD+SHIFT+R.
 
@@ -45,7 +45,7 @@ Security Onion periodically checks for package updates to ensure the operating s
 
 Automatic package updates can be enabled or disabled via the configuration interface. Search for `patch` in the Configuration screen.
 
-After changing this configuration setting, the Grid must be resynchronized. This happens automatically once every 15 minutes, or manually if the Grid administrator clicks the Synchronize Grid option, at the top of the Configuration screen. Grid synchronization can take several minutes to complete.
+After changing this configuration setting, the grid must be resynchronized. This happens automatically once every 15 minutes, or manually if the grid administrator clicks the Synchronize Grid option, at the top of the Configuration screen. Grid synchronization can take several minutes to complete.
 
 ### Included Data
 
@@ -73,4 +73,4 @@ Grids installed within airgapped environments will automatically disable telemet
 
 !!! NOTE
     
-    If a Grid is switched from airgap to non-airgap, and if the SOC Telemetry is not explicitly disabled in the Grid by an administrator, the SOC app running in the browser will send telemetry.
+    If a grid is switched from airgap to non-airgap, and if the SOC Telemetry is not explicitly disabled in the grid by an administrator, the SOC app running in the browser will send telemetry.

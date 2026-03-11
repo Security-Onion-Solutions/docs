@@ -26,7 +26,7 @@ For more information about replication, please see <https://kafka.apache.org/doc
 
 !!! IMPORTANT
     
-    Before configuring Kafka, it is recommened you build your Grid as you would normally. This includes adding any receiver nodes that will later be repurposed as Kafka brokers or controllers.
+    Before configuring Kafka, it is recommened you build your grid as you would normally. This includes adding any receiver nodes that will later be repurposed as Kafka brokers or controllers.
     
     Also note that [Guaranteed Message Delivery](kafka.md) which leverages Kafka, requires a valid Security Onion Pro license. See the [Security Onion Pro](security-onion-pro.md) section.
 
@@ -67,7 +67,7 @@ For more information about broker configuration, please see <https://kafka.apach
 
 Once you have the appropriate configuration in place, you can enable Kafka by navigating to [Administration](administration.md) --> Configuration --> global --> pipeline and setting the value to `KAFKA`.
 
-There is no need to click on the `SYNCHRONIZE Grid` button. Once you have set the global pipeline value to `KAFKA`, the changes will begin to take effect in the background before finally switching the Grid to the new pipeline.
+There is no need to click on the `SYNCHRONIZE GRID` button. Once you have set the global pipeline value to `KAFKA`, the changes will begin to take effect in the background before finally switching the grid to the new pipeline.
 
 !!! NOTE
     

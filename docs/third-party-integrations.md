@@ -16,7 +16,7 @@ New integrations can be added to existing policies to provide increased visibili
     
     If an integration pulls the data, you should add it to the Fleet Server policy. Depending on complexity and log volume, it might make sense to stand up a Fleet Node and add your integrations to it.
     
-    If an integration receives data pushed to it (for example: receiving syslog), consider adding it to the Fleet Server policy. If that is not feasible, then you can add it to the Grid Nodes policy but make sure to set the firewall rules correctly so that you are not opening ports on all of your nodes.
+    If an integration receives data pushed to it (for example: receiving syslog), consider adding it to the Fleet Server policy. If that is not feasible, then you can add it to the grid Nodes policy but make sure to set the firewall rules correctly so that you are not opening ports on all of your nodes.
 
 To add an integration to an existing policy:
 

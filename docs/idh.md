@@ -22,7 +22,7 @@ IDH nodes are dedicated to just being IDH nodes and cannot run any other service
 - Select the `Existing Deployment` option.
 - Select the `IDH` option.
 - You can optionally prevent the IDH services from listening on the management interface.
-- Once Setup is complete and the IDH node is fully joined to the Grid, you can do additional configuration by going to [Administration](administration.md) --> Configuration --> IDH.
+- Once Setup is complete and the IDH node is fully joined to the grid, you can do additional configuration by going to [Administration](administration.md) --> Configuration --> IDH.
 - After configuration is complete, connections to honeypot services will result in `SO IDH` alerts that can be seen in [Alerts](alerts.md).
 
 ## Technical Background
@@ -86,8 +86,8 @@ For example, suppose that we already have the HTTP service running but we want t
 - At the top of the page, click the `Options` menu and enable the `Show advanced settings` option.
 - On the left side, navigate to IDH --> opencanary --> config --> http_x_port.
 - On the right side, change the port value and then click the checkmark to save the change.
-- At the top of the page, click the `SYNCHRONIZE Grid` button under the `Options` menu.
+- At the top of the page, click the `SYNCHRONIZE GRID` button under the `Options` menu.
 
 ## Activating Additional Network Interfaces
 
-If you want to activate additional network interfaces after joining your IDH node to your Grid, you can do so using standard Linux networking tools like nmtui. You can read more about nmtui at <https://docs.oracle.com/en/operating-systems/oracle-linux/9/network/network-ConfiguringtheSystemsNetwork.html#ol-netconf-config-tui>.
+If you want to activate additional network interfaces after joining your IDH node to your grid, you can do so using standard Linux networking tools like nmtui. You can read more about nmtui at <https://docs.oracle.com/en/operating-systems/oracle-linux/9/network/network-ConfiguringtheSystemsNetwork.html#ol-netconf-config-tui>.

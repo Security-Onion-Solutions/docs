@@ -18,7 +18,7 @@ To use the simple parser, first go to [Administration](administration.md) --> Co
 
 ![Image](images/config-item-firewall.png)
 
-Once there, select the `syslog` option, specify the IP address of the pfSense firewall, and click the checkmark to save. Then click the `SYNCHRONIZE Grid` button under the `Options` menu at the top of the page.
+Once there, select the `syslog` option, specify the IP address of the pfSense firewall, and click the checkmark to save. Then click the `SYNCHRONIZE GRID` button under the `Options` menu at the top of the page.
    
 Next, configure your pfSense firewall to send `syslog` to the IP address of your Security Onion box. If you are using pfSense 2.6.0 or higher, make sure that `Log Message Format` is set to `BSD (RFC 3164, default)`. 
 
@@ -45,6 +45,6 @@ Next, allow the traffic from the pfSense firewall to port 9001. These instructio
 3. On the left side, go to `firewall`, select `hostgroups`, and click the `customhostgroup0` group. On the right side, enter the IP address of the pfSense firewall and click the checkmark to save.
 4. On the left side, go to `firewall`, select `portgroups`, select the `customportgroup0` group, and then click `udp`. On the right side, enter `9001` and click the checkmark to save.
 5. On the left side, go to `firewall`, select `role`, and then select the node type that will receive the pfSense logs. Then drill into `chain` --> `INPUT` --> `hostgroups` --> `customhostgroup0` --> `portgroups`. On the right side, enter `customportgroup0` and click the checkmark to save.
-6. If you would like to apply the rules immediately, click the `SYNCHRONIZE Grid` button under the `Options` menu at the top of the page.
+6. If you would like to apply the rules immediately, click the `SYNCHRONIZE GRID` button under the `Options` menu at the top of the page.
 
 Once all configuration is complete, you should be able to go to [Dashboards](dashboards.md) and select the `Firewall - pfSense` dashboard to see your firewall logs.

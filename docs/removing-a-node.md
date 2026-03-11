@@ -28,7 +28,7 @@ You can remove a node from [salt](salt.md) by going to [Administration](administ
 
 ![Image](images/84_gridmembers.png)
 
-Find the Grid Member you would like to remove, click the `REVIEW` button, and then click the `DELETE` button.
+Find the grid Member you would like to remove, click the `REVIEW` button, and then click the `DELETE` button.
 
 ## Removing from SOC
 

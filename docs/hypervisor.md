@@ -57,7 +57,7 @@ Install a new node, select the `DISTRIBUTED` deployment option, choose `Existing
 
 The manager will need to be able to connect to the hypervisor node by name so it will either need a DNS entry or you can manually add an entry in /etc/hosts on the manager.
 
-Once the new hypervisor node has been accepted into the Grid, go to SOC Configuration, click the Options menu, enable advanced settings, and then navigate to `hypervisor` settings. It should look like this:
+Once the new hypervisor node has been accepted into the grid, go to SOC Configuration, click the Options menu, enable advanced settings, and then navigate to `hypervisor` settings. It should look like this:
 
 ![Image](images/hypervisor/hyper-1.png)
 

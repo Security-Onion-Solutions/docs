@@ -181,7 +181,7 @@ First, go to [Administration](administration.md) --> Configuration --> elasticfl
 
 ![Image](images/config-item-elasticfleet.png)
 
-At the top of the page, click the `Options` menu and then enable the `Show advanced settings` option. Then, navigate to elasticfleet --> config --> server --> custom_fqdn and set your custom FQDN. Within 15 minutes, the Grid will apply these new settings and you should see the new FQDNs show up in Elastic Fleet settings. New agent installers will also be regenerated to use this new setting.
+At the top of the page, click the `Options` menu and then enable the `Show advanced settings` option. Then, navigate to elasticfleet --> config --> server --> custom_fqdn and set your custom FQDN. Within 15 minutes, the grid will apply these new settings and you should see the new FQDNs show up in Elastic Fleet settings. New agent installers will also be regenerated to use this new setting.
 
 ## More Information
 

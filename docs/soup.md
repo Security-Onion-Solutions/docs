@@ -172,7 +172,7 @@ If you have a distributed deployment with a manager node and separate sensor nod
 
 !!! WARNING
     
-    Just because the update completed on the manager does NOT mean the upgrade is complete on other nodes in the Grid. Do not manually restart anything until you know that all the search nodes and heavy nodes are updated.
+    Just because the update completed on the manager does NOT mean the upgrade is complete on other nodes in the grid. Do not manually restart anything until you know that all the search nodes and heavy nodes are updated.
     
     Each minion is on a random 15 minute check-in period and things like network bandwidth can be a factor in how long the actual upgrade takes. If you have a heavy node on a slow link, it is going to take a while to get the containers to it. Depending on what changes happened between the versions, [Elasticsearch](elasticsearch.md) might not be able to talk to said heavy node until the update is complete.
     
@@ -181,7 +181,7 @@ If you have a distributed deployment with a manager node and separate sensor nod
 When you run `soup` on the manager, it does the following:
 
 - Checks to see if it is running on a manager.
-- Checks to see if the Grid is in [airgap](airgap.md) mode. If so, it will then ask for the location of the ISO or mount point.
+- Checks to see if the grid is in [airgap](airgap.md) mode. If so, it will then ask for the location of the ISO or mount point.
 - Checks to see if we're running the latest version of `soup`. If not, it will put the latest in the correct place and ask you to re-run `soup`.
 - Compares the installed version with what is available on github or the ISO image.
 - Checks to see if [salt](salt.md) needs to be updated (more on this later).
@@ -189,7 +189,7 @@ When you run `soup` on the manager, it does the following:
 - Stops the [salt](salt.md) master and minion and restarts it in a restricted mode. This mode only allows the manager to connect to it so that we make sure the manager is done before any of the minions are updated.
 - Updates [salt](salt.md) if necessary. This will cause the master and minion services to restart but still in restricted mode.
 - Makes any changes to pillars that are needed such as adding new settings or renaming values. This varies from release to release.
-- If the Grid is in [airgap](airgap.md) mode, then it copies the latest ET Open rules and yara rules to the manager.
+- If the grid is in [airgap](airgap.md) mode, then it copies the latest ET Open rules and yara rules to the manager.
 - The new [salt](salt.md) code is put into place on the manager.
 - Runs a highstate on the manager which is the actual upgrade where it will use the new [salt](salt.md) code and [Docker](docker.md) containers.
 - Unlocks the [salt](salt.md) master service and allows minions to connect again.

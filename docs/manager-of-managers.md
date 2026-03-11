@@ -6,7 +6,7 @@
 
 If you are an enterprise customer responsible for managing multiple grids, then you may benefit from the new Manager of Managers feature introduced with version 2.4.150!
 
-This feature allows you to elect a special Grid manager (MoM) to be configured with knowledge of remote grids (subgrids) allowing the MoM to reach out to the subgrid to query and/or modify Grid state, events, configuration, etc.
+This feature allows you to elect a special grid manager (MoM) to be configured with knowledge of remote grids (subgrids) allowing the MoM to reach out to the subgrid to query and/or modify Grid state, events, configuration, etc.
 
 Appropriately privileged users logging into the MoM will be able to interact with those subgrids from a single user interface. A Subgrid selection list will be available in the top-right of the [SOC](security-onion-console.md) UI. Users can choose which Grid they would like to interact with. Additionally, fault states will automatically propagate up to the MoM user interface giving those users the quick updates of new fault states within subgrids, regardless of which subgrid is currently selected. If the subgrid list becomes disabled that will indicate the current screen does not support subgrid interaction.
 
@@ -74,7 +74,7 @@ Once the subgrid API Client credentials are known that subgrid can then be added
 
 Add additional subgrids as your [Security Onion Pro](security-onion-pro.md) license allows, and then click the green checkmark to save the configuration. 
 
-The configuration will be applied at the next 15-minute interval or you can apply it immediately on the MoM Grid by clicking the `SYNCHRONIZE Grid` button under the `Options` menu.
+The configuration will be applied at the next 15-minute interval or you can apply it immediately on the MoM Grid by clicking the `SYNCHRONIZE GRID` button under the `Options` menu.
 
 ## Licensing
 

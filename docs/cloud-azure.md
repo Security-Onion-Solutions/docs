@@ -21,7 +21,7 @@ Azure users can deploy an official Security Onion virtual machine image found on
 
 ## Requirements
 
-Before proceeding, determine the Grid architecture desired. Choose from a single-node Grid versus a distributed, multi-node Grid. 
+Before proceeding, determine the grid architecture desired. Choose from a single-node Grid versus a distributed, multi-node Grid. 
 
 Security Onion recommends using either Premium SSD disks, or the more expensive Ultra SSD disks, with suitable IOPS and throughput matched to your expected network monitoring requirements.
 
@@ -128,7 +128,7 @@ To configure a Security Onion instance (repeat for each node in a distributed Gr
 - Choose `Other` for Licensing type.
 - Select `Next: Disks`
 - Ensure `Premium SSD` is selected.
-- For single-node grids, distributed sensor nodes, or distributed search nodes: If you would like to separate the `/nsm` partition into its own disk, create and attach a data disk for this purpose, with a minimum size of 100GB, or more depending on predicted storage needs. Note that the size of the `/nsm` partition determines the rate that old packet and event data is pruned. Separating the /nsm partition can provide more flexibility with scaling up the Grid node sizes, but requires a little more setup, which is described later.
+- For single-node grids, distributed sensor nodes, or distributed search nodes: If you would like to separate the `/nsm` partition into its own disk, create and attach a data disk for this purpose, with a minimum size of 100GB, or more depending on predicted storage needs. Note that the size of the `/nsm` partition determines the rate that old packet and event data is pruned. Separating the /nsm partition can provide more flexibility with scaling up the grid node sizes, but requires a little more setup, which is described later.
 - Select `Next: Networking`
 - Choose the virtual network for this virtual machine.
 - Choose a public IP if you intend to access this virtual machine directly (not recommended for production grids).

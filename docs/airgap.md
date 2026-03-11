@@ -8,7 +8,7 @@ If your network has Internet access but has overly restrictive proxies, firewall
 
 Airgap mode works as follows:
 
-- During the install, all of the necessary RPM packages are copied from the ISO image to a new repo located in `/nsm/repo/`. All devices in the Grid will now use this repo for updates to packages.
+- During the install, all of the necessary RPM packages are copied from the ISO image to a new repo located in `/nsm/repo/`. All devices in the grid will now use this repo for updates to packages.
 
 - [NIDS](nids.md) rules for [Suricata](suricata.md) are copied to `/nsm/rules/suricata`.
 

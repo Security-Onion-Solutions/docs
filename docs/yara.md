@@ -24,7 +24,7 @@ To add a new YARA rule, go to the main [Detections](detections.md) page and clic
 1. Click the Language drop-down and select `YARA`.
 2. Optionally specify a license.
 3. Add the signature.
-4. Click the `CREATE` button and the detection should deploy to your Grid at the next 15-minute cycle.
+4. Click the `CREATE` button and the detection should deploy to your grid at the next 15-minute cycle.
 
 ![Image](images/59_detection_create.png)
 

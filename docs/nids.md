@@ -43,7 +43,7 @@ If a detection would be matched by both an enable and disable regex, it is enabl
 
 Enable and disable operations that are based on regex patterns are actioned during the daily rule update. If you have made a change to the regex patterns and would like to have it implemented more immediately:
 
-- Under Grid Configuration, click the `SYNCHRONIZE Grid` button and wait about 5 minutes for it to complete.
+- Under Grid Configuration, click the `SYNCHRONIZE GRID` button and wait about 5 minutes for it to complete.
 - Navigate to [Detections](detections.md), click the Options menu, select [Suricata](suricata.md) in the dropdown menu, click the `FULL UPDATE` button, and then wait for it to complete.
 - Refresh the [Detections](detections.md) page and you should see the relevant rule statuses have changed.
 
@@ -202,7 +202,7 @@ To add a new NIDS rule, go to the main [Detections](detections.md) page and clic
 1. Click the Language drop-down and select `Suricata`.
 2. Optionally specify a license.
 3. Add the signature.
-4. Click the `CREATE` button and the detection should deploy to your Grid at the next 15-minute cycle.
+4. Click the `CREATE` button and the detection should deploy to your grid at the next 15-minute cycle.
 
 ![Image](images/59_detection_create.png)
 
@@ -222,8 +222,8 @@ You can enable external access to NIDS rules managed by [Detections](detections.
 - At the top of the page, click the `Options` menu and then enable the `Show advanced settings` option.
 - Navigate to Nginx --> config --> external_suricata.
 - On the right side of the page, change the value to `true` and then click the checkmark to save the new setting.
-- You can wait for the next Grid update or click the `SYNCHRONIZE Grid` button under Options.
-- Once the Grid is fully synchronized, the Manager should listen on port 7789 for https connections from hosts defined in the `external_suricata` host group.
+- You can wait for the next Grid update or click the `SYNCHRONIZE GRID` button under Options.
+- Once the grid is fully synchronized, the Manager should listen on port 7789 for https connections from hosts defined in the `external_suricata` host group.
 
 ## Configuring Rulesets
 

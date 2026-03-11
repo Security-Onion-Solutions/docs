@@ -4,7 +4,7 @@ OPNsense is a free and open firewall that can be found at <https://opnsense.org/
 
 ## Sending OPNsense Firewall Logs to Security Onion
 
-Centralize your logging by sending OPNsense firewall logs to your Grid.
+Centralize your logging by sending OPNsense firewall logs to your grid.
 
 **Steps:**
 
@@ -16,21 +16,21 @@ Centralize your logging by sending OPNsense firewall logs to your Grid.
    - **Transport**: Select **TCP**.
    - **Application Levels**: Leave at default to send all logs or specify as needed.
    - **Facilities**: Leave at default to include all facilities or specify as needed.
-   - **Hostname/IP Address**: Enter the IP address of the Grid system where you set up the logging input.
-   - **Port**: Enter the port number configured on the Grid system.
+   - **Hostname/IP Address**: Enter the IP address of the grid system where you set up the logging input.
+   - **Port**: Enter the port number configured on the grid system.
    - **Format**: Choose the appropriate format (e.g., Syslog).
 
 5. Click **Save** to apply the settings.
 
 ## Sending OPNsense NetFlow data to Security Onion
 
-To collect network flow data (similar to [Zeek](zeek.md) connection logs), configure NetFlow on OPNsense to send data to your Grid.
+To collect network flow data (similar to [Zeek](zeek.md) connection logs), configure NetFlow on OPNsense to send data to your grid.
 
 **Steps:**
 
 1. **Prepare Your Grid to Receive NetFlow Data:**
 
-   - Refer to the [NetFlow](netflow.md) section to set up your Grid for receiving NetFlow data.
+   - Refer to the [NetFlow](netflow.md) section to set up your grid for receiving NetFlow data.
 
 2. **Configure NetFlow on OPNsense:**
 
@@ -39,8 +39,8 @@ To collect network flow data (similar to [Zeek](zeek.md) connection logs), confi
    - Also, select your **WAN** interface to monitor external traffic.
    - Under **Destinations**, add a new destination:
 
-     - **Hostname/IP Address**: Enter the IP address of the Grid node configured to accept NetFlow data.
-     - **Port**: Enter the port number you set up on the Grid node.
+     - **Hostname/IP Address**: Enter the IP address of the grid node configured to accept NetFlow data.
+     - **Port**: Enter the port number you set up on the grid node.
      - **Format**: Choose the appropriate NetFlow version (e.g., NetFlow v5 or v9).
 
    - Click **Apply** to save the settings.
@@ -55,7 +55,7 @@ You can integrate your OPNsense firewall with your Security Onion Grid system to
 
 ### Prerequisites
 
-- **Security Onion Manager Access**: Access to the manager of your Grid.
+- **Security Onion Manager Access**: Access to the manager of your grid.
 - **Administrative Rights**: Ability to modify settings in the OPNsense GUI.
 - **SSH Access**: You must have SSH access to your OPNsense firewall.
 
@@ -65,13 +65,13 @@ The [Detections](detections.md) module can now manage [NIDS](nids.md) rules for 
 
 ### Import Security Onion CA
 
-To establish a secure connection between your OPNsense firewall and the Grid manager, your firewall will need to trust the Grid's Certificate Authority (CA) certificate.
+To establish a secure connection between your OPNsense firewall and the grid manager, your firewall will need to trust the grid's Certificate Authority (CA) certificate.
 
 **Steps:**
 
-1. **Copy the Grid CA Certificate:**
+1. **Copy the grid CA Certificate:**
 
-   - SSH into your Grid manager.
+   - SSH into your grid manager.
    - Run the command `cat /etc/pki/ca.crt` to display the CA certificate.
    - Copy the entire output of that command.
 
@@ -107,7 +107,7 @@ rm -rf /usr/local/opnsense/scripts/suricata/metadata/rules/*
 vi /usr/local/opnsense/scripts/suricata/metadata/rules/onion.xml
 ```
 
-- Paste the following content into the file, replacing `YOURMANAGER` with the hostname or IP address of your Grid manager:
+- Paste the following content into the file, replacing `YOURMANAGER` with the hostname or IP address of your grid manager:
 
 ```xml
 <?xml version="1.0"?>

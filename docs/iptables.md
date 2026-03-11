@@ -29,7 +29,7 @@ Next, allow the traffic from the iptables host through the firewall to the iptab
 3. On the left side, go to `firewall`, select `hostgroups`, and click the `customhostgroup0` group. On the right side, enter the IP address of the iptables host and click the checkmark to save.
 4. On the left side, go to `firewall`, select `portgroups`, select the `customportgroup0` group, and then click `udp`. On the right side, enter your desired listener port (9001 by default) and click the checkmark to save.
 5. On the left side, go to `firewall`, select `role`, and then select the node type that will receive the iptables logs. Then drill into `chain` --> `INPUT` --> `hostgroups` --> `customhostgroup0` --> `portgroups`. On the right side, enter `customportgroup0` and click the checkmark to save.
-6. If you would like to apply the rules immediately, click the `SYNCHRONIZE Grid` button under the `Options` menu at the top of the page.
+6. If you would like to apply the rules immediately, click the `SYNCHRONIZE GRID` button under the `Options` menu at the top of the page.
 
 ## iptables dashboard
 
