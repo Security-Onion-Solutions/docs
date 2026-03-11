@@ -24,7 +24,7 @@ You can check the [Grid](grid.md) page to see if all services are running correc
     
     Please note that new nodes start off showing a red Fault and may take a few minutes to fully initialize before they show a green OK.
 
-You can also verify services are running from the command line with the [SO-Status](so-status.md) command:
+You can also verify services are running from the command line with the [so-status](so-status.md) command:
 
 ```
 sudo so-status
