@@ -1,6 +1,6 @@
 # Detections
 
-[SOC](security-onion-console.md) includes our Detections interface for managing all of your rules:
+[Security Onion Console](security-onion-console.md) includes our Detections interface for managing all of your rules:
 
 - [NIDS](nids.md) rules that get loaded into [Suricata](suricata.md)
 - [Sigma](sigma.md) rules that get loaded into [ElastAlert](elastalert.md)

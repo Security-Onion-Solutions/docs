@@ -1,6 +1,6 @@
 # PCAP
 
-[SOC](security-onion-console.md) includes a PCAP interface which allows you to access your full packet capture that was written to disk by [Suricata](suricata.md). 
+[Security Onion Console](security-onion-console.md) includes a PCAP interface which allows you to access your full packet capture that was written to disk by [Suricata](suricata.md). 
 
 You can access PCAP in two different ways. The first and most common option is to pivot to PCAP from a particular event in [Alerts](alerts.md), [Dashboards](dashboards.md), or [Hunt](hunt.md) by choosing the PCAP action on the action menu. 
 

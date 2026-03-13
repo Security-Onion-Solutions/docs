@@ -1,6 +1,6 @@
 # Hunt
 
-[SOC](security-onion-console.md) includes a Hunt interface which is similar to our [Dashboards](dashboards.md) interface but is tuned more for threat hunting.
+[Security Onion Console](security-onion-console.md) includes a Hunt interface which is similar to our [Dashboards](dashboards.md) interface but is tuned more for threat hunting.
 
 ![Image](images/56_hunt.png)
 

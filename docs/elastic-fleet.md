@@ -1,6 +1,6 @@
 # Elastic Fleet
 
-[SOC](security-onion-console.md) includes a link on the sidebar that takes you to the Fleet page inside [Kibana](kibana.md).
+[Security Onion Console](security-onion-console.md) includes a link on the sidebar that takes you to the Fleet page inside [Kibana](kibana.md).
 
 Elastic Fleet is pre-configured during Security Onion setup. If you need to make changes to the configuration, you can do so via the Fleet page in [Kibana](kibana.md) as detailed below.
 

@@ -1,6 +1,6 @@
 # Dashboards
 
-[SOC](security-onion-console.md) includes a Dashboards interface which includes an entire set of pre-built dashboards for our standard data types.
+[Security Onion Console](security-onion-console.md) includes a Dashboards interface which includes an entire set of pre-built dashboards for our standard data types.
 
 ![Image](images/53_dashboards.png)
 

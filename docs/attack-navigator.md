@@ -1,6 +1,6 @@
 # ATT&CK Navigator
 
-[SOC](security-onion-console.md) includes a link on the sidebar that takes you to ATT&CK Navigator. 
+[Security Onion Console](security-onion-console.md) includes a link on the sidebar that takes you to ATT&CK Navigator. 
 
 From <https://github.com/mitre-attack/attack-navigator>:
 

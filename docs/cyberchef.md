@@ -1,6 +1,6 @@
 # CyberChef
 
-[SOC](security-onion-console.md) includes a link on the sidebar that takes you to CyberChef. 
+[Security Onion Console](security-onion-console.md) includes a link on the sidebar that takes you to CyberChef. 
 
 From <https://github.com/gchq/CyberChef>:
 

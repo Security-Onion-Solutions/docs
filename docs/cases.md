@@ -1,6 +1,6 @@
 # Cases
 
-[SOC](security-onion-console.md) includes our Cases interface for case management. It allows you to escalate logs from [Alerts](alerts.md), [Dashboards](dashboards.md), and [Hunt](hunt.md), and then assign analysts, add comments and attachments, and track observables. 
+[Security Onion Console](security-onion-console.md) includes our Cases interface for case management. It allows you to escalate logs from [Alerts](alerts.md), [Dashboards](dashboards.md), and [Hunt](hunt.md), and then assign analysts, add comments and attachments, and track observables. 
 
 On a new deployment, Cases will be empty until you create a new case. Once you have one or more cases, you can use the main Cases page to get an overview of all cases. 
 

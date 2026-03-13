@@ -1,6 +1,6 @@
 # Alerts
 
-[SOC](security-onion-console.md) includes an Alerts interface which gives you an overview of the alerts that Security Onion is generating. You can then quickly drill down into details, pivot to [Hunt](hunt.md) or the [PCAP](pcap.md) interface, and escalate alerts to [Cases](cases.md).
+[Security Onion Console](security-onion-console.md) includes an Alerts interface which gives you an overview of the alerts that Security Onion is generating. You can then quickly drill down into details, pivot to [Hunt](hunt.md) or the [PCAP](pcap.md) interface, and escalate alerts to [Cases](cases.md).
 
 ![Image](images/50_alerts.png)
 

@@ -1,6 +1,6 @@
 # Downloads
 
-[SOC](security-onion-console.md) includes a Downloads interface that allows you to download the [Elastic Agent](elastic-agent.md) for various operating systems.
+[Security Onion Console](security-onion-console.md) includes a Downloads interface that allows you to download the [Elastic Agent](elastic-agent.md) for various operating systems.
 
 ![Image](images/78_downloads.png)
 

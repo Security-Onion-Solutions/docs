@@ -1,6 +1,6 @@
 # Osquery Manager
 
-[SOC](security-onion-console.md) includes a link on the sidebar which takes you to the Osquery Manager page inside [Kibana](kibana.md).
+[Security Onion Console](security-onion-console.md) includes a link on the sidebar which takes you to the Osquery Manager page inside [Kibana](kibana.md).
 
 ## More Information
 

@@ -1,6 +1,6 @@
 # Administration
 
-[SOC](security-onion-console.md) includes an Administration section which allows you to administer Users, Grid Members, Configuration, and the License Key.
+[Security Onion Console](security-onion-console.md) includes an Administration section which allows you to administer Users, Grid Members, Configuration, and the License Key.
 
 ## Users
 

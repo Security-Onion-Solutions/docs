@@ -1,6 +1,6 @@
 # InfluxDB
 
-[SOC](security-onion-console.md) includes a link on the sidebar that takes you to InfluxDB.
+[Security Onion Console](security-onion-console.md) includes a link on the sidebar that takes you to InfluxDB.
 
 From <https://github.com/influxdata/influxdb>:
 
