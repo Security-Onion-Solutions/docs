@@ -10,7 +10,7 @@ You can access full packet capture via the [PCAP](pcap.md) interface:
 
 ![Image](images/65_pcap_details.png)
 
-[Alerts](alerts.md), [Dashboards](dashboards.md), [Hunt](hunt.md), and [Kibana](kibana.md) allow you to easily pivot to the [PCAP](pcap.md) interface.
+[Alerts](alerts.md), [Dashboards](dashboards.md), and [Hunt](hunt.md) allow you to easily pivot to the [PCAP](pcap.md) interface.
 
 ## Configuration
 
