@@ -6209,7 +6209,7 @@
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code>malwarehashregistry</code> analyzer is no longer working as of 2.4.100. This is due to a stale third-party library that is incompatible with the latest Python version. See <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/13571">#13571</a></p>
+<p>The <code>malwarehashregistry</code> analyzer is no longer working. This is due to a stale third-party library that is incompatible with the latest Python version. See <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/13571">#13571</a></p>
 </div>
 <h3 id="running-analyzers">Running Analyzers<a class="headerlink" href="#running-analyzers" title="Permanent link">¶</a></h3>
 <p>To enqueue an analyzer job, click the lightning bolt icon on the left side of the observable menu. All configured analyzers supporting the observable's data type will then run and return their analysis.</p>
@@ -6243,7 +6243,7 @@
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/config-item-sensoroni.png" data-desc-position="bottom"><img alt="Image" src="../images/config-item-sensoroni.png"></a></p>
 <p>At the top of the page, click the <code>Options</code> menu and then enable the <code>Show advanced settings</code> option. Then navigate to sensoroni --&gt; analyzers.</p>
 <h3 id="developing-analyzers">Developing Analyzers<a class="headerlink" href="#developing-analyzers" title="Permanent link">¶</a></h3>
-<p>If you'd like to develop a custom analyzer, take a look at the developer's guide at <a href="https://github.com/Security-Onion-Solutions/securityonion/tree/2.4/main/salt/sensoroni/files/analyzers">https://github.com/Security-Onion-Solutions/securityonion/tree/2.4/main/salt/sensoroni/files/analyzers</a>.</p>
+<p>If you'd like to develop a custom analyzer, take a look at the developer's guide at <a href="https://github.com/Security-Onion-Solutions/securityonion/tree/3/main/salt/sensoroni/files/analyzers">https://github.com/Security-Onion-Solutions/securityonion/tree/3/main/salt/sensoroni/files/analyzers</a>.</p>
 <h2 id="templates">Templates<a class="headerlink" href="#templates" title="Permanent link">¶</a></h2>
 <p>SOC can use case templates to auto-populate default values of new cases. A template is itself a case, with its category set to <code>template</code>. To utilize that template case, the new case should specify the template case ID in the <code>template</code> field of the case object.</p>
 <p>SOC automatically populates new case template fields with the value stored in the <code>rule.case_template</code> field of the alert being escalated. This allows for specific templates to be assigned to certain detection rules. For example, if alerts triggered from a certain rule are known to require a consistent set of resolution steps then the description of a case template can be prepopulated with that checklist (in markdown format). Then, the backing rule that triggered the alert can have its <code>case_template</code> field set to that case template ID.</p>

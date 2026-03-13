@@ -5650,7 +5650,7 @@
 
 
 <h1 id="hypervisor">Hypervisor<a class="headerlink" href="#hypervisor" title="Permanent link">¶</a></h1>
-<p>Starting with Security Onion version 2.4.170, Security Onion Pro users can create a hypervisor node that can run virtualized instances of Security Onion. If you have eligible machines with extra horsepower, you can use this feature to spin up additional Security Onion virtual machines (VMs) to take advantage of that extra power. This supports most major Security Onion node types and is especially helpful if you want to optimize your hardware's potential and expand your Elastic performance and retention. Contact your account manager to see if your hardware is supported.</p>
+<p>Security Onion Pro customers can create a hypervisor node that can run virtualized instances of Security Onion. If you have eligible machines with extra horsepower, you can use this feature to spin up additional Security Onion virtual machines (VMs) to take advantage of that extra power. This supports most major Security Onion node types and is especially helpful if you want to optimize your hardware's potential and expand your Elastic performance and retention. Contact your account manager to see if your hardware is supported.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This is an enterprise-level feature of Security Onion. Contact Security Onion Solutions, LLC via our website at <a href="https://securityonion.com/pro">https://securityonion.com/pro</a> for more information about purchasing a Security Onion Pro license to enable this feature.</p>
@@ -5692,7 +5692,7 @@
 </li>
 </ol>
 <h2 id="adding-a-manager-hypervisor">Adding a Manager + Hypervisor<a class="headerlink" href="#adding-a-manager-hypervisor" title="Permanent link">¶</a></h2>
-<p>Starting in 2.4.180, Security Onion Pro users can create a manager node that also has hypervisor capabilities. This node type is called a <code>managerhype</code>.</p>
+<p>Manager nodes can have hypervisor capabilities. This node type is called a <code>managerhype</code>.</p>
 <p>Install a new node, select the <code>DISTRIBUTED</code> deployment option, choose <code>New Deployment</code>, and then select the <code>Managerhype</code> option:</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/hypervisor/manhype-0.png" data-desc-position="bottom"><img alt="Image" src="../images/hypervisor/manhype-0.png"></a></p>
 <p>Once installation has completed, the new node will act as a manager node until a license key is added in SOC. After adding the license, it will take approximately 45 minutes for the hypervisor portion of the managerhype to be ready. This is due to the three highstates that are required to complete setup of the node.</p>
@@ -5713,7 +5713,7 @@
 <h1 id="disk-pass-through">. <strong>Disk pass through</strong><a class="headerlink" href="#disk-pass-through" title="Permanent link">¶</a></h1>
 <p>This method passes a physical disk directly to the VM, providing a dedicated disk to the node. It provides near-native disk performance and is ideal for production environments with high throughput requirements.</p>
 <h1 id="virtual-disk">. <strong>Virtual disk</strong><a class="headerlink" href="#virtual-disk" title="Permanent link">¶</a></h1>
-<p>Added in 2.4.190, a virtual disk is created based on the size specified by the user in the SOC Grid Configuration and the space is pre-allocated on the hypervisor. The disk image file is not removed when the VM is deleted. A user may decide to leave this data around for a while, or delete it manually from the hypervisor where it is stored under <code>/nsm/libvirt/volumes</code>.</p>
+<p>A virtual disk is created based on the size specified by the user in the SOC Grid Configuration and the space is pre-allocated on the hypervisor. The disk image file is not removed when the VM is deleted. A user may decide to leave this data around for a while, or delete it manually from the hypervisor where it is stored under <code>/nsm/libvirt/volumes</code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If a user selects both a disk pass through and assigns a size for the virtual disk, then the disk pass through will be used for /nsm and the virtual disk will be ignored.</p>

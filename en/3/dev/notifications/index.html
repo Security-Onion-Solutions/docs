@@ -5771,7 +5771,7 @@ from_addr: "ElastAlert@yourcompany.com"
 <p>Important! After activating (or removing) an alerter from this setting, the <a href="../elastalert/">ElastAlert</a> engine must be fully updated. This can be done via the <a href="../detections/">Detections</a> screen, under the Options dropdown.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/58_detections_options.png" data-desc-position="bottom"><img alt="Image" src="../images/58_detections_options.png"></a></p>
 <h3 id="severity-based-notifications">Severity-Based Notifications<a class="headerlink" href="#severity-based-notifications" title="Permanent link">¶</a></h3>
-<p>The instructions above setup the default notification settings, for all outbound notifications. However, as of Security Onion 2.4.100, notification settings can be customized for higher level severities. Severities are specified in Sigma <a href="../detections/">Detections</a>.</p>
+<p>The instructions above setup the default notification settings, for all outbound notifications. However, notification settings can be customized for higher level severities. Severities are specified in Sigma <a href="../detections/">Detections</a>.</p>
 <p>Severity levels progress as follows, starting with the lowest, least significant severity:</p>
 <ol>
 <li>Unknown Severity</li>
@@ -5787,7 +5787,7 @@ from_addr: "ElastAlert@yourcompany.com"
 <p>Higher severity levels do not inherit parameters or alerters from lower severities. Consequently, if <code>email</code> is specified as the default (Severity 0) alerter, and it's desired to have both <code>email</code> and <code>slack</code> notifications sent with <strong>High/Sev 4</strong> severity or above, then both <code>email</code> and <code>slack</code> will need to be specified for the <code>Notifications: Sev 4/Default Alerters</code> setting, one per line. This same principle applies to the parameters, which are also not inherited. In order to inherit default parameters across all severities, the parameters can be specified in the <code>ElastAlert &gt; Custom Configuration Parameters</code> setting.</p>
 </div>
 <h3 id="user-defined-notifications">User-Defined Notifications<a class="headerlink" href="#user-defined-notifications" title="Permanent link">¶</a></h3>
-<p>As of Security Onion 2.4.100, individual Sigma detections can be tagged to change the detection's alerting behavior. The tags are set inside the detection source. Tag details are defined below:</p>
+<p>Individual Sigma detections can be tagged to change the detection's alerting behavior. The tags are set inside the detection source. Tag details are defined below:</p>
 <ul>
 <li><code>so.notification</code>: When this tag is present inside of a Sigma tag list, the detection will only perform outbound notifications. It will not add an alert to the SOC Alerts screen.</li>
 <li><code>so.alerters.customAlerters</code>: When this tag is present inside of a Sigma tag list, the detection will perform notifications for an alternate set of ElastAlert 2 alerters. More information on how to choose these alerters is provided below.</li>

@@ -3099,17 +3099,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#detections" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Detections
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#log" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5812,17 +5801,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#detections" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Detections
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#log" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6065,12 +6043,6 @@
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/config-item-versionlock.png" data-desc-position="bottom"><img alt="Image" src="../images/config-item-versionlock.png"></a></p>
 <h2 id="local-configurations">Local Configurations<a class="headerlink" href="#local-configurations" title="Permanent link">¶</a></h2>
 <p><code>soup</code> will check for local configurations in <code>/opt/so/saltstack/local/</code> that may cause issues and flag them with the message <code>Potentially breaking changes found in the following files</code>. Please examine the output of <code>soup</code> and review any local configurations for possible issues.</p>
-<h2 id="detections">Detections<a class="headerlink" href="#detections" title="Permanent link">¶</a></h2>
-<p>If you are upgrading from a version older than 2.4.70, <code>soup</code> will do the following to prepare for migration to <a href="../detections/">Detections</a>:</p>
-<ul>
-<li>Playbook Plays will be backed up to <code>/nsm/backup/detections-migration/</code> and any active ElastAlert rules will be backed up and removed.</li>
-<li>Suricata tuning configurations will be backed to <code>/nsm/backup/detections-migration/</code> and any thresholds will be migrated over to <a href="../detections/">Detections</a>.</li>
-</ul>
 <h2 id="log">Log<a class="headerlink" href="#log" title="Permanent link">¶</a></h2>
 <p>If <code>soup</code> displays any errors, you can check <code>/root/soup.log</code> for additional clues.</p>
 <h2 id="airgap">Airgap<a class="headerlink" href="#airgap" title="Permanent link">¶</a></h2>
@@ -6078,10 +6050,10 @@
 <ul>
 <li>burn the latest ISO image to a DVD and insert it in the DVD drive of the manager (example: <code>/dev/cdrom</code>)</li>
 <li>flash the ISO image to a USB drive and connect that USB drive to the manager (example: <code>/dev/sdb</code>)</li>
-<li>simply copy the ISO file itself to the manager (example: <code>/home/YourUser/securityonion-2.4.XYZ-YYYYMMDD.iso</code>)</li>
+<li>simply copy the ISO file itself to the manager (example: <code>/home/YourUser/securityonion-3.0.XYZ-YYYYMMDD.iso</code>)</li>
 </ul>
 <p>Instead of waiting for soup to prompt for the location, you can also specify the path on the command line using the <code>-f</code> option. For example (change this to reflect the actual path to the ISO file or disk device containing the ISO media):</p>
-<div class="highlight"><pre><span></span><code>sudo soup -y -f /home/YourUser/securityonion-2.4.XYZ-YYYYMMDD.iso
+<div class="highlight"><pre><span></span><code>sudo soup -y -f /home/YourUser/securityonion-3.0.XYZ-YYYYMMDD.iso
 </code></pre></div>
 <h2 id="elastic">Elastic<a class="headerlink" href="#elastic" title="Permanent link">¶</a></h2>
 <p>If <code>soup</code> updated to a new version of the Elastic stack, then you'll want to go to <a href="../elastic-fleet/">Elastic Fleet</a> and:</p>
@@ -6125,7 +6097,7 @@ sudo salt-call state.apply Kibana.so_savedobjects_defaults -l info queue=True
     Rendering SLS 'base:common' failed: Jinja variable 'list object' has no attribute 'values'
 </code></pre></div>
 <p>and/or</p>
-<div class="highlight"><pre><span></span><code>There is a problem downloading the so-xyz:2.4.0 image. Details: 
+<div class="highlight"><pre><span></span><code>There is a problem downloading the so-xyz:3.0.0 image. Details: 
 gpg: Signature made Thu 18 Feb 2021 02:26:10 PM UTC using RSA key ID FE507013 gpg: BAD signature from "Security Onion Solutions, LLC &lt;info@securityonionsolutions.com&gt;"
 </code></pre></div>
 <p>If you see these errors, it most likely means that a salt highstate process was already running when <code>soup</code> began. You can wait a few minutes and then try <code>soup</code> again. Alternatively, you can run <code>sudo so-checkin</code> and wait for it to complete before running <code>soup</code> again.</p>

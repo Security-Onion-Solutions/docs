@@ -5484,13 +5484,13 @@
 </ul>
 <p>The remaining fields in each log are specific to the log type. To see how the fields are mapped for a specific Zeek log, take a look at its ingest parser.</p>
 <p>You can find ingest parsers in your local filesystem at <code>/opt/so/conf/elasticsearch/ingest/</code> or you can find them online at:</p>
-<p><a href="https://github.com/Security-Onion-Solutions/securityonion/tree/2.4/main/salt/elasticsearch/files/ingest">https://github.com/Security-Onion-Solutions/securityonion/tree/2.4/main/salt/elasticsearch/files/ingest</a></p>
+<p><a href="https://github.com/Security-Onion-Solutions/securityonion/tree/3/main/salt/elasticsearch/files/ingest">https://github.com/Security-Onion-Solutions/securityonion/tree/3/main/salt/elasticsearch/files/ingest</a></p>
 <p>For example, suppose you want to know how the Zeek conn.log is parsed. You could take a look at <code>/opt/so/conf/elasticsearch/ingest/zeek.conn</code> or view it online at:</p>
-<p><a href="https://github.com/Security-Onion-Solutions/securityonion/blob/2.4/main/salt/elasticsearch/files/ingest/zeek.conn">https://github.com/Security-Onion-Solutions/securityonion/blob/2.4/main/salt/elasticsearch/files/ingest/zeek.conn</a></p>
+<p><a href="https://github.com/Security-Onion-Solutions/securityonion/blob/3/main/salt/elasticsearch/files/ingest/zeek.conn">https://github.com/Security-Onion-Solutions/securityonion/blob/3/main/salt/elasticsearch/files/ingest/zeek.conn</a></p>
 <p>You'll see that <code>Zeek.conn</code> then calls the <code>Zeek.common</code> pipeline (<code>/opt/so/conf/elasticsearch/ingest/zeek.common</code>):</p>
-<p><a href="https://github.com/Security-Onion-Solutions/securityonion/blob/2.4/main/salt/elasticsearch/files/ingest/zeek.common">https://github.com/Security-Onion-Solutions/securityonion/blob/2.4/main/salt/elasticsearch/files/ingest/zeek.common</a></p>
+<p><a href="https://github.com/Security-Onion-Solutions/securityonion/blob/3/main/salt/elasticsearch/files/ingest/zeek.common">https://github.com/Security-Onion-Solutions/securityonion/blob/3/main/salt/elasticsearch/files/ingest/zeek.common</a></p>
 <p>which in turn calls the <code>common</code> pipeline (<code>/opt/so/conf/elasticsearch/ingest-dynamic/common</code>):</p>
-<p><a href="https://github.com/Security-Onion-Solutions/securityonion/blob/2.4/main/salt/elasticsearch/files/ingest-dynamic/common">https://github.com/Security-Onion-Solutions/securityonion/blob/2.4/main/salt/elasticsearch/files/ingest-dynamic/common</a></p>
+<p><a href="https://github.com/Security-Onion-Solutions/securityonion/blob/3/main/salt/elasticsearch/files/ingest-dynamic/common">https://github.com/Security-Onion-Solutions/securityonion/blob/3/main/salt/elasticsearch/files/ingest-dynamic/common</a></p>
 
 
 

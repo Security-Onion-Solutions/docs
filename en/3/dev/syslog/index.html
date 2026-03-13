@@ -5476,7 +5476,7 @@
 <p>If you want to send syslog from other devices, you should check to see if the device has an existing <a href="../elastic-agent/">Elastic Agent</a> integration. If so, using the <a href="../elastic-agent/">Elastic Agent</a> integration should provide some parsing by default.</p>
 <p>If your device does not have an existing <a href="../elastic-agent/">Elastic Agent</a> integration, you can still collect standard syslog. Start by going to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; firewall --&gt; hostgroups.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/config-item-firewall.png" data-desc-position="bottom"><img alt="Image" src="../images/config-item-firewall.png"></a></p>
-<p>Then choose the <code>syslog</code> option to allow the port through the firewall. If sending syslog to a sensor, please see the Examples in the <a href="../firewall/">firewall</a> section. If you need to add custom parsing for those syslog logs, we recommend using <a href="../elasticsearch/">Elasticsearch</a> ingest parsing.</p>
+<p>Then choose the <code>syslog</code> option to allow the port through the firewall. If sending syslog to a sensor, please see the Examples in the <a href="../firewall/">Firewall</a> section. If you need to add custom parsing for those syslog logs, we recommend using <a href="../elasticsearch/">Elasticsearch</a> ingest parsing.</p>
 <p>Also note that if you're monitoring network traffic with <a href="../zeek/">Zeek</a>, then by default it will detect any syslog in that network traffic and log it even if that syslog was not destined for that particular Security Onion node.</p>
 
 
