@@ -80,7 +80,7 @@ If you understand all of the warnings above and still want to perform a network 
 - Download our repo and start the Setup process:
 
   ```
-  git clone -b 2.4/main https://github.com/Security-Onion-Solutions/securityonion
+  git clone -b 3/main https://github.com/Security-Onion-Solutions/securityonion
   cd securityonion
   sudo bash so-setup-network
   ```

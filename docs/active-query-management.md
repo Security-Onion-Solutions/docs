@@ -4,7 +4,7 @@
     
     This is an enterprise-level feature of Security Onion. Contact Security Onion Solutions, LLC via our website at <https://securityonion.com/pro> for more information about purchasing a Security Onion Pro license to enable this feature.
 
-Starting in version 2.4.130, Security Onion Pro customers can now view and cancel long-running Elasticsearch queries.
+Security Onion Pro customers can now view and cancel long-running Elasticsearch queries.
 
 This screen is located under the Administration menu on the left side of the Security Onion Console. This menu option will only be visible for users having the `superuser` role.
 

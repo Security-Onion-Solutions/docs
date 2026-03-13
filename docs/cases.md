@@ -130,7 +130,7 @@ The following is a summary of the built-in analyzers and their supported data ty
 
 !!! NOTE
     
-    The `malwarehashregistry` analyzer is no longer working as of 2.4.100. This is due to a stale third-party library that is incompatible with the latest Python version. See [#13571](https://github.com/Security-Onion-Solutions/securityonion/issues/13571)
+    The `malwarehashregistry` analyzer is no longer working. This is due to a stale third-party library that is incompatible with the latest Python version. See [#13571](https://github.com/Security-Onion-Solutions/securityonion/issues/13571)
 
 ### Running Analyzers
 
@@ -173,7 +173,7 @@ At the top of the page, click the `Options` menu and then enable the `Show advan
 
 ### Developing Analyzers
 
-If you'd like to develop a custom analyzer, take a look at the developer's guide at <https://github.com/Security-Onion-Solutions/securityonion/tree/2.4/main/salt/sensoroni/files/analyzers>.
+If you'd like to develop a custom analyzer, take a look at the developer's guide at <https://github.com/Security-Onion-Solutions/securityonion/tree/3/main/salt/sensoroni/files/analyzers>.
 
 ## Templates
 

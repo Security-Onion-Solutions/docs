@@ -1,6 +1,6 @@
 # Reports
 
-Starting in version 2.4.180, Security Onion Pro added support for producing reports and data exports for analytical purposes. This is not a data migration or full data export feature but rather is intended for analysts to present relevant data to the broader team. Consequently, exports are limited in the amount of data that will be produced.
+Security Onion Pro customers can produce reports and data exports for analytical purposes. This is not a data migration or full data export feature but rather is intended for analysts to present relevant data to the broader team. Consequently, exports are limited in the amount of data that will be produced.
 
 !!! NOTE
     
@@ -131,7 +131,7 @@ Also included with this feature is the ability to export data from several of th
 
 The exported data will be saved to a CSV file and include the headers as the first line of the CSV. The CSV will be generated in the background and will then be available for download in the Reports interface.
 
-Group and Event data can be exported by clicking on the data export icon, typically found in the top-left corner of the Group metric table or graph, or the event table. While the export icon is visible on the graph mode of a group metric, it will still export the underlying data in CSV format. It does not attempt to export the graph visualization. However, starting with this same version 2.4.180, users can now use the browser's Print feature to send those graph visualizations and dashboards to a printer or PDF file.
+Group and Event data can be exported by clicking on the data export icon, typically found in the top-left corner of the Group metric table or graph, or the event table. While the export icon is visible on the graph mode of a group metric, it will still export the underlying data in CSV format. It does not attempt to export the graph visualization. However, users can use the browser's Print feature to send those graph visualizations and dashboards to a printer or PDF file.
 
 CSV exports will export all underlying data, up to a configured max. Therefore, while the [Dashboards](dashboards.md) interface could show 10 entries in a Group metric because of how the group limits are set, the CSV could contain more than the 10, if the backing data has more aggregated metrics available.
 

@@ -67,13 +67,6 @@ If you would like to prevent certain packages from being upgraded automatically 
 
 `soup` will check for local configurations in `/opt/so/saltstack/local/` that may cause issues and flag them with the message `Potentially breaking changes found in the following files`. Please examine the output of `soup` and review any local configurations for possible issues.
 
-## Detections
-
-If you are upgrading from a version older than 2.4.70, `soup` will do the following to prepare for migration to [Detections](detections.md):
-
-- Playbook Plays will be backed up to `/nsm/backup/detections-migration/` and any active ElastAlert rules will be backed up and removed.
-- Suricata tuning configurations will be backed to `/nsm/backup/detections-migration/` and any thresholds will be migrated over to [Detections](detections.md).
-
 ## Log
 
 If `soup` displays any errors, you can check `/root/soup.log` for additional clues.
@@ -84,12 +77,12 @@ To update an [airgap](airgap.md) deployment, you'll need to get the latest ISO i
 
 - burn the latest ISO image to a DVD and insert it in the DVD drive of the manager (example: `/dev/cdrom`)
 - flash the ISO image to a USB drive and connect that USB drive to the manager (example: `/dev/sdb`)
-- simply copy the ISO file itself to the manager (example: `/home/YourUser/securityonion-2.4.XYZ-YYYYMMDD.iso`)
+- simply copy the ISO file itself to the manager (example: `/home/YourUser/securityonion-3.0.XYZ-YYYYMMDD.iso`)
 
 Instead of waiting for soup to prompt for the location, you can also specify the path on the command line using the `-f` option. For example (change this to reflect the actual path to the ISO file or disk device containing the ISO media):
 
 
-	sudo soup -y -f /home/YourUser/securityonion-2.4.XYZ-YYYYMMDD.iso
+	sudo soup -y -f /home/YourUser/securityonion-3.0.XYZ-YYYYMMDD.iso
 	
 ## Elastic
 
@@ -161,7 +154,7 @@ Here are some other errors that you may see when running `soup`:
 and/or
 
 
-    There is a problem downloading the so-xyz:2.4.0 image. Details: 
+    There is a problem downloading the so-xyz:3.0.0 image. Details: 
     gpg: Signature made Thu 18 Feb 2021 02:26:10 PM UTC using RSA key ID FE507013 gpg: BAD signature from "Security Onion Solutions, LLC <info@securityonionsolutions.com>"
     
 If you see these errors, it most likely means that a salt highstate process was already running when `soup` began. You can wait a few minutes and then try `soup` again. Alternatively, you can run `sudo so-checkin` and wait for it to complete before running `soup` again.

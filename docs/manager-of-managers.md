@@ -4,7 +4,7 @@
     
     This is an enterprise-level feature of Security Onion. Contact Security Onion Solutions, LLC via our website at <https://securityonion.com/pro> for more information about purchasing a [Security Onion Pro](security-onion-pro.md) license with the necessary subgrid allocations to use this feature.
 
-If you are an enterprise customer responsible for managing multiple grids, then you may benefit from the new Manager of Managers feature introduced with version 2.4.150!
+If you are an enterprise customer responsible for managing multiple grids, then you may benefit from the Manager of Managers feature!
 
 This feature allows you to elect a special grid manager (MoM) to be configured with knowledge of remote grids (subgrids) allowing the MoM to reach out to the subgrid to query and/or modify Grid state, events, configuration, etc.
 

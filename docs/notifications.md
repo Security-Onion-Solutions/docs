@@ -69,7 +69,7 @@ Important! After activating (or removing) an alerter from this setting, the [Ela
 
 ### Severity-Based Notifications
 
-The instructions above setup the default notification settings, for all outbound notifications. However, as of Security Onion 2.4.100, notification settings can be customized for higher level severities. Severities are specified in Sigma [Detections](detections.md).
+The instructions above setup the default notification settings, for all outbound notifications. However, notification settings can be customized for higher level severities. Severities are specified in Sigma [Detections](detections.md).
 
 Severity levels progress as follows, starting with the lowest, least significant severity:
 
@@ -88,7 +88,7 @@ If notification settings are not specified for a particular severity level then 
 
 ### User-Defined Notifications
 
-As of Security Onion 2.4.100, individual Sigma detections can be tagged to change the detection's alerting behavior. The tags are set inside the detection source. Tag details are defined below:
+Individual Sigma detections can be tagged to change the detection's alerting behavior. The tags are set inside the detection source. Tag details are defined below:
 
 - `so.notification`: When this tag is present inside of a Sigma tag list, the detection will only perform outbound notifications. It will not add an alert to the SOC Alerts screen.
 - `so.alerters.customAlerters`: When this tag is present inside of a Sigma tag list, the detection will perform notifications for an alternate set of ElastAlert 2 alerters. More information on how to choose these alerters is provided below.

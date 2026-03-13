@@ -22,7 +22,7 @@ See <https://github.com/Security-Onion-Solutions/securityonion-mcp> to get start
 
 ## Capabilities
 
-As of 2.4.160, the MCP server currently supports the following operations:
+The MCP server currently supports the following operations:
 
 - Query Events via Onion Query Language (OQL)
 - Query Playbooks

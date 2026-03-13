@@ -1,6 +1,6 @@
 # Hypervisor
 
-Starting with Security Onion version 2.4.170, Security Onion Pro users can create a hypervisor node that can run virtualized instances of Security Onion. If you have eligible machines with extra horsepower, you can use this feature to spin up additional Security Onion virtual machines (VMs) to take advantage of that extra power. This supports most major Security Onion node types and is especially helpful if you want to optimize your hardware's potential and expand your Elastic performance and retention. Contact your account manager to see if your hardware is supported.
+Security Onion Pro customers can create a hypervisor node that can run virtualized instances of Security Onion. If you have eligible machines with extra horsepower, you can use this feature to spin up additional Security Onion virtual machines (VMs) to take advantage of that extra power. This supports most major Security Onion node types and is especially helpful if you want to optimize your hardware's potential and expand your Elastic performance and retention. Contact your account manager to see if your hardware is supported.
 
 !!! NOTE
     
@@ -37,7 +37,7 @@ If you are in an [airgap](airgap.md) environment, you will need to perform these
 
 ## Adding a Manager + Hypervisor
 
-Starting in 2.4.180, Security Onion Pro users can create a manager node that also has hypervisor capabilities. This node type is called a `managerhype`.
+Manager nodes can have hypervisor capabilities. This node type is called a `managerhype`.
 
 Install a new node, select the `DISTRIBUTED` deployment option, choose `New Deployment`, and then select the `Managerhype` option:
 
@@ -79,7 +79,7 @@ The vast majority of data, for all node types, is stored in /nsm/. For a VM, the
 
 #. **Virtual disk**
 
-   Added in 2.4.190, a virtual disk is created based on the size specified by the user in the SOC Grid Configuration and the space is pre-allocated on the hypervisor. The disk image file is not removed when the VM is deleted. A user may decide to leave this data around for a while, or delete it manually from the hypervisor where it is stored under `/nsm/libvirt/volumes`.
+   A virtual disk is created based on the size specified by the user in the SOC Grid Configuration and the space is pre-allocated on the hypervisor. The disk image file is not removed when the VM is deleted. A user may decide to leave this data around for a while, or delete it manually from the hypervisor where it is stored under `/nsm/libvirt/volumes`.
 
 !!! NOTE
     

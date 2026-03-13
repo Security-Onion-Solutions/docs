@@ -97,10 +97,6 @@ The `Elastic Defend` integration has both free and paid features. By default, on
   - Network
   - Process
 
-!!! TIP
-    
-    If you are upgrading from 2.4.160 or earlier you will need to manually enable the 'DNS' event collection feature for macOS found under the 'endpoints-initial' policy.
-
 ### Osquery-endpoints (`Osquery Manager` integration)
 
 The `Osquery Manager` integration runs Osquery as a daemon on the endpoint and makes the endpoint available for Live or Scheduled queries through the Osquery manager interface in Kibana.

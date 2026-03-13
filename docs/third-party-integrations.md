@@ -1,6 +1,6 @@
 # Third Party Integrations
 
-In addition to [Network](network-visibility.md) and [Host](host-visibility.md), you may want to pull in data from other third party systems. You can do that via Elastic integrations which support many of the most common products and services. You can read more about Elastic integrations at <https://docs.elastic.co/integrations>.
+In addition to [network visibility](network-visibility.md) and [host visibility](host-visibility.md), you may want to pull in data from other third party systems. You can do that via Elastic integrations which support many of the most common products and services. You can read more about Elastic integrations at <https://docs.elastic.co/integrations>.
 
 !!! WARNING
     
