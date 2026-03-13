@@ -9,7 +9,7 @@
 You can find these online at:
 
 - <https://github.com/Security-Onion-Solutions/securityonion/blob/3/main/salt/elasticsearch/files/ingest/suricata.alert>
-- <https://github.com/Security-Onion-Solutions/securityonion/blob/3/main/salt/elasticsearch/files/ingest/common.NIDS>
+- <https://github.com/Security-Onion-Solutions/securityonion/blob/3/main/salt/elasticsearch/files/ingest/common.nids>
 - <https://github.com/Security-Onion-Solutions/securityonion/blob/3/main/salt/elasticsearch/files/ingest-dynamic/common>
 
 You can find parsed [NIDS](nids.md) alerts in [Alerts](alerts.md), [Dashboards](dashboards.md), [Hunt](hunt.md), and [Kibana](kibana.md) via their predefined queries and dashboards or by manually searching for:
