@@ -30,6 +30,7 @@ By default, Suricata writes all network traffic to PCAP. If you would like to li
 
 Here are some other PCAP configuration options that can be found at [Administration](administration.md) --> Configuration --> Suricata -> config -> pcap. Some settings are considered advanced settings so you will only see them if you enable the `Show advanced settings` option.
 
+- `enabled`: Click the slider to enable or disable Suricata packet capture.
 - `compression`: Set to `none` to disable compression. Set to `lz4` to enable lz4 compression but note that this requires more CPU cycles.
 - `lz4-level`: lz4 compression level of PCAP files. Set to `0` for no compression. Set to `16` for maximum compression.
 - `maxsize`: Maximum size in GB for total disk usage of all PCAP files written by Suricata. You may need to adjust this value based on your disk space and desired PCAP retention.
