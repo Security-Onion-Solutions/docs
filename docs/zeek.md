@@ -123,6 +123,24 @@ If you experience an error, or do not notice `/nsm/zeek/logs/current/intel.log` 
 
 For more information, please see <https://docs.zeek.org/en/latest/frameworks/intel.html>.
 
+## Custom Packages
+
+You can install custom Zeek packages using `zkg`. Place each package as a subdirectory in `/opt/so/saltstack/local/salt/zeek/zkg/` on the manager. For example, if you have a custom package called `my-package`, the directory structure would be:
+
+```
+/opt/so/saltstack/local/salt/zeek/zkg/my-package/
+```
+
+The package directory should contain a valid Zeek package structure (including a `zkg.meta` file).
+
+After placing the package, run `sudo salt $SENSORNAME_$ROLE state.highstate` to sync the packages to the sensor nodes. The packages will be automatically installed with `zkg` each time the Zeek container starts. If you have a distributed deployment with separate sensor nodes, it may take up to 15 minutes for packages to sync to the sensor nodes.
+
+You can verify that a custom package was installed by checking the Zeek container logs:
+
+```
+sudo docker logs so-zeek
+```
+
 ## Diagnostic Logging
 
 Zeek diagnostic logs can be found in `/nsm/zeek/logs/`. Look for files like `reporter.log`, `stats.log`, `stderr.log`, and `stdout.log`. Depending on what you're looking for, you may also need to look at the [Docker](docker.md) logs for the container:
