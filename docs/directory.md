@@ -2,7 +2,7 @@
 
 ## /opt/so/conf
 
-Applications read their configuration from `/opt/so/conf/`. However, please keep in mind that most config files are managed with [salt](salt.md), so if you manually modify those config files, your changes may be overwritten at the next Salt update.
+Applications read their configuration from `/opt/so/conf/`. However, please keep in mind that most config files are managed with [Salt](salt.md), so if you manually modify those config files, your changes may be overwritten at the next Salt update.
 
 ## /opt/so/log
 
@@ -14,7 +14,7 @@ Debug logs are stored in `/opt/so/log/`.
 
 ## /opt/so/saltstack/local
 
-Custom [salt](salt.md) settings can be added to `/opt/so/saltstack/local/`.
+Custom [Salt](salt.md) settings can be added to `/opt/so/saltstack/local/`.
 
 ## /nsm
 

@@ -4,7 +4,7 @@ Setup will ask if you want to connect through a proxy server and, if so, it will
 
 ![Image](images/18_setup_direct_proxy.png)
 
-If you have problems installing via your proxy server, you may want to consider the [airgap](airgap.md) option as everything will install via the ISO image.
+If you have problems installing via your proxy server, you may want to consider the [Airgap](airgap.md) option as everything will install via the ISO image.
 
 ## Configuration
 

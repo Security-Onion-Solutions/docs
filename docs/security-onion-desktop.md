@@ -20,7 +20,7 @@ There are a few different ways to install Security Onion Desktop:
 
 !!! NOTE
     
-    Depending on how you install, it may take a full [salt](salt.md) cycle before all desktop components are installed and ready for use.
+    Depending on how you install, it may take a full [Salt](salt.md) cycle before all desktop components are installed and ready for use.
 
 **Joining to Grid**
 
@@ -32,7 +32,7 @@ If you choose not to join your Desktop installation to your grid, then you may n
 
 **Disabling**
 
-The analyst desktop is controlled via [salt](salt.md) pillar. If you need to disable the Security Onion Desktop environment, find the `workstation` setting in your [salt](salt.md) pillar and change `enabled: true` to `enabled: false`:
+The analyst desktop is controlled via [Salt](salt.md) pillar. If you need to disable the Security Onion Desktop environment, find the `workstation` setting in your [Salt](salt.md) pillar and change `enabled: true` to `enabled: false`:
 
 
 ```yaml

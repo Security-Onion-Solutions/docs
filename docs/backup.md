@@ -5,7 +5,7 @@ Security Onion performs a daily backup of some critical files so that you can re
 Here is what gets backed up automatically by default:
 
 - `/etc/pki/` - All of the certs including the CA.
-- `/etc/salt/` - Configuration for the [salt](salt.md) manager and minions.
+- `/etc/salt/` - Configuration for the [Salt](salt.md) manager and minions.
 - `/nsm/kratos/` - Configuration for [kratos](kratos.md).
 - `/nsm/hydra/` - Configuration for Hydra (used for [Connect](connect-api.md)).
 - `/opt/so/saltstack/local/` - Customizations done via [Administration](administration.md) --> Configuration. 

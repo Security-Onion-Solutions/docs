@@ -29,7 +29,7 @@ The following resources will be reserved for the host machine and will be subtra
 
 ## Airgap
 
-If you are in an [airgap](airgap.md) environment, you will need to perform these steps prior to accepting the new hypervisor node in SOC Grid Members:
+If you are in an [Airgap](airgap.md) environment, you will need to perform these steps prior to accepting the new hypervisor node in SOC Grid Members:
  
 1. Download the Oracle 9 Qcow2 image from <https://download.securityonion.net/file/securityonion/OL9U5_x86_64-kvm-b253.qcow2>
 

@@ -69,7 +69,7 @@ The telemetry data is sent using TLS encryption.
 
 ## Airgap
 
-Grids installed within airgapped environments will automatically disable telemetry. In this scenario, the `SOC Telemetry` configuration setting will have no effect and the automatic package updates will be disabled. See the [airgap](airgap.md) section for more information about environments detached from the internet.
+Grids installed within airgapped environments will automatically disable telemetry. In this scenario, the `SOC Telemetry` configuration setting will have no effect and the automatic package updates will be disabled. See the [Airgap](airgap.md) section for more information about environments detached from the internet.
 
 !!! NOTE
     

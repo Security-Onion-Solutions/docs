@@ -23,7 +23,7 @@ To update your Security Onion deployment, run the `soup` command with sudo:
 
 If necessary, `soup` will update itself and then ask you to run `soup` again. Once `soup` is fully updated, it will then check for other updates. This includes Security Onion version updates, Security Onion hotfixes, and operating system (OS) updates.
 
-After running `soup` or rebooting a Security Onion node, it may take a few minutes for services to display an `OK` status on the [Grid](grid.md) screen. This may be due to the intial on-boot [salt](salt.md) highstate running. If services do not appear to be fully up and running within 15 minutes, try running the following command:
+After running `soup` or rebooting a Security Onion node, it may take a few minutes for services to display an `OK` status on the [Grid](grid.md) screen. This may be due to the intial on-boot [Salt](salt.md) highstate running. If services do not appear to be fully up and running within 15 minutes, try running the following command:
 
 
 	sudo so-checkin
@@ -32,9 +32,9 @@ After running `soup` or rebooting a Security Onion node, it may take a few minut
 
 When we release a new version of Security Onion, we update the [Release Notes](release-notes.md) section and publish a blog post to <https://blog.securityonion.net>. You'll want to review these for any relevant information about the individual updates. 
 
-If `soup` finds a full version update, then it will update the Security Onion version in `/etc/soversion`, all [salt](salt.md) code, and all [Docker](docker.md) images.
+If `soup` finds a full version update, then it will update the Security Onion version in `/etc/soversion`, all [Salt](salt.md) code, and all [Docker](docker.md) images.
 
-`soup` automatically keeps the previous version of [Docker](docker.md) images. These older unused [Docker](docker.md) images will be automatically removed at the next version update. If you need to remove these older [docker](docker.md) images immediately, first verify that the upgrade completed successfully and that everything is working properly. You could then remove the older images individually or all at once using a command like:
+`soup` automatically keeps the previous version of [Docker](docker.md) images. These older unused [Docker](docker.md) images will be automatically removed at the next version update. If you need to remove these older [Docker](docker.md) images immediately, first verify that the upgrade completed successfully and that everything is working properly. You could then remove the older images individually or all at once using a command like:
 
 
 	sudo docker system prune -a
@@ -43,7 +43,7 @@ However, please note that this an aggressive option and you should exercise caut
 
 ## Security Onion Hotfixes
 
-`soup` checks for Security Onion hotfixes. Hotfixes typically include updates to the [salt](salt.md) code and small configuration changes that do not warrant a full version update. This does not include Docker images since that would require a full version update. 
+`soup` checks for Security Onion hotfixes. Hotfixes typically include updates to the [Salt](salt.md) code and small configuration changes that do not warrant a full version update. This does not include Docker images since that would require a full version update. 
 
 After applying a hotfix, you may notice that the Security Onion version in `/etc/soversion` stays the same. The application of the hotfix is tracked on the manager in the `/etc/sohotfix` file.
 
@@ -73,7 +73,7 @@ If `soup` displays any errors, you can check `/root/soup.log` for additional clu
 
 ## Airgap
 
-To update an [airgap](airgap.md) deployment, you'll need to get the latest ISO image to the airgapped manager and then run `soup` which will ask where to find it:
+To update an [Airgap](airgap.md) deployment, you'll need to get the latest ISO image to the airgapped manager and then run `soup` which will ask where to find it:
 
 - burn the latest ISO image to a DVD and insert it in the DVD drive of the manager (example: `/dev/cdrom`)
 - flash the ISO image to a USB drive and connect that USB drive to the manager (example: `/dev/sdb`)
@@ -118,16 +118,16 @@ This will make `soup` proceed unattended, automatically answering `yes` to any p
 
 ### Data failed to compile
 
-Occasionally, `soup` may output a `Data failed to compile` error that says something like `Rendering SLS failed: Jinja variable 'None' has no attribute`. In most cases, this error corrects itself on the next [salt](salt.md) run.
+Occasionally, `soup` may output a `Data failed to compile` error that says something like `Rendering SLS failed: Jinja variable 'None' has no attribute`. In most cases, this error corrects itself on the next [Salt](salt.md) run.
 
 ### Pillars and sls files
 
-`soup` will check [salt](salt.md) pillars to make sure they can be rendered. If not, it will output a message like this:
+`soup` will check [Salt](salt.md) pillars to make sure they can be rendered. If not, it will output a message like this:
 
 
 	There is an issue rendering the manager's pillars. Please correct the issues in the sls files mentioned below before running SOUP again.
 
-This usually means that somebody has modified the [salt](salt.md) sls files and introduced a typo. 
+This usually means that somebody has modified the [Salt](salt.md) sls files and introduced a typo. 
 
 ### Downloading images
 
@@ -161,7 +161,7 @@ If you see these errors, it most likely means that a salt highstate process was 
 
 ## Distributed deployments
 
-If you have a distributed deployment with a manager node and separate sensor nodes and/or search nodes, you **only** need to run `soup` on the manager. Once `soup` has completed, other nodes should update themselves at the next [salt](salt.md) highstate (typically within 15 minutes).
+If you have a distributed deployment with a manager node and separate sensor nodes and/or search nodes, you **only** need to run `soup` on the manager. Once `soup` has completed, other nodes should update themselves at the next [Salt](salt.md) highstate (typically within 15 minutes).
 
 !!! WARNING
     
@@ -174,17 +174,17 @@ If you have a distributed deployment with a manager node and separate sensor nod
 When you run `soup` on the manager, it does the following:
 
 - Checks to see if it is running on a manager.
-- Checks to see if the grid is in [airgap](airgap.md) mode. If so, it will then ask for the location of the ISO or mount point.
+- Checks to see if the grid is in [Airgap](airgap.md) mode. If so, it will then ask for the location of the ISO or mount point.
 - Checks to see if we're running the latest version of `soup`. If not, it will put the latest in the correct place and ask you to re-run `soup`.
 - Compares the installed version with what is available on github or the ISO image.
-- Checks to see if [salt](salt.md) needs to be updated (more on this later).
+- Checks to see if [Salt](salt.md) needs to be updated (more on this later).
 - Downloads the new [Docker](docker.md) images or, if airgap, copies them from the ISO image.
-- Stops the [salt](salt.md) master and minion and restarts it in a restricted mode. This mode only allows the manager to connect to it so that we make sure the manager is done before any of the minions are updated.
-- Updates [salt](salt.md) if necessary. This will cause the master and minion services to restart but still in restricted mode.
+- Stops the [Salt](salt.md) master and minion and restarts it in a restricted mode. This mode only allows the manager to connect to it so that we make sure the manager is done before any of the minions are updated.
+- Updates [Salt](salt.md) if necessary. This will cause the master and minion services to restart but still in restricted mode.
 - Makes any changes to pillars that are needed such as adding new settings or renaming values. This varies from release to release.
-- If the grid is in [airgap](airgap.md) mode, then it copies the latest ET Open rules and yara rules to the manager.
-- The new [salt](salt.md) code is put into place on the manager.
-- Runs a highstate on the manager which is the actual upgrade where it will use the new [salt](salt.md) code and [Docker](docker.md) containers.
-- Unlocks the [salt](salt.md) master service and allows minions to connect again.
-- Issues a command to all minions to update [salt](salt.md) if necessary. This is important to note as it takes time to to update the [salt](salt.md) minion on all minions. If the minion doesn't respond for whatever reason, it will not be upgraded at this time. This is not an issue because the first thing that gets checked when a minion talks to the master is if [salt](salt.md) needs to be updated and will apply the update if it does.
+- If the grid is in [Airgap](airgap.md) mode, then it copies the latest ET Open rules and yara rules to the manager.
+- The new [Salt](salt.md) code is put into place on the manager.
+- Runs a highstate on the manager which is the actual upgrade where it will use the new [Salt](salt.md) code and [Docker](docker.md) containers.
+- Unlocks the [Salt](salt.md) master service and allows minions to connect again.
+- Issues a command to all minions to update [Salt](salt.md) if necessary. This is important to note as it takes time to to update the [Salt](salt.md) minion on all minions. If the minion doesn't respond for whatever reason, it will not be upgraded at this time. This is not an issue because the first thing that gets checked when a minion talks to the master is if [Salt](salt.md) needs to be updated and will apply the update if it does.
 - Nodes connect back to the manager and actually perform the upgrade to the new version.

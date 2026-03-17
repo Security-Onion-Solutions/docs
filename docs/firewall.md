@@ -89,7 +89,7 @@ sudo iptables -nvL
 
 !!! WARNING
     
-    You can use this command to view the iptables configuration, but please do not modify the firewall manually using iptables as it is managed by [salt](salt.md). You should only make changes via the Configuration screen as shown above.
+    You can use this command to view the iptables configuration, but please do not modify the firewall manually using iptables as it is managed by [Salt](salt.md). You should only make changes via the Configuration screen as shown above.
 
 ## Port Groups
 
@@ -103,7 +103,7 @@ Host groups are similar to port groups but for storing lists of hosts that will 
 
 The firewall state is designed with the idea of creating port groups and host groups, each with their own alias or name, and associating the two in order to create an allow rule. A node that has a port group and host group association assigned to it will allow those hosts to connect to those ports on that node.
 
-The default allow rules for each node are defined by its role (manager, searchnode, sensor, heavynode, etc) in the grid. Host groups and port groups can be created or modified from the manager node by going to [Administration](administration.md) --> Configuration --> firewall --> hostgroups. When setup is run on a new node, it will ask the manager to add itself to the appropriate host groups. All node types are added to the minion host group to allow [salt](salt.md) communication. If you were to add a search node, you would see its IP appear in both the `minion` and the `search_node` host groups.
+The default allow rules for each node are defined by its role (manager, searchnode, sensor, heavynode, etc) in the grid. Host groups and port groups can be created or modified from the manager node by going to [Administration](administration.md) --> Configuration --> firewall --> hostgroups. When setup is run on a new node, it will ask the manager to add itself to the appropriate host groups. All node types are added to the minion host group to allow [Salt](salt.md) communication. If you were to add a search node, you would see its IP appear in both the `minion` and the `search_node` host groups.
 
 ## Advanced Firewall Config
 
