@@ -16,9 +16,9 @@ If your disk is partitioned using LVM (the default for our Security Onion ISO im
 
 ### LVM Example
 
-For a simple LVM example, suppose that you have installed our Security Onion ISO image in a virtual machine (VM) using a virtualization solution like [proxmox](proxmox.md) that allows you to increase storage on the fly. Our Security Onion ISO image automatically uses LVM and should use the XFS filesystem for `/nsm`, so if you want to add space to `/nsm` here is a brief overview of the steps you would use.
+For a simple LVM example, suppose that you have installed our Security Onion ISO image in a virtual machine (VM) using a virtualization solution like [Proxmox](proxmox.md) that allows you to increase storage on the fly. Our Security Onion ISO image automatically uses LVM and should use the XFS filesystem for `/nsm`, so if you want to add space to `/nsm` here is a brief overview of the steps you would use.
 
-First, expand the storage. If using [proxmox](proxmox.md), select the VM, select `Hardware`, select the `Hard Disk`, click `Disk Action`, click `Resize`, enter the amount that you would like to add to the existing disk size, and then click the `Resize disk` button.
+First, expand the storage. If using [Proxmox](proxmox.md), select the VM, select `Hardware`, select the `Hard Disk`, click `Disk Action`, click `Resize`, enter the amount that you would like to add to the existing disk size, and then click the `Resize disk` button.
 
 Next, log into the VM, become root, and use a partition tool like `cfdisk` to resize the LVM partition to take advantage of the additional free space:
 

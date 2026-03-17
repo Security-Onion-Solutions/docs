@@ -2,7 +2,7 @@
 
 !!! WARNING
     
-    Network installations are NOT supported and should only be used as a last resort in case there is some reason you can't use our official Security Onion images as shown in the [installation](installation.md) section.
+    Network installations are NOT supported and should only be used as a last resort in case there is some reason you can't use our official Security Onion images as shown in the [Installation](installation.md) section.
 
 Our official Security Onion images (ISO image and cloud images) are the ONLY supported installation method and you should use them if any of the following apply to you:
 
@@ -20,7 +20,7 @@ Our official Security Onion images take care of partitioning for you. However, i
 
 ### Minimum Storage
 
-As the [hardware](hardware.md) section mentions, the MINIMUM requirement is 200GB storage. This is to allow 100GB for `/nsm` and 100GB for the rest of `/`.
+As the [Hardware](hardware.md) section mentions, the MINIMUM requirement is 200GB storage. This is to allow 100GB for `/nsm` and 100GB for the rest of `/`.
 
 ### LVM
 

@@ -5,7 +5,7 @@ Having problems? Try the suggestions below.
 -  Have you run [soup](soup.md) to ensure that you're on the latest version?
 -  Check the [FAQ](faq.md).
 -  Search the [Community Support](community-support.md) forum.
--  Search the documentation and support forums of the [tools](tools.md) contained within Security Onion.
+-  Search the documentation and support forums of the [tools](software-bill-of-materials.md) contained within Security Onion.
 -  Check log files in `/opt/so/log/` or other locations for any errors or possible clues:
 
    -  Setup `/root/sosetup.log`

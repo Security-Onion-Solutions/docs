@@ -1,6 +1,6 @@
 # so-user
 
-[SOC](security-onion-console.md) user management should normally be done via [Administration](administration.md) as shown in the [accounts](accounts.md) section. However, if for some reason you can't log into SOC, you can use `so-user` from the command line to manage SOC user accounts.
+[SOC](security-onion-console.md) user management should normally be done via [Administration](administration.md) as shown in the [Accounts](accounts.md) section. However, if for some reason you can't log into SOC, you can use `so-user` from the command line to manage SOC user accounts.
 
 `so-user` has many different operations. You can see them all by running `so-user` with no options:
 
@@ -24,4 +24,4 @@ If you've forgotten your password, you can reset it using the `password` operati
 sudo so-user password --email onionuser@example.com
 ```
 
-Once you've reset your password, you should be able to log into SOC and go back to managing user accounts via [Administration](administration.md) as shown in the [accounts](accounts.md) section.
+Once you've reset your password, you should be able to log into SOC and go back to managing user accounts via [Administration](administration.md) as shown in the [Accounts](accounts.md) section.

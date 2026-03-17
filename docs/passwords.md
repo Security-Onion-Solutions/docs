@@ -18,7 +18,7 @@ Your default user account should have sudo permissions. Command-line utilities t
 
 Log into [SOC](security-onion-console.md) using the username and password you created in the Setup wizard or the username and password provided by your administrator.
 
-You can change your password in [SOC](security-onion-console.md) by clicking the user icon in the upper-right corner, clicking `Settings`, and then going to the `Security` tab. Please note that, due to technical limitations, if you change your SOC password here it will not update your password in [influxdb](influxdb.md). However, resetting your password via [Administration](administration.md) will reset your [influxdb](influxdb.md) password.
+You can change your password in [SOC](security-onion-console.md) by clicking the user icon in the upper-right corner, clicking `Settings`, and then going to the `Security` tab. Please note that, due to technical limitations, if you change your SOC password here it will not update your password in [InfluxDB](influxdb.md). However, resetting your password via [Administration](administration.md) will reset your [InfluxDB](influxdb.md) password.
 
 If you've forgotten your SOC password, an administrator can change it using the [Administration](administration.md) interface.
 

@@ -14,9 +14,7 @@ If you'd like help out other Security Onion users, please join the forum and sta
 
 ## Documentation Team
 
-If you find that some information in our Documentation is incorrect or lacking, please feel free to submit Pull Requests via GitHub!
-
-<https://github.com/Security-Onion-Solutions/securityonion-docs>
+If you find that some information in our Documentation is incorrect or lacking, please feel free to submit Pull Requests to the `3/dev` branch of the `docs` repo at <https://github.com/Security-Onion-Solutions/docs>.
 
 ## Core Development
 
@@ -54,3 +52,4 @@ The following folks have made significant contributions to Security Onion over t
 -  Brad Shoop
 -  Bryant Treacle
 -  William Wernert
+-  Matthew Wright
