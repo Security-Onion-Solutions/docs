@@ -2022,6 +2022,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#custom-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Packages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#diagnostic-logging" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5833,6 +5844,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#custom-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Packages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#diagnostic-logging" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6002,9 +6024,18 @@ Please note that Zeek is very strict about the format of <code>intel.dat</code>.
 <p>When finished editing <code>intel.dat</code>, run <code>sudo salt $SENSORNAME_$ROLE state.highstate</code> to sync <code>/opt/so/saltstack/local/salt/zeek/policy/intel/</code> to <code>/opt/so/conf/zeek/policy/intel/</code>. If you have a distributed deployment with separate sensor nodes, it may take up to 15 minutes for intel to sync to the sensor nodes.</p>
 <p>If you experience an error, or do not notice <code>/nsm/zeek/logs/current/intel.log</code> being generated, try having a look in <code>/nsm/zeek/logs/current/reporter.log</code> for clues. You may also want to restart Zeek after making changes by running <code>sudo so-Zeek-restart</code>.</p>
 <p>For more information, please see <a href="https://docs.zeek.org/en/latest/frameworks/intel.html">https://docs.zeek.org/en/latest/frameworks/intel.html</a>.</p>
+<h2 id="custom-packages">Custom Packages<a class="headerlink" href="#custom-packages" title="Permanent link">¶</a></h2>
+<p>You can install custom Zeek packages using <code>zkg</code>. Place each package as a subdirectory in <code>/opt/so/saltstack/local/salt/zeek/zkg/</code> on the manager. For example, if you have a custom package called <code>my-package</code>, the directory structure would be:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>/opt/so/saltstack/local/salt/zeek/zkg/my-package/
+</code></pre></div>
+<p>The package directory should contain a valid Zeek package structure (including a <code>zkg.meta</code> file).</p>
+<p>After placing the package, run <code>sudo salt $SENSORNAME_$ROLE state.highstate</code> to sync the packages to the sensor nodes. The packages will be automatically installed with <code>zkg</code> each time the Zeek container starts. If you have a distributed deployment with separate sensor nodes, it may take up to 15 minutes for packages to sync to the sensor nodes.</p>
+<p>You can verify that a custom package was installed by checking the Zeek container logs:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo docker logs so-zeek
+</code></pre></div>
 <h2 id="diagnostic-logging">Diagnostic Logging<a class="headerlink" href="#diagnostic-logging" title="Permanent link">¶</a></h2>
 <p>Zeek diagnostic logs can be found in <code>/nsm/zeek/logs/</code>. Look for files like <code>reporter.log</code>, <code>stats.log</code>, <code>stderr.log</code>, and <code>stdout.log</code>. Depending on what you're looking for, you may also need to look at the <a href="../docker/">Docker</a> logs for the container:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo docker logs so-Zeek
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo docker logs so-Zeek
 </code></pre></div>
 <h2 id="more-information">More Information<a class="headerlink" href="#more-information" title="Permanent link">¶</a></h2>
 <div class="admonition note">
