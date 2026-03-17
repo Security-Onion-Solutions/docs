@@ -6020,18 +6020,18 @@
 <div class="highlight"><pre><span></span><code>sudo soup
 </code></pre></div>
 <p>If necessary, <code>soup</code> will update itself and then ask you to run <code>soup</code> again. Once <code>soup</code> is fully updated, it will then check for other updates. This includes Security Onion version updates, Security Onion hotfixes, and operating system (OS) updates.</p>
-<p>After running <code>soup</code> or rebooting a Security Onion node, it may take a few minutes for services to display an <code>OK</code> status on the <a href="../grid/">Grid</a> screen. This may be due to the intial on-boot <a href="../salt/">salt</a> highstate running. If services do not appear to be fully up and running within 15 minutes, try running the following command:</p>
+<p>After running <code>soup</code> or rebooting a Security Onion node, it may take a few minutes for services to display an <code>OK</code> status on the <a href="../grid/">Grid</a> screen. This may be due to the intial on-boot <a href="../salt/">Salt</a> highstate running. If services do not appear to be fully up and running within 15 minutes, try running the following command:</p>
 <div class="highlight"><pre><span></span><code>sudo so-checkin
 </code></pre></div>
 <h2 id="security-onion-version-updates">Security Onion Version Updates<a class="headerlink" href="#security-onion-version-updates" title="Permanent link">¶</a></h2>
 <p>When we release a new version of Security Onion, we update the <a href="../release-notes/">Release Notes</a> section and publish a blog post to <a href="https://blog.securityonion.net">https://blog.securityonion.net</a>. You'll want to review these for any relevant information about the individual updates. </p>
-<p>If <code>soup</code> finds a full version update, then it will update the Security Onion version in <code>/etc/soversion</code>, all <a href="../salt/">salt</a> code, and all <a href="../docker/">Docker</a> images.</p>
-<p><code>soup</code> automatically keeps the previous version of <a href="../docker/">Docker</a> images. These older unused <a href="../docker/">Docker</a> images will be automatically removed at the next version update. If you need to remove these older <a href="../docker/">docker</a> images immediately, first verify that the upgrade completed successfully and that everything is working properly. You could then remove the older images individually or all at once using a command like:</p>
+<p>If <code>soup</code> finds a full version update, then it will update the Security Onion version in <code>/etc/soversion</code>, all <a href="../salt/">Salt</a> code, and all <a href="../docker/">Docker</a> images.</p>
+<p><code>soup</code> automatically keeps the previous version of <a href="../docker/">Docker</a> images. These older unused <a href="../docker/">Docker</a> images will be automatically removed at the next version update. If you need to remove these older <a href="../docker/">Docker</a> images immediately, first verify that the upgrade completed successfully and that everything is working properly. You could then remove the older images individually or all at once using a command like:</p>
 <div class="highlight"><pre><span></span><code>sudo docker system prune -a
 </code></pre></div>
 <p>However, please note that this an aggressive option and you should exercise caution if you have any non-standard <a href="../docker/">Docker</a> images or configuration. You may want to test it on a test system first.</p>
 <h2 id="security-onion-hotfixes">Security Onion Hotfixes<a class="headerlink" href="#security-onion-hotfixes" title="Permanent link">¶</a></h2>
-<p><code>soup</code> checks for Security Onion hotfixes. Hotfixes typically include updates to the <a href="../salt/">salt</a> code and small configuration changes that do not warrant a full version update. This does not include Docker images since that would require a full version update. </p>
+<p><code>soup</code> checks for Security Onion hotfixes. Hotfixes typically include updates to the <a href="../salt/">Salt</a> code and small configuration changes that do not warrant a full version update. This does not include Docker images since that would require a full version update. </p>
 <p>After applying a hotfix, you may notice that the Security Onion version in <code>/etc/soversion</code> stays the same. The application of the hotfix is tracked on the manager in the <code>/etc/sohotfix</code> file.</p>
 <h2 id="os-updates">OS Updates<a class="headerlink" href="#os-updates" title="Permanent link">¶</a></h2>
 <p>In addition to Security Onion docker image updates, <code>soup</code> also checks for missing OS updates and asks if you want to install them.</p>
@@ -6046,7 +6046,7 @@
 <h2 id="log">Log<a class="headerlink" href="#log" title="Permanent link">¶</a></h2>
 <p>If <code>soup</code> displays any errors, you can check <code>/root/soup.log</code> for additional clues.</p>
 <h2 id="airgap">Airgap<a class="headerlink" href="#airgap" title="Permanent link">¶</a></h2>
-<p>To update an <a href="../airgap/">airgap</a> deployment, you'll need to get the latest ISO image to the airgapped manager and then run <code>soup</code> which will ask where to find it:</p>
+<p>To update an <a href="../airgap/">Airgap</a> deployment, you'll need to get the latest ISO image to the airgapped manager and then run <code>soup</code> which will ask where to find it:</p>
 <ul>
 <li>burn the latest ISO image to a DVD and insert it in the DVD drive of the manager (example: <code>/dev/cdrom</code>)</li>
 <li>flash the ISO image to a USB drive and connect that USB drive to the manager (example: <code>/dev/sdb</code>)</li>
@@ -6077,12 +6077,12 @@ sudo salt-call state.apply Kibana.so_savedobjects_defaults -l info queue=True
 </code></pre></div>
 <h2 id="errors">Errors<a class="headerlink" href="#errors" title="Permanent link">¶</a></h2>
 <h3 id="data-failed-to-compile">Data failed to compile<a class="headerlink" href="#data-failed-to-compile" title="Permanent link">¶</a></h3>
-<p>Occasionally, <code>soup</code> may output a <code>Data failed to compile</code> error that says something like <code>Rendering SLS failed: Jinja variable 'None' has no attribute</code>. In most cases, this error corrects itself on the next <a href="../salt/">salt</a> run.</p>
+<p>Occasionally, <code>soup</code> may output a <code>Data failed to compile</code> error that says something like <code>Rendering SLS failed: Jinja variable 'None' has no attribute</code>. In most cases, this error corrects itself on the next <a href="../salt/">Salt</a> run.</p>
 <h3 id="pillars-and-sls-files">Pillars and sls files<a class="headerlink" href="#pillars-and-sls-files" title="Permanent link">¶</a></h3>
-<p><code>soup</code> will check <a href="../salt/">salt</a> pillars to make sure they can be rendered. If not, it will output a message like this:</p>
+<p><code>soup</code> will check <a href="../salt/">Salt</a> pillars to make sure they can be rendered. If not, it will output a message like this:</p>
 <div class="highlight"><pre><span></span><code>There is an issue rendering the manager's pillars. Please correct the issues in the sls files mentioned below before running SOUP again.
 </code></pre></div>
-<p>This usually means that somebody has modified the <a href="../salt/">salt</a> sls files and introduced a typo. </p>
+<p>This usually means that somebody has modified the <a href="../salt/">Salt</a> sls files and introduced a typo. </p>
 <h3 id="downloading-images">Downloading images<a class="headerlink" href="#downloading-images" title="Permanent link">¶</a></h3>
 <p>As <code>soup</code> is downloading container images, it may encounter errors if there are Internet connection issues or if the disk runs out of free space. Once you've resolved the underlying condition, you can manually refresh your container images using <code>so-docker-refresh</code>.</p>
 <h3 id="docker-registry">Docker Registry<a class="headerlink" href="#docker-registry" title="Permanent link">¶</a></h3>
@@ -6102,7 +6102,7 @@ gpg: Signature made Thu 18 Feb 2021 02:26:10 PM UTC using RSA key ID FE507013 gp
 </code></pre></div>
 <p>If you see these errors, it most likely means that a salt highstate process was already running when <code>soup</code> began. You can wait a few minutes and then try <code>soup</code> again. Alternatively, you can run <code>sudo so-checkin</code> and wait for it to complete before running <code>soup</code> again.</p>
 <h2 id="distributed-deployments">Distributed deployments<a class="headerlink" href="#distributed-deployments" title="Permanent link">¶</a></h2>
-<p>If you have a distributed deployment with a manager node and separate sensor nodes and/or search nodes, you <strong>only</strong> need to run <code>soup</code> on the manager. Once <code>soup</code> has completed, other nodes should update themselves at the next <a href="../salt/">salt</a> highstate (typically within 15 minutes).</p>
+<p>If you have a distributed deployment with a manager node and separate sensor nodes and/or search nodes, you <strong>only</strong> need to run <code>soup</code> on the manager. Once <code>soup</code> has completed, other nodes should update themselves at the next <a href="../salt/">Salt</a> highstate (typically within 15 minutes).</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Just because the update completed on the manager does NOT mean the upgrade is complete on other nodes in the grid. Do not manually restart anything until you know that all the search nodes and heavy nodes are updated.</p>
@@ -6112,19 +6112,19 @@ gpg: Signature made Thu 18 Feb 2021 02:26:10 PM UTC using RSA key ID FE507013 gp
 <p>When you run <code>soup</code> on the manager, it does the following:</p>
 <ul>
 <li>Checks to see if it is running on a manager.</li>
-<li>Checks to see if the grid is in <a href="../airgap/">airgap</a> mode. If so, it will then ask for the location of the ISO or mount point.</li>
+<li>Checks to see if the grid is in <a href="../airgap/">Airgap</a> mode. If so, it will then ask for the location of the ISO or mount point.</li>
 <li>Checks to see if we're running the latest version of <code>soup</code>. If not, it will put the latest in the correct place and ask you to re-run <code>soup</code>.</li>
 <li>Compares the installed version with what is available on github or the ISO image.</li>
-<li>Checks to see if <a href="../salt/">salt</a> needs to be updated (more on this later).</li>
+<li>Checks to see if <a href="../salt/">Salt</a> needs to be updated (more on this later).</li>
 <li>Downloads the new <a href="../docker/">Docker</a> images or, if airgap, copies them from the ISO image.</li>
-<li>Stops the <a href="../salt/">salt</a> master and minion and restarts it in a restricted mode. This mode only allows the manager to connect to it so that we make sure the manager is done before any of the minions are updated.</li>
-<li>Updates <a href="../salt/">salt</a> if necessary. This will cause the master and minion services to restart but still in restricted mode.</li>
+<li>Stops the <a href="../salt/">Salt</a> master and minion and restarts it in a restricted mode. This mode only allows the manager to connect to it so that we make sure the manager is done before any of the minions are updated.</li>
+<li>Updates <a href="../salt/">Salt</a> if necessary. This will cause the master and minion services to restart but still in restricted mode.</li>
 <li>Makes any changes to pillars that are needed such as adding new settings or renaming values. This varies from release to release.</li>
-<li>If the grid is in <a href="../airgap/">airgap</a> mode, then it copies the latest ET Open rules and yara rules to the manager.</li>
-<li>The new <a href="../salt/">salt</a> code is put into place on the manager.</li>
-<li>Runs a highstate on the manager which is the actual upgrade where it will use the new <a href="../salt/">salt</a> code and <a href="../docker/">Docker</a> containers.</li>
-<li>Unlocks the <a href="../salt/">salt</a> master service and allows minions to connect again.</li>
-<li>Issues a command to all minions to update <a href="../salt/">salt</a> if necessary. This is important to note as it takes time to to update the <a href="../salt/">salt</a> minion on all minions. If the minion doesn't respond for whatever reason, it will not be upgraded at this time. This is not an issue because the first thing that gets checked when a minion talks to the master is if <a href="../salt/">salt</a> needs to be updated and will apply the update if it does.</li>
+<li>If the grid is in <a href="../airgap/">Airgap</a> mode, then it copies the latest ET Open rules and yara rules to the manager.</li>
+<li>The new <a href="../salt/">Salt</a> code is put into place on the manager.</li>
+<li>Runs a highstate on the manager which is the actual upgrade where it will use the new <a href="../salt/">Salt</a> code and <a href="../docker/">Docker</a> containers.</li>
+<li>Unlocks the <a href="../salt/">Salt</a> master service and allows minions to connect again.</li>
+<li>Issues a command to all minions to update <a href="../salt/">Salt</a> if necessary. This is important to note as it takes time to to update the <a href="../salt/">Salt</a> minion on all minions. If the minion doesn't respond for whatever reason, it will not be upgraded at this time. This is not an issue because the first thing that gets checked when a minion talks to the master is if <a href="../salt/">Salt</a> needs to be updated and will apply the update if it does.</li>
 <li>Nodes connect back to the manager and actually perform the upgrade to the new version.</li>
 </ul>
 

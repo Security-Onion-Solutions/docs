@@ -5940,7 +5940,7 @@
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>You can use this command to view the iptables configuration, but please do not modify the firewall manually using iptables as it is managed by <a href="../salt/">salt</a>. You should only make changes via the Configuration screen as shown above.</p>
+<p>You can use this command to view the iptables configuration, but please do not modify the firewall manually using iptables as it is managed by <a href="../salt/">Salt</a>. You should only make changes via the Configuration screen as shown above.</p>
 </div>
 <h2 id="port-groups">Port Groups<a class="headerlink" href="#port-groups" title="Permanent link">¶</a></h2>
 <p>Port groups are a way of grouping together ports similar to a firewall port/service alias. For example, if you have a web server you might add ports 80 and 443 into a port group.</p>
@@ -5948,7 +5948,7 @@
 <p>Host groups are similar to port groups but for storing lists of hosts that will be allowed to connect to the associated port groups.</p>
 <h2 id="function">Function<a class="headerlink" href="#function" title="Permanent link">¶</a></h2>
 <p>The firewall state is designed with the idea of creating port groups and host groups, each with their own alias or name, and associating the two in order to create an allow rule. A node that has a port group and host group association assigned to it will allow those hosts to connect to those ports on that node.</p>
-<p>The default allow rules for each node are defined by its role (manager, searchnode, sensor, heavynode, etc) in the grid. Host groups and port groups can be created or modified from the manager node by going to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; firewall --&gt; hostgroups. When setup is run on a new node, it will ask the manager to add itself to the appropriate host groups. All node types are added to the minion host group to allow <a href="../salt/">salt</a> communication. If you were to add a search node, you would see its IP appear in both the <code>minion</code> and the <code>search_node</code> host groups.</p>
+<p>The default allow rules for each node are defined by its role (manager, searchnode, sensor, heavynode, etc) in the grid. Host groups and port groups can be created or modified from the manager node by going to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; firewall --&gt; hostgroups. When setup is run on a new node, it will ask the manager to add itself to the appropriate host groups. All node types are added to the minion host group to allow <a href="../salt/">Salt</a> communication. If you were to add a search node, you would see its IP appear in both the <code>minion</code> and the <code>search_node</code> host groups.</p>
 <h2 id="advanced-firewall-config">Advanced Firewall Config<a class="headerlink" href="#advanced-firewall-config" title="Permanent link">¶</a></h2>
 <p>When you go to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; firewall, you will only see <code>hostgroups</code> by default. If you need to modify port groups, then you will need to click the <code>Options</code> menu and then enable the <code>Show advanced settings</code> option.</p>
 <h3 id="modifying-a-default-port-group">Modifying a default port group<a class="headerlink" href="#modifying-a-default-port-group" title="Permanent link">¶</a></h3>

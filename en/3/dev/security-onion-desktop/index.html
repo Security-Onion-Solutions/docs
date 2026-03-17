@@ -5494,14 +5494,14 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Depending on how you install, it may take a full <a href="../salt/">salt</a> cycle before all desktop components are installed and ready for use.</p>
+<p>Depending on how you install, it may take a full <a href="../salt/">Salt</a> cycle before all desktop components are installed and ready for use.</p>
 </div>
 <p><strong>Joining to Grid</strong></p>
 <p>You can optionally join your Desktop installation to your grid. This allows it to pull updates from the grid and automatically trust the grid's HTTPS certificate. It also updates the manager's firewall to allow the Desktop installation to connect. Desktop nodes display on the <a href="../grid/">Grid</a> page along with the other Grid nodes.</p>
 <p>If you choose not to join your Desktop installation to your grid, then you may need to allow the traffic through the host-based <a href="../firewall/">firewall</a> by going to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; firewall --&gt; hostgroups --&gt; analyst.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/config-item-firewall.png" data-desc-position="bottom"><img alt="Image" src="../images/config-item-firewall.png"></a></p>
 <p><strong>Disabling</strong></p>
-<p>The analyst desktop is controlled via <a href="../salt/">salt</a> pillar. If you need to disable the Security Onion Desktop environment, find the <code>workstation</code> setting in your <a href="../salt/">salt</a> pillar and change <code>enabled: true</code> to <code>enabled: false</code>:</p>
+<p>The analyst desktop is controlled via <a href="../salt/">Salt</a> pillar. If you need to disable the Security Onion Desktop environment, find the <code>workstation</code> setting in your <a href="../salt/">Salt</a> pillar and change <code>enabled: true</code> to <code>enabled: false</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">workstation</span><span class="p">:</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">gui</span><span class="p">:</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
