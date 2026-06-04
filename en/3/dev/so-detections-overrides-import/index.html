@@ -3,12 +3,12 @@
 <html class="no-js" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://security-onion-solutions.github.io/docs/best-practices/" rel="canonical"/>
-<link href="../getting-started/" rel="prev"/>
-<link href="../use-cases/" rel="next"/>
+<link href="https://security-onion-solutions.github.io/docs/so-detections-overrides-import/" rel="canonical"/>
+<link href="../so-allow/" rel="prev"/>
+<link href="../so-elastic-auth-password-reset/" rel="next"/>
 <link href="../images/logo/favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
-<title>Best Practices - Security Onion Documentation</title>
+<title>so-detections-overrides-import - Security Onion Documentation</title>
 <link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -32,7 +32,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#best-practices">
+<a class="md-skip" href="#so-detections-overrides-import">
           Skip to content
         </a>
 </div>
@@ -56,7 +56,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Best Practices
+              so-detections-overrides-import
             
           </span>
 </div>
@@ -181,8 +181,8 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
 <span class="md-ellipsis">
     
@@ -194,7 +194,7 @@
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_5">
 <span class="md-nav__icon md-icon"></span>
             
@@ -216,20 +216,8 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-<span class="md-ellipsis">
-    
-  
-    Best Practices
-  
-
-    
-  </span>
-<span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../best-practices/">
 <span class="md-ellipsis">
     
   
@@ -239,50 +227,6 @@
     
   </span>
 </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#installation">
-<span class="md-ellipsis">
-      
-        Installation
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#configuration">
-<span class="md-ellipsis">
-      
-        Configuration
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#avoid-third-party-software-and-modifications">
-<span class="md-ellipsis">
-      
-        Avoid Third Party Software and Modifications
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#stay-up-to-date">
-<span class="md-ellipsis">
-      
-        Stay Up To Date
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../use-cases/">
@@ -1869,8 +1813,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_19" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_19" type="checkbox"/>
 <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
 <span class="md-ellipsis">
     
@@ -1882,7 +1826,7 @@
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_19_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="true" aria-labelledby="__nav_19_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_19">
 <span class="md-nav__icon md-icon"></span>
             
@@ -1928,8 +1872,20 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../so-detections-overrides-import/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    so-detections-overrides-import
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
 <span class="md-ellipsis">
     
   
@@ -1939,6 +1895,63 @@
     
   </span>
 </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usage">
+<span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+</a>
+<nav aria-label="Usage" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dry-run">
+<span class="md-ellipsis">
+      
+        Dry Run
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#options">
+<span class="md-ellipsis">
+      
+        Options
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#behavior-notes">
+<span class="md-ellipsis">
+      
+        Behavior Notes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#more-information">
+<span class="md-ellipsis">
+      
+        More Information
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../so-elastic-auth-password-reset/">
@@ -2430,37 +2443,50 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#installation">
+<a class="md-nav__link" href="#usage">
 <span class="md-ellipsis">
       
-        Installation
+        Usage
+      
+    </span>
+</a>
+<nav aria-label="Usage" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dry-run">
+<span class="md-ellipsis">
+      
+        Dry Run
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#options">
+<span class="md-ellipsis">
+      
+        Options
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#configuration">
+<a class="md-nav__link" href="#behavior-notes">
 <span class="md-ellipsis">
       
-        Configuration
+        Behavior Notes
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#avoid-third-party-software-and-modifications">
+<a class="md-nav__link" href="#more-information">
 <span class="md-ellipsis">
       
-        Avoid Third Party Software and Modifications
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#stay-up-to-date">
-<span class="md-ellipsis">
-      
-        Stay Up To Date
+        More Information
       
     </span>
 </a>
@@ -2481,86 +2507,72 @@
 </a>
 </li>
 <li class="md-path__item">
-<a class="md-path__link" href="../getting-started/">
+<a class="md-path__link" href="../utilities/">
 <span class="md-ellipsis">
-    Getting Started
+    Utilities
   </span>
 </a>
 </li>
 </ol>
 </nav>
 <article class="md-content__inner md-typeset">
-<h1 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">¶</a></h1>
-<p>Security Onion provides lots of options and flexibility, but for best results we recommend the following best practices.</p>
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">¶</a></h2>
+<h1 id="so-detections-overrides-import">so-detections-overrides-import<a class="headerlink" href="#so-detections-overrides-import" title="Permanent link">¶</a></h1>
+<p><code>so-detections-overrides-import</code> imports detection overrides (the modify, suppress, and threshold tuning that is created from the TUNING tab in <a href="../detections/">Detections</a>) back into the <code>so-detection</code> index. It is intended for restoring overrides captured by the nightly <code>so-detections-backup</code> script, for example when migrating to or rebuilding a Manager.</p>
+<p>It reads <code>&lt;publicId&gt;.&lt;ext&gt;</code> files from a source directory (one override per line, NDJSON), finds the matching detection by <code>publicId</code> and engine, validates each override against the same rules SOC enforces, dedupes against overrides that already exist on the detection, and appends any that are new.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The nightly backup (<code>so-detections-backup</code>) does not delete a backup file when you remove an override in SOC, so the source directory may contain overrides you intentionally deleted. Review the source directory and remove any unwanted files before importing.</p>
+</div>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">¶</a></h2>
+<p>Run on the manager and point <code>--source</code> at the directory containing your backup files:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>sudo so-detections-overrides-import --source /nsm/backup/detections/repo/suricata/overrides/
+</code></pre></div>
+<p>Currently only the <code>suricata</code> (NIDS) engine is supported. The matching backup files use the <code>.txt</code> extension.</p>
+<h3 id="dry-run">Dry Run<a class="headerlink" href="#dry-run" title="Permanent link">¶</a></h3>
+<p>Preview exactly what would be added, skipped, or rejected without writing anything to Elasticsearch:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>sudo so-detections-overrides-import --source /path/to/overrides --dry-run
+</code></pre></div>
+<h2 id="options">Options<a class="headerlink" href="#options" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--source</code>, <code>-s</code></td>
+<td><strong>(Required)</strong> Source directory containing <code>&lt;publicId&gt;.&lt;ext&gt;</code> override files.</td>
+</tr>
+<tr>
+<td><code>--engine</code>, <code>-e</code></td>
+<td>Detection engine. Default: <code>suricata</code>.</td>
+</tr>
+<tr>
+<td><code>--dry-run</code>, <code>-n</code></td>
+<td>Print what would happen without writing to Elasticsearch.</td>
+</tr>
+<tr>
+<td><code>--no-import-note</code></td>
+<td>Do not prepend <code>[Imported YYYY-MM-DD]</code> to each imported override's note.</td>
+</tr>
+<tr>
+<td><code>--index</code>, <code>-i</code></td>
+<td>Elasticsearch index to update. Default: <code>so-detection</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="behavior-notes">Behavior Notes<a class="headerlink" href="#behavior-notes" title="Permanent link">¶</a></h2>
 <ul>
-<li>
-<p>Download and verify our ISO image as shown in the <a href="../download/">Download</a> section.</p>
-</li>
-<li>
-<p>For production deployments, prefer dedicated hardware to VMs when possible (see the <a href="../hardware/">Hardware</a> section).</p>
-</li>
-<li>
-<p>If VMs must be used, ensure that resources are properly dedicated to VMs to avoid resource contention.</p>
-</li>
-<li>
-<p>Use local storage and avoid NFS, NAS, iSCSI, etc.</p>
-</li>
-<li>
-<p>Adequately spec your hardware to meet your current usage and allow for growth over time.</p>
-</li>
-<li>
-<p>When possible, we recommend using a dedicated TAP rather than SPAN ports.</p>
-</li>
-<li>
-<p>Make sure that any network firewalls have the proper firewall rules in place to allow ongoing operation and updates (see the <a href="../firewall/">Firewall</a> section).</p>
-</li>
+<li><strong>Validation</strong> mirrors the checks SOC applies in the UI. Invalid overrides are reported (with file and line number) and skipped rather than imported.</li>
+<li><strong>Deduplication</strong> compares only the operational fields of an override (for example, type, track, and IP for a suppression), so re-running an import does not create duplicates and does not depend on timestamps or enabled state.</li>
+<li><strong>Missing detections</strong>: if no detection matches a file's <code>publicId</code> and engine, that file is skipped and counted under "no detection."</li>
+<li><strong>Import note</strong>: unless <code>--no-import-note</code> is set, each imported override's note is prefixed with <code>[Imported YYYY-MM-DD]</code> so imported tuning is easy to identify.</li>
+<li><strong>Custom Suricata variables</strong>: if an imported override references a Suricata variable that is not one of the built-in variables, the tool lists it at the end. You must define any such variable in SOC Config (Suricata variables) before the affected rules will function correctly.</li>
 </ul>
-<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">¶</a></h2>
-<ul>
-<li>
-<p>Make sure that both hostname and IP address are correct during installation.</p>
-</li>
-<li>
-<p>Avoid changing hostname and IP address after installation.</p>
-</li>
-<li>
-<p>Linux is case sensitive where other operating systems might not be, so we recommend using lowercase for things like hostnames, usernames, etc.</p>
-</li>
-</ul>
-<h2 id="avoid-third-party-software-and-modifications">Avoid Third Party Software and Modifications<a class="headerlink" href="#avoid-third-party-software-and-modifications" title="Permanent link">¶</a></h2>
-<ul>
-<li>
-<p>Security Onion is a free and open platform based on standard Linux distros, but we recommend treating it as an appliance and avoid installing third party software as this may conflict with our components and cause issues when updating.</p>
-</li>
-<li>
-<p>Avoid installing automation tools such as Puppet and Chef as these may conflict with our existing <a href="../salt/">Salt</a> automation.</p>
-</li>
-<li>
-<p>Avoid installing monitoring tools such as Zabbix as this may conflict with our existing <a href="../influxdb/">Influxdb</a> monitoring.</p>
-</li>
-<li>
-<p>Avoid installing third-party endpoint security agents as they may break functionality or introduce unacceptable performance overhead.</p>
-</li>
-<li>
-<p>Avoid changing file permissions or umask settings.</p>
-</li>
-<li>
-<p>Hardening guidelines may break functionality, so if you must apply those hardening guidelines, we recommend testing thoroughly before deploying to production.</p>
-</li>
-</ul>
-<h2 id="stay-up-to-date">Stay Up To Date<a class="headerlink" href="#stay-up-to-date" title="Permanent link">¶</a></h2>
-<ul>
-<li>
-<p>Join our discussion forum at <a href="https://securityonion.net/discuss">https://securityonion.net/discuss</a> or subscribe to one of our social media channels to be notified of Security Onion updates.</p>
-</li>
-<li>
-<p>Keep your deployment updated as we frequently fix bugs and add new features.</p>
-</li>
-<li>
-<p>If possible, test updates on a test deployment before deploying to production.</p>
-</li>
-</ul>
+<h2 id="more-information">More Information<a class="headerlink" href="#more-information" title="Permanent link">¶</a></h2>
+<p>For more information about tuning detections and managing NIDS rules, see the <a href="../detections/">Detections</a> and <a href="../nids/">NIDS</a> sections.</p>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
@@ -2572,7 +2584,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: Getting Started Overview" class="md-footer__link md-footer__link--prev" href="../getting-started/">
+<a aria-label="Previous: so-allow" class="md-footer__link md-footer__link--prev" href="../so-allow/">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
 </div>
@@ -2581,17 +2593,17 @@
                 Previous
               </span>
 <div class="md-ellipsis">
-                Getting Started Overview
+                so-allow
               </div>
 </div>
 </a>
-<a aria-label="Next: Use Cases" class="md-footer__link md-footer__link--next" href="../use-cases/">
+<a aria-label="Next: so-elastic-auth-password-reset" class="md-footer__link md-footer__link--next" href="../so-elastic-auth-password-reset/">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
               </span>
 <div class="md-ellipsis">
-                Use Cases
+                so-elastic-auth-password-reset
               </div>
 </div>
 <div class="md-footer__button md-icon">
