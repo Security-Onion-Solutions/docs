@@ -98,6 +98,10 @@ The TUNING tab allows you to tune the detection. For [NIDS](nids.md) rules, you 
 
 ![Image](images/60_detection_nids_2_tuning_1.png)
 
+!!! TIP
+
+    NIDS overrides created here are backed up nightly and can be restored with [so-detections-overrides-import](so-detections-overrides-import.md), which is useful when migrating to or rebuilding a manager.
+
 The PLAYBOOKS tab shows any applicable plays for this detection. These playbooks are used for the Guided Analysis tab in [Alerts](alerts.md).
 
 !!! WARNING
