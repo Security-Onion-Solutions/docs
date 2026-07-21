@@ -3,12 +3,12 @@
 <html class="no-js" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://security-onion-solutions.github.io/docs/cef/" rel="canonical"/>
-<link href="../netflow/" rel="prev"/>
-<link href="../iptables/" rel="next"/>
+<link href="https://security-onion-solutions.github.io/docs/sigma-logsource-coverage/" rel="canonical"/>
+<link href="../sigma/" rel="prev"/>
+<link href="../yara/" rel="next"/>
 <link href="../images/logo/favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
-<title>CEF - Security Onion Documentation</title>
+<title>Sigma Logsource Coverage - Security Onion Documentation</title>
 <link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -32,7 +32,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#cef">
+<a class="md-skip" href="#sigma-logsource-coverage">
           Skip to content
         </a>
 </div>
@@ -56,7 +56,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              CEF
+              Sigma Logsource Coverage
             
           </span>
 </div>
@@ -837,8 +837,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_9" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_9" type="checkbox"/>
 <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
 <span class="md-ellipsis">
     
@@ -850,7 +850,7 @@
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_9_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="false" aria-labelledby="__nav_9_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_9">
 <span class="md-nav__icon md-icon"></span>
             
@@ -884,20 +884,8 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-<span class="md-ellipsis">
-    
-  
-    CEF
-  
-
-    
-  </span>
-<span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cef/">
 <span class="md-ellipsis">
     
   
@@ -907,41 +895,6 @@
     
   </span>
 </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#add-the-cef-integration">
-<span class="md-ellipsis">
-      
-        Add the CEF integration
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#allow-cef-logs-through-firewall">
-<span class="md-ellipsis">
-      
-        Allow CEF logs through firewall
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#cef-dashboard">
-<span class="md-ellipsis">
-      
-        CEF dashboard
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../iptables/">
@@ -1080,8 +1033,8 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_12" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_12" type="checkbox"/>
 <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
 <span class="md-ellipsis">
     
@@ -1093,7 +1046,7 @@
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_12_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="true" aria-labelledby="__nav_12_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_12">
 <span class="md-nav__icon md-icon"></span>
             
@@ -1139,8 +1092,20 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../sigma-logsource-coverage/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Sigma Logsource Coverage
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
 <span class="md-ellipsis">
     
   
@@ -1150,6 +1115,59 @@
     
   </span>
 </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#windows-endpoint-elastic-defend">
+<span class="md-ellipsis">
+      
+        Windows endpoint — Elastic Defend
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#windows-endpoint-requires-sysmon">
+<span class="md-ellipsis">
+      
+        Windows endpoint — requires Sysmon
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#windows-event-log-channels">
+<span class="md-ellipsis">
+      
+        Windows event log channels
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linux-and-macos-endpoints">
+<span class="md-ellipsis">
+      
+        Linux and macOS endpoints
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cloud-and-saas">
+<span class="md-ellipsis">
+      
+        Cloud and SaaS
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../yara/">
@@ -2433,28 +2451,46 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#add-the-cef-integration">
+<a class="md-nav__link" href="#windows-endpoint-elastic-defend">
 <span class="md-ellipsis">
       
-        Add the CEF integration
+        Windows endpoint — Elastic Defend
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#allow-cef-logs-through-firewall">
+<a class="md-nav__link" href="#windows-endpoint-requires-sysmon">
 <span class="md-ellipsis">
       
-        Allow CEF logs through firewall
+        Windows endpoint — requires Sysmon
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#cef-dashboard">
+<a class="md-nav__link" href="#windows-event-log-channels">
 <span class="md-ellipsis">
       
-        CEF dashboard
+        Windows event log channels
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linux-and-macos-endpoints">
+<span class="md-ellipsis">
+      
+        Linux and macOS endpoints
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cloud-and-saas">
+<span class="md-ellipsis">
+      
+        Cloud and SaaS
       
     </span>
 </a>
@@ -2475,46 +2511,420 @@
 </a>
 </li>
 <li class="md-path__item">
-<a class="md-path__link" href="../additional-network-visibility/">
+<a class="md-path__link" href="../rules/">
 <span class="md-ellipsis">
-    Additional Network Visibility
+    Rules
   </span>
 </a>
 </li>
 </ol>
 </nav>
 <article class="md-content__inner md-typeset">
-<h1 id="cef">CEF<a class="headerlink" href="#cef" title="Permanent link">¶</a></h1>
-<p>If you have devices on your network that can send logs in CEF format, you can send those logs to Security Onion. To get those CEF logs into <a href="../elasticsearch/">Elasticsearch</a>, you'll need to add the Elastic integration for CEF and then configure the Security Onion firewall to allow the remote device to send its logs.</p>
-<h2 id="add-the-cef-integration">Add the CEF integration<a class="headerlink" href="#add-the-cef-integration" title="Permanent link">¶</a></h2>
-<p>First, add the Elastic integration for <code>CEF</code>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For more information about the <code>CEF</code> integration, please see <a href="https://www.elastic.co/docs/reference/integrations/cef">https://www.elastic.co/docs/reference/integrations/cef</a>.</p>
+<h1 id="sigma-logsource-coverage">Sigma Logsource Coverage<a class="headerlink" href="#sigma-logsource-coverage" title="Permanent link">¶</a></h1>
+<p><a href="../sigma/">Sigma</a> rules declare the telemetry they need via a <code>logsource</code> (product + category or service). Whether a rule can actually fire on your grid depends on two things: whether Security Onion <strong>collects</strong> that telemetry, and whether the Sigma <strong>conversion pipeline</strong> maps the rule's logsource and field names onto the fields Security Onion actually stores. This page maps the endpoint and cloud logsources in the SigmaHQ ruleset across both, so you can tell at a glance which rules work out of the box, which need additional endpoint configuration, and which need telemetry Security Onion does not collect.</p>
+<p>By default Security Onion imports the SigmaHQ <strong>core</strong> package (stable/test rules of high/critical level) plus the <strong>emerging threats add-on</strong> — see <a href="../sigma/#sigma-packages">Sigma Packages</a> to change this. Detection counts are shown as <strong>default (all rules)</strong>: rules in the default packages, with the <strong>all-rules</strong> package total (every stable/test/experimental rule of medium level and above) in parentheses. Counts are current as of mid-2026. Note that a rule being <em>supported</em> is separate from it being <em>enabled</em> — see <a href="../sigma/#enable-sigma-rules-on-import">Enable Sigma Rules on Import</a> for controlling which rules are active by default.</p>
+<p><strong>How to read the tables:</strong></p>
+<ul>
+<li>✅ <strong>Supported</strong> — telemetry is collected once the Security Onion <a href="../elastic-agent/">Elastic Agent</a> (which includes Elastic Defend) is deployed to the endpoint, and the conversion pipeline scopes the rule correctly. No extra configuration.</li>
+<li>⚠️ <strong>Partial</strong> — a subset of the category's telemetry is collected or mapped; some rules in the category will never match. See notes.</li>
+<li>🔧 <strong>Requires setup</strong> — telemetry exists only if you configure something extra (deploy <a href="../sysmon/">Sysmon</a>, enable a Windows audit feature, or add an <a href="../third-party-integrations/">integration</a>).</li>
+<li>❌ <strong>Not collected</strong> — no equivalent telemetry; these rules will never fire.</li>
+</ul>
+<p>The <strong>Playbooks</strong> column shows Guided Analysis Playbook status for each logsource (see <a href="../detections/">Detections</a>): ✅ playbooks are published for this logsource, 🔄 in development, <strong>Planned</strong>, or — not currently planned.</p>
+<h2 id="windows-endpoint-elastic-defend">Windows endpoint — Elastic Defend<a class="headerlink" href="#windows-endpoint-elastic-defend" title="Permanent link">¶</a></h2>
+<p>Elastic Defend is the default endpoint telemetry agent for Security Onion. These categories are fully covered by Defend events, and the conversion pipeline scopes each one to the matching Defend event type. They work out of the box.</p>
+<table>
+<thead>
+<tr>
+<th>Logsource</th>
+<th style="text-align: right;">Detections</th>
+<th>Telemetry</th>
+<th>Playbooks</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>windows / process_creation</td>
+<td style="text-align: right;">732 (1,297)</td>
+<td>✅ Elastic Defend (<code>endpoint.events.process</code>)</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td>windows / file_event</td>
+<td style="text-align: right;">130 (199)</td>
+<td>✅ Elastic Defend (<code>endpoint.events.file</code>)</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td>windows / registry_set</td>
+<td style="text-align: right;">113 (208)</td>
+<td>✅ Elastic Defend (<code>endpoint.events.registry</code>)</td>
+<td>✅</td>
+<td>Registry value modifications</td>
+</tr>
+<tr>
+<td>windows / image_load</td>
+<td style="text-align: right;">56 (109)</td>
+<td>✅ Elastic Defend (<code>endpoint.events.library</code>)</td>
+<td>✅</td>
+<td>DLL hashes and code signatures are recorded on the load event</td>
+</tr>
+<tr>
+<td>windows / registry_event</td>
+<td style="text-align: right;">30 (40)</td>
+<td>⚠️ Elastic Defend (partial)</td>
+<td>✅</td>
+<td>Defend records value modifications only. Rules matching key paths work; rules requiring key create/delete/rename semantics need <a href="../sysmon/">Sysmon</a> EID 12/14 (7 of the 40 all-rules detections). Playbooks cover the Defend-answerable subset</td>
+</tr>
+<tr>
+<td>windows / network_connection</td>
+<td style="text-align: right;">25 (51)</td>
+<td>✅ Elastic Defend (<code>endpoint.events.network</code>)</td>
+<td>✅</td>
+<td>Rules matching on <code>DestinationHostname</code> may not fire — Defend rarely records a destination domain on connections</td>
+</tr>
+<tr>
+<td>windows / dns_query</td>
+<td style="text-align: right;">10 (24)</td>
+<td>✅ Elastic Defend (<code>endpoint.events.network</code> DNS lookups)</td>
+<td>✅</td>
+<td>Includes the querying process</td>
+</tr>
+<tr>
+<td>windows / driver_load</td>
+<td style="text-align: right;">7 (9)</td>
+<td>✅ Elastic Defend (<code>endpoint.events.library</code>, driver events)</td>
+<td>✅</td>
+<td>Defend records driver loads natively; the pipeline scopes these to <code>event.category:driver</code></td>
+</tr>
+<tr>
+<td>windows / file_delete</td>
+<td style="text-align: right;">4 (12)</td>
+<td>✅ Elastic Defend (<code>endpoint.events.file</code>)</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td>windows / file_rename</td>
+<td style="text-align: right;">0 (1)</td>
+<td>✅ Elastic Defend (<code>endpoint.events.file</code>)</td>
+<td>✅</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="windows-endpoint-requires-sysmon">Windows endpoint — requires Sysmon<a class="headerlink" href="#windows-endpoint-requires-sysmon" title="Permanent link">¶</a></h2>
+<p>Elastic Defend does not emit equivalent events for these categories. Deploying <a href="../sysmon/">Sysmon</a> with an appropriate configuration provides the telemetry; without it, these rules will never fire.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The conversion pipeline does not currently add Sysmon channel or event-ID scoping for these categories — converted rules rely on their field names alone to select the right events. Because some Sysmon fields are renamed to generic ECS fields (e.g. <code>SourceImage</code> → <code>process.executable</code>), a converted rule can match unrelated events. If you deploy Sysmon and enable rules in these categories, review the converted queries (Detection Source → Convert) and expect to tune.</p>
 </div>
-<ol>
-<li>Go to <a href="../elastic-fleet/">Elastic Fleet</a>, click the <code>Agent policies</code> tab, and then click the desired policy (for example <code>so-grid-nodes_general</code>).</li>
-<li>Click the <code>Add integration</code> button.</li>
-<li>Search for <code>cef</code> and then click on the <code>Common Event Format (CEF)</code> integration.</li>
-<li>The Elastic Integration page will show an overview of the CEF Integration. Review all information on the page and then click the <code>Add Common Event Format (CEF)</code> button.</li>
-<li>On the <code>Add Common Event Format (CEF) integration</code> screen, disable the options labeled <code>Collect CEF application logs (input: logfile)</code> and <code>Collect CEF application logs (input: tcp)</code>.  Make sure that <code>Collect CEF application logs (input: udp)</code> is enabled and then change the <code>Syslog Host</code> setting from <code>localhost</code> to <code>0.0.0.0</code>. The <code>Syslog Port</code> should be set to <code>9003</code> by default. Click the <code>Save and continue</code> button and then click <code>Save and deploy changes</code>.</li>
-</ol>
-<h2 id="allow-cef-logs-through-firewall">Allow CEF logs through firewall<a class="headerlink" href="#allow-cef-logs-through-firewall" title="Permanent link">¶</a></h2>
-<p>Next, allow the traffic from the CEF host through the firewall to the CEF integration port. </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The following instructions assume that this is the first firewall change you have made and therefore refer to <code>customhostgroup0</code> and <code>customportgroup0</code>. If those have already been used, you can select the next available hostgroup and portgroup.</p>
-</div>
-<ol>
-<li>Navigate to <a href="../administration/">Administration</a> --&gt; Configuration.</li>
-<li>At the top of the page, click the <code>Options</code> menu and then enable the <code>Show advanced settings</code> option.</li>
-<li>On the left side, go to <code>firewall</code>, select <code>hostgroups</code>, and click the <code>customhostgroup0</code> group. On the right side, enter the IP address of the CEF host and click the checkmark to save.</li>
-<li>On the left side, go to <code>firewall</code>, select <code>portgroups</code>, select the <code>customportgroup0</code> group, and then click <code>udp</code>. On the right side, enter your desired listener port (9003 by default) and click the checkmark to save.</li>
-<li>On the left side, go to <code>firewall</code>, select <code>role</code>, and then select the node type that will receive the CEF logs. Then drill into <code>chain</code> --&gt; <code>INPUT</code> --&gt; <code>hostgroups</code> --&gt; <code>customhostgroup0</code> --&gt; <code>portgroups</code>. On the right side, enter <code>customportgroup0</code> and click the checkmark to save.</li>
-<li>If you would like to apply the rules immediately, click the <code>SYNCHRONIZE GRID</code> button under the <code>Options</code> menu at the top of the page.</li>
-</ol>
-<h2 id="cef-dashboard">CEF dashboard<a class="headerlink" href="#cef-dashboard" title="Permanent link">¶</a></h2>
-<p>Once all configuration is complete, you should be able to go to <a href="../dashboards/">Dashboards</a> and select the <code>CEF</code> dashboard to see your CEF logs.</p>
+<table>
+<thead>
+<tr>
+<th>Logsource</th>
+<th style="text-align: right;">Detections</th>
+<th>Telemetry</th>
+<th>Playbooks</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>windows / process_access</td>
+<td style="text-align: right;">18 (24)</td>
+<td>🔧 Sysmon EID 10</td>
+<td>—</td>
+<td>Cross-process handle access (e.g. LSASS dumping). Defend's API telemetry does not record cross-process handle access, so it does not satisfy these rules</td>
+</tr>
+<tr>
+<td>windows / pipe_created</td>
+<td style="text-align: right;">11 (18)</td>
+<td>🔧 Sysmon EID 17/18</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>windows / create_remote_thread</td>
+<td style="text-align: right;">9 (12)</td>
+<td>🔧 Sysmon EID 8</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>windows / create_stream_hash</td>
+<td style="text-align: right;">6 (9)</td>
+<td>🔧 Sysmon EID 15</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>windows / registry_delete</td>
+<td style="text-align: right;">3 (10)</td>
+<td>🔧 Sysmon EID 12</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>windows / registry_add</td>
+<td style="text-align: right;">2 (3)</td>
+<td>🔧 Sysmon EID 12</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>windows / sysmon_status, sysmon_error</td>
+<td style="text-align: right;">2 (2)</td>
+<td>🔧 Sysmon service events</td>
+<td>—</td>
+<td>Only meaningful if Sysmon is deployed</td>
+</tr>
+<tr>
+<td>windows / file_change</td>
+<td style="text-align: right;">1 (1)</td>
+<td>🔧 Sysmon EID 2</td>
+<td>—</td>
+<td>File creation-time change (timestomping)</td>
+</tr>
+<tr>
+<td>windows / process_tampering</td>
+<td style="text-align: right;">0 (1)</td>
+<td>🔧 Sysmon EID 25</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>windows / file_executable_detected</td>
+<td style="text-align: right;">0 (1)</td>
+<td>🔧 Sysmon EID 29</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>windows / file_access</td>
+<td style="text-align: right;">0 (6)</td>
+<td>❌ Not reliably collected</td>
+<td>—</td>
+<td>Requires ETW kernel-file auditing; neither Defend nor Sysmon provides general file-access events</td>
+</tr>
+</tbody>
+</table>
+<h2 id="windows-event-log-channels">Windows event log channels<a class="headerlink" href="#windows-event-log-channels" title="Permanent link">¶</a></h2>
+<p>These logsources target specific Windows event log channels. The default agent policy collects the core channels (Security, System, Application, Windows Defender, PowerShell, WMI-Activity); a few sources additionally require the corresponding Windows feature or audit policy to be enabled on the endpoint.</p>
+<table>
+<thead>
+<tr>
+<th>Logsource</th>
+<th style="text-align: right;">Detections</th>
+<th>Telemetry</th>
+<th>Playbooks</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>windows / security</td>
+<td style="text-align: right;">92 (141)</td>
+<td>✅ Security channel</td>
+<td>Planned</td>
+<td>Some rules need specific audit policies enabled (e.g. object access, audit-log-cleared)</td>
+</tr>
+<tr>
+<td>windows / ps_script</td>
+<td style="text-align: right;">57 (146)</td>
+<td>🔧 PowerShell script block logging</td>
+<td>🔄 In development</td>
+<td>The PowerShell Operational channel is collected by default, but script block logging must be enabled on the endpoint via GPO (<code>Turn on PowerShell Script Block Logging</code>)</td>
+</tr>
+<tr>
+<td>windows / system</td>
+<td style="text-align: right;">46 (69)</td>
+<td>✅ System channel</td>
+<td>Planned</td>
+<td></td>
+</tr>
+<tr>
+<td>windows / ps_module</td>
+<td style="text-align: right;">18 (28)</td>
+<td>🔧 PowerShell module logging</td>
+<td>Planned</td>
+<td>Channel collected by default; enable module logging via GPO</td>
+</tr>
+<tr>
+<td>windows / application</td>
+<td style="text-align: right;">19 (27)</td>
+<td>✅ Application channel</td>
+<td>Planned</td>
+<td></td>
+</tr>
+<tr>
+<td>windows / windefend</td>
+<td style="text-align: right;">13 (15)</td>
+<td>✅ Windows Defender Operational channel</td>
+<td>Planned</td>
+<td></td>
+</tr>
+<tr>
+<td>windows / ps_classic_start, ps_classic_provider_start, powershell-classic</td>
+<td style="text-align: right;">4 (9)</td>
+<td>✅ Windows PowerShell (classic) channel</td>
+<td>🔄 In development</td>
+<td>Collected by default</td>
+</tr>
+<tr>
+<td>windows / wmi_event, wmi</td>
+<td style="text-align: right;">2 (5)</td>
+<td>✅ WMI-Activity Operational channel</td>
+<td>✅</td>
+<td>Collected by default. The channel records WMI provider loads and permanent event subscriptions (EID 5857–5861) natively — Sysmon EID 19–21 is not required. Rules matching on the Sysmon field names (<code>EventNamespace</code>, <code>Consumer</code>, <code>Filter</code>) will not fire against the channel's fields; match on the event ID instead</td>
+</tr>
+<tr>
+<td>windows / other service channels</td>
+<td style="text-align: right;">~41 (~76)</td>
+<td>🔧 Varies</td>
+<td>—</td>
+<td>~30 low-volume channels (AppLocker, BITS, CodeIntegrity, Exchange management, task scheduler, print service, NTLM, …). Conversion scoping is automatic, but the channels are not collected by the default agent policy; each needs its channel added and, in some cases, the Windows feature enabled</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linux-and-macos-endpoints">Linux and macOS endpoints<a class="headerlink" href="#linux-and-macos-endpoints" title="Permanent link">¶</a></h2>
+<p>Elastic Defend covers the core endpoint categories on Linux and macOS as well.</p>
+<table>
+<thead>
+<tr>
+<th>Logsource</th>
+<th style="text-align: right;">Detections</th>
+<th>Telemetry</th>
+<th>Playbooks</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>linux / process_creation</td>
+<td style="text-align: right;">51 (110)</td>
+<td>✅ Elastic Defend</td>
+<td>Planned</td>
+<td></td>
+</tr>
+<tr>
+<td>linux / auditd</td>
+<td style="text-align: right;">12 (28)</td>
+<td>🔧 auditd + integration</td>
+<td>—</td>
+<td>Requires auditd on the endpoint and the Auditd integration; rule field names (<code>type</code>, <code>a0</code>, …) additionally need custom field mapping</td>
+</tr>
+<tr>
+<td>linux / file_event</td>
+<td style="text-align: right;">10 (14)</td>
+<td>✅ Elastic Defend</td>
+<td>Planned</td>
+<td></td>
+</tr>
+<tr>
+<td>linux / network_connection</td>
+<td style="text-align: right;">5 (5)</td>
+<td>✅ Elastic Defend</td>
+<td>Planned</td>
+<td></td>
+</tr>
+<tr>
+<td>linux / other</td>
+<td style="text-align: right;">~20 (~26)</td>
+<td>🔧 Syslog / integrations</td>
+<td>—</td>
+<td>sshd, sudo, cron, clamav, vsftpd, guacamole, generic syslog. Only <code>linux/auth</code> has a conversion mapping; the rest need custom field mappings</td>
+</tr>
+<tr>
+<td>macos / process_creation</td>
+<td style="text-align: right;">10 (49)</td>
+<td>✅ Elastic Defend</td>
+<td>Planned</td>
+<td></td>
+</tr>
+<tr>
+<td>macos / file_event</td>
+<td style="text-align: right;">2 (3)</td>
+<td>✅ Elastic Defend</td>
+<td>Planned</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="cloud-and-saas">Cloud and SaaS<a class="headerlink" href="#cloud-and-saas" title="Permanent link">¶</a></h2>
+<p>These require the corresponding Elastic <a href="../third-party-integrations/">integration</a> to be configured — nothing is collected out of the box. Conversion support varies: <strong>m365 rules are fully mapped</strong> to the O365 integration's fields and dataset; the other products currently have no conversion mappings, so even with the integration collecting data, their rules need custom field mappings before they can match.</p>
+<table>
+<thead>
+<tr>
+<th>Logsource</th>
+<th style="text-align: right;">Detections</th>
+<th>Telemetry</th>
+<th>Playbooks</th>
+<th>Conversion mapping</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>azure (activitylogs, auditlogs, signinlogs, riskdetection, pim)</td>
+<td style="text-align: right;">51 (123)</td>
+<td>🔧 Azure integrations</td>
+<td>—</td>
+<td>Custom field mapping required</td>
+</tr>
+<tr>
+<td>aws / cloudtrail</td>
+<td style="text-align: right;">12 (42)</td>
+<td>🔧 AWS CloudTrail integration</td>
+<td>—</td>
+<td>Custom field mapping required</td>
+</tr>
+<tr>
+<td>okta</td>
+<td style="text-align: right;">6 (20)</td>
+<td>🔧 Okta integration</td>
+<td>—</td>
+<td>Custom field mapping required</td>
+</tr>
+<tr>
+<td>bitbucket / audit</td>
+<td style="text-align: right;">4 (12)</td>
+<td>🔧 Bitbucket audit logs</td>
+<td>—</td>
+<td>Custom field mapping required</td>
+</tr>
+<tr>
+<td>github / audit</td>
+<td style="text-align: right;">4 (9)</td>
+<td>🔧 GitHub audit log integration</td>
+<td>—</td>
+<td>Custom field mapping required</td>
+</tr>
+<tr>
+<td>m365 (threat_management, audit, exchange)</td>
+<td style="text-align: right;">1 (18)</td>
+<td>🔧 Microsoft 365 integrations</td>
+<td>—</td>
+<td>✅ Mapped (<code>o365.audit</code>)</td>
+</tr>
+<tr>
+<td>gcp (gcp.audit, google_workspace)</td>
+<td style="text-align: right;">0 (25)</td>
+<td>🔧 GCP / Google Workspace integrations</td>
+<td>—</td>
+<td>Custom field mapping required</td>
+</tr>
+<tr>
+<td>kubernetes / audit</td>
+<td style="text-align: right;">0 (9)</td>
+<td>🔧 Kubernetes audit integration</td>
+<td>—</td>
+<td>Custom field mapping required</td>
+</tr>
+</tbody>
+</table>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
@@ -2526,7 +2936,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: NetFlow" class="md-footer__link md-footer__link--prev" href="../netflow/">
+<a aria-label="Previous: Sigma" class="md-footer__link md-footer__link--prev" href="../sigma/">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
 </div>
@@ -2535,17 +2945,17 @@
                 Previous
               </span>
 <div class="md-ellipsis">
-                NetFlow
+                Sigma
               </div>
 </div>
 </a>
-<a aria-label="Next: iptables" class="md-footer__link md-footer__link--next" href="../iptables/">
+<a aria-label="Next: YARA" class="md-footer__link md-footer__link--next" href="../yara/">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
               </span>
 <div class="md-ellipsis">
-                iptables
+                YARA
               </div>
 </div>
 <div class="md-footer__button md-icon">
