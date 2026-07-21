@@ -142,6 +142,7 @@ nav:
     - Rules Overview: rules.md
     - NIDS: nids.md
     - Sigma: sigma.md
+    - Sigma Logsource Coverage: sigma-logsource-coverage.md
     - YARA: yara.md
   - Logs:
     - Logs Overview: logs.md
