@@ -2544,61 +2544,61 @@
 </thead>
 <tbody>
 <tr>
-<td>windows / process_creation</td>
+<td>process_creation</td>
 <td style="text-align: right;">732 (1,297)</td>
 <td>✅ <code>endpoint.events.process</code></td>
 <td></td>
 </tr>
 <tr>
-<td>windows / file_event</td>
+<td>file_event</td>
 <td style="text-align: right;">130 (199)</td>
 <td>✅ <code>endpoint.events.file</code></td>
 <td></td>
 </tr>
 <tr>
-<td>windows / registry_set</td>
+<td>registry_set</td>
 <td style="text-align: right;">113 (208)</td>
 <td>✅ <code>endpoint.events.registry</code></td>
 <td>Registry value modifications</td>
 </tr>
 <tr>
-<td>windows / image_load</td>
+<td>image_load</td>
 <td style="text-align: right;">56 (109)</td>
 <td>✅ <code>endpoint.events.library</code></td>
 <td>Includes DLL hashes and code signatures</td>
 </tr>
 <tr>
-<td>windows / registry_event</td>
+<td>registry_event</td>
 <td style="text-align: right;">30 (40)</td>
 <td>⚠️ Partial</td>
 <td>Value modifications only — see below</td>
 </tr>
 <tr>
-<td>windows / network_connection</td>
+<td>network_connection</td>
 <td style="text-align: right;">25 (51)</td>
 <td>✅ <code>endpoint.events.network</code></td>
 <td><code>DestinationHostname</code> matches may not fire — Defend rarely records destination domains</td>
 </tr>
 <tr>
-<td>windows / dns_query</td>
+<td>dns_query</td>
 <td style="text-align: right;">10 (24)</td>
 <td>✅ <code>endpoint.events.network</code> (DNS)</td>
 <td>Includes the querying process</td>
 </tr>
 <tr>
-<td>windows / driver_load</td>
+<td>driver_load</td>
 <td style="text-align: right;">7 (9)</td>
 <td>✅ <code>endpoint.events.library</code></td>
 <td>Scoped to <code>event.category:driver</code></td>
 </tr>
 <tr>
-<td>windows / file_delete</td>
+<td>file_delete</td>
 <td style="text-align: right;">4 (12)</td>
 <td>✅ <code>endpoint.events.file</code></td>
 <td></td>
 </tr>
 <tr>
-<td>windows / file_rename</td>
+<td>file_rename</td>
 <td style="text-align: right;">0 (1)</td>
 <td>✅ <code>endpoint.events.file</code></td>
 <td></td>
@@ -2617,73 +2617,73 @@
 <tr>
 <th>Logsource</th>
 <th style="text-align: right;">Detections</th>
-<th>Telemetry</th>
+<th>Sysmon telemetry</th>
 <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>windows / process_access</td>
+<td>process_access</td>
 <td style="text-align: right;">18 (24)</td>
-<td>🔧 Sysmon EID 10</td>
+<td>EID 10</td>
 <td>Cross-process handle access (e.g. LSASS dumping) — Defend's API telemetry does not record it</td>
 </tr>
 <tr>
-<td>windows / pipe_created</td>
+<td>pipe_created</td>
 <td style="text-align: right;">11 (18)</td>
-<td>🔧 Sysmon EID 17/18</td>
+<td>EID 17/18</td>
 <td></td>
 </tr>
 <tr>
-<td>windows / create_remote_thread</td>
+<td>create_remote_thread</td>
 <td style="text-align: right;">9 (12)</td>
-<td>🔧 Sysmon EID 8</td>
+<td>EID 8</td>
 <td></td>
 </tr>
 <tr>
-<td>windows / create_stream_hash</td>
+<td>create_stream_hash</td>
 <td style="text-align: right;">6 (9)</td>
-<td>🔧 Sysmon EID 15</td>
+<td>EID 15</td>
 <td></td>
 </tr>
 <tr>
-<td>windows / registry_delete</td>
+<td>registry_delete</td>
 <td style="text-align: right;">3 (10)</td>
-<td>🔧 Sysmon EID 12</td>
+<td>EID 12</td>
 <td></td>
 </tr>
 <tr>
-<td>windows / registry_add</td>
+<td>registry_add</td>
 <td style="text-align: right;">2 (3)</td>
-<td>🔧 Sysmon EID 12</td>
+<td>EID 12</td>
 <td></td>
 </tr>
 <tr>
-<td>windows / sysmon_status, sysmon_error</td>
+<td>sysmon_status, sysmon_error</td>
 <td style="text-align: right;">2 (2)</td>
-<td>🔧 Sysmon service events</td>
+<td>Service events</td>
 <td>Only meaningful if Sysmon is deployed</td>
 </tr>
 <tr>
-<td>windows / file_change</td>
+<td>file_change</td>
 <td style="text-align: right;">1 (1)</td>
-<td>🔧 Sysmon EID 2</td>
+<td>EID 2</td>
 <td>File creation-time change (timestomping)</td>
 </tr>
 <tr>
-<td>windows / process_tampering</td>
+<td>process_tampering</td>
 <td style="text-align: right;">0 (1)</td>
-<td>🔧 Sysmon EID 25</td>
+<td>EID 25</td>
 <td></td>
 </tr>
 <tr>
-<td>windows / file_executable_detected</td>
+<td>file_executable_detected</td>
 <td style="text-align: right;">0 (1)</td>
-<td>🔧 Sysmon EID 29</td>
+<td>EID 29</td>
 <td></td>
 </tr>
 <tr>
-<td>windows / file_access</td>
+<td>file_access</td>
 <td style="text-align: right;">0 (6)</td>
 <td>❌ Not reliably collected</td>
 <td>Needs ETW kernel-file auditing; neither Defend nor Sysmon provides general file-access events</td>
@@ -2697,70 +2697,70 @@
 <tr>
 <th>Logsource</th>
 <th style="text-align: right;">Detections</th>
-<th>Telemetry</th>
+<th>Channel</th>
 <th>Playbooks</th>
 <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>windows / security</td>
+<td>security</td>
 <td style="text-align: right;">92 (141)</td>
-<td>✅ Security channel</td>
+<td>✅ Security</td>
 <td>Planned</td>
 <td>Some rules need specific audit policies enabled (e.g. object access, audit-log-cleared)</td>
 </tr>
 <tr>
-<td>windows / ps_script</td>
+<td>ps_script</td>
 <td style="text-align: right;">57 (146)</td>
 <td>🔧 Script block logging</td>
 <td>🔄 In development</td>
 <td>Channel collected by default; enable script block logging on the endpoint via GPO</td>
 </tr>
 <tr>
-<td>windows / system</td>
+<td>system</td>
 <td style="text-align: right;">46 (69)</td>
-<td>✅ System channel</td>
+<td>✅ System</td>
 <td>Planned</td>
 <td></td>
 </tr>
 <tr>
-<td>windows / ps_module</td>
+<td>ps_module</td>
 <td style="text-align: right;">18 (28)</td>
 <td>🔧 Module logging</td>
 <td>Planned</td>
 <td>Channel collected by default; enable module logging via GPO</td>
 </tr>
 <tr>
-<td>windows / application</td>
+<td>application</td>
 <td style="text-align: right;">19 (27)</td>
-<td>✅ Application channel</td>
+<td>✅ Application</td>
 <td>Planned</td>
 <td></td>
 </tr>
 <tr>
-<td>windows / windefend</td>
+<td>windefend</td>
 <td style="text-align: right;">13 (15)</td>
-<td>✅ Defender Operational channel</td>
+<td>✅ Defender Operational</td>
 <td>Planned</td>
 <td></td>
 </tr>
 <tr>
-<td>windows / ps_classic_start, ps_classic_provider_start, powershell-classic</td>
+<td>ps_classic_start, ps_classic_provider_start, powershell-classic</td>
 <td style="text-align: right;">4 (9)</td>
-<td>✅ PowerShell (classic) channel</td>
+<td>✅ PowerShell (classic)</td>
 <td>🔄 In development</td>
 <td>Collected by default</td>
 </tr>
 <tr>
-<td>windows / wmi_event, wmi</td>
+<td>wmi_event, wmi</td>
 <td style="text-align: right;">2 (5)</td>
-<td>✅ WMI-Activity channel</td>
+<td>✅ WMI-Activity</td>
 <td>✅</td>
 <td>Collected by default — see below</td>
 </tr>
 <tr>
-<td>windows / other service channels</td>
+<td>other service channels</td>
 <td style="text-align: right;">~41 (~76)</td>
 <td>🔧 Varies</td>
 <td>—</td>
@@ -2841,7 +2841,7 @@
 <tr>
 <th>Logsource</th>
 <th style="text-align: right;">Detections</th>
-<th>Telemetry</th>
+<th>Required integration</th>
 <th>Conversion mapping</th>
 </tr>
 </thead>
@@ -2849,50 +2849,50 @@
 <tr>
 <td>azure (activitylogs, auditlogs, signinlogs, riskdetection, pim)</td>
 <td style="text-align: right;">51 (123)</td>
-<td>🔧 Azure integrations</td>
-<td>Custom field mapping required</td>
+<td>Azure</td>
+<td>—</td>
 </tr>
 <tr>
 <td>aws / cloudtrail</td>
 <td style="text-align: right;">12 (42)</td>
-<td>🔧 AWS CloudTrail integration</td>
-<td>Custom field mapping required</td>
+<td>AWS CloudTrail</td>
+<td>—</td>
 </tr>
 <tr>
 <td>okta</td>
 <td style="text-align: right;">6 (20)</td>
-<td>🔧 Okta integration</td>
-<td>Custom field mapping required</td>
+<td>Okta</td>
+<td>—</td>
 </tr>
 <tr>
 <td>bitbucket / audit</td>
 <td style="text-align: right;">4 (12)</td>
-<td>🔧 Bitbucket audit logs</td>
-<td>Custom field mapping required</td>
+<td>Bitbucket audit logs</td>
+<td>—</td>
 </tr>
 <tr>
 <td>github / audit</td>
 <td style="text-align: right;">4 (9)</td>
-<td>🔧 GitHub audit log integration</td>
-<td>Custom field mapping required</td>
+<td>GitHub audit log</td>
+<td>—</td>
 </tr>
 <tr>
 <td>m365 (threat_management, audit, exchange)</td>
 <td style="text-align: right;">1 (18)</td>
-<td>🔧 Microsoft 365 integrations</td>
-<td>✅ Mapped (<code>o365.audit</code>)</td>
+<td>Microsoft 365</td>
+<td>✅ <code>o365.audit</code></td>
 </tr>
 <tr>
 <td>gcp (gcp.audit, google_workspace)</td>
 <td style="text-align: right;">0 (25)</td>
-<td>🔧 GCP / Google Workspace integrations</td>
-<td>Custom field mapping required</td>
+<td>GCP / Google Workspace</td>
+<td>—</td>
 </tr>
 <tr>
 <td>kubernetes / audit</td>
 <td style="text-align: right;">0 (9)</td>
-<td>🔧 Kubernetes audit integration</td>
-<td>Custom field mapping required</td>
+<td>Kubernetes audit</td>
+<td>—</td>
 </tr>
 </tbody>
 </table>
