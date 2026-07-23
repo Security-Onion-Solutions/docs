@@ -2530,16 +2530,15 @@
 <li>🔧 <strong>Requires setup</strong> — telemetry exists only if you configure something extra (deploy <a href="../sysmon/">Sysmon</a>, enable a Windows audit feature, or add an <a href="../third-party-integrations/">integration</a>).</li>
 <li>❌ <strong>Not collected</strong> — no equivalent telemetry; these rules will never fire.</li>
 </ul>
-<p>The <strong>Playbooks</strong> column shows Guided Analysis Playbook status for each logsource (see <a href="../detections/">Detections</a>): ✅ playbooks are published for this logsource, 🔄 in development, <strong>Planned</strong>, or — not currently planned.</p>
+<p>The <strong>Playbooks</strong> column shows Guided Analysis Playbook status for each logsource (see <a href="../detections/">Detections</a>): ✅ playbooks are published for this logsource, 🔄 in development, <strong>Planned</strong>, or — not currently planned. Where the status is the same for every logsource in a table, it is stated in the section text instead of a column.</p>
 <h2 id="windows-endpoint-elastic-defend">Windows endpoint — Elastic Defend<a class="headerlink" href="#windows-endpoint-elastic-defend" title="Permanent link">¶</a></h2>
-<p>Elastic Defend is the default endpoint telemetry agent for Security Onion. These categories are fully covered by Defend events, and the conversion pipeline scopes each one to the matching Defend event type. They work out of the box.</p>
+<p>Elastic Defend is the default endpoint telemetry agent for Security Onion. These categories are fully covered by Defend events, and the conversion pipeline scopes each one to the matching Defend event type (shown in the Telemetry column). They work out of the box. Guided Analysis Playbooks are published for all of these categories.</p>
 <table>
 <thead>
 <tr>
 <th>Logsource</th>
 <th style="text-align: right;">Detections</th>
 <th>Telemetry</th>
-<th>Playbooks</th>
 <th>Notes</th>
 </tr>
 </thead>
@@ -2547,77 +2546,68 @@
 <tr>
 <td>windows / process_creation</td>
 <td style="text-align: right;">732 (1,297)</td>
-<td>✅ Elastic Defend (<code>endpoint.events.process</code>)</td>
-<td>✅</td>
+<td>✅ <code>endpoint.events.process</code></td>
 <td></td>
 </tr>
 <tr>
 <td>windows / file_event</td>
 <td style="text-align: right;">130 (199)</td>
-<td>✅ Elastic Defend (<code>endpoint.events.file</code>)</td>
-<td>✅</td>
+<td>✅ <code>endpoint.events.file</code></td>
 <td></td>
 </tr>
 <tr>
 <td>windows / registry_set</td>
 <td style="text-align: right;">113 (208)</td>
-<td>✅ Elastic Defend (<code>endpoint.events.registry</code>)</td>
-<td>✅</td>
+<td>✅ <code>endpoint.events.registry</code></td>
 <td>Registry value modifications</td>
 </tr>
 <tr>
 <td>windows / image_load</td>
 <td style="text-align: right;">56 (109)</td>
-<td>✅ Elastic Defend (<code>endpoint.events.library</code>)</td>
-<td>✅</td>
-<td>DLL hashes and code signatures are recorded on the load event</td>
+<td>✅ <code>endpoint.events.library</code></td>
+<td>Includes DLL hashes and code signatures</td>
 </tr>
 <tr>
 <td>windows / registry_event</td>
 <td style="text-align: right;">30 (40)</td>
-<td>⚠️ Elastic Defend (partial)</td>
-<td>✅</td>
-<td>Defend records value modifications only. Rules matching key paths work; rules requiring key create/delete/rename semantics need <a href="../sysmon/">Sysmon</a> EID 12/14 (7 of the 40 all-rules detections). Playbooks cover the Defend-answerable subset</td>
+<td>⚠️ Partial</td>
+<td>Value modifications only — see below</td>
 </tr>
 <tr>
 <td>windows / network_connection</td>
 <td style="text-align: right;">25 (51)</td>
-<td>✅ Elastic Defend (<code>endpoint.events.network</code>)</td>
-<td>✅</td>
-<td>Rules matching on <code>DestinationHostname</code> may not fire — Defend rarely records a destination domain on connections</td>
+<td>✅ <code>endpoint.events.network</code></td>
+<td><code>DestinationHostname</code> matches may not fire — Defend rarely records destination domains</td>
 </tr>
 <tr>
 <td>windows / dns_query</td>
 <td style="text-align: right;">10 (24)</td>
-<td>✅ Elastic Defend (<code>endpoint.events.network</code> DNS lookups)</td>
-<td>✅</td>
+<td>✅ <code>endpoint.events.network</code> (DNS)</td>
 <td>Includes the querying process</td>
 </tr>
 <tr>
 <td>windows / driver_load</td>
 <td style="text-align: right;">7 (9)</td>
-<td>✅ Elastic Defend (<code>endpoint.events.library</code>, driver events)</td>
-<td>✅</td>
-<td>Defend records driver loads natively; the pipeline scopes these to <code>event.category:driver</code></td>
+<td>✅ <code>endpoint.events.library</code></td>
+<td>Scoped to <code>event.category:driver</code></td>
 </tr>
 <tr>
 <td>windows / file_delete</td>
 <td style="text-align: right;">4 (12)</td>
-<td>✅ Elastic Defend (<code>endpoint.events.file</code>)</td>
-<td>✅</td>
+<td>✅ <code>endpoint.events.file</code></td>
 <td></td>
 </tr>
 <tr>
 <td>windows / file_rename</td>
 <td style="text-align: right;">0 (1)</td>
-<td>✅ Elastic Defend (<code>endpoint.events.file</code>)</td>
-<td>✅</td>
+<td>✅ <code>endpoint.events.file</code></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<p>⚠️ <strong>registry_event</strong> is partial: Defend records registry <em>value modifications</em> only. Rules matching key paths work, but rules requiring key create/delete/rename semantics need <a href="../sysmon/">Sysmon</a> EID 12/14 (7 of the 40 all-rules detections). Playbooks cover the Defend-answerable subset.</p>
 <h2 id="windows-endpoint-requires-sysmon">Windows endpoint — requires Sysmon<a class="headerlink" href="#windows-endpoint-requires-sysmon" title="Permanent link">¶</a></h2>
-<p>Elastic Defend does not emit equivalent events for these categories. Deploying <a href="../sysmon/">Sysmon</a> with an appropriate configuration provides the telemetry; without it, these rules will never fire.</p>
+<p>Elastic Defend does not emit equivalent events for these categories. Deploying <a href="../sysmon/">Sysmon</a> with an appropriate configuration provides the telemetry; without it, these rules will never fire. Guided Analysis Playbooks are not currently planned for these categories.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The conversion pipeline does not currently add Sysmon channel or event-ID scoping for these categories — converted rules rely on their field names alone to select the right events. Because some Sysmon fields are renamed to generic ECS fields (e.g. <code>SourceImage</code> → <code>process.executable</code>), a converted rule can match unrelated events. If you deploy Sysmon and enable rules in these categories, review the converted queries (Detection Source → Convert) and expect to tune.</p>
@@ -2628,7 +2618,6 @@
 <th>Logsource</th>
 <th style="text-align: right;">Detections</th>
 <th>Telemetry</th>
-<th>Playbooks</th>
 <th>Notes</th>
 </tr>
 </thead>
@@ -2637,78 +2626,67 @@
 <td>windows / process_access</td>
 <td style="text-align: right;">18 (24)</td>
 <td>🔧 Sysmon EID 10</td>
-<td>—</td>
-<td>Cross-process handle access (e.g. LSASS dumping). Defend's API telemetry does not record cross-process handle access, so it does not satisfy these rules</td>
+<td>Cross-process handle access (e.g. LSASS dumping) — Defend's API telemetry does not record it</td>
 </tr>
 <tr>
 <td>windows / pipe_created</td>
 <td style="text-align: right;">11 (18)</td>
 <td>🔧 Sysmon EID 17/18</td>
-<td>—</td>
 <td></td>
 </tr>
 <tr>
 <td>windows / create_remote_thread</td>
 <td style="text-align: right;">9 (12)</td>
 <td>🔧 Sysmon EID 8</td>
-<td>—</td>
 <td></td>
 </tr>
 <tr>
 <td>windows / create_stream_hash</td>
 <td style="text-align: right;">6 (9)</td>
 <td>🔧 Sysmon EID 15</td>
-<td>—</td>
 <td></td>
 </tr>
 <tr>
 <td>windows / registry_delete</td>
 <td style="text-align: right;">3 (10)</td>
 <td>🔧 Sysmon EID 12</td>
-<td>—</td>
 <td></td>
 </tr>
 <tr>
 <td>windows / registry_add</td>
 <td style="text-align: right;">2 (3)</td>
 <td>🔧 Sysmon EID 12</td>
-<td>—</td>
 <td></td>
 </tr>
 <tr>
 <td>windows / sysmon_status, sysmon_error</td>
 <td style="text-align: right;">2 (2)</td>
 <td>🔧 Sysmon service events</td>
-<td>—</td>
 <td>Only meaningful if Sysmon is deployed</td>
 </tr>
 <tr>
 <td>windows / file_change</td>
 <td style="text-align: right;">1 (1)</td>
 <td>🔧 Sysmon EID 2</td>
-<td>—</td>
 <td>File creation-time change (timestomping)</td>
 </tr>
 <tr>
 <td>windows / process_tampering</td>
 <td style="text-align: right;">0 (1)</td>
 <td>🔧 Sysmon EID 25</td>
-<td>—</td>
 <td></td>
 </tr>
 <tr>
 <td>windows / file_executable_detected</td>
 <td style="text-align: right;">0 (1)</td>
 <td>🔧 Sysmon EID 29</td>
-<td>—</td>
 <td></td>
 </tr>
 <tr>
 <td>windows / file_access</td>
 <td style="text-align: right;">0 (6)</td>
 <td>❌ Not reliably collected</td>
-<td>—</td>
-<td>Requires ETW kernel-file auditing; neither Defend nor Sysmon provides general file-access events</td>
+<td>Needs ETW kernel-file auditing; neither Defend nor Sysmon provides general file-access events</td>
 </tr>
 </tbody>
 </table>
@@ -2735,9 +2713,9 @@
 <tr>
 <td>windows / ps_script</td>
 <td style="text-align: right;">57 (146)</td>
-<td>🔧 PowerShell script block logging</td>
+<td>🔧 Script block logging</td>
 <td>🔄 In development</td>
-<td>The PowerShell Operational channel is collected by default, but script block logging must be enabled on the endpoint via GPO (<code>Turn on PowerShell Script Block Logging</code>)</td>
+<td>Channel collected by default; enable script block logging on the endpoint via GPO</td>
 </tr>
 <tr>
 <td>windows / system</td>
@@ -2749,7 +2727,7 @@
 <tr>
 <td>windows / ps_module</td>
 <td style="text-align: right;">18 (28)</td>
-<td>🔧 PowerShell module logging</td>
+<td>🔧 Module logging</td>
 <td>Planned</td>
 <td>Channel collected by default; enable module logging via GPO</td>
 </tr>
@@ -2763,33 +2741,35 @@
 <tr>
 <td>windows / windefend</td>
 <td style="text-align: right;">13 (15)</td>
-<td>✅ Windows Defender Operational channel</td>
+<td>✅ Defender Operational channel</td>
 <td>Planned</td>
 <td></td>
 </tr>
 <tr>
 <td>windows / ps_classic_start, ps_classic_provider_start, powershell-classic</td>
 <td style="text-align: right;">4 (9)</td>
-<td>✅ Windows PowerShell (classic) channel</td>
+<td>✅ PowerShell (classic) channel</td>
 <td>🔄 In development</td>
 <td>Collected by default</td>
 </tr>
 <tr>
 <td>windows / wmi_event, wmi</td>
 <td style="text-align: right;">2 (5)</td>
-<td>✅ WMI-Activity Operational channel</td>
+<td>✅ WMI-Activity channel</td>
 <td>✅</td>
-<td>Collected by default. The channel records WMI provider loads and permanent event subscriptions (EID 5857–5861) natively — Sysmon EID 19–21 is not required. Rules matching on the Sysmon field names (<code>EventNamespace</code>, <code>Consumer</code>, <code>Filter</code>) will not fire against the channel's fields; match on the event ID instead</td>
+<td>Collected by default — see below</td>
 </tr>
 <tr>
 <td>windows / other service channels</td>
 <td style="text-align: right;">~41 (~76)</td>
 <td>🔧 Varies</td>
 <td>—</td>
-<td>~30 low-volume channels (AppLocker, BITS, CodeIntegrity, Exchange management, task scheduler, print service, NTLM, …). Conversion scoping is automatic, but the channels are not collected by the default agent policy; each needs its channel added and, in some cases, the Windows feature enabled</td>
+<td>~30 low-volume channels — see below</td>
 </tr>
 </tbody>
 </table>
+<p>✅ <strong>wmi_event, wmi</strong> — the WMI-Activity Operational channel natively records WMI provider loads and permanent event subscriptions (EID 5857–5861), so Sysmon EID 19–21 is not required. However, rules matching on the Sysmon field names (<code>EventNamespace</code>, <code>Consumer</code>, <code>Filter</code>) will not fire against the channel's fields; match on the event ID instead.</p>
+<p>🔧 <strong>Other service channels</strong> — ~30 low-volume channels (AppLocker, BITS, CodeIntegrity, Exchange management, task scheduler, print service, NTLM, …). Conversion scoping is automatic, but these channels are not collected by the default agent policy; each needs its channel added and, in some cases, the Windows feature enabled.</p>
 <h2 id="linux-and-macos-endpoints">Linux and macOS endpoints<a class="headerlink" href="#linux-and-macos-endpoints" title="Permanent link">¶</a></h2>
 <p>Elastic Defend covers the core endpoint categories on Linux and macOS as well.</p>
 <table>
@@ -2815,7 +2795,7 @@
 <td style="text-align: right;">12 (28)</td>
 <td>🔧 auditd + integration</td>
 <td>—</td>
-<td>Requires auditd on the endpoint and the Auditd integration; rule field names (<code>type</code>, <code>a0</code>, …) additionally need custom field mapping</td>
+<td>Needs auditd on the endpoint plus the Auditd integration; rule field names (<code>type</code>, <code>a0</code>, …) also need custom field mapping</td>
 </tr>
 <tr>
 <td>linux / file_event</td>
@@ -2855,14 +2835,13 @@
 </tbody>
 </table>
 <h2 id="cloud-and-saas">Cloud and SaaS<a class="headerlink" href="#cloud-and-saas" title="Permanent link">¶</a></h2>
-<p>These require the corresponding Elastic <a href="../third-party-integrations/">integration</a> to be configured — nothing is collected out of the box. Conversion support varies: <strong>m365 rules are fully mapped</strong> to the O365 integration's fields and dataset; the other products currently have no conversion mappings, so even with the integration collecting data, their rules need custom field mappings before they can match.</p>
+<p>These require the corresponding Elastic <a href="../third-party-integrations/">integration</a> to be configured — nothing is collected out of the box. Conversion support varies: <strong>m365 rules are fully mapped</strong> to the O365 integration's fields and dataset; the other products currently have no conversion mappings, so even with the integration collecting data, their rules need custom field mappings before they can match. Guided Analysis Playbooks are not currently planned for these logsources.</p>
 <table>
 <thead>
 <tr>
 <th>Logsource</th>
 <th style="text-align: right;">Detections</th>
 <th>Telemetry</th>
-<th>Playbooks</th>
 <th>Conversion mapping</th>
 </tr>
 </thead>
@@ -2871,56 +2850,48 @@
 <td>azure (activitylogs, auditlogs, signinlogs, riskdetection, pim)</td>
 <td style="text-align: right;">51 (123)</td>
 <td>🔧 Azure integrations</td>
-<td>—</td>
 <td>Custom field mapping required</td>
 </tr>
 <tr>
 <td>aws / cloudtrail</td>
 <td style="text-align: right;">12 (42)</td>
 <td>🔧 AWS CloudTrail integration</td>
-<td>—</td>
 <td>Custom field mapping required</td>
 </tr>
 <tr>
 <td>okta</td>
 <td style="text-align: right;">6 (20)</td>
 <td>🔧 Okta integration</td>
-<td>—</td>
 <td>Custom field mapping required</td>
 </tr>
 <tr>
 <td>bitbucket / audit</td>
 <td style="text-align: right;">4 (12)</td>
 <td>🔧 Bitbucket audit logs</td>
-<td>—</td>
 <td>Custom field mapping required</td>
 </tr>
 <tr>
 <td>github / audit</td>
 <td style="text-align: right;">4 (9)</td>
 <td>🔧 GitHub audit log integration</td>
-<td>—</td>
 <td>Custom field mapping required</td>
 </tr>
 <tr>
 <td>m365 (threat_management, audit, exchange)</td>
 <td style="text-align: right;">1 (18)</td>
 <td>🔧 Microsoft 365 integrations</td>
-<td>—</td>
 <td>✅ Mapped (<code>o365.audit</code>)</td>
 </tr>
 <tr>
 <td>gcp (gcp.audit, google_workspace)</td>
 <td style="text-align: right;">0 (25)</td>
 <td>🔧 GCP / Google Workspace integrations</td>
-<td>—</td>
 <td>Custom field mapping required</td>
 </tr>
 <tr>
 <td>kubernetes / audit</td>
 <td style="text-align: right;">0 (9)</td>
 <td>🔧 Kubernetes audit integration</td>
-<td>—</td>
 <td>Custom field mapping required</td>
 </tr>
 </tbody>
