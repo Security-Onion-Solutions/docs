@@ -19,16 +19,16 @@ Elastic Defend is the default endpoint telemetry agent for Security Onion. These
 
 | Logsource | Detections | Telemetry | Notes |
 |---|---:|---|---|
-| windows / process_creation | 732 (1,297) | ✅ `endpoint.events.process` | |
-| windows / file_event | 130 (199) | ✅ `endpoint.events.file` | |
-| windows / registry_set | 113 (208) | ✅ `endpoint.events.registry` | Registry value modifications |
-| windows / image_load | 56 (109) | ✅ `endpoint.events.library` | Includes DLL hashes and code signatures |
-| windows / registry_event | 30 (40) | ⚠️ Partial | Value modifications only — see below |
-| windows / network_connection | 25 (51) | ✅ `endpoint.events.network` | `DestinationHostname` matches may not fire — Defend rarely records destination domains |
-| windows / dns_query | 10 (24) | ✅ `endpoint.events.network` (DNS) | Includes the querying process |
-| windows / driver_load | 7 (9) | ✅ `endpoint.events.library` | Scoped to `event.category:driver` |
-| windows / file_delete | 4 (12) | ✅ `endpoint.events.file` | |
-| windows / file_rename | 0 (1) | ✅ `endpoint.events.file` | |
+| process_creation | 732 (1,297) | ✅ `endpoint.events.process` | |
+| file_event | 130 (199) | ✅ `endpoint.events.file` | |
+| registry_set | 113 (208) | ✅ `endpoint.events.registry` | Registry value modifications |
+| image_load | 56 (109) | ✅ `endpoint.events.library` | Includes DLL hashes and code signatures |
+| registry_event | 30 (40) | ⚠️ Partial | Value modifications only — see below |
+| network_connection | 25 (51) | ✅ `endpoint.events.network` | `DestinationHostname` matches may not fire — Defend rarely records destination domains |
+| dns_query | 10 (24) | ✅ `endpoint.events.network` (DNS) | Includes the querying process |
+| driver_load | 7 (9) | ✅ `endpoint.events.library` | Scoped to `event.category:driver` |
+| file_delete | 4 (12) | ✅ `endpoint.events.file` | |
+| file_rename | 0 (1) | ✅ `endpoint.events.file` | |
 
 ⚠️ **registry_event** is partial: Defend records registry *value modifications* only. Rules matching key paths work, but rules requiring key create/delete/rename semantics need [Sysmon](sysmon.md) EID 12/14 (7 of the 40 all-rules detections). Playbooks cover the Defend-answerable subset.
 
@@ -40,35 +40,35 @@ Elastic Defend does not emit equivalent events for these categories. Deploying [
 
     The conversion pipeline does not currently add Sysmon channel or event-ID scoping for these categories — converted rules rely on their field names alone to select the right events. Because some Sysmon fields are renamed to generic ECS fields (e.g. `SourceImage` → `process.executable`), a converted rule can match unrelated events. If you deploy Sysmon and enable rules in these categories, review the converted queries (Detection Source → Convert) and expect to tune.
 
-| Logsource | Detections | Telemetry | Notes |
+| Logsource | Detections | Sysmon telemetry | Notes |
 |---|---:|---|---|
-| windows / process_access | 18 (24) | 🔧 Sysmon EID 10 | Cross-process handle access (e.g. LSASS dumping) — Defend's API telemetry does not record it |
-| windows / pipe_created | 11 (18) | 🔧 Sysmon EID 17/18 | |
-| windows / create_remote_thread | 9 (12) | 🔧 Sysmon EID 8 | |
-| windows / create_stream_hash | 6 (9) | 🔧 Sysmon EID 15 | |
-| windows / registry_delete | 3 (10) | 🔧 Sysmon EID 12 | |
-| windows / registry_add | 2 (3) | 🔧 Sysmon EID 12 | |
-| windows / sysmon_status, sysmon_error | 2 (2) | 🔧 Sysmon service events | Only meaningful if Sysmon is deployed |
-| windows / file_change | 1 (1) | 🔧 Sysmon EID 2 | File creation-time change (timestomping) |
-| windows / process_tampering | 0 (1) | 🔧 Sysmon EID 25 | |
-| windows / file_executable_detected | 0 (1) | 🔧 Sysmon EID 29 | |
-| windows / file_access | 0 (6) | ❌ Not reliably collected | Needs ETW kernel-file auditing; neither Defend nor Sysmon provides general file-access events |
+| process_access | 18 (24) | EID 10 | Cross-process handle access (e.g. LSASS dumping) — Defend's API telemetry does not record it |
+| pipe_created | 11 (18) | EID 17/18 | |
+| create_remote_thread | 9 (12) | EID 8 | |
+| create_stream_hash | 6 (9) | EID 15 | |
+| registry_delete | 3 (10) | EID 12 | |
+| registry_add | 2 (3) | EID 12 | |
+| sysmon_status, sysmon_error | 2 (2) | Service events | Only meaningful if Sysmon is deployed |
+| file_change | 1 (1) | EID 2 | File creation-time change (timestomping) |
+| process_tampering | 0 (1) | EID 25 | |
+| file_executable_detected | 0 (1) | EID 29 | |
+| file_access | 0 (6) | ❌ Not reliably collected | Needs ETW kernel-file auditing; neither Defend nor Sysmon provides general file-access events |
 
 ## Windows event log channels
 
 These logsources target specific Windows event log channels. The default agent policy collects the core channels (Security, System, Application, Windows Defender, PowerShell, WMI-Activity); a few sources additionally require the corresponding Windows feature or audit policy to be enabled on the endpoint.
 
-| Logsource | Detections | Telemetry | Playbooks | Notes |
+| Logsource | Detections | Channel | Playbooks | Notes |
 |---|---:|---|---|---|
-| windows / security | 92 (141) | ✅ Security channel | Planned | Some rules need specific audit policies enabled (e.g. object access, audit-log-cleared) |
-| windows / ps_script | 57 (146) | 🔧 Script block logging | 🔄 In development | Channel collected by default; enable script block logging on the endpoint via GPO |
-| windows / system | 46 (69) | ✅ System channel | Planned | |
-| windows / ps_module | 18 (28) | 🔧 Module logging | Planned | Channel collected by default; enable module logging via GPO |
-| windows / application | 19 (27) | ✅ Application channel | Planned | |
-| windows / windefend | 13 (15) | ✅ Defender Operational channel | Planned | |
-| windows / ps_classic_start, ps_classic_provider_start, powershell-classic | 4 (9) | ✅ PowerShell (classic) channel | 🔄 In development | Collected by default |
-| windows / wmi_event, wmi | 2 (5) | ✅ WMI-Activity channel | ✅ | Collected by default — see below |
-| windows / other service channels | ~41 (~76) | 🔧 Varies | — | ~30 low-volume channels — see below |
+| security | 92 (141) | ✅ Security | Planned | Some rules need specific audit policies enabled (e.g. object access, audit-log-cleared) |
+| ps_script | 57 (146) | 🔧 Script block logging | 🔄 In development | Channel collected by default; enable script block logging on the endpoint via GPO |
+| system | 46 (69) | ✅ System | Planned | |
+| ps_module | 18 (28) | 🔧 Module logging | Planned | Channel collected by default; enable module logging via GPO |
+| application | 19 (27) | ✅ Application | Planned | |
+| windefend | 13 (15) | ✅ Defender Operational | Planned | |
+| ps_classic_start, ps_classic_provider_start, powershell-classic | 4 (9) | ✅ PowerShell (classic) | 🔄 In development | Collected by default |
+| wmi_event, wmi | 2 (5) | ✅ WMI-Activity | ✅ | Collected by default — see below |
+| other service channels | ~41 (~76) | 🔧 Varies | — | ~30 low-volume channels — see below |
 
 ✅ **wmi_event, wmi** — the WMI-Activity Operational channel natively records WMI provider loads and permanent event subscriptions (EID 5857–5861), so Sysmon EID 19–21 is not required. However, rules matching on the Sysmon field names (`EventNamespace`, `Consumer`, `Filter`) will not fire against the channel's fields; match on the event ID instead.
 
@@ -92,13 +92,13 @@ Elastic Defend covers the core endpoint categories on Linux and macOS as well.
 
 These require the corresponding Elastic [integration](third-party-integrations.md) to be configured — nothing is collected out of the box. Conversion support varies: **m365 rules are fully mapped** to the O365 integration's fields and dataset; the other products currently have no conversion mappings, so even with the integration collecting data, their rules need custom field mappings before they can match. Guided Analysis Playbooks are not currently planned for these logsources.
 
-| Logsource | Detections | Telemetry | Conversion mapping |
+| Logsource | Detections | Required integration | Conversion mapping |
 |---|---:|---|---|
-| azure (activitylogs, auditlogs, signinlogs, riskdetection, pim) | 51 (123) | 🔧 Azure integrations | Custom field mapping required |
-| aws / cloudtrail | 12 (42) | 🔧 AWS CloudTrail integration | Custom field mapping required |
-| okta | 6 (20) | 🔧 Okta integration | Custom field mapping required |
-| bitbucket / audit | 4 (12) | 🔧 Bitbucket audit logs | Custom field mapping required |
-| github / audit | 4 (9) | 🔧 GitHub audit log integration | Custom field mapping required |
-| m365 (threat_management, audit, exchange) | 1 (18) | 🔧 Microsoft 365 integrations | ✅ Mapped (`o365.audit`) |
-| gcp (gcp.audit, google_workspace) | 0 (25) | 🔧 GCP / Google Workspace integrations | Custom field mapping required |
-| kubernetes / audit | 0 (9) | 🔧 Kubernetes audit integration | Custom field mapping required |
+| azure (activitylogs, auditlogs, signinlogs, riskdetection, pim) | 51 (123) | Azure | — |
+| aws / cloudtrail | 12 (42) | AWS CloudTrail | — |
+| okta | 6 (20) | Okta | — |
+| bitbucket / audit | 4 (12) | Bitbucket audit logs | — |
+| github / audit | 4 (9) | GitHub audit log | — |
+| m365 (threat_management, audit, exchange) | 1 (18) | Microsoft 365 | ✅ `o365.audit` |
+| gcp (gcp.audit, google_workspace) | 0 (25) | GCP / Google Workspace | — |
+| kubernetes / audit | 0 (9) | Kubernetes audit | — |
