@@ -74,7 +74,7 @@ Once the subgrid API Client credentials are known that subgrid can then be added
 
 Add additional subgrids as your [Security Onion Pro](security-onion-pro.md) license allows, and then click the green checkmark to save the configuration. 
 
-The configuration will be applied at the next 15-minute interval or you can apply it immediately on the MoM Grid by clicking the `SYNCHRONIZE GRID` button under the `Options` menu.
+[Auto State Apply](salt.md#auto-state-apply) should apply the configuration on the MoM Grid within a few minutes.
 
 ## Licensing
 
