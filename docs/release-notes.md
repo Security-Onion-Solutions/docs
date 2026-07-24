@@ -6,6 +6,71 @@ For all other known issues, please see <https://github.com/Security-Onion-Soluti
 
 ### Release History
 
+3.2.0 [20260728] Changes
+----------------------
+
+- FEATURE: Initial implementation of agentic framework
+- FEATURE: Autodetect salt apply state from SOC config audit history
+- FEATURE: Config audit history w/ restore
+- FEATURE: Datastream Lifecycle Management
+- FEATURE: Guided Analysis Progressive Loading <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16091">#16091</a>
+- FEATURE: Limit certain config settings to specific node types <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15972">#15972</a>
+- FEATURE: Map Antivirus Sigma rules to Elastic Defend <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/14468">#14468</a>
+- FEATURE: Sigma Playbooks - Initial Set <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16090">#16090</a>
+- FEATURE: Support ES|QL in Sigma detections
+- FEATURE: Support Suricata Transactional rule dir <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15948">#15948</a>
+- FEATURE: Updated default Hunt query <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16026">#16026</a>
+- FIX: Allow manager to run two full highstates during soup <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15986">#15986</a>
+- FIX: Allow periods in NIC names <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16060">#16060</a>
+- FIX: Disable Zeek icsnpp-modbus script <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16110">#16110</a>
+- FIX: Do not allow login redirects to API URLs <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16065">#16065</a>
+- FIX: Elastic Defend incompatible with linux 7+ kernels
+- FIX: Elastic Fleet server state persistence <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16051">#16051</a>
+- FIX: Elasticfleet: server urls auto updating when opted out <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15960">#15960</a>
+- FIX: Elasticsearch GC log rotate <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16034">#16034</a>
+- FIX: Elasticsearch: index template partial duplicate <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15959">#15959</a>
+- FIX: Ensure so-yaml.py updated during soup <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16066">#16066</a>
+- FIX: Import/Eval error in elasticsearch configuration script <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16025">#16025</a>
+- FIX: Improve elastic agent install outcome to check that the installation is healthy
+- FIX: Improve Elasticsearch scripts runtime <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15987">#15987</a>
+- FIX: Improve Group Metrics Layout on Alert Page
+- FIX: Improve Hunt Query Box UI on Smaller Screens
+- FIX: Improve logging when Alerts fail to Ack <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15999">#15999</a>
+- FIX: Missing esheap pillar value breaks highstate on Elasticsearch nodes <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16108">#16108</a>
+- FIX: Nav Bar Hover Misalignment
+- FIX: Refreshing browser while in hunt drops index filters <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15331">#15331</a>
+- FIX: Rename Connect API to Security Onion API <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15921">#15921</a>
+- Fix: Rework soup postupgrade_changes <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15946">#15946</a>
+- FIX: Run Elastic Agent regenerate installers script
+- FIX: Salt: server restart and highstate issues
+- FIX: so-start | so-stop | so-restart utilities <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16014">#16014</a>
+- FIX: Soup should run so-config-backup script <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15901">#15901</a>
+- FIX: Soup verify an upgrade is available prior to running elasticsearch upgrade compatibility check
+- FIX: Suricata rule reload should not report failure if a reload is already in progress <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16016">#16016</a>
+- UPGRADE: alpine base images to 3.24.1 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15992">#15992</a>
+- UPGRADE: Axios to 1.18.1 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15950">#15950</a>
+- UPGRADE: CyberChef to 11.2.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15997">#15997</a>
+- UPGRADE: Dompurify to 3.4.12 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15977">#15977</a>
+- UPGRADE: Elasticsearch 9.3.7 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16063">#16063</a>
+- UPGRADE: golang to 1.26.4 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15988">#15988</a>
+- UPGRADE: InfluxDB to 2.9.1 (UI to 2.9.0) <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15993">#15993</a>
+- UPGRADE: js-yaml to 4.3.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15976">#15976</a>
+- UPGRADE: Kafka to 4.3.1 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16001">#16001</a>
+- UPGRADE: Kratos and Hydra google/x/net Go deps <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16048">#16048</a>
+- UPGRADE: Migration of more images to UBI 9.7 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16010">#16010</a>
+- UPGRADE: nginx to 1.31.2 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15996">#15996</a>
+- UPGRADE: node to 26.3.1 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15990">#15990</a>
+- UPGRADE: OpenCanary to 0.9.8 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16003">#16003</a>
+- UPGRADE: Oracle UEK8 Kernel
+- UPGRADE: Postgres to 17.10 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15998">#15998</a>
+- UPGRADE: pySigma & sigma-cli <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15616">#15616</a>
+- UPGRADE: Redis to 7.4.9 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15994">#15994</a>
+- UPGRADE: registry to 3.1.1 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15991">#15991</a>
+- UPGRADE: SOC Go dependencies <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16032">#16032</a>
+- UPGRADE: Suricata to 8.0.6 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16042">#16042</a>
+- UPGRADE: Telegraf to 1.39.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15995">#15995</a>
+- UPGRADE: Zeek to 8.0.9 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16040">#16040</a>
+
 3.1.0 Hotfix [20260528] Changes
 -------------------------------
 
