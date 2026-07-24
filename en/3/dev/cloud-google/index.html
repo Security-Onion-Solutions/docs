@@ -3007,7 +3007,7 @@ When prompted to choose the management interface, select the VPN tunnel interfac
 <a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>192.168.33.13       192.168.33.10                   10.55.1.10       10.55.1.20
 </code></pre></div>
 <p>In order to add the Remote Network Sensor Node to the grid, you would have to add <code>10.55.1.10</code> to the <code>sensor</code> firewall hostgroup.</p>
-<p>This change can be done in the SOC Configuration screen. Then, either wait up to 15 minutes for the scheduled configuration sync to run, or force a synchronization immediately via the SOC Configuration Options. Once the firewall hostgroup configuration has been synchronized your Manager will be ready for remote minions to start connecting.</p>
+<p>This change can be done in the SOC Configuration screen. <a href="../salt/#auto-state-apply">Auto State Apply</a> should apply the new firewall hostgroup configuration within a few minutes, after which your Manager will be ready for remote minions to start connecting.</p>
 <h2 id="verifying-traffic-mirroring">Verifying Traffic Mirroring<a class="headerlink" href="#verifying-traffic-mirroring" title="Permanent link">¶</a></h2>
 <p>Deploy a temporary test VM instance, using a e2.micro, debian-based instance in the Monitored VPC network, and in the same region used in the rest of this guide. Add the <code>so-mirror</code> network tag to the VM.</p>
 <p>SSH into the sensor node created earlier in this guide, and run the following command to watch mirrored traffic:</p>

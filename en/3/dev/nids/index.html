@@ -3136,7 +3136,7 @@
 <li>Click the Language drop-down and select <code>Suricata</code>.</li>
 <li>Optionally specify a license.</li>
 <li>Add the signature.</li>
-<li>Click the <code>CREATE</code> button and the detection should deploy to your grid at the next 15-minute cycle.</li>
+<li>Click the <code>CREATE</code> button and <a href="../salt/#auto-state-apply">Auto State Apply</a> should deploy the detection to your grid within a few minutes.</li>
 </ol>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/59_detection_create.png"><img alt="Image" src="../images/59_detection_create.png"/></a></p>
 <h2 id="update-frequency">Update Frequency<a class="headerlink" href="#update-frequency" title="Permanent link">¶</a></h2>
@@ -3164,7 +3164,7 @@
 <li><strong><code>airgap</code></strong>: Used for <a href="../airgap/">Airgap</a> deployments</li>
 </ul>
 <p>If your system is in Airgap mode, the Airgap configuration profile will automatically be used - otherwise the default is in use. </p>
-<p>Within this configuration, you can enable additional rulesets, add custom rulesets, or disable existing ones. When you save a ruleset configuration change and apply the SOC state, Security Onion will detect the change and automatically sync all configured rulesets within 15 minutes.</p>
+<p>Within this configuration, you can enable additional rulesets, add custom rulesets, or disable existing ones. When you save a ruleset configuration change and apply the SOC state, Security Onion will detect the change and sync all configured rulesets. Once the rules have been written on the manager node, <a href="../salt/#auto-state-apply">Auto State Apply</a> deploys them to the sensors within a few minutes.</p>
 <p>OISF-maintained list of Suricata-compatible rulesets: <a href="https://github.com/OISF/suricata-intel-index">https://github.com/OISF/suricata-intel-index</a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -3290,7 +3290,7 @@
 <p><strong>Apply configuration and sync</strong></p>
 </li>
 </ul>
-<p>Save the configuration and apply the SOC state. Then either wait for the next automatic sync (up to 15 minutes) or trigger a manual sync:</p>
+<p>Save the configuration and apply the SOC state. Then either wait for the next automatic sync or trigger a manual sync:</p>
 <ul>
 <li>Navigate to <a href="../detections/">Detections</a></li>
 <li>Click Options menu</li>

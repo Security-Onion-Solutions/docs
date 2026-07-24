@@ -2887,7 +2887,7 @@
 <a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>192.168.33.13       192.168.33.10                   10.55.1.10       10.55.1.20
 </code></pre></div>
 <p>In order to add the Remote Network Sensor Node to the grid, you would have to add <code>10.55.1.10</code> to the <code>sensor</code> firewall hostgroup.</p>
-<p>This change can be done in the SOC Configuration screen. Then, either wait up to 15 minutes for the scheduled configuration sync to run, or force a synchronization immediately via the SOC Configuration Options. Once the firewall hostgroup configuration has been synchronized your Manager will be ready for remote minions to start connecting.</p>
+<p>This change can be done in the SOC Configuration screen. <a href="../salt/#auto-state-apply">Auto State Apply</a> should apply the new firewall hostgroup configuration within a few minutes, after which your Manager will be ready for remote minions to start connecting.</p>
 <h2 id="aws-traffic-mirroring">AWS Traffic Mirroring<a class="headerlink" href="#aws-traffic-mirroring" title="Permanent link">¶</a></h2>
 <p>Traffic mirroring allows you to copy the traffic to/from an instance and send it to the sniffing interface of a network security monitoring sensor or a group of interfaces using a network load balancer. For more details about AWS Traffic Mirroring please see: <a href="https://docs.aws.amazon.com/vpc/latest/mirroring/what-is-traffic-mirroring.html">https://docs.aws.amazon.com/vpc/latest/mirroring/what-is-traffic-mirroring.html</a></p>
 <div class="admonition tip">
