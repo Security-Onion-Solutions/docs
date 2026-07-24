@@ -39,6 +39,37 @@ If you want to force a node to do a full update of all salt states, you can run 
 sudo so-checkin
 ```
 
+## Auto State Apply
+
+When you save a configuration change in [Administration](administration.md) --> Configuration, or when rules are updated on the manager node, Security Onion detects the change and applies the affected state to only the nodes that need it. This typically happens within a few minutes instead of waiting for the next scheduled highstate.
+
+Auto State Apply is configured at [Administration](administration.md) --> Configuration --> salt --> auto_apply:
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `enabled` | `true` | Enables or disables Auto State Apply. When disabled, changes are picked up at the next scheduled highstate. |
+| `debounce_seconds` | `30` | How long a change must be quiet before it is applied. Multiple changes made within this window are combined into a single update. |
+| `drain_interval` | `15` | How often, in seconds, the manager checks for changes that are ready to be applied. |
+| `batch` | `25%` | How many nodes apply the state at once, either a number such as `10` or a percentage such as `25%`. |
+| `batch_wait` | `15` | How many seconds to wait between each batch of nodes. |
+
+Other than `enabled`, these are advanced settings, so you will only see them if you click the `Options` menu at the top of the page and then enable the `Show advanced settings` option.
+
+## Highstate Interval
+
+Every node also runs a scheduled highstate as a backstop. The interval is controlled by the `highstate_interval_minutes` setting at [Administration](administration.md) --> Configuration --> salt --> schedule and defaults to `120` minutes. The minimum value is `15` minutes. This is an advanced setting, so you will need to enable the `Show advanced settings` option to see it.
+
+## Reverting to Previous Behavior
+
+If you would like the grid to behave like previous versions of Security Onion, go to [Administration](administration.md) --> Configuration --> salt and:
+
+- set `auto_apply` --> `enabled` to `false`
+- set `schedule` --> `highstate_interval_minutes` to `15`
+
+!!! WARNING
+    
+    If you disable Auto State Apply but leave the highstate interval at the default of `120` minutes, it can take up to two hours for a change to reach the rest of the grid.
+
 ## Configuration
 
 Many of the options that are configurable in Security Onion are done by going to [Administration](administration.md) and then Configuration.
