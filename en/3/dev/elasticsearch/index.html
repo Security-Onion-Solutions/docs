@@ -1432,6 +1432,15 @@
 <nav aria-label="Index Management" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#dlm">
+<span class="md-ellipsis">
+      
+        DLM
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#so-elasticsearch-indices-delete">
 <span class="md-ellipsis">
       
@@ -2869,6 +2878,15 @@
 <nav aria-label="Index Management" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#dlm">
+<span class="md-ellipsis">
+      
+        DLM
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#so-elasticsearch-indices-delete">
 <span class="md-ellipsis">
       
@@ -3063,15 +3081,92 @@ To resolve the issue, run the following command for each affected index (replaci
 </code></pre></div>
 <p>After running the command, the index should no longer use replicas and the status should change from "Pending" to "OK" once all indices have been successfully modified.</p>
 <h2 id="index-management">Index Management<a class="headerlink" href="#index-management" title="Permanent link">¶</a></h2>
-<p>Elasticsearch indices are managed by both the <code>so-elasticsearch-indices-delete</code> utility and Index Lifecycle Management (ILM). </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Check out our Index Lifecycle Management video at <a href="https://youtu.be/Y6HVein7nP8">https://youtu.be/Y6HVein7nP8</a>!</p>
-</div>
+<p>Most Security Onion data is stored in Elasticsearch data streams. Starting with Security Onion 3.2.0, retention can be managed with either Data Stream Lifecycle Management (DLM) or Index Lifecycle Management (ILM). When using ILM, retention is also managed by the <code>so-elasticsearch-indices-delete</code> utility.</p>
+<h3 id="dlm">DLM<a class="headerlink" href="#dlm" title="Permanent link">¶</a></h3>
+<p>Data Stream Lifecycle Management (DLM) applies a retention period directly to a data stream. Retention here is defined as the time period for which your data is guaranteed to be stored (assuming enough storage is allocated to Elasticsearch). Elasticsearch is allowed at a later time to delete data older than this time period. Retention can be configured on the data stream level or on a global level.</p>
+<p>New Security Onion 3.2.0 grids use DLM by default. DLM is the recommended choice for single-node deployments and most distributed grids because it allows for the most straightforward configuration, eliminating the need to configure more complex ILM policies. Security Onion data streams use a 90-day retention period by default.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><code>so-elasticsearch-indices-delete</code> is primarily designed for single-node deployments (IMPORT, EVAL, and STANDALONE). Running it on a multi-node deployment with one or more search nodes has the possibility of getting into a corner case state where more data is deleted than intended. Therefore, this script is disabled on multi-node deployments. If you have a multi-node deployment, then you will need to ensure that ILM is configured properly to delete indices before disk usage reaches the Elasticsearch watermark setting. Otherwise, Elasticsearch may stop ingesting new data.</p>
+<p>Existing grids will remain on ILM. Only fresh installs of Security Onion 3.2.0 will default to using DLM.</p>
 </div>
+<h4 id="view-or-configure-retention-method">View or configure retention method<a class="headerlink" href="#view-or-configure-retention-method" title="Permanent link">¶</a></h4>
+<p>The retention method can be set to either DLM or ILM. Changing this value updates all managed index templates &amp; data streams to use the configured retention method.</p>
+<ol>
+<li>In SOC, go to <strong>Administration</strong> --&gt; <strong>Configuration</strong> --&gt; <strong>Elasticsearch</strong>.</li>
+<li>Select <strong>data_retention_method</strong> to view the current method.</li>
+<li>Select <code>DLM</code> to use Data Stream Lifecycle Management, or select <code>ILM</code> to use Index Lifecycle Management.</li>
+</ol>
+<p>When the grid synchronizes, selecting DLM enables DLM lifecycle retention for supported Security Onion data streams. Selecting ILM disables DLM lifecycle retention for those streams and returns their retention management to ILM.</p>
+<p>Before switching methods, review your data-retention requirements and available Elasticsearch storage. In deployments where disk-space-based index cleanup is available with ILM, that cleanup is not used with DLM. Make sure the configured DLM retention periods and available storage leave sufficient free space; otherwise, Elasticsearch can stop ingesting data when disk watermarks are reached.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Before switching from ILM to DLM, verify the current Elasticsearch <a href="#elasticsearch-node-roles">node roles configuration</a>. You'll want to ensure that all Elasticsearch nodes have the <code>data</code> or <code>data_hot</code> role. As DLM rolls over data streams, they'll be created with <code>_tier_preferences: data_hot</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using DLM as your retention method, the so-elasticsearch-indices-delete script is disabled. Retention settings for DLM will need to be configured appropriately to maintain storage usage below the configured watermark.</p>
+</div>
+<h4 id="configure-retention-setting">Configure retention setting<a class="headerlink" href="#configure-retention-setting" title="Permanent link">¶</a></h4>
+<p>DLM retention can be managed globally and per data stream. Once configured, the index template(s) will be updated and if a data stream currently exists, it will be updated with the newly configured retention period. Data stream retention is updated in place using the <code>so-elasticsearch-dlm-apply</code> script.</p>
+<p>To update the global retention period value:</p>
+<ol>
+<li>In SOC, go to <strong>Administration</strong> --&gt; <strong>Configuration</strong> --&gt; <strong>Elasticsearch</strong></li>
+<li>Select <strong>index_settings</strong> --&gt; <strong>global_overrides</strong> --&gt; <strong>data_stream_lifecycle</strong> --&gt; <strong>data_retention</strong></li>
+</ol>
+<p>To update data stream specific retention:</p>
+<ol>
+<li>In SOC, go to <strong>Administration</strong> --&gt; <strong>Configuration</strong> --&gt; <strong>Elasticsearch</strong></li>
+<li>Select <strong>index_settings</strong></li>
+<li>Locate the target data stream (for example, so-zeek)<ul>
+<li>If the target data stream is not listed, you may need to first update <a href="../third-party-integrations/#managing-third-party-integration-index-templates">managed_integrations</a></li>
+</ul>
+</li>
+<li>Select <strong>so-zeek</strong> --&gt;  <strong>data_stream_lifecycle</strong> --&gt; <strong>data_retention</strong></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The retention period directly affects how frequently a data stream is automatically rolled over.</p>
+<blockquote>
+<p>If retention is less than or equal to 1 day, max_age will be 1 hour.<br/>
+If retention is less than or equal to 14 days, max_age will be 1 day<br/>
+If retention is less than or equal to 90 days, max_age will be 7 days<br/>
+If retention is greater than 90 days, max_age will be 30 days  </p>
+</blockquote>
+<p>Tuning the value of <a href="./#clusterlifecycledefaultrollover">cluster.lifecycle.default.rollover</a> allows for more control over how frequently a given data stream is rolled over.</p>
+</div>
+<h4 id="dlm-advanced-configuration">DLM advanced configuration<a class="headerlink" href="#dlm-advanced-configuration" title="Permanent link">¶</a></h4>
+<h5 id="clusterlifecycledefaultrollover"><a href="https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings">cluster.lifecycle.default.rollover</a><a class="headerlink" href="#clusterlifecycledefaultrollover" title="Permanent link">¶</a></h5>
+<blockquote>
+<p>This property accepts a key value pair formatted string and configures the conditions that would trigger a data stream to rollover when it has lifecycle configured.</p>
+</blockquote>
+<ol>
+<li>In SOC, go to <strong>Administration</strong> --&gt; <strong>Configuration</strong> --&gt; <strong>Elasticsearch</strong></li>
+<li>Select <strong>config</strong> --&gt; <strong>cluster</strong> --&gt; <strong>lifecycle</strong> --&gt; <strong>default</strong> --&gt; <strong>rollover</strong></li>
+</ol>
+<h5 id="data_streamslifecyclepoll_interval"><a href="https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings">data_streams.lifecycle.poll_interval</a><a class="headerlink" href="#data_streamslifecyclepoll_interval" title="Permanent link">¶</a></h5>
+<blockquote>
+<p>How often Elasticsearch checks what the next action is for all data streams with a built-in lifecycle.</p>
+</blockquote>
+<ol>
+<li>In SOC, go to <strong>Administration</strong> --&gt; <strong>Configuration</strong> --&gt; <strong>Elasticsearch</strong></li>
+<li>Select <strong>config</strong> --&gt; <strong>data_streams</strong> --&gt; <strong>lifecycle</strong> --&gt; <strong>poll_interval</strong></li>
+</ol>
+<h5 id="data_streamslifecycletargetmergepolicymerge_factor"><a href="https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings">data_streams.lifecycle.target.merge.policy.merge_factor</a><a class="headerlink" href="#data_streamslifecycletargetmergepolicymerge_factor" title="Permanent link">¶</a></h5>
+<blockquote>
+<p>Data stream lifecycle implements tail merging by updating the Lucene merge policy factor for the target backing index. The merge factor is both the number of segments that should be merged together, and the maximum number of segments that we expect to find on a given tier.</p>
+</blockquote>
+<ol>
+<li>In SOC, go to <strong>Administration</strong> --&gt; <strong>Configuration</strong> --&gt; <strong>Elasticsearch</strong> --&gt; <strong>config</strong></li>
+<li>Select <strong>data_streams</strong> --&gt; <strong>lifecycle</strong> --&gt; <strong>target</strong> --&gt; <strong>merge</strong> --&gt; <strong>policy</strong> --&gt; <strong>merge_factor</strong></li>
+</ol>
+<h5 id="data_streamslifecycletargetmergepolicyfloor_segment"><a href="https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings">data_streams.lifecycle.target.merge.policy.floor_segment</a><a class="headerlink" href="#data_streamslifecycletargetmergepolicyfloor_segment" title="Permanent link">¶</a></h5>
+<blockquote>
+<p>Data stream lifecycle implements tail merging by updating the Lucene merge policy floor segment for the target backing index. This floor segment size is a way to prevent indices from having a long tail of very small segments.</p>
+</blockquote>
+<ol>
+<li>In SOC, go to <strong>Administration</strong> --&gt; <strong>Configuration</strong> --&gt; <strong>Elasticsearch</strong> --&gt; <strong>config</strong></li>
+<li>Select <strong>data_streams</strong> --&gt; <strong>lifecycle</strong> --&gt; <strong>target</strong> --&gt; <strong>merge</strong> --&gt; <strong>policy</strong> --&gt; <strong>floor_segment</strong></li>
+</ol>
 <h3 id="so-elasticsearch-indices-delete">so-elasticsearch-indices-delete<a class="headerlink" href="#so-elasticsearch-indices-delete" title="Permanent link">¶</a></h3>
 <p><code>so-elasticsearch-indices-delete</code> manages size-based deletion of Elasticsearch indices based on the value of the <code>Elasticsearch.retention.retention_pct</code> setting. This setting is checked against the total disk space available for <code>/nsm/elasticsearch</code> across all nodes in the Elasticsearch cluster. If your indices are using more than <code>retention_pct</code>, then <code>so-elasticsearch-indices-delete</code> will delete old indices until disk space consumed by indices is back under <code>retention_pct</code>. The default value for this setting is <code>50</code> percent so that standalone deployments have sufficient space for not only Elasticsearch but also full packet capture and other logs. For distributed deployments with dedicated search nodes where Elasticsearch is main consumer of disk space, you may want to increase this default value.</p>
 <p>To modify the <code>retention_pct</code> value, first navigate to <a href="../administration/">Administration</a> --&gt; Configuration. At the top of the page, click the <code>Options</code> menu and then enable the <code>Show advanced settings</code> option. Then navigate to Elasticsearch --&gt; retention --&gt; retention_pct. Once you make the change and save it, <a href="../salt/#auto-state-apply">Auto State Apply</a> should apply the new setting within a few minutes.</p>

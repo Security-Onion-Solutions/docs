@@ -2543,7 +2543,7 @@
 <h2 id="data">Data<a class="headerlink" href="#data" title="Permanent link">¶</a></h2>
 <ul>
 <li>
-<p>Review the <a href="../elasticsearch/">Elasticsearch</a> section to see if you need to change any of the default settings. In particular, if you have a multi-node deployment with one or more search nodes, we HIGHLY recommend configuring ILM to delete indices before Elasticsearch reaches its watermark setting and stops ingesting new data.</p>
+<p>Review the <a href="../elasticsearch/">Elasticsearch</a> section to see if you need to change any of the default settings. In particular, review the Data Stream Lifecycle Management (DLM) and make sure that your retention periods and available storage leave sufficient free space before Elasticsearch reaches its watermark setting and stops ingesting new data.</p>
 </li>
 <li>
 <p>Review the <a href="../full-packet-capture/">Full Packet Capture</a> and <a href="../suricata/">Suricata</a> sections to see if you need to change the PCAP retention settings.</p>
