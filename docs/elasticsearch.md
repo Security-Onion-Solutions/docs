@@ -226,6 +226,22 @@ After running the command, the index should no longer use replicas and the statu
 
 Most Security Onion data is stored in Elasticsearch data streams. Starting with Security Onion 3.2.0, retention can be managed with either Data Stream Lifecycle Management (DLM) or Index Lifecycle Management (ILM). When using ILM, retention is also managed by the `so-elasticsearch-indices-delete` utility.
 
+| Scenario | DLM | ILM |
+|---|---|---|
+| Fresh 3.2.0 install | Default and recommended | Choose only for advanced needs |
+| SOUP'ed grid | Can manually switch to DLM | Default remains on ILM |
+
+For most deployments, DLM provides sufficient retention management with low configuration overhead. Choose ILM when data should automatically move between data tiers. For example, a distributed grid may use search nodes with SSD or NVMe storage as the 'hot' data tier for recent, frequently searched data, then move older data to warm or cold nodes with lower-cost storage.
+
+| Requirement | DLM | ILM|
+|---|---|---|
+| Straightforward time-based retention | ✅ | - |
+| Minimal overall configuration | ✅ | ⚠️ Requires additional configuration |
+| Move older data to warm or cold tiers | ❌ | ✅ |
+| Set shard count or replica count as data ages | ❌ | ✅ |
+| Apply lifecycle actions at different data ages | ❌ | ✅ |
+| Advanced phase actions | ⚠️ Limited actions supported | ✅ |
+
 ### DLM
 
 Data Stream Lifecycle Management (DLM) applies a retention period directly to a data stream. Retention here is defined as the time period for which your data is guaranteed to be stored (assuming enough storage is allocated to Elasticsearch). Elasticsearch is allowed at a later time to delete data older than this time period. Retention can be configured on the data stream level or on a global level.
