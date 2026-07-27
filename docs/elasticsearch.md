@@ -224,17 +224,17 @@ After running the command, the index should no longer use replicas and the statu
 
 ## Index Management
 
-Most Security Onion data is stored in Elasticsearch data streams. Starting with Security Onion 3.2.0, retention can be manged with either Data Stream Lifecycle Management (DLM) or Index Lifecycle Management (ILM). When using ILM, retention is also managed by the `so-elasticsearch-indices-delete` utility.
+Most Security Onion data is stored in Elasticsearch data streams. Starting with Security Onion 3.2.0, retention can be managed with either Data Stream Lifecycle Management (DLM) or Index Lifecycle Management (ILM). When using ILM, retention is also managed by the `so-elasticsearch-indices-delete` utility.
 
 ### DLM
 
-Data Stream Lifecycle Management (DLM) applies a retention period directly to a data stream. Retention here is defined as the time period for which your data is guaranteed to be stored (assuming enough storage is allocated to Elasticsearch) . Elasticsearch is allowed at a later time to delete data older than this time period. Retention can be configured on the data stream level or on a global level.
+Data Stream Lifecycle Management (DLM) applies a retention period directly to a data stream. Retention here is defined as the time period for which your data is guaranteed to be stored (assuming enough storage is allocated to Elasticsearch). Elasticsearch is allowed at a later time to delete data older than this time period. Retention can be configured on the data stream level or on a global level.
 
-New Security Onion 3.2.0 grids use DLM by default. DLM is the recommended choice for single-node deployments and most distributed grids because it allows for the most straightforward configuration. Eliminating the need for the need to configure more complex ILM policies. Security Onion data streams use a 90-day retention period by default.
+New Security Onion 3.2.0 grids use DLM by default. DLM is the recommended choice for single-node deployments and most distributed grids because it allows for the most straightforward configuration, eliminating the need to configure more complex ILM policies. Security Onion data streams use a 90-day retention period by default.
 
 !!! WARNING
 
-    Existing grids will remain on ILM, only fresh installs of Security Onion 3.2.0 will default to using DLM.
+    Existing grids will remain on ILM. Only fresh installs of Security Onion 3.2.0 will default to using DLM.
 
 #### View or configure retention method
 
@@ -250,7 +250,7 @@ Before switching methods, review your data-retention requirements and available 
 
 !!! WARNING
 
-    Before switching from ILM to DLM, verify the current Elasticsearch [node roles configuration](#elasticsearch-node-roles). You'll want to ensure that all Elasticsearch nodes have the `data` or `data_hot` role. As DLM rolls over data streams they'll be created with `_tier_preferences: data_hot`.
+    Before switching from ILM to DLM, verify the current Elasticsearch [node roles configuration](#elasticsearch-node-roles). You'll want to ensure that all Elasticsearch nodes have the `data` or `data_hot` role. As DLM rolls over data streams, they'll be created with `_tier_preferences: data_hot`.
 
 !!! NOTE
 
@@ -258,23 +258,23 @@ Before switching methods, review your data-retention requirements and available 
 
 #### Configure retention setting
 
-DLM retention can be managed globally and per data stream. Once configured the index template(s) will be updated and if a data stream currently exists, it will be updated with the newly configured retention period. Data stream retention is updated in place using the `so-elasticsearch-dlm-apply` script
+DLM retention can be managed globally and per data stream. Once configured, the index template(s) will be updated and if a data stream currently exists, it will be updated with the newly configured retention period. Data stream retention is updated in place using the `so-elasticsearch-dlm-apply` script.
 
-To update the global retention period value
+To update the global retention period value:
 
 1. In SOC, go to **Administration** --> **Configuration** --> **Elasticsearch**
 2. Select **index_settings** --> **global_overrides** --> **data_stream_lifecycle** --> **data_retention**
 
-To update data stream specific retention
+To update data stream specific retention:
 
 1. In SOC, go to **Administration** --> **Configuration** --> **Elasticsearch**
 2. Select **index_settings**
-3. Locate targeted data stream (eg. so-zeek)
-    - if the targeted data stream is not listed you may need to first update [managed_integrations](third-party-integrations.md#managing-third-party-integration-index-templates)
+3. Locate the target data stream (for example, so-zeek)
+    - If the target data stream is not listed, you may need to first update [managed_integrations](third-party-integrations.md#managing-third-party-integration-index-templates)
 4. Select **so-zeek** -->  **data_stream_lifecycle** --> **data_retention**
 
 !!! NOTE
-    The retention period directly affects how frequenctly a data stream is automatically rolled over.
+    The retention period directly affects how frequently a data stream is automatically rolled over.
 
     > If retention is less than or equal to 1 day, max_age will be 1 hour.  
     > If retention is less than or equal to 14 days, max_age will be 1 day  
@@ -287,7 +287,7 @@ To update data stream specific retention
 
 ##### [cluster.lifecycle.default.rollover](https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings)
 
-> This property accepts a key value pair formatted string and configures the conditions that would trigger a data stream to rollover when it has lifecycle configured. 
+> This property accepts a key value pair formatted string and configures the conditions that would trigger a data stream to rollover when it has lifecycle configured.
 
 1. In SOC, go to **Administration** --> **Configuration** --> **Elasticsearch**
 2. Select **config** --> **cluster** --> **lifecycle** --> **default** --> **rollover**
@@ -295,7 +295,7 @@ To update data stream specific retention
 ##### [data_streams.lifecycle.poll_interval](https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings)
 
 > How often Elasticsearch checks what the next action is for all data streams with a built-in lifecycle.
- 
+
 1. In SOC, go to **Administration** --> **Configuration** --> **Elasticsearch**
 2. Select **config** --> **data_streams** --> **lifecycle** --> **poll_interval**
 
