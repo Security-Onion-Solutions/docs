@@ -36,7 +36,7 @@ You should be able to do most administration from [SOC](security-onion-console.m
 
 ## Data
 
--  Review the [Elasticsearch](elasticsearch.md) section to see if you need to change any of the default settings. In particular, if you have a multi-node deployment with one or more search nodes, we HIGHLY recommend configuring ILM to delete indices before Elasticsearch reaches its watermark setting and stops ingesting new data.
+-  Review the [Elasticsearch](elasticsearch.md) section to see if you need to change any of the default settings. In particular, review the Data Stream Lifecycle Management (DLM) and make sure that your retention periods and available storage leave sufficient free space before Elasticsearch reaches its watermark setting and stops ingesting new data.
 
 -  Review the [Full Packet Capture](full-packet-capture.md) and [Suricata](suricata.md) sections to see if you need to change the PCAP retention settings.
 
