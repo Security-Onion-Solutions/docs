@@ -6,7 +6,7 @@ For all other known issues, please see <https://github.com/Security-Onion-Soluti
 
 ### Release History
 
-3.2.0 [20260728] Changes
+3.2.0 [20260729] Changes
 ----------------------
 
 - FEATURE: Initial implementation of agentic framework
