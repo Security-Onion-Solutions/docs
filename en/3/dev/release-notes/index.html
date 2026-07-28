@@ -2522,6 +2522,14 @@
 <article class="md-content__inner md-typeset">
 <h1 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">¶</a></h1>
 <h3 id="known-issues">Known Issues<a class="headerlink" href="#known-issues" title="Permanent link">¶</a></h3>
+<p><a href="../salt/#auto-state-apply">Auto State Apply</a> detects configuration changes saved in <a href="../administration/">Administration</a> --&gt; Configuration and rule updates on the manager node. Files that you create or edit directly under <code>/opt/so/saltstack/local/salt/</code> are not detected. After adding or changing any of the following, apply the relevant state from the manager or wait for the next scheduled highstate (see <a href="../salt/#highstate-interval">Highstate Interval</a>):</p>
+<ul>
+<li><a href="../zeek/">Zeek</a> intel in <code>/opt/so/saltstack/local/salt/zeek/policy/intel/</code></li>
+<li><a href="../zeek/">Zeek</a> custom packages in <code>/opt/so/saltstack/local/salt/zeek/zkg/</code></li>
+<li><a href="../elasticsearch/">Elasticsearch</a> custom ingest parsers in <code>/opt/so/saltstack/local/salt/elasticsearch/files/ingest/</code></li>
+<li><a href="../rbac/">RBAC</a> custom Elastic stack role files in <code>/opt/so/saltstack/local/salt/elasticsearch/roles/</code></li>
+<li><a href="../logstash/">Logstash</a> custom pipeline configuration files in <code>/opt/so/saltstack/local/salt/logstash/pipelines/config/custom/</code></li>
+</ul>
 <p>For all other known issues, please see <a href="https://github.com/Security-Onion-Solutions/securityonion/issues">https://github.com/Security-Onion-Solutions/securityonion/issues</a>.</p>
 <h3 id="release-history">Release History<a class="headerlink" href="#release-history" title="Permanent link">¶</a></h3>
 <h2 id="320-20260729-changes">3.2.0 [20260729] Changes<a class="headerlink" href="#320-20260729-changes" title="Permanent link">¶</a></h2>

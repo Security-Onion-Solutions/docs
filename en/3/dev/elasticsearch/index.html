@@ -2987,7 +2987,9 @@
 <p>You can configure Elasticsearch by going to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; Elasticsearch.</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-elasticsearch.png"><img alt="Image" src="../images/config-item-elasticsearch.png"/></a></p>
 <h2 id="parsing">Parsing<a class="headerlink" href="#parsing" title="Permanent link">¶</a></h2>
-<p>Elasticsearch receives unparsed logs from <a href="../logstash/">Logstash</a> or <a href="../elastic-agent/">Elastic Agent</a>. Elasticsearch then parses and stores those logs. Parsers are stored in <code>/opt/so/conf/elasticsearch/ingest/</code>. Custom ingest parsers can be placed in <code>/opt/so/saltstack/local/salt/elasticsearch/files/ingest/</code>. To make these changes take effect, restart Elasticsearch using <code>so-elasticsearch-restart</code>.</p>
+<p>Elasticsearch receives unparsed logs from <a href="../logstash/">Logstash</a> or <a href="../elastic-agent/">Elastic Agent</a>. Elasticsearch then parses and stores those logs. Parsers are stored in <code>/opt/so/conf/elasticsearch/ingest/</code>. Custom ingest parsers can be placed in <code>/opt/so/saltstack/local/salt/elasticsearch/files/ingest/</code>. Files placed here are not detected by <a href="../salt/#auto-state-apply">Auto State Apply</a>, so to make these changes take effect, apply the Elasticsearch state to all nodes running Elasticsearch:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>sudo salt -C 'I@elasticsearch:enabled:true' state.apply elasticsearch queue=True
+</code></pre></div>
 <p><a href="../elastic-agent/">Elastic Agent</a> may pre-parse or act on data before the data reaches Elasticsearch, altering the data stream or index to which it is written, or other characteristics such as the event dataset or other pertinent information. This configuration is maintained in the agent policy or integration configuration in <a href="../elastic-fleet/">Elastic Fleet</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -3039,10 +3041,10 @@ Also see <a href="https://www.elastic.co/guide/en/elasticsearch/reference/curren
 <p><strong>TIP</strong>: The number of shards you can hold on a node will be proportional to the amount of heap you have available, but there is no fixed limit enforced by Elasticsearch. A good rule-of-thumb is to ensure you keep the number of shards per node below 20 to 25 per GB heap it has configured. A node with a 30GB heap should therefore have a maximum of 600-750 shards, but the further below this limit you can keep it the better. This will generally help the cluster stay in good health.</p>
 </blockquote>
 <p>To see your existing shards, run the following command and the number of shards will be shown in the fifth column:</p>
-<p></p><div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>sudo<span class="w"> </span>so-elasticsearch-indices-list
+<p></p><div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>sudo<span class="w"> </span>so-elasticsearch-indices-list
 </code></pre></div>
 If you want to view the detail for each of those shards:<p></p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>sudo<span class="w"> </span>so-elasticsearch-shards-list
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>sudo<span class="w"> </span>so-elasticsearch-shards-list
 </code></pre></div>
 <p>Given the sizing tips above, if any of your indices are averaging more than 50GB per shard, then you should probably increase the shard count until you get below that recommended maximum of 50GB per shard.</p>
 <p>The number of shards for an index can be adjusted by going to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; Elasticsearch --&gt; index_settings --&gt; so-INDEX-NAME --&gt; index_template --&gt; template --&gt; settings --&gt; index --&gt; number_of_shards.</p>
@@ -3065,19 +3067,19 @@ If you want to view the detail for each of those shards:<p></p>
 <p>If you want to clear all Elasticsearch data including documents and indices, you can run the <code>so-elastic-clear</code> command.</p>
 <h2 id="geoip">GeoIP<a class="headerlink" href="#geoip" title="Permanent link">¶</a></h2>
 <p>Elasticsearch 8 no longer includes GeoIP databases by default. We include GeoIP databases for Elasticsearch so that all users will have GeoIP functionality. If your search nodes have Internet access and can reach geoip.elastic.co and storage.googleapis.com, then you can opt-in to database updates if you want more recent information. To do so, run the following command on your manager:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>sudo<span class="w"> </span>so-elasticsearch-query<span class="w"> </span>_cluster/settings<span class="w"> </span>-d<span class="w"> </span><span class="s1">'{"persistent":{"ingest.geoip.downloader.enabled":true}}'</span><span class="w"> </span>-XPUT
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>sudo<span class="w"> </span>so-elasticsearch-query<span class="w"> </span>_cluster/settings<span class="w"> </span>-d<span class="w"> </span><span class="s1">'{"persistent":{"ingest.geoip.downloader.enabled":true}}'</span><span class="w"> </span>-XPUT
 </code></pre></div>
 <h2 id="health">Health<a class="headerlink" href="#health" title="Permanent link">¶</a></h2>
 <p>To check Elasticsearch health, go to the <a href="../grid/">Grid</a> interface and check the Elasticsearch Status field. If it shows anything other than OK, then run the following command from the CLI on the manager node to check for additional clues:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>sudo<span class="w"> </span>so-elasticsearch-query<span class="w"> </span>_cluster/health?pretty
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>sudo<span class="w"> </span>so-elasticsearch-query<span class="w"> </span>_cluster/health?pretty
 </code></pre></div>
 <h2 id="status-pending">Status Pending<a class="headerlink" href="#status-pending" title="Permanent link">¶</a></h2>
 <p>If the <a href="../grid/">Grid</a> interface shows Elasticsearch Status as <code>Pending</code>, check for unassigned shards by running the following command from the CLI on the manager node:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>sudo<span class="w"> </span>so-elasticsearch-query<span class="w"> </span>_cat/shards<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>UN
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>sudo<span class="w"> </span>so-elasticsearch-query<span class="w"> </span>_cat/shards<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>UN
 </code></pre></div>
 <p>The result of the query should display affected indices. Older metrics indices for Elastic Endpoint logs may have been assigned a replica, so if you are running a single-node Elastic cluster there will be nowhere for the replica to exist.
 To resolve the issue, run the following command for each affected index (replacing <code>$index</code> with the actual index name):</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>sudo<span class="w"> </span>so-elasticsearch-query<span class="w"> </span><span class="nv">$index</span>/_settings<span class="w"> </span>-d<span class="w"> </span><span class="s1">'{"number_of_replicas":0}'</span><span class="w"> </span>-XPUT
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>sudo<span class="w"> </span>so-elasticsearch-query<span class="w"> </span><span class="nv">$index</span>/_settings<span class="w"> </span>-d<span class="w"> </span><span class="s1">'{"number_of_replicas":0}'</span><span class="w"> </span>-XPUT
 </code></pre></div>
 <p>After running the command, the index should no longer use replicas and the status should change from "Pending" to "OK" once all indices have been successfully modified.</p>
 <h2 id="index-management">Index Management<a class="headerlink" href="#index-management" title="Permanent link">¶</a></h2>
@@ -3261,37 +3263,37 @@ If retention is greater than 90 days, max_age will be 30 days  </p>
 <p>You might want to run <code>sudo so-elasticsearch-indices-growth</code> on a regular basis to keep an eye on the size of your indices.</p>
 </div>
 <p>In addition to <code>sudo so-elasticsearch-indices-growth</code>, you can also run <code>sudo so-elasticsearch-retention-estimate</code> which will give you an approximation of how many days' worth of logs you can store. For example:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>DISCLAIMER: Script output is based on current data patterns, but are approximations solely 
-<a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a>  intended to assist with getting a general ILM policy configured.
-<a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a>
-<a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a>================ Storage Overview ================
-<a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a>
-<a href="#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a>Indexed data size:       141.12 GB (Elasticsearch)
-<a href="#__codelineno-9-7" id="__codelineno-9-7" name="__codelineno-9-7"></a>Cluster capacity:        498.69 GB total
-<a href="#__codelineno-9-8" id="__codelineno-9-8" name="__codelineno-9-8"></a>Cluster used:            245.32 GB
-<a href="#__codelineno-9-9" id="__codelineno-9-9" name="__codelineno-9-9"></a>Low watermark:           80% (398.96 GB threshold)
-<a href="#__codelineno-9-10" id="__codelineno-9-10" name="__codelineno-9-10"></a>Remaining space:         153.63 GB before low watermark
-<a href="#__codelineno-9-11" id="__codelineno-9-11" name="__codelineno-9-11"></a>Cluster shards:          498 / 4000 (12.4%)
-<a href="#__codelineno-9-12" id="__codelineno-9-12" name="__codelineno-9-12"></a>Cluster data nodes:      4
-<a href="#__codelineno-9-13" id="__codelineno-9-13" name="__codelineno-9-13"></a>  example-search1: data_hot,data_warm,data_content
-<a href="#__codelineno-9-14" id="__codelineno-9-14" name="__codelineno-9-14"></a>  example-search2: data_hot,data_warm,data_content
-<a href="#__codelineno-9-15" id="__codelineno-9-15" name="__codelineno-9-15"></a>  example-search3: data_cold
-<a href="#__codelineno-9-16" id="__codelineno-9-16" name="__codelineno-9-16"></a>  example-man: data_content
-<a href="#__codelineno-9-17" id="__codelineno-9-17" name="__codelineno-9-17"></a>
-<a href="#__codelineno-9-18" id="__codelineno-9-18" name="__codelineno-9-18"></a>================ ES Growth ================
-<a href="#__codelineno-9-19" id="__codelineno-9-19" name="__codelineno-9-19"></a>
-<a href="#__codelineno-9-20" id="__codelineno-9-20" name="__codelineno-9-20"></a>Daily growth rate:       4.08 GB/day
-<a href="#__codelineno-9-21" id="__codelineno-9-21" name="__codelineno-9-21"></a>ILM deletion rate:       0.47 GB/day (scheduled)
-<a href="#__codelineno-9-22" id="__codelineno-9-22" name="__codelineno-9-22"></a>Net growth rate:         3.62 GB/day
-<a href="#__codelineno-9-23" id="__codelineno-9-23" name="__codelineno-9-23"></a>Daily shard creation:    ~3 shards/day
-<a href="#__codelineno-9-24" id="__codelineno-9-24" name="__codelineno-9-24"></a>Storage to be freed (30d): 2 indices (~13.97 GB, 4 shards)
-<a href="#__codelineno-9-25" id="__codelineno-9-25" name="__codelineno-9-25"></a>
-<a href="#__codelineno-9-26" id="__codelineno-9-26" name="__codelineno-9-26"></a>================ Retention Projection ================
-<a href="#__codelineno-9-27" id="__codelineno-9-27" name="__codelineno-9-27"></a>
-<a href="#__codelineno-9-28" id="__codelineno-9-28" name="__codelineno-9-28"></a>Oldest index:            ~55 days (.ds-logs-auditd_manager.auditd-default-2025.09.30-000001)
-<a href="#__codelineno-9-29" id="__codelineno-9-29" name="__codelineno-9-29"></a>Estimated retention:     ~98 days (until configured low watermark setting)
-<a href="#__codelineno-9-30" id="__codelineno-9-30" name="__codelineno-9-30"></a>
-<a href="#__codelineno-9-31" id="__codelineno-9-31" name="__codelineno-9-31"></a> Low watermark breach estimated in ~42.47 days (2026-01-06)
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>DISCLAIMER: Script output is based on current data patterns, but are approximations solely 
+<a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a>  intended to assist with getting a general ILM policy configured.
+<a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a>
+<a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a>================ Storage Overview ================
+<a href="#__codelineno-10-5" id="__codelineno-10-5" name="__codelineno-10-5"></a>
+<a href="#__codelineno-10-6" id="__codelineno-10-6" name="__codelineno-10-6"></a>Indexed data size:       141.12 GB (Elasticsearch)
+<a href="#__codelineno-10-7" id="__codelineno-10-7" name="__codelineno-10-7"></a>Cluster capacity:        498.69 GB total
+<a href="#__codelineno-10-8" id="__codelineno-10-8" name="__codelineno-10-8"></a>Cluster used:            245.32 GB
+<a href="#__codelineno-10-9" id="__codelineno-10-9" name="__codelineno-10-9"></a>Low watermark:           80% (398.96 GB threshold)
+<a href="#__codelineno-10-10" id="__codelineno-10-10" name="__codelineno-10-10"></a>Remaining space:         153.63 GB before low watermark
+<a href="#__codelineno-10-11" id="__codelineno-10-11" name="__codelineno-10-11"></a>Cluster shards:          498 / 4000 (12.4%)
+<a href="#__codelineno-10-12" id="__codelineno-10-12" name="__codelineno-10-12"></a>Cluster data nodes:      4
+<a href="#__codelineno-10-13" id="__codelineno-10-13" name="__codelineno-10-13"></a>  example-search1: data_hot,data_warm,data_content
+<a href="#__codelineno-10-14" id="__codelineno-10-14" name="__codelineno-10-14"></a>  example-search2: data_hot,data_warm,data_content
+<a href="#__codelineno-10-15" id="__codelineno-10-15" name="__codelineno-10-15"></a>  example-search3: data_cold
+<a href="#__codelineno-10-16" id="__codelineno-10-16" name="__codelineno-10-16"></a>  example-man: data_content
+<a href="#__codelineno-10-17" id="__codelineno-10-17" name="__codelineno-10-17"></a>
+<a href="#__codelineno-10-18" id="__codelineno-10-18" name="__codelineno-10-18"></a>================ ES Growth ================
+<a href="#__codelineno-10-19" id="__codelineno-10-19" name="__codelineno-10-19"></a>
+<a href="#__codelineno-10-20" id="__codelineno-10-20" name="__codelineno-10-20"></a>Daily growth rate:       4.08 GB/day
+<a href="#__codelineno-10-21" id="__codelineno-10-21" name="__codelineno-10-21"></a>ILM deletion rate:       0.47 GB/day (scheduled)
+<a href="#__codelineno-10-22" id="__codelineno-10-22" name="__codelineno-10-22"></a>Net growth rate:         3.62 GB/day
+<a href="#__codelineno-10-23" id="__codelineno-10-23" name="__codelineno-10-23"></a>Daily shard creation:    ~3 shards/day
+<a href="#__codelineno-10-24" id="__codelineno-10-24" name="__codelineno-10-24"></a>Storage to be freed (30d): 2 indices (~13.97 GB, 4 shards)
+<a href="#__codelineno-10-25" id="__codelineno-10-25" name="__codelineno-10-25"></a>
+<a href="#__codelineno-10-26" id="__codelineno-10-26" name="__codelineno-10-26"></a>================ Retention Projection ================
+<a href="#__codelineno-10-27" id="__codelineno-10-27" name="__codelineno-10-27"></a>
+<a href="#__codelineno-10-28" id="__codelineno-10-28" name="__codelineno-10-28"></a>Oldest index:            ~55 days (.ds-logs-auditd_manager.auditd-default-2025.09.30-000001)
+<a href="#__codelineno-10-29" id="__codelineno-10-29" name="__codelineno-10-29"></a>Estimated retention:     ~98 days (until configured low watermark setting)
+<a href="#__codelineno-10-30" id="__codelineno-10-30" name="__codelineno-10-30"></a>
+<a href="#__codelineno-10-31" id="__codelineno-10-31" name="__codelineno-10-31"></a> Low watermark breach estimated in ~42.47 days (2026-01-06)
 </code></pre></div>
 <p>For maximum retention, our goal is to get the cluster balanced as close to the low watermark setting as possible. In this example, it appears the cluster is gaining about 4GB worth of logs per day. However, ILM is currently deleting roughly 0.5GB per day, so overall storage usage is increasing. Without tweaking ILM configuration, this cluster will hit the watermark in roughly 42 days (total retention being roughly 98 days). To combat this, one option is to set a global_overrides for the delete phase as described above setting the delete phase to something like 90 days. This gives us a bit of space between the estimated retention and our actual delete phase.</p>
 <p>In addition to global overrides, which apply to all indices, it is possible to tweak per index ILM policies. For example, perhaps Suricata alert data is something you need to keep in storage for 120 days. You can configure the so-suricata.alerts policy to have a delete phase of 120d. This comes at the cost of needing to reduce retention on other indices in order to free up the needed storage for Suricata alerts.</p>
@@ -3310,7 +3312,7 @@ If retention is greater than 90 days, max_age will be 30 days  </p>
 <li>Logging configuration can be found in <code>/opt/so/conf/elasticsearch/log4j2.properties</code>.</li>
 </ul>
 <p>Depending on what you're looking for, you may also need to look at the <a href="../docker/">Docker</a> logs for the container:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>sudo<span class="w"> </span>docker<span class="w"> </span>logs<span class="w"> </span>so-elasticsearch
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>sudo<span class="w"> </span>docker<span class="w"> </span>logs<span class="w"> </span>so-elasticsearch
 </code></pre></div>
 <h2 id="more-information">More Information<a class="headerlink" href="#more-information" title="Permanent link">¶</a></h2>
 <div class="admonition note">
