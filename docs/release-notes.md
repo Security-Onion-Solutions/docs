@@ -2,6 +2,14 @@
 
 ### Known Issues
 
+[Auto State Apply](salt.md#auto-state-apply) detects configuration changes saved in [Administration](administration.md) --> Configuration and rule updates on the manager node. Files that you create or edit directly under `/opt/so/saltstack/local/salt/` are not detected. After adding or changing any of the following, apply the relevant state from the manager or wait for the next scheduled highstate (see [Highstate Interval](salt.md#highstate-interval)):
+
+- [Zeek](zeek.md) intel in `/opt/so/saltstack/local/salt/zeek/policy/intel/`
+- [Zeek](zeek.md) custom packages in `/opt/so/saltstack/local/salt/zeek/zkg/`
+- [Elasticsearch](elasticsearch.md) custom ingest parsers in `/opt/so/saltstack/local/salt/elasticsearch/files/ingest/`
+- [RBAC](rbac.md) custom Elastic stack role files in `/opt/so/saltstack/local/salt/elasticsearch/roles/`
+- [Logstash](logstash.md) custom pipeline configuration files in `/opt/so/saltstack/local/salt/logstash/pipelines/config/custom/`
+
 For all other known issues, please see <https://github.com/Security-Onion-Solutions/securityonion/issues>.
 
 ### Release History

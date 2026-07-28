@@ -117,7 +117,7 @@ Please note that Zeek is very strict about the format of `intel.dat`. When editi
 
 The default `intel.dat` file follows these guidelines so you can reference it as an example of the proper format.
 
-When finished editing `intel.dat`, run `sudo salt $SENSORNAME_$ROLE state.highstate` to sync `/opt/so/saltstack/local/salt/zeek/policy/intel/` to `/opt/so/conf/zeek/policy/intel/`. If you have a distributed deployment with separate sensor nodes and you don't run the highstate yourself, intel will sync to the sensor nodes at their next scheduled highstate (see [Highstate Interval](salt.md#highstate-interval)).
+Intel files are not detected by [Auto State Apply](salt.md#auto-state-apply), so when finished editing `intel.dat`, run `sudo salt -C 'I@zeek:enabled:true' state.apply zeek` to sync `/opt/so/saltstack/local/salt/zeek/policy/intel/` to `/opt/so/conf/zeek/policy/intel/`. If you have a distributed deployment with separate sensor nodes and you don't run that command yourself, intel will sync to the sensor nodes at their next scheduled highstate (see [Highstate Interval](salt.md#highstate-interval)).
 
 If you experience an error, or do not notice `/nsm/zeek/logs/current/intel.log` being generated, try having a look in `/nsm/zeek/logs/current/reporter.log` for clues. You may also want to restart Zeek after making changes by running `sudo so-zeek-restart`.
 
@@ -137,7 +137,7 @@ The package directory should contain a valid Zeek package structure (including a
     
     zkg requires packages from git repos to be a clone of the repo. The working tree must be clean otherwise it will not install the package. `git status` will tell you if it is clean or not.
     
-After placing the package, run `sudo salt $SENSORNAME_$ROLE state.highstate` to sync the packages to the sensor nodes. The packages will be automatically installed with `zkg` each time the Zeek container starts. If you have a distributed deployment with separate sensor nodes and you don't run the highstate yourself, packages will sync to the sensor nodes at their next scheduled highstate (see [Highstate Interval](salt.md#highstate-interval)).
+Packages are not detected by [Auto State Apply](salt.md#auto-state-apply), so after placing the package, run `sudo salt -C 'I@zeek:enabled:true' state.apply zeek` to sync the packages to the sensor nodes. The packages will be automatically installed with `zkg` each time the Zeek container starts. If you have a distributed deployment with separate sensor nodes and you don't run that command yourself, packages will sync to the sensor nodes at their next scheduled highstate (see [Highstate Interval](salt.md#highstate-interval)).
 
 You can verify that a custom package was installed by checking the Zeek container logs:
 

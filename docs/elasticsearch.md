@@ -65,7 +65,12 @@ You can configure Elasticsearch by going to [Administration](administration.md) 
 
 ## Parsing
 
-Elasticsearch receives unparsed logs from [Logstash](logstash.md) or [Elastic Agent](elastic-agent.md). Elasticsearch then parses and stores those logs. Parsers are stored in `/opt/so/conf/elasticsearch/ingest/`. Custom ingest parsers can be placed in `/opt/so/saltstack/local/salt/elasticsearch/files/ingest/`. To make these changes take effect, restart Elasticsearch using `so-elasticsearch-restart`.
+Elasticsearch receives unparsed logs from [Logstash](logstash.md) or [Elastic Agent](elastic-agent.md). Elasticsearch then parses and stores those logs. Parsers are stored in `/opt/so/conf/elasticsearch/ingest/`. Custom ingest parsers can be placed in `/opt/so/saltstack/local/salt/elasticsearch/files/ingest/`. Files placed here are not detected by [Auto State Apply](salt.md#auto-state-apply), so to make these changes take effect, apply the Elasticsearch state to all nodes running Elasticsearch:
+
+
+```
+sudo salt -C 'I@elasticsearch:enabled:true' state.apply elasticsearch queue=True
+```
 
 [Elastic Agent](elastic-agent.md) may pre-parse or act on data before the data reaches Elasticsearch, altering the data stream or index to which it is written, or other characteristics such as the event dataset or other pertinent information. This configuration is maintained in the agent policy or integration configuration in [Elastic Fleet](elastic-fleet.md).
 

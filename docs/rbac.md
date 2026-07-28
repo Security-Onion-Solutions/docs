@@ -171,7 +171,7 @@ These steps will guide you through an example where we wish to introduce a new r
     sudo so-elasticsearch-query _security/privilege/kibana-.Kibana | jq '. | map_values(keys)'
     ```
 
-3. Run so-checkin from the manager:
+3. Role files are not detected by [Auto State Apply](salt.md#auto-state-apply), so this step is required. Run so-checkin from the manager:
 
 
     ```
