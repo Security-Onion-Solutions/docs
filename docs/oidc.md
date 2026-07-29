@@ -138,7 +138,7 @@ Generate a new client secret under the Ping `Client ID` field. Copy the generate
 
 Locate the `client_secret` setting in the SOC configuration screen back on the SOC browser tab. Specify the above client secret for this setting.
 
-On the Ping console browser tab, under the configuration tab, expand the URLs section, near the top. Copy and paste the three following URLs into the appopriate SOC configuration screen settings: 
+On the Ping console browser tab, under the configuration tab, expand the URLs section, near the top. Copy and paste the three following URLs into the appropriate SOC configuration screen settings: 
 
 - Authorization URL -> auth_url
 - Issuer -> issuer_url
@@ -162,7 +162,7 @@ Finally, enable OIDC by locating the `enabled` setting in the SOC configuration 
 
 !!! NOTE
     
-    Do not enable OIDC until all required configuration settings have been entered and double-checked for accuracy. Once enabled the backend system will automatically synchronize the settings across the grid, typically within 15 minutes. If some settings are incorrect or missing the backend authentication services could be left in an error state and make it impossible to fix via the Configuration screen, as the SOC UI may no longer be accessible. If this occurs an SSH session will be required to access the underlying configuration files on the manager node. Contact support for assistance if needed.
+    Do not enable OIDC until all required configuration settings have been entered and double-checked for accuracy. Once enabled the backend system will automatically synchronize the settings across the grid, typically within a few minutes. If some settings are incorrect or missing the backend authentication services could be left in an error state and make it impossible to fix via the Configuration screen, as the SOC UI may no longer be accessible. If this occurs an SSH session will be required to access the underlying configuration files on the manager node. Contact support for assistance if needed.
 
 !!! WARNING
     

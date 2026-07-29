@@ -142,6 +142,7 @@ nav:
     - Rules Overview: rules.md
     - NIDS: nids.md
     - Sigma: sigma.md
+    - Sigma Logsource Coverage: sigma-logsource-coverage.md
     - YARA: yara.md
   - Logs:
     - Logs Overview: logs.md
@@ -200,6 +201,7 @@ nav:
     - Utilities Overview: utilities.md
     - jq: jq.md
     - so-allow: so-allow.md
+    - so-detections-overrides-import: so-detections-overrides-import.md
     - so-elastic-auth-password-reset: so-elastic-auth-password-reset.md
     - so-elasticsearch-query: so-elasticsearch-query.md
     - so-import-pcap: so-import-pcap.md

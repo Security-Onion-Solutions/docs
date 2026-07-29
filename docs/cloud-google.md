@@ -210,7 +210,7 @@ Location: Remote    Location: Remote                Location: Googe  Location: G
 
 In order to add the Remote Network Sensor Node to the grid, you would have to add `10.55.1.10` to the `sensor` firewall hostgroup.
 
-This change can be done in the SOC Configuration screen. Then, either wait up to 15 minutes for the scheduled configuration sync to run, or force a synchronization immediately via the SOC Configuration Options. Once the firewall hostgroup configuration has been synchronized your Manager will be ready for remote minions to start connecting.
+This change can be done in the SOC Configuration screen. [Auto State Apply](salt.md#auto-state-apply) should apply the new firewall hostgroup configuration within a few minutes, after which your Manager will be ready for remote minions to start connecting.
 
 ## Verifying Traffic Mirroring
 

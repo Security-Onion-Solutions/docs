@@ -202,7 +202,7 @@ To add a new NIDS rule, go to the main [Detections](detections.md) page and clic
 1. Click the Language drop-down and select `Suricata`.
 2. Optionally specify a license.
 3. Add the signature.
-4. Click the `CREATE` button and the detection should deploy to your grid at the next 15-minute cycle.
+4. Click the `CREATE` button and [Auto State Apply](salt.md#auto-state-apply) should deploy the detection to your grid within a few minutes.
 
 ![Image](images/59_detection_create.png)
 
@@ -236,7 +236,7 @@ There are two configuration profiles:
 
 If your system is in Airgap mode, the Airgap configuration profile will automatically be used - otherwise the default is in use. 
 
-Within this configuration, you can enable additional rulesets, add custom rulesets, or disable existing ones. When you save a ruleset configuration change and apply the SOC state, Security Onion will detect the change and automatically sync all configured rulesets within 15 minutes.
+Within this configuration, you can enable additional rulesets, add custom rulesets, or disable existing ones. When you save a ruleset configuration change and apply the SOC state, Security Onion will detect the change and sync all configured rulesets. Once the rules have been written on the manager node, [Auto State Apply](salt.md#auto-state-apply) deploys them to the sensors within a few minutes.
 
 OISF-maintained list of Suricata-compatible rulesets: <https://github.com/OISF/suricata-intel-index>
 
@@ -379,7 +379,7 @@ For Airgap deployments using ET Pro (commercial) rules, you must manually transf
 
 - **Apply configuration and sync**
 
-  Save the configuration and apply the SOC state. Then either wait for the next automatic sync (up to 15 minutes) or trigger a manual sync:
+  Save the configuration and apply the SOC state. Then either wait for the next automatic sync or trigger a manual sync:
 
   - Navigate to [Detections](detections.md)
   - Click Options menu
