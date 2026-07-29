@@ -7,9 +7,9 @@
 <link href="../cloud-azure/" rel="prev"/>
 <link href="../configuration/" rel="next"/>
 <link href="../images/logo/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
 <title>Google Cloud - Security Onion Documentation</title>
-<link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -1328,6 +1328,18 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../sigma-logsource-coverage/">
+<span class="md-ellipsis">
+    
+  
+    Sigma Logsource Coverage
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../yara/">
 <span class="md-ellipsis">
     
@@ -2101,6 +2113,18 @@
     
   
     so-allow
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../so-detections-overrides-import/">
+<span class="md-ellipsis">
+    
+  
+    so-detections-overrides-import
   
 
     
@@ -2983,7 +3007,7 @@ When prompted to choose the management interface, select the VPN tunnel interfac
 <a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>192.168.33.13       192.168.33.10                   10.55.1.10       10.55.1.20
 </code></pre></div>
 <p>In order to add the Remote Network Sensor Node to the grid, you would have to add <code>10.55.1.10</code> to the <code>sensor</code> firewall hostgroup.</p>
-<p>This change can be done in the SOC Configuration screen. Then, either wait up to 15 minutes for the scheduled configuration sync to run, or force a synchronization immediately via the SOC Configuration Options. Once the firewall hostgroup configuration has been synchronized your Manager will be ready for remote minions to start connecting.</p>
+<p>This change can be done in the SOC Configuration screen. <a href="../salt/#auto-state-apply">Auto State Apply</a> should apply the new firewall hostgroup configuration within a few minutes, after which your Manager will be ready for remote minions to start connecting.</p>
 <h2 id="verifying-traffic-mirroring">Verifying Traffic Mirroring<a class="headerlink" href="#verifying-traffic-mirroring" title="Permanent link">¶</a></h2>
 <p>Deploy a temporary test VM instance, using a e2.micro, debian-based instance in the Monitored VPC network, and in the same region used in the rest of this guide. Add the <code>so-mirror</code> network tag to the VM.</p>
 <p>SSH into the sensor node created earlier in this guide, and run the following command to watch mirrored traffic:</p>
@@ -3061,7 +3085,7 @@ When prompted to choose the management interface, select the VPN tunnel interfac
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-<script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
 <script src="../_static/theme_overrides.js"></script>
 <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
 document$.subscribe(()=>{ lightbox.reload(); });

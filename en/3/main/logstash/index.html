@@ -7,9 +7,9 @@
 <link href="../ingest/" rel="prev"/>
 <link href="../redis/" rel="next"/>
 <link href="../images/logo/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
 <title>Logstash - Security Onion Documentation</title>
-<link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -1093,6 +1093,18 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../sigma-logsource-coverage/">
+<span class="md-ellipsis">
+    
+  
+    Sigma Logsource Coverage
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../yara/">
 <span class="md-ellipsis">
     
@@ -2067,6 +2079,18 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../so-detections-overrides-import/">
+<span class="md-ellipsis">
+    
+  
+    so-detections-overrides-import
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../so-elastic-auth-password-reset/">
 <span class="md-ellipsis">
     
@@ -2802,12 +2826,12 @@
 <p>In <a href="../security-onion-console/">SOC</a>, navigate to <a href="../administration/">Administration</a> --&gt; Configuration. At the top of the page, click the <code>Options</code> menu and then enable the <code>Show advanced settings</code> option. Then navigate to Logstash --&gt; defined_pipelines --&gt; manager and append the name of your newly created file to the list of config files used for the <code>manager</code> pipeline:</p>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>custom/myfile.conf
 </code></pre></div>
-<p>The configuration will be applied at the next 15-minute interval or you can apply it immediately by clicking the <code>SYNCHRONIZE GRID</code> button under the <code>Options</code> menu.</p>
+<p>The configuration will be applied at the next scheduled highstate (see <a href="../salt/#highstate-interval">Highstate Interval</a>) or you can apply it immediately by clicking the <code>SYNCHRONIZE GRID</code> button under the <code>Options</code> menu.</p>
 <p>You can monitor events flowing through the output by running the following command on the manager:</p>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>localhost:9600/_node/stats<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.pipelines.manager
 </code></pre></div>
 <h2 id="modified-event-forwarding">Modified Event Forwarding<a class="headerlink" href="#modified-event-forwarding" title="Permanent link">¶</a></h2>
-<p>To forward events to an external destination AFTER they have traversed the Logstash pipelines (NOT ingest node pipelines), perform the same steps as above but instead of adding the reference for your Logstash output to the <code>manager</code> pipeline add it to <code>search</code> pipeline instead. The configuration will be applied at the next 15-minute interval or you can apply it immediately by clicking the <code>SYNCHRONIZE GRID</code> button under the <code>Options</code> menu.</p>
+<p>To forward events to an external destination AFTER they have traversed the Logstash pipelines (NOT ingest node pipelines), perform the same steps as above but instead of adding the reference for your Logstash output to the <code>manager</code> pipeline add it to <code>search</code> pipeline instead. The configuration will be applied at the next scheduled highstate (see <a href="../salt/#highstate-interval">Highstate Interval</a>) or immediately by clicking the <code>SYNCHRONIZE GRID</code> button under the <code>Options</code> menu.</p>
 <p>You can monitor events flowing through the output by running the following command on the search nodes:</p>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>localhost:9600/_node/stats<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.pipelines.search
 </code></pre></div>
@@ -2928,7 +2952,7 @@
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-<script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
 <script src="../_static/theme_overrides.js"></script>
 <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
 document$.subscribe(()=>{ lightbox.reload(); });

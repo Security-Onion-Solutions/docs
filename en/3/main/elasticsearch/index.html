@@ -7,9 +7,9 @@
 <link href="../redis/" rel="prev"/>
 <link href="../elastalert/" rel="next"/>
 <link href="../images/logo/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
 <title>Elasticsearch - Security Onion Documentation</title>
-<link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -1093,6 +1093,18 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../sigma-logsource-coverage/">
+<span class="md-ellipsis">
+    
+  
+    Sigma Logsource Coverage
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../yara/">
 <span class="md-ellipsis">
     
@@ -1419,6 +1431,15 @@
 </a>
 <nav aria-label="Index Management" class="md-nav">
 <ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dlm">
+<span class="md-ellipsis">
+      
+        DLM
+      
+    </span>
+</a>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#so-elasticsearch-indices-delete">
 <span class="md-ellipsis">
@@ -2144,6 +2165,18 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../so-detections-overrides-import/">
+<span class="md-ellipsis">
+    
+  
+    so-detections-overrides-import
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../so-elastic-auth-password-reset/">
 <span class="md-ellipsis">
     
@@ -2845,6 +2878,15 @@
 <nav aria-label="Index Management" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#dlm">
+<span class="md-ellipsis">
+      
+        DLM
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#so-elasticsearch-indices-delete">
 <span class="md-ellipsis">
       
@@ -2945,7 +2987,9 @@
 <p>You can configure Elasticsearch by going to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; Elasticsearch.</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-elasticsearch.png"><img alt="Image" src="../images/config-item-elasticsearch.png"/></a></p>
 <h2 id="parsing">Parsing<a class="headerlink" href="#parsing" title="Permanent link">¶</a></h2>
-<p>Elasticsearch receives unparsed logs from <a href="../logstash/">Logstash</a> or <a href="../elastic-agent/">Elastic Agent</a>. Elasticsearch then parses and stores those logs. Parsers are stored in <code>/opt/so/conf/elasticsearch/ingest/</code>. Custom ingest parsers can be placed in <code>/opt/so/saltstack/local/salt/elasticsearch/files/ingest/</code>. To make these changes take effect, restart Elasticsearch using <code>so-elasticsearch-restart</code>.</p>
+<p>Elasticsearch receives unparsed logs from <a href="../logstash/">Logstash</a> or <a href="../elastic-agent/">Elastic Agent</a>. Elasticsearch then parses and stores those logs. Parsers are stored in <code>/opt/so/conf/elasticsearch/ingest/</code>. Custom ingest parsers can be placed in <code>/opt/so/saltstack/local/salt/elasticsearch/files/ingest/</code>. Files placed here are not detected by <a href="../salt/#auto-state-apply">Auto State Apply</a>, so to make these changes take effect, apply the Elasticsearch state to all nodes running Elasticsearch:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>sudo salt -C 'I@elasticsearch:enabled:true' state.apply elasticsearch queue=True
+</code></pre></div>
 <p><a href="../elastic-agent/">Elastic Agent</a> may pre-parse or act on data before the data reaches Elasticsearch, altering the data stream or index to which it is written, or other characteristics such as the event dataset or other pertinent information. This configuration is maintained in the agent policy or integration configuration in <a href="../elastic-fleet/">Elastic Fleet</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2997,10 +3041,10 @@ Also see <a href="https://www.elastic.co/guide/en/elasticsearch/reference/curren
 <p><strong>TIP</strong>: The number of shards you can hold on a node will be proportional to the amount of heap you have available, but there is no fixed limit enforced by Elasticsearch. A good rule-of-thumb is to ensure you keep the number of shards per node below 20 to 25 per GB heap it has configured. A node with a 30GB heap should therefore have a maximum of 600-750 shards, but the further below this limit you can keep it the better. This will generally help the cluster stay in good health.</p>
 </blockquote>
 <p>To see your existing shards, run the following command and the number of shards will be shown in the fifth column:</p>
-<p></p><div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>sudo<span class="w"> </span>so-elasticsearch-indices-list
+<p></p><div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>sudo<span class="w"> </span>so-elasticsearch-indices-list
 </code></pre></div>
 If you want to view the detail for each of those shards:<p></p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>sudo<span class="w"> </span>so-elasticsearch-shards-list
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>sudo<span class="w"> </span>so-elasticsearch-shards-list
 </code></pre></div>
 <p>Given the sizing tips above, if any of your indices are averaging more than 50GB per shard, then you should probably increase the shard count until you get below that recommended maximum of 50GB per shard.</p>
 <p>The number of shards for an index can be adjusted by going to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; Elasticsearch --&gt; index_settings --&gt; so-INDEX-NAME --&gt; index_template --&gt; template --&gt; settings --&gt; index --&gt; number_of_shards.</p>
@@ -3023,34 +3067,174 @@ If you want to view the detail for each of those shards:<p></p>
 <p>If you want to clear all Elasticsearch data including documents and indices, you can run the <code>so-elastic-clear</code> command.</p>
 <h2 id="geoip">GeoIP<a class="headerlink" href="#geoip" title="Permanent link">¶</a></h2>
 <p>Elasticsearch 8 no longer includes GeoIP databases by default. We include GeoIP databases for Elasticsearch so that all users will have GeoIP functionality. If your search nodes have Internet access and can reach geoip.elastic.co and storage.googleapis.com, then you can opt-in to database updates if you want more recent information. To do so, run the following command on your manager:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>sudo<span class="w"> </span>so-elasticsearch-query<span class="w"> </span>_cluster/settings<span class="w"> </span>-d<span class="w"> </span><span class="s1">'{"persistent":{"ingest.geoip.downloader.enabled":true}}'</span><span class="w"> </span>-XPUT
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>sudo<span class="w"> </span>so-elasticsearch-query<span class="w"> </span>_cluster/settings<span class="w"> </span>-d<span class="w"> </span><span class="s1">'{"persistent":{"ingest.geoip.downloader.enabled":true}}'</span><span class="w"> </span>-XPUT
 </code></pre></div>
 <h2 id="health">Health<a class="headerlink" href="#health" title="Permanent link">¶</a></h2>
 <p>To check Elasticsearch health, go to the <a href="../grid/">Grid</a> interface and check the Elasticsearch Status field. If it shows anything other than OK, then run the following command from the CLI on the manager node to check for additional clues:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>sudo<span class="w"> </span>so-elasticsearch-query<span class="w"> </span>_cluster/health?pretty
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>sudo<span class="w"> </span>so-elasticsearch-query<span class="w"> </span>_cluster/health?pretty
 </code></pre></div>
 <h2 id="status-pending">Status Pending<a class="headerlink" href="#status-pending" title="Permanent link">¶</a></h2>
 <p>If the <a href="../grid/">Grid</a> interface shows Elasticsearch Status as <code>Pending</code>, check for unassigned shards by running the following command from the CLI on the manager node:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>sudo<span class="w"> </span>so-elasticsearch-query<span class="w"> </span>_cat/shards<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>UN
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>sudo<span class="w"> </span>so-elasticsearch-query<span class="w"> </span>_cat/shards<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>UN
 </code></pre></div>
 <p>The result of the query should display affected indices. Older metrics indices for Elastic Endpoint logs may have been assigned a replica, so if you are running a single-node Elastic cluster there will be nowhere for the replica to exist.
 To resolve the issue, run the following command for each affected index (replacing <code>$index</code> with the actual index name):</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>sudo<span class="w"> </span>so-elasticsearch-query<span class="w"> </span><span class="nv">$index</span>/_settings<span class="w"> </span>-d<span class="w"> </span><span class="s1">'{"number_of_replicas":0}'</span><span class="w"> </span>-XPUT
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>sudo<span class="w"> </span>so-elasticsearch-query<span class="w"> </span><span class="nv">$index</span>/_settings<span class="w"> </span>-d<span class="w"> </span><span class="s1">'{"number_of_replicas":0}'</span><span class="w"> </span>-XPUT
 </code></pre></div>
 <p>After running the command, the index should no longer use replicas and the status should change from "Pending" to "OK" once all indices have been successfully modified.</p>
 <h2 id="index-management">Index Management<a class="headerlink" href="#index-management" title="Permanent link">¶</a></h2>
-<p>Elasticsearch indices are managed by both the <code>so-elasticsearch-indices-delete</code> utility and Index Lifecycle Management (ILM). </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Check out our Index Lifecycle Management video at <a href="https://youtu.be/Y6HVein7nP8">https://youtu.be/Y6HVein7nP8</a>!</p>
-</div>
+<p>Most Security Onion data is stored in Elasticsearch data streams. Starting with Security Onion 3.2.0, retention can be managed with either Data Stream Lifecycle Management (DLM) or Index Lifecycle Management (ILM). When using ILM, retention is also managed by the <code>so-elasticsearch-indices-delete</code> utility.</p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>DLM</th>
+<th>ILM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fresh 3.2.0 install</td>
+<td>Default and recommended</td>
+<td>Choose only for advanced needs</td>
+</tr>
+<tr>
+<td>SOUP'ed grid</td>
+<td>Can manually switch to DLM</td>
+<td>Default remains on ILM</td>
+</tr>
+</tbody>
+</table>
+<p>For most deployments, DLM provides sufficient retention management with low configuration overhead. Choose ILM when data should automatically move between data tiers. For example, a distributed grid may use search nodes with SSD or NVMe storage as the 'hot' data tier for recent, frequently searched data, then move older data to warm or cold nodes with lower-cost storage.</p>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>DLM</th>
+<th>ILM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Straightforward time-based retention</td>
+<td>✅</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Minimal overall configuration</td>
+<td>✅</td>
+<td>⚠️ Requires additional configuration</td>
+</tr>
+<tr>
+<td>Move older data to warm or cold tiers</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Set shard count or replica count as data ages</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Apply lifecycle actions at different data ages</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Advanced phase actions</td>
+<td>⚠️ Limited actions supported</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dlm">DLM<a class="headerlink" href="#dlm" title="Permanent link">¶</a></h3>
+<p>Data Stream Lifecycle Management (DLM) applies a retention period directly to a data stream. Retention here is defined as the time period for which your data is guaranteed to be stored (assuming enough storage is allocated to Elasticsearch). Elasticsearch is allowed at a later time to delete data older than this time period. Retention can be configured on the data stream level or on a global level.</p>
+<p>New Security Onion 3.2.0 grids use DLM by default. DLM is the recommended choice for single-node deployments and most distributed grids because it allows for the most straightforward configuration, eliminating the need to configure more complex ILM policies. Security Onion data streams use a 90-day retention period by default.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><code>so-elasticsearch-indices-delete</code> is primarily designed for single-node deployments (IMPORT, EVAL, and STANDALONE). Running it on a multi-node deployment with one or more search nodes has the possibility of getting into a corner case state where more data is deleted than intended. Therefore, this script is disabled on multi-node deployments. If you have a multi-node deployment, then you will need to ensure that ILM is configured properly to delete indices before disk usage reaches the Elasticsearch watermark setting. Otherwise, Elasticsearch may stop ingesting new data.</p>
+<p>Existing grids will remain on ILM. Only fresh installs of Security Onion 3.2.0 will default to using DLM.</p>
 </div>
+<h4 id="view-or-configure-retention-method">View or configure retention method<a class="headerlink" href="#view-or-configure-retention-method" title="Permanent link">¶</a></h4>
+<p>The retention method can be set to either DLM or ILM. Changing this value updates all managed index templates &amp; data streams to use the configured retention method.</p>
+<ol>
+<li>In SOC, go to <strong>Administration</strong> --&gt; <strong>Configuration</strong> --&gt; <strong>Elasticsearch</strong>.</li>
+<li>Select <strong>data_retention_method</strong> to view the current method.</li>
+<li>Select <code>DLM</code> to use Data Stream Lifecycle Management, or select <code>ILM</code> to use Index Lifecycle Management.</li>
+</ol>
+<p>When the grid synchronizes, selecting DLM enables DLM lifecycle retention for supported Security Onion data streams. Selecting ILM disables DLM lifecycle retention for those streams and returns their retention management to ILM.</p>
+<p>Before switching methods, review your data-retention requirements and available Elasticsearch storage. In deployments where disk-space-based index cleanup is available with ILM, that cleanup is not used with DLM. Make sure the configured DLM retention periods and available storage leave sufficient free space; otherwise, Elasticsearch can stop ingesting data when disk watermarks are reached.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Before switching from ILM to DLM, verify the current Elasticsearch <a href="#elasticsearch-node-roles">node roles configuration</a>. You'll want to ensure that all Elasticsearch nodes have the <code>data</code> or <code>data_hot</code> role. As DLM rolls over data streams, they'll be created with <code>_tier_preferences: data_hot</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using DLM as your retention method, the so-elasticsearch-indices-delete script is disabled. Retention settings for DLM will need to be configured appropriately to maintain storage usage below the configured watermark.</p>
+</div>
+<h4 id="configure-retention-setting">Configure retention setting<a class="headerlink" href="#configure-retention-setting" title="Permanent link">¶</a></h4>
+<p>DLM retention can be managed globally and per data stream. Once configured, the index template(s) will be updated and if a data stream currently exists, it will be updated with the newly configured retention period. Data stream retention is updated in place using the <code>so-elasticsearch-dlm-apply</code> script.</p>
+<p>To update the global retention period value:</p>
+<ol>
+<li>In SOC, go to <strong>Administration</strong> --&gt; <strong>Configuration</strong> --&gt; <strong>Elasticsearch</strong></li>
+<li>Select <strong>index_settings</strong> --&gt; <strong>global_overrides</strong> --&gt; <strong>data_stream_lifecycle</strong> --&gt; <strong>data_retention</strong></li>
+</ol>
+<p>To update data stream specific retention:</p>
+<ol>
+<li>In SOC, go to <strong>Administration</strong> --&gt; <strong>Configuration</strong> --&gt; <strong>Elasticsearch</strong></li>
+<li>Select <strong>index_settings</strong></li>
+<li>Locate the target data stream (for example, so-zeek)<ul>
+<li>If the target data stream is not listed, you may need to first update <a href="../third-party-integrations/#managing-third-party-integration-index-templates">managed_integrations</a></li>
+</ul>
+</li>
+<li>Select <strong>so-zeek</strong> --&gt;  <strong>data_stream_lifecycle</strong> --&gt; <strong>data_retention</strong></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The retention period directly affects how frequently a data stream is automatically rolled over.</p>
+<blockquote>
+<p>If retention is less than or equal to 1 day, max_age will be 1 hour.<br/>
+If retention is less than or equal to 14 days, max_age will be 1 day<br/>
+If retention is less than or equal to 90 days, max_age will be 7 days<br/>
+If retention is greater than 90 days, max_age will be 30 days  </p>
+</blockquote>
+<p>Tuning the value of <a href="./#clusterlifecycledefaultrollover">cluster.lifecycle.default.rollover</a> allows for more control over how frequently a given data stream is rolled over.</p>
+</div>
+<h4 id="dlm-advanced-configuration">DLM advanced configuration<a class="headerlink" href="#dlm-advanced-configuration" title="Permanent link">¶</a></h4>
+<h5 id="clusterlifecycledefaultrollover"><a href="https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings">cluster.lifecycle.default.rollover</a><a class="headerlink" href="#clusterlifecycledefaultrollover" title="Permanent link">¶</a></h5>
+<blockquote>
+<p>This property accepts a key value pair formatted string and configures the conditions that would trigger a data stream to rollover when it has lifecycle configured.</p>
+</blockquote>
+<ol>
+<li>In SOC, go to <strong>Administration</strong> --&gt; <strong>Configuration</strong> --&gt; <strong>Elasticsearch</strong></li>
+<li>Select <strong>config</strong> --&gt; <strong>cluster</strong> --&gt; <strong>lifecycle</strong> --&gt; <strong>default</strong> --&gt; <strong>rollover</strong></li>
+</ol>
+<h5 id="data_streamslifecyclepoll_interval"><a href="https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings">data_streams.lifecycle.poll_interval</a><a class="headerlink" href="#data_streamslifecyclepoll_interval" title="Permanent link">¶</a></h5>
+<blockquote>
+<p>How often Elasticsearch checks what the next action is for all data streams with a built-in lifecycle.</p>
+</blockquote>
+<ol>
+<li>In SOC, go to <strong>Administration</strong> --&gt; <strong>Configuration</strong> --&gt; <strong>Elasticsearch</strong></li>
+<li>Select <strong>config</strong> --&gt; <strong>data_streams</strong> --&gt; <strong>lifecycle</strong> --&gt; <strong>poll_interval</strong></li>
+</ol>
+<h5 id="data_streamslifecycletargetmergepolicymerge_factor"><a href="https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings">data_streams.lifecycle.target.merge.policy.merge_factor</a><a class="headerlink" href="#data_streamslifecycletargetmergepolicymerge_factor" title="Permanent link">¶</a></h5>
+<blockquote>
+<p>Data stream lifecycle implements tail merging by updating the Lucene merge policy factor for the target backing index. The merge factor is both the number of segments that should be merged together, and the maximum number of segments that we expect to find on a given tier.</p>
+</blockquote>
+<ol>
+<li>In SOC, go to <strong>Administration</strong> --&gt; <strong>Configuration</strong> --&gt; <strong>Elasticsearch</strong> --&gt; <strong>config</strong></li>
+<li>Select <strong>data_streams</strong> --&gt; <strong>lifecycle</strong> --&gt; <strong>target</strong> --&gt; <strong>merge</strong> --&gt; <strong>policy</strong> --&gt; <strong>merge_factor</strong></li>
+</ol>
+<h5 id="data_streamslifecycletargetmergepolicyfloor_segment"><a href="https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings">data_streams.lifecycle.target.merge.policy.floor_segment</a><a class="headerlink" href="#data_streamslifecycletargetmergepolicyfloor_segment" title="Permanent link">¶</a></h5>
+<blockquote>
+<p>Data stream lifecycle implements tail merging by updating the Lucene merge policy floor segment for the target backing index. This floor segment size is a way to prevent indices from having a long tail of very small segments.</p>
+</blockquote>
+<ol>
+<li>In SOC, go to <strong>Administration</strong> --&gt; <strong>Configuration</strong> --&gt; <strong>Elasticsearch</strong> --&gt; <strong>config</strong></li>
+<li>Select <strong>data_streams</strong> --&gt; <strong>lifecycle</strong> --&gt; <strong>target</strong> --&gt; <strong>merge</strong> --&gt; <strong>policy</strong> --&gt; <strong>floor_segment</strong></li>
+</ol>
 <h3 id="so-elasticsearch-indices-delete">so-elasticsearch-indices-delete<a class="headerlink" href="#so-elasticsearch-indices-delete" title="Permanent link">¶</a></h3>
 <p><code>so-elasticsearch-indices-delete</code> manages size-based deletion of Elasticsearch indices based on the value of the <code>Elasticsearch.retention.retention_pct</code> setting. This setting is checked against the total disk space available for <code>/nsm/elasticsearch</code> across all nodes in the Elasticsearch cluster. If your indices are using more than <code>retention_pct</code>, then <code>so-elasticsearch-indices-delete</code> will delete old indices until disk space consumed by indices is back under <code>retention_pct</code>. The default value for this setting is <code>50</code> percent so that standalone deployments have sufficient space for not only Elasticsearch but also full packet capture and other logs. For distributed deployments with dedicated search nodes where Elasticsearch is main consumer of disk space, you may want to increase this default value.</p>
-<p>To modify the <code>retention_pct</code> value, first navigate to <a href="../administration/">Administration</a> --&gt; Configuration. At the top of the page, click the <code>Options</code> menu and then enable the <code>Show advanced settings</code> option. Then navigate to Elasticsearch --&gt; retention --&gt; retention_pct. Once you make the change and save it, the new setting will take effect at the next 15 minute interval. If you would like to make the change immediately, you can click the <code>SYNCHRONIZE GRID</code> button under the <code>Options</code> menu at the top of the page.</p>
+<p>To modify the <code>retention_pct</code> value, first navigate to <a href="../administration/">Administration</a> --&gt; Configuration. At the top of the page, click the <code>Options</code> menu and then enable the <code>Show advanced settings</code> option. Then navigate to Elasticsearch --&gt; retention --&gt; retention_pct. Once you make the change and save it, <a href="../salt/#auto-state-apply">Auto State Apply</a> should apply the new setting within a few minutes.</p>
 <h3 id="ilm">ILM<a class="headerlink" href="#ilm" title="Permanent link">¶</a></h3>
 <p>Index Lifecycle Management (ILM) manages the following:</p>
 <ul>
@@ -3079,37 +3263,37 @@ To resolve the issue, run the following command for each affected index (replaci
 <p>You might want to run <code>sudo so-elasticsearch-indices-growth</code> on a regular basis to keep an eye on the size of your indices.</p>
 </div>
 <p>In addition to <code>sudo so-elasticsearch-indices-growth</code>, you can also run <code>sudo so-elasticsearch-retention-estimate</code> which will give you an approximation of how many days' worth of logs you can store. For example:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>DISCLAIMER: Script output is based on current data patterns, but are approximations solely 
-<a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a>  intended to assist with getting a general ILM policy configured.
-<a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a>
-<a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a>================ Storage Overview ================
-<a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a>
-<a href="#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a>Indexed data size:       141.12 GB (Elasticsearch)
-<a href="#__codelineno-9-7" id="__codelineno-9-7" name="__codelineno-9-7"></a>Cluster capacity:        498.69 GB total
-<a href="#__codelineno-9-8" id="__codelineno-9-8" name="__codelineno-9-8"></a>Cluster used:            245.32 GB
-<a href="#__codelineno-9-9" id="__codelineno-9-9" name="__codelineno-9-9"></a>Low watermark:           80% (398.96 GB threshold)
-<a href="#__codelineno-9-10" id="__codelineno-9-10" name="__codelineno-9-10"></a>Remaining space:         153.63 GB before low watermark
-<a href="#__codelineno-9-11" id="__codelineno-9-11" name="__codelineno-9-11"></a>Cluster shards:          498 / 4000 (12.4%)
-<a href="#__codelineno-9-12" id="__codelineno-9-12" name="__codelineno-9-12"></a>Cluster data nodes:      4
-<a href="#__codelineno-9-13" id="__codelineno-9-13" name="__codelineno-9-13"></a>  example-search1: data_hot,data_warm,data_content
-<a href="#__codelineno-9-14" id="__codelineno-9-14" name="__codelineno-9-14"></a>  example-search2: data_hot,data_warm,data_content
-<a href="#__codelineno-9-15" id="__codelineno-9-15" name="__codelineno-9-15"></a>  example-search3: data_cold
-<a href="#__codelineno-9-16" id="__codelineno-9-16" name="__codelineno-9-16"></a>  example-man: data_content
-<a href="#__codelineno-9-17" id="__codelineno-9-17" name="__codelineno-9-17"></a>
-<a href="#__codelineno-9-18" id="__codelineno-9-18" name="__codelineno-9-18"></a>================ ES Growth ================
-<a href="#__codelineno-9-19" id="__codelineno-9-19" name="__codelineno-9-19"></a>
-<a href="#__codelineno-9-20" id="__codelineno-9-20" name="__codelineno-9-20"></a>Daily growth rate:       4.08 GB/day
-<a href="#__codelineno-9-21" id="__codelineno-9-21" name="__codelineno-9-21"></a>ILM deletion rate:       0.47 GB/day (scheduled)
-<a href="#__codelineno-9-22" id="__codelineno-9-22" name="__codelineno-9-22"></a>Net growth rate:         3.62 GB/day
-<a href="#__codelineno-9-23" id="__codelineno-9-23" name="__codelineno-9-23"></a>Daily shard creation:    ~3 shards/day
-<a href="#__codelineno-9-24" id="__codelineno-9-24" name="__codelineno-9-24"></a>Storage to be freed (30d): 2 indices (~13.97 GB, 4 shards)
-<a href="#__codelineno-9-25" id="__codelineno-9-25" name="__codelineno-9-25"></a>
-<a href="#__codelineno-9-26" id="__codelineno-9-26" name="__codelineno-9-26"></a>================ Retention Projection ================
-<a href="#__codelineno-9-27" id="__codelineno-9-27" name="__codelineno-9-27"></a>
-<a href="#__codelineno-9-28" id="__codelineno-9-28" name="__codelineno-9-28"></a>Oldest index:            ~55 days (.ds-logs-auditd_manager.auditd-default-2025.09.30-000001)
-<a href="#__codelineno-9-29" id="__codelineno-9-29" name="__codelineno-9-29"></a>Estimated retention:     ~98 days (until configured low watermark setting)
-<a href="#__codelineno-9-30" id="__codelineno-9-30" name="__codelineno-9-30"></a>
-<a href="#__codelineno-9-31" id="__codelineno-9-31" name="__codelineno-9-31"></a> Low watermark breach estimated in ~42.47 days (2026-01-06)
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>DISCLAIMER: Script output is based on current data patterns, but are approximations solely 
+<a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a>  intended to assist with getting a general ILM policy configured.
+<a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a>
+<a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a>================ Storage Overview ================
+<a href="#__codelineno-10-5" id="__codelineno-10-5" name="__codelineno-10-5"></a>
+<a href="#__codelineno-10-6" id="__codelineno-10-6" name="__codelineno-10-6"></a>Indexed data size:       141.12 GB (Elasticsearch)
+<a href="#__codelineno-10-7" id="__codelineno-10-7" name="__codelineno-10-7"></a>Cluster capacity:        498.69 GB total
+<a href="#__codelineno-10-8" id="__codelineno-10-8" name="__codelineno-10-8"></a>Cluster used:            245.32 GB
+<a href="#__codelineno-10-9" id="__codelineno-10-9" name="__codelineno-10-9"></a>Low watermark:           80% (398.96 GB threshold)
+<a href="#__codelineno-10-10" id="__codelineno-10-10" name="__codelineno-10-10"></a>Remaining space:         153.63 GB before low watermark
+<a href="#__codelineno-10-11" id="__codelineno-10-11" name="__codelineno-10-11"></a>Cluster shards:          498 / 4000 (12.4%)
+<a href="#__codelineno-10-12" id="__codelineno-10-12" name="__codelineno-10-12"></a>Cluster data nodes:      4
+<a href="#__codelineno-10-13" id="__codelineno-10-13" name="__codelineno-10-13"></a>  example-search1: data_hot,data_warm,data_content
+<a href="#__codelineno-10-14" id="__codelineno-10-14" name="__codelineno-10-14"></a>  example-search2: data_hot,data_warm,data_content
+<a href="#__codelineno-10-15" id="__codelineno-10-15" name="__codelineno-10-15"></a>  example-search3: data_cold
+<a href="#__codelineno-10-16" id="__codelineno-10-16" name="__codelineno-10-16"></a>  example-man: data_content
+<a href="#__codelineno-10-17" id="__codelineno-10-17" name="__codelineno-10-17"></a>
+<a href="#__codelineno-10-18" id="__codelineno-10-18" name="__codelineno-10-18"></a>================ ES Growth ================
+<a href="#__codelineno-10-19" id="__codelineno-10-19" name="__codelineno-10-19"></a>
+<a href="#__codelineno-10-20" id="__codelineno-10-20" name="__codelineno-10-20"></a>Daily growth rate:       4.08 GB/day
+<a href="#__codelineno-10-21" id="__codelineno-10-21" name="__codelineno-10-21"></a>ILM deletion rate:       0.47 GB/day (scheduled)
+<a href="#__codelineno-10-22" id="__codelineno-10-22" name="__codelineno-10-22"></a>Net growth rate:         3.62 GB/day
+<a href="#__codelineno-10-23" id="__codelineno-10-23" name="__codelineno-10-23"></a>Daily shard creation:    ~3 shards/day
+<a href="#__codelineno-10-24" id="__codelineno-10-24" name="__codelineno-10-24"></a>Storage to be freed (30d): 2 indices (~13.97 GB, 4 shards)
+<a href="#__codelineno-10-25" id="__codelineno-10-25" name="__codelineno-10-25"></a>
+<a href="#__codelineno-10-26" id="__codelineno-10-26" name="__codelineno-10-26"></a>================ Retention Projection ================
+<a href="#__codelineno-10-27" id="__codelineno-10-27" name="__codelineno-10-27"></a>
+<a href="#__codelineno-10-28" id="__codelineno-10-28" name="__codelineno-10-28"></a>Oldest index:            ~55 days (.ds-logs-auditd_manager.auditd-default-2025.09.30-000001)
+<a href="#__codelineno-10-29" id="__codelineno-10-29" name="__codelineno-10-29"></a>Estimated retention:     ~98 days (until configured low watermark setting)
+<a href="#__codelineno-10-30" id="__codelineno-10-30" name="__codelineno-10-30"></a>
+<a href="#__codelineno-10-31" id="__codelineno-10-31" name="__codelineno-10-31"></a> Low watermark breach estimated in ~42.47 days (2026-01-06)
 </code></pre></div>
 <p>For maximum retention, our goal is to get the cluster balanced as close to the low watermark setting as possible. In this example, it appears the cluster is gaining about 4GB worth of logs per day. However, ILM is currently deleting roughly 0.5GB per day, so overall storage usage is increasing. Without tweaking ILM configuration, this cluster will hit the watermark in roughly 42 days (total retention being roughly 98 days). To combat this, one option is to set a global_overrides for the delete phase as described above setting the delete phase to something like 90 days. This gives us a bit of space between the estimated retention and our actual delete phase.</p>
 <p>In addition to global overrides, which apply to all indices, it is possible to tweak per index ILM policies. For example, perhaps Suricata alert data is something you need to keep in storage for 120 days. You can configure the so-suricata.alerts policy to have a delete phase of 120d. This comes at the cost of needing to reduce retention on other indices in order to free up the needed storage for Suricata alerts.</p>
@@ -3128,7 +3312,7 @@ To resolve the issue, run the following command for each affected index (replaci
 <li>Logging configuration can be found in <code>/opt/so/conf/elasticsearch/log4j2.properties</code>.</li>
 </ul>
 <p>Depending on what you're looking for, you may also need to look at the <a href="../docker/">Docker</a> logs for the container:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>sudo<span class="w"> </span>docker<span class="w"> </span>logs<span class="w"> </span>so-elasticsearch
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>sudo<span class="w"> </span>docker<span class="w"> </span>logs<span class="w"> </span>so-elasticsearch
 </code></pre></div>
 <h2 id="more-information">More Information<a class="headerlink" href="#more-information" title="Permanent link">¶</a></h2>
 <div class="admonition note">
@@ -3206,7 +3390,7 @@ To resolve the issue, run the following command for each affected index (replaci
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-<script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
 <script src="../_static/theme_overrides.js"></script>
 <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
 document$.subscribe(()=>{ lightbox.reload(); });

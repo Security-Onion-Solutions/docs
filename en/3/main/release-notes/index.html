@@ -7,9 +7,9 @@
 <link href="../software-bill-of-materials/" rel="prev"/>
 <link href="../appendix/" rel="next"/>
 <link href="../images/logo/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
 <title>Release Notes - Security Onion Documentation</title>
-<link href="../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -1093,6 +1093,18 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../sigma-logsource-coverage/">
+<span class="md-ellipsis">
+    
+  
+    Sigma Logsource Coverage
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../yara/">
 <span class="md-ellipsis">
     
@@ -1873,6 +1885,18 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../so-detections-overrides-import/">
+<span class="md-ellipsis">
+    
+  
+    so-detections-overrides-import
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../so-elastic-auth-password-reset/">
 <span class="md-ellipsis">
     
@@ -2359,6 +2383,15 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#320-20260729-changes">
+<span class="md-ellipsis">
+      
+        3.2.0 [20260729] Changes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#310-hotfix-20260528-changes">
 <span class="md-ellipsis">
       
@@ -2445,6 +2478,15 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#320-20260729-changes">
+<span class="md-ellipsis">
+      
+        3.2.0 [20260729] Changes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#310-hotfix-20260528-changes">
 <span class="md-ellipsis">
       
@@ -2480,8 +2522,80 @@
 <article class="md-content__inner md-typeset">
 <h1 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">¶</a></h1>
 <h3 id="known-issues">Known Issues<a class="headerlink" href="#known-issues" title="Permanent link">¶</a></h3>
+<p><a href="../salt/#auto-state-apply">Auto State Apply</a> detects configuration changes saved in <a href="../administration/">Administration</a> --&gt; Configuration and rule updates on the manager node. Files that you create or edit directly under <code>/opt/so/saltstack/local/salt/</code> are not detected. After adding or changing any of the following, apply the relevant state from the manager or wait for the next scheduled highstate (see <a href="../salt/#highstate-interval">Highstate Interval</a>):</p>
+<ul>
+<li><a href="../zeek/">Zeek</a> intel in <code>/opt/so/saltstack/local/salt/zeek/policy/intel/</code></li>
+<li><a href="../zeek/">Zeek</a> custom packages in <code>/opt/so/saltstack/local/salt/zeek/zkg/</code></li>
+<li><a href="../elasticsearch/">Elasticsearch</a> custom ingest parsers in <code>/opt/so/saltstack/local/salt/elasticsearch/files/ingest/</code></li>
+<li><a href="../rbac/">RBAC</a> custom Elastic stack role files in <code>/opt/so/saltstack/local/salt/elasticsearch/roles/</code></li>
+<li><a href="../logstash/">Logstash</a> custom pipeline configuration files in <code>/opt/so/saltstack/local/salt/logstash/pipelines/config/custom/</code></li>
+</ul>
 <p>For all other known issues, please see <a href="https://github.com/Security-Onion-Solutions/securityonion/issues">https://github.com/Security-Onion-Solutions/securityonion/issues</a>.</p>
 <h3 id="release-history">Release History<a class="headerlink" href="#release-history" title="Permanent link">¶</a></h3>
+<h2 id="320-20260729-changes">3.2.0 [20260729] Changes<a class="headerlink" href="#320-20260729-changes" title="Permanent link">¶</a></h2>
+<ul>
+<li>FEATURE: Initial implementation of agentic framework</li>
+<li>FEATURE: Autodetect salt apply state from SOC config audit history</li>
+<li>FEATURE: Config audit history w/ restore</li>
+<li>FEATURE: Datastream Lifecycle Management</li>
+<li>FEATURE: Guided Analysis Progressive Loading <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16091">#16091</a></li>
+<li>FEATURE: Limit certain config settings to specific node types <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15972">#15972</a></li>
+<li>FEATURE: Map Antivirus Sigma rules to Elastic Defend <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/14468">#14468</a></li>
+<li>FEATURE: Sigma Playbooks - Initial Set <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16090">#16090</a></li>
+<li>FEATURE: Support ES|QL in Sigma detections</li>
+<li>FEATURE: Support Suricata Transactional rule dir <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15948">#15948</a></li>
+<li>FEATURE: Updated default Hunt query <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16026">#16026</a></li>
+<li>FIX: Allow manager to run two full highstates during soup <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15986">#15986</a></li>
+<li>FIX: Allow periods in NIC names <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16060">#16060</a></li>
+<li>FIX: Disable Zeek icsnpp-modbus script <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16110">#16110</a></li>
+<li>FIX: Do not allow login redirects to API URLs <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16065">#16065</a></li>
+<li>FIX: Elastic Defend incompatible with linux 7+ kernels</li>
+<li>FIX: Elastic Fleet server state persistence <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16051">#16051</a></li>
+<li>FIX: Elasticfleet: server urls auto updating when opted out <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15960">#15960</a></li>
+<li>FIX: Elasticsearch GC log rotate <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16034">#16034</a></li>
+<li>FIX: Elasticsearch: index template partial duplicate <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15959">#15959</a></li>
+<li>FIX: Ensure so-yaml.py updated during soup <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16066">#16066</a></li>
+<li>FIX: Import/Eval error in elasticsearch configuration script <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16025">#16025</a></li>
+<li>FIX: Improve elastic agent install outcome to check that the installation is healthy</li>
+<li>FIX: Improve Elasticsearch scripts runtime <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15987">#15987</a></li>
+<li>FIX: Improve Group Metrics Layout on Alert Page</li>
+<li>FIX: Improve Hunt Query Box UI on Smaller Screens</li>
+<li>FIX: Improve logging when Alerts fail to Ack <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15999">#15999</a></li>
+<li>FIX: Missing esheap pillar value breaks highstate on Elasticsearch nodes <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16108">#16108</a></li>
+<li>FIX: Nav Bar Hover Misalignment</li>
+<li>FIX: Refreshing browser while in hunt drops index filters <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15331">#15331</a></li>
+<li>FIX: Rename Connect API to Security Onion API <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15921">#15921</a></li>
+<li>Fix: Rework soup postupgrade_changes <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15946">#15946</a></li>
+<li>FIX: Run Elastic Agent regenerate installers script</li>
+<li>FIX: Salt: server restart and highstate issues</li>
+<li>FIX: so-start | so-stop | so-restart utilities <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16014">#16014</a></li>
+<li>FIX: Soup should run so-config-backup script <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15901">#15901</a></li>
+<li>FIX: Soup verify an upgrade is available prior to running elasticsearch upgrade compatibility check</li>
+<li>FIX: Suricata rule reload should not report failure if a reload is already in progress <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16016">#16016</a></li>
+<li>UPGRADE: alpine base images to 3.24.1 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15992">#15992</a></li>
+<li>UPGRADE: Axios to 1.18.1 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15950">#15950</a></li>
+<li>UPGRADE: CyberChef to 11.2.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15997">#15997</a></li>
+<li>UPGRADE: Dompurify to 3.4.12 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15977">#15977</a></li>
+<li>UPGRADE: Elasticsearch 9.3.7 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16063">#16063</a></li>
+<li>UPGRADE: golang to 1.26.4 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15988">#15988</a></li>
+<li>UPGRADE: InfluxDB to 2.9.1 (UI to 2.9.0) <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15993">#15993</a></li>
+<li>UPGRADE: js-yaml to 4.3.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15976">#15976</a></li>
+<li>UPGRADE: Kafka to 4.3.1 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16001">#16001</a></li>
+<li>UPGRADE: Kratos and Hydra google/x/net Go deps <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16048">#16048</a></li>
+<li>UPGRADE: Migration of more images to UBI 9.7 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16010">#16010</a></li>
+<li>UPGRADE: nginx to 1.31.2 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15996">#15996</a></li>
+<li>UPGRADE: node to 26.3.1 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15990">#15990</a></li>
+<li>UPGRADE: OpenCanary to 0.9.8 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16003">#16003</a></li>
+<li>UPGRADE: Oracle UEK8 Kernel</li>
+<li>UPGRADE: Postgres to 17.10 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15998">#15998</a></li>
+<li>UPGRADE: pySigma &amp; sigma-cli <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15616">#15616</a></li>
+<li>UPGRADE: Redis to 7.4.9 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15994">#15994</a></li>
+<li>UPGRADE: registry to 3.1.1 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15991">#15991</a></li>
+<li>UPGRADE: SOC Go dependencies <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16032">#16032</a></li>
+<li>UPGRADE: Suricata to 8.0.6 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16042">#16042</a></li>
+<li>UPGRADE: Telegraf to 1.39.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15995">#15995</a></li>
+<li>UPGRADE: Zeek to 8.0.9 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16040">#16040</a></li>
+</ul>
 <h2 id="310-hotfix-20260528-changes">3.1.0 Hotfix [20260528] Changes<a class="headerlink" href="#310-hotfix-20260528-changes" title="Permanent link">¶</a></h2>
 <ul>
 <li>FIX: Grids with multiple heavy nodes fail Elasticsearch upgrade verification for 3.1.0</li>
@@ -2643,7 +2757,7 @@
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-<script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
 <script src="../_static/theme_overrides.js"></script>
 <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
 document$.subscribe(()=>{ lightbox.reload(); });
