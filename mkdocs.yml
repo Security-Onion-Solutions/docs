@@ -189,6 +189,7 @@ nav:
     - Backup: backup.md
     - Docker: docker.md
     - Jupyter: jupyter.md
+    - Kernels: kernels.md
     - New Disk: new-disk.md
     - Network Installation: network-installation.md
     - PCAPs: pcaps.md
