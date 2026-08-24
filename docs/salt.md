@@ -43,6 +43,20 @@ sudo so-checkin
 
 When you save a configuration change in [Administration](administration.md) --> Configuration, or when rules are updated on the manager node, Security Onion detects the change and applies the affected state to only the nodes that need it. This typically happens within a few minutes instead of waiting for the next scheduled highstate.
 
+Files that you create or edit by hand on the manager in any of the following directories are detected the same way:
+
+| Directory | What it holds |
+|-----------|---------------|
+| `/opt/so/saltstack/local/salt/zeek/policy/` | [Zeek](zeek.md) intel and custom policies |
+| `/opt/so/saltstack/local/salt/zeek/zkg/` | [Zeek](zeek.md) custom packages |
+| `/opt/so/saltstack/local/salt/elasticsearch/files/ingest/` | [Elasticsearch](elasticsearch.md) custom ingest parsers |
+| `/opt/so/saltstack/local/salt/elasticsearch/roles/` | [RBAC](rbac.md) custom Elastic stack role files |
+| `/opt/so/saltstack/local/salt/logstash/pipelines/config/custom/` | [Logstash](logstash.md) custom pipeline configuration files |
+| `/opt/so/saltstack/local/salt/suricata/rules/` | [Suricata](suricata.md) rules |
+| `/opt/so/saltstack/local/salt/strelka/rules/compiled/` | [Strelka](strelka.md) compiled YARA rules |
+
+Other files under `/opt/so/saltstack/local/salt/` are not watched and are picked up at the next scheduled highstate (see [Highstate Interval](#highstate-interval)).
+
 Auto State Apply is configured at [Administration](administration.md) --> Configuration --> salt --> auto_apply:
 
 | Setting | Default | Description |
