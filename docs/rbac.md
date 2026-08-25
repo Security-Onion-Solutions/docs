@@ -6,46 +6,61 @@ RBAC in Security Onion covers both Security Onion privileges and Elastic stack p
 
 ## Default Roles
 
-Security Onion ships with the following user roles: `superuser`, `analyst`, `limited-analyst`, `auditor`, and `limited-auditor`.
+Security Onion ships with the following user roles: `superuser`, `analyst`, `limited-analyst`, `auditor`, `limited-auditor`, `subgrid-auditor`, and `subgrid-superuser`.
 
 See the table below which explains the specific Security Onion privileges granted to each role.
 
-| | superuser | analyst | limited-analyst | auditor | limited-auditor |
-|---|:---:|:---:|:---:|:---:|:---:|
-| View alerts | X | X | X | X | X |
-| Acknowledge alerts | X | X | X | | |
-| Escalate alerts and events | X | X | X | | |
-| View detections | X | X | X | X | X |
-| Modify (and Delete) detections | X | X | | | |
-| View events in Hunt | X | X | X | X | X |
-| View own PCAP jobs | X | X | X | O | O |
-| View all PCAP jobs | X | X | | X | |
-| Pivot to PCAP job from event | X | X | X | | |
-| Request arbitrary PCAP jobs | X | X | | | |
-| Delete own PCAP job | X | X | X | O | O |
-| Delete any PCAP job | X | X | | | |
-| View all nodes in Grid | X | X | X | X | X |
-| View all users | X | X | | X | |
-| View all users' roles | X | X | | X | |
-| View own user | X | X | X | X | X |
-| View own user roles | X | X | X | X | X |
-| Change own password | X | X | X | X | X |
-| Add, update, and reset SOC users | X | | | | |
-| Modify and synchronize Grid config | X | | | | |
-| Manage Grid membership of nodes | X | | | | |
-| Initiate node actions (Ex: reboot) | X | | | | |
-| Manage API clients | X | | | | |
-| View and list existing API clients | X | | X | |
-| Manage Active Queries | X | | | | |
-| View Playbooks | X | X | X | X | X |
-| Chat with Onion AI | X | X | | | |
-| Delete Own Onion AI Sessions | X | X | | | |
-| View Own Onion AI History | X | X | | | |
-| View All Users' Onion AI History | X | | | | |
+| | superuser | analyst | limited-analyst | auditor | limited-auditor | subgrid-superuser | subgrid-auditor |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| View alerts | X | X | X | X | X | | |
+| Acknowledge alerts | X | X | X | | | | |
+| Escalate alerts and events | X | X | X | | | | |
+| View detections | X | X | X | X | X | | |
+| Modify (and Delete) detections | X | X | | | | | |
+| View events in Hunt | X | X | X | X | X | | |
+| View own PCAP jobs | X | X | X | O | O | | |
+| View all PCAP jobs | X | X | | X | | | |
+| Pivot to PCAP job from event | X | X | X | | | | |
+| Request arbitrary PCAP jobs | X | X | | | | | |
+| Delete own PCAP job | X | X | X | O | O | | |
+| Delete any PCAP job | X | X | | | | | |
+| View all nodes in Grid | X | X | X | X | X | | |
+| View all users | X | X | | X | | | |
+| View all users' roles | X | X | | X | | | |
+| View own user | X | X | X | X | X | | |
+| View own user roles | X | X | X | X | X | | |
+| Change own password | X | X | X | X | X | | |
+| Add, update, and reset SOC users | X | | | | | | |
+| Modify and synchronize Grid config | X | | | | | | |
+| Manage Grid membership of nodes | X | | | | | | |
+| Initiate node actions (Ex: reboot) | X | | | | | | |
+| Manage API clients | X | | | | | | |
+| View and list existing API clients | X | | X | | | |
+| Manage Active Queries | X | | | | | | |
+| View Playbooks | X | X | X | X | X | | |
+| Chat with Onion AI | X | X | | | | | |
+| Delete Own Onion AI Sessions | X | X | | | | | |
+| View Own Onion AI History | X | X | | | | | |
+| View All Users' Onion AI History | X | | | | | | |
+| View own Onion AI memories | X | X | | X | | | |
+| View global Onion AI memories | X | | | X | | | |
+| View all users' Onion AI memories | X | | | X | | | |
+| Manage own Onion AI memories | X | X | | | | | |
+| Manage global Onion AI memories | X | | | | | | |
+| Manage all users' Onion AI memories | X | | | | | | |
+| View notifications | X | X | X | X | X | | |
+| View all notifications | X | | | X | | | |
+| Manage notifications | X | X | X | | | | |
+| Read subgrid data | X | | | | | X | X |
+| Modify subgrid data | X | | | | | X | |
 
 !!! NOTE
     
     Both `auditor` and `limited-auditor` roles can interact with previously created PCAPs if they were created before a user was converted to that role (e.g. user was downgraded from `analyst` to `auditor`). This is denoted by **O** in the above table.
+
+!!! NOTE
+
+    The `subgrid-auditor` and `subgrid-superuser` roles are used in [Manager of Managers](manager-of-managers.md) deployments to grant read-only or read/write access to remote subgrids. Users needing subgrid access should be assigned one of these roles in addition to their primary role (e.g., `analyst`).
 
 !!! NOTE
     
@@ -245,6 +260,17 @@ The available low-level Security Onion privileges are listed in the table below:
 | *playbooks/read* | View all playbooks |
 | *playbooks/write* | Currently unused |
 | *playbooks/delete* | Currently unused |
+| *subgrid/read* | Read data from subgrids |
+| *subgrid/write* | Modify data on subgrids |
+| *notifications/read* | View notifications |
+| *notifications/read_all* | View all notifications |
+| *notifications/write* | Create and update notifications |
+| *memory/read_authored* | View own Onion AI memories |
+| *memory/read_global* | View global Onion AI memories |
+| *memory/read_all* | View all Onion AI memories |
+| *memory/write_self* | Create and update own Onion AI memories |
+| *memory/write_global* | Create and update global Onion AI memories |
+| *memory/write_all* | Create and update all Onion AI memories |
 | *assistant/read_authored* | View own Onion AI conversation history |
 | *assistant/write_authored* | Chat with Onion AI |
 | *assistant/delete_authored* | Delete own Onion AI conversation history |
@@ -281,6 +307,15 @@ These discrete privileges are then collected into privilege groups as defined be
 | user-monitor | *roles/read*, *users/read* |
 | playbook-monitor | *playbooks/read* |
 | playbook-admin | *playbooks/read*, *playbooks/write*, *playbooks/delete* |
+| subgrid-admin | *subgrid/read*, *subgrid/write* |
+| subgrid-monitor | *subgrid/read* |
+| notification-admin | *notifications/read*, *notifications/write* |
+| notification-monitor | *notifications/read* |
+| notification-auditor | *notifications/read*, *notifications/read_all* |
+| memory-user | *memory/read_authored*, *memory/write_self* |
+| memory-curator | *memory/read_authored*, *memory/read_global*, *memory/write_self*, *memory/write_global* |
+| memory-admin | *memory/read_authored*, *memory/read_global*, *memory/read_all*, *memory/write_self*, *memory/write_global*, *memory/write_all* |
+| memory-monitor | *memory/read_authored*, *memory/read_global*, *memory/read_all* |
 | assistant-user | *assistant/read_authored*, *assistant/write_authored*, *assistant/delete_authored*, *assistant/read_shared* |
 | assistant-admin | *assistant/read_authored*, *assistant/write_authored*, *assistant/delete_authored*, *assistant/read_shared*, *assistant/read_all*, *assistant/write_all*, *assistant/delete_all* |
 | assistant-monitor | *assistant/read_authored*, *assistant/read_shared*, *assistant/read_all* |

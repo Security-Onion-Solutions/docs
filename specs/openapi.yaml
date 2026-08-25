@@ -68,23 +68,43 @@ components:
         protocol:
           type: string
       type: object
-    model.AgentParameters:
+    model.Agent:
       properties:
         agentDescription:
+          example: Analyzes suspicious binaries and scripts
           type: string
         allowedSkills:
+          example:
+          - Hunt
+          - Respond
           items:
             type: string
           type: array
           uniqueItems: false
         canDelegateTo:
+          example:
+          - Log Analyst
           items:
             type: string
           type: array
           uniqueItems: false
+        enabled:
+          description: A disabled agent is still published so the Agent Studio can
+            re-enable it.
+          example: true
+          type: boolean
         isOrchestrator:
+          example: false
+          type: boolean
+        isSystem:
+          example: true
           type: boolean
         name:
+          example: Malware Analyst
+          type: string
+        personaAddendum:
+          description: Admin-authored persona; exposed because an admin wrote it.
+          example: Prefer static analysis before detonating a sample.
           type: string
       type: object
     model.AlertingParameters:
@@ -159,6 +179,27 @@ components:
           description: The number of new alerts (currently unused)
           example: 132
           type: integer
+      type: object
+    model.AllocationDecider:
+      properties:
+        explanation:
+          description: The datastore's explanation of why the rule rejected or throttled
+            the shard.
+          example: the node is above the low watermark cluster setting
+          type: string
+        name:
+          description: The name of the allocation rule.
+          example: disk_threshold
+          type: string
+        nodes:
+          description: The names of the nodes the rule rejected or throttled the shard
+            on.
+          example:
+          - so-node-01
+          items:
+            type: string
+          type: array
+          uniqueItems: false
       type: object
     model.Artifact:
       properties:
@@ -286,6 +327,8 @@ components:
         agentMapping:
           additionalProperties:
             type: string
+          example:
+            Malware Analyst: claude-sonnet-4.5@SOAI
           type: object
         agentic:
           type: boolean
@@ -296,7 +339,7 @@ components:
           uniqueItems: false
         availableAgents:
           items:
-            $ref: '#/components/schemas/model.AgentParameters'
+            $ref: '#/components/schemas/model.Agent'
           type: array
           uniqueItems: false
         availableModels:
@@ -306,7 +349,17 @@ components:
           uniqueItems: false
         availableSkills:
           items:
-            $ref: '#/components/schemas/model.SkillParameters'
+            $ref: '#/components/schemas/model.Skill'
+          type: array
+          uniqueItems: false
+        availableTools:
+          description: Tool names an admin-created skill may grant; delegate tools
+            excluded.
+          example:
+          - query_events
+          - query_cases
+          items:
+            type: string
           type: array
           uniqueItems: false
         compressContextPrompt:
@@ -315,6 +368,15 @@ components:
           type: boolean
         investigationPrompt:
           type: string
+        maxDelegationDepth:
+          description: |-
+            Delegation guardrails, surfaced so the Agent Studio can show and edit them
+            without fetching every setting. 0 disables the limit.
+          example: 3
+          type: integer
+        maxSubSessionTokens:
+          example: 100000
+          type: integer
         thresholdColorRatioLow:
           type: number
         thresholdColorRatioMax:
@@ -363,6 +425,22 @@ components:
           description: The kind of object. This is a read-only field.
           example: case
           type: string
+        lastMemoryScannedIndex:
+          description: |-
+            When Memory is enabled, the scanner will use this field to denote how many
+            messages in the session have been scanned for memory extraction. Extraction
+            always begins with the oldest messages in a session.
+          example: 4
+          type: integer
+        messageCount:
+          description: |-
+            A denormalized count of the messages saved to this session, incremented on
+            each chat save so the memory scanner can find sessions with unscanned
+            messages in a single query. Not omitempty so new sessions index an explicit
+            0; sessions created before this field existed have no value, which the
+            scanner treats as pending until its index update heals it.
+          example: 7
+          type: integer
         model:
           description: |-
             The model/adapter this session itself runs on (the agent id for delegated
@@ -490,6 +568,23 @@ components:
       required:
       - caseId
       - fields
+      type: object
+    model.Attachment:
+      description: Attachment represents a file or graph payload to be sent with a
+        notification.
+      properties:
+        contentType:
+          description: The MIME content type of the attachment.
+          example: application/pdf
+          type: string
+        filename:
+          description: The filename of the attachment.
+          example: alert-report.pdf
+          type: string
+        url:
+          description: Direct download URL if the attachment is hosted by SOC.
+          example: https://soc.example.com/api/reports/123/download
+          type: string
       type: object
     model.AuditHistory:
       properties:
@@ -1293,6 +1388,10 @@ components:
             type: object
           description: The collection of aggregated metrics associated with this search
           type: object
+        timedOut:
+          description: Did the query that produced these results time out while collecting
+            them
+          type: boolean
         totalEvents:
           description: The total number of matching events (not necessarily the total
             number returned)
@@ -1391,6 +1490,102 @@ components:
           example: 1
           type: integer
       type: object
+    model.EventsHealth:
+      properties:
+        errors:
+          additionalProperties:
+            type: string
+          description: The sections that could not be collected, keyed by section
+            name, with the reason for each failure.
+          example:
+            nodes: unavailable
+          type: object
+        indicators:
+          description: The per-subsystem health checks reported by the datastore,
+            most severe first.
+          items:
+            $ref: '#/components/schemas/model.HealthIndicator'
+          type: array
+          uniqueItems: false
+        nodes:
+          description: The nodes making up the datastore cluster.
+          items:
+            $ref: '#/components/schemas/model.EventsHealthNode'
+          type: array
+          uniqueItems: false
+        settings:
+          $ref: '#/components/schemas/model.EventsHealthSettings'
+        status:
+          description: 'The overall datastore health: green, yellow, red, or unknown.'
+          example: yellow
+          type: string
+        unassignedShards:
+          $ref: '#/components/schemas/model.UnassignedShards'
+      type: object
+    model.EventsHealthNode:
+      properties:
+        cpu:
+          description: The percentage of the node's CPU in use.
+          example: "12"
+          type: string
+        diskTotal:
+          description: The total size of the node's data storage.
+          example: 1.5tb
+          type: string
+        diskUsedPercent:
+          description: The percentage of the node's data storage in use.
+          example: "85.5"
+          type: string
+        heapPercent:
+          description: The percentage of the node's heap in use.
+          example: "62"
+          type: string
+        ip:
+          description: The IP address the node is bound to.
+          example: 10.0.0.5
+          type: string
+        load1m:
+          description: The node's one minute load average.
+          example: "1.42"
+          type: string
+        master:
+          description: An asterisk if the node is the elected master, otherwise a
+            dash.
+          example: '*'
+          type: string
+        name:
+          description: The node name.
+          example: so-node-01
+          type: string
+        ramPercent:
+          description: The percentage of the node's memory in use.
+          example: "88"
+          type: string
+        roles:
+          description: The abbreviated roles the node performs in the cluster.
+          example: dhimrst
+          type: string
+        uptime:
+          description: How long the node has been running.
+          example: 42d
+          type: string
+        version:
+          description: The datastore version the node is running.
+          example: 8.14.3
+          type: string
+      type: object
+    model.EventsHealthSettings:
+      description: The cluster settings that have been overridden from their defaults.
+      properties:
+        persistent:
+          additionalProperties: {}
+          description: The settings that survive a cluster restart.
+          type: object
+        transient:
+          additionalProperties: {}
+          description: The settings that are discarded on a cluster restart.
+          type: object
+      type: object
     model.Filter:
       description: Optional filter for the job, typically used for packet filtering
       properties:
@@ -1442,6 +1637,23 @@ components:
             missed in certain capture scenarios"
           example: 55312
           type: integer
+      type: object
+    model.FindingScope:
+      description: The group of shards this finding was diagnosed from, when it came
+        from the shard inventory.
+      properties:
+        count:
+          description: The number of shards in the group.
+          example: 2
+          type: integer
+        primary:
+          description: Whether the group contains primary shards rather than replicas.
+          example: true
+          type: boolean
+        reason:
+          description: The datastore's reason code for why the shards became unassigned.
+          example: NODE_LEFT
+          type: string
       type: object
     model.GridMember:
       properties:
@@ -1497,6 +1709,87 @@ components:
             due to a fault.
           example: 0
           type: integer
+      type: object
+    model.HealthFinding:
+      properties:
+        condition:
+          description: The identifier for the problem that was diagnosed.
+          example: disk_threshold
+          type: string
+        count:
+          description: The number of affected resources, when the condition is counted
+            rather than scoped.
+          example: 3
+          type: integer
+        detail:
+          description: The datastore's own explanation of the condition.
+          example: the node is above the low watermark cluster setting
+          type: string
+        nodes:
+          description: The names of the nodes affected by this condition.
+          example:
+          - so-node-01
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        scope:
+          $ref: '#/components/schemas/model.FindingScope'
+        severity:
+          description: 'The importance of this finding: critical, warning, or info.'
+          example: critical
+          type: string
+      type: object
+    model.HealthIndicator:
+      properties:
+        causes:
+          description: The datastore's diagnoses of the symptom, along with the resources
+            each affects.
+          items:
+            $ref: '#/components/schemas/model.HealthIndicatorCause'
+          type: array
+          uniqueItems: false
+        findings:
+          description: Diagnosed problems for this indicator, most severe first
+          items:
+            $ref: '#/components/schemas/model.HealthFinding'
+          type: array
+          uniqueItems: false
+        id:
+          description: The datastore's identifier for the subsystem being checked.
+          example: shards_availability
+          type: string
+        status:
+          description: 'The health of this subsystem: green, yellow, red, or unknown.'
+          example: red
+          type: string
+        symptom:
+          description: The datastore's summary of what is wrong with this subsystem.
+          example: This cluster has 1 unavailable primary shard.
+          type: string
+      type: object
+    model.HealthIndicatorCause:
+      properties:
+        cause:
+          description: The datastore's description of the cause.
+          example: A node has recently left the cluster.
+          type: string
+        indices:
+          description: The names of the indices affected by this cause.
+          example:
+          - so-logs-2026.07.21
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        nodes:
+          description: The names of the nodes affected by this cause.
+          example:
+          - so-node-01
+          items:
+            type: string
+          type: array
+          uniqueItems: false
       type: object
     model.HuntingAction:
       properties:
@@ -1631,6 +1924,11 @@ components:
         forceUserOtp:
           description: OTP indicator; unavailable to API clients
           type: boolean
+        lastUnreadNotificationTime:
+          description: The timestamp of the most recent unread notification for the
+            user.
+          example: "2026-08-20T17:00:00Z"
+          type: string
         license:
           description: The copyright license applicable to the Security Onion software
           example: Elastic License 2.0 (ELv2)
@@ -1646,6 +1944,10 @@ components:
           description: The MAC address assigned to the management interface.
           example: 11:22:33:AA:BB:CC
           type: string
+        notificationsStarted:
+          description: Indicates whether the notification subsystem module is started
+            and available.
+          type: boolean
         parameters:
           $ref: '#/components/schemas/model.ClientParameters'
         srvToken:
@@ -2004,10 +2306,6 @@ components:
           description: Indicates whether disk encryption is enabled on this node
           example: 1
           type: integer
-        load1m:
-          description: The node's 1-minute load metric
-          example: 0.43
-          type: number
         load5m:
           description: The node's 5-minute load metric
           example: 0.96
@@ -2015,6 +2313,10 @@ components:
         load15m:
           description: The node's 15-minute load metric
           example: 1.09
+          type: number
+        load1m:
+          description: The node's 1-minute load metric
+          example: 0.43
           type: number
         memoryTotalGB:
           description: Total size, in gigabytes, of the system memory, or RAM
@@ -2164,6 +2466,115 @@ components:
             applicable to this node
           example: 0
           type: number
+      type: object
+    model.NotificationAuditEntry:
+      description: NotificationAuditEntry represents a user view or dismissal audit
+        state record.
+      properties:
+        dismissedAt:
+          description: The timestamp when this user dismissed the notification.
+          example: "2026-08-17T12:10:00Z"
+          type: string
+        isDismissed:
+          description: Indicates whether this user has dismissed the notification.
+          example: false
+          type: boolean
+        isRead:
+          description: Indicates whether this user has read the notification.
+          example: true
+          type: boolean
+        readAt:
+          description: The timestamp when this user read the notification.
+          example: "2026-08-17T12:05:00Z"
+          type: string
+        userId:
+          description: The user identifier who read or dismissed the notification.
+          example: admin@soc.local
+          type: string
+      type: object
+    model.NotificationRecord:
+      description: NotificationRecord represents a persisted notification with user-specific
+        state.
+      properties:
+        attachments:
+          description: Optional binary or URL attachments associated with this notification.
+          items:
+            $ref: '#/components/schemas/model.Attachment'
+          type: array
+          uniqueItems: false
+        createdAt:
+          description: The timestamp when this notification was created.
+          example: "2026-08-17T12:00:00Z"
+          type: string
+        dismissedAt:
+          description: The timestamp when the notification was dismissed.
+          example: "2026-08-17T12:10:00Z"
+          type: string
+        fields:
+          additionalProperties:
+            type: string
+          description: Structured key-value fields providing context (e.g. host, IP,
+            metric name).
+          example:
+            dst_ip: 10.0.0.1
+            src_ip: 192.168.1.100
+          type: object
+        id:
+          description: The unique identifier for this notification.
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          type: string
+        isDismissed:
+          description: Indicates whether this notification has been dismissed by the
+            user.
+          example: false
+          type: boolean
+        isRead:
+          description: Indicates whether this notification has been marked as read
+            by the user.
+          example: false
+          type: boolean
+        links:
+          additionalProperties:
+            type: string
+          description: Deep-links back to relevant views or dashboards in SOC.
+          example:
+            View in SOC: https://soc.example.com/#/alerts/123
+          type: object
+        readAt:
+          description: The timestamp when the notification was marked as read.
+          example: "2026-08-17T12:05:00Z"
+          type: string
+        severity:
+          description: The severity classification of this notification.
+          enum:
+          - info
+          - low
+          - medium
+          - high
+          - critical
+          example: high
+          type: string
+        silenceKey:
+          description: Unique key used for duration silencing and debouncing.
+          example: detection:sigma:12345:192.168.1.100
+          type: string
+        source:
+          description: The source subsystem that originated this notification.
+          enum:
+          - detection
+          - metric
+          - agent_ai
+          - report
+          example: detection
+          type: string
+        summary:
+          description: A human-readable summary describing the notification details.
+          example: Inbound SSH scan detected from 192.168.1.100.
+          type: string
+        title:
+          description: The brief title or headline of the notification.
+          example: ET SCAN Potential SSH Scan
+          type: string
       type: object
     model.Override:
       properties:
@@ -2513,6 +2924,9 @@ components:
             $ref: '#/components/schemas/model.EventRecord'
           type: array
           uniqueItems: false
+        queryTimedOut:
+          description: Indicates if the QueryResults were cut short by a timeout.
+          type: boolean
         question:
           description: The human readable question to be asked.
           example: What is the source IP address of the alert?
@@ -2809,11 +3223,27 @@ components:
       - SigLangSigma
       - SigLangSuricata
       - SigLangYara
-    model.SkillParameters:
+    model.Skill:
       properties:
+        enabled:
+          description: A disabled skill grants nothing, but is still published so
+            it can be re-enabled.
+          example: true
+          type: boolean
+        isSystem:
+          example: true
+          type: boolean
         name:
+          example: Threat Intel Lookup
+          type: string
+        personaAddendum:
+          description: Admin-authored guidance; exposed because an admin wrote it.
+          example: Always cite the source of an indicator.
           type: string
         tools:
+          example:
+          - query_events
+          - query_cases
           items:
             type: string
           type: array
@@ -2830,6 +3260,46 @@ components:
         gridId:
           description: The grid ID for this status update, can be '' for local grids
           example: my_subgrid_a
+          type: string
+      type: object
+    model.StoredAgent:
+      properties:
+        allowedSkills:
+          example:
+          - Hunt
+          - Respond
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        canDelegateTo:
+          example:
+          - Log Analyst
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        description:
+          example: Analyzes suspicious binaries and scripts
+          type: string
+        enabled:
+          description: Pointer so an absent field means enabled rather than disabled.
+          example: true
+          type: boolean
+        isOrchestrator:
+          example: false
+          type: boolean
+        model:
+          description: A model selector ("id@adapter" or bare id), not a display name.
+          example: claude-sonnet-4.5@SOAI
+          type: string
+        name:
+          example: Malware Analyst
+          type: string
+        persona:
+          description: Addendum to the built-in prompt for a system agent; the whole
+            prompt otherwise.
+          example: Prefer static analysis before detonating a sample.
           type: string
       type: object
     model.StoredMessage:
@@ -2883,6 +3353,31 @@ components:
             is a read-only field.
           example: socl_my_new_client
           type: string
+      type: object
+    model.StoredSkill:
+      properties:
+        enabled:
+          description: Pointer so an absent field means enabled rather than disabled.
+          example: true
+          type: boolean
+        name:
+          example: Threat Intel Lookup
+          type: string
+        persona:
+          description: Addendum to the built-in guidance for a system skill; all of
+            it otherwise.
+          example: Always cite the source of an indicator.
+          type: string
+        tools:
+          description: Ignored for a system skill, whose tool set is fixed by the
+            built-in.
+          example:
+          - query_events
+          - query_cases
+          items:
+            type: string
+          type: array
+          uniqueItems: false
       type: object
     model.Subgrid:
       properties:
@@ -2943,6 +3438,30 @@ components:
           type: string
       type: object
     model.ToolRequest:
+      properties:
+        auxData:
+          description: Auxiliary data for certain tools.
+          type: object
+        model:
+          description: The model to use for this tool execution.
+          example: claude-sonnet-4.5
+          type: string
+        params:
+          description: The parameters for this tool use.
+          type: object
+        rejected:
+          description: |-
+            Rejected indicates the user declined this tool: it is not executed; an error
+            tool_result is recorded instead so the turn (and any parallel siblings) resolves.
+          type: boolean
+        sessionId:
+          description: The sessionId this chat message belongs to.
+          example: chat_1757086398900_ykhmndscn
+          type: string
+        toolUseId:
+          description: The unique identifier for this tool use.
+          example: tooluse_mT45or7ISwSEUivo63nqow
+          type: string
       type: object
     model.UiElement:
       properties:
@@ -2993,6 +3512,78 @@ components:
           description: (metadata) If true this UI element must be specified by the
             user before it can be saved
           type: boolean
+      type: object
+    model.UnassignedShardGroup:
+      properties:
+        canAllocate:
+          description: The datastore's verdict on whether the sampled shard can currently
+            be allocated.
+          example: "no"
+          type: string
+        count:
+          description: The number of shards in this group.
+          example: 2
+          type: integer
+        deciders:
+          description: The allocation rules that rejected or throttled the sampled
+            shard.
+          items:
+            $ref: '#/components/schemas/model.AllocationDecider'
+          type: array
+          uniqueItems: false
+        failureDetails:
+          description: Present when the sampled shard became unassigned due to an
+            allocation failure.
+          example: 'failed shard on node [abc]: shard failure, reason [corrupt file]'
+          type: string
+        primary:
+          description: Whether this group contains primary shards rather than replicas.
+          example: true
+          type: boolean
+        reason:
+          description: The datastore's reason code for why these shards became unassigned.
+          example: NODE_LEFT
+          type: string
+        sampleIndex:
+          description: The index of the sampled shard.
+          example: so-logs-2026.07.21
+          type: string
+        sampleShard:
+          description: The number of the sampled shard within its index.
+          example: 0
+          type: integer
+        sampleStatus:
+          description: Whether the sampled shard was explained, capped before being
+            explained, or failed to be explained.
+          example: explained
+          type: string
+        since:
+          description: The date and time that the sampled shard became unassigned.
+          example: "2026-07-21T20:48:02.943Z"
+          type: string
+      type: object
+    model.UnassignedShards:
+      description: A summary of the shards that the datastore has been unable to assign
+        to a node.
+      properties:
+        groups:
+          description: The unassigned shards grouped by reason, primaries first.
+          items:
+            $ref: '#/components/schemas/model.UnassignedShardGroup'
+          type: array
+          uniqueItems: false
+        primaries:
+          description: The number of unassigned shards that are primaries.
+          example: 2
+          type: integer
+        replicas:
+          description: The number of unassigned shards that are replicas.
+          example: 12
+          type: integer
+        total:
+          description: The total number of unassigned shards.
+          example: 14
+          type: integer
       type: object
     model.UpdateSessionRequest:
       properties:
@@ -3197,6 +3788,23 @@ components:
           example: fb58abf3-0a6d-49af-b1a0-1eeabec07716
           type: string
       type: object
+    server.ToggleDismissRequest:
+      description: ToggleDismissRequest specifies the desired dismissal state for
+        a notification.
+      properties:
+        isDismissed:
+          description: Indicates whether the notification should be dismissed.
+          example: true
+          type: boolean
+      type: object
+    server.ToggleReadRequest:
+      description: ToggleReadRequest specifies the desired read state for a notification.
+      properties:
+        isRead:
+          description: Indicates whether the notification should be marked as read.
+          example: true
+          type: boolean
+      type: object
   securitySchemes:
     basic:
       scheme: basic
@@ -3256,7 +3864,7 @@ paths:
       security:
       - bearer:
         - assistant/read_all
-      summary: Get Assistant Sessions
+      summary: Get Assistant Sessions For a Specific User
       tags:
       - Assistant
   /connect/assistant/admin/{userId}/sessions/{sessionId}/history:
@@ -3318,7 +3926,7 @@ paths:
       security:
       - bearer:
         - assistant/read_all
-      summary: Get Assistant Sessions
+      summary: Get Assistant Sessions Across Users
       tags:
       - Assistant
   /connect/assistant/admin/stats:
@@ -3371,13 +3979,82 @@ paths:
       summary: Get Usage Statistics
       tags:
       - Assistant
+  /connect/assistant/agents/{name}:
+    delete:
+      description: Remove an admin-created agent. System agents can only be disabled.
+      parameters:
+      - description: Agent name
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Agent deleted
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions, or the agent is system-provided
+        "404":
+          description: Agent not found
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - config/write
+      summary: Delete an Assistant Agent
+      tags:
+      - Assistant
+    put:
+      description: Create or update a single agent definition. The server merges it
+        into the stored set, so a stale client cannot revert other agents.
+      parameters:
+      - description: Agent name
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/model.StoredAgent'
+        description: Agent definition
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Agent saved
+        "400":
+          description: The request body is invalid
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - config/write
+      summary: Save an Assistant Agent
+      tags:
+      - Assistant
   /connect/assistant/balance/{modelAndAdapter}:
     get:
       description: Retrieve the current balance/usage information for the AI assistant.
       parameters:
-      - description: 'Model selector to get balance for: the model''s display name,
-          or the legacy id@adapter form (including slashes)'
-        example: Agent Gemini
+      - description: 'Model selector to get balance for: the id@adapter pair (bare
+          id allowed, slashes in ids supported), or an agent name in agentic mode'
+        example: sonnet-4.5@SOAI
         in: path
         name: modelAndAdapter
         required: true
@@ -3480,7 +4157,7 @@ paths:
       security:
       - bearer:
         - assistant/read_authored
-      summary: Get Assistant Sessions
+      summary: Get Your Assistant Sessions
       tags:
       - Assistant
   /connect/assistant/sessions/{sessionId}:
@@ -3507,7 +4184,7 @@ paths:
       security:
       - bearer:
         - assistant/delete_authored
-      summary: Delete Session
+      summary: Delete Your Assistant Session
       tags:
       - Assistant
     get:
@@ -3540,7 +4217,7 @@ paths:
         - assistant/read_authored
       - bearer:
         - assistant/read_shared
-      summary: Get Session Details
+      summary: Get Session Details For Your Session
       tags:
       - Assistant
     put:
@@ -3580,6 +4257,75 @@ paths:
       - bearer:
         - assistant/write_authored
       summary: Update metadata for a Session
+      tags:
+      - Assistant
+  /connect/assistant/skills/{name}:
+    delete:
+      description: Remove an admin-created skill. System skills can only be disabled.
+      parameters:
+      - description: Skill name
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Skill deleted
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions, or the skill is system-provided
+        "404":
+          description: Skill not found
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - config/write
+      summary: Delete an Assistant Skill
+      tags:
+      - Assistant
+    put:
+      description: Create or update a single skill definition, merged into the stored
+        set by the server.
+      parameters:
+      - description: Skill name
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/model.StoredSkill'
+        description: Skill definition
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Skill saved
+        "400":
+          description: The request body is invalid
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - config/write
+      summary: Save an Assistant Skill
       tags:
       - Assistant
   /connect/assistant/tool/{name}:
@@ -5411,6 +6157,34 @@ paths:
       summary: Acknowledge Alerts
       tags:
       - Query
+  /connect/events/health:
+    get:
+      description: |-
+        Retrieves a point-in-time diagnostic snapshot of the event datastore: overall status, health
+        indicators, node listing, and non-default settings. When shard availability is degraded, the
+        unassigned shards are inventoried and one sampled shard per group is explained. Diagnosed
+        problems are reported as findings on the indicator they affect, ranked by severity.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.EventsHealth'
+          description: The events health snapshot
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "405":
+          description: The event module is not loaded on the server
+        "500":
+          description: Events health could not be retrieved; review SOC logs
+      security:
+      - bearer:
+        - nodes/read
+      summary: Get Events Health
+      tags:
+      - Query
   /connect/grid/:
     get:
       description: |-
@@ -5934,6 +6708,158 @@ paths:
       summary: Node Check-in
       tags:
       - Grid
+  /connect/notifications:
+    get:
+      description: Retrieves notifications for the current user, optionally filtered.
+      parameters:
+      - description: Filter parameter (all, unread, dismissed)
+        in: query
+        name: filter
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/model.NotificationRecord'
+                type: array
+          description: The list of notifications
+        "400":
+          description: License is invalid
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "405":
+          description: Notification module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - notifications/read
+      summary: Get Notifications
+      tags:
+      - Notifications
+  /connect/notifications/{id}/audit:
+    get:
+      description: Retrieves team user state logs (view/dismiss) for a specific notification.
+      parameters:
+      - description: Notification ID
+        example: notif-1
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/model.NotificationAuditEntry'
+                type: array
+          description: The list of notification user audit records
+        "400":
+          description: Invalid parameters
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "405":
+          description: Notification module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - notifications/read_all
+      summary: Get Notification Audit Logs
+      tags:
+      - Notifications
+  /connect/notifications/{id}/dismiss:
+    put:
+      description: Marks a notification as dismissed or active for the current user.
+      parameters:
+      - description: Notification ID
+        example: notif-1
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/server.ToggleDismissRequest'
+        description: Payload to toggle dismiss
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: The notification dismissal state was successfully updated
+        "400":
+          description: Invalid request body or parameters
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "405":
+          description: Notification module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - notifications/write
+      summary: Toggle Dismiss Notification
+      tags:
+      - Notifications
+  /connect/notifications/{id}/read:
+    put:
+      description: Marks a notification as read or unread for the current user.
+      parameters:
+      - description: Notification ID
+        example: notif-1
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/server.ToggleReadRequest'
+        description: Payload to toggle read
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: The notification read state was successfully updated
+        "400":
+          description: Invalid request body or parameters
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "405":
+          description: Notification module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - notifications/write
+      summary: Toggle Read Notification
+      tags:
+      - Notifications
   /connect/packets/{jobId}:
     get:
       description: Retrieves the packets collected and attached to the job represented

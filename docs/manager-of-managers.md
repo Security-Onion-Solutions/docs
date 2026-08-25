@@ -55,7 +55,7 @@ While on the API Client screen, click the ⤓ icon to download the Certificate A
 
 !!! NOTE
     
-    Please be aware that any users in the MoM Grid will be able to connect to the subgrid using the permissions defined for the API client. For example, suppose that you create an API client ID in the subgrid called `supermom` and you grant it all permissions. Once the MoM is configured to connect to the subgrid as shown in the next section, then any users in the MoM Grid will connect to the subgrid as `supermom` and have all permissions to the subgrid regardless of whether the user has equivalent permissions in the MoM.
+    Starting in release 3.3.0, all MoM users that are not already superusers must be granted either the `subgrid-auditor` or `subgrid-superuser` role in order to interact with subgrids. The `subgrid-auditor` role will permit read operations (HTTP GET API requests), and `subgrid-superuser` will permit read and write operations (HTTP GET, POST, PUT, PATCH, and DELETE API requests) against the subgrids. These requests to the subgrid will all utilize the same subgrid API client credentials. As an example, a user with `subgrid-auditor` can see cases on the subgrid, but cannot modify them. Whereas a user with `subgrid-superuser` can modify cases on the subgrid, as well as manage subgrid users and their roles.
 
 ### Subgrid Config
 
