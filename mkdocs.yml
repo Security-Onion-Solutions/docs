@@ -234,6 +234,7 @@ nav:
     - Hypervisor: hypervisor.md
     - Reports: reports.md
     - Onion AI: onion-ai.md
+    - Local LLM Hosting: local-llm.md
   - Telemetry: telemetry.md
   - Security: security.md
   - Software Bill of Materials: software-bill-of-materials.md
