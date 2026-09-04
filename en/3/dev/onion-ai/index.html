@@ -5,7 +5,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://security-onion-solutions.github.io/docs/onion-ai/" rel="canonical"/>
 <link href="../reports/" rel="prev"/>
-<link href="../telemetry/" rel="next"/>
+<link href="../local-llm/" rel="next"/>
 <link href="../images/logo/favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
 <title>Onion AI - Security Onion Documentation</title>
@@ -2462,6 +2462,18 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../local-llm/">
+<span class="md-ellipsis">
+    
+  
+    Local LLM Hosting
+  
+
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -2834,7 +2846,7 @@
 <p>Local models will not match the performance of proprietary foundational models such as those from Anthropic, Google, or OpenAI.</p>
 </div>
 <h2 id="hosting-local-models">Hosting Local Models<a class="headerlink" href="#hosting-local-models" title="Permanent link">¶</a></h2>
-<p>Hosting your own models requires powerful and expensive hardware. For beginners we recommend using a tool such as LM Studio. <strong>You need at least 96GB of VRAM</strong> to host your own models locally. The speed and accuracy of OnionAI when hosted locally is based on the hardware that you are using. For the most accurate results we recommend using credits with OnionAI.</p>
+<p>Hosting your own models requires powerful and expensive hardware. For beginners we recommend using a tool such as LM Studio. The models listed above are large, and <strong>you need at least 96GB of VRAM</strong> to host them locally. Smaller mixture-of-experts models can run in considerably less memory while still offering a context window large enough for the assistant; see <a href="../local-llm/">Local LLM Hosting</a> for a tested walkthrough on a single machine. The speed and accuracy of OnionAI when hosted locally is based on the hardware that you are using. For the most accurate results we recommend using credits with OnionAI.</p>
 <h2 id="available-tools">Available Tools<a class="headerlink" href="#available-tools" title="Permanent link">¶</a></h2>
 <p>The assistant currently runs in the cloud. In order to reference local information, SOC makes the following tools available to the assistant:</p>
 <ul>
@@ -2899,13 +2911,13 @@
               </div>
 </div>
 </a>
-<a aria-label="Next: Telemetry" class="md-footer__link md-footer__link--next" href="../telemetry/">
+<a aria-label="Next: Local LLM Hosting" class="md-footer__link md-footer__link--next" href="../local-llm/">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
               </span>
 <div class="md-ellipsis">
-                Telemetry
+                Local LLM Hosting
               </div>
 </div>
 <div class="md-footer__button md-icon">
