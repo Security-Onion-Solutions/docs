@@ -1728,6 +1728,17 @@
 </li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Kernels
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
 <a class="md-nav__link md-nav__link--active" href="./">
 <span class="md-ellipsis">
     
@@ -1738,6 +1749,23 @@
     
   </span>
 </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#doing-it-manually">
+<span class="md-ellipsis">
+      
+        Doing It Manually
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../new-disk/">
@@ -2405,6 +2433,21 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#doing-it-manually">
+<span class="md-ellipsis">
+      
+        Doing It Manually
+      
+    </span>
+</a>
+</li>
+</ul>
 </nav>
 </div>
 </div>
@@ -2430,10 +2473,29 @@
 </nav>
 <article class="md-content__inner md-typeset">
 <h1 id="kernels">Kernels<a class="headerlink" href="#kernels" title="Permanent link">¶</a></h1>
-<p>The Security Onion ISO image contains the standard RedHat kernel and the Oracle UEK kernel. It should default to the newer Oracle UEK kernel series. If you don't need the older RedHat kernel series, you may opt to remove it:</p>
-<p></p><div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>sudo dnf remove kernel kernel-core kernel-modules kernel-modules-core kernel-tools kernel-tools-libs
+<p>Security Onion standardizes on the Oracle Unbreakable Enterprise Kernel (UEK). Nodes run the UEK8 (6.x) kernel series, and the standard EL9 RedHat compatible kernel (RHCK, 5.14) is removed once a node is actually running UEK8.</p>
+<p>This is all automatic and you should not need to do anything. Nodes pick up the UEK8 kernel as part of their normal OS updates, and the stock EL9 kernel is removed for you on the next highstate after the node reboots onto UEK8.</p>
+<p>The removal is deliberately deferred until after the reboot. <code>dnf</code> refuses to erase the running kernel, and waiting also means the node has proven it boots on UEK8 before its fallback is deleted. Fresh installs reboot at the end of setup and are cleaned up on the first highstate after that; existing nodes are cleaned up whenever you reboot them.</p>
+<p>These are the packages removed:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>kernel kernel-core kernel-modules kernel-modules-core kernel-tools kernel-tools-libs
 </code></pre></div>
-This can be beneficial in a number of ways. First, you will see fewer reboot prompts. Additionally, this will reduce your disk usage in the /boot partition.<p></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Older UEK7 <code>kernel-uek</code> 5.x packages are not removed. They age out on their own as newer kernels are installed.</p>
+</div>
+<h2 id="doing-it-manually">Doing It Manually<a class="headerlink" href="#doing-it-manually" title="Permanent link">¶</a></h2>
+<p>If a node did not end up on UEK8 on its own, you can run the following command on that node:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>sudo so-kernel-upgrade
+</code></pre></div>
+<p>This installs the UEK8 kernel and makes it the boot default. It does not reboot the node, so you can schedule the reboot yourself. The new kernel does not take effect until you reboot.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The manager mirrors the UEK8 packages and serves them to the rest of the grid. If the manager has not synced them yet, <code>so-kernel-upgrade</code> on the manager will sync them for you; on any other node it will tell you to sync the manager first.</p>
+</div>
+<p>Similarly, if the stock EL9 kernel is still installed on a node that is already running UEK8, you can run the cleanup directly instead of waiting for the next highstate:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>sudo so-kernel-upgrade --cleanup
+</code></pre></div>
+<p>This does nothing unless the node is already running UEK8.</p>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
