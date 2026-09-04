@@ -155,3 +155,63 @@ Your system prompt addendum will be added after Security Onion's default system 
 Superusers can review token usage and conversation history for all users by going to Administration --> AI Metrics. This page provides usage statistics for a given date range. The page starts with a table of usage by user. Clicking a user's binoculars icon on the right hand side will show any sessions the user interacted with during the selected date range, even deleted sessions. Clicking on a session's binoculars icon will show the full conversation. Administrators can adjust who has permissions via RBAC roles.
 
 To provide an accurate history, deleted sessions are retained on the metrics page even after being deleted by the user.
+
+## Memory
+
+OnionAI can utilize its memory system to retain and reference facts disclosed by users when chatting with the assistant. Memory works by scanning sessions in the background looking for new facts and storing them in a database. The memory is then used to provide contextual information to the assistant when it responds to a user's message.
+
+### How Memory Works
+
+The memory system scans sessions in the background extracting, embedding, reconciling, and saving memories to later be referenced when chatting with Onion AI.
+
+First, extraction. The selected sessions have their transcripts given to a Memory agent that parses out useful facts. The agent also identifies the scope of the fact: is it specific to the user who owns the session we just scanned or is it applicable to the entire organization.
+
+These facts are then embedded using an Embed agent. This enables SOC to compare memories and is the heart of how memory works.
+
+!!! NOTE
+    
+    The embedding process is model specific. Memories embedded by one model cannot be accurately compared to memories embedded by any other model. Changing the model used for embedding will render all your previous memories unusable. They will not be deleted and will be accessible if the model is reverted back.
+
+Once embedded, the facts are compared against existing memories on the same topics in a step called Reconcilation. A Reconcile agent will decide how the facts should be added, merged, replaced or removed. The reconcile agent's recommendations are validated before being executed to ensure that user defined memories aren't modified and that the session owner's permissions are respected.
+
+If any facts were rewritten during reconcilation, they are re-embedded before being stored in postgres.
+
+Finally the session is updated indicating that it has been scanned. If new messages are sent in a previously scanned session, memory scans will find and scan only the new messages.
+
+When a user sends a message to the assistant, the memory system will embed the message about to be sent and check for any similar memories. Memories are added to the conversation by being added to the end of the prompt.
+
+### Configuring Memory
+
+| Name | Default Value | Description |
+|---|---|---|
+| `useMemory` | `true` | Enable memory use when sending a message. |
+| `useMemoryScanner` | `false` | Enables the scanning of historical sessions. |
+| `dontScanBefore` | `""` | A date in RFC3339 format (2026-08-31T22:05:48Z) to use as a cutoff point for memory scans. |
+| `memoryScanIntervalSeconds` | `300` | How long between scans the memory scanner waits before scanning again. |
+| `memoryProximityThreshold`  | `0.8` | A similarity threshold that determines how similar a fact must be to a previous memory for it to be considered "similar." |
+| `messageProximityThreshold`  | `0.5` | A similarity threshold that determines how similar a message from a user must be to a stored memory for it to be considered "similar." |
+| `maxUserMemoriesToReconcile` | `20` | The maximum number of user-specific memories to reconcile at once. |
+| `maxGlobalMemoriesToReconcile` | `20` | The maximum number of global memories to reconcile at once. |
+| `maxUserMemoriesToInclude` | `5` | The maximum number of user-specific memories to include when sending a message. |
+| `maxGlobalMemoriesToInclude` | `5` | The maximum number of global memories to include when sending a message. |
+| `memoryModel` | `gemma@SOAI` | The model used to extract facts from sessions. |
+| `memoryPersona` | `""` | Special instructions for the memory agent included in the prompt. |
+| `embedModel` | `amazon.titan-embed-text-v2@SOAI` | The model used to embed facts. |
+| `reconcileModel` | `gemma@SOAI` | The model used to reconcile facts from sessions with existing memories.  |
+| `reconcilePersona` | `""` | Special instructions for the reconcile agent included in the prompt. |
+| `toolUseTurnAttempts` | `12` | When the assistant requests a read-only tool, SOC can approve it automatically. Because the approval can fire before the original request has finished being written to Elasticsearch, SOC will retry the approval up to this many times before giving up. |
+| `toolUseTurnDelayMs` | `175` | The time to wait between auto-approval attempts. Together with the attempts setting, this defines the total grace period SOC allows for the tool request to become available. |
+| `maxMemoryRetries` | `2` | The maximum number of times SOC will attempt to extract memories from sessions before marking the session to be ignored. Increasing this value may retry sessions that haven't been attempted in a long time. |
+
+Memory and the Memory Scanner may be enabled independently. Disabling memory will stop applying memories to prompts on outgoing messages. Disabling the memory scanner will prevent the scanner from extracting memories from previous assistant sessions. The memory scanner marks sessions as it extracts facts from them so that they are not re-scanned in future scans. If a memory scan takes longer than the interval between scans, then at most 1 scan will queue up for processing and it'll begin again immediately after the previous scan finishes.
+
+### How to Write a Good Memory
+
+When entering memories in manually in the Agent Studio, it's important to understand that how the memory is written affects how it'll be used by the memory system.
+
+1. **One fact per memory.** If a memory has multiple facts then matching is harder to accomplish resulting in the memory being accessed less.
+1. **Make each memory self-contained.** It will be read out of context, alone, possibly months later in a conversation about something else. Every memory should make sense to someone who has only that sentence.
+1. **Declarative facts, not instructions.** If you want to give an instruction, then use a prompt instead.
+1. **Present tense, absolute references, durable phrasing.** A memory is read long after it's written and is never automatically updated, so describe how things are rather than how they changed. Prefer "PCAP retention is 90 days (set August 2026)" over "We recently changed retention to 90 days."
+
+To help track your most successful memories, the Agent Studio presents how many times a memory has been accessed and when was the last time it was referenced.
