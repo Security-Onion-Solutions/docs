@@ -2407,6 +2407,15 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#330-20260908-changes">
+<span class="md-ellipsis">
+      
+        3.3.0 [20260908] Changes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#320-20260729-changes">
 <span class="md-ellipsis">
       
@@ -2502,6 +2511,15 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#330-20260908-changes">
+<span class="md-ellipsis">
+      
+        3.3.0 [20260908] Changes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#320-20260729-changes">
 <span class="md-ellipsis">
       
@@ -2546,16 +2564,50 @@
 <article class="md-content__inner md-typeset">
 <h1 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">¶</a></h1>
 <h3 id="known-issues">Known Issues<a class="headerlink" href="#known-issues" title="Permanent link">¶</a></h3>
-<p><a href="../salt/#auto-state-apply">Auto State Apply</a> detects configuration changes saved in <a href="../administration/">Administration</a> --&gt; Configuration and rule updates on the manager node. Files that you create or edit directly under <code>/opt/so/saltstack/local/salt/</code> are not detected. After adding or changing any of the following, apply the relevant state from the manager or wait for the next scheduled highstate (see <a href="../salt/#highstate-interval">Highstate Interval</a>):</p>
-<ul>
-<li><a href="../zeek/">Zeek</a> intel in <code>/opt/so/saltstack/local/salt/zeek/policy/intel/</code></li>
-<li><a href="../zeek/">Zeek</a> custom packages in <code>/opt/so/saltstack/local/salt/zeek/zkg/</code></li>
-<li><a href="../elasticsearch/">Elasticsearch</a> custom ingest parsers in <code>/opt/so/saltstack/local/salt/elasticsearch/files/ingest/</code></li>
-<li><a href="../rbac/">RBAC</a> custom Elastic stack role files in <code>/opt/so/saltstack/local/salt/elasticsearch/roles/</code></li>
-<li><a href="../logstash/">Logstash</a> custom pipeline configuration files in <code>/opt/so/saltstack/local/salt/logstash/pipelines/config/custom/</code></li>
-</ul>
 <p>For all other known issues, please see <a href="https://github.com/Security-Onion-Solutions/securityonion/issues">https://github.com/Security-Onion-Solutions/securityonion/issues</a>.</p>
 <h3 id="release-history">Release History<a class="headerlink" href="#release-history" title="Permanent link">¶</a></h3>
+<h2 id="330-20260908-changes">3.3.0 [20260908] Changes<a class="headerlink" href="#330-20260908-changes" title="Permanent link">¶</a></h2>
+<ul>
+<li>FEATURE: 508 AA - Contrast</li>
+<li>FEATURE: Add subgrid roles for MoM grids</li>
+<li>FEATURE: Advanced Agent Studio</li>
+<li>FEATURE: Agentic memory</li>
+<li>FEATURE: Allow for tuning logstash log.level and log.format <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16183">#16183</a></li>
+<li>FEATURE: Allow for tuning multiple Logstash pipelines in SOC <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15090">#15090</a></li>
+<li>FEATURE: ES Troubleshoot from Grid Screen <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/15432">#15432</a></li>
+<li>FEATURE: Improve keyboard trap handling for 508 compliance</li>
+<li>FEATURE: Initial notification framework</li>
+<li>FEATURE: Onion AI Reports Tools</li>
+<li>FEATURE: Reduce reboot frequency by removing non-UEK kernels <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16208">#16208</a></li>
+<li>FEATURE: Support drag/drop for config list ordering, such as custom queries</li>
+<li>FIX: Avoid highlighting multiple menu entries <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16129">#16129</a></li>
+<li>FIX: Correct API /.well-known/* paths to properly resolve <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16198">#16198</a></li>
+<li>FIX: Hypervisor not running first highstate <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/14947">#14947</a></li>
+<li>FIX: Improve HTTP authorization and security</li>
+<li>FIX: Improve PCAP parsing and viewing</li>
+<li>FIX: Improve upload size enforcement logic <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16197">#16197</a></li>
+<li>FIX: In Cases -&gt; Events tab the Hunt icons link to ?q=[object+Object] instead of valid hunt query <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16177">#16177</a></li>
+<li>FIX: In Hunt interface the Basic Metrics section minimized state does not persist across page refreshes <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16154">#16154</a></li>
+<li>FIX: Local state files not triggering auto state apply <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16136">#16136</a></li>
+<li>FIX: Logrotate for hypervisor</li>
+<li>FIX: Onion AI Reports Font Key Parsing Error</li>
+<li>FIX: Remove usage of scripted fields</li>
+<li>FIX: Re-running so-setup on airgap installs fails</li>
+<li>FIX: so-boot-highstate.service is never enabled on non-manager nodes <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16166">#16166</a></li>
+<li>FIX: SOC Alerts interface in 3.x field and values not selectable, only values are selectable <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16155">#16155</a></li>
+<li>FIX: Soup error due to template DBs collation mismatch <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16138">#16138</a></li>
+<li>FIX: Soup force remote nodes to highstate <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16137">#16137</a></li>
+<li>FIX: Switch telegraf command vars to array <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16020">#16020</a></li>
+<li>FIX: Zeek LogExpireInterval value available in SOC but requires zeekctl cron to be run manually <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16156">#16156</a></li>
+<li>UPGRADE: CyberChef to 11.3.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16128">#16128</a></li>
+<li>UPGRADE: Elasticsearch 9.4.5</li>
+<li>UPGRADE: PrismJS to 1.30 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16134">#16134</a></li>
+<li>UPGRADE: Salt-bootstrap</li>
+<li>UPGRADE: SOC Go dependencies <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16186">#16186</a></li>
+<li>UPGRADE: Strelka Go components to latest commit <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16141">#16141</a></li>
+<li>UPGRADE: Telegraf to 1.39.3 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16196">#16196</a></li>
+<li>UPGRADE: Zeek to 8.0.10 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16171">#16171</a></li>
+</ul>
 <h2 id="320-20260729-changes">3.2.0 [20260729] Changes<a class="headerlink" href="#320-20260729-changes" title="Permanent link">¶</a></h2>
 <ul>
 <li>FEATURE: Initial implementation of agentic framework</li>
