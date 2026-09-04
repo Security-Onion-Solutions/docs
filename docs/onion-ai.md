@@ -103,7 +103,7 @@ Security Onion now supports local models through any OpenAI-compatible endpoint.
 
 ## Hosting Local Models
 
-Hosting your own models requires powerful and expensive hardware. For beginners we recommend using a tool such as LM Studio. **You need at least 96GB of VRAM** to host your own models locally. The speed and accuracy of OnionAI when hosted locally is based on the hardware that you are using. For the most accurate results we recommend using credits with OnionAI.
+Hosting your own models requires powerful and expensive hardware. For beginners we recommend using a tool such as LM Studio. The models listed above are large, and **you need at least 96GB of VRAM** to host them locally. Smaller mixture-of-experts models can run in considerably less memory while still offering a context window large enough for the assistant; see [Local LLM Hosting](local-llm.md) for a tested walkthrough on a single machine. The speed and accuracy of OnionAI when hosted locally is based on the hardware that you are using. For the most accurate results we recommend using credits with OnionAI.
 
 ## Available Tools
 
