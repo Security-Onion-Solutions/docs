@@ -1,0 +1,3183 @@
+<!DOCTYPE html>
+
+<html class="no-js" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://security-onion-solutions.github.io/docs/local-llm/" rel="canonical"/>
+<link href="../onion-ai/" rel="prev"/>
+<link href="../telemetry/" rel="next"/>
+<link href="../images/logo/favicon.ico" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<title>Local LLM Hosting - Security Onion Documentation</title>
+<link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../_static/theme_overrides.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style><link href="../securityonion-docs.pdf" rel="alternate" title="PDF" type="application/pdf"/></head>
+<body data-md-color-accent="blue" data-md-color-primary="indigo" data-md-color-scheme="slate" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#local-llm-hosting">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Security Onion Documentation" class="md-header__button md-logo" data-md-component="logo" href=".." title="Security Onion Documentation">
+<img alt="logo" src="../images/logo/so-logo.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Security Onion Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Local LLM Hosting
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="blue" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="blue" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<a class="md-header-nav__button md-icon" href="../securityonion-docs.pdf" title="PDF">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+<path d="M128,0c-17.6,0-32,14.4-32,32v448c0,17.6,14.4,32,32,32h320c17.6,0,32-14.4,32-32V128L352,0H128z" fill="#E2E5E7"></path>
+<path d="m384 128h96l-128-128v96c0 17.6 14.4 32 32 32z" fill="#B0B7BD"></path>
+<polygon fill="#CAD1D8" points="480 224 384 128 480 128"></polygon>
+<path d="M416,416c0,8.8-7.2,16-16,16H48c-8.8,0-16-7.2-16-16V256c0-8.8,7.2-16,16-16h352c8.8,0,16,7.2,16,16  V416z" fill="#F15642"></path>
+<g fill="#fff">
+<path d="m101.74 303.15c0-4.224 3.328-8.832 8.688-8.832h29.552c16.64 0 31.616 11.136 31.616 32.48 0 20.224-14.976 31.488-31.616 31.488h-21.36v16.896c0 5.632-3.584 8.816-8.192 8.816-4.224 0-8.688-3.184-8.688-8.816v-72.032zm16.88 7.28v31.872h21.36c8.576 0 15.36-7.568 15.36-15.504 0-8.944-6.784-16.368-15.36-16.368h-21.36z"></path>
+<path d="m196.66 384c-4.224 0-8.832-2.304-8.832-7.92v-72.672c0-4.592 4.608-7.936 8.832-7.936h29.296c58.464 0 57.184 88.528 1.152 88.528h-30.448zm8.064-72.912v57.312h21.232c34.544 0 36.08-57.312 0-57.312h-21.232z"></path>
+<path d="m303.87 312.11v20.336h32.624c4.608 0 9.216 4.608 9.216 9.072 0 4.224-4.608 7.68-9.216 7.68h-32.624v26.864c0 4.48-3.184 7.92-7.664 7.92-5.632 0-9.072-3.44-9.072-7.92v-72.672c0-4.592 3.456-7.936 9.072-7.936h44.912c5.632 0 8.96 3.344 8.96 7.936 0 4.096-3.328 8.704-8.96 8.704h-37.248v0.016z"></path>
+</g>
+<path d="m400 432h-304v16h304c8.8 0 16-7.2 16-16v-16c0 8.8-7.2 16-16 16z" fill="#CAD1D8"></path>
+</svg>
+</a></nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Security Onion Documentation" class="md-nav__button md-logo" data-md-component="logo" href=".." title="Security Onion Documentation">
+<img alt="logo" src="../images/logo/so-logo.png"/>
+</a>
+    Security Onion Documentation
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../introduction/">
+<span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../license/">
+<span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../first-time-users/">
+<span class="md-ellipsis">
+    
+  
+    First Time Users
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../getting-started/">
+<span class="md-ellipsis">
+    
+  
+    Getting Started Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../best-practices/">
+<span class="md-ellipsis">
+    
+  
+    Best Practices
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../use-cases/">
+<span class="md-ellipsis">
+    
+  
+    Use Cases
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../architecture/">
+<span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../hardware/">
+<span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../download/">
+<span class="md-ellipsis">
+    
+  
+    Download
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../vmware/">
+<span class="md-ellipsis">
+    
+  
+    VMware
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../virtualbox/">
+<span class="md-ellipsis">
+    
+  
+    VirtualBox
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../proxmox/">
+<span class="md-ellipsis">
+    
+  
+    Proxmox
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../trouble-booting/">
+<span class="md-ellipsis">
+    
+  
+    Trouble Booting
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../airgap/">
+<span class="md-ellipsis">
+    
+  
+    Airgap
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../installation/">
+<span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cloud-amazon/">
+<span class="md-ellipsis">
+    
+  
+    Amazon Cloud
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cloud-azure/">
+<span class="md-ellipsis">
+    
+  
+    Azure Cloud
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cloud-google/">
+<span class="md-ellipsis">
+    
+  
+    Google Cloud
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../configuration/">
+<span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../post-installation/">
+<span class="md-ellipsis">
+    
+  
+    Post Installation
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Security Onion Console
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Security Onion Console
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../security-onion-console/">
+<span class="md-ellipsis">
+    
+  
+    Security Onion Console Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../alerts/">
+<span class="md-ellipsis">
+    
+  
+    Alerts
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../dashboards/">
+<span class="md-ellipsis">
+    
+  
+    Dashboards
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../hunt/">
+<span class="md-ellipsis">
+    
+  
+    Hunt
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cases/">
+<span class="md-ellipsis">
+    
+  
+    Cases
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../detections/">
+<span class="md-ellipsis">
+    
+  
+    Detections
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pcap/">
+<span class="md-ellipsis">
+    
+  
+    PCAP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../grid/">
+<span class="md-ellipsis">
+    
+  
+    Grid
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../downloads/">
+<span class="md-ellipsis">
+    
+  
+    Downloads
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../administration/">
+<span class="md-ellipsis">
+    
+  
+    Administration
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../kibana/">
+<span class="md-ellipsis">
+    
+  
+    Kibana
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../elastic-fleet/">
+<span class="md-ellipsis">
+    
+  
+    Elastic Fleet
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../osquery-manager/">
+<span class="md-ellipsis">
+    
+  
+    Osquery Manager
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../influxdb/">
+<span class="md-ellipsis">
+    
+  
+    InfluxDB
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../postgresql/">
+<span class="md-ellipsis">
+    
+  
+    PostgreSQL
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cyberchef/">
+<span class="md-ellipsis">
+    
+  
+    CyberChef
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../attack-navigator/">
+<span class="md-ellipsis">
+    
+  
+    Attack Navigator
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Security Onion Desktop
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Security Onion Desktop
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../security-onion-desktop/">
+<span class="md-ellipsis">
+    
+  
+    Security Onion Desktop Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../chromium/">
+<span class="md-ellipsis">
+    
+  
+    Chromium
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../networkminer/">
+<span class="md-ellipsis">
+    
+  
+    NetworkMiner
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../wireshark/">
+<span class="md-ellipsis">
+    
+  
+    Wireshark
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Network Visibility
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Network Visibility
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../network-visibility/">
+<span class="md-ellipsis">
+    
+  
+    Network Visibility Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../af-packet/">
+<span class="md-ellipsis">
+    
+  
+    AF-PACKET
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../bpf/">
+<span class="md-ellipsis">
+    
+  
+    BPF
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../full-packet-capture/">
+<span class="md-ellipsis">
+    
+  
+    Full Packet Capture
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../suricata/">
+<span class="md-ellipsis">
+    
+  
+    Suricata
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../zeek/">
+<span class="md-ellipsis">
+    
+  
+    Zeek
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../strelka/">
+<span class="md-ellipsis">
+    
+  
+    Strelka
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../idh/">
+<span class="md-ellipsis">
+    
+  
+    IDH
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Additional Network Visibility
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_9_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_9">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Additional Network Visibility
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../additional-network-visibility/">
+<span class="md-ellipsis">
+    
+  
+    Additional Network Visibility Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../netflow/">
+<span class="md-ellipsis">
+    
+  
+    NetFlow
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cef/">
+<span class="md-ellipsis">
+    
+  
+    CEF
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../iptables/">
+<span class="md-ellipsis">
+    
+  
+    iptables
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../unifi/">
+<span class="md-ellipsis">
+    
+  
+    UniFi
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pfsense/">
+<span class="md-ellipsis">
+    
+  
+    pfSense
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../opnsense/">
+<span class="md-ellipsis">
+    
+  
+    OPNsense
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Host Visibility
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_10_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_10">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Host Visibility
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../host-visibility/">
+<span class="md-ellipsis">
+    
+  
+    Host Visibility Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../elastic-agent/">
+<span class="md-ellipsis">
+    
+  
+    Elastic Agent
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../syslog/">
+<span class="md-ellipsis">
+    
+  
+    Syslog
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sysmon/">
+<span class="md-ellipsis">
+    
+  
+    Sysmon
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../third-party-integrations/">
+<span class="md-ellipsis">
+    
+  
+    Third Party Integrations
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Rules
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_12_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_12">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Rules
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../rules/">
+<span class="md-ellipsis">
+    
+  
+    Rules Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../nids/">
+<span class="md-ellipsis">
+    
+  
+    NIDS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sigma/">
+<span class="md-ellipsis">
+    
+  
+    Sigma
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sigma-logsource-coverage/">
+<span class="md-ellipsis">
+    
+  
+    Sigma Logsource Coverage
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../yara/">
+<span class="md-ellipsis">
+    
+  
+    YARA
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_13" type="checkbox"/>
+<label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Logs
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_13_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_13">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Logs
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../logs/">
+<span class="md-ellipsis">
+    
+  
+    Logs Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ingest/">
+<span class="md-ellipsis">
+    
+  
+    Ingest
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../logstash/">
+<span class="md-ellipsis">
+    
+  
+    Logstash
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../redis/">
+<span class="md-ellipsis">
+    
+  
+    Redis
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../elasticsearch/">
+<span class="md-ellipsis">
+    
+  
+    Elasticsearch
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../elastalert/">
+<span class="md-ellipsis">
+    
+  
+    ElastAlert
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../data-fields/">
+<span class="md-ellipsis">
+    
+  
+    Data Fields
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../alert-data-fields/">
+<span class="md-ellipsis">
+    
+  
+    Alert Data Fields
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../elastalert-fields/">
+<span class="md-ellipsis">
+    
+  
+    ElastAlert Fields
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../zeek-fields/">
+<span class="md-ellipsis">
+    
+  
+    Zeek Fields
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../community-id/">
+<span class="md-ellipsis">
+    
+  
+    Community ID
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../security-onion-console-logs/">
+<span class="md-ellipsis">
+    
+  
+    Security Onion Console Logs
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_14" type="checkbox"/>
+<label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Updating
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_14_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_14">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Updating
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../updating/">
+<span class="md-ellipsis">
+    
+  
+    Updating Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../soup/">
+<span class="md-ellipsis">
+    
+  
+    soup
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../eol/">
+<span class="md-ellipsis">
+    
+  
+    EOL
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_15" type="checkbox"/>
+<label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Accounts
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_15_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_15">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Accounts
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../accounts/">
+<span class="md-ellipsis">
+    
+  
+    Accounts Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../adding-accounts/">
+<span class="md-ellipsis">
+    
+  
+    Adding Accounts
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../disabling-accounts/">
+<span class="md-ellipsis">
+    
+  
+    Disabling Accounts
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../listing-accounts/">
+<span class="md-ellipsis">
+    
+  
+    Listing Accounts
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../passwords/">
+<span class="md-ellipsis">
+    
+  
+    Passwords
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../mfa/">
+<span class="md-ellipsis">
+    
+  
+    MFA
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../rbac/">
+<span class="md-ellipsis">
+    
+  
+    RBAC
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../kratos/">
+<span class="md-ellipsis">
+    
+  
+    Kratos
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../services/">
+<span class="md-ellipsis">
+    
+  
+    Services
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_17" type="checkbox"/>
+<label class="md-nav__link" for="__nav_17" id="__nav_17_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Customizing
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_17_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_17">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Customizing
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../customizing/">
+<span class="md-ellipsis">
+    
+  
+    Customizing Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../security-onion-console-customization/">
+<span class="md-ellipsis">
+    
+  
+    Security Onion Console Customization
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../nginx/">
+<span class="md-ellipsis">
+    
+  
+    nginx
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../proxy/">
+<span class="md-ellipsis">
+    
+  
+    Proxy
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../firewall/">
+<span class="md-ellipsis">
+    
+  
+    Firewall
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../email/">
+<span class="md-ellipsis">
+    
+  
+    Email
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ntp/">
+<span class="md-ellipsis">
+    
+  
+    NTP
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ssh/">
+<span class="md-ellipsis">
+    
+  
+    SSH
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../hostname/">
+<span class="md-ellipsis">
+    
+  
+    Hostname
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ip-address/">
+<span class="md-ellipsis">
+    
+  
+    IP Address
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../dns/">
+<span class="md-ellipsis">
+    
+  
+    DNS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../url-base/">
+<span class="md-ellipsis">
+    
+  
+    URL Base
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_18" type="checkbox"/>
+<label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Tricks and Tips
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_18_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_18">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Tricks and Tips
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tricks-and-tips/">
+<span class="md-ellipsis">
+    
+  
+    Tricks and Tips Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../backup/">
+<span class="md-ellipsis">
+    
+  
+    Backup
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../docker/">
+<span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../jupyter/">
+<span class="md-ellipsis">
+    
+  
+    Jupyter
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../kernels/">
+<span class="md-ellipsis">
+    
+  
+    Kernels
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../new-disk/">
+<span class="md-ellipsis">
+    
+  
+    New Disk
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../network-installation/">
+<span class="md-ellipsis">
+    
+  
+    Network Installation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pcaps/">
+<span class="md-ellipsis">
+    
+  
+    PCAPs
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../performance/">
+<span class="md-ellipsis">
+    
+  
+    Performance
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../removing-a-node/">
+<span class="md-ellipsis">
+    
+  
+    Removing a Node
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../salt/">
+<span class="md-ellipsis">
+    
+  
+    Salt
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../syslog-output/">
+<span class="md-ellipsis">
+    
+  
+    Syslog Output
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../time-zones/">
+<span class="md-ellipsis">
+    
+  
+    Time Zones
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_19" type="checkbox"/>
+<label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Utilities
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_19_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_19">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Utilities
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../utilities/">
+<span class="md-ellipsis">
+    
+  
+    Utilities Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../jq/">
+<span class="md-ellipsis">
+    
+  
+    jq
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../so-allow/">
+<span class="md-ellipsis">
+    
+  
+    so-allow
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../so-detections-overrides-import/">
+<span class="md-ellipsis">
+    
+  
+    so-detections-overrides-import
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../so-elastic-auth-password-reset/">
+<span class="md-ellipsis">
+    
+  
+    so-elastic-auth-password-reset
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../so-elasticsearch-query/">
+<span class="md-ellipsis">
+    
+  
+    so-elasticsearch-query
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../so-import-pcap/">
+<span class="md-ellipsis">
+    
+  
+    so-import-pcap
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../so-import-evtx/">
+<span class="md-ellipsis">
+    
+  
+    so-import-evtx
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../so-monitor-add/">
+<span class="md-ellipsis">
+    
+  
+    so-monitor-add
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../so-status/">
+<span class="md-ellipsis">
+    
+  
+    so-status
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../so-test/">
+<span class="md-ellipsis">
+    
+  
+    so-test
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../so-user/">
+<span class="md-ellipsis">
+    
+  
+    so-user
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_20" type="checkbox"/>
+<label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Help
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_20_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_20">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Help
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../help/">
+<span class="md-ellipsis">
+    
+  
+    Help Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../faq/">
+<span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../directory/">
+<span class="md-ellipsis">
+    
+  
+    Directory
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../community-support/">
+<span class="md-ellipsis">
+    
+  
+    Community Support
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../support/">
+<span class="md-ellipsis">
+    
+  
+    Support
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../help-wanted/">
+<span class="md-ellipsis">
+    
+  
+    Help Wanted
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_21" type="checkbox"/>
+<label class="md-nav__link" for="__nav_21" id="__nav_21_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Security Onion Pro
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_21_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_21">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Security Onion Pro
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../security-onion-pro/">
+<span class="md-ellipsis">
+    
+  
+    Security Onion Pro Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../oidc/">
+<span class="md-ellipsis">
+    
+  
+    OIDC
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../luks/">
+<span class="md-ellipsis">
+    
+  
+    LUKS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../fips/">
+<span class="md-ellipsis">
+    
+  
+    FIPS
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../stig/">
+<span class="md-ellipsis">
+    
+  
+    STIG
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../notifications/">
+<span class="md-ellipsis">
+    
+  
+    Notifications
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../kafka/">
+<span class="md-ellipsis">
+    
+  
+    Kafka
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../connect-api/">
+<span class="md-ellipsis">
+    
+  
+    Security Onion API
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../active-query-management/">
+<span class="md-ellipsis">
+    
+  
+    Active Query Management
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../manager-of-managers/">
+<span class="md-ellipsis">
+    
+  
+    Manager of Managers
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../mcp-server/">
+<span class="md-ellipsis">
+    
+  
+    MCP Server
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../security-onion-app-for-splunk/">
+<span class="md-ellipsis">
+    
+  
+    Security Onion App for Splunk
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../hypervisor/">
+<span class="md-ellipsis">
+    
+  
+    Hypervisor
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../reports/">
+<span class="md-ellipsis">
+    
+  
+    Reports
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../onion-ai/">
+<span class="md-ellipsis">
+    
+  
+    Onion AI
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Local LLM Hosting
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Local LLM Hosting
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hardware">
+<span class="md-ellipsis">
+      
+        Hardware
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verify-gpu-access">
+<span class="md-ellipsis">
+      
+        Verify GPU Access
+      
+    </span>
+</a>
+<nav aria-label="Verify GPU Access" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#available-gpu-memory">
+<span class="md-ellipsis">
+      
+        Available GPU Memory
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#install-llamacpp">
+<span class="md-ellipsis">
+      
+        Install llama.cpp
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#choose-a-model">
+<span class="md-ellipsis">
+      
+        Choose a Model
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#generate-an-api-key">
+<span class="md-ellipsis">
+      
+        Generate an API Key
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#grant-the-service-access-to-the-gpu">
+<span class="md-ellipsis">
+      
+        Grant the Service Access to the GPU
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configure-the-server">
+<span class="md-ellipsis">
+      
+        Configure the Server
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#start-the-server">
+<span class="md-ellipsis">
+      
+        Start the Server
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#network-access">
+<span class="md-ellipsis">
+      
+        Network Access
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connect-to-onion-ai">
+<span class="md-ellipsis">
+      
+        Connect to Onion AI
+      
+    </span>
+</a>
+<nav aria-label="Connect to Onion AI" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#add-the-adapter">
+<span class="md-ellipsis">
+      
+        Add the Adapter
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#add-the-model">
+<span class="md-ellipsis">
+      
+        Add the Model
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reasoning-output">
+<span class="md-ellipsis">
+      
+        Reasoning Output
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verify-the-endpoint">
+<span class="md-ellipsis">
+      
+        Verify the Endpoint
+      
+    </span>
+</a>
+<nav aria-label="Verify the Endpoint" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#confirm-tool-calling">
+<span class="md-ellipsis">
+      
+        Confirm Tool Calling
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-expectations">
+<span class="md-ellipsis">
+      
+        Performance Expectations
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#troubleshooting">
+<span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../telemetry/">
+<span class="md-ellipsis">
+    
+  
+    Telemetry
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../security/">
+<span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../software-bill-of-materials/">
+<span class="md-ellipsis">
+    
+  
+    Software Bill of Materials
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../release-notes/">
+<span class="md-ellipsis">
+    
+  
+    Release Notes
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../appendix/">
+<span class="md-ellipsis">
+    
+  
+    Appendix
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cheat-sheet/">
+<span class="md-ellipsis">
+    
+  
+    Cheat Sheet
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#hardware">
+<span class="md-ellipsis">
+      
+        Hardware
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verify-gpu-access">
+<span class="md-ellipsis">
+      
+        Verify GPU Access
+      
+    </span>
+</a>
+<nav aria-label="Verify GPU Access" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#available-gpu-memory">
+<span class="md-ellipsis">
+      
+        Available GPU Memory
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#install-llamacpp">
+<span class="md-ellipsis">
+      
+        Install llama.cpp
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#choose-a-model">
+<span class="md-ellipsis">
+      
+        Choose a Model
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#generate-an-api-key">
+<span class="md-ellipsis">
+      
+        Generate an API Key
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#grant-the-service-access-to-the-gpu">
+<span class="md-ellipsis">
+      
+        Grant the Service Access to the GPU
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configure-the-server">
+<span class="md-ellipsis">
+      
+        Configure the Server
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#start-the-server">
+<span class="md-ellipsis">
+      
+        Start the Server
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#network-access">
+<span class="md-ellipsis">
+      
+        Network Access
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#connect-to-onion-ai">
+<span class="md-ellipsis">
+      
+        Connect to Onion AI
+      
+    </span>
+</a>
+<nav aria-label="Connect to Onion AI" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#add-the-adapter">
+<span class="md-ellipsis">
+      
+        Add the Adapter
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#add-the-model">
+<span class="md-ellipsis">
+      
+        Add the Model
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reasoning-output">
+<span class="md-ellipsis">
+      
+        Reasoning Output
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verify-the-endpoint">
+<span class="md-ellipsis">
+      
+        Verify the Endpoint
+      
+    </span>
+</a>
+<nav aria-label="Verify the Endpoint" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#confirm-tool-calling">
+<span class="md-ellipsis">
+      
+        Confirm Tool Calling
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-expectations">
+<span class="md-ellipsis">
+      
+        Performance Expectations
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#troubleshooting">
+<span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<nav aria-label="Navigation" class="md-path">
+<ol class="md-path__list">
+<li class="md-path__item">
+<a class="md-path__link" href="..">
+<span class="md-ellipsis">
+    About
+  </span>
+</a>
+</li>
+<li class="md-path__item">
+<a class="md-path__link" href="../security-onion-pro/">
+<span class="md-ellipsis">
+    Security Onion Pro
+  </span>
+</a>
+</li>
+</ol>
+</nav>
+<article class="md-content__inner md-typeset">
+<h1 id="local-llm-hosting">Local LLM Hosting<a class="headerlink" href="#local-llm-hosting" title="Permanent link">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a href="../onion-ai/">Onion AI</a> is an enterprise-level feature of Security Onion. Contact Security Onion Solutions, LLC via our website at <a href="https://securityonion.com/pro">https://securityonion.com/pro</a> for more information about purchasing a <a href="../security-onion-pro/">Security Onion Pro</a> license.</p>
+</div>
+<p><a href="../onion-ai/">Onion AI</a> can connect to a model you host yourself through the <em>OpenAI Chat</em> adapter. This page walks through building such an endpoint on a single AMD Strix Halo machine using <code>llama.cpp</code>, which is packaged and GPU-accelerated on that platform.</p>
+<p>The result is an OpenAI-compatible API on your own network, protected by an API key, serving a model with a context window large enough for the assistant to work with.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Hosting your own model is optional. A local model will not match the accuracy of the proprietary foundational models available through the SOAI adapter. See <a href="../onion-ai/#local-model-considerations">Local Model Considerations</a> before deciding.</p>
+</div>
+<h2 id="hardware">Hardware<a class="headerlink" href="#hardware" title="Permanent link">¶</a></h2>
+<p>The reference platform for this guide is an AMD Strix Halo system (Ryzen AI Max series) with 128GB of unified memory.</p>
+<p>Strix Halo is a good fit for this task because its memory is shared between the CPU and the integrated GPU. Rather than being limited to the memory on a discrete graphics card, the GPU can address the bulk of system RAM, which is what makes it possible to hold a large model and a large context window at once on a single, relatively inexpensive machine.</p>
+<p>This guide assumes the AMD Ryzen AI Developer Platform operating system, which is Debian-based and ships with the ROCm stack and GPU-enabled <code>llama.cpp</code> packages already available.</p>
+<h2 id="verify-gpu-access">Verify GPU Access<a class="headerlink" href="#verify-gpu-access" title="Permanent link">¶</a></h2>
+<p>Before installing anything, confirm the GPU is visible to the ROCm backend:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>llama-cli<span class="w"> </span>--list-devices
+</code></pre></div>
+<p>You should see a ROCm device with most of your system memory available to it:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>Available devices:
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>  ROCm0: Radeon 8060S Graphics (96454 MiB, 124565 MiB free)
+</code></pre></div>
+<p>If no ROCm device is listed, the GPU backend is not working and nothing later in this guide will run on the GPU.</p>
+<h3 id="available-gpu-memory">Available GPU Memory<a class="headerlink" href="#available-gpu-memory" title="Permanent link">¶</a></h3>
+<p>The amount of memory the GPU may address is the GTT (Graphics Translation Table) size:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>cat<span class="w"> </span>/sys/class/drm/card0/device/mem_info_gtt_total
+</code></pre></div>
+<p>On the reference platform this reports roughly 101GB out of 128GB of system memory, which is ample and requires no tuning. If your system reports a much smaller value, you can raise it with the <code>amdgpu.gttsize</code> and <code>ttm.pages_limit</code> kernel parameters, or by increasing the memory allocated to graphics in your system firmware.</p>
+<h2 id="install-llamacpp">Install llama.cpp<a class="headerlink" href="#install-llamacpp" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>llama.cpp
+</code></pre></div>
+<p>This is a small metapackage that pulls in <code>llama.cpp-tools</code>, which provides <code>llama-server</code> and <code>llama-cli</code>. The HIP backend that provides GPU acceleration comes from the same vendor repository, so it stays current through normal system updates.</p>
+<p>The package also installs a <code>llama-server</code> systemd service, which is what you will configure below rather than running the server by hand.</p>
+<h2 id="choose-a-model">Choose a Model<a class="headerlink" href="#choose-a-model" title="Permanent link">¶</a></h2>
+<p>This guide uses <strong>Gemma 4 26B A4B</strong>, a mixture-of-experts model with 26 billion total parameters but only about 4 billion active per token. That combination suits this hardware well: the full model must fit in memory, but the amount of data read per generated token stays small, which is what governs speed on a memory-bandwidth-limited system.</p>
+<p>It also supports a 262,144 token context window, comfortably above the 128k minimum recommended for the assistant.</p>
+<p>Pre-converted GGUF files are published by Unsloth. Pick a quantization based on how you want to trade accuracy against speed and memory:</p>
+<table>
+<thead>
+<tr>
+<th>Quantization</th>
+<th>Size</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>unsloth/gemma-4-26B-A4B-it-qat-GGUF:UD-Q4_K_XL</code></td>
+<td>14.2 GB</td>
+<td>Quantization-aware trained by Google. Best quality available at 4-bit, and the fastest option.</td>
+</tr>
+<tr>
+<td><code>unsloth/gemma-4-26B-A4B-it-GGUF:UD-Q4_K_M</code></td>
+<td>16.9 GB</td>
+<td>Standard 4-bit.</td>
+</tr>
+<tr>
+<td><code>unsloth/gemma-4-26B-A4B-it-GGUF:Q8_0</code></td>
+<td>26.9 GB</td>
+<td>Effectively indistinguishable from full precision. The recommended default when you have the memory.</td>
+</tr>
+<tr>
+<td><code>unsloth/gemma-4-26B-A4B-it-GGUF:BF16</code></td>
+<td>50.5 GB</td>
+<td>Full precision. Fits, but offers no meaningful accuracy gain over <code>Q8_0</code> while running slower.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Start with <code>Q8_0</code>. On a 128GB machine it leaves plenty of room for a full-size context window, and accuracy matters more than raw speed for security analysis. Move to the QAT 4-bit build if you need faster responses or want to leave more memory free.</p>
+</div>
+<h2 id="generate-an-api-key">Generate an API Key<a class="headerlink" href="#generate-an-api-key" title="Permanent link">¶</a></h2>
+<p>Never expose an inference endpoint without authentication. Generate a random key and store it in a file that only the service can read:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>sudo<span class="w"> </span>install<span class="w"> </span>-d<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>/etc/llama-server
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>openssl<span class="w"> </span>rand<span class="w"> </span>-hex<span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/llama-server/api-key<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>sudo<span class="w"> </span>chown<span class="w"> </span>root:_llama-server<span class="w"> </span>/etc/llama-server/api-key
+<a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">0640</span><span class="w"> </span>/etc/llama-server/api-key
+</code></pre></div>
+<p>Display the key when you need it for the Onion AI adapter configuration:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>sudo<span class="w"> </span>cat<span class="w"> </span>/etc/llama-server/api-key
+</code></pre></div>
+<h2 id="grant-the-service-access-to-the-gpu">Grant the Service Access to the GPU<a class="headerlink" href="#grant-the-service-access-to-the-gpu" title="Permanent link">¶</a></h2>
+<p>The packaged service runs as the unprivileged <code>_llama-server</code> user. Interactive login sessions are granted access to the GPU devices automatically through an ACL, but system services are not, so the service account must be added to the <code>render</code> and <code>video</code> groups:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>render,video<span class="w"> </span>_llama-server
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This step is easy to miss. Without it the service starts and appears healthy, but silently falls back to CPU inference. The giveaway is <code>failed to initialize ROCm: no ROCm-capable device is detected</code> in the service log, followed by <code>no usable GPU found, --gpu-layers option will be ignored</code>. On this hardware, CPU-only inference is too slow to be usable.</p>
+</div>
+<h2 id="configure-the-server">Configure the Server<a class="headerlink" href="#configure-the-server" title="Permanent link">¶</a></h2>
+<p>The service reads its settings from <code>/etc/default/llama-server</code> as <code>LLAMA_ARG_*</code> environment variables, each corresponding to a <code>llama-server</code> command line option. Replace the contents of that file with:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="nv">LLAMA_ARG_HOST</span><span class="o">=</span><span class="m">0</span>.0.0.0
+<a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="nv">LLAMA_ARG_PORT</span><span class="o">=</span><span class="m">8080</span>
+<a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="nv">LLAMA_ARG_HF_REPO</span><span class="o">=</span>unsloth/gemma-4-26B-A4B-it-GGUF:Q8_0
+<a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="nv">LLAMA_ARG_ALIAS</span><span class="o">=</span>gemma-4-26b
+<a href="#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="nv">LLAMA_ARG_CTX_SIZE</span><span class="o">=</span><span class="m">262144</span>
+<a href="#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="nv">LLAMA_ARG_N_GPU_LAYERS</span><span class="o">=</span><span class="m">99</span>
+<a href="#__codelineno-7-7" id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="nv">LLAMA_ARG_FLASH_ATTN</span><span class="o">=</span>on
+<a href="#__codelineno-7-8" id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="nv">LLAMA_ARG_N_PARALLEL</span><span class="o">=</span><span class="m">1</span>
+<a href="#__codelineno-7-9" id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="nv">LLAMA_ARG_API_KEY_FILE</span><span class="o">=</span>/etc/llama-server/api-key
+</code></pre></div>
+<p>What these do:</p>
+<ul>
+<li><strong><code>LLAMA_ARG_HOST</code></strong> -- binds to all interfaces so the Security Onion manager can reach the endpoint. See <a href="#network-access">Network Access</a> below.</li>
+<li><strong><code>LLAMA_ARG_HF_REPO</code></strong> -- the model to serve. It is downloaded automatically on first start into <code>/var/cache/llama-server</code>.</li>
+<li><strong><code>LLAMA_ARG_ALIAS</code></strong> -- the name the API reports for the model. This is the value you will enter as the model identifier in Onion AI.</li>
+<li><strong><code>LLAMA_ARG_CTX_SIZE</code></strong> -- the context window, in tokens. <code>262144</code> is the maximum this model supports.</li>
+<li><strong><code>LLAMA_ARG_N_GPU_LAYERS</code></strong> -- any value at or above the model's layer count offloads the whole model to the GPU.</li>
+<li><strong><code>LLAMA_ARG_N_PARALLEL</code></strong> -- how many requests are served concurrently. The context window is divided among these slots, so leave it at <code>1</code> to give a single conversation the entire window.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not set <code>LLAMA_ARG_SWA_FULL</code>. Most of this model's layers use sliding-window attention, and leaving that option off allows the server to allocate a much smaller cache for them. Enabling it would make a 262,144 token context far more expensive in memory for no benefit.</p>
+</div>
+<p>Tool calling, which the assistant depends on, requires the Jinja chat template engine. It is enabled by default, so no setting is needed, but do not disable it.</p>
+<h2 id="start-the-server">Start the Server<a class="headerlink" href="#start-the-server" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>llama-server
+</code></pre></div>
+<p>The first start downloads the model, which takes a while. Watch its progress:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>llama-server<span class="w"> </span>-f
+</code></pre></div>
+<p>Once the model has loaded, confirm the server is answering:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="k">$(</span>sudo<span class="w"> </span>cat<span class="w"> </span>/etc/llama-server/api-key<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">  </span>http://127.0.0.1:8080/v1/models
+</code></pre></div>
+<h2 id="network-access">Network Access<a class="headerlink" href="#network-access" title="Permanent link">¶</a></h2>
+<p>The Security Onion manager connects to this endpoint over your network, so the port must be reachable from it.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The configuration above serves plain HTTP. The API key is sent as a bearer token in clear text and is readable by anyone who can observe the traffic, as are the prompts and responses, which will contain data from your grid.</p>
+<p>Restrict access to the manager and terminate TLS in front of the server before using this outside an isolated lab network.</p>
+</div>
+<p>Limit which hosts may reach the port. If the machine has no firewall configured, allowing only the manager is a reasonable starting point:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>sudo<span class="w"> </span>nft<span class="w"> </span>add<span class="w"> </span>table<span class="w"> </span>inet<span class="w"> </span>filter
+<a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a>sudo<span class="w"> </span>nft<span class="w"> </span>add<span class="w"> </span>chain<span class="w"> </span>inet<span class="w"> </span>filter<span class="w"> </span>input<span class="w"> </span><span class="s1">'{ type filter hook input priority 0; }'</span>
+<a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a>sudo<span class="w"> </span>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>inet<span class="w"> </span>filter<span class="w"> </span>input<span class="w"> </span>tcp<span class="w"> </span>dport<span class="w"> </span><span class="m">8080</span><span class="w"> </span>ip<span class="w"> </span>saddr<span class="w"> </span>!<span class="o">=</span><span class="w"> </span>&lt;MANAGER_IP&gt;<span class="w"> </span>drop
+</code></pre></div>
+<p>For anything beyond a lab, put a reverse proxy such as nginx in front of <code>llama-server</code> to terminate TLS, and bind <code>llama-server</code> itself to <code>127.0.0.1</code> by setting <code>LLAMA_ARG_HOST=127.0.0.1</code>.</p>
+<h2 id="connect-to-onion-ai">Connect to Onion AI<a class="headerlink" href="#connect-to-onion-ai" title="Permanent link">¶</a></h2>
+<p>With the endpoint running, configure Security Onion to use it. This mirrors the general instructions in <a href="../onion-ai/#configuration">Onion AI</a>.</p>
+<h3 id="add-the-adapter">Add the Adapter<a class="headerlink" href="#add-the-adapter" title="Permanent link">¶</a></h3>
+<p>Go to Administration --&gt; Configuration, turn on <em>Show advanced settings</em> in the Options at the top of the page, and navigate to soc --&gt; config --&gt; server --&gt; modules --&gt; assistant --&gt; adapters. Add an adapter:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Adapter Name</td>
+<td><code>local</code></td>
+</tr>
+<tr>
+<td>Protocol</td>
+<td><em>OpenAI Chat</em></td>
+</tr>
+<tr>
+<td>API Url</td>
+<td><code>http://&lt;LLM_HOST_IP&gt;:8080/v1/</code></td>
+</tr>
+<tr>
+<td>API Key</td>
+<td>the contents of <code>/etc/llama-server/api-key</code></td>
+</tr>
+<tr>
+<td>Health Timeout Seconds</td>
+<td><code>120</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use the <em>OpenAI Chat</em> adapter, not <em>OpenAI Responses</em>. <code>llama-server</code> implements the Chat Completions protocol.</p>
+<p>A generous health timeout is appropriate here. A locally hosted model on this class of hardware responds more slowly than a cloud provider, particularly when processing a large context.</p>
+</div>
+<h3 id="add-the-model">Add the Model<a class="headerlink" href="#add-the-model" title="Permanent link">¶</a></h3>
+<p>Navigate to soc --&gt; config --&gt; server --&gt; client --&gt; assistant --&gt; availableModels and add an entry:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td><code>Gemma 4 26B (local)</code></td>
+</tr>
+<tr>
+<td>Adapter</td>
+<td><code>local</code></td>
+</tr>
+<tr>
+<td>Model</td>
+<td><code>gemma-4-26b</code></td>
+</tr>
+</tbody>
+</table>
+<p>The model identifier must match the <code>LLAMA_ARG_ALIAS</code> value you configured, since that is the name the server reports over the API.</p>
+<p>Finally, make sure the assistant itself is enabled at soc --&gt; config --&gt; server --&gt; client --&gt; assistant --&gt; enabled, then open the assistant in SOC and select your new model.</p>
+<h2 id="reasoning-output">Reasoning Output<a class="headerlink" href="#reasoning-output" title="Permanent link">¶</a></h2>
+<p>Gemma 4 is a reasoning model. It works through a problem before committing to an answer, and <code>llama-server</code> returns that internal reasoning in a separate <code>reasoning_content</code> field, leaving <code>content</code> empty until the reasoning is finished.</p>
+<p>The practical consequence is that a request must be allowed enough tokens to finish thinking <em>and</em> answer. If the limit is too low, the response comes back with <code>finish_reason</code> of <code>length</code>, an empty <code>content</code>, and the answer stranded mid-thought. A short question can easily spend a few hundred tokens reasoning before producing a one-sentence reply.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you see empty responses in the assistant, this is the first thing to check. Raise the token limit rather than assuming the model or the connection is broken.</p>
+</div>
+<h2 id="verify-the-endpoint">Verify the Endpoint<a class="headerlink" href="#verify-the-endpoint" title="Permanent link">¶</a></h2>
+<p>Confirm authentication is enforced. A request with no key, or the wrong key, must be rejected:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">"%{http_code}\n"</span><span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="w">  </span>http://127.0.0.1:8080/v1/chat/completions<span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"model":"gemma-4-26b","messages":[{"role":"user","content":"hi"}],"max_tokens":5}'</span>
+</code></pre></div>
+<p>This should print <code>401</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>/v1/models</code> endpoint is deliberately not protected by the API key and will answer without one. It exposes only the model name. Inference endpoints require the key.</p>
+</div>
+<p>Now make a real request:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="k">$(</span>sudo<span class="w"> </span>cat<span class="w"> </span>/etc/llama-server/api-key<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="w">  </span>http://127.0.0.1:8080/v1/chat/completions<span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-13-4" id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"model":"gemma-4-26b","messages":[{"role":"user","content":"In one sentence, what is Zeek used for?"}],"max_tokens":2000}'</span>
+</code></pre></div>
+<p>The response includes a <code>timings</code> object reporting <code>prompt_per_second</code> and <code>predicted_per_second</code>, which is the simplest way to measure throughput on your own hardware.</p>
+<h3 id="confirm-tool-calling">Confirm Tool Calling<a class="headerlink" href="#confirm-tool-calling" title="Permanent link">¶</a></h3>
+<p>The assistant relies on tools such as <code>query_events</code> and <code>ack_alerts</code> to reach data in your grid, so tool calling has to work. Send a request with a tool definition and confirm the model responds with a <code>tool_calls</code> entry rather than plain text:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="k">$(</span>sudo<span class="w"> </span>cat<span class="w"> </span>/etc/llama-server/api-key<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="w">  </span>http://127.0.0.1:8080/v1/chat/completions<span class="w"> </span>-d<span class="w"> </span><span class="s1">'{</span>
+<a href="#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="s1">    "model": "gemma-4-26b",</span>
+<a href="#__codelineno-14-5" id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="s1">    "messages": [{"role":"user","content":"Are there alerts from source IP 10.1.2.3 in the last 24 hours? Use the available tools."}],</span>
+<a href="#__codelineno-14-6" id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="s1">    "tools": [{"type":"function","function":{</span>
+<a href="#__codelineno-14-7" id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="s1">      "name":"query_events",</span>
+<a href="#__codelineno-14-8" id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="s1">      "description":"Query security events from the local Security Onion instance.",</span>
+<a href="#__codelineno-14-9" id="__codelineno-14-9" name="__codelineno-14-9"></a><span class="s1">      "parameters":{"type":"object","properties":{"query":{"type":"string"},"range":{"type":"string"}},"required":["query"]}</span>
+<a href="#__codelineno-14-10" id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="s1">    }}],</span>
+<a href="#__codelineno-14-11" id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="s1">    "max_tokens": 2000</span>
+<a href="#__codelineno-14-12" id="__codelineno-14-12" name="__codelineno-14-12"></a><span class="s1">  }'</span>
+</code></pre></div>
+<p>A correct result contains a <code>tool_calls</code> array naming <code>query_events</code> with populated arguments.</p>
+<h2 id="performance-expectations">Performance Expectations<a class="headerlink" href="#performance-expectations" title="Permanent link">¶</a></h2>
+<p>The following were measured on the reference platform serving the <code>Q8_0</code> build with a 262,144 token context window. Your results will vary with hardware and quantization.</p>
+<table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Memory in use</td>
+<td>~32 GB of unified memory (26.9 GB of weights, the remainder cache and buffers)</td>
+</tr>
+<tr>
+<td>Generation, short context</td>
+<td>~41 tokens/sec</td>
+</tr>
+<tr>
+<td>Generation, ~193,000 token context</td>
+<td>~22 tokens/sec</td>
+</tr>
+<tr>
+<td>Prompt processing, bulk</td>
+<td>~850 tokens/sec initially, ~228 tokens/sec averaged over a 193,000 token prompt</td>
+</tr>
+</tbody>
+</table>
+<p>Two characteristics of this hardware are worth planning around.</p>
+<p><strong>Prompt processing slows as the context fills.</strong> Bulk prompt processing starts around 850 tokens/sec but falls steadily with depth. A 193,139 token prompt took roughly 14 minutes to process before generation began, and generation itself ran at about half the speed it does on a short prompt. Large contexts are practical, but they are not fast. This is the main reason to set a generous Health Timeout on the adapter.</p>
+<p><strong>Memory is not the limiting factor here.</strong> The model and a full-size context together use roughly a third of the available memory, which is why a 262,144 token window is practical on this machine. There is room for a larger model or additional concurrent slots if you need them.</p>
+<p>The context window is usable in practice, not just allocatable: in testing, a fact placed at the very beginning of a 193,139 token prompt was retrieved correctly when asked about at the end.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>LLAMA_ARG_N_PARALLEL</code> divides the context window among concurrent slots rather than adding capacity. Two slots on a 262,144 token window give each request 131,072 tokens. Raise the context size alongside the slot count if you need several analysts working at once with large contexts.</p>
+</div>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">¶</a></h2>
+<p>Check the service log first:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a>journalctl<span class="w"> </span>-u<span class="w"> </span>llama-server<span class="w"> </span>-n<span class="w"> </span><span class="m">100</span><span class="w"> </span>--no-pager
+</code></pre></div>
+<p><strong><code>failed to initialize ROCm: no ROCm-capable device is detected</code></strong>, followed by <code>no usable GPU found, --gpu-layers option will be ignored</code></p>
+<p>The service account cannot reach the GPU devices. Confirm it is in the right groups and restart:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a>id<span class="w"> </span>-nG<span class="w"> </span>_llama-server
+<a href="#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>render,video<span class="w"> </span>_llama-server
+<a href="#__codelineno-16-3" id="__codelineno-16-3" name="__codelineno-16-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>llama-server
+</code></pre></div>
+<p>Note that running <code>llama-cli --list-devices</code> from your own shell may still show the GPU even while the service cannot use it, because interactive sessions get access through a separate mechanism. Always confirm against the service log.</p>
+<p><strong><code>request (N tokens) exceeds the available context size (262144 tokens)</code></strong></p>
+<p>The prompt is larger than the configured window. Either reduce what is being sent or raise <code>LLAMA_ARG_CTX_SIZE</code>, keeping in mind the model's own 262,144 token limit.</p>
+<p><strong>Responses are empty and <code>finish_reason</code> is <code>length</code></strong></p>
+<p>The token limit was reached while the model was still reasoning. See <a href="#reasoning-output">Reasoning Output</a>.</p>
+<p><strong>The service starts but the model never loads</strong></p>
+<p>The first start downloads the model, which is tens of gigabytes and can take a long time. Watch the cache directory grow:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a>sudo<span class="w"> </span>du<span class="w"> </span>-sh<span class="w"> </span>/var/cache/llama-server
+</code></pre></div>
+<p><strong>Onion AI reports the adapter as unhealthy</strong></p>
+<p>Confirm the manager can reach the port, and raise the adapter's Health Timeout. A local model can take longer to respond than the default timeout allows, particularly on a large context.</p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Onion AI" class="md-footer__link md-footer__link--prev" href="../onion-ai/">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Previous
+              </span>
+<div class="md-ellipsis">
+                Onion AI
+              </div>
+</div>
+</a>
+<a aria-label="Next: Telemetry" class="md-footer__link md-footer__link--next" href="../telemetry/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                Next
+              </span>
+<div class="md-ellipsis">
+                Telemetry
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Security Onion Solutions, LLC
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/Security-Onion-Solutions" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+<a class="md-social__link" href="https://twitter.com/securityonion" rel="noopener" target="_blank" title="twitter.com">
+<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M459.4 151.7c.3 4.5.3 9.1.3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103v-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53C87.4 130.8 165 172.4 252.1 176.9c-1.6-7.8-2.6-15.9-2.6-24C249.5 95.1 296.3 48 354.4 48c30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3"></path></svg>
+</a>
+<a class="md-social__link" href="https://securityonion.com/youtube" rel="noopener" target="_blank" title="securityonion.com">
+<svg viewbox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M549.7 124.1c-6.2-23.7-24.8-42.3-48.3-48.6C458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5c-23.5 6.3-42 24.9-48.3 48.6C15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8C117.3 448 288.1 448 288.1 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6V175.2l142.7 81.2z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script src="../_static/theme_overrides.js"></script>
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

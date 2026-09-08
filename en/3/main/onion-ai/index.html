@@ -5,7 +5,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://security-onion-solutions.github.io/docs/onion-ai/" rel="canonical"/>
 <link href="../reports/" rel="prev"/>
-<link href="../telemetry/" rel="next"/>
+<link href="../local-llm/" rel="next"/>
 <link href="../images/logo/favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
 <title>Onion AI - Security Onion Documentation</title>
@@ -1727,6 +1727,18 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../kernels/">
+<span class="md-ellipsis">
+    
+  
+    Kernels
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../new-disk/">
 <span class="md-ellipsis">
     
@@ -2447,8 +2459,60 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#memory">
+<span class="md-ellipsis">
+      
+        Memory
+      
+    </span>
+</a>
+<nav aria-label="Memory" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-memory-works">
+<span class="md-ellipsis">
+      
+        How Memory Works
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuring-memory">
+<span class="md-ellipsis">
+      
+        Configuring Memory
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-to-write-a-good-memory">
+<span class="md-ellipsis">
+      
+        How to Write a Good Memory
+      
+    </span>
+</a>
+</li>
 </ul>
 </nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../local-llm/">
+<span class="md-ellipsis">
+    
+  
+    Local LLM Hosting
+  
+
+    
+  </span>
+</a>
 </li>
 </ul>
 </nav>
@@ -2673,6 +2737,46 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#memory">
+<span class="md-ellipsis">
+      
+        Memory
+      
+    </span>
+</a>
+<nav aria-label="Memory" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-memory-works">
+<span class="md-ellipsis">
+      
+        How Memory Works
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuring-memory">
+<span class="md-ellipsis">
+      
+        Configuring Memory
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#how-to-write-a-good-memory">
+<span class="md-ellipsis">
+      
+        How to Write a Good Memory
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
 </ul>
 </nav>
 </div>
@@ -2822,7 +2926,7 @@
 <p>Local models will not match the performance of proprietary foundational models such as those from Anthropic, Google, or OpenAI.</p>
 </div>
 <h2 id="hosting-local-models">Hosting Local Models<a class="headerlink" href="#hosting-local-models" title="Permanent link">¶</a></h2>
-<p>Hosting your own models requires powerful and expensive hardware. For beginners we recommend using a tool such as LM Studio. <strong>You need at least 96GB of VRAM</strong> to host your own models locally. The speed and accuracy of OnionAI when hosted locally is based on the hardware that you are using. For the most accurate results we recommend using credits with OnionAI.</p>
+<p>Hosting your own models requires powerful and expensive hardware. For beginners we recommend using a tool such as LM Studio. The models listed above are large, and <strong>you need at least 96GB of VRAM</strong> to host them locally. Smaller mixture-of-experts models can run in considerably less memory while still offering a context window large enough for the assistant; see <a href="../local-llm/">Local LLM Hosting</a> for a tested walkthrough on a single machine. The speed and accuracy of OnionAI when hosted locally is based on the hardware that you are using. For the most accurate results we recommend using credits with OnionAI.</p>
 <h2 id="available-tools">Available Tools<a class="headerlink" href="#available-tools" title="Permanent link">¶</a></h2>
 <p>The assistant currently runs in the cloud. In order to reference local information, SOC makes the following tools available to the assistant:</p>
 <ul>
@@ -2863,6 +2967,132 @@
 <h2 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">¶</a></h2>
 <p>Superusers can review token usage and conversation history for all users by going to Administration --&gt; AI Metrics. This page provides usage statistics for a given date range. The page starts with a table of usage by user. Clicking a user's binoculars icon on the right hand side will show any sessions the user interacted with during the selected date range, even deleted sessions. Clicking on a session's binoculars icon will show the full conversation. Administrators can adjust who has permissions via RBAC roles.</p>
 <p>To provide an accurate history, deleted sessions are retained on the metrics page even after being deleted by the user.</p>
+<h2 id="memory">Memory<a class="headerlink" href="#memory" title="Permanent link">¶</a></h2>
+<p>OnionAI can utilize its memory system to retain and reference facts disclosed by users when chatting with the assistant. Memory works by scanning sessions in the background looking for new facts and storing them in a database. The memory is then used to provide contextual information to the assistant when it responds to a user's message.</p>
+<h3 id="how-memory-works">How Memory Works<a class="headerlink" href="#how-memory-works" title="Permanent link">¶</a></h3>
+<p>The memory system scans sessions in the background extracting, embedding, reconciling, and saving memories to later be referenced when chatting with Onion AI.</p>
+<p>First, extraction. The selected sessions have their transcripts given to a Memory agent that parses out useful facts. The agent also identifies the scope of the fact: is it specific to the user who owns the session we just scanned or is it applicable to the entire organization.</p>
+<p>These facts are then embedded using an Embed agent. This enables SOC to compare memories and is the heart of how memory works.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The embedding process is model specific. Memories embedded by one model cannot be accurately compared to memories embedded by any other model. Changing the model used for embedding will render all your previous memories unusable. They will not be deleted and will be accessible if the model is reverted back.</p>
+</div>
+<p>Once embedded, the facts are compared against existing memories on the same topics in a step called Reconcilation. A Reconcile agent will decide how the facts should be added, merged, replaced or removed. The reconcile agent's recommendations are validated before being executed to ensure that user defined memories aren't modified and that the session owner's permissions are respected.</p>
+<p>If any facts were rewritten during reconcilation, they are re-embedded before being stored in postgres.</p>
+<p>Finally the session is updated indicating that it has been scanned. If new messages are sent in a previously scanned session, memory scans will find and scan only the new messages.</p>
+<p>When a user sends a message to the assistant, the memory system will embed the message about to be sent and check for any similar memories. Memories are added to the conversation by being added to the end of the prompt.</p>
+<h3 id="configuring-memory">Configuring Memory<a class="headerlink" href="#configuring-memory" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>useMemory</code></td>
+<td><code>true</code></td>
+<td>Enable memory use when sending a message.</td>
+</tr>
+<tr>
+<td><code>useMemoryScanner</code></td>
+<td><code>false</code></td>
+<td>Enables the scanning of historical sessions.</td>
+</tr>
+<tr>
+<td><code>dontScanBefore</code></td>
+<td><code>""</code></td>
+<td>A date in RFC3339 format (2026-08-31T22:05:48Z) to use as a cutoff point for memory scans.</td>
+</tr>
+<tr>
+<td><code>memoryScanIntervalSeconds</code></td>
+<td><code>300</code></td>
+<td>How long between scans the memory scanner waits before scanning again.</td>
+</tr>
+<tr>
+<td><code>memoryProximityThreshold</code></td>
+<td><code>0.8</code></td>
+<td>A similarity threshold that determines how similar a fact must be to a previous memory for it to be considered "similar."</td>
+</tr>
+<tr>
+<td><code>messageProximityThreshold</code></td>
+<td><code>0.5</code></td>
+<td>A similarity threshold that determines how similar a message from a user must be to a stored memory for it to be considered "similar."</td>
+</tr>
+<tr>
+<td><code>maxUserMemoriesToReconcile</code></td>
+<td><code>20</code></td>
+<td>The maximum number of user-specific memories to reconcile at once.</td>
+</tr>
+<tr>
+<td><code>maxGlobalMemoriesToReconcile</code></td>
+<td><code>20</code></td>
+<td>The maximum number of global memories to reconcile at once.</td>
+</tr>
+<tr>
+<td><code>maxUserMemoriesToInclude</code></td>
+<td><code>5</code></td>
+<td>The maximum number of user-specific memories to include when sending a message.</td>
+</tr>
+<tr>
+<td><code>maxGlobalMemoriesToInclude</code></td>
+<td><code>5</code></td>
+<td>The maximum number of global memories to include when sending a message.</td>
+</tr>
+<tr>
+<td><code>memoryModel</code></td>
+<td><code>gemma@SOAI</code></td>
+<td>The model used to extract facts from sessions.</td>
+</tr>
+<tr>
+<td><code>memoryPersona</code></td>
+<td><code>""</code></td>
+<td>Special instructions for the memory agent included in the prompt.</td>
+</tr>
+<tr>
+<td><code>embedModel</code></td>
+<td><code>amazon.titan-embed-text-v2@SOAI</code></td>
+<td>The model used to embed facts.</td>
+</tr>
+<tr>
+<td><code>reconcileModel</code></td>
+<td><code>gemma@SOAI</code></td>
+<td>The model used to reconcile facts from sessions with existing memories.</td>
+</tr>
+<tr>
+<td><code>reconcilePersona</code></td>
+<td><code>""</code></td>
+<td>Special instructions for the reconcile agent included in the prompt.</td>
+</tr>
+<tr>
+<td><code>toolUseTurnAttempts</code></td>
+<td><code>12</code></td>
+<td>When the assistant requests a read-only tool, SOC can approve it automatically. Because the approval can fire before the original request has finished being written to Elasticsearch, SOC will retry the approval up to this many times before giving up.</td>
+</tr>
+<tr>
+<td><code>toolUseTurnDelayMs</code></td>
+<td><code>175</code></td>
+<td>The time to wait between auto-approval attempts. Together with the attempts setting, this defines the total grace period SOC allows for the tool request to become available.</td>
+</tr>
+<tr>
+<td><code>maxMemoryRetries</code></td>
+<td><code>2</code></td>
+<td>The maximum number of times SOC will attempt to extract memories from sessions before marking the session to be ignored. Increasing this value may retry sessions that haven't been attempted in a long time.</td>
+</tr>
+</tbody>
+</table>
+<p>Memory and the Memory Scanner may be enabled independently. Disabling memory will stop applying memories to prompts on outgoing messages. Disabling the memory scanner will prevent the scanner from extracting memories from previous assistant sessions. The memory scanner marks sessions as it extracts facts from them so that they are not re-scanned in future scans. If a memory scan takes longer than the interval between scans, then at most 1 scan will queue up for processing and it'll begin again immediately after the previous scan finishes.</p>
+<h3 id="how-to-write-a-good-memory">How to Write a Good Memory<a class="headerlink" href="#how-to-write-a-good-memory" title="Permanent link">¶</a></h3>
+<p>When entering memories in manually in the Agent Studio, it's important to understand that how the memory is written affects how it'll be used by the memory system.</p>
+<ol>
+<li><strong>One fact per memory.</strong> If a memory has multiple facts then matching is harder to accomplish resulting in the memory being accessed less.</li>
+<li><strong>Make each memory self-contained.</strong> It will be read out of context, alone, possibly months later in a conversation about something else. Every memory should make sense to someone who has only that sentence.</li>
+<li><strong>Declarative facts, not instructions.</strong> If you want to give an instruction, then use a prompt instead.</li>
+<li><strong>Present tense, absolute references, durable phrasing.</strong> A memory is read long after it's written and is never automatically updated, so describe how things are rather than how they changed. Prefer "PCAP retention is 90 days (set August 2026)" over "We recently changed retention to 90 days."</li>
+</ol>
+<p>To help track your most successful memories, the Agent Studio presents how many times a memory has been accessed and when was the last time it was referenced.</p>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
@@ -2887,13 +3117,13 @@
               </div>
 </div>
 </a>
-<a aria-label="Next: Telemetry" class="md-footer__link md-footer__link--next" href="../telemetry/">
+<a aria-label="Next: Local LLM Hosting" class="md-footer__link md-footer__link--next" href="../local-llm/">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
               </span>
 <div class="md-ellipsis">
-                Telemetry
+                Local LLM Hosting
               </div>
 </div>
 <div class="md-footer__button md-icon">

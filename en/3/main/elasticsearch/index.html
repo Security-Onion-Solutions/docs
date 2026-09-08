@@ -2007,6 +2007,18 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../kernels/">
+<span class="md-ellipsis">
+    
+  
+    Kernels
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../new-disk/">
 <span class="md-ellipsis">
     
@@ -2576,6 +2588,18 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../local-llm/">
+<span class="md-ellipsis">
+    
+  
+    Local LLM Hosting
+  
+
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -2987,7 +3011,7 @@
 <p>You can configure Elasticsearch by going to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; Elasticsearch.</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-elasticsearch.png"><img alt="Image" src="../images/config-item-elasticsearch.png"/></a></p>
 <h2 id="parsing">Parsing<a class="headerlink" href="#parsing" title="Permanent link">¶</a></h2>
-<p>Elasticsearch receives unparsed logs from <a href="../logstash/">Logstash</a> or <a href="../elastic-agent/">Elastic Agent</a>. Elasticsearch then parses and stores those logs. Parsers are stored in <code>/opt/so/conf/elasticsearch/ingest/</code>. Custom ingest parsers can be placed in <code>/opt/so/saltstack/local/salt/elasticsearch/files/ingest/</code>. Files placed here are not detected by <a href="../salt/#auto-state-apply">Auto State Apply</a>, so to make these changes take effect, apply the Elasticsearch state to all nodes running Elasticsearch:</p>
+<p>Elasticsearch receives unparsed logs from <a href="../logstash/">Logstash</a> or <a href="../elastic-agent/">Elastic Agent</a>. Elasticsearch then parses and stores those logs. Parsers are stored in <code>/opt/so/conf/elasticsearch/ingest/</code>. Custom ingest parsers can be placed in <code>/opt/so/saltstack/local/salt/elasticsearch/files/ingest/</code>. <a href="../salt/#auto-state-apply">Auto State Apply</a> picks these up within a few minutes. If you don't want to wait, apply the Elasticsearch state to all nodes running Elasticsearch:</p>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>sudo salt -C 'I@elasticsearch:enabled:true' state.apply elasticsearch queue=True
 </code></pre></div>
 <p><a href="../elastic-agent/">Elastic Agent</a> may pre-parse or act on data before the data reaches Elasticsearch, altering the data stream or index to which it is written, or other characteristics such as the event dataset or other pertinent information. This configuration is maintained in the agent policy or integration configuration in <a href="../elastic-fleet/">Elastic Fleet</a>.</p>

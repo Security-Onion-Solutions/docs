@@ -1810,6 +1810,18 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="../kernels/">
+<span class="md-ellipsis">
+    
+  
+    Kernels
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="../new-disk/">
 <span class="md-ellipsis">
     
@@ -2379,6 +2391,18 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../local-llm/">
+<span class="md-ellipsis">
+    
+  
+    Local LLM Hosting
+  
+
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -2560,7 +2584,7 @@
 <p>The ability to restrict or grant specific privileges to a subset of users is covered by role-based access control, or "RBAC" for short. RBAC is an authorization technique in which users are assigned one of a small set of roles, and then the roles are associated to many low-level privileges. This provides the ability to build software with fine-grained access control, but without the need to maintain complex associations of users to large numbers of privileges. Users are traditionally assigned a single role, one which correlates closely with their role in the organization. However, it's possible to assign a user to multiple roles, if necessary.</p>
 <p>RBAC in Security Onion covers both Security Onion privileges and Elastic stack privileges. Security Onion privileges are only involved with functionality specifically provided by the components developed by Security Onion, while Elastic stack privileges are only involved with the <a href="../elasticsearch/">Elasticsearch</a>, <a href="../kibana/">Kibana</a>, and related Elastic stack. For example, Security Onion will check if a user has permission to create a PCAP request, while Elastic will check if the same user has permission to view a particular index or document stored in <a href="../elasticsearch/">Elasticsearch</a>. </p>
 <h2 id="default-roles">Default Roles<a class="headerlink" href="#default-roles" title="Permanent link">¶</a></h2>
-<p>Security Onion ships with the following user roles: <code>superuser</code>, <code>analyst</code>, <code>limited-analyst</code>, <code>auditor</code>, and <code>limited-auditor</code>.</p>
+<p>Security Onion ships with the following user roles: <code>superuser</code>, <code>analyst</code>, <code>limited-analyst</code>, <code>auditor</code>, <code>limited-auditor</code>, <code>subgrid-auditor</code>, and <code>subgrid-superuser</code>.</p>
 <p>See the table below which explains the specific Security Onion privileges granted to each role.</p>
 <table>
 <thead>
@@ -2571,6 +2595,8 @@
 <th style="text-align: center;">limited-analyst</th>
 <th style="text-align: center;">auditor</th>
 <th style="text-align: center;">limited-auditor</th>
+<th style="text-align: center;">subgrid-superuser</th>
+<th style="text-align: center;">subgrid-auditor</th>
 </tr>
 </thead>
 <tbody>
@@ -2581,12 +2607,16 @@
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>Acknowledge alerts</td>
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
@@ -2597,6 +2627,8 @@
 <td style="text-align: center;">X</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>View detections</td>
@@ -2605,11 +2637,15 @@
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>Modify (and Delete) detections</td>
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -2621,6 +2657,8 @@
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>View own PCAP jobs</td>
@@ -2629,6 +2667,8 @@
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">O</td>
 <td style="text-align: center;">O</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>View all PCAP jobs</td>
@@ -2636,6 +2676,8 @@
 <td style="text-align: center;">X</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -2645,11 +2687,15 @@
 <td style="text-align: center;">X</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>Request arbitrary PCAP jobs</td>
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -2661,11 +2707,15 @@
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">O</td>
 <td style="text-align: center;">O</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>Delete any PCAP job</td>
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -2677,6 +2727,8 @@
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>View all users</td>
@@ -2684,6 +2736,8 @@
 <td style="text-align: center;">X</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -2693,6 +2747,8 @@
 <td style="text-align: center;"></td>
 <td style="text-align: center;">X</td>
 <td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>View own user</td>
@@ -2701,6 +2757,8 @@
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>View own user roles</td>
@@ -2709,6 +2767,8 @@
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>Change own password</td>
@@ -2717,10 +2777,14 @@
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>Add, update, and reset SOC users</td>
 <td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -2733,10 +2797,14 @@
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>Manage Grid membership of nodes</td>
 <td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -2749,10 +2817,14 @@
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>Manage API clients</td>
 <td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -2765,10 +2837,14 @@
 <td style="text-align: center;">X</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>Manage Active Queries</td>
 <td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -2781,11 +2857,15 @@
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>Chat with Onion AI</td>
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -2797,11 +2877,15 @@
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>View Own Onion AI History</td>
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -2813,12 +2897,128 @@
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>View own Onion AI memories</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>View global Onion AI memories</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>View all users' Onion AI memories</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Manage own Onion AI memories</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Manage global Onion AI memories</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Manage all users' Onion AI memories</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>View notifications</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>View all notifications</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Manage notifications</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Read subgrid data</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+</tr>
+<tr>
+<td>Modify subgrid data</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Both <code>auditor</code> and <code>limited-auditor</code> roles can interact with previously created PCAPs if they were created before a user was converted to that role (e.g. user was downgraded from <code>analyst</code> to <code>auditor</code>). This is denoted by <strong>O</strong> in the above table.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>subgrid-auditor</code> and <code>subgrid-superuser</code> roles are used in <a href="../manager-of-managers/">Manager of Managers</a> deployments to grant read-only or read/write access to remote subgrids. Users needing subgrid access should be assigned one of these roles in addition to their primary role (e.g., <code>analyst</code>).</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2930,7 +3130,7 @@
 </div>
 <ol>
 <li>
-<p>Role files are not detected by <a href="../salt/#auto-state-apply">Auto State Apply</a>, so this step is required. Run so-checkin from the manager:</p>
+<p><a href="../salt/#auto-state-apply">Auto State Apply</a> picks up the new role file within a few minutes. If you don't want to wait, run so-checkin from the manager:</p>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>sudo so-checkin
 </code></pre></div>
 </li>
@@ -3107,6 +3307,50 @@
 <td>Currently unused</td>
 </tr>
 <tr>
+<td><em>subgrid/read</em></td>
+<td>Read data from subgrids</td>
+</tr>
+<tr>
+<td><em>subgrid/write</em></td>
+<td>Modify data on subgrids</td>
+</tr>
+<tr>
+<td><em>notifications/read</em></td>
+<td>View notifications</td>
+</tr>
+<tr>
+<td><em>notifications/read_all</em></td>
+<td>View all notifications</td>
+</tr>
+<tr>
+<td><em>notifications/write</em></td>
+<td>Create and update notifications</td>
+</tr>
+<tr>
+<td><em>memory/read_authored</em></td>
+<td>View own Onion AI memories</td>
+</tr>
+<tr>
+<td><em>memory/read_global</em></td>
+<td>View global Onion AI memories</td>
+</tr>
+<tr>
+<td><em>memory/read_all</em></td>
+<td>View all Onion AI memories</td>
+</tr>
+<tr>
+<td><em>memory/write_self</em></td>
+<td>Create and update own Onion AI memories</td>
+</tr>
+<tr>
+<td><em>memory/write_global</em></td>
+<td>Create and update global Onion AI memories</td>
+</tr>
+<tr>
+<td><em>memory/write_all</em></td>
+<td>Create and update all Onion AI memories</td>
+</tr>
+<tr>
 <td><em>assistant/read_authored</em></td>
 <td>View own Onion AI conversation history</td>
 </tr>
@@ -3240,6 +3484,42 @@
 <tr>
 <td>playbook-admin</td>
 <td><em>playbooks/read</em>, <em>playbooks/write</em>, <em>playbooks/delete</em></td>
+</tr>
+<tr>
+<td>subgrid-admin</td>
+<td><em>subgrid/read</em>, <em>subgrid/write</em></td>
+</tr>
+<tr>
+<td>subgrid-monitor</td>
+<td><em>subgrid/read</em></td>
+</tr>
+<tr>
+<td>notification-admin</td>
+<td><em>notifications/read</em>, <em>notifications/write</em></td>
+</tr>
+<tr>
+<td>notification-monitor</td>
+<td><em>notifications/read</em></td>
+</tr>
+<tr>
+<td>notification-auditor</td>
+<td><em>notifications/read</em>, <em>notifications/read_all</em></td>
+</tr>
+<tr>
+<td>memory-user</td>
+<td><em>memory/read_authored</em>, <em>memory/write_self</em></td>
+</tr>
+<tr>
+<td>memory-curator</td>
+<td><em>memory/read_authored</em>, <em>memory/read_global</em>, <em>memory/write_self</em>, <em>memory/write_global</em></td>
+</tr>
+<tr>
+<td>memory-admin</td>
+<td><em>memory/read_authored</em>, <em>memory/read_global</em>, <em>memory/read_all</em>, <em>memory/write_self</em>, <em>memory/write_global</em>, <em>memory/write_all</em></td>
+</tr>
+<tr>
+<td>memory-monitor</td>
+<td><em>memory/read_authored</em>, <em>memory/read_global</em>, <em>memory/read_all</em></td>
 </tr>
 <tr>
 <td>assistant-user</td>
