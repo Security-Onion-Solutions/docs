@@ -52,8 +52,6 @@ Files that you create or edit by hand on the manager in any of the following dir
 | `/opt/so/saltstack/local/salt/elasticsearch/files/ingest/` | [Elasticsearch](elasticsearch.md) custom ingest parsers |
 | `/opt/so/saltstack/local/salt/elasticsearch/roles/` | [RBAC](rbac.md) custom Elastic stack role files |
 | `/opt/so/saltstack/local/salt/logstash/pipelines/config/custom/` | [Logstash](logstash.md) custom pipeline configuration files |
-| `/opt/so/saltstack/local/salt/suricata/rules/` | [Suricata](suricata.md) rules |
-| `/opt/so/saltstack/local/salt/strelka/rules/compiled/` | [Strelka](strelka.md) compiled YARA rules |
 
 Other files under `/opt/so/saltstack/local/salt/` are not watched and are picked up at the next scheduled highstate (see [Highstate Interval](#highstate-interval)).
 
