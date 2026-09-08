@@ -2677,6 +2677,38 @@
 </code></pre></div>
 <h2 id="auto-state-apply">Auto State Apply<a class="headerlink" href="#auto-state-apply" title="Permanent link">¶</a></h2>
 <p>When you save a configuration change in <a href="../administration/">Administration</a> --&gt; Configuration, or when rules are updated on the manager node, Security Onion detects the change and applies the affected state to only the nodes that need it. This typically happens within a few minutes instead of waiting for the next scheduled highstate.</p>
+<p>Files that you create or edit by hand on the manager in any of the following directories are detected the same way:</p>
+<table>
+<thead>
+<tr>
+<th>Directory</th>
+<th>What it holds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/opt/so/saltstack/local/salt/zeek/policy/</code></td>
+<td><a href="../zeek/">Zeek</a> intel and custom policies</td>
+</tr>
+<tr>
+<td><code>/opt/so/saltstack/local/salt/zeek/zkg/</code></td>
+<td><a href="../zeek/">Zeek</a> custom packages</td>
+</tr>
+<tr>
+<td><code>/opt/so/saltstack/local/salt/elasticsearch/files/ingest/</code></td>
+<td><a href="../elasticsearch/">Elasticsearch</a> custom ingest parsers</td>
+</tr>
+<tr>
+<td><code>/opt/so/saltstack/local/salt/elasticsearch/roles/</code></td>
+<td><a href="../rbac/">RBAC</a> custom Elastic stack role files</td>
+</tr>
+<tr>
+<td><code>/opt/so/saltstack/local/salt/logstash/pipelines/config/custom/</code></td>
+<td><a href="../logstash/">Logstash</a> custom pipeline configuration files</td>
+</tr>
+</tbody>
+</table>
+<p>Other files under <code>/opt/so/saltstack/local/salt/</code> are not watched and are picked up at the next scheduled highstate (see <a href="#highstate-interval">Highstate Interval</a>).</p>
 <p>Auto State Apply is configured at <a href="../administration/">Administration</a> --&gt; Configuration --&gt; salt --&gt; auto_apply:</p>
 <table>
 <thead>
