@@ -2564,6 +2564,12 @@
 <article class="md-content__inner md-typeset">
 <h1 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">¶</a></h1>
 <h3 id="known-issues">Known Issues<a class="headerlink" href="#known-issues" title="Permanent link">¶</a></h3>
+<p>Elastic recently changed made a change which requires x86_64-v3 CPU support:
+<a href="https://github.com/elastic/elastic-agent/issues/16309">https://github.com/elastic/elastic-agent/issues/16309</a>
+<a href="https://github.com/elastic/beats/issues/51824">https://github.com/elastic/beats/issues/51824</a></p>
+<p>If you are running Security Onion in a Proxmox VM, we recommend setting your CPU to host to make sure that your x86_64-v3 CPU is passed through to the VM:
+<a href="https://docs.securityonion.net/en/3/main/proxmox/#cpu">https://docs.securityonion.net/en/3/main/proxmox/#cpu</a></p>
+<p>If your CPUs do not support x86_64-v3 at all, then we recommend holding off on this upgrade until Elastic has resolved this issue.</p>
 <p>For all other known issues, please see <a href="https://github.com/Security-Onion-Solutions/securityonion/issues">https://github.com/Security-Onion-Solutions/securityonion/issues</a>.</p>
 <h3 id="release-history">Release History<a class="headerlink" href="#release-history" title="Permanent link">¶</a></h3>
 <h2 id="330-20260908-changes">3.3.0 [20260908] Changes<a class="headerlink" href="#330-20260908-changes" title="Permanent link">¶</a></h2>
