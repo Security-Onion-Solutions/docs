@@ -2,6 +2,15 @@
 
 ### Known Issues
 
+Elastic recently changed made a change which requires x86_64-v3 CPU support:
+<https://github.com/elastic/elastic-agent/issues/16309>
+<https://github.com/elastic/beats/issues/51824>
+
+If you are running Security Onion in a Proxmox VM, we recommend setting your CPU to host to make sure that your x86_64-v3 CPU is passed through to the VM:
+<https://docs.securityonion.net/en/3/main/proxmox/#cpu>
+
+If your CPUs do not support x86_64-v3 at all, then we recommend holding off on this upgrade until Elastic has resolved this issue.
+
 For all other known issues, please see <https://github.com/Security-Onion-Solutions/securityonion/issues>.
 
 ### Release History
