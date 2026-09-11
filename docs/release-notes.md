@@ -13,22 +13,15 @@ If you are running Security Onion in a Proxmox VM, we recommend setting your CPU
 
 If your CPUs do not support x86_64-v3 at all, then we recommend holding off on this upgrade until Elastic has resolved this issue.
 
-#### Onion AI with Local Models
-
-Release 3.3.0 includes support for AI memories. Installations that have been configured to use local models but do not want to use the Security Onion AI Gateway for memory embeddings can make one of the following changes:
-
-- Disable "Memory system" via the SOC Agent Studio settings screen, 
-or
-- Configure a local embedding model for use via the SOC Agent Studio settings screen
-
-If neither option is used, then new outgoing AI messages will be sent to the Onion AI Gateway in the cloud for the purpose of computing vectors for memory selection.
-
-For all other known issues, please see <https://github.com/Security-Onion-Solutions/securityonion/issues>.
-
 ### Release History
 
+3.3.0 Hotfix [20260911] Changes
+-------------------------------
+
+- FIX: Disable memory by default <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16232">#16232</a>
+
 3.3.0 [20260908] Changes
-----------------------
+------------------------
 
 - FEATURE: 508 AA - Contrast
 - FEATURE: Add subgrid roles for MoM grids
