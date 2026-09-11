@@ -2407,6 +2407,15 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#330-hotfix-20260911-changes">
+<span class="md-ellipsis">
+      
+        3.3.0 Hotfix [20260911] Changes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#330-20260908-changes">
 <span class="md-ellipsis">
       
@@ -2511,6 +2520,15 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#330-hotfix-20260911-changes">
+<span class="md-ellipsis">
+      
+        3.3.0 Hotfix [20260911] Changes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#330-20260908-changes">
 <span class="md-ellipsis">
       
@@ -2571,16 +2589,11 @@
 <p>If you are running Security Onion in a Proxmox VM, we recommend setting your CPU to host to make sure that your x86_64-v3 CPU is passed through to the VM:
 <a href="https://docs.securityonion.net/en/3/main/proxmox/#cpu">https://docs.securityonion.net/en/3/main/proxmox/#cpu</a></p>
 <p>If your CPUs do not support x86_64-v3 at all, then we recommend holding off on this upgrade until Elastic has resolved this issue.</p>
-<h4 id="onion-ai-with-local-models">Onion AI with Local Models<a class="headerlink" href="#onion-ai-with-local-models" title="Permanent link">¶</a></h4>
-<p>Release 3.3.0 includes support for AI memories. Installations that have been configured to use local models but do not want to use the Security Onion AI Gateway for memory embeddings can make one of the following changes:</p>
-<ul>
-<li>Disable "Memory system" via the SOC Agent Studio settings screen, 
-or</li>
-<li>Configure a local embedding model for use via the SOC Agent Studio settings screen</li>
-</ul>
-<p>If neither option is used, then new outgoing AI messages will be sent to the Onion AI Gateway in the cloud for the purpose of computing vectors for memory selection.</p>
-<p>For all other known issues, please see <a href="https://github.com/Security-Onion-Solutions/securityonion/issues">https://github.com/Security-Onion-Solutions/securityonion/issues</a>.</p>
 <h3 id="release-history">Release History<a class="headerlink" href="#release-history" title="Permanent link">¶</a></h3>
+<h2 id="330-hotfix-20260911-changes">3.3.0 Hotfix [20260911] Changes<a class="headerlink" href="#330-hotfix-20260911-changes" title="Permanent link">¶</a></h2>
+<ul>
+<li>FIX: Disable memory by default <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16232">#16232</a></li>
+</ul>
 <h2 id="330-20260908-changes">3.3.0 [20260908] Changes<a class="headerlink" href="#330-20260908-changes" title="Permanent link">¶</a></h2>
 <ul>
 <li>FEATURE: 508 AA - Contrast</li>
