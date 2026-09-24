@@ -450,6 +450,15 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#prepare-new-instances-for-stig">
+<span class="md-ellipsis">
+      
+        Prepare New Instances for STIG
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#prepare-nodes-with-ephemeral-storage">
 <span class="md-ellipsis">
       
@@ -2664,6 +2673,15 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#prepare-new-instances-for-stig">
+<span class="md-ellipsis">
+      
+        Prepare New Instances for STIG
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#prepare-nodes-with-ephemeral-storage">
 <span class="md-ellipsis">
       
@@ -2795,6 +2813,10 @@
 </div>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">¶</a></h2>
 <p>Before proceeding, determine the grid architecture desired. Choose from a single-node Grid versus a distributed, multi-node Grid. Additionally, determine if the lower latency of ephemeral instance storage is needed (typically when there is high-volume of traffic being monitored, which is most production scenarios), or if network-based storage, EBS, can be used for increased redundancy.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you plan to prepare a new instance for STIG configuration, review the prerequisites in <a href="#prepare-new-instances-for-stig">Prepare New Instances for STIG</a> before launching.</p>
+</div>
 <h2 id="single-node-grid">Single Node Grid<a class="headerlink" href="#single-node-grid" title="Permanent link">¶</a></h2>
 <p>For simple, low-volume production monitoring, a single node Grid can be used. EBS must be used for <a href="../elasticsearch/">Elasticsearch</a> data storage if used for production purposes. Single node grids cannot use ephemeral instance storage without being at risk of data loss. However, for temporary evaluation installations, where there is little concern for data loss, ephemeral instance storage can be used. </p>
 <p>Listed below are the minimum suggested single-node instance quantities, sizes, and storage requirements for either standalone or evaluation installations (choose one, not both). Note that when using virtual machines with the minimum RAM requirements you may need to enable memory swapping.</p>
@@ -2879,16 +2901,46 @@
 <li>If prompted, select the appropriate SSH keypair that will be used to ssh into the Security Onion instance for administration </li>
 <li>The default username for the Security Onion AMI is: <code>onion</code></li>
 </ul>
+<h2 id="prepare-new-instances-for-stig">Prepare New Instances for STIG<a class="headerlink" href="#prepare-new-instances-for-stig" title="Permanent link">¶</a></h2>
+<p>Starting with Security Onion 3.4.0 AMIs, run <code>so-stig-prep</code> on a new instance before installation to create the additional STIG partitions and enable FIPS.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>EBS encryption is configured at instance launch. After Grid setup, enable STIG as described in <a href="../stig/#enabling-stig">Enabling STIG</a>, which requires a Security Onion Pro license.</p>
+</div>
+<p>Before launching, plan for the following prerequisites:</p>
+<ul>
+<li>If disk encryption is desired, enable EBS encryption for the root (OS) volume and any additional EBS volumes at instance launch. For volumes you add later, select encryption when creating each volume, before attaching or using it.</li>
+<li>Use an RSA SSH key pair of at least 2048 bits. Ed25519 keys cannot authenticate after the FIPS reboot.</li>
+<li>Launch with the default 256G root volume, then expand it after first boot. For the default STIG file system layout, we require 370G or larger for the total root volume size.</li>
+</ul>
+<p>By default the helper creates separate file systems for <code>/home</code> (25G), <code>/tmp</code> (2G), <code>/var</code> (70G), <code>/var/log</code> (5G), <code>/var/log/audit</code> (2G), and <code>/var/tmp</code> (2G). Increase any of these with <code>--home</code>, <code>--tmp</code>, <code>--var</code>, <code>--varlog</code>, <code>--varlogaudit</code>, and <code>--vartmp</code>; overrides must be at least the defaults, and larger values will require more root volume capacity. For example:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>sudo so-stig-prep --var 100 --varlog 10
+</code></pre></div>
+<p>To prepare a new instance:</p>
+<ol>
+<li>Launch the AMI</li>
+<li>SSH into the node and cancel out of the setup.</li>
+<li>Expand the root EBS volume to 370G or larger through the AWS console before running the helper.</li>
+<li>
+<p>Run the helper:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>sudo so-stig-prep
+</code></pre></div>
+<p>Run <code>sudo so-stig-prep --help</code> to review the size options. Use <code>--no-fips</code> to create the file systems without enabling FIPS.</p>
+</li>
+<li>
+<p>The helper reboots the instance when finished. Reconnect and proceed with Security Onion setup.</p>
+</li>
+</ol>
 <h2 id="prepare-nodes-with-ephemeral-storage">Prepare Nodes with Ephemeral Storage<a class="headerlink" href="#prepare-nodes-with-ephemeral-storage" title="Permanent link">¶</a></h2>
 <p>For distributed search nodes, or an evaluation node if using ephemeral storage, SSH into the node and cancel out of the setup. Prepare the ephemeral partition by executing the following command:</p>
 <div class="highlight"><pre><span></span><code>sudo so-prepare-fs
 </code></pre></div>
 <p>By default, this command expects the ephemeral device to be located at <code>/dev/nvme1n1</code> and will mount that device at <code>/nsm/elasticsearch</code>. If this fails run <code>lsblk</code> to determine which disk to use. To override either of those two defaults, specify them as arguments. For example:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>sudo so-prepare-fs /dev/nvme3n0 /nsm/elasticsearch
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>sudo so-prepare-fs /dev/nvme3n0 /nsm/elasticsearch
 </code></pre></div>
 <p>Restart the Security Onion setup by running the following command:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>cd /securityonion
-<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>sudo ./so-setup-network
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>cd /securityonion
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>sudo ./so-setup-network
 </code></pre></div>
 <h2 id="manager-setup">Manager Setup<a class="headerlink" href="#manager-setup" title="Permanent link">¶</a></h2>
 <p>If this is an ephemeral evaluation node, ensure the node has been prepared as described in the preceding section. </p>
@@ -2896,7 +2948,7 @@
 <p>AWS provides a built-in NTP server at IP <code>169.254.169.123</code>. This can be specified in the SOC Configuration screen after setup completes. By default the server will use the time servers at <code>ntp.org</code>.</p>
 <p>For distributed manager nodes using ephemeral storage, go to SOC Configuration. Search for <code>number_of_replicas</code> and change to 1. This will double the storage cost but will ensure at least two VMs have the data, in case of an ephemeral disk loss.</p>
 <p>Optionally, adjust <a href="../elastalert/">ElastAlert</a> indices so that they have a replica. This will cause them to turn yellow but that will be fixed when search nodes come online:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>so-elasticsearch-query ElastAlert*/_settings -X PUT -d '{"index" : { "number_of_replicas" : 1 }}'
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>so-elasticsearch-query ElastAlert*/_settings -X PUT -d '{"index" : { "number_of_replicas" : 1 }}'
 </code></pre></div>
 <p>This is an optional step due to the ElastAlert indices being used primarily for short-term/recent alert history. In the event of a data loss when ElastAlert 2 restarts the indices will be regenerated.</p>
 <h2 id="search-node-setup">Search Node Setup<a class="headerlink" href="#search-node-setup" title="Permanent link">¶</a></h2>
@@ -2906,9 +2958,9 @@
 <h2 id="remote-sensor-setup">Remote Sensor Setup<a class="headerlink" href="#remote-sensor-setup" title="Permanent link">¶</a></h2>
 <p>Setup the VPN (out of scope for this guide) and connect the sensor node to the VPN. During the Security Onion setup of the Sensor, when prompted to choose the management interface, select the VPN tunnel interface, typically <code>tun0</code>.</p>
 <p>If connecting sensors through the VPN instance you will need to add the inside interface of your VPN concentrator to the <code>sensor</code> firewall hostgroup. For instance, assuming the following architecture:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>SO Sensor        -&gt; VPN Endpoint     -&gt; Internet -&gt; VPN Endpoint  -&gt; SO Manager
-<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>Location: Remote    Location: Remote                Location: AWS    Location: AWS
-<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>192.168.33.13       192.168.33.10                   10.55.1.10       10.55.1.20
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>SO Sensor        -&gt; VPN Endpoint     -&gt; Internet -&gt; VPN Endpoint  -&gt; SO Manager
+<a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>Location: Remote    Location: Remote                Location: AWS    Location: AWS
+<a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a>192.168.33.13       192.168.33.10                   10.55.1.10       10.55.1.20
 </code></pre></div>
 <p>In order to add the Remote Network Sensor Node to the grid, you would have to add <code>10.55.1.10</code> to the <code>sensor</code> firewall hostgroup.</p>
 <p>This change can be done in the SOC Configuration screen. <a href="../salt/#auto-state-apply">Auto State Apply</a> should apply the new firewall hostgroup configuration within a few minutes, after which your Manager will be ready for remote minions to start connecting.</p>
@@ -2947,11 +2999,11 @@
 </ul>
 <h2 id="verify-traffic-mirroring">Verify Traffic Mirroring<a class="headerlink" href="#verify-traffic-mirroring" title="Permanent link">¶</a></h2>
 <p>To verify the mirror session is sending the correct data to the sniffing interface run the following command on the Security Onion AWS Sensor instance:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>sudo tcpdump -nni &lt;interface&gt;
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>sudo tcpdump -nni &lt;interface&gt;
 </code></pre></div>
 <p>You should see <code>VXLAN</code> tagged traffic being mirrored from the interface you selected as the Mirror Source.</p>
 <p>To verify <a href="../zeek/">Zeek</a> is properly decapsulating and parsing the VXLAN traffic you can verify logs are being generated in the <code>/nsm/zeek/logs/current</code> directory:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>ls -la /nsm/zeek/logs/current/
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>ls -la /nsm/zeek/logs/current/
 </code></pre></div>
 </article>
 </div>
