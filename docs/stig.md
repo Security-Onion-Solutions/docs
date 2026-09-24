@@ -16,7 +16,7 @@ Installing using the Security Onion Pro menu options will create additional part
 | :--- | :---: |
 | /home | 25GB |
 | /tmp | 2GB |
-| /var | 50GB |
+| /var | 70GB |
 | /var/log | 5GB |
 | /var/log/audit | 2GB |
 | /var/tmp | 2GB |
