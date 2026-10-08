@@ -101,12 +101,317 @@ components:
         isSystem:
           example: true
           type: boolean
+        maxConcurrentInstances:
+          description: 0 is unlimited. Caps how many sessions may run this agent at
+            once.
+          example: 2
+          type: integer
         name:
           example: Malware Analyst
           type: string
         personaAddendum:
           description: Admin-authored persona; exposed because an admin wrote it.
           example: Prefer static analysis before detonating a sample.
+          type: string
+      type: object
+    model.AgentPoolActivity:
+      description: The pool that runs agent work, interactive turns included.
+      properties:
+        agents:
+          description: Each agent with work queued or running, by name.
+          items:
+            $ref: '#/components/schemas/model.AgentPoolLoad'
+          type: array
+          uniqueItems: false
+        busy:
+          description: Interactive turns refused because their agent was at its limit,
+            since the server started.
+          example: 1
+          type: integer
+        deduped:
+          description: Jobs refused because the same work was already queued or running,
+            since the server started.
+          example: 2
+          type: integer
+        maxConcurrent:
+          description: The most jobs started from the queue at once; interactive turns
+            count toward it but can run past it. 0 means unlimited.
+          example: 4
+          type: integer
+        maxQueueDepth:
+          description: The most jobs allowed to wait; 0 means unlimited.
+          example: 0
+          type: integer
+        peakQueued:
+          description: The most jobs ever waiting at once since the server started.
+          example: 25
+          type: integer
+        peakRunning:
+          description: The most jobs ever running at once since the server started.
+          example: 4
+          type: integer
+        queued:
+          description: Jobs waiting for a slot.
+          example: 21
+          type: integer
+        rejected:
+          description: Jobs refused because the queue was full, since the server started.
+          example: 0
+          type: integer
+        running:
+          description: Jobs holding a slot.
+          example: 4
+          type: integer
+      type: object
+    model.AgentPoolLoad:
+      description: One agent's share of the pool.
+      properties:
+        maxConcurrentInstances:
+          description: The agent's maxConcurrentInstances; 0 means unlimited.
+          example: 2
+          type: integer
+        name:
+          description: The agent's name, or the model selector of an interactive turn
+            that names no agent.
+          example: Investigator
+          type: string
+        queued:
+          example: 21
+          type: integer
+        running:
+          example: 2
+          type: integer
+      type: object
+    model.AgentSessionPhase:
+      properties:
+        agent:
+          type: string
+        phase:
+          type: string
+        rootSessionId:
+          type: string
+        sessionId:
+          type: string
+        since:
+          type: string
+      type: object
+    model.Alarm:
+      description: Alarm defines the configuration for a metric alarm.
+      properties:
+        clearedSeverity:
+          description: Optional severity level for alarm cleared notification. Set
+            to "none" or empty to suppress cleared notifications.
+          example: info
+          type: string
+        destinations:
+          description: Optional destination IDs to dispatch to. If empty, uses system
+            notification routing.
+          example:
+          - soc-bell
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        durationSeconds:
+          description: Duration in seconds the condition must persist before triggering
+            an alarm.
+          example: 120
+          type: integer
+        enabled:
+          description: Indicates whether this alarm is actively evaluated.
+          example: true
+          type: boolean
+        id:
+          description: Unique identifier assigned by the server.
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          type: string
+        metric:
+          description: Metric identifier to evaluate (e.g. cpu, memory, disk, load,
+            process_status).
+          example: cpu
+          type: string
+        metricKey:
+          description: Optional sub-key or field name within the metric (e.g. cpu_used,
+            disk_used_root).
+          example: cpu_used
+          type: string
+        name:
+          description: Human-readable display name for this alarm (required, max 100
+            characters).
+          example: High CPU Usage
+          type: string
+        nodeId:
+          description: Optional node ID to scope this alarm to. If empty or "all",
+            applies across all grid nodes.
+          example: sensor-01
+          type: string
+        note:
+          description: Optional user note included as notification summary.
+          example: Sensor node CPU exceeded critical threshold.
+          type: string
+        operator:
+          description: Comparison operator (gt, gte, lt, lte, eq, ne, contains).
+          example: gt
+          type: string
+        recipients:
+          description: Optional user recipient IDs. If empty, broadcasts according
+            to system routing.
+          example:
+          - user-1
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        severity:
+          description: Severity level when the alarm triggers (info, low, medium,
+            high, critical).
+          example: high
+          type: string
+        threshold:
+          description: Threshold value for comparison (numeric, string, or boolean).
+          example: "80"
+          type: string
+      type: object
+    model.AlarmMetricInfo:
+      description: AlarmMetricInfo provides metadata for an available grid metric
+        datapoint.
+      properties:
+        keys:
+          description: Available sub-keys or field names for this metric.
+          example:
+          - cpu_used
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        labelKeys:
+          description: Localization keys for the sub-keys.
+          example:
+          - cpuUsageAbbr
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        metric:
+          description: Metric identifier.
+          example: cpu
+          type: string
+        scope:
+          description: 'Scope of the metric: ''node'' or ''container''.'
+          example: node
+          type: string
+        titleKey:
+          description: Localization key for the metric title.
+          example: metricsCpuUsage
+          type: string
+        type:
+          description: 'Datapoint data type: ''numeric'', ''string'', ''bool''.'
+          example: numeric
+          type: string
+        units:
+          description: 'Unit of measurement: ''percent'', ''bytes'', ''seconds'',
+            etc.'
+          example: percent
+          type: string
+      type: object
+    model.AlarmState:
+      description: AlarmState represents the live persisted state of an alarm evaluation.
+      properties:
+        alarmId:
+          description: Alarm identifier.
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+          type: string
+        clearedAt:
+          description: Timestamp when alarm condition cleared.
+          type: string
+        currentValue:
+          description: Most recently evaluated metric value.
+          example: "85.4"
+          type: string
+        durationActiveSeconds:
+          description: Total duration in seconds the alarm has been active.
+          type: integer
+        firstBreachedAt:
+          description: Timestamp when condition first breached (for duration tracking).
+          type: string
+        lastEvaluated:
+          description: Timestamp when alarm was last evaluated.
+          type: string
+        metric:
+          description: Metric identifier.
+          example: cpu
+          type: string
+        metricKey:
+          description: Metric sub-key.
+          example: cpu_used
+          type: string
+        nodeId:
+          description: Grid node identifier.
+          example: sensor-01
+          type: string
+        operator:
+          description: Comparison operator.
+          example: gt
+          type: string
+        status:
+          description: 'Current state status: ''ok'' or ''alarm''.'
+          example: alarm
+          type: string
+        threshold:
+          description: Configured threshold value.
+          example: "80"
+          type: string
+        triggeredAt:
+          description: Timestamp when alarm condition was first triggered.
+          type: string
+        updatedAt:
+          description: Timestamp of last record update.
+          type: string
+      type: object
+    model.AlertTriageAlert:
+      description: 'One alert as an automation run left it: what it is and what the
+        ledger records about it.'
+      properties:
+        failedCount:
+          example: 1
+          type: integer
+        failedRunIds:
+          description: Runs that failed this alert's group; the retry budget.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        failedSessionIds:
+          description: Sessions that produced no report for this alert.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        id:
+          example: AZmQ3f7c1kX9pLqR2sT4
+          type: string
+        latestRunId:
+          description: The run that last wrote to this alert; another run's id means
+            it was recorded again later.
+          example: 3f1a7c0e-9b21-4d8a-bc55-2e77a1f0c934
+          type: string
+        ruleName:
+          example: ET MALWARE Suspicious PowerShell
+          type: string
+        sessionId:
+          description: The session whose report covers this alert; empty until one
+            succeeds.
+          example: 9b7c1d2e-3f40-4a5b-8c6d-7e8f9a0b1c2d
+          type: string
+        severity:
+          example: high
+          type: string
+        timestamp:
+          example: "2026-09-15T15:58:41.000Z"
+          type: string
+        triageTime:
+          description: When the ledger was last written.
+          example: "2026-09-15T16:02:41Z"
           type: string
       type: object
     model.AlertingParameters:
@@ -344,6 +649,11 @@ components:
             $ref: '#/components/schemas/model.Agent'
           type: array
           uniqueItems: false
+        availableAutomationKinds:
+          items:
+            $ref: '#/components/schemas/model.AutomationKindDefinition'
+          type: array
+          uniqueItems: false
         availableModels:
           items:
             $ref: '#/components/schemas/model.ModelParameters'
@@ -437,6 +747,12 @@ components:
             messages in the session have been scanned for memory extraction. Extraction
             always begins with the oldest messages in a session.
           example: 4
+          type: integer
+        memoryErrors:
+          description: |-
+            How many consecutive memory scans of this session have failed. Reset to 0
+            by a successful scan
+          example: 1
           type: integer
         messageCount:
           description: |-
@@ -644,6 +960,565 @@ components:
           example: socl_my_new_client
           type: string
       type: object
+    model.Automation:
+      description: A task the grid runs on a schedule, with an agent doing the work
+        and no user driving it.
+      properties:
+        agent:
+          description: The agent whose sessions do this automation's work.
+          example: Investigator
+          type: string
+        automationKind:
+          description: The kind that runs this automation.
+          example: alert_triage
+          type: string
+        createTime:
+          description: The date and time that this object was created. This is a read-only
+            field.
+          example: "2024-11-14T15:03:22Z"
+          type: string
+        displayName:
+          description: What this automation is called in the UI.
+          example: Nightly Alert Triage
+          type: string
+        enabled:
+          description: Indicates whether the scheduler runs this automation.
+          example: true
+          type: boolean
+        id:
+          description: The ID assigned to this object by the server. This is a read-only
+            field.
+          example: PdFc-JIBLkNJ8-bDfz47
+          type: string
+        intervalSeconds:
+          description: How often this automation comes due, in seconds.
+          example: 60
+          type: integer
+        isSystem:
+          description: 'Ships with the product: only enabled and agent can be changed,
+            and it cannot be deleted.'
+          example: false
+          type: boolean
+        kind:
+          description: The kind of object. This is a read-only field.
+          example: case
+          type: string
+        operation:
+          description: The operation that was applied to the object. This is a read-only
+            field.
+          example: create
+          type: string
+        params:
+          description: |-
+            The settings for this automation, matching its kind's paramSchema. Opaque to
+            everything but that kind.
+          type: object
+        updateTime:
+          description: The date and time that this object was last modified. This
+            is a read-only field.
+          example: "2024-11-14T15:33:02Z"
+          type: string
+        userId:
+          description: The user ID (or API client ID) that initiated this event. This
+            is a read-only field.
+          example: socl_my_new_client
+          type: string
+      type: object
+    model.AutomationActivity:
+      description: 'What agents are doing right now: every automation run in flight
+        with its automation''s open work, what each live session is doing, and the
+        load on the pool that runs agent work.'
+      properties:
+        generatedAt:
+          description: When this view was built, so a client can drop one older than
+            what it shows.
+          example: "2026-10-02T16:00:02Z"
+          type: string
+        pool:
+          $ref: '#/components/schemas/model.AgentPoolActivity'
+        runs:
+          description: Runs queued or running, newest first.
+          items:
+            $ref: '#/components/schemas/model.AutomationRunActivity'
+          type: array
+          uniqueItems: false
+        schedulerRunning:
+          description: Indicates the automation scheduler is running; it stays stopped
+            when agents are off, on airgapped grids and without a database.
+          example: true
+          type: boolean
+      type: object
+    model.AutomationBacklog:
+      description: Work still open for this automation, whichever run enqueued it.
+      properties:
+        applying:
+          example: 0
+          type: integer
+        pending:
+          example: 3
+          type: integer
+        running:
+          example: 1
+          type: integer
+      type: object
+    model.AutomationKindDefinition:
+      description: One type of automation this grid can run, and the schema of the
+        settings it accepts.
+      properties:
+        description:
+          description: A summary of what this kind does, shown alongside the label.
+          example: Groups, samples and triages alerts
+          type: string
+        displayName:
+          description: The label shown when choosing a kind.
+          example: Alert Triage
+          type: string
+        name:
+          description: The stable identifier for this kind, recorded on every automation
+            that runs it.
+          example: alert_triage
+          type: string
+        paramSchema:
+          $ref: '#/components/schemas/model.JSONSchema'
+      type: object
+    model.AutomationRunActivity:
+      description: One run in flight and the work its automation still has open.
+      properties:
+        automationDeleted:
+          description: Indicates the automation has been deleted and this run is finishing
+            without it.
+          example: false
+          type: boolean
+        automationId:
+          description: The automation this run belongs to.
+          example: 5c0b1f2e-0c6d-4a71-9f3e-1b8a2d4c6e90
+          type: string
+        displayName:
+          description: The automation's current name; empty once it has been deleted
+            or without config/read.
+          example: Nightly Alert Triage
+          type: string
+        endTime:
+          description: The time this run stopped; absent while it is in flight.
+          example: "2026-09-15T16:03:02Z"
+          type: string
+        error:
+          description: Why this run failed; absent unless it did.
+          type: string
+        id:
+          description: The unique id of this run, stamped on the sessions it creates.
+          example: 3f1a7c0e-9b21-4d8a-bc55-2e77a1f0c934
+          type: string
+        itemCounts:
+          additionalProperties:
+            type: integer
+          description: Items this run last worked or failed, counted by state; one
+            it failed counts as failed.
+          type: object
+        items:
+          description: The automation's unfinished items, oldest first, whichever
+            run enqueued them.
+          items:
+            $ref: '#/components/schemas/model.AutomationWorkItemActivity'
+          type: array
+          uniqueItems: false
+        startTime:
+          description: The time this run started.
+          example: "2026-09-15T16:00:02Z"
+          type: string
+        state:
+          $ref: '#/components/schemas/model.AutomationRunState'
+      type: object
+    model.AutomationRunDetails:
+      description: 'Everything one run left behind: its row, its work items, the sessions
+        they drove and the alerts they recorded on.'
+      properties:
+        alertTotal:
+          description: How many alerts carry this run's id.
+          example: 120
+          type: integer
+        alerts:
+          description: The alerts carrying this run's id, newest first, up to the
+            requested limit.
+          items:
+            $ref: '#/components/schemas/model.AlertTriageAlert'
+          type: array
+          uniqueItems: false
+        alertsExpired:
+          description: |-
+            Indicates the run recorded on alerts that have since aged out of the alert indices.
+            A best effort: nothing distinguishes a partly expired list from a complete one.
+          example: false
+          type: boolean
+        automationDeleted:
+          description: Indicates the automation has been deleted and only its history
+            remains.
+          example: false
+          type: boolean
+        automationId:
+          description: The automation this run belongs to, echoed even when it no
+            longer exists.
+          example: 5c0b1f2e-0c6d-4a71-9f3e-1b8a2d4c6e90
+          type: string
+        displayName:
+          description: The automation's current name; empty once it has been deleted
+            or without config/read.
+          example: Nightly Alert Triage
+          type: string
+        givenUpAlerts:
+          description: Alerts of this run whose group has failed maxFailures times;
+            0 when the cap is unknown.
+          example: 12
+          type: integer
+        items:
+          description: The items this run last worked or failed, oldest first.
+          items:
+            $ref: '#/components/schemas/model.AutomationWorkItem'
+          type: array
+          uniqueItems: false
+        maxFailures:
+          description: The automation's failure cap when it is still defined; 0 when
+            unknown.
+          example: 3
+          type: integer
+        run:
+          $ref: '#/components/schemas/model.AutomationRunRecord'
+        sessions:
+          description: Every attempt on those items, in item then attempt order, other
+            runs' attempts included.
+          items:
+            $ref: '#/components/schemas/model.AutomationRunSession'
+          type: array
+          uniqueItems: false
+      type: object
+    model.AutomationRunHistory:
+      description: A page of one automation's runs plus what it still has queued.
+      properties:
+        automationDeleted:
+          description: Indicates the automation has been deleted and only its history
+            remains.
+          example: false
+          type: boolean
+        automationId:
+          description: The automation these runs belong to, echoed even when it no
+            longer exists.
+          example: 5c0b1f2e-0c6d-4a71-9f3e-1b8a2d4c6e90
+          type: string
+        backlog:
+          $ref: '#/components/schemas/model.AutomationBacklog'
+        displayName:
+          description: The automation's current name; empty once it has been deleted
+            or without config/read.
+          example: Nightly Alert Triage
+          type: string
+        hasMore:
+          description: Indicates more runs exist past this page.
+          example: true
+          type: boolean
+        runs:
+          description: The requested page, newest first.
+          items:
+            $ref: '#/components/schemas/model.AutomationRunSummary'
+          type: array
+          uniqueItems: false
+      type: object
+    model.AutomationRunRecord:
+      description: 'One execution of one automation: opened before its kind runs,
+        closed when it stops.'
+      properties:
+        automationId:
+          description: The automation this run belongs to.
+          example: 5c0b1f2e-0c6d-4a71-9f3e-1b8a2d4c6e90
+          type: string
+        endTime:
+          description: The time this run stopped; absent while it is in flight.
+          example: "2026-09-15T16:03:02Z"
+          type: string
+        error:
+          description: Why this run failed; absent unless it did.
+          type: string
+        id:
+          description: The unique id of this run, stamped on the sessions it creates.
+          example: 3f1a7c0e-9b21-4d8a-bc55-2e77a1f0c934
+          type: string
+        startTime:
+          description: The time this run started.
+          example: "2026-09-15T16:00:02Z"
+          type: string
+        state:
+          $ref: '#/components/schemas/model.AutomationRunState'
+      type: object
+    model.AutomationRunSession:
+      description: One session a run drove, summarized from its stored messages.
+      properties:
+        agent:
+          description: The agent that drove this session.
+          example: Investigator
+          type: string
+        createTime:
+          example: "2026-09-15T16:00:05Z"
+          type: string
+        itemId:
+          description: The work item this session was an attempt at.
+          example: 8c2e5b91-4a03-47f6-9d18-6b0e2c7d4a15
+          type: string
+        messageCount:
+          example: 14
+          type: integer
+        missing:
+          description: Indicates the session is no longer stored; only its id remains
+            on the work item.
+          example: false
+          type: boolean
+        outcome:
+          description: report, failed or running, derived from the item's state, the
+            attempt's position and whether its session is live.
+          example: report
+          type: string
+        runId:
+          description: 'The run that made this attempt, best effort: a run that failed
+            before opening a session shifts the mapping.'
+          example: 3f1a7c0e-9b21-4d8a-bc55-2e77a1f0c934
+          type: string
+        sessionId:
+          example: 9b7c1d2e-3f40-4a5b-8c6d-7e8f9a0b1c2d
+          type: string
+        steps:
+          description: What the session did, in order.
+          items:
+            $ref: '#/components/schemas/model.AutomationRunStep'
+          type: array
+          uniqueItems: false
+        updateTime:
+          example: "2026-09-15T16:02:41Z"
+          type: string
+      type: object
+    model.AutomationRunState:
+      description: The current state of this run.
+      example: running
+      type: string
+      x-enum-varnames:
+      - AutomationRunQueued
+      - AutomationRunRunning
+      - AutomationRunSucceeded
+      - AutomationRunFailed
+    model.AutomationRunStep:
+      description: 'One thing a session did, in transcript order: a stretch of thinking
+        or a tool call.'
+      properties:
+        kind:
+          description: thought or tool.
+          example: tool
+          type: string
+        name:
+          description: The tool called; absent on a thought.
+          example: query_events
+          type: string
+        status:
+          description: ok, error, rejected, or pending while the result is outstanding;
+            absent on a thought.
+          example: ok
+          type: string
+        text:
+          description: The start of the thinking; absent on a tool call. The session
+            holds the full text.
+          type: string
+        truncated:
+          description: Indicates text was cut short.
+          example: true
+          type: boolean
+      type: object
+    model.AutomationRunSummary:
+      description: One run in an automation's history, with its work items counted
+        by state.
+      properties:
+        automationId:
+          description: The automation this run belongs to.
+          example: 5c0b1f2e-0c6d-4a71-9f3e-1b8a2d4c6e90
+          type: string
+        endTime:
+          description: The time this run stopped; absent while it is in flight.
+          example: "2026-09-15T16:03:02Z"
+          type: string
+        error:
+          description: Why this run failed; absent unless it did.
+          type: string
+        id:
+          description: The unique id of this run, stamped on the sessions it creates.
+          example: 3f1a7c0e-9b21-4d8a-bc55-2e77a1f0c934
+          type: string
+        itemCounts:
+          additionalProperties:
+            type: integer
+          description: Items this run last worked or failed, counted by state; one
+            it failed counts as failed.
+          type: object
+        startTime:
+          description: The time this run started.
+          example: "2026-09-15T16:00:02Z"
+          type: string
+        state:
+          $ref: '#/components/schemas/model.AutomationRunState'
+      type: object
+    model.AutomationWorkItem:
+      description: 'One unit of work inside an automation: what a kind enqueues, claims,
+        runs a session for, and applies the outcome of.'
+      properties:
+        attempts:
+          description: |-
+            How many times this item has been claimed, including attempts that died with the
+            process.
+          example: 1
+          type: integer
+        automationId:
+          description: The automation this item belongs to.
+          example: 5c0b1f2e-0c6d-4a71-9f3e-1b8a2d4c6e90
+          type: string
+        createTime:
+          description: The time this item was created.
+          example: "2026-09-15T16:00:05Z"
+          type: string
+        error:
+          description: Why this item failed; absent unless it did.
+          type: string
+        failedRunIds:
+          description: |-
+            Every run that failed this item, in failure order. A run never claims an item it
+            failed, and the kind gives the item up once this reaches its budget.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        groupKey:
+          description: |-
+            Identifies what this item is about, in whatever terms its kind uses. Only one item
+            per group is ever in flight.
+          example: rule.name:Suspicious PowerShell
+          type: string
+        id:
+          description: The unique id of this work item.
+          example: 8c2e5b91-4a03-47f6-9d18-6b0e2c7d4a15
+          type: string
+        payload:
+          description: The kind's description of the work. Opaque to everything but
+            that kind.
+          type: object
+        result:
+          description: |-
+            The kind's conclusion, stored in the same statement that moves the item to applying,
+            so a process that dies after that point resumes at the apply step.
+          type: object
+        runId:
+          description: |-
+            The run that last worked this item: the one that enqueued it until another claims
+            it. Absent once that run is gone; items outlive their runs so a later run can
+            finish them.
+          type: string
+        sessionIds:
+          description: |-
+            One root session per attempt, in attempt order. Each root reaches its own delegated
+            children.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        state:
+          $ref: '#/components/schemas/model.AutomationWorkItemState'
+        updateTime:
+          description: The time this item last changed state.
+          example: "2026-09-15T16:02:41Z"
+          type: string
+      type: object
+    model.AutomationWorkItemActivity:
+      description: One unfinished work item and what is happening to it. A running
+        item that is neither queued nor has phases is preparing its session.
+      properties:
+        attempts:
+          description: |-
+            How many times this item has been claimed, including attempts that died with the
+            process.
+          example: 1
+          type: integer
+        automationId:
+          description: The automation this item belongs to.
+          example: 5c0b1f2e-0c6d-4a71-9f3e-1b8a2d4c6e90
+          type: string
+        createTime:
+          description: The time this item was created.
+          example: "2026-09-15T16:00:05Z"
+          type: string
+        error:
+          description: Why this item failed; absent unless it did.
+          type: string
+        failedRunIds:
+          description: |-
+            Every run that failed this item, in failure order. A run never claims an item it
+            failed, and the kind gives the item up once this reaches its budget.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        groupKey:
+          description: |-
+            Identifies what this item is about, in whatever terms its kind uses. Only one item
+            per group is ever in flight.
+          example: rule.name:Suspicious PowerShell
+          type: string
+        id:
+          description: The unique id of this work item.
+          example: 8c2e5b91-4a03-47f6-9d18-6b0e2c7d4a15
+          type: string
+        payload:
+          description: The kind's description of the work. Opaque to everything but
+            that kind.
+          type: object
+        phases:
+          description: The item's live session first, then each child it delegated
+            to; empty while no session runs for it.
+          items:
+            $ref: '#/components/schemas/model.AgentSessionPhase'
+          type: array
+          uniqueItems: false
+        queued:
+          description: Indicates the item's job is waiting for a pool slot.
+          example: false
+          type: boolean
+        result:
+          description: |-
+            The kind's conclusion, stored in the same statement that moves the item to applying,
+            so a process that dies after that point resumes at the apply step.
+          type: object
+        runId:
+          description: |-
+            The run that last worked this item: the one that enqueued it until another claims
+            it. Absent once that run is gone; items outlive their runs so a later run can
+            finish them.
+          type: string
+        sessionIds:
+          description: |-
+            One root session per attempt, in attempt order. Each root reaches its own delegated
+            children.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        state:
+          $ref: '#/components/schemas/model.AutomationWorkItemState'
+        updateTime:
+          description: The time this item last changed state.
+          example: "2026-09-15T16:02:41Z"
+          type: string
+      type: object
+    model.AutomationWorkItemState:
+      description: The current state of this item.
+      example: pending
+      type: string
+      x-enum-varnames:
+      - AutomationWorkItemPending
+      - AutomationWorkItemRunning
+      - AutomationWorkItemApplying
+      - AutomationWorkItemDone
+      - AutomationWorkItemFailed
     model.Case:
       properties:
         assigneeId:
@@ -916,6 +1791,113 @@ components:
       required:
       - caseId
       - description
+      type: object
+    model.DestinationConfig:
+      description: DestinationConfig defines the configuration for an individual notification
+        destination channel.
+      properties:
+        attachmentsSupported:
+          description: Indicates whether the underlying channel driver supports attachments
+            (populated in API responses).
+          example: true
+          type: boolean
+        enableRecipients:
+          description: For drivers that support recipient targeting, whether targeting
+            is enabled (defaults to true for SOC).
+          example: true
+          type: boolean
+        enabled:
+          description: Indicates whether this destination is currently active and
+            receiving alerts.
+          example: true
+          type: boolean
+        id:
+          description: The unique identifier for this destination (optional in config
+            map, populated in API responses; max 40 characters).
+          example: soc-bell
+          type: string
+        linksSupported:
+          description: Indicates whether the underlying channel driver supports deep
+            links (populated in API responses).
+          example: true
+          type: boolean
+        name:
+          description: Human-readable display name for this destination (max 50 characters).
+          example: SOC Notification Bell
+          type: string
+        params:
+          additionalProperties: {}
+          description: |-
+            Channel-specific driver parameters:
+              - "soc":
+                  * "storeInPostgres" (bool): Persist notifications in PostgreSQL.
+                  * "attachmentMode" (string): "link", "attach", or "both".
+              - "smtp":
+                  * "host" (string, required): SMTP server hostname or IP address.
+                  * "port" (int): SMTP server port (default 25, 587, or 465).
+                  * "from" (string, required): Sender email address (e.g., "alerts@example.com").
+                  * "to" ([]string): Default recipient email addresses.
+                  * "username" (string): SMTP authentication username.
+                  * "password" (string): SMTP authentication password.
+                  * "useTls" (bool): Use TLS / STARTTLS.
+                  * "insecureSkipVerify" (bool): Skip TLS certificate verification.
+                  * "authType" (string): Auth mechanism ("plain", "login", "cram-md5").
+                  * "attachmentMode" (string): "both", "attach", or "link" (default "both").
+              - "slack_webhook":
+                  * "webhookUrl" (string, required): Slack Incoming Webhook URL (e.g., "https://hooks.slack.com/services/...").
+                  * "insecureSkipVerify" (bool): Skip TLS certificate verification.
+              - "matrix_hookshot_webhook":
+                  * "webhookUrl" (string, required): Matrix Hookshot webhook URL (e.g., "https://matrix.example.com/_matrix/hookshot/...").
+                  * "insecureSkipVerify" (bool): Skip TLS certificate verification.
+              - "generic_webhook":
+                  * "webhookUrl" (string, required): HTTP or HTTPS webhook destination URL.
+                  * "format" (string): Payload format ("generic", "slack", or "matrix_hookshot", default "generic").
+                  * "method" (string): HTTP method (default "POST").
+                  * "headers" (map[string]string): Custom HTTP headers.
+                  * "timeoutSeconds" (int): Request timeout in seconds (default 15).
+                  * "insecureSkipVerify" (bool): Skip TLS certificate verification.
+          type: object
+        recipientsSupported:
+          description: Indicates whether the underlying channel driver supports recipient
+            targeting (populated in API responses).
+          example: true
+          type: boolean
+        scheduleIds:
+          description: The IDs of the reusable activation schedules linked to this
+            destination.
+          example:
+          - after-hours
+          - weekends
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        severities:
+          description: Optional list of severities to limit notifications to (e.g.
+            ["high", "critical"]). If empty, all severities are allowed.
+          example:
+          - high
+          - critical
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        skipIfRecipients:
+          description: When recipient targeting is not supported or disabled, whether
+            to skip sending targeted notifications.
+          example: false
+          type: boolean
+        type:
+          description: The channel driver type (e.g. soc, smtp, slack_webhook, matrix_hookshot_webhook,
+            generic_webhook).
+          enum:
+          - soc
+          - smtp
+          - slack_webhook
+          - matrix_hookshot_webhook
+          - generic_webhook
+          example: soc
+          type: string
       type: object
     model.Detection:
       properties:
@@ -1415,6 +2397,11 @@ components:
           description: The start of the search time range, in the requestor's timezone
           example: "2024-12-03T14:31:35-05:00"
           type: string
+        broadcastKind:
+          description: Websocket message kind broadcast when an asynchronous update
+            finishes; empty broadcasts nothing
+          example: events:ack
+          type: string
         createTime:
           description: The UTC date and time when the search request was submitted
           example: "2024-12-04T19:31:42.73865332Z"
@@ -1445,6 +2432,11 @@ components:
           description: The base query used to conduct the event search
           example: (*) AND tags:alert AND NOT event.acknowledged:true AND NOT event.escalated:true
             | groupby rule.name event.module* event.severity_label rule.uuid
+          type: string
+        requiredPermissionGroup:
+          description: Permission group a client must be able to read to receive the
+            broadcast
+          example: events
           type: string
         updateScripts:
           description: Any scripts used in the event update
@@ -1982,6 +2974,14 @@ components:
           example: 2.4.110
           type: string
       type: object
+    model.JSONSchema:
+      description: |-
+        The settings this kind accepts, one property per form field. Interval and creator
+        belong to the automation rather than the kind, so they are absent here.
+      properties:
+        json:
+          $ref: '#/components/schemas/model.ToolSchema'
+      type: object
     model.Job:
       properties:
         completeTime:
@@ -2079,11 +3079,17 @@ components:
         maxGlobalMemoriesToReconcile:
           example: 20
           type: integer
+        maxMemoryRetries:
+          example: 2
+          type: integer
         maxUserMemoriesToInclude:
           example: 5
           type: integer
         maxUserMemoriesToReconcile:
           example: 20
+          type: integer
+        memoryExtractBatchSize:
+          example: 5
           type: integer
         memoryModel:
           example: sonnet@SOAI
@@ -2427,6 +3433,10 @@ components:
           description: Indicates whether disk encryption is enabled on this node
           example: 1
           type: integer
+        load1m:
+          description: The node's 1-minute load metric
+          example: 0.43
+          type: number
         load5m:
           description: The node's 5-minute load metric
           example: 0.96
@@ -2434,10 +3444,6 @@ components:
         load15m:
           description: The node's 15-minute load metric
           example: 1.09
-          type: number
-        load1m:
-          description: The node's 1-minute load metric
-          example: 0.43
           type: number
         memoryTotalGB:
           description: Total size, in gigabytes, of the system memory, or RAM
@@ -2613,6 +3619,26 @@ components:
           example: admin@soc.local
           type: string
       type: object
+    model.NotificationListResponse:
+      description: NotificationListResponse contains the list of notifications and
+        truncation metadata.
+      properties:
+        count:
+          description: The total count of notifications returned in this response.
+          example: 500
+          type: integer
+        notifications:
+          description: List of notifications matching the query.
+          items:
+            $ref: '#/components/schemas/model.NotificationRecord'
+          type: array
+          uniqueItems: false
+        truncated:
+          description: Indicates whether the notification list was truncated because
+            additional notifications were available beyond the limit.
+          example: false
+          type: boolean
+      type: object
     model.NotificationRecord:
       description: NotificationRecord represents a persisted notification with user-specific
         state.
@@ -2665,6 +3691,15 @@ components:
           description: The timestamp when the notification was marked as read.
           example: "2026-08-17T12:05:00Z"
           type: string
+        recipients:
+          description: Optional recipient user IDs targeted to receive this notification.
+          example:
+          - user-1
+          - user-2
+          items:
+            type: string
+          type: array
+          uniqueItems: false
         severity:
           description: The severity classification of this notification.
           enum:
@@ -2686,6 +3721,8 @@ components:
           - metric
           - agent_ai
           - report
+          - pcap
+          - client
           example: detection
           type: string
         summary:
@@ -3109,6 +4146,117 @@ components:
       - caseId
       - fields
       type: object
+    model.Schedule:
+      description: The schedule definition to evaluate
+      properties:
+        definitions:
+          description: Array of recurrence definitions
+          items:
+            $ref: '#/components/schemas/model.ScheduleDefinition'
+          type: array
+          uniqueItems: false
+        description:
+          description: Description of the schedule (max 1000 characters)
+          example: Mon-Fri 17:00-08:00 and all day Saturday and Sunday
+          type: string
+        enabled:
+          description: Indicates whether the schedule is active/enabled
+          example: true
+          type: boolean
+        excludeScheduleIds:
+          description: Array of schedule IDs to exclude (exception/blackout schedules)
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        id:
+          description: Unique identifier for the schedule (max 40 characters)
+          example: after-hours-and-weekends
+          type: string
+        name:
+          description: Human-readable name (max 50 characters)
+          example: After Hours & Weekends
+          type: string
+        timezone:
+          description: IANA timezone identifier, e.g. "America/New_York" or "UTC"
+          example: America/New_York
+          type: string
+      type: object
+    model.ScheduleDefinition:
+      description: ScheduleDefinition represents a single recurrence definition within
+        a schedule.
+      properties:
+        allDay:
+          description: If true, the schedule is active all day (00:00-24:00)
+          example: false
+          type: boolean
+        daysOfMonth:
+          description: 'For monthly/annually schedules: days of the month (1-31, -1
+            for last day of month)'
+          example:
+          - 1
+          - 15
+          - -1
+          items:
+            type: integer
+          type: array
+          uniqueItems: false
+        daysOfWeek:
+          description: 'For weekly/monthly schedules: days of the week (0=Sunday,
+            1=Monday, ..., 6=Saturday)'
+          example:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          items:
+            type: integer
+          type: array
+          uniqueItems: false
+        endTime:
+          description: End time in HH:MM format (24-hour, e.g. "17:00")
+          example: "17:00"
+          type: string
+        months:
+          description: 'For annual schedules: month numbers (1=January, ..., 12=December)'
+          example:
+          - 12
+          items:
+            type: integer
+          type: array
+          uniqueItems: false
+        startTime:
+          description: Start time in HH:MM format (24-hour, e.g. "08:00")
+          example: "08:00"
+          type: string
+        type:
+          description: 'The type of recurrence: daily, weekly, monthly, annually'
+          example: weekly
+          type: string
+        weekNumbers:
+          description: 'For monthly/annually schedules: week numbers within the month
+            (1, 2, 3, 4, 5, -1 for last occurrence)'
+          example:
+          - 1
+          - 3
+          items:
+            type: integer
+          type: array
+          uniqueItems: false
+      type: object
+    model.SessionAccessRequest:
+      description: The sessions whose access to check.
+      properties:
+        sessionIds:
+          description: Up to 50 session ids.
+          example:
+          - 3f1a7c0e-9b21-4d8a-bc55-2e77a1f0c934
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+      type: object
     model.SessionUsage:
       description: Usage statistics for the session.
       properties:
@@ -3414,6 +4562,11 @@ components:
         isOrchestrator:
           example: false
           type: boolean
+        maxConcurrentInstances:
+          description: 0 is unlimited. Caps how many sessions may run this agent at
+            once.
+          example: 2
+          type: integer
         model:
           description: A model selector ("id@adapter" or bare id), not a display name.
           example: claude-sonnet-4.5@SOAI
@@ -3586,6 +4739,32 @@ components:
         toolUseId:
           description: The unique identifier for this tool use.
           example: tooluse_mT45or7ISwSEUivo63nqow
+          type: string
+      type: object
+    model.ToolSchema:
+      properties:
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/model.ToolSchemaProperty'
+          type: object
+        required:
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        type:
+          type: string
+      type: object
+    model.ToolSchemaProperty:
+      properties:
+        default: {}
+        description:
+          type: string
+        items:
+          additionalProperties:
+            $ref: '#/components/schemas/model.ToolSchemaProperty'
+          type: object
+        type:
           type: string
       type: object
     model.UiElement:
@@ -3907,11 +5086,40 @@ components:
         useEsql:
           type: boolean
       type: object
+    server.EvaluateScheduleRequest:
+      description: EvaluateScheduleRequest specifies the schedule and timestamp for
+        evaluation.
+      properties:
+        schedule:
+          $ref: '#/components/schemas/model.Schedule'
+        timestamp:
+          description: RFC3339 formatted timestamp, e.g. "2026-09-14T12:00:00Z". If
+            empty, current UTC time is used.
+          example: "2026-09-14T12:00:00Z"
+          type: string
+      type: object
+    server.EvaluateScheduleResponse:
+      description: EvaluateScheduleResponse specifies the resulting active state.
+      properties:
+        active:
+          description: Indicates whether the schedule is active at the requested timestamp
+          example: true
+          type: boolean
+      type: object
     server.GenPublicIdResp:
       properties:
         publicId:
           example: fb58abf3-0a6d-49af-b1a0-1eeabec07716
           type: string
+      type: object
+    server.SendNotificationResponse:
+      description: SendNotificationResponse specifies the number of destinations that
+        delivered the notification.
+      properties:
+        count:
+          description: The number of destinations that actually sent the notification.
+          example: 1
+          type: integer
       type: object
     server.ToggleDismissRequest:
       description: ToggleDismissRequest specifies the desired dismissal state for
@@ -3961,6 +5169,249 @@ info:
   version: ""
 openapi: 3.1.0
 paths:
+  /connect/alarms:
+    get:
+      description: Retrieves all configured metric alarms.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/model.Alarm'
+                type: array
+          description: The list of alarms
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "405":
+          description: Alarm module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - grid/read
+      summary: Get Alarms
+      tags:
+      - Alarms
+    post:
+      description: Creates a new metric alarm.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/model.Alarm'
+        description: The alarm to create
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.Alarm'
+          description: The created alarm
+        "400":
+          description: Invalid request body or parameters, or duplicate ID
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "405":
+          description: Alarm module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - config/write
+      summary: Create Alarm
+      tags:
+      - Alarms
+  /connect/alarms/{id}:
+    delete:
+      description: Deletes an existing metric alarm.
+      parameters:
+      - description: Alarm ID
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: The alarm was successfully deleted
+        "400":
+          description: Invalid alarm ID
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "404":
+          description: Alarm not found
+        "405":
+          description: Alarm module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - config/write
+      summary: Delete Alarm
+      tags:
+      - Alarms
+    get:
+      description: Retrieves a specific metric alarm by ID.
+      parameters:
+      - description: Alarm ID
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.Alarm'
+          description: The alarm
+        "400":
+          description: Invalid alarm ID
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "404":
+          description: Alarm not found
+        "405":
+          description: Alarm module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - grid/read
+      summary: Get Single Alarm
+      tags:
+      - Alarms
+    put:
+      description: Updates an existing metric alarm.
+      parameters:
+      - description: Alarm ID
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/model.Alarm'
+        description: The alarm data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.Alarm'
+          description: The updated alarm
+        "400":
+          description: Invalid request body or parameters
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "404":
+          description: Alarm not found
+        "405":
+          description: Alarm module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - config/write
+      summary: Update Alarm
+      tags:
+      - Alarms
+  /connect/alarms/evaluate:
+    post:
+      description: Triggers an immediate evaluation pass of all enabled alarms.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Evaluation completed successfully
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "405":
+          description: Alarm module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - config/read
+      summary: Evaluate Alarms
+      tags:
+      - Alarms
+  /connect/alarms/metrics:
+    get:
+      description: Retrieves available grid metric datapoint metadata for configuring
+        alarms.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/model.AlarmMetricInfo'
+                type: array
+          description: The list of available metric datapoints
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "405":
+          description: Alarm module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - grid/read
+      summary: Get Alarm Metric Datapoints
+      tags:
+      - Alarms
+  /connect/alarms/states:
+    get:
+      description: Retrieves live persisted alarm states across all grid nodes.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/model.AlarmState'
+                type: array
+          description: The list of alarm states
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - grid/read
+      summary: Get Alarm States
+      tags:
+      - Alarms
   /connect/assistant/admin/{userId}/sessions:
     get:
       description: Get chat session metadata from a specific user.
@@ -4171,6 +5622,293 @@ paths:
       - bearer:
         - config/write
       summary: Save an Assistant Agent
+      tags:
+      - Assistant
+  /connect/assistant/automations:
+    get:
+      description: Retrieve every scheduled automation defined on the grid.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/model.Automation'
+                type: array
+          description: The list of automations
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - automations/read
+      summary: List Automations
+      tags:
+      - Assistant
+    post:
+      description: Define a new scheduled automation. The server assigns its id and
+        creator; changing an automation's params drops the work its previous definition
+        had queued.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/model.Automation'
+        description: Automation definition
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.Automation'
+          description: The created automation
+        "400":
+          description: The request body is invalid
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - config/write
+      summary: Create an Automation
+      tags:
+      - Assistant
+  /connect/assistant/automations/{id}:
+    delete:
+      description: Remove an automation. An in-flight run is allowed to finish, since
+        that run is often the reason the automation is being removed. An automation
+        that ships with the product can be disabled but not removed.
+      parameters:
+      - description: Automation ID
+        example: c3d44fb8-3bc2-46e2-a7d2-8a8983556d1a
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Automation deleted
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request, or the automation
+            ships with the product
+        "404":
+          description: Automation not found
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - config/write
+      summary: Delete an Automation
+      tags:
+      - Assistant
+    get:
+      description: Retrieve a single automation by its immutable UUID.
+      parameters:
+      - description: Automation ID
+        example: c3d44fb8-3bc2-46e2-a7d2-8a8983556d1a
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.Automation'
+          description: The automation
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "404":
+          description: Automation not found
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - automations/read
+      summary: Get an Automation
+      tags:
+      - Assistant
+    put:
+      description: Replace an automation's definition. Changing its params drops the
+        work its previous definition had queued.
+      parameters:
+      - description: Automation ID
+        example: c3d44fb8-3bc2-46e2-a7d2-8a8983556d1a
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/model.Automation'
+        description: Automation definition
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.Automation'
+          description: The updated automation
+        "400":
+          description: The request body is invalid
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "404":
+          description: Automation not found
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - config/write
+      summary: Update an Automation
+      tags:
+      - Assistant
+  /connect/assistant/automations/{id}/runs:
+    get:
+      description: Retrieve a page of one automation's runs, newest first, with each
+        run's work items counted by state and the work the automation still has queued.
+        A deleted automation keeps its history and is reported with an empty display
+        name.
+      parameters:
+      - description: Automation ID
+        example: c3d44fb8-3bc2-46e2-a7d2-8a8983556d1a
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Page size, at most 500
+        example: 50
+        in: query
+        name: limit
+        schema:
+          type: integer
+      - description: Page offset
+        example: 0
+        in: query
+        name: offset
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.AutomationRunHistory'
+          description: The page of runs
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "404":
+          description: Automation not found and no runs remain for it
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - automations/read
+      summary: List an Automation's Runs
+      tags:
+      - Assistant
+  /connect/assistant/automations/{id}/runs/{runId}:
+    get:
+      description: 'Retrieve everything one run left behind: its work items, every
+        session those items drove with the tools it used and a preview of its thinking,
+        and the alerts the run recorded on. Open a session with GET /connect/assistant/sessions/{sessionId};
+        while a session is still running its turns also stream on the assistant:stream
+        broadcast as model.AgentStreamEvent.'
+      parameters:
+      - description: Automation ID
+        example: c3d44fb8-3bc2-46e2-a7d2-8a8983556d1a
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: Run ID
+        example: 3f1a7c0e-9b21-4d8a-bc55-2e77a1f0c934
+        in: path
+        name: runId
+        required: true
+        schema:
+          type: string
+      - description: Alerts to return, at most 10000
+        example: 500
+        in: query
+        name: alertLimit
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.AutomationRunDetails'
+          description: The run
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "404":
+          description: Run not found under this automation
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - automations/read
+        - events/read
+      summary: Get an Automation Run
+      tags:
+      - Assistant
+  /connect/assistant/automations/activity:
+    get:
+      description: 'Report what agents are doing right now: every automation run queued
+        or running with its automation''s open work items, whether each item is waiting
+        for a pool slot, what each item''s live session and the children it delegated
+        to are doing, and the load on the pool that runs agent work, interactive turns
+        included. Open a session with GET /connect/assistant/sessions/{sessionId};
+        its turns stream on the assistant:stream broadcast as model.AgentStreamEvent.'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.AutomationActivity'
+          description: The activity
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - automations/read
+      summary: Get Automation Activity
       tags:
       - Assistant
   /connect/assistant/balance/{modelAndAdapter}:
@@ -4554,6 +6292,92 @@ paths:
       - bearer:
         - assistant/write_authored
       summary: Update metadata for a Session
+      tags:
+      - Assistant
+  /connect/assistant/sessions/{sessionId}/clone:
+    post:
+      description: Copy a session you can read, and its delegated sub-sessions, into
+        a new session you own so it can be continued. Given an alert that already
+        references the session, as its automated triage or one of its manual investigations,
+        the copy is also recorded on that alert as a manual investigation; that requires
+        events/write.
+      parameters:
+      - description: Session ID to clone
+        in: path
+        name: sessionId
+        required: true
+        schema:
+          type: string
+      - description: alert_investigation, to record the copy on an alert
+        example: alert_investigation
+        in: query
+        name: entityType
+        schema:
+          type: string
+      - description: The alert's soc_id
+        example: WKhCuTw4GPvrQA-9ksmn
+        in: query
+        name: entityId
+        schema:
+          type: string
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.AssistantSession'
+          description: The new session
+        "400":
+          description: The provided session ID is invalid, missing, or names a delegation
+            sub-session, or the alert does not reference the session
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "404":
+          description: Session not found
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - assistant/write_authored
+        - assistant/delete_authored
+      summary: Clone an Assistant Session
+      tags:
+      - Assistant
+  /connect/assistant/sessions/access:
+    post:
+      description: Report, for each session id, whether the caller could open that
+        session. Nothing else about a session is returned, and one that does not exist
+        reads the same as one the caller may not open.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/model.SessionAccessRequest'
+        description: The sessions to check
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  type: boolean
+                type: object
+          description: Whether each session can be opened, keyed by session id
+        "400":
+          description: No session ids, or more than 50
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - assistant/read_authored
+      summary: Check Access to Assistant Sessions
       tags:
       - Assistant
   /connect/assistant/skills/{name}:
@@ -7008,21 +8832,26 @@ paths:
   /connect/notifications:
     get:
       description: Retrieves notifications for the current user, optionally filtered.
+        Results are capped at the specified limit (defaults to newest 500) and return
+        a truncated flag when additional notifications exist.
       parameters:
       - description: Filter parameter (all, unread, dismissed)
         in: query
         name: filter
         schema:
           type: string
+      - description: Maximum number of notifications to return (defaults to 500)
+        in: query
+        name: limit
+        schema:
+          type: integer
       responses:
         "200":
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/model.NotificationRecord'
-                type: array
-          description: The list of notifications
+                $ref: '#/components/schemas/model.NotificationListResponse'
+          description: The list of notifications and truncation metadata
         "400":
           description: License is invalid
         "401":
@@ -7155,6 +8984,273 @@ paths:
       - bearer:
         - notifications/write
       summary: Toggle Read Notification
+      tags:
+      - Notifications
+  /connect/notifications/destinations:
+    get:
+      description: Retrieves all configured notification destination channels.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/model.DestinationConfig'
+                type: array
+          description: The list of configured destinations
+        "400":
+          description: License is invalid
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "405":
+          description: Notification module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - config/read
+      summary: Get Notification Destinations
+      tags:
+      - Notifications
+    post:
+      description: Creates a new notification destination channel in Pillar configuration.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/model.DestinationConfig'
+        description: The destination data to create
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: The destination was successfully created
+        "400":
+          description: Invalid request body or parameters, or duplicate ID
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "405":
+          description: Notification module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - config/write
+      summary: Create Notification Destination
+      tags:
+      - Notifications
+  /connect/notifications/destinations/{id}:
+    delete:
+      description: Removes a notification destination channel from Pillar configuration.
+      parameters:
+      - description: Destination ID
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: The destination was successfully deleted
+        "400":
+          description: Invalid parameters
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "404":
+          description: Destination not found
+        "405":
+          description: Notification module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - config/write
+      summary: Delete Notification Destination
+      tags:
+      - Notifications
+    put:
+      description: Updates an existing notification destination channel in Pillar
+        configuration.
+      parameters:
+      - description: Destination ID
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/model.DestinationConfig'
+        description: The destination data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: The destination was successfully updated
+        "400":
+          description: Invalid request body or parameters
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "404":
+          description: Destination not found
+        "405":
+          description: Notification module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - config/write
+      summary: Update Notification Destination
+      tags:
+      - Notifications
+  /connect/notifications/dismiss/all:
+    put:
+      description: Marks all eligible notifications as dismissed or active for the
+        current user.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/server.ToggleDismissRequest'
+        description: Payload to toggle dismiss
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: All notifications were successfully updated
+        "400":
+          description: Invalid request body or parameters
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "405":
+          description: Notification module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - notifications/write
+      summary: Bulk Toggle Dismiss Notifications
+      tags:
+      - Notifications
+  /connect/notifications/read/all:
+    put:
+      description: Marks all eligible notifications as read or unread for the current
+        user.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/server.ToggleReadRequest'
+        description: Payload to toggle read
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: All notifications were successfully updated
+        "400":
+          description: Invalid request body or parameters
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "405":
+          description: Notification module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - notifications/write
+      summary: Bulk Toggle Read Notifications
+      tags:
+      - Notifications
+  /connect/notifications/send:
+    post:
+      description: Dispatches a test or ad-hoc notification payload. When a destination
+        ID is provided in the route, the notification is dispatched specifically to
+        that destination. When omitted, standard notification routing is used across
+        all configured destinations.
+      parameters:
+      - description: Destination ID
+        in: path
+        name: id
+        schema:
+          type: string
+      - description: Whether to send a targeted notification to the current user
+        in: query
+        name: targeted
+        schema:
+          type: boolean
+      - description: Notification title
+        in: query
+        name: title
+        schema:
+          type: string
+      - description: Notification summary
+        in: query
+        name: summary
+        schema:
+          type: string
+      - description: Notification severity
+        in: query
+        name: severity
+        schema:
+          type: string
+      - description: Whether to bypass destination activation schedules
+        in: query
+        name: bypassSchedules
+        schema:
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/server.SendNotificationResponse'
+          description: The notification dispatch result
+        "400":
+          description: Title is missing, input exceeds maximum length, or other input
+            issues
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "404":
+          description: Destination not found
+        "405":
+          description: Notification module has not been enabled on the server
+        "500":
+          description: Possible delivery failure, or other internal SOC error; review
+            SOC logs
+      security:
+      - bearer:
+        - notifications/write
+      summary: Send Notification
       tags:
       - Notifications
   /connect/packets/{jobId}:
@@ -7559,6 +9655,178 @@ paths:
       summary: Get Permissions
       tags:
       - Clients
+  /connect/schedules:
+    get:
+      description: Retrieves all reusable activation schedules with live computed
+        active states.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/model.Schedule'
+                type: array
+          description: The list of schedules
+        "400":
+          description: License is invalid
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "405":
+          description: Configuration module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - config/read
+      summary: Get Schedules
+      tags:
+      - Schedules
+    post:
+      description: Creates a new reusable activation schedule in the Pillar configuration.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/model.Schedule'
+        description: The schedule to create
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: The schedule was successfully created
+        "400":
+          description: Invalid request body or parameters, or duplicate ID
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "405":
+          description: Configuration module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - config/write
+      summary: Create Schedule
+      tags:
+      - Schedules
+  /connect/schedules/{id}:
+    delete:
+      description: Removes a reusable activation schedule from the Pillar configuration.
+      parameters:
+      - description: Schedule ID
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: The schedule was successfully deleted
+        "400":
+          description: Invalid parameters
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "404":
+          description: Schedule not found
+        "405":
+          description: Configuration module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - config/write
+      summary: Delete Schedule
+      tags:
+      - Schedules
+    put:
+      description: Updates an existing reusable activation schedule in the Pillar
+        configuration.
+      parameters:
+      - description: Schedule ID
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/model.Schedule'
+        description: The schedule data to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: The schedule was successfully updated
+        "400":
+          description: Invalid request body or parameters
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "404":
+          description: Schedule not found
+        "405":
+          description: Configuration module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - config/write
+      summary: Update Schedule
+      tags:
+      - Schedules
+  /connect/schedules/evaluate:
+    post:
+      description: Evaluates a schedule's recurrence definitions against an arbitrary
+        RFC3339 timestamp.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/server.EvaluateScheduleRequest'
+        description: The evaluation parameters
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/server.EvaluateScheduleResponse'
+          description: The active state result
+        "400":
+          description: Invalid request body or parameters
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "405":
+          description: Configuration module has not been enabled on the server
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - config/read
+      summary: Evaluate Schedule
+      tags:
+      - Schedules
   /connect/stream/{jobId}:
     get:
       description: Returns the full job output stream for the given job ID. An example
