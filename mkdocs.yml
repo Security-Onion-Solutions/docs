@@ -225,6 +225,7 @@ nav:
     - FIPS: fips.md
     - STIG: stig.md
     - Notifications: notifications.md
+    - ElastAlert 2 Notifications: elastalert-notifications.md
     - Kafka: kafka.md
     - Security Onion API: connect-api.md
     - Active Query Management: active-query-management.md

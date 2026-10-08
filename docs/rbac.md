@@ -55,8 +55,12 @@ See the table below which explains the specific Security Onion privileges grante
 | Modify subgrid data | X | | | | | X | |
 
 !!! NOTE
-    
+
     Both `auditor` and `limited-auditor` roles can interact with previously created PCAPs if they were created before a user was converted to that role (e.g. user was downgraded from `analyst` to `auditor`). This is denoted by **O** in the above table.
+
+!!! NOTE
+
+    The *Manage notifications* privilege grants users the ability to update notification state (marking read or dismissed) and send ad-hoc notifications. Managing system-wide notification destinations and activation schedules in the [Administration](administration.md) -> [Notifications](notifications.md) interface modifies Grid configuration and requires the `superuser` role (*Modify and synchronize Grid config*).
 
 !!! NOTE
 

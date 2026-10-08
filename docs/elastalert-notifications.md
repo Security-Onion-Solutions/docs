@@ -1,8 +1,12 @@
-# Notifications
+# ElastAlert 2 Notifications
 
 !!! NOTE
     
     This is an enterprise-level feature of Security Onion. Contact Security Onion Solutions, LLC via our website at <https://securityonion.com/pro> for more information about purchasing a Security Onion Pro license to enable this feature.
+
+!!! TIP
+
+    This section covers ElastAlert 2 notifications for [Sigma](sigma.md) detections. For Security Onion's native notification management system supporting grid alarms, PCAP jobs, Reports, and external destinations (SMTP, Slack, Matrix, generic webhooks, and the in-app SOC bell), see the [Notifications](notifications.md) section.
 
 The [Detections](detections.md) module, specifically [Sigma](sigma.md) rules, can be enabled to send outbound notifications upon an alert being created. By default, no outbound notifications are enabled in a Security Onion installation. However, with the Pro license applied to a grid, notifications can be quickly configured via the Configuration screen.
 
