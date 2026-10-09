@@ -5,7 +5,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://security-onion-solutions.github.io/docs/notifications/" rel="canonical"/>
 <link href="../stig/" rel="prev"/>
-<link href="../kafka/" rel="next"/>
+<link href="../elastalert-notifications/" rel="next"/>
 <link href="../images/logo/favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
 <title>Notifications - Security Onion Documentation</title>
@@ -2218,65 +2218,65 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#configuration">
+<a class="md-nav__link" href="#overview-notifications-vs-elastalert-2-notifications">
 <span class="md-ellipsis">
       
-        Configuration
+        Overview: Notifications vs ElastAlert 2 Notifications
       
     </span>
 </a>
-<nav aria-label="Configuration" class="md-nav">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#using-the-built-in-soc-notification-popup">
+<span class="md-ellipsis">
+      
+        Using the Built-In SOC Notification Popup
+      
+    </span>
+</a>
+<nav aria-label="Using the Built-In SOC Notification Popup" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#elastalert-2-alerters">
+<a class="md-nav__link" href="#notification-bell-and-unread-badge">
 <span class="md-ellipsis">
       
-        ElastAlert 2 Alerters
+        Notification Bell and Unread Badge
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#slack">
+<a class="md-nav__link" href="#viewing-and-expanding-notifications">
 <span class="md-ellipsis">
       
-        Slack
+        Viewing and Expanding Notifications
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#email-smtp">
+<a class="md-nav__link" href="#notification-actions">
 <span class="md-ellipsis">
       
-        Email (SMTP)
+        Notification Actions
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#soc-detections">
+<a class="md-nav__link" href="#options-menu">
 <span class="md-ellipsis">
       
-        SOC Detections
+        Options Menu
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#severity-based-notifications">
+<a class="md-nav__link" href="#per-user-state-and-retention-pruning">
 <span class="md-ellipsis">
       
-        Severity-Based Notifications
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#user-defined-notifications">
-<span class="md-ellipsis">
-      
-        User-Defined Notifications
+        Per-User State and Retention Pruning
       
     </span>
 </a>
@@ -2285,25 +2285,161 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#notification-formatting">
+<a class="md-nav__link" href="#accessing-the-notifications-administration-screen">
 <span class="md-ellipsis">
       
-        Notification Formatting
+        Accessing the Notifications Administration Screen
+      
+    </span>
+</a>
+<nav aria-label="Accessing the Notifications Administration Screen" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#access-requirements">
+<span class="md-ellipsis">
+      
+        Access Requirements
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#applying-changes">
+<a class="md-nav__link" href="#user-roles-and-notification-permissions">
 <span class="md-ellipsis">
       
-        Applying Changes
+        User Roles and Notification Permissions
       
     </span>
 </a>
 </li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#severities-and-activation-schedules">
+<span class="md-ellipsis">
+      
+        Severities and Activation Schedules
+      
+    </span>
+</a>
+<nav aria-label="Severities and Activation Schedules" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#severities">
+<span class="md-ellipsis">
+      
+        Severities
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reusable-activation-schedules">
+<span class="md-ellipsis">
+      
+        Reusable Activation Schedules
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#when-destinations-are-utilized-in-a-notification-transmission">
+<span class="md-ellipsis">
+      
+        When Destinations are Utilized in a Notification Transmission
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#managing-notification-destinations">
+<span class="md-ellipsis">
+      
+        Managing Notification Destinations
+      
+    </span>
+</a>
+<nav aria-label="Managing Notification Destinations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adding-a-destination">
+<span class="md-ellipsis">
+      
+        Adding a Destination
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#updating-a-destination">
+<span class="md-ellipsis">
+      
+        Updating a Destination
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#removing-a-destination">
+<span class="md-ellipsis">
+      
+        Removing a Destination
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sending-manual-and-test-notifications">
+<span class="md-ellipsis">
+      
+        Sending Manual and Test Notifications
+      
+    </span>
+</a>
+<nav aria-label="Sending Manual and Test Notifications" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sending-global-manual-notifications">
+<span class="md-ellipsis">
+      
+        Sending Global Manual Notifications
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sending-specific-destination-manual-test-notifications">
+<span class="md-ellipsis">
+      
+        Sending Specific Destination Manual / Test Notifications
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../elastalert-notifications/">
+<span class="md-ellipsis">
+    
+  
+    ElastAlert 2 Notifications
+  
+
+    
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../kafka/">
@@ -2515,65 +2651,65 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#configuration">
+<a class="md-nav__link" href="#overview-notifications-vs-elastalert-2-notifications">
 <span class="md-ellipsis">
       
-        Configuration
+        Overview: Notifications vs ElastAlert 2 Notifications
       
     </span>
 </a>
-<nav aria-label="Configuration" class="md-nav">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#using-the-built-in-soc-notification-popup">
+<span class="md-ellipsis">
+      
+        Using the Built-In SOC Notification Popup
+      
+    </span>
+</a>
+<nav aria-label="Using the Built-In SOC Notification Popup" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#elastalert-2-alerters">
+<a class="md-nav__link" href="#notification-bell-and-unread-badge">
 <span class="md-ellipsis">
       
-        ElastAlert 2 Alerters
+        Notification Bell and Unread Badge
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#slack">
+<a class="md-nav__link" href="#viewing-and-expanding-notifications">
 <span class="md-ellipsis">
       
-        Slack
+        Viewing and Expanding Notifications
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#email-smtp">
+<a class="md-nav__link" href="#notification-actions">
 <span class="md-ellipsis">
       
-        Email (SMTP)
+        Notification Actions
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#soc-detections">
+<a class="md-nav__link" href="#options-menu">
 <span class="md-ellipsis">
       
-        SOC Detections
+        Options Menu
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#severity-based-notifications">
+<a class="md-nav__link" href="#per-user-state-and-retention-pruning">
 <span class="md-ellipsis">
       
-        Severity-Based Notifications
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#user-defined-notifications">
-<span class="md-ellipsis">
-      
-        User-Defined Notifications
+        Per-User State and Retention Pruning
       
     </span>
 </a>
@@ -2582,22 +2718,146 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#notification-formatting">
+<a class="md-nav__link" href="#accessing-the-notifications-administration-screen">
 <span class="md-ellipsis">
       
-        Notification Formatting
+        Accessing the Notifications Administration Screen
+      
+    </span>
+</a>
+<nav aria-label="Accessing the Notifications Administration Screen" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#access-requirements">
+<span class="md-ellipsis">
+      
+        Access Requirements
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#applying-changes">
+<a class="md-nav__link" href="#user-roles-and-notification-permissions">
 <span class="md-ellipsis">
       
-        Applying Changes
+        User Roles and Notification Permissions
       
     </span>
 </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#severities-and-activation-schedules">
+<span class="md-ellipsis">
+      
+        Severities and Activation Schedules
+      
+    </span>
+</a>
+<nav aria-label="Severities and Activation Schedules" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#severities">
+<span class="md-ellipsis">
+      
+        Severities
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reusable-activation-schedules">
+<span class="md-ellipsis">
+      
+        Reusable Activation Schedules
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#when-destinations-are-utilized-in-a-notification-transmission">
+<span class="md-ellipsis">
+      
+        When Destinations are Utilized in a Notification Transmission
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#managing-notification-destinations">
+<span class="md-ellipsis">
+      
+        Managing Notification Destinations
+      
+    </span>
+</a>
+<nav aria-label="Managing Notification Destinations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adding-a-destination">
+<span class="md-ellipsis">
+      
+        Adding a Destination
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#updating-a-destination">
+<span class="md-ellipsis">
+      
+        Updating a Destination
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#removing-a-destination">
+<span class="md-ellipsis">
+      
+        Removing a Destination
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sending-manual-and-test-notifications">
+<span class="md-ellipsis">
+      
+        Sending Manual and Test Notifications
+      
+    </span>
+</a>
+<nav aria-label="Sending Manual and Test Notifications" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sending-global-manual-notifications">
+<span class="md-ellipsis">
+      
+        Sending Global Manual Notifications
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sending-specific-destination-manual-test-notifications">
+<span class="md-ellipsis">
+      
+        Sending Specific Destination Manual / Test Notifications
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -2629,129 +2889,309 @@
 <p class="admonition-title">Note</p>
 <p>This is an enterprise-level feature of Security Onion. Contact Security Onion Solutions, LLC via our website at <a href="https://securityonion.com/pro">https://securityonion.com/pro</a> for more information about purchasing a Security Onion Pro license to enable this feature.</p>
 </div>
-<p>The <a href="../detections/">Detections</a> module, specifically <a href="../sigma/">Sigma</a> rules, can be enabled to send outbound notifications upon an alert being created. By default, no outbound notifications are enabled in a Security Onion installation. However, with the Pro license applied to a grid, notifications can be quickly configured via the Configuration screen.</p>
-<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">¶</a></h2>
-<p>Configuring notifications involves adjusting configuration in two areas:</p>
-<ol>
-<li>ElastAlert 2 Alerters</li>
-<li>SOC Detections</li>
-</ol>
-<h3 id="elastalert-2-alerters">ElastAlert 2 Alerters<a class="headerlink" href="#elastalert-2-alerters" title="Permanent link">¶</a></h3>
-<p><a href="../elastalert/">ElastAlert</a> includes a large number of alerters that can reach out to remote systems to deliver notifications. As each alerter supports a unique protocol the alerter requires its own set of supporting parameters in order for the alerter to know how to reach out to the remote endpoint. For example, to send a notification to a Slack channel, a webhook URL must be provided.</p>
-<p>Navigate to the <a href="../administration/">Administration</a> -&gt; Configuration screen. Next, locate the <code>ElastAlert</code> settings.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-elastalert-alerter.png"><img alt="Image" src="../images/config-item-elastalert-alerter.png"/></a></p>
-<p>Notice there are special settings for Jira and SMTP notifications. These are unique in that <a href="../elastalert/">ElastAlert</a> requires those two alerters to read their credentials from a file. Security Onion has simplified this process by presenting these Configuration fields to enter the optional credential data, and the backend process will take care of generating the required files for <a href="../elastalert/">ElastAlert</a>.</p>
-<p>The files subtree includes a list of several file settings, which allows for populating the contents of certain files that the alerters can optionally utilize. Most alerters use the files for specifying a custom Certificate Authority, so that <a href="../elastalert/">ElastAlert</a> can securely and confidently connect to remote servers that may be using custom SSL/TLS certificates. Again, Security Onion's backend process will handle generating these files from the supplied configuration data provided in the user interface.</p>
-<p>Next, the <strong>SOC &gt; config &gt; server &gt; modules &gt; elastalertengine &gt; Notifications: Sev 0/Default Parameters</strong> setting is used to customize each alerter's own parameters. As <a href="../elastalert/">ElastAlert</a> already provides detailed documentation on the required parameters for each alerter, this documentation will not cover the same information, but instead will focus on two popular alerters: Slack and SMTP.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Reference the alerter parameters at <a href="https://elastalert2.readthedocs.io/en/latest/alerts.html#alert-types">https://elastalert2.readthedocs.io/en/latest/alerts.html#alert-types</a>.</p>
-</div>
-<h3 id="slack">Slack<a class="headerlink" href="#slack" title="Permanent link">¶</a></h3>
-<p>To have <a href="../sigma/">Sigma</a> rules send notifications to Slack, add the following line to the <strong>SOC &gt; config &gt; server &gt; modules &gt; elastalertengine &gt; Notifications: Sev 0/Default Parameters</strong> configuration setting:</p>
-<div class="highlight"><pre><span></span><code>slack_webhook_url: "[https://hooks.slack.com/services/YOUR_WEBHOOK_URI](https://hooks.slack.com/services/YOUR_WEBHOOK_URI)"
-</code></pre></div>
-<h3 id="email-smtp">Email (SMTP)<a class="headerlink" href="#email-smtp" title="Permanent link">¶</a></h3>
-<p>To have <a href="../sigma/">Sigma</a> rules send notifications via email, add the following lines to the <strong>SOC &gt; config &gt; server &gt; modules &gt; elastalertengine &gt; Notifications: Sev 0/Default Parameters</strong> configuration setting:</p>
-<div class="highlight"><pre><span></span><code>email: youremail@yourcompany.com
-smtp_host: "your_company_smtp_server"
-from_addr: "ElastAlert@yourcompany.com"
-</code></pre></div>
-<p>If the SMTP server requires authentication make sure the special <strong>SMTP Username</strong> and <strong>SMTP Password</strong> configuration settings are also specified.</p>
-<h3 id="soc-detections">SOC Detections<a class="headerlink" href="#soc-detections" title="Permanent link">¶</a></h3>
-<p>Once the alerter parameters are configured, as described above, the next step is to configure <a href="../detections/">Detections</a> in order to activate one or more notification alerters.</p>
-<p>Navigate to the <a href="../administration/">Administration</a> -&gt; Configuration screen. Next, locate the <code>SOC &gt; config &gt; server &gt; modules &gt; elastalertengine</code> settings.</p>
-<p>In the <strong>Notifications: Sev 0/Default Alerters</strong> configuration setting, add the name of each alerter that should be activated, one alerter name per line. For example, to add both slack and email: </p>
-<p>slack
-  email</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-soc-additionalAlerters.png"><img alt="Image" src="../images/config-item-soc-additionalAlerters.png"/></a></p>
-<p>Important! After activating (or removing) an alerter from this setting, the <a href="../elastalert/">ElastAlert</a> engine must be fully updated. This can be done via the <a href="../detections/">Detections</a> screen, under the Options dropdown.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/58_detections_options.png"><img alt="Image" src="../images/58_detections_options.png"/></a></p>
-<h3 id="severity-based-notifications">Severity-Based Notifications<a class="headerlink" href="#severity-based-notifications" title="Permanent link">¶</a></h3>
-<p>The instructions above setup the default notification settings, for all outbound notifications. However, notification settings can be customized for higher level severities. Severities are specified in Sigma <a href="../detections/">Detections</a>.</p>
-<p>Severity levels progress as follows, starting with the lowest, least significant severity:</p>
-<ol>
-<li>Unknown Severity</li>
-<li>Informational Severity</li>
-<li>Low Severity</li>
-<li>Medium Severity</li>
-<li>High Severity</li>
-<li>Critical Severity</li>
-</ol>
-<p>If notification settings are not specified for a particular severity level then it will use whatever settings are specified at the next lower severity. If that severity is also not specified, then it continues looking for lower severity settings.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Higher severity levels do not inherit parameters or alerters from lower severities. Consequently, if <code>email</code> is specified as the default (Severity 0) alerter, and it's desired to have both <code>email</code> and <code>slack</code> notifications sent with <strong>High/Sev 4</strong> severity or above, then both <code>email</code> and <code>slack</code> will need to be specified for the <code>Notifications: Sev 4/Default Alerters</code> setting, one per line. This same principle applies to the parameters, which are also not inherited. In order to inherit default parameters across all severities, the parameters can be specified in the <code>ElastAlert &gt; Custom Configuration Parameters</code> setting.</p>
-</div>
-<h3 id="user-defined-notifications">User-Defined Notifications<a class="headerlink" href="#user-defined-notifications" title="Permanent link">¶</a></h3>
-<p>Individual Sigma detections can be tagged to change the detection's alerting behavior. The tags are set inside the detection source. Tag details are defined below:</p>
+<p>Security Onion Pro includes a centralized, multi-channel notification engine built natively into the Security Onion Console (SOC) backend. This system provides a unified framework for dispatching notifications across multiple communication platforms, tracking in-app alerts, and controlling alert delivery through granular activation schedules and severity filters.</p>
+<h2 id="overview-notifications-vs-elastalert-2-notifications">Overview: Notifications vs ElastAlert 2 Notifications<a class="headerlink" href="#overview-notifications-vs-elastalert-2-notifications" title="Permanent link">¶</a></h2>
+<p>Security Onion provides two notification mechanisms that serve different roles across the platform:</p>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>SOC Notifications (Native)</th>
+<th>ElastAlert 2 Notifications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Architecture</strong></td>
+<td>Native Go service built directly into <code>securityonion-soc</code></td>
+<td>Python service running the ElastAlert 2 daemon</td>
+</tr>
+<tr>
+<td><strong>Primary Scope</strong></td>
+<td>Grid infrastructure events, asynchronous operational jobs, and centralized alerting</td>
+<td><a href="../sigma/">Sigma</a> detection rules querying Elasticsearch</td>
+</tr>
+<tr>
+<td><strong>Supported Triggers</strong></td>
+<td>• <strong><a href="../grid/#alarms">Grid Alarms &amp; Metrics</a></strong>: Host status, CPU/memory threshold breaches, disk space watermarks<br/>• <strong>PCAP Jobs</strong>: Notification when packet capture extractions complete<br/>• <strong>Reports</strong>: Automated and on-demand PDF/CSV report delivery<br/>• <strong>Future Release</strong>: Detection alert notifications (Suricata, Strelka, and Sigma/Elastic detections will route directly through this module, eliminating ElastAlert 2)<br/>• <strong>Onion AI</strong>: AI assistant findings and suggested actions<br/>• <strong>Manual &amp; Ad-Hoc</strong>: Operator-initiated test and broadcast notifications</td>
+<td>• <a href="../sigma/">Sigma</a> detections tagged with <code>so.notification</code><br/>• Custom ElastAlert 2 rule files</td>
+</tr>
+<tr>
+<td><strong>In-App Delivery</strong></td>
+<td>Native SOC top-bar Notification Bell panel with per-user read/unread and dismissal tracking</td>
+<td>Not available (external alerters only)</td>
+</tr>
+<tr>
+<td><strong>Destinations</strong></td>
+<td>Centralized destination channels: In-App SOC Bell, Email (SMTP), Slack Webhook, Matrix Hookshot Webhook, and Generic HTTP Webhooks</td>
+<td>ElastAlert 2 alerter modules (configured via the Configuration screen)</td>
+</tr>
+<tr>
+<td><strong>Scheduling</strong></td>
+<td>Reusable Activation Schedules with timezone/DST awareness, recurrence rules, and blackout/holiday exclusions</td>
+<td>Cron-style execution rules defined per ElastAlert rule file</td>
+</tr>
+<tr>
+<td><strong>Management</strong></td>
+<td>Dedicated web UI under <strong>Administration</strong> -&gt; <strong>Notifications</strong> (<code>/#/notifications</code>)</td>
+<td>Key-value settings in <strong>Administration</strong> -&gt; <strong>Configuration</strong></td>
+</tr>
+</tbody>
+</table>
+<p>While ElastAlert 2 has historically handled outbound alerting for Sigma detections, the new Notifications module centralizes alerting across all Security Onion subsystems into a unified destination framework. In an upcoming releases, additional areas of Security Onion will utilize the new notifications module.</p>
+<p>For details on configuring legacy detection alerters with ElastAlert 2, refer to the <a href="../elastalert-notifications/">ElastAlert 2 Notifications</a> section.</p>
+<h2 id="using-the-built-in-soc-notification-popup">Using the Built-In SOC Notification Popup<a class="headerlink" href="#using-the-built-in-soc-notification-popup" title="Permanent link">¶</a></h2>
+<p>In addition to routing notifications to external channels like email or chat webhooks, Security Onion includes a built-in notification popup panel accessible directly from the top navigation bar in the Security Onion Console (SOC). This panel provides real-time in-app alerting with per-user tracking of read and dismissed states.</p>
+<h3 id="notification-bell-and-unread-badge">Notification Bell and Unread Badge<a class="headerlink" href="#notification-bell-and-unread-badge" title="Permanent link">¶</a></h3>
+<p>The notification icon is located in the upper-right corner of the SOC top navigation bar:</p>
 <ul>
-<li><code>so.notification</code>: When this tag is present inside of a Sigma tag list, the detection will only perform outbound notifications. It will not add an alert to the SOC Alerts screen.</li>
-<li><code>so.alerters.customAlerters</code>: When this tag is present inside of a Sigma tag list, the detection will perform notifications for an alternate set of ElastAlert 2 alerters. More information on how to choose these alerters is provided below.</li>
-<li><code>so.params.customAlertersParams</code>: When this tag is present inside of a Sigma tag list, and when the above tag is also included, then an alternate set of custom parameters will be applied to the ElastAlert 2 alerters.</li>
+<li><strong>Unread Notifications</strong>: When you have one or more unread notifications, a red badge appears on the envelope icon, and the icon displays as a closed envelope (<code>fa-envelope</code>).</li>
+<li><strong>All Read</strong>: When all active notifications have been read, the red badge clears, and the icon displays as an open envelope (<code>fa-envelope-open</code>).</li>
+<li><strong>Opening the Popup</strong>: Click the envelope icon to toggle the notification popup panel. The panel header displays the total count of loaded notifications (e.g., <code>Notifications (5)</code>).</li>
 </ul>
-<p>To customize the alerters and parameters to use when these tags are specified in a Sigma detection, navigate to the Configuration screen. Find the <code>SOC &gt; config &gt; server &gt; modules &gt; elastalertengine &gt; additionalUserDefinedNotifications &gt; customAlerters</code> setting and add the custom alerters, one per line, similar to what is done for the Severity-Based notifications above. Similarly, find the sibling setting to define custom alerter parameters: <code>SOC &gt; config &gt; server &gt; modules &gt; elastalertengine &gt; additionalUserDefinedNotifications &gt; customAlertersParams</code>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>User-defined alerters will override severity-based alerters, provided the user-defined alerters are properly configured. If the Sigma tags specify custom alerters but the corresponding setting does not exist in the Configuration then the severity-based notifications will continue to be used.</p>
-</div>
-<p>To create additional user-defined alerter configurations, enable Advanced mode and navigate to the same <code>customAlerters</code> and <code>customAlertersParams</code> settings mentioned above. With Advanced mode enabled there will be a "Create Duplicate" button that allows for duplicating these settings. Follow the on-screen instructions to create the duplicate settings. Then, to make use of these new settings, in the Sigma tag list replace the <code>so.alerters.customAlerters</code> tag suffix with the name (case-sensitive) of the duplicated setting. For example, if the duplicated settings are named <code>SysAdminAlerters</code> and <code>SysAdminParams</code> then the two tags to specify in the Sigma detection source are <code>so.alerters.SysAdminAlerters</code> and <code>so.params.SysAdminParams</code>. Only one user-defined alerters and parameters setting will be used if multiple tags match the <code>so.alerters.</code> and <code>so.params.</code> prefixes. In other words, attempting to specify multiple user-defined alerters within a single Sigma detection will result in an ambiguous outcome.</p>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>title: Security Onion - Grid Node Login Failure (SSH) (copy)
-<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>id: 0c880a39-f2cc-4e80-af26-eb08e2fe4b0a
-<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>status: experimental
-<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>description: Detects when a user fails to login to a grid node via SSH. Review associated logs for username and source IP.
-<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>author: Security Onion Solutions
-<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>date: 2024/08/27
-<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>logsource:
-<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>    product: linux
-<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>    service: auth
-<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a>detection:
-<a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a>    selection:
-<a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a>        event.outcome: failure
-<a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a>        process.name: sshd
-<a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a>        tags|contains: so-grid-node
-<a href="#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a>    filter:
-<a href="#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a>        system.auth.ssh.method: '*'
-<a href="#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a>    condition: selection and not filter
-<a href="#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a>tags:
-<a href="#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a>    - so.alerters.SysAdminAlerters
-<a href="#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a>    - so.params.SysAdminParams
-<a href="#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a>    - so.notification
-<a href="#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a>falsepositives:
-<a href="#__codelineno-0-23" id="__codelineno-0-23" name="__codelineno-0-23"></a>    - none
-<a href="#__codelineno-0-24" id="__codelineno-0-24" name="__codelineno-0-24"></a>level: high
-<a href="#__codelineno-0-25" id="__codelineno-0-25" name="__codelineno-0-25"></a>license: Elastic-2.0
-</code></pre></div>
-<h2 id="notification-formatting">Notification Formatting<a class="headerlink" href="#notification-formatting" title="Permanent link">¶</a></h2>
-<p>There are a wide range of capabilities to format notification messages to the various endpoints supported by ElastAlert 2. Refer to the ElastAlert 2 documentation for all available formatting parameters: <a href="https://elastalert2.readthedocs.io/en/latest/alerts.html#alert-subject">https://elastalert2.readthedocs.io/en/latest/alerts.html#alert-subject</a>.</p>
-<p>Below is an example of customizing the notification message. This format is compatible with most of the ElastAlert 2 alerters but may only work with specific connection-related alerts, due to it referencing specific connection fields. To use, paste these settings into the desired configuration alerter params field, as discussed earlier in this section. Change the hostname as necessary in the included URLs.</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>alert_subject: "Alert: {0} {1}"
-<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>alert_subject_args:
-<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>- rule.name
-<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>- "@timestamp"
-<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a>alert_text: |
-<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a>  Alert details are available in Security Onion Console: https://manager/#/hunt?q=log.id.uid%3A{0}&amp;rt=1&amp;rtu=days
-<a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a>
-<a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a>  Source: {1}:{2}
-<a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a>  Destination: {3}:{4}
-<a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a>
-<a href="#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a>  Investigate the network community ID: https://manager/#/hunt?q=network.community_id%3A"{5}"&amp;rt=1&amp;rtu=days
-<a href="#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a>alert_text_type: alert_text_only
-<a href="#__codelineno-1-13" id="__codelineno-1-13" name="__codelineno-1-13"></a>alert_text_args: ["log.id.uid", "source.ip", "source.port", "destination.ip", "destination.port", "network.community_id"]
-</code></pre></div>
-<h2 id="applying-changes">Applying Changes<a class="headerlink" href="#applying-changes" title="Permanent link">¶</a></h2>
-<p>In order for alerters and parameters to take effect, multiple synchronizations must occur. These are done automatically on a set schedule, but it is possible to force them earlier, if needed. Specifically, the following must take place for the changes to be applied to the ElastAlert 2 rules:</p>
+<h3 id="viewing-and-expanding-notifications">Viewing and Expanding Notifications<a class="headerlink" href="#viewing-and-expanding-notifications" title="Permanent link">¶</a></h3>
+<p>Notifications are displayed chronologically, with the newest alerts appearing first. Each notification item includes:</p>
+<ul>
+<li><strong>Severity Badge</strong>: Color-coded text indicating the severity level (<code>CRITICAL</code>, <code>HIGH</code>, <code>MEDIUM</code>, <code>LOW</code>, or <code>INFO</code>).</li>
+<li><strong>Timestamp</strong>: Relative time since the alert was generated (e.g., "5 minutes ago", "2 hours ago").</li>
+<li><strong>Read / Unread Styling</strong>: Unread notifications are highlighted with a distinct background color and bold text, while read notifications appear in standard weight.</li>
+<li><strong>Title and Summary</strong>: Displays the headline and summary description of the event.</li>
+<li><strong>Expand / Collapse</strong>: Click anywhere on a notification item to expand or collapse it:</li>
+<li><strong>Summary</strong>: Full narrative description of the triggered event.</li>
+<li><strong>Contextual Fields</strong>: Displays key-value event attributes (e.g., node name, source IP, or metric details).</li>
+<li><strong>Deep Links</strong>: Pivot buttons allowing one-click navigation to relevant SOC views (such as Alerts, Hunt, Dashboards) or direct report downloads.</li>
+</ul>
+<h3 id="notification-actions">Notification Actions<a class="headerlink" href="#notification-actions" title="Permanent link">¶</a></h3>
+<p>Each notification card provides individual action controls:</p>
+<ul>
+<li><strong>Mark as Read / Mark as Unread</strong>: Click <strong>Mark as Read</strong> to acknowledge an alert and update your unread count badge. Once marked as read, you can click <strong>Mark as Unread</strong> if you wish to return it to the unread state.</li>
+<li><strong>Dismiss</strong>: Click <strong>Dismiss</strong> to remove the notification from your active notifications list. Dismissed alerts no longer count toward your unread total and are hidden from the default view.</li>
+<li><strong>Restore</strong>: If you are viewing dismissed notifications (see Options Menu below), click <strong>Restore</strong> to return a previously dismissed notification to your active notifications list.</li>
+<li><strong>User Activity Audit</strong>: Users with the <code>superuser</code> or <code>auditor</code> role (<code>notifications/read_all</code>) can hover over the info icon (<code>fa-info-circle</code>) to view an audit popover showing which users have read or dismissed the notification, along with timestamps for each user action.</li>
+</ul>
+<h3 id="options-menu">Options Menu<a class="headerlink" href="#options-menu" title="Permanent link">¶</a></h3>
+<p>Click the vertical ellipsis (<strong>...</strong>) icon in the upper-right corner of the notification card header to open the options menu:</p>
+<ul>
+<li><strong>Refresh</strong>: Manually re-queries the backend and updates the notification list and unread count.</li>
+<li><strong>Show Dismissed / Hide Dismissed</strong>: Toggles between displaying active notifications and previously dismissed notifications. When viewing dismissed notifications, items appear dimmed and include a <strong>Restore</strong> button.</li>
+<li><strong>Mark All as Read</strong>: Marks all loaded notifications as read for your account in a single action.</li>
+<li><strong>Dismiss All</strong>: Dismisses all active notifications for your account simultaneously.</li>
+</ul>
+<h3 id="per-user-state-and-retention-pruning">Per-User State and Retention Pruning<a class="headerlink" href="#per-user-state-and-retention-pruning" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Independent User States</strong>: Read and dismissed states are tracked per user. Under normal day-to-day operation, marking an alert as read or dismissing it only affects your personal view and does not immediately hide or clear the notification for other analysts.</li>
+<li>
+<p><strong>Retention Pruning Behavior and Global Impact</strong>: 
+  A background cleanup process runs daily to prune old dismissed notifications. If <strong>at least one user</strong> has dismissed a notification and that dismissal reaches the retention cutoff window (by default, 30 days, configurable via the <code>soc.config.server.modules.notification.dismissedPruneDays</code> setting), the parent notification record is permanently removed.</p>
+<p>Because the notification record is removed globally with cascading deletion of all associated user states, <strong>this pruning affects all users across the entire grid</strong>:
+- Even if another user has <strong>not dismissed</strong> the notification—or has <strong>not yet read</strong> it—the notification will be completely removed from their view once pruned.
+- All per-user read and dismissal audit tracking for that notification is permanently removed.
+- If your organization requires extended visibility across multiple shifts or audit retention, increase the retention window by configuring <code>dismissedPruneDays</code> in <a href="../administration/">Administration</a> -&gt; Configuration (<code>SOC &gt; config &gt; server &gt; modules &gt; notification &gt; dismissedPruneDays</code>).</p>
+</li>
+</ul>
+<h2 id="accessing-the-notifications-administration-screen">Accessing the Notifications Administration Screen<a class="headerlink" href="#accessing-the-notifications-administration-screen" title="Permanent link">¶</a></h2>
+<p>The Notifications administration interface is located in the Security Onion Console at <strong>Administration</strong> -&gt; <strong>Notifications</strong> (<code>/#/notifications</code>).</p>
+<h3 id="access-requirements">Access Requirements<a class="headerlink" href="#access-requirements" title="Permanent link">¶</a></h3>
+<p>Access to the Notifications administration interface is restricted to users who satisfy the following requirements:</p>
 <ol>
-<li>Changes are saved in Configuration screen by the SOC Admin.</li>
-<li>Configuration is synchronized across the grid. To manually force a grid sync, go to the Configuration screen, open the <code>Options</code> dropdown at the top, and click <code>Synchronize</code>.</li>
-<li>Sigma Detection edits are saved, such as adding the user-defined notification tags, or changing the severity.</li>
-<li>Sigma Detections are synchronized. Click Full Synchronize for ElastAlert rules, or to force a single detection sync go to the Detection Source tab, make an edit to the source, and click <code>Update</code>.</li>
+<li><strong>Active License</strong>: The grid must have an active Security Onion Pro license with the notifications feature enabled (<code>FEAT_NTF</code>).</li>
+<li><strong>Superuser Role</strong>: The user must be assigned the <code>superuser</code> role.</li>
+</ol>
+<p>Because notification destinations and activation schedules are persisted centrally in the Grid Pillar configuration store (<code>soc.config.server.modules.notification.destinations</code> and <code>soc.config.server.schedules</code>), managing them requires the <code>config/write</code> privilege (<em>Modify and synchronize Grid config</em>), which is held exclusively by superusers. Non-superuser roles cannot see the <strong>Notifications</strong> navigation item in the Administration menu and cannot modify destinations or schedules.</p>
+<h3 id="user-roles-and-notification-permissions">User Roles and Notification Permissions<a class="headerlink" href="#user-roles-and-notification-permissions" title="Permanent link">¶</a></h3>
+<p>Security Onion uses <a href="../rbac/">Role-Based Access Control (RBAC)</a> to govern notification interactions across different user personas:</p>
+<ul>
+<li><strong><code>superuser</code></strong>: Has full administrative control to add, edit, and remove destinations and schedules (<code>config/write</code>), send ad-hoc and test notifications (<code>notifications/write</code>), view notifications and user audit logs (<code>notifications/read</code>, <code>notifications/read_all</code>), and toggle read or dismissed states.</li>
+<li><strong><code>analyst</code> and <code>limited-analyst</code></strong>: Possess the <code>notifications/write</code> privilege, allowing them to dispatch ad-hoc manual notifications via the API or command line and manage their personal read/dismissed states in the SOC Bell panel. However, they cannot modify administrative destinations or schedules.</li>
+<li><strong><code>auditor</code> and <code>limited-auditor</code></strong>: Possess the <code>notifications/read</code> privilege, enabling them to view their personal notifications in the SOC Bell panel. Full auditors additionally possess <code>notifications/read_all</code>, enabling them to review audit history of which users viewed or dismissed specific notifications.</li>
+</ul>
+<h2 id="severities-and-activation-schedules">Severities and Activation Schedules<a class="headerlink" href="#severities-and-activation-schedules" title="Permanent link">¶</a></h2>
+<p>Notifications utilize two primary filtering mechanisms to ensure that alerts reach the appropriate teams at the proper times: <strong>Severities</strong> and <strong>Activation Schedules</strong>.</p>
+<h3 id="severities">Severities<a class="headerlink" href="#severities" title="Permanent link">¶</a></h3>
+<p>Every notification generated in Security Onion is assigned one of five standardized severity levels:</p>
+<ul>
+<li><code>critical</code></li>
+<li><code>high</code></li>
+<li><code>medium</code></li>
+<li><code>low</code></li>
+<li><code>info</code></li>
+</ul>
+<p>Destinations can be configured to restrict incoming notifications to specific severity levels:</p>
+<ul>
+<li><strong>All Severities</strong>: If no severities are selected for a destination (the severities list is empty), the destination accepts notifications of all severity levels.</li>
+<li><strong>Filtered Severities</strong>: When one or more severities are selected (e.g., <code>high</code> and <code>critical</code>), the destination will only deliver notifications matching those specified severities. Any notification with a non-matching severity is automatically dropped for that destination during transmission.</li>
+</ul>
+<p>This allows organizations to direct low-priority informational messages (such as completed PCAP exports or daily reports) to internal channels or email distribution lists, while routing high and critical infrastructure alarms to real-time messaging channels or on-call webhooks.</p>
+<h3 id="reusable-activation-schedules">Reusable Activation Schedules<a class="headerlink" href="#reusable-activation-schedules" title="Permanent link">¶</a></h3>
+<p>Activation schedules define the time windows during which notification destinations are permitted to transmit alerts. Schedules are managed independently under the <strong>Activation Schedules</strong> tab and can be reused across any number of destinations.</p>
+<p>Key features of activation schedules include:</p>
+<ul>
+<li><strong>Recurrence Types</strong>:</li>
+<li><strong>Daily</strong>: Runs every day within specified time windows (e.g., <code>17:00</code> to <code>08:00</code> for overnight monitoring).</li>
+<li><strong>Weekly</strong>: Runs on selected days of the week (e.g., Monday through Friday, or Saturday and Sunday).</li>
+<li><strong>Monthly</strong>: Runs on specific days of the month (e.g., the 1st and 15th, or <code>-1</code> for the last day of the month) or ordinal weekdays (e.g., the 1st and 3rd Tuesday).</li>
+<li><strong>Annually</strong>: Runs on specific dates or ordinal occurrences in designated months (e.g., the fourth Thursday in November).</li>
+<li><strong>Time Windows &amp; All Day</strong>: Each definition within a schedule can span a specific time window (<code>HH:MM</code> in 24-hour notation, supporting overnight windows crossing midnight) or be set to <strong>All Day</strong> (24 hours).</li>
+<li><strong>Timezone Awareness</strong>: Each schedule specifies an IANA timezone identifier (e.g., <code>America/New_York</code>, <code>UTC</code>, <code>Europe/London</code>). The evaluation engine automatically accounts for local Daylight Saving Time (DST) shifts without manual adjustments.</li>
+<li><strong>Exception &amp; Blackout Schedules</strong>: A schedule can reference one or more <strong>Exception Schedules</strong> (e.g., company holidays or maintenance windows). If an excluded exception schedule is currently active, the parent schedule is suppressed and considered inactive. Circular references between schedules are proactively prevented using Directed Acyclic Graph (DAG) validation.</li>
+<li><strong>Multi-Schedule Assignment</strong>: A destination can be linked to multiple activation schedules. If multiple schedules are assigned, the destination operates under logical OR semantics: the destination is active if <strong>any</strong> of its assigned, enabled schedules is currently active.</li>
+<li><strong>Always Active Fallback</strong>: Destinations without any assigned schedules are considered <strong>Always Active</strong> and will deliver notifications at all times.</li>
+<li><strong>Bypassing Schedules</strong>: When sending manual or test notifications, administrators can optionally select <strong>Bypass Schedules</strong> to force immediate delivery regardless of active schedule windows.</li>
+</ul>
+<h2 id="when-destinations-are-utilized-in-a-notification-transmission">When Destinations are Utilized in a Notification Transmission<a class="headerlink" href="#when-destinations-are-utilized-in-a-notification-transmission" title="Permanent link">¶</a></h2>
+<p>When any Security Onion subsystem dispatches a notification—or an operator initiates a manual notification—the notification engine executes a sequential evaluation pipeline for each destination.</p>
+<p>A destination will receive and transmit the notification only when all of the following criteria are satisfied:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>+-------------------------------------------------------------+
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>|                Notification Dispatch Request                |
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>|           (Source: Grid Metric, PCAP, Report, Client)       |
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>+------------------------------+------------------------------+
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>                               |
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>                               v
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>               +-------------------------------+
+<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>               | 1. License &amp; Subsystem Active?| -----&gt; No: Abort dispatch
+<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>               +---------------+---------------+
+<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a>                               | Yes
+<a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a>                               v
+<a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a>               +-------------------------------+
+<a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a>               | 2. Destination Targeted?      | -----&gt; No: Skip destination
+<a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a>               |    (Explicit ID or Broadcast) |
+<a href="#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a>               +---------------+---------------+
+<a href="#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a>                               | Yes
+<a href="#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a>                               v
+<a href="#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a>               +-------------------------------+
+<a href="#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a>               | 3. Destination Enabled?       | -----&gt; No: Skip destination
+<a href="#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a>               +---------------+---------------+
+<a href="#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a>                               | Yes
+<a href="#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a>                               v
+<a href="#__codelineno-0-23" id="__codelineno-0-23" name="__codelineno-0-23"></a>               +-------------------------------+
+<a href="#__codelineno-0-24" id="__codelineno-0-24" name="__codelineno-0-24"></a>               | 4. Severity Matched?          | -----&gt; No: Skip destination
+<a href="#__codelineno-0-25" id="__codelineno-0-25" name="__codelineno-0-25"></a>               |    (Matches list or All)      |
+<a href="#__codelineno-0-26" id="__codelineno-0-26" name="__codelineno-0-26"></a>               +---------------+---------------+
+<a href="#__codelineno-0-27" id="__codelineno-0-27" name="__codelineno-0-27"></a>                               | Yes
+<a href="#__codelineno-0-28" id="__codelineno-0-28" name="__codelineno-0-28"></a>                               v
+<a href="#__codelineno-0-29" id="__codelineno-0-29" name="__codelineno-0-29"></a>               +-------------------------------+
+<a href="#__codelineno-0-30" id="__codelineno-0-30" name="__codelineno-0-30"></a>               | 5. Schedule Active or         | -----&gt; No: Skip destination
+<a href="#__codelineno-0-31" id="__codelineno-0-31" name="__codelineno-0-31"></a>               |    Bypass Schedules Enabled?  |
+<a href="#__codelineno-0-32" id="__codelineno-0-32" name="__codelineno-0-32"></a>               +---------------+---------------+
+<a href="#__codelineno-0-33" id="__codelineno-0-33" name="__codelineno-0-33"></a>                               | Yes
+<a href="#__codelineno-0-34" id="__codelineno-0-34" name="__codelineno-0-34"></a>                               v
+<a href="#__codelineno-0-35" id="__codelineno-0-35" name="__codelineno-0-35"></a>               +-------------------------------+
+<a href="#__codelineno-0-36" id="__codelineno-0-36" name="__codelineno-0-36"></a>               | 6. Recipient Targeting Check  |
+<a href="#__codelineno-0-37" id="__codelineno-0-37" name="__codelineno-0-37"></a>               |    (Evaluate skipIfRecipients)|
+<a href="#__codelineno-0-38" id="__codelineno-0-38" name="__codelineno-0-38"></a>               +---------------+---------------+
+<a href="#__codelineno-0-39" id="__codelineno-0-39" name="__codelineno-0-39"></a>                               | Passed
+<a href="#__codelineno-0-40" id="__codelineno-0-40" name="__codelineno-0-40"></a>                               v
+<a href="#__codelineno-0-41" id="__codelineno-0-41" name="__codelineno-0-41"></a>               +-------------------------------+
+<a href="#__codelineno-0-42" id="__codelineno-0-42" name="__codelineno-0-42"></a>               | 7. Adapt Payload Capabilities |
+<a href="#__codelineno-0-43" id="__codelineno-0-43" name="__codelineno-0-43"></a>               |    (Attachments, Deep-Links)  |
+<a href="#__codelineno-0-44" id="__codelineno-0-44" name="__codelineno-0-44"></a>               +---------------+---------------+
+<a href="#__codelineno-0-45" id="__codelineno-0-45" name="__codelineno-0-45"></a>                               |
+<a href="#__codelineno-0-46" id="__codelineno-0-46" name="__codelineno-0-46"></a>                               v
+<a href="#__codelineno-0-47" id="__codelineno-0-47" name="__codelineno-0-47"></a>               +-------------------------------+
+<a href="#__codelineno-0-48" id="__codelineno-0-48" name="__codelineno-0-48"></a>               | 8. Check Silence/Debounce     | -----&gt; Suppressed: Skip
+<a href="#__codelineno-0-49" id="__codelineno-0-49" name="__codelineno-0-49"></a>               +---------------+---------------+
+<a href="#__codelineno-0-50" id="__codelineno-0-50" name="__codelineno-0-50"></a>                               | Passed
+<a href="#__codelineno-0-51" id="__codelineno-0-51" name="__codelineno-0-51"></a>                               v
+<a href="#__codelineno-0-52" id="__codelineno-0-52" name="__codelineno-0-52"></a>               +-------------------------------+
+<a href="#__codelineno-0-53" id="__codelineno-0-53" name="__codelineno-0-53"></a>               | 9. Deliver via Channel Driver |
+<a href="#__codelineno-0-54" id="__codelineno-0-54" name="__codelineno-0-54"></a>               |    (SOC, SMTP, Slack, Webhook)|
+<a href="#__codelineno-0-55" id="__codelineno-0-55" name="__codelineno-0-55"></a>               +-------------------------------+
+</code></pre></div>
+<ol>
+<li><strong>Subsystem &amp; License Check</strong>: The grid must possess an active Security Onion Pro license, and the notification engine must be enabled. If unlicensed or disabled, dispatch is halted.</li>
+<li><strong>Destination Target Matching</strong>:
+   If an explicit destination ID is targeted (such as when testing a specific destination from the UI), only that destination is processed.
+   If no destination ID is provided (a global dispatch), all configured destinations in the system are evaluated.</li>
+<li><strong>Enabled Status</strong>: The destination must have its <code>enabled</code> toggle set to <code>true</code>. Disabled destinations are skipped.</li>
+<li><strong>Severity Evaluation</strong>: If the destination specifies a list of allowed severities, the notification's severity must match one of them (case-insensitive). If no severities are configured on the destination, all severities are accepted.</li>
+<li><strong>Schedule Evaluation</strong>:
+   If <code>Bypass Schedules</code> is set on the notification payload, schedule checks are skipped.
+   Otherwise, if the destination has one or more linked schedules, at least one enabled schedule must be active at the current moment (taking into account time of day, day of week, timezone, and exception blackout schedules). If none of the linked schedules are active, the destination is skipped.</li>
+<li>If no schedules are assigned to the destination, it is always active.</li>
+<li><strong>Recipient Targeting Evaluation</strong>:
+   When a notification targets specific users:
+     If the destination driver supports recipients (e.g., SOC Bell panel or SMTP) and <code>Enable Recipients</code> is active, the notification is routed to those specific users.
+     If the channel driver does not support recipients or recipient targeting is disabled:
+     If <code>Skip If Recipients</code> is enabled on the destination, the transmission to this destination is skipped.
+     If <code>Skip If Recipients</code> is disabled, the recipient filter is stripped for this destination, broadcasting the notification to the destination's default audience.</li>
+<li><strong>Capability Adaptation</strong>: Payload features are adjusted to match the channel driver's capabilities:
+   Attachments (such as generated PDF or CSV reports) are attached or linked based on driver support and configuration.
+   Deep links back to SOC dashboards or investigation views are adapted for channels supporting markdown or hypertext links.</li>
+<li><strong>Silencing &amp; Debouncing</strong>: If the caller supplied silencing parameters (<code>SilenceKey</code>, <code>SilenceDuration</code>, <code>ThresholdCount</code>), repeat triggers within the silence window are debounced to prevent alert floods.</li>
+<li><strong>Transmission</strong>: The prepared payload is delivered to the channel driver for final transmission.</li>
+</ol>
+<h2 id="managing-notification-destinations">Managing Notification Destinations<a class="headerlink" href="#managing-notification-destinations" title="Permanent link">¶</a></h2>
+<p>The <strong>Destinations</strong> tab under <strong>Administration</strong> -&gt; <strong>Notifications</strong> displays all configured destination channels, their channel types, allowed severities, assigned activation schedules, active schedule status, and operational controls.</p>
+<h3 id="adding-a-destination">Adding a Destination<a class="headerlink" href="#adding-a-destination" title="Permanent link">¶</a></h3>
+<p>To create a new notification destination:</p>
+<ol>
+<li>In SOC, navigate to <strong>Administration</strong> -&gt; <strong>Notifications</strong>.</li>
+<li>On the <strong>Destinations</strong> tab, click the <strong>+</strong> (Add Destination) button on the toolbar.</li>
+<li>In the dialog, configure the destination properties:</li>
+<li><strong>Name</strong>: Enter a human-readable display name (up to 50 characters).</li>
+<li><strong>Channel Type</strong>: Select the channel driver type. Supported drivers include:<ul>
+<li><strong>SOC Notification Bell (<code>soc</code>)</strong>: Routes alerts to the built-in top-bar bell panel in the SOC interface, persisting notifications with read/unread tracking.</li>
+<li><strong>Email (SMTP) (<code>smtp</code>)</strong>: Sends emails via an external SMTP server. Configure <strong>SMTP Host</strong>, <strong>Port</strong> (e.g., 25, 587, or 465), <strong>From Address</strong>, optional default <strong>To Addresses</strong> (comma-separated), optional <strong>Username</strong> and <strong>Password</strong>, <strong>Attachment Mode</strong> (<code>both</code>, <code>attach</code>, or <code>link</code>), <strong>Use TLS</strong>, and <strong>Insecure Skip Verify</strong> (to bypass TLS verification for self-signed certificates). Note that From Address can be entered as <code>Display Name &lt;some@user.invalid&gt;</code> to include a human readable email source.</li>
+<li><strong>Slack Webhook (<code>slack_webhook</code>)</strong>: Delivers formatted notification cards to a Slack channel using an Incoming Webhook URL.</li>
+<li><strong>Matrix Hookshot Webhook (<code>matrix_hookshot_webhook</code>)</strong>: Delivers alerts to Matrix rooms via the Matrix Hookshot webhook bridge.</li>
+<li><strong>Generic Webhook (<code>generic_webhook</code>)</strong>: Sends HTTP POST requests containing structured JSON notification payloads to any arbitrary webhook endpoint.</li>
+</ul>
+</li>
+<li><strong>Enabled</strong>: Toggle whether this destination is actively receiving alerts.</li>
+<li><strong>Enable Recipients</strong>: For drivers supporting recipient targeting (SOC Bell and SMTP), toggle whether notifications targeted to specific user IDs should be delivered to those users.</li>
+<li><strong>Skip If Recipients</strong>: When recipient targeting is unsupported or disabled, choose whether to skip sending targeted notifications to this destination.</li>
+<li><strong>Severities</strong>: Select the severity levels (<code>critical</code>, <code>high</code>, <code>medium</code>, <code>low</code>, <code>info</code>) to accept. Leave blank to allow all severities.</li>
+<li><strong>Activation Schedules</strong>: Select one or more reusable activation schedules. Leave blank to keep the destination always active.</li>
+<li>Click <strong>Save</strong> to persist the destination.</li>
+</ol>
+<h3 id="updating-a-destination">Updating a Destination<a class="headerlink" href="#updating-a-destination" title="Permanent link">¶</a></h3>
+<p>To modify an existing notification destination:</p>
+<ol>
+<li>Navigate to <strong>Administration</strong> -&gt; <strong>Notifications</strong> -&gt; <strong>Destinations</strong>.</li>
+<li>In the destinations table, locate the target destination and click the <strong>Pencil</strong> (Edit) icon in the Actions column.</li>
+<li>Update any destination settings, parameters, allowed severities, or linked activation schedules.</li>
+<li>For SMTP destinations with existing passwords, the password field displays a masked value (<code>******</code>). If left unchanged, the existing password is preserved securely.</li>
+<li>Click <strong>Save</strong> to apply the updates.</li>
+</ol>
+<h3 id="removing-a-destination">Removing a Destination<a class="headerlink" href="#removing-a-destination" title="Permanent link">¶</a></h3>
+<p>To delete a notification destination:</p>
+<ol>
+<li>Navigate to <strong>Administration</strong> -&gt; <strong>Notifications</strong> -&gt; <strong>Destinations</strong>.</li>
+<li>In the destinations table, click the <strong>Trash</strong> (Delete) icon on the row of the destination you wish to remove.</li>
+<li>Review the confirmation dialog warning that subsequent alerts routed to this destination will no longer be delivered.</li>
+<li>Click <strong>Delete</strong> to permanently remove the destination.</li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>It may take a minute or two for the ElastAlert 2 process to detect the changed rules, and then another few minutes for ElastAlert 2 to run that rule.</p>
+<p>The default built-in SOC Notification Bell (<code>soc-bell</code>) cannot be deleted. If you do not wish to use the built-in bell panel, you can disable it by editing the destination and setting the <strong>Enabled</strong> toggle to off.</p>
 </div>
+<h2 id="sending-manual-and-test-notifications">Sending Manual and Test Notifications<a class="headerlink" href="#sending-manual-and-test-notifications" title="Permanent link">¶</a></h2>
+<p>The Notifications module provides capabilities for sending ad-hoc broadcast notifications across all destinations or executing targeted tests against specific destination channels.</p>
+<h3 id="sending-global-manual-notifications">Sending Global Manual Notifications<a class="headerlink" href="#sending-global-manual-notifications" title="Permanent link">¶</a></h3>
+<p>Global manual notifications allow administrators to broadcast custom messages across all configured notification channels (e.g., for system maintenance announcements, test drills, or incident notifications):</p>
+<ol>
+<li>Navigate to <strong>Administration</strong> -&gt; <strong>Notifications</strong> and select the <strong>Destinations</strong> tab.</li>
+<li>Click the <strong>Paper Plane</strong> (Send Notification) button located on the top toolbar.</li>
+<li>Fill out the notification form:</li>
+<li><strong>Title</strong>: Enter the notification headline (required, up to 255 characters).</li>
+<li><strong>Summary</strong>: Enter the detailed description or body text (up to 4,000 characters).</li>
+<li><strong>Severity</strong>: Select the severity level (<code>info</code>, <code>low</code>, <code>medium</code>, <code>high</code>, or <code>critical</code>). The notification will only be transmitted to destinations that accept this severity level.</li>
+<li><strong>Recipients</strong>: Optionally select specific SOC user accounts to receive a targeted notification. If left empty, the notification broadcasts to all users.</li>
+<li><strong>Bypass Schedules</strong>: Check this option to immediately send the notification to all eligible destinations regardless of whether their linked activation schedules are currently active.</li>
+<li>Click <strong>Send</strong>.</li>
+<li>The system dispatches the notification and displays a confirmation indicating how many destinations successfully transmitted the alert.</li>
+</ol>
+<h3 id="sending-specific-destination-manual-test-notifications">Sending Specific Destination Manual / Test Notifications<a class="headerlink" href="#sending-specific-destination-manual-test-notifications" title="Permanent link">¶</a></h3>
+<p>To verify channel credentials, webhook endpoints, or notification formatting for an individual destination:</p>
+<ol>
+<li>Navigate to <strong>Administration</strong> -&gt; <strong>Notifications</strong> and locate the desired destination in the table.</li>
+<li>In the Actions column for that row, click the <strong>Paper Plane</strong> (Send Notification) icon.</li>
+<li>The dialog opens pre-configured for that destination, displaying a title such as <code>Send Notification to &lt;Destination Name&gt;</code>.</li>
+<li>The <strong>Title</strong> field is automatically populated with a test title (e.g., <code>Test Notification (&lt;Destination Name&gt;)</code>), and the <strong>Summary</strong> contains standard test verification text. You may customize these fields if desired.</li>
+<li>If testing an out-of-schedule destination, ensure the <strong>Bypass Schedules</strong> toggle is enabled so delivery is not blocked by schedule restrictions.</li>
+<li>Click <strong>Send</strong>.</li>
+<li>If the transmission succeeds, a confirmation message appears. If the remote service rejects the notification (e.g., due to invalid SMTP credentials, an invalid webhook URL, or network connectivity issues), an error message with diagnostic details is displayed.</li>
+</ol>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
@@ -2776,13 +3216,13 @@ from_addr: "ElastAlert@yourcompany.com"
               </div>
 </div>
 </a>
-<a aria-label="Next: Kafka" class="md-footer__link md-footer__link--next" href="../kafka/">
+<a aria-label="Next: ElastAlert 2 Notifications" class="md-footer__link md-footer__link--next" href="../elastalert-notifications/">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
               </span>
 <div class="md-ellipsis">
-                Kafka
+                ElastAlert 2 Notifications
               </div>
 </div>
 <div class="md-footer__button md-icon">

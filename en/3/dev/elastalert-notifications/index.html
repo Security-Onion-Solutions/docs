@@ -3,12 +3,12 @@
 <html class="no-js" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://security-onion-solutions.github.io/docs/cloud-amazon/" rel="canonical"/>
-<link href="../installation/" rel="prev"/>
-<link href="../cloud-azure/" rel="next"/>
+<link href="https://security-onion-solutions.github.io/docs/elastalert-notifications/" rel="canonical"/>
+<link href="../notifications/" rel="prev"/>
+<link href="../kafka/" rel="next"/>
 <link href="../images/logo/favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
-<title>Amazon Cloud - Security Onion Documentation</title>
+<title>ElastAlert 2 Notifications - Security Onion Documentation</title>
 <link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -32,7 +32,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#amazon-cloud-image">
+<a class="md-skip" href="#elastalert-2-notifications">
           Skip to content
         </a>
 </div>
@@ -56,7 +56,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Amazon Cloud
+              ElastAlert 2 Notifications
             
           </span>
 </div>
@@ -181,8 +181,8 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
 <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
 <span class="md-ellipsis">
     
@@ -194,7 +194,7 @@
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_5">
 <span class="md-nav__icon md-icon"></span>
             
@@ -348,20 +348,8 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-<span class="md-ellipsis">
-    
-  
-    Amazon Cloud
-  
-
-    
-  </span>
-<span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cloud-amazon/">
 <span class="md-ellipsis">
     
   
@@ -371,185 +359,6 @@
     
   </span>
 </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#requirements">
-<span class="md-ellipsis">
-      
-        Requirements
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#single-node-grid">
-<span class="md-ellipsis">
-      
-        Single Node Grid
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#distributed-grid">
-<span class="md-ellipsis">
-      
-        Distributed Grid
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#create-monitoring-interface">
-<span class="md-ellipsis">
-      
-        Create Monitoring Interface
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#create-a-security-group-for-sniffing-interface">
-<span class="md-ellipsis">
-      
-        Create a Security Group for Sniffing Interface
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#create-sniffing-interface">
-<span class="md-ellipsis">
-      
-        Create Sniffing Interface
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#create-security-onion-instances">
-<span class="md-ellipsis">
-      
-        Create Security Onion Instances
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#instance-creation">
-<span class="md-ellipsis">
-      
-        Instance Creation
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#prepare-new-instances-for-stig">
-<span class="md-ellipsis">
-      
-        Prepare New Instances for STIG
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#prepare-nodes-with-ephemeral-storage">
-<span class="md-ellipsis">
-      
-        Prepare Nodes with Ephemeral Storage
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#manager-setup">
-<span class="md-ellipsis">
-      
-        Manager Setup
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#search-node-setup">
-<span class="md-ellipsis">
-      
-        Search Node Setup
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#aws-sensor-setup">
-<span class="md-ellipsis">
-      
-        AWS Sensor Setup
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#remote-sensor-setup">
-<span class="md-ellipsis">
-      
-        Remote Sensor Setup
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#aws-traffic-mirroring">
-<span class="md-ellipsis">
-      
-        AWS Traffic Mirroring
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#create-mirror-target">
-<span class="md-ellipsis">
-      
-        Create Mirror Target
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#create-mirror-filter">
-<span class="md-ellipsis">
-      
-        Create Mirror Filter
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#create-mirror-session">
-<span class="md-ellipsis">
-      
-        Create Mirror Session
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#verify-traffic-mirroring">
-<span class="md-ellipsis">
-      
-        Verify Traffic Mirroring
-      
-    </span>
-</a>
-</li>
-</ul>
-</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../cloud-azure/">
@@ -2296,8 +2105,8 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_21" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_21" type="checkbox"/>
 <label class="md-nav__link" for="__nav_21" id="__nav_21_label" tabindex="0">
 <span class="md-ellipsis">
     
@@ -2309,7 +2118,7 @@
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_21_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="true" aria-labelledby="__nav_21_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_21">
 <span class="md-nav__icon md-icon"></span>
             
@@ -2391,8 +2200,20 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../elastalert-notifications/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    ElastAlert 2 Notifications
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
 <span class="md-ellipsis">
     
   
@@ -2402,6 +2223,99 @@
     
   </span>
 </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuration">
+<span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+</a>
+<nav aria-label="Configuration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#elastalert-2-alerters">
+<span class="md-ellipsis">
+      
+        ElastAlert 2 Alerters
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slack">
+<span class="md-ellipsis">
+      
+        Slack
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#email-smtp">
+<span class="md-ellipsis">
+      
+        Email (SMTP)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#soc-detections">
+<span class="md-ellipsis">
+      
+        SOC Detections
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#severity-based-notifications">
+<span class="md-ellipsis">
+      
+        Severity-Based Notifications
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#user-defined-notifications">
+<span class="md-ellipsis">
+      
+        User-Defined Notifications
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#notification-formatting">
+<span class="md-ellipsis">
+      
+        Notification Formatting
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#applying-changes">
+<span class="md-ellipsis">
+      
+        Applying Changes
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../kafka/">
@@ -2613,172 +2527,86 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#requirements">
+<a class="md-nav__link" href="#configuration">
 <span class="md-ellipsis">
       
-        Requirements
+        Configuration
+      
+    </span>
+</a>
+<nav aria-label="Configuration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#elastalert-2-alerters">
+<span class="md-ellipsis">
+      
+        ElastAlert 2 Alerters
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#single-node-grid">
+<a class="md-nav__link" href="#slack">
 <span class="md-ellipsis">
       
-        Single Node Grid
+        Slack
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#distributed-grid">
+<a class="md-nav__link" href="#email-smtp">
 <span class="md-ellipsis">
       
-        Distributed Grid
+        Email (SMTP)
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#create-monitoring-interface">
+<a class="md-nav__link" href="#soc-detections">
 <span class="md-ellipsis">
       
-        Create Monitoring Interface
+        SOC Detections
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#create-a-security-group-for-sniffing-interface">
+<a class="md-nav__link" href="#severity-based-notifications">
 <span class="md-ellipsis">
       
-        Create a Security Group for Sniffing Interface
+        Severity-Based Notifications
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#create-sniffing-interface">
+<a class="md-nav__link" href="#user-defined-notifications">
 <span class="md-ellipsis">
       
-        Create Sniffing Interface
+        User-Defined Notifications
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#notification-formatting">
+<span class="md-ellipsis">
+      
+        Notification Formatting
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#create-security-onion-instances">
+<a class="md-nav__link" href="#applying-changes">
 <span class="md-ellipsis">
       
-        Create Security Onion Instances
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#instance-creation">
-<span class="md-ellipsis">
-      
-        Instance Creation
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#prepare-new-instances-for-stig">
-<span class="md-ellipsis">
-      
-        Prepare New Instances for STIG
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#prepare-nodes-with-ephemeral-storage">
-<span class="md-ellipsis">
-      
-        Prepare Nodes with Ephemeral Storage
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#manager-setup">
-<span class="md-ellipsis">
-      
-        Manager Setup
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#search-node-setup">
-<span class="md-ellipsis">
-      
-        Search Node Setup
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#aws-sensor-setup">
-<span class="md-ellipsis">
-      
-        AWS Sensor Setup
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#remote-sensor-setup">
-<span class="md-ellipsis">
-      
-        Remote Sensor Setup
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#aws-traffic-mirroring">
-<span class="md-ellipsis">
-      
-        AWS Traffic Mirroring
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#create-mirror-target">
-<span class="md-ellipsis">
-      
-        Create Mirror Target
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#create-mirror-filter">
-<span class="md-ellipsis">
-      
-        Create Mirror Filter
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#create-mirror-session">
-<span class="md-ellipsis">
-      
-        Create Mirror Session
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#verify-traffic-mirroring">
-<span class="md-ellipsis">
-      
-        Verify Traffic Mirroring
+        Applying Changes
       
     </span>
 </a>
@@ -2799,224 +2627,147 @@
 </a>
 </li>
 <li class="md-path__item">
-<a class="md-path__link" href="../getting-started/">
+<a class="md-path__link" href="../security-onion-pro/">
 <span class="md-ellipsis">
-    Getting Started
+    Security Onion Pro
   </span>
 </a>
 </li>
 </ol>
 </nav>
 <article class="md-content__inner md-typeset">
-<h1 id="amazon-cloud-image">Amazon Cloud Image<a class="headerlink" href="#amazon-cloud-image" title="Permanent link">¶</a></h1>
-<p>If you would like to deploy Security Onion in Amazon Web Services (AWS), we have an Amazon Machine Image (AMI) that is already built for you:
-<a href="https://securityonion.net/aws/?ref=_ptnr_soc_docs_260311">https://securityonion.net/aws/?ref=_ptnr_soc_docs_260311</a></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Existing Security Onion cloud image installations should use the <a href="../soup/">soup</a> command to upgrade. If your grid is still running 2.4.x, use <code>soup</code> to upgrade to 2.4.210, and then use <code>soupto3</code> to proceed to Security Onion 3, after which continue using <code>soup</code> again. Attempting to switch to a newer Security Onion image from the cloud marketplace could cause loss of data and require full Grid re-installation; use the <code>soup</code> procedure to upgrade instead.</p>
-</div>
+<h1 id="elastalert-2-notifications">ElastAlert 2 Notifications<a class="headerlink" href="#elastalert-2-notifications" title="Permanent link">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This section does not cover network connectivity to the Security Onion node. This can be achieved through configuring an external IP for the node's management interface, or through the use of a VPN connection via OpenVPN. For more details about VPN connections, please see <a href="https://medium.com/@svfusion/setup-site-to-site-vpn-to-aws-with-pfsense-1cac16623bd6">https://medium.com/@svfusion/setup-site-to-site-vpn-to-aws-with-pfsense-1cac16623bd6</a>.</p>
+<p>This is an enterprise-level feature of Security Onion. Contact Security Onion Solutions, LLC via our website at <a href="https://securityonion.com/pro">https://securityonion.com/pro</a> for more information about purchasing a Security Onion Pro license to enable this feature.</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This section does not cover how to set up a VPC in AWS. For more details about setting up a VPC, please see <a href="https://docs.aws.amazon.com/directoryservice/latest/admin-guide/gsg_create_vpc.html">https://docs.aws.amazon.com/directoryservice/latest/admin-guide/gsg_create_vpc.html</a>. Ensure that all Security Onion nodes can access the manager node over the necessary ports. This could require adding rules to your AWS security groups in order to satisfy the Security Onion <a href="../firewall/">Firewall</a> Node Communication requirements.</p>
-</div>
-<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">¶</a></h2>
-<p>Before proceeding, determine the grid architecture desired. Choose from a single-node Grid versus a distributed, multi-node Grid. Additionally, determine if the lower latency of ephemeral instance storage is needed (typically when there is high-volume of traffic being monitored, which is most production scenarios), or if network-based storage, EBS, can be used for increased redundancy.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you plan to prepare a new instance for STIG configuration, review the prerequisites in <a href="#prepare-new-instances-for-stig">Prepare New Instances for STIG</a> before launching.</p>
-</div>
-<h2 id="single-node-grid">Single Node Grid<a class="headerlink" href="#single-node-grid" title="Permanent link">¶</a></h2>
-<p>For simple, low-volume production monitoring, a single node Grid can be used. EBS must be used for <a href="../elasticsearch/">Elasticsearch</a> data storage if used for production purposes. Single node grids cannot use ephemeral instance storage without being at risk of data loss. However, for temporary evaluation installations, where there is little concern for data loss, ephemeral instance storage can be used. </p>
-<p>Listed below are the minimum suggested single-node instance quantities, sizes, and storage requirements for either standalone or evaluation installations (choose one, not both). Note that when using virtual machines with the minimum RAM requirements you may need to enable memory swapping.</p>
-<p>Standalone:</p>
-<ul>
-<li>Quantity: 1</li>
-<li>Type: t3a.2xlarge</li>
-<li>Storage: 256GB EBS (Optimized) gp3</li>
-</ul>
-<p>Evaluation</p>
-<ul>
-<li>Quantity: 1</li>
-<li>Type: t3a.2xlarge</li>
-<li>Storage: 256GB EBS (Optimized) gp3</li>
-<li>Storage: 100GB Instance Storage (SSD/NVMe)</li>
-</ul>
-<h2 id="distributed-grid">Distributed Grid<a class="headerlink" href="#distributed-grid" title="Permanent link">¶</a></h2>
-<p>For high volume production monitoring, choose a multi-node Grid architecture. At least two search nodes must be used in this architecture. This is required due to the use of ephemeral instance storage for <a href="../elasticsearch/">Elasticsearch</a> data storage, where each of the search nodes retains a replica of another search node, for disaster recovery.</p>
-<p>Listed below are the <em>minimum</em> suggested distributed Grid instance quantities, sizes, and storage requirements. Prefer increasing VM memory over enabling swap memory, for best performance. High volume networks will need more powerful VM types with more storage than those listed below.</p>
-<p>VPN Node</p>
-<ul>
-<li>Quantity: 1</li>
-<li>Type: t3a.micro (Nitro eligible)</li>
-<li>Storage: 50GB EBS (Optimized) gp3</li>
-</ul>
-<p>Manager</p>
-<ul>
-<li>Quantity: 1</li>
-<li>Type: m5a.2xlarge</li>
-<li>Storage: 300GB EBS (Optimized) gp3</li>
-</ul>
-<p>Search Nodes</p>
-<ul>
-<li>Quantity: 2 or more</li>
-<li>Type: m5ad.2xlarge</li>
-<li>Storage: 200GB EBS (Optimized) gp3</li>
-<li>Storage: 150GB Instance Storage (SSD/NVMe)</li>
-</ul>
-<p>Sensor monitoring the VPN ingress</p>
-<ul>
-<li>Quantity: 1</li>
-<li>Type: c5a.2xlarge</li>
-<li>Storage: 500GB EBS (Optimized) gp3</li>
-</ul>
-<h2 id="create-monitoring-interface">Create Monitoring Interface<a class="headerlink" href="#create-monitoring-interface" title="Permanent link">¶</a></h2>
-<p>To setup the Security Onion AMI and VPC mirror configuration, use the steps below.</p>
-<h2 id="create-a-security-group-for-sniffing-interface">Create a Security Group for Sniffing Interface<a class="headerlink" href="#create-a-security-group-for-sniffing-interface" title="Permanent link">¶</a></h2>
-<p>Security Groups act like a firewall for your Amazon EC2 instances controlling both inbound and outbound traffic. You will need to create a security group specifically for the interface that you will be using to sniff the traffic.  This security group will need to be as open as possible to ensure all traffic destined to the sniffing interface will be allowed through.  To create a security group, follow these steps:</p>
-<ul>
-<li>From the EC2 Dashboard Select: <code>Security Groups</code> under the Network &amp; Security sections in the left window pane.</li>
-<li>Select: <code>Create Security Group</code></li>
-<li>Provide a Security Group Name and Description.</li>
-<li>Select the appropriate VPC for the security group. </li>
-<li>With the inbound tab selected, select: <code>Add Rule</code> </li>
-<li>Add the appropriate inbound rules to ensure all desired traffic destined for the sniffing interface is allowed.</li>
-<li>Press the <code>Create security group</code> button.</li>
-</ul>
-<h2 id="create-sniffing-interface">Create Sniffing Interface<a class="headerlink" href="#create-sniffing-interface" title="Permanent link">¶</a></h2>
-<p>Prior to launching the Security Onion AMI you will need to create the interface that will be used to monitor your VPC.  This interface will be attached to the Security Onion AMI as a secondary interface.  To create a sniffing interface, follow these steps:</p>
-<ul>
-<li>From the EC2 Dashboard Select: <code>Network Interfaces</code> under the Network &amp; Security section in the left window pane. </li>
-<li>Select: <code>Create Network Interface</code></li>
-<li>Provide a description and choose the appropriate subnet you want to monitor.</li>
-<li>Select the security Group that you created for the sniffing interface.</li>
-<li>Select: <code>Create</code></li>
-</ul>
-<h2 id="create-security-onion-instances">Create Security Onion Instances<a class="headerlink" href="#create-security-onion-instances" title="Permanent link">¶</a></h2>
-<h2 id="instance-creation">Instance Creation<a class="headerlink" href="#instance-creation" title="Permanent link">¶</a></h2>
-<p>To configure a Security Onion instance (repeat for each node in a distributed Grid), follow these steps:</p>
-<ul>
-<li>From the EC2 dashboard select: <code>Launch Instance</code></li>
-<li>Search the AWS Marketplace for <code>Security Onion</code> and make sure you get the latest version of the Security Onion official AMI.</li>
-<li>Choose the appropriate instance type based on the desired hardware requirements and select <code>Next: Configure Instance Details</code>.  For assistance on determining resource requirements please review the AWS Requirements section above.</li>
-<li>From the subnet menu select the same subnet as the sniffing interface.</li>
-<li>Under the Network interfaces section configure the eth0 (management) interface.</li>
-<li>(Distributed "Sensor" node or Single-Node Grid only) Under the Network interfaces section select: <code>Add Device</code> to attach the previously created sniffing interface to the instance.</li>
-<li>(Distributed "Sensor" node or Single-Node Grid only) From the Network Interface menu for eth1 choose the sniffing interface you created for this instance.  Please note if you have multiple interfaces listed you can verify the correct interface by navigating to the Network Interfaces section in the EC2 Dashboard.</li>
-<li>Select: <code>Next: Add Storage</code> and configure the volume settings.</li>
-<li>Select: <code>Next: Add Tags</code> and add any additional tags for the instance.</li>
-<li>Select: <code>Next: Configure Security Group</code> and add the appropriate inbound rules.</li>
-<li>Select: <code>Review and Launch</code></li>
-<li>If prompted, select the appropriate SSH keypair that will be used to ssh into the Security Onion instance for administration </li>
-<li>The default username for the Security Onion AMI is: <code>onion</code></li>
-</ul>
-<h2 id="prepare-new-instances-for-stig">Prepare New Instances for STIG<a class="headerlink" href="#prepare-new-instances-for-stig" title="Permanent link">¶</a></h2>
-<p>Starting with Security Onion 3.4.0 AMIs, run <code>so-stig-prep</code> on a new instance before installation to create the additional STIG partitions and enable FIPS.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>EBS encryption is configured at instance launch. After Grid setup, enable STIG as described in <a href="../stig/#enabling-stig">Enabling STIG</a>, which requires a Security Onion Pro license.</p>
-</div>
-<p>Before launching, plan for the following prerequisites:</p>
-<ul>
-<li>If disk encryption is desired, enable EBS encryption for the root (OS) volume and any additional EBS volumes at instance launch. For volumes you add later, select encryption when creating each volume, before attaching or using it.</li>
-<li>Use an RSA SSH key pair of at least 2048 bits. Ed25519 keys cannot authenticate after the FIPS reboot.</li>
-<li>Launch with the default 256G root volume, then expand it after first boot. For the default STIG file system layout, we require 370G or larger for the total root volume size.</li>
-</ul>
-<p>By default the helper creates separate file systems for <code>/home</code> (25G), <code>/tmp</code> (2G), <code>/var</code> (70G), <code>/var/log</code> (5G), <code>/var/log/audit</code> (2G), and <code>/var/tmp</code> (2G). Increase any of these with <code>--home</code>, <code>--tmp</code>, <code>--var</code>, <code>--varlog</code>, <code>--varlogaudit</code>, and <code>--vartmp</code>; overrides must be at least the defaults, and larger values will require more root volume capacity. For example:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>sudo so-stig-prep --var 100 --varlog 10
-</code></pre></div>
-<p>To prepare a new instance:</p>
-<ol>
-<li>Launch the AMI</li>
-<li>SSH into the node and cancel out of the setup.</li>
-<li>Expand the root EBS volume to 370G or larger through the AWS console before running the helper.</li>
-<li>
-<p>Run the helper:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>sudo so-stig-prep
-</code></pre></div>
-<p>Run <code>sudo so-stig-prep --help</code> to review the size options. Use <code>--no-fips</code> to create the file systems without enabling FIPS.</p>
-</li>
-<li>
-<p>The helper reboots the instance when finished. Reconnect and proceed with Security Onion setup.</p>
-</li>
-</ol>
-<h2 id="prepare-nodes-with-ephemeral-storage">Prepare Nodes with Ephemeral Storage<a class="headerlink" href="#prepare-nodes-with-ephemeral-storage" title="Permanent link">¶</a></h2>
-<p>For distributed search nodes, or an evaluation node if using ephemeral storage, SSH into the node and cancel out of the setup. Prepare the ephemeral partition by executing the following command:</p>
-<div class="highlight"><pre><span></span><code>sudo so-prepare-fs
-</code></pre></div>
-<p>By default, this command expects the ephemeral device to be located at <code>/dev/nvme1n1</code> and will mount that device at <code>/nsm/elasticsearch</code>. If this fails run <code>lsblk</code> to determine which disk to use. To override either of those two defaults, specify them as arguments. For example:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>sudo so-prepare-fs /dev/nvme3n0 /nsm/elasticsearch
-</code></pre></div>
-<p>Restart the Security Onion setup by running the following command:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>cd /securityonion
-<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>sudo ./so-setup-network
-</code></pre></div>
-<h2 id="manager-setup">Manager Setup<a class="headerlink" href="#manager-setup" title="Permanent link">¶</a></h2>
-<p>If this is an ephemeral evaluation node, ensure the node has been prepared as described in the preceding section. </p>
-<p>After SSH'ing into the node, setup will begin automatically. Follow the prompts, selecting the appropriate install options. Most distributed installations will use the <code>hostname</code> or <code>other</code> web access method, due to the need for both cluster nodes inside the private network, and analyst users across the public Internet to reach the manager. This allows for custom DNS entries to define the correct IP (private vs public) depending on whether it's a cluster node or an analyst user. Users evaluating Security Onion for the first time should consider choosing the <code>other</code> option and specifying the node's public cloud IP.</p>
-<p>AWS provides a built-in NTP server at IP <code>169.254.169.123</code>. This can be specified in the SOC Configuration screen after setup completes. By default the server will use the time servers at <code>ntp.org</code>.</p>
-<p>For distributed manager nodes using ephemeral storage, go to SOC Configuration. Search for <code>number_of_replicas</code> and change to 1. This will double the storage cost but will ensure at least two VMs have the data, in case of an ephemeral disk loss.</p>
-<p>Optionally, adjust <a href="../elastalert/">ElastAlert</a> indices so that they have a replica. This will cause them to turn yellow but that will be fixed when search nodes come online:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>so-elasticsearch-query ElastAlert*/_settings -X PUT -d '{"index" : { "number_of_replicas" : 1 }}'
-</code></pre></div>
-<p>This is an optional step due to the ElastAlert indices being used primarily for short-term/recent alert history. In the event of a data loss when ElastAlert 2 restarts the indices will be regenerated.</p>
-<h2 id="search-node-setup">Search Node Setup<a class="headerlink" href="#search-node-setup" title="Permanent link">¶</a></h2>
-<p>Follow standard Security Onion search node installation, answering the setup prompts as applicable. If you are using ephemeral storage be sure to first prepare the instance as directed earlier in this section.</p>
-<h2 id="aws-sensor-setup">AWS Sensor Setup<a class="headerlink" href="#aws-sensor-setup" title="Permanent link">¶</a></h2>
-<p>SSH into the sensor node and run through setup to set this node up as a sensor. Choose <code>eth0</code> as the main interface and <code>eth1</code> as the monitoring interface.</p>
-<h2 id="remote-sensor-setup">Remote Sensor Setup<a class="headerlink" href="#remote-sensor-setup" title="Permanent link">¶</a></h2>
-<p>Setup the VPN (out of scope for this guide) and connect the sensor node to the VPN. During the Security Onion setup of the Sensor, when prompted to choose the management interface, select the VPN tunnel interface, typically <code>tun0</code>.</p>
-<p>If connecting sensors through the VPN instance you will need to add the inside interface of your VPN concentrator to the <code>sensor</code> firewall hostgroup. For instance, assuming the following architecture:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>SO Sensor        -&gt; VPN Endpoint     -&gt; Internet -&gt; VPN Endpoint  -&gt; SO Manager
-<a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>Location: Remote    Location: Remote                Location: AWS    Location: AWS
-<a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a>192.168.33.13       192.168.33.10                   10.55.1.10       10.55.1.20
-</code></pre></div>
-<p>In order to add the Remote Network Sensor Node to the grid, you would have to add <code>10.55.1.10</code> to the <code>sensor</code> firewall hostgroup.</p>
-<p>This change can be done in the SOC Configuration screen. <a href="../salt/#auto-state-apply">Auto State Apply</a> should apply the new firewall hostgroup configuration within a few minutes, after which your Manager will be ready for remote minions to start connecting.</p>
-<h2 id="aws-traffic-mirroring">AWS Traffic Mirroring<a class="headerlink" href="#aws-traffic-mirroring" title="Permanent link">¶</a></h2>
-<p>Traffic mirroring allows you to copy the traffic to/from an instance and send it to the sniffing interface of a network security monitoring sensor or a group of interfaces using a network load balancer. For more details about AWS Traffic Mirroring please see: <a href="https://docs.aws.amazon.com/vpc/latest/mirroring/what-is-traffic-mirroring.html">https://docs.aws.amazon.com/vpc/latest/mirroring/what-is-traffic-mirroring.html</a></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>You can only mirror traffic from an EC2 instance that is powered by the AWS Nitro system.  For a list of supported Nitro systems, please see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances</a>.</p>
+<p>This section covers ElastAlert 2 notifications for <a href="../sigma/">Sigma</a> detections. For Security Onion's native notification management system supporting grid alarms, PCAP jobs, Reports, and external destinations (SMTP, Slack, Matrix, generic webhooks, and the in-app SOC bell), see the <a href="../notifications/">Notifications</a> section.</p>
 </div>
-<h2 id="create-mirror-target">Create Mirror Target<a class="headerlink" href="#create-mirror-target" title="Permanent link">¶</a></h2>
-<p>A mirror target in AWS refers to the destination for the mirrored traffic.  This can be a single interface or a group of interfaces using a network load balancer.  To configure a mirror target, follow these steps:</p>
-<ul>
-<li>From the VPC dashboard select: <code>Mirror Targets</code> under the Traffic Mirroring section in the left window pane.</li>
-<li>Select: <code>Create traffic mirror target</code></li>
-<li>Under the Choose target section select the appropriate target type and choose the sniffing interface connected to the Security Onion instance.  For more details about traffic mirror targets please see: <a href="https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-targets.html">https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-targets.html</a></li>
-<li>Select: <code>Create</code></li>
-</ul>
-<h2 id="create-mirror-filter">Create Mirror Filter<a class="headerlink" href="#create-mirror-filter" title="Permanent link">¶</a></h2>
-<p>A mirror filter allows you to define the traffic that is copied to in the mirrored session and is useful for tuning out noisy or unwanted traffic.  To configure a mirror filter, follow these steps:</p>
-<ul>
-<li>From the VPC dashboard select: <code>Mirror Filters</code> under the Traffic Mirroring section in the left window pane.</li>
-<li>Select: <code>Create traffic mirror filter</code></li>
-<li>Add the appropriate inbound and outbound rules.  For mor details about traffic mirror filters please see: <a href="https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-filters.html">https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-filters.html</a></li>
-<li>Select: <code>Create</code></li>
-</ul>
-<h2 id="create-mirror-session">Create Mirror Session<a class="headerlink" href="#create-mirror-session" title="Permanent link">¶</a></h2>
-<p>A traffic mirror session defines the source of the traffic to be mirrored based on the selected traffic mirror filters and sends that traffic to the desired traffic mirror target.  For more details about traffic mirror sessions please see: <a href="https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-session.html">https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-session.html</a></p>
-<ul>
-<li>From the VPC dashboard select: <code>Mirror Sessions</code> under the Traffic Mirroring section in the left window pane.</li>
-<li>Select: <code>Create traffic mirror session</code></li>
-<li>Under the Mirror source section, choose the interface that you want to be mirrored.</li>
-<li>Under the Mirror target section, choose the interface or load balancer you want to send the mirrored traffic to.</li>
-<li>Assign a session number under the Additional settings section for the mirror session.</li>
-<li>In the filters section under Additional settings choose the mirror filter you want to apply to the mirrored traffic.</li>
-<li>Select: <code>Create</code></li>
-</ul>
-<h2 id="verify-traffic-mirroring">Verify Traffic Mirroring<a class="headerlink" href="#verify-traffic-mirroring" title="Permanent link">¶</a></h2>
-<p>To verify the mirror session is sending the correct data to the sniffing interface run the following command on the Security Onion AWS Sensor instance:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>sudo tcpdump -nni &lt;interface&gt;
+<p>The <a href="../detections/">Detections</a> module, specifically <a href="../sigma/">Sigma</a> rules, can be enabled to send outbound notifications upon an alert being created. By default, no outbound notifications are enabled in a Security Onion installation. However, with the Pro license applied to a grid, notifications can be quickly configured via the Configuration screen.</p>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">¶</a></h2>
+<p>Configuring notifications involves adjusting configuration in two areas:</p>
+<ol>
+<li>ElastAlert 2 Alerters</li>
+<li>SOC Detections</li>
+</ol>
+<h3 id="elastalert-2-alerters">ElastAlert 2 Alerters<a class="headerlink" href="#elastalert-2-alerters" title="Permanent link">¶</a></h3>
+<p><a href="../elastalert/">ElastAlert</a> includes a large number of alerters that can reach out to remote systems to deliver notifications. As each alerter supports a unique protocol the alerter requires its own set of supporting parameters in order for the alerter to know how to reach out to the remote endpoint. For example, to send a notification to a Slack channel, a webhook URL must be provided.</p>
+<p>Navigate to the <a href="../administration/">Administration</a> -&gt; Configuration screen. Next, locate the <code>ElastAlert</code> settings.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-elastalert-alerter.png"><img alt="Image" src="../images/config-item-elastalert-alerter.png"/></a></p>
+<p>Notice there are special settings for Jira and SMTP notifications. These are unique in that <a href="../elastalert/">ElastAlert</a> requires those two alerters to read their credentials from a file. Security Onion has simplified this process by presenting these Configuration fields to enter the optional credential data, and the backend process will take care of generating the required files for <a href="../elastalert/">ElastAlert</a>.</p>
+<p>The files subtree includes a list of several file settings, which allows for populating the contents of certain files that the alerters can optionally utilize. Most alerters use the files for specifying a custom Certificate Authority, so that <a href="../elastalert/">ElastAlert</a> can securely and confidently connect to remote servers that may be using custom SSL/TLS certificates. Again, Security Onion's backend process will handle generating these files from the supplied configuration data provided in the user interface.</p>
+<p>Next, the <strong>SOC &gt; config &gt; server &gt; modules &gt; elastalertengine &gt; Notifications: Sev 0/Default Parameters</strong> setting is used to customize each alerter's own parameters. As <a href="../elastalert/">ElastAlert</a> already provides detailed documentation on the required parameters for each alerter, this documentation will not cover the same information, but instead will focus on two popular alerters: Slack and SMTP.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reference the alerter parameters at <a href="https://elastalert2.readthedocs.io/en/latest/alerts.html#alert-types">https://elastalert2.readthedocs.io/en/latest/alerts.html#alert-types</a>.</p>
+</div>
+<h3 id="slack">Slack<a class="headerlink" href="#slack" title="Permanent link">¶</a></h3>
+<p>To have <a href="../sigma/">Sigma</a> rules send notifications to Slack, add the following line to the <strong>SOC &gt; config &gt; server &gt; modules &gt; elastalertengine &gt; Notifications: Sev 0/Default Parameters</strong> configuration setting:</p>
+<div class="highlight"><pre><span></span><code>slack_webhook_url: "[https://hooks.slack.com/services/YOUR_WEBHOOK_URI](https://hooks.slack.com/services/YOUR_WEBHOOK_URI)"
 </code></pre></div>
-<p>You should see <code>VXLAN</code> tagged traffic being mirrored from the interface you selected as the Mirror Source.</p>
-<p>To verify <a href="../zeek/">Zeek</a> is properly decapsulating and parsing the VXLAN traffic you can verify logs are being generated in the <code>/nsm/zeek/logs/current</code> directory:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>ls -la /nsm/zeek/logs/current/
+<h3 id="email-smtp">Email (SMTP)<a class="headerlink" href="#email-smtp" title="Permanent link">¶</a></h3>
+<p>To have <a href="../sigma/">Sigma</a> rules send notifications via email, add the following lines to the <strong>SOC &gt; config &gt; server &gt; modules &gt; elastalertengine &gt; Notifications: Sev 0/Default Parameters</strong> configuration setting:</p>
+<div class="highlight"><pre><span></span><code>email: youremail@yourcompany.com
+smtp_host: "your_company_smtp_server"
+from_addr: "ElastAlert@yourcompany.com"
 </code></pre></div>
+<p>If the SMTP server requires authentication make sure the special <strong>SMTP Username</strong> and <strong>SMTP Password</strong> configuration settings are also specified.</p>
+<h3 id="soc-detections">SOC Detections<a class="headerlink" href="#soc-detections" title="Permanent link">¶</a></h3>
+<p>Once the alerter parameters are configured, as described above, the next step is to configure <a href="../detections/">Detections</a> in order to activate one or more notification alerters.</p>
+<p>Navigate to the <a href="../administration/">Administration</a> -&gt; Configuration screen. Next, locate the <code>SOC &gt; config &gt; server &gt; modules &gt; elastalertengine</code> settings.</p>
+<p>In the <strong>Notifications: Sev 0/Default Alerters</strong> configuration setting, add the name of each alerter that should be activated, one alerter name per line. For example, to add both slack and email: </p>
+<p>slack
+  email</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-soc-additionalAlerters.png"><img alt="Image" src="../images/config-item-soc-additionalAlerters.png"/></a></p>
+<p>Important! After activating (or removing) an alerter from this setting, the <a href="../elastalert/">ElastAlert</a> engine must be fully updated. This can be done via the <a href="../detections/">Detections</a> screen, under the Options dropdown.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/58_detections_options.png"><img alt="Image" src="../images/58_detections_options.png"/></a></p>
+<h3 id="severity-based-notifications">Severity-Based Notifications<a class="headerlink" href="#severity-based-notifications" title="Permanent link">¶</a></h3>
+<p>The instructions above setup the default notification settings, for all outbound notifications. However, notification settings can be customized for higher level severities. Severities are specified in Sigma <a href="../detections/">Detections</a>.</p>
+<p>Severity levels progress as follows, starting with the lowest, least significant severity:</p>
+<ol>
+<li>Unknown Severity</li>
+<li>Informational Severity</li>
+<li>Low Severity</li>
+<li>Medium Severity</li>
+<li>High Severity</li>
+<li>Critical Severity</li>
+</ol>
+<p>If notification settings are not specified for a particular severity level then it will use whatever settings are specified at the next lower severity. If that severity is also not specified, then it continues looking for lower severity settings.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Higher severity levels do not inherit parameters or alerters from lower severities. Consequently, if <code>email</code> is specified as the default (Severity 0) alerter, and it's desired to have both <code>email</code> and <code>slack</code> notifications sent with <strong>High/Sev 4</strong> severity or above, then both <code>email</code> and <code>slack</code> will need to be specified for the <code>Notifications: Sev 4/Default Alerters</code> setting, one per line. This same principle applies to the parameters, which are also not inherited. In order to inherit default parameters across all severities, the parameters can be specified in the <code>ElastAlert &gt; Custom Configuration Parameters</code> setting.</p>
+</div>
+<h3 id="user-defined-notifications">User-Defined Notifications<a class="headerlink" href="#user-defined-notifications" title="Permanent link">¶</a></h3>
+<p>Individual Sigma detections can be tagged to change the detection's alerting behavior. The tags are set inside the detection source. Tag details are defined below:</p>
+<ul>
+<li><code>so.notification</code>: When this tag is present inside of a Sigma tag list, the detection will only perform outbound notifications. It will not add an alert to the SOC Alerts screen.</li>
+<li><code>so.alerters.customAlerters</code>: When this tag is present inside of a Sigma tag list, the detection will perform notifications for an alternate set of ElastAlert 2 alerters. More information on how to choose these alerters is provided below.</li>
+<li><code>so.params.customAlertersParams</code>: When this tag is present inside of a Sigma tag list, and when the above tag is also included, then an alternate set of custom parameters will be applied to the ElastAlert 2 alerters.</li>
+</ul>
+<p>To customize the alerters and parameters to use when these tags are specified in a Sigma detection, navigate to the Configuration screen. Find the <code>SOC &gt; config &gt; server &gt; modules &gt; elastalertengine &gt; additionalUserDefinedNotifications &gt; customAlerters</code> setting and add the custom alerters, one per line, similar to what is done for the Severity-Based notifications above. Similarly, find the sibling setting to define custom alerter parameters: <code>SOC &gt; config &gt; server &gt; modules &gt; elastalertengine &gt; additionalUserDefinedNotifications &gt; customAlertersParams</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>User-defined alerters will override severity-based alerters, provided the user-defined alerters are properly configured. If the Sigma tags specify custom alerters but the corresponding setting does not exist in the Configuration then the severity-based notifications will continue to be used.</p>
+</div>
+<p>To create additional user-defined alerter configurations, enable Advanced mode and navigate to the same <code>customAlerters</code> and <code>customAlertersParams</code> settings mentioned above. With Advanced mode enabled there will be a "Create Duplicate" button that allows for duplicating these settings. Follow the on-screen instructions to create the duplicate settings. Then, to make use of these new settings, in the Sigma tag list replace the <code>so.alerters.customAlerters</code> tag suffix with the name (case-sensitive) of the duplicated setting. For example, if the duplicated settings are named <code>SysAdminAlerters</code> and <code>SysAdminParams</code> then the two tags to specify in the Sigma detection source are <code>so.alerters.SysAdminAlerters</code> and <code>so.params.SysAdminParams</code>. Only one user-defined alerters and parameters setting will be used if multiple tags match the <code>so.alerters.</code> and <code>so.params.</code> prefixes. In other words, attempting to specify multiple user-defined alerters within a single Sigma detection will result in an ambiguous outcome.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>title: Security Onion - Grid Node Login Failure (SSH) (copy)
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>id: 0c880a39-f2cc-4e80-af26-eb08e2fe4b0a
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>status: experimental
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>description: Detects when a user fails to login to a grid node via SSH. Review associated logs for username and source IP.
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>author: Security Onion Solutions
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>date: 2024/08/27
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>logsource:
+<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>    product: linux
+<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>    service: auth
+<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a>detection:
+<a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a>    selection:
+<a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a>        event.outcome: failure
+<a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a>        process.name: sshd
+<a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a>        tags|contains: so-grid-node
+<a href="#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a>    filter:
+<a href="#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a>        system.auth.ssh.method: '*'
+<a href="#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a>    condition: selection and not filter
+<a href="#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a>tags:
+<a href="#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a>    - so.alerters.SysAdminAlerters
+<a href="#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a>    - so.params.SysAdminParams
+<a href="#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a>    - so.notification
+<a href="#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a>falsepositives:
+<a href="#__codelineno-0-23" id="__codelineno-0-23" name="__codelineno-0-23"></a>    - none
+<a href="#__codelineno-0-24" id="__codelineno-0-24" name="__codelineno-0-24"></a>level: high
+<a href="#__codelineno-0-25" id="__codelineno-0-25" name="__codelineno-0-25"></a>license: Elastic-2.0
+</code></pre></div>
+<h2 id="notification-formatting">Notification Formatting<a class="headerlink" href="#notification-formatting" title="Permanent link">¶</a></h2>
+<p>There are a wide range of capabilities to format notification messages to the various endpoints supported by ElastAlert 2. Refer to the ElastAlert 2 documentation for all available formatting parameters: <a href="https://elastalert2.readthedocs.io/en/latest/alerts.html#alert-subject">https://elastalert2.readthedocs.io/en/latest/alerts.html#alert-subject</a>.</p>
+<p>Below is an example of customizing the notification message. This format is compatible with most of the ElastAlert 2 alerters but may only work with specific connection-related alerts, due to it referencing specific connection fields. To use, paste these settings into the desired configuration alerter params field, as discussed earlier in this section. Change the hostname as necessary in the included URLs.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>alert_subject: "Alert: {0} {1}"
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>alert_subject_args:
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>- rule.name
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>- "@timestamp"
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a>alert_text: |
+<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a>  Alert details are available in Security Onion Console: https://manager/#/hunt?q=log.id.uid%3A{0}&amp;rt=1&amp;rtu=days
+<a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a>
+<a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a>  Source: {1}:{2}
+<a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a>  Destination: {3}:{4}
+<a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a>
+<a href="#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a>  Investigate the network community ID: https://manager/#/hunt?q=network.community_id%3A"{5}"&amp;rt=1&amp;rtu=days
+<a href="#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a>alert_text_type: alert_text_only
+<a href="#__codelineno-1-13" id="__codelineno-1-13" name="__codelineno-1-13"></a>alert_text_args: ["log.id.uid", "source.ip", "source.port", "destination.ip", "destination.port", "network.community_id"]
+</code></pre></div>
+<h2 id="applying-changes">Applying Changes<a class="headerlink" href="#applying-changes" title="Permanent link">¶</a></h2>
+<p>In order for alerters and parameters to take effect, multiple synchronizations must occur. These are done automatically on a set schedule, but it is possible to force them earlier, if needed. Specifically, the following must take place for the changes to be applied to the ElastAlert 2 rules:</p>
+<ol>
+<li>Changes are saved in Configuration screen by the SOC Admin.</li>
+<li>Configuration is synchronized across the grid. To manually force a grid sync, go to the Configuration screen, open the <code>Options</code> dropdown at the top, and click <code>Synchronize</code>.</li>
+<li>Sigma Detection edits are saved, such as adding the user-defined notification tags, or changing the severity.</li>
+<li>Sigma Detections are synchronized. Click Full Synchronize for ElastAlert rules, or to force a single detection sync go to the Detection Source tab, make an edit to the source, and click <code>Update</code>.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It may take a minute or two for the ElastAlert 2 process to detect the changed rules, and then another few minutes for ElastAlert 2 to run that rule.</p>
+</div>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
@@ -3028,7 +2779,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: Installation" class="md-footer__link md-footer__link--prev" href="../installation/">
+<a aria-label="Previous: Notifications" class="md-footer__link md-footer__link--prev" href="../notifications/">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
 </div>
@@ -3037,17 +2788,17 @@
                 Previous
               </span>
 <div class="md-ellipsis">
-                Installation
+                Notifications
               </div>
 </div>
 </a>
-<a aria-label="Next: Azure Cloud" class="md-footer__link md-footer__link--next" href="../cloud-azure/">
+<a aria-label="Next: Kafka" class="md-footer__link md-footer__link--next" href="../kafka/">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
               </span>
 <div class="md-ellipsis">
-                Azure Cloud
+                Kafka
               </div>
 </div>
 <div class="md-footer__button md-icon">
