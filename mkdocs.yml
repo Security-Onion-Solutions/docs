@@ -236,6 +236,9 @@ nav:
     - Reports: reports.md
     - Onion AI: onion-ai.md
     - Local LLM Hosting: local-llm.md
+    - AI Metrics: ai-metrics.md
+    - Agent Studio: agent-studio.md
+    - Agent Monitor: agent-monitor.md
   - Telemetry: telemetry.md
   - Security: security.md
   - Software Bill of Materials: software-bill-of-materials.md

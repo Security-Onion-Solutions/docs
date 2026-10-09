@@ -40,14 +40,16 @@ See the table below which explains the specific Security Onion privileges grante
 | View Playbooks | X | X | X | X | X | | |
 | Chat with Onion AI | X | X | | | | | |
 | Delete Own Onion AI Sessions | X | X | | | | | |
-| View Own Onion AI History | X | X | | | | | |
-| View All Users' Onion AI History | X | | | | | | |
+| View Own Onion AI History | X | X | | X | | | |
+| View Shared Onion AI History | X | X | | X | | | |
+| View All Users' Onion AI History | X | | | X | | | |
 | View own Onion AI memories | X | X | | X | | | |
 | View global Onion AI memories | X | | | X | | | |
 | View all users' Onion AI memories | X | | | X | | | |
 | Manage own Onion AI memories | X | X | | | | | |
 | Manage global Onion AI memories | X | | | | | | |
 | Manage all users' Onion AI memories | X | | | | | | |
+| View automations | X | X | | X | | | |
 | View notifications | X | X | X | X | X | | |
 | View all notifications | X | | | X | | | |
 | Manage notifications | X | X | X | | | | |
@@ -271,6 +273,7 @@ The available low-level Security Onion privileges are listed in the table below:
 | *memory/write_self* | Create and update own Onion AI memories |
 | *memory/write_global* | Create and update global Onion AI memories |
 | *memory/write_all* | Create and update all Onion AI memories |
+| *assistant/read* | View Onion AI sessions and details |
 | *assistant/read_authored* | View own Onion AI conversation history |
 | *assistant/write_authored* | Chat with Onion AI |
 | *assistant/delete_authored* | Delete own Onion AI conversation history |
@@ -278,6 +281,7 @@ The available low-level Security Onion privileges are listed in the table below:
 | *assistant/read_all* | View all Onion AI conversation history |
 | *assistant/write_all* | Currently unused |
 | *assistant/delete_all* | Currently unused |
+| *automations/read* | View automations and run history |
 
 These discrete privileges are then collected into privilege groups as defined below:
 
@@ -316,8 +320,9 @@ These discrete privileges are then collected into privilege groups as defined be
 | memory-curator | *memory/read_authored*, *memory/read_global*, *memory/write_self*, *memory/write_global* |
 | memory-admin | *memory/read_authored*, *memory/read_global*, *memory/read_all*, *memory/write_self*, *memory/write_global*, *memory/write_all* |
 | memory-monitor | *memory/read_authored*, *memory/read_global*, *memory/read_all* |
-| assistant-user | *assistant/read_authored*, *assistant/write_authored*, *assistant/delete_authored*, *assistant/read_shared* |
-| assistant-admin | *assistant/read_authored*, *assistant/write_authored*, *assistant/delete_authored*, *assistant/read_shared*, *assistant/read_all*, *assistant/write_all*, *assistant/delete_all* |
-| assistant-monitor | *assistant/read_authored*, *assistant/read_shared*, *assistant/read_all* |
+| assistant-user | *assistant/read*, *assistant/read_authored*, *assistant/write_authored*, *assistant/delete_authored*, *assistant/read_shared* |
+| assistant-admin | *assistant/read*, *assistant/read_authored*, *assistant/write_authored*, *assistant/delete_authored*, *assistant/read_shared*, *assistant/read_all*, *assistant/write_all*, *assistant/delete_all* |
+| assistant-monitor | *assistant/read*, *assistant/read_authored*, *assistant/read_shared*, *assistant/read_all* |
+| automation-monitor | *automations/read* |
 
 † intended for use by Sensoroni agents only

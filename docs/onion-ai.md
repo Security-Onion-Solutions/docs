@@ -150,11 +150,52 @@ Your system prompt addendum will be added after Security Onion's default system 
     
     Be cautious when customizing the system prompt, as it can significantly influence the assistant's behavior and responses. A longer prompt will also use more credits.
 
+## Agentic Metrics and Interface
+
+When interacting with Onion AI, the top header bar displays real-time status indicators and clickable metric pills:
+
+- **Current Agent & Model**:
+    - **Display**: In agentic mode, this pill displays the currently active agent alongside its assigned model (e.g., `Hunter (Claude 3.5 Sonnet)` or `Orchestrator`). In non-agentic mode, it displays the model's display name.
+    - **Clickable Selection**: Clicking the pill opens a dropdown menu displaying all available agents and models, organized under subheaders by provider or adapter. Selecting an agent or model switches the active execution target immediately without needing to open configuration pages or leave the chat session.
+- **Automated Agents**:
+    - **Display**: Visible when agentic automations are enabled and the user holds the `automations/read` permission. It displays a real-time summary of background automated tasks (e.g., `2 running · 1 queued`).
+    - **Clickable Navigation**: Clicking this pill navigates directly to [Agent Monitor](agent-monitor.md), providing immediate visibility into active workloads, queues, and task transcripts.
+- **Credits Remaining**:
+    - **Display**: For credit-based adapters (such as SOAI), this pill displays the remaining credit balance in real time.
+    - **Alert State**: If the credit balance drops below the low-balance threshold, the text automatically shifts from blue to red to alert the operator.
+- **Action Buttons**:
+    - **New Chat (+ icon)**: Clears the current view and initiates a new conversation session.
+    - **Options (Gear icon)**: Opens user settings, including the auto-approval toggle for read-only tools and session parameters.
+    - **Help (? icon)**: Opens contextual documentation.
+
+### Interactive Tool Use Cards
+
+When an agent invokes a tool during a conversation turn, an interactive card renders in the transcript:
+
+- **Header**: Displays the tool name, a status icon, and a colored status chip (`Pending Approval`, `Executing`, `Completed`, or `Failed`).
+- **Parameters**: An expandable code block displaying the exact JSON input parameters sent to the tool.
+- **User Approval**: If the tool modifies data or requires approval, the card presents **Approve** (green checkmark) and **Reject** (red cross) buttons along with an explanatory notice detailing what the tool will execute.
+- **Execution Spinner**: Indicates in real time while the tool is actively processing queries.
+- **Results Accordion**: Once complete, an expandable accordion allows inspecting the raw structured output returned by the tool.
+
+### Delegated Sub-Agent Cards
+
+When an agent delegates a sub-task to another agent, a nested delegation card appears in the conversation:
+
+- **Sub-Agent Banner**: Shows the child agent's identity and visual badges for the credits and output tokens consumed by the sub-delegation.
+- **Internal Thoughts**: An expandable panel with a lightbulb icon reveals the child agent's reasoning process and step-by-step hypothesis testing.
+- **Nested Tools**: Any tools invoked by the child agent render directly within the delegation panel, maintaining full hierarchical visibility over nested actions.
+
 ## Metrics
 
-Superusers can review token usage and conversation history for all users by going to Administration --> AI Metrics. This page provides usage statistics for a given date range. The page starts with a table of usage by user. Clicking a user's binoculars icon on the right hand side will show any sessions the user interacted with during the selected date range, even deleted sessions. Clicking on a session's binoculars icon will show the full conversation. Administrators can adjust who has permissions via RBAC roles.
+Superusers can review detailed token usage, credit expenditures, and conversation history across all users by navigating to [AI Metrics](ai-metrics.md).
 
-To provide an accurate history, deleted sessions are retained on the metrics page even after being deleted by the user.
+For advanced agent management and monitoring:
+
+- Configure autonomous agents, skills, memories, and scheduled tasks in [Agent Studio](agent-studio.md).
+- Monitor background agent workloads and scheduled execution transcripts in [Agent Monitor](agent-monitor.md).
+
+To provide an accurate audit trail, deleted sessions remain accessible in AI Metrics even after being deleted by a user.
 
 ## Memory
 
@@ -174,7 +215,7 @@ These facts are then embedded using an Embed agent. This enables SOC to compare 
 
 Once embedded, the facts are compared against existing memories on the same topics in a step called Reconcilation. A Reconcile agent will decide how the facts should be added, merged, replaced or removed. The reconcile agent's recommendations are validated before being executed to ensure that user defined memories aren't modified and that the session owner's permissions are respected.
 
-If any facts were rewritten during reconcilation, they are re-embedded before being stored in postgres.
+If any facts were rewritten during reconcilation, they are re-embedded before being stored in the database.
 
 Finally the session is updated indicating that it has been scanned. If new messages are sent in a previously scanned session, memory scans will find and scan only the new messages.
 
