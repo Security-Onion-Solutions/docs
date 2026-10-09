@@ -14,8 +14,8 @@ Security Onion provides two notification mechanisms that serve different roles a
 |---|---|---|
 | **Architecture** | Native Go service built directly into `securityonion-soc` | Python service running the ElastAlert 2 daemon |
 | **Primary Scope** | Grid infrastructure events, asynchronous operational jobs, and centralized alerting | [Sigma](sigma.md) detection rules querying Elasticsearch |
-| **Supported Triggers** | • **Grid Alarms & Metrics**: Host status, CPU/memory threshold breaches, disk space watermarks<br>• **PCAP Jobs**: Notification when packet capture extractions complete<br>• **Reports**: Automated and on-demand PDF/CSV report delivery<br>• **Future Release**: Detection alert notifications (Suricata, Strelka, and Sigma/Elastic detections will route directly through this module, eliminating ElastAlert 2)<br>• **Onion AI**: AI assistant findings and suggested actions<br>• **Manual & Ad-Hoc**: Operator-initiated test and broadcast notifications | • [Sigma](sigma.md) detections tagged with `so.notification`<br>• Custom ElastAlert 2 rule files |
-| **In-App Delivery** | Native SOC top-bar Notification Bell panel with per-user read/unread and dismissal tracking in PostgreSQL | Not available (external alerters only) |
+| **Supported Triggers** | • **[Grid Alarms & Metrics](grid.md#alarms)**: Host status, CPU/memory threshold breaches, disk space watermarks<br>• **PCAP Jobs**: Notification when packet capture extractions complete<br>• **Reports**: Automated and on-demand PDF/CSV report delivery<br>• **Future Release**: Detection alert notifications (Suricata, Strelka, and Sigma/Elastic detections will route directly through this module, eliminating ElastAlert 2)<br>• **Onion AI**: AI assistant findings and suggested actions<br>• **Manual & Ad-Hoc**: Operator-initiated test and broadcast notifications | • [Sigma](sigma.md) detections tagged with `so.notification`<br>• Custom ElastAlert 2 rule files |
+| **In-App Delivery** | Native SOC top-bar Notification Bell panel with per-user read/unread and dismissal tracking | Not available (external alerters only) |
 | **Destinations** | Centralized destination channels: In-App SOC Bell, Email (SMTP), Slack Webhook, Matrix Hookshot Webhook, and Generic HTTP Webhooks | ElastAlert 2 alerter modules (configured via the Configuration screen) |
 | **Scheduling** | Reusable Activation Schedules with timezone/DST awareness, recurrence rules, and blackout/holiday exclusions | Cron-style execution rules defined per ElastAlert rule file |
 | **Management** | Dedicated web UI under **Administration** -> **Notifications** (`/#/notifications`) | Key-value settings in **Administration** -> **Configuration** |
@@ -69,9 +69,9 @@ Click the vertical ellipsis (**...**) icon in the upper-right corner of the noti
 
 ### Per-User State and Retention Pruning
 
-- **Independent User States**: Read and dismissed states are tracked per user in PostgreSQL. Under normal day-to-day operation, marking an alert as read or dismissing it only affects your personal view and does not immediately hide or clear the notification for other analysts.
+- **Independent User States**: Read and dismissed states are tracked per user. Under normal day-to-day operation, marking an alert as read or dismissing it only affects your personal view and does not immediately hide or clear the notification for other analysts.
 - **Retention Pruning Behavior and Global Impact**: 
-  A background cleanup process runs daily to prune old dismissed notifications. If **at least one user** has dismissed a notification and that dismissal reaches the retention cutoff window (by default, 30 days, configurable via the `soc.config.server.modules.notification.dismissedPruneDays` setting), the parent notification record is permanently deleted from the database.
+  A background cleanup process runs daily to prune old dismissed notifications. If **at least one user** has dismissed a notification and that dismissal reaches the retention cutoff window (by default, 30 days, configurable via the `soc.config.server.modules.notification.dismissedPruneDays` setting), the parent notification record is permanently removed.
 
     Because the notification record is removed globally with cascading deletion of all associated user states, **this pruning affects all users across the entire grid**:
     - Even if another user has **not dismissed** the notification—or has **not yet read** it—the notification will be completely removed from their view once pruned.
@@ -240,7 +240,7 @@ To create a new notification destination:
 3. In the dialog, configure the destination properties:
   - **Name**: Enter a human-readable display name (up to 50 characters).
   - **Channel Type**: Select the channel driver type. Supported drivers include:
-    - **SOC Notification Bell (`soc`)**: Routes alerts to the built-in top-bar bell panel in the SOC interface. Persists notifications in PostgreSQL with read/unread tracking.
+    - **SOC Notification Bell (`soc`)**: Routes alerts to the built-in top-bar bell panel in the SOC interface, persisting notifications with read/unread tracking.
     - **Email (SMTP) (`smtp`)**: Sends emails via an external SMTP server. Configure **SMTP Host**, **Port** (e.g., 25, 587, or 465), **From Address**, optional default **To Addresses** (comma-separated), optional **Username** and **Password**, **Attachment Mode** (`both`, `attach`, or `link`), **Use TLS**, and **Insecure Skip Verify** (to bypass TLS verification for self-signed certificates). Note that From Address can be entered as `Display Name <some@user.invalid>` to include a human readable email source.
     - **Slack Webhook (`slack_webhook`)**: Delivers formatted notification cards to a Slack channel using an Incoming Webhook URL.
     - **Matrix Hookshot Webhook (`matrix_hookshot_webhook`)**: Delivers alerts to Matrix rooms via the Matrix Hookshot webhook bridge.

@@ -60,10 +60,6 @@ See the table below which explains the specific Security Onion privileges grante
 
 !!! NOTE
 
-    The *Manage notifications* privilege grants users the ability to update notification state (marking read or dismissed) and send ad-hoc notifications. Managing system-wide notification destinations and activation schedules in the [Administration](administration.md) -> [Notifications](notifications.md) interface modifies Grid configuration and requires the `superuser` role (*Modify and synchronize Grid config*).
-
-!!! NOTE
-
     The `subgrid-auditor` and `subgrid-superuser` roles are used in [Manager of Managers](manager-of-managers.md) deployments to grant read-only or read/write access to remote subgrids. Users needing subgrid access should be assigned one of these roles in addition to their primary role (e.g., `analyst`).
 
 !!! NOTE
