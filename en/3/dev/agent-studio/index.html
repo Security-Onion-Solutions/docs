@@ -2393,6 +2393,15 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#automations">
+<span class="md-ellipsis">
+      
+        Automations
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#memory-configuration">
 <span class="md-ellipsis">
       
@@ -2525,7 +2534,7 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#automations">
+<a class="md-nav__link" href="#automations_1">
 <span class="md-ellipsis">
       
         Automations
@@ -2539,15 +2548,6 @@
 <span class="md-ellipsis">
       
         Automations Table Overview
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#adding-an-automation">
-<span class="md-ellipsis">
-      
-        Adding an Automation
       
     </span>
 </a>
@@ -2688,6 +2688,15 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#automations">
+<span class="md-ellipsis">
+      
+        Automations
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#memory-configuration">
 <span class="md-ellipsis">
       
@@ -2820,7 +2829,7 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#automations">
+<a class="md-nav__link" href="#automations_1">
 <span class="md-ellipsis">
       
         Automations
@@ -2834,15 +2843,6 @@
 <span class="md-ellipsis">
       
         Automations Table Overview
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#adding-an-automation">
-<span class="md-ellipsis">
-      
-        Adding an Automation
       
     </span>
 </a>
@@ -2892,54 +2892,56 @@
 <p>Agent Studio is an administrative workspace for managing <a href="../onion-ai/">Onion AI</a> autonomous agents, skills, long-term memories, and background automations.</p>
 <p>This screen is located under the <strong>Administration</strong> menu on the left side of the Security Onion Console and requires the <code>superuser</code> role. It becomes visible when Onion AI and either agentic features or memory are enabled.</p>
 <h2 id="configuration-options-panel">Configuration Options Panel<a class="headerlink" href="#configuration-options-panel" title="Permanent link">¶</a></h2>
-<p>Clicking the <strong>Screwdriver and Wrench Icon</strong> in the top-right toolbar opens the global <strong>Configuration Settings</strong> panel. This panel controls delegation limits, execution guardrails, and the long-term memory system across the entire grid.</p>
+<p>Clicking the <strong>Screwdriver and Wrench Icon</strong> in the top-right toolbar opens the global <strong>Config Settings</strong> panel. This panel controls delegation limits, execution guardrails, and the long-term memory system across the entire grid.</p>
 <h3 id="delegation-guardrails">Delegation Guardrails<a class="headerlink" href="#delegation-guardrails" title="Permanent link">¶</a></h3>
 <ul>
-<li><strong>Max Delegation Depth</strong>: Specifies how many nested levels deep an agent is allowed to delegate tasks to subordinate agents. For example, a depth of <code>2</code> allows an Orchestrator to delegate to an Analyst agent, which can then delegate to a Query agent, but prevents further sub-delegation. Setting this value to <code>0</code> disables delegation entirely.</li>
-<li><strong>Max Sub-Session Tokens</strong>: Sets the maximum token budget allocated to each child delegation session. If a delegated sub-agent consumes this token limit before completing its task, the sub-session terminates and reports its intermediate findings back to the parent agent.</li>
+<li><strong>Max Delegation Depth</strong>: Specifies how many nested levels deep an agent is allowed to delegate tasks to subordinate agents. For example, a depth of <code>2</code> allows the Orchestrator to delegate to the Investigator, which can then delegate to the DetectionEngineer, but prevents further sub-delegation. Setting this value to <code>0</code> removes the limit.</li>
+<li><strong>Max Sub-Session Tokens</strong>: Sets the maximum output-token budget allocated to each child delegation session. If a delegated sub-agent consumes this token limit before completing its task, the sub-session terminates and reports its intermediate findings back to the parent agent. Setting this value to <code>0</code> removes the limit.</li>
+</ul>
+<h3 id="automations">Automations<a class="headerlink" href="#automations" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Check Interval</strong>: How often (in seconds) the automation scheduler checks which automations are due to run.</li>
+<li><strong>Alert Triage Start</strong>: The earliest alert time (in UTC) that the Alert Triage automation will consider. Older alerts are never triaged.</li>
 </ul>
 <h3 id="memory-configuration">Memory Configuration<a class="headerlink" href="#memory-configuration" title="Permanent link">¶</a></h3>
 <ul>
-<li><strong>Use Memory</strong>: Master switch to enable or disable memory recall during conversations. When enabled, relevant stored facts are automatically appended to prompt contexts based on proximity matching.</li>
-<li><strong>Use Memory Scanner</strong>: Controls the automated background scanning process. When enabled, the scanner analyzes chat conversations to extract new declarative facts.</li>
+<li><strong>Memory System</strong>: Master switch to enable or disable memory recall during conversations. When enabled, relevant stored facts are automatically appended to prompt contexts based on proximity matching.</li>
+<li><strong>Memory Scanner</strong>: Controls the automated background scanning process. When enabled, the scanner analyzes chat conversations to extract new declarative facts. Turning it on asks whether to also scan historic conversations.</li>
 <li><strong>Scan Interval</strong>: The frequency (in seconds) at which the background memory scanner runs to inspect recent conversation turns for new facts.</li>
-<li><strong>Memory Proximity Threshold</strong>: A similarity threshold (between <code>0</code> and <code>1</code>, default <code>0.8</code>) used during reconciliation to determine whether a newly discovered fact matches an existing stored memory. Higher values require closer similarity before memories are considered duplicates or updates.</li>
-<li><strong>Message Proximity Threshold</strong>: A similarity threshold (between <code>0</code> and <code>1</code>, default <code>0.5</code>) used when an analyst sends a prompt. If the similarity between the prompt and a stored memory meets or exceeds this threshold, the memory is included in the conversation context.</li>
-<li><strong>Memory Extract Batch Size</strong>: The number of conversation turns processed in a single batch during memory extraction.</li>
-<li><strong>Max Memory Retries</strong>: The maximum number of attempts the memory extractor makes on a session before skipping it.</li>
-<li><strong>Memory Inclusion Limits</strong>:<ul>
-<li><strong>Max User Memories to Include</strong>: Maximum number of user-specific memories that can be attached to a single prompt turn.</li>
-<li><strong>Max Global Memories to Include</strong>: Maximum number of global (organization-wide) memories that can be attached to a single prompt turn.</li>
+<li><strong>Memory Proximity</strong>: A similarity threshold (between <code>0</code> and <code>1</code>, default <code>0.8</code>) used during reconciliation to determine whether a newly discovered fact matches an existing stored memory. Higher values require closer similarity before memories are considered duplicates or updates.</li>
+<li><strong>Message Proximity</strong>: A similarity threshold (between <code>0</code> and <code>1</code>, default <code>0.5</code>) used when an analyst sends a prompt. If the similarity between the prompt and a stored memory meets or exceeds this threshold, the memory is included in the conversation context.</li>
+<li><strong>Messages per Extraction Batch</strong>: The number of unscanned messages processed in a single request during memory extraction.</li>
+<li><strong>Memory Scan Retries</strong>: How many times a failed memory scan of a session is retried before it is skipped.</li>
+<li><strong>Memories to Include</strong>:<ul>
+<li><strong>User</strong>: Maximum number of user-specific memories that can be attached to a single prompt turn.</li>
+<li><strong>Global</strong>: Maximum number of global (organization-wide) memories that can be attached to a single prompt turn.</li>
 </ul>
 </li>
-<li><strong>Memory Reconciliation Limits</strong>:<ul>
-<li><strong>Max User Memories to Reconcile</strong>: Maximum number of user memories evaluated together during a single reconciliation run.</li>
-<li><strong>Max Global Memories to Reconcile</strong>: Maximum number of global memories evaluated together during a single reconciliation run.</li>
+<li><strong>Memories to Reconcile</strong>:<ul>
+<li><strong>User</strong>: Maximum number of existing user memories compared against each new memory during reconciliation.</li>
+<li><strong>Global</strong>: Maximum number of existing global memories compared against each new memory during reconciliation.</li>
 </ul>
 </li>
-<li><strong>Model Assignments</strong>:<ul>
 <li><strong>Memory Model</strong>: The model responsible for analyzing transcripts and extracting discrete facts.</li>
-<li><strong>Embed Model</strong>: The model used to calculate semantic vector embeddings for memories and user prompts.</li>
+<li><strong>Embed Agent</strong>: The model used to calculate semantic vector embeddings for memories and user prompts.</li>
 <li><strong>Reconcile Model</strong>: The model responsible for comparing new facts with existing memories and determining whether to add, update, merge, or delete them.</li>
-</ul>
-</li>
-<li><strong>Memory Personas</strong>: Clicking the <strong>Memory Personas</strong> button opens a dialog to customize the prompt guidance given to the extraction and reconciliation models:<ul>
-<li><strong>Memory Model Persona</strong>: Custom system guidance directing what types of facts the extraction model should focus on or ignore (such as internal naming conventions or sensitive credentials).</li>
-<li><strong>Reconcile Model Persona</strong>: Custom guidance controlling how the reconciliation model resolves conflicts between old and new facts.</li>
+<li><strong>Persona Addenda</strong>: Clicking the <strong>Persona Addenda</strong> button opens a dialog to customize the prompt guidance given to the extraction and reconciliation models. Changes are saved with the <strong>Config Settings</strong> panel's <strong>Save</strong> button:<ul>
+<li><strong>Memory Model</strong>: Custom system guidance directing what types of facts the extraction model should focus on or ignore (such as internal naming conventions or sensitive credentials).</li>
+<li><strong>Reconcile Model</strong>: Custom guidance controlling how the reconciliation model resolves conflicts between old and new facts.</li>
 </ul>
 </li>
 </ul>
 <h2 id="agents">Agents<a class="headerlink" href="#agents" title="Permanent link">¶</a></h2>
-<p>The <strong>Agents</strong> tab catalogs all available AI agents, including built-in system agents (such as the Orchestrator and Hunter) and custom agents created by administrators.</p>
+<p>The <strong>Agents</strong> tab catalogs all available AI agents, including built-in system agents (Orchestrator, Investigator, AlertTriage, Notifier, and DetectionEngineer) and custom agents created by administrators.</p>
 <h3 id="agents-table-overview">Agents Table Overview<a class="headerlink" href="#agents-table-overview" title="Permanent link">¶</a></h3>
 <p>The main table displays:</p>
 <ul>
 <li><strong>Name</strong>: The display name of the agent.</li>
 <li><strong>Role</strong>: Indicates whether the agent functions as an <strong>Orchestrator</strong> (coordinates tasks and delegates to specialists) or a <strong>Specialist</strong> (focuses on specific domain tasks).</li>
-<li><strong>Status</strong>: Visual chip indicating whether the agent is <strong>Active</strong> or <strong>Disabled</strong>. Disabled agents cannot be selected in chat or invoked by automations.</li>
-<li><strong>Models</strong>: Displays the assigned default model and reasoning model.</li>
-<li><strong>Skills</strong>: Count of tool skills attached to the agent.</li>
-<li><strong>Delegation</strong>: Summarizes which other agents this agent can delegate sub-tasks to.</li>
+<li><strong>Model</strong>: The model assigned to the agent.</li>
+<li><strong>Skills</strong>: The skills attached to the agent.</li>
+<li><strong>Delegates To</strong>: Which other agents this agent can delegate sub-tasks to.</li>
+<li><strong>Enabled</strong>: Switch to enable or disable the agent. Disabled agents cannot be selected in chat or invoked by automations. At least one orchestrator must remain enabled.</li>
 </ul>
 <h3 id="adding-an-agent">Adding an Agent<a class="headerlink" href="#adding-an-agent" title="Permanent link">¶</a></h3>
 <p>To create a new agent, click the <strong>+ (Plus) Icon</strong> in the toolbar while on the <strong>Agents</strong> tab. The <strong>New Agent</strong> dialog prompts for:</p>
@@ -2948,7 +2950,7 @@
 <li><strong>Role</strong>: Select either <code>Orchestrator</code> or <code>Specialist</code>.</li>
 <li><strong>Executing Model</strong>: Choose the primary model from your configured providers that powers this agent.</li>
 <li><strong>Provider</strong>: Automatically displays the provider associated with the selected model.</li>
-<li><strong>Max Concurrent Instances</strong>: The maximum number of concurrent executions permitted for this agent across the grid.</li>
+<li><strong>Max Concurrent Sessions</strong>: The maximum number of sessions this agent can run at once, chats and automations combined. <code>0</code> is unlimited.</li>
 <li><strong>Skills</strong>: Multi-select dropdown to attach skills from the skill catalog that this agent is authorized to use.</li>
 <li><strong>Delegates To</strong>: Multi-select dropdown specifying which other agents this agent is permitted to delegate sub-tasks to.</li>
 <li><strong>Delegators</strong>: Multi-select dropdown indicating which parent agents are authorized to delegate work to this agent.</li>
@@ -2960,8 +2962,8 @@
 <p>Expanding any row in the Agents table opens an inline editor card with five subtabs:</p>
 <ul>
 <li><strong>Identity Subtab</strong>: Modify the agent display name (custom agents only), role, and description. For system agents, these fields are read-only to preserve platform integrity.</li>
-<li><strong>Model Subtab</strong>: Change the primary <strong>Executing Model</strong> or assign an optional <strong>Reasoning Model</strong> for deep chain-of-thought analysis.</li>
-<li><strong>Skills Subtab</strong>: Check or uncheck skills from the catalog to grant or revoke tool access. For system agents, built-in skills are displayed as informative chips.</li>
+<li><strong>Model Subtab</strong>: Change the <strong>Executing Model</strong> and <strong>Max Concurrent Sessions</strong>. The <strong>Provider</strong> of the selected model is displayed.</li>
+<li><strong>Skills Subtab</strong>: Add or remove skills from the catalog to grant or revoke tool access. For system agents, built-in skills are displayed as informative chips.</li>
 <li><strong>Delegation Subtab</strong>: Adjust the allowed delegation targets to control which agents can receive tasks from this agent.</li>
 <li><strong>Persona Subtab</strong>: Customize prompt instructions. For custom agents, this defines their persona. For system agents, this field acts as a <strong>Persona Addendum</strong>, allowing administrators to inject organization-specific instructions on top of the built-in system prompt.</li>
 </ul>
@@ -2969,18 +2971,19 @@
 <p>The footer of the expanded editor card provides action buttons:</p>
 <ul>
 <li><strong>Open in Onion AI</strong>: For enabled agents, opens a new conversation directly with that agent in the <a href="../onion-ai/">Onion AI</a> chat window.</li>
-<li><strong>Duplicate</strong>: Clones the agent definition into a new draft, allowing administrators to rapidly create specialized variations.</li>
-<li><strong>Delete</strong>: Deletes a custom agent. System agents cannot be deleted, but they can be toggled off by switching their status toggle to <strong>Disabled</strong>.</li>
+<li><strong>Duplicate</strong>: Saves a copy of a custom agent named <code>&lt;name&gt; (copy)</code>, allowing administrators to rapidly create specialized variations. System agents cannot be duplicated.</li>
+<li><strong>Delete</strong>: Deletes a custom agent. System agents cannot be deleted, but they can be turned off with their <strong>Enabled</strong> switch.</li>
 <li><strong>Save</strong>: Commits changes to the agent definition.</li>
 </ul>
 <h2 id="skills">Skills<a class="headerlink" href="#skills" title="Permanent link">¶</a></h2>
 <p>The <strong>Skills</strong> tab catalogs the tools and capabilities available to agents. Skills group underlying tool operations (such as event search, case manipulation, detection rule tuning, or alert acknowledgment) with prompt guidance that teaches agents when and how to invoke them.</p>
 <h3 id="skills-table-overview">Skills Table Overview<a class="headerlink" href="#skills-table-overview" title="Permanent link">¶</a></h3>
 <ul>
-<li><strong>Name</strong>: Display name of the skill (e.g., <code>Hunt Queries</code>, <code>Case Management</code>, <code>Alert Actions</code>).</li>
+<li><strong>Skill</strong>: Display name of the skill (e.g., <code>Hunt</code>, <code>Respond</code>, <code>Tuning</code>).</li>
 <li><strong>Tools</strong>: List of individual low-level tool operations included in the skill.</li>
 <li><strong>Used By</strong>: Chips showing which agents currently have this skill assigned.</li>
 <li><strong>System Indicator</strong>: Identifies built-in skills provided by Security Onion.</li>
+<li><strong>Enabled</strong>: Switch to enable or disable the skill.</li>
 </ul>
 <h3 id="adding-a-skill">Adding a Skill<a class="headerlink" href="#adding-a-skill" title="Permanent link">¶</a></h3>
 <p>To create a custom skill, click the <strong>+ (Plus) Icon</strong> in the toolbar while on the <strong>Skills</strong> tab:</p>
@@ -2994,29 +2997,31 @@
 <p>Expanding a skill row displays an editor card with three subtabs:</p>
 <ul>
 <li><strong>Tools Subtab</strong>: Add or remove low-level tools associated with custom skills. System skills display their bundled tools as read-only chips.</li>
-<li><strong>Usage Subtab</strong>: Displays chips showing every agent that references this skill, helping administrators gauge the impact of any changes.</li>
+<li><strong>Used By Subtab</strong>: Displays chips showing every agent that references this skill, helping administrators gauge the impact of any changes.</li>
 <li><strong>Persona Subtab</strong>: Edit the prompt guidance for custom skills or add custom addendum instructions for system skills.</li>
 </ul>
 <h4 id="skill-actions">Skill Actions<a class="headerlink" href="#skill-actions" title="Permanent link">¶</a></h4>
 <ul>
-<li><strong>Duplicate</strong>: Clones an existing skill to create a tailored copy.</li>
+<li><strong>Duplicate</strong>: Saves a copy of a custom skill named <code>&lt;name&gt; (copy)</code>. System skills cannot be duplicated.</li>
 <li><strong>Delete</strong>: Removes a custom skill (built-in system skills cannot be deleted).</li>
 <li><strong>Save</strong>: Saves updates made to the skill definition.</li>
 </ul>
 <h2 id="memories">Memories<a class="headerlink" href="#memories" title="Permanent link">¶</a></h2>
-<p>The <strong>Memories</strong> tab manages the long-term knowledge base that Onion AI references during conversations. Memories capture durable operational knowledge, environment details, analyst preferences, and network topology facts.</p>
+<p>The <strong>Memory</strong> tab manages the long-term knowledge base that Onion AI references during conversations. Memories capture durable operational knowledge, environment details, analyst preferences, and network topology facts.</p>
 <h3 id="memories-table-overview">Memories Table Overview<a class="headerlink" href="#memories-table-overview" title="Permanent link">¶</a></h3>
 <ul>
 <li><strong>Memory</strong>: The declarative text of the stored fact.</li>
 <li><strong>Scope</strong>: Labeled as <strong>Global</strong> (applies across the entire organization) or <strong>User</strong> (visible only to the specific analyst who authored or established the fact).</li>
-<li><strong>Owner</strong>: Email address of the user who owns the memory, or <code>Global</code> for organization-wide knowledge.</li>
+<li><strong>Owner</strong>: The user who owns the memory, or <code>All</code> for organization-wide knowledge.</li>
+<li><strong>Recalled</strong>: How many times the memory has been included in a conversation.</li>
+<li><strong>Updated</strong>: When the memory was last changed.</li>
 <li><strong>User Defined Badge</strong>: Distinguishes facts manually entered by administrators from facts discovered automatically by the background memory scanner.</li>
 <li><strong>Similarity Percentage</strong>: When searching, displays how closely the memory matches the search query.</li>
 </ul>
 <h3 id="adding-a-memory">Adding a Memory<a class="headerlink" href="#adding-a-memory" title="Permanent link">¶</a></h3>
 <p>To manually add a new fact to long-term memory:</p>
 <ol>
-<li>Click the <strong>+ (Plus) Icon</strong> in the toolbar while on the <strong>Memories</strong> tab.</li>
+<li>Click the <strong>+ (Plus) Icon</strong> in the toolbar while on the <strong>Memory</strong> tab.</li>
 <li><strong>Memory Text</strong>: Enter the declarative fact. Follow best practices for phrasing:<ul>
 <li>Keep each memory to a single, self-contained statement.</li>
 <li>Use declarative phrasing rather than conversational instructions (e.g., <code>DNS servers for the DMZ are 10.0.1.53 and 10.0.1.54</code>).</li>
@@ -3029,7 +3034,7 @@
 <h3 id="managing-and-filtering-memories">Managing and Filtering Memories<a class="headerlink" href="#managing-and-filtering-memories" title="Permanent link">¶</a></h3>
 <ul>
 <li><strong>Scope Dropdown</strong>: Filter the list by <code>All</code>, <code>Global</code>, or <code>User</code>.</li>
-<li><strong>Search Bar</strong>: Enter keywords to locate specific memories. Press Enter or click the magnifying glass to search.</li>
+<li><strong>Search Bar</strong>: Enter text to find memories by meaning rather than exact wording. Press Enter or click the magnifying glass to search.</li>
 <li><strong>Row Expansion</strong>: Expanding a memory row reveals:<ul>
 <li>The full editable memory text.</li>
 <li><strong>Scope</strong>: Toggle between <code>User</code> and <code>Global</code>.</li>
@@ -3039,58 +3044,48 @@
 </li>
 <li><strong>Actions</strong>:<ul>
 <li><strong>Delete</strong>: Permanently removes the memory.</li>
-<li><strong>Save</strong>: Updates the text or scope of the memory.</li>
+<li><strong>Save</strong>: Updates the text or scope of the memory. Saving a memory found by the scanner makes it user-defined, so the scanner no longer changes it.</li>
 </ul>
 </li>
 <li><strong>Stale Memory Alert</strong>: If models or embedding configurations change, an alert banner indicates how many memories are awaiting re-embedding.</li>
 </ul>
-<h2 id="automations">Automations<a class="headerlink" href="#automations" title="Permanent link">¶</a></h2>
+<h2 id="automations_1">Automations<a class="headerlink" href="#automations_1" title="Permanent link">¶</a></h2>
 <p>The <strong>Automations</strong> tab configures recurring, autonomous agent workflows that execute in the background without requiring user interaction. A primary example is the built-in <strong>Alert Triage</strong> automation.</p>
 <h3 id="automations-table-overview">Automations Table Overview<a class="headerlink" href="#automations-table-overview" title="Permanent link">¶</a></h3>
 <ul>
 <li><strong>Name</strong>: Display name of the automation.</li>
 <li><strong>Kind</strong>: The automation template or category (e.g., <code>Alert Triage</code>).</li>
 <li><strong>Interval</strong>: How frequently the automation runs (e.g., <code>60 seconds</code>, <code>5 minutes</code>).</li>
-<li><strong>Agent</strong>: The assigned agent responsible for executing the workflow.</li>
-<li><strong>Status</strong>: Switch showing whether the automation is <strong>Enabled</strong> or <strong>Disabled</strong>.</li>
+<li><strong>Handling Agent</strong>: The assigned agent responsible for executing the workflow.</li>
+<li><strong>Status</strong>: The state of the automation's latest run: <strong>Idle</strong>, <strong>Queued</strong>, <strong>Running</strong>, or <strong>Failed</strong>.</li>
+<li><strong>Enabled</strong>: Switch to enable or disable the automation.</li>
 </ul>
-<h3 id="adding-an-automation">Adding an Automation<a class="headerlink" href="#adding-an-automation" title="Permanent link">¶</a></h3>
-<p>To create a new automation:</p>
-<ol>
-<li>Click the <strong>+ (Plus) Icon</strong> in the toolbar while on the <strong>Automations</strong> tab.</li>
-<li><strong>Name</strong>: Enter a descriptive display name (e.g., <code>High Severity Alert Triage</code>).</li>
-<li><strong>Kind</strong>: Select the automation kind (e.g., <code>Alert Triage</code>).</li>
-<li><strong>Agent</strong>: Select the agent from the dropdown that will perform the automated analysis.</li>
-<li><strong>Interval</strong>: Specify the execution frequency in seconds (e.g., <code>60</code>).</li>
-<li><strong>Kind-Specific Parameters</strong>: Configure parameters defined by the automation kind (such as alert filters, grouping fields, or batch limits).</li>
-<li><strong>Enabled Switch</strong>: Set whether the automation begins executing immediately upon creation.</li>
-<li>Click <strong>Create</strong> to schedule the automation.</li>
-</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Creating, duplicating, and deleting custom automations is not yet available. The built-in <strong>Alert Triage</strong> automation can be enabled, configured, and monitored.</p>
+</div>
 <h3 id="editing-and-reviewing-automations">Editing and Reviewing Automations<a class="headerlink" href="#editing-and-reviewing-automations" title="Permanent link">¶</a></h3>
 <p>Expanding an automation row opens an editor card with three subtabs:</p>
 <ul>
 <li><strong>General Subtab</strong>:<ul>
-<li>Edit the display name.</li>
 <li>Change the assigned agent.</li>
 <li>Adjust the run interval in seconds.</li>
-<li>View creator account details for user-defined automations.</li>
 </ul>
 </li>
 <li><strong>Settings Subtab</strong>:<ul>
-<li>View and modify automation-specific parameters.</li>
+<li>View automation-specific parameters. These are read-only for built-in automations.</li>
 </ul>
 </li>
 <li><strong>Activity Subtab</strong>:<ul>
-<li><strong>Last Run</strong>: Timestamp when the automation last executed.</li>
-<li><strong>Run History Table</strong>: Displays past execution runs, including <strong>Run ID</strong>, <strong>Start Time</strong>, <strong>Duration</strong>, <strong>Items Processed</strong>, and completion <strong>State</strong> (<code>succeeded</code>, <code>failed</code>, or <code>running</code>).</li>
+<li><strong>Last Run</strong> and <strong>Next Run</strong>: When the automation last ran and is next due.</li>
+<li><strong>Backlog</strong>: Counts of work items still <strong>Pending</strong>, <strong>Running</strong>, or <strong>Applying</strong> for this automation.</li>
+<li><strong>Run History Table</strong>: Displays past runs, including <strong>Start Time</strong>, work items <strong>Done</strong> and <strong>Failed</strong>, and <strong>Outcome</strong>. Each run has a button to view it in <a href="../agent-monitor/">Agent Monitor</a>.</li>
 <li><strong>Load More</strong>: Button to fetch older historical runs.</li>
 </ul>
 </li>
 </ul>
 <h4 id="automation-actions">Automation Actions<a class="headerlink" href="#automation-actions" title="Permanent link">¶</a></h4>
 <ul>
-<li><strong>Duplicate</strong>: Creates a copy of the automation to apply different parameters or assign a different agent.</li>
-<li><strong>Delete</strong>: Removes custom automations (system-provided automations cannot be deleted, but can be disabled).</li>
 <li><strong>Save</strong>: Saves changes to the automation configuration.</li>
 </ul>
 <p>To monitor live automated workloads as they execute, navigate to <a href="../agent-monitor/">Agent Monitor</a>.</p>

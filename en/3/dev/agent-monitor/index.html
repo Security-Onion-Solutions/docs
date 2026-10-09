@@ -2457,15 +2457,24 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#recent-work-items">
+<a class="md-nav__link" href="#run-history">
 <span class="md-ellipsis">
       
-        Recent Work Items
+        Run History
       
     </span>
 </a>
-<nav aria-label="Recent Work Items" class="md-nav">
+<nav aria-label="Run History" class="md-nav">
 <ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#filtering-and-searching">
+<span class="md-ellipsis">
+      
+        Filtering and Searching
+      
+    </span>
+</a>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#table-columns_1">
 <span class="md-ellipsis">
@@ -2476,10 +2485,10 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#inspecting-completed-work-items">
+<a class="md-nav__link" href="#inspecting-a-run">
 <span class="md-ellipsis">
       
-        Inspecting Completed Work Items
+        Inspecting a Run
       
     </span>
 </a>
@@ -2682,15 +2691,24 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#recent-work-items">
+<a class="md-nav__link" href="#run-history">
 <span class="md-ellipsis">
       
-        Recent Work Items
+        Run History
       
     </span>
 </a>
-<nav aria-label="Recent Work Items" class="md-nav">
+<nav aria-label="Run History" class="md-nav">
 <ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#filtering-and-searching">
+<span class="md-ellipsis">
+      
+        Filtering and Searching
+      
+    </span>
+</a>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#table-columns_1">
 <span class="md-ellipsis">
@@ -2701,10 +2719,10 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#inspecting-completed-work-items">
+<a class="md-nav__link" href="#inspecting-a-run">
 <span class="md-ellipsis">
       
-        Inspecting Completed Work Items
+        Inspecting a Run
       
     </span>
 </a>
@@ -2774,35 +2792,37 @@
 <p>This is an enterprise-level feature of Security Onion. Contact Security Onion Solutions, LLC via our website at <a href="https://securityonion.com/pro">https://securityonion.com/pro</a> for more information about purchasing a <a href="../security-onion-pro/">Security Onion Pro</a> license to enable this feature.</p>
 </div>
 <p>Agent Monitor provides real-time visibility into autonomous background AI agents and scheduled automations (such as Alert Triage) executing across the grid.</p>
-<p>This screen is located under the <strong>Administration</strong> menu on the left side of the Security Onion Console and requires the <code>automations/read</code> permission, which is granted to the <code>analyst</code>, <code>auditor</code>, and <code>superuser</code> roles. It is also accessible directly from the <strong>Automated Agents</strong> section in <a href="../onion-ai/">Onion AI</a>.</p>
+<p>This screen is located under the <strong>Administration</strong> menu on the left side of the Security Onion Console when agentic mode is enabled, and requires the <code>automations/read</code> permission, which is granted to the <code>analyst</code>, <code>auditor</code>, and <code>superuser</code> roles. It is also accessible directly from the <strong>Background Agent Activity</strong> pill in <a href="../onion-ai/">Onion AI</a>.</p>
 <h2 id="controls-and-scheduler-status">Controls and Scheduler Status<a class="headerlink" href="#controls-and-scheduler-status" title="Permanent link">¶</a></h2>
 <p>The top toolbar offers quick controls for supervising active execution:</p>
 <ul>
 <li><strong>Breadcrumbs</strong>: Navigate between the main overview and detailed execution transcripts.</li>
 <li><strong>Pause / Resume</strong>: Freezes live updates so analysts can inspect in-flight work without the view changing, or resumes live polling.</li>
 <li><strong>Refresh</strong>: Manually reloads current execution state.</li>
+<li><strong>Options (Gear Icon)</strong>: Controls whether <strong>Run History</strong> hides successful runs with no work items.</li>
 <li><strong>Documentation Link</strong>: Quick access to Onion AI documentation.</li>
 </ul>
-<p>If the background scheduler is stopped or paused, an alert banner appears at the top of the page.</p>
+<p>If the automation scheduler is not running, an alert banner appears at the top of the page.</p>
 <hr/>
 <h2 id="agent-pool-metrics">Agent Pool Metrics<a class="headerlink" href="#agent-pool-metrics" title="Permanent link">¶</a></h2>
 <p>Summary stat pills at the top of the screen give an immediate health check of agent pool capacity:</p>
 <ul>
-<li><strong>Pool Running</strong>: Displays the count of currently running tasks compared against the maximum concurrency limit (e.g., <code>2 / 5</code>). The value turns yellow to warn operators if the execution pool reaches saturation.</li>
-<li><strong>Pool Queued</strong>: Displays the count of tasks currently waiting in the execution queue compared against the maximum queue depth (e.g., <code>1 / 20</code>).</li>
-<li><strong>Peak Running</strong>: The all-time peak number of concurrent tasks executed by the pool.</li>
-<li><strong>Peak Queued</strong>: The highest queue depth observed.</li>
+<li><strong>Pool Running</strong>: Displays the count of currently running tasks compared against the maximum concurrency limit (e.g., <code>2 / 5</code>). The value turns yellow to warn operators when the pool is full and tasks are waiting.</li>
+<li><strong>Pool Queued</strong>: Displays the count of tasks currently waiting in the execution queue compared against the maximum queue depth (e.g., <code>1 / 20</code>). The value turns yellow under the same condition as Pool Running.</li>
+<li><strong>Peak Running</strong>: The most tasks running at once since SOC started.</li>
+<li><strong>Peak Queued</strong>: The most tasks waiting at once since SOC started.</li>
 <li><strong>Rejected</strong>: Count of task submissions refused by the pool because the queue was full. Displays in red if any submissions have been rejected.</li>
+<li><strong>Deduplicated</strong>: Count of task submissions skipped because the same work was already queued or running.</li>
+<li><strong>Agent Busy</strong>: Count of chats refused because their agent was at its <strong>Max Concurrent Sessions</strong> limit.</li>
 </ul>
 <h3 id="understanding-rejected-items">Understanding Rejected Items<a class="headerlink" href="#understanding-rejected-items" title="Permanent link">¶</a></h3>
-<p>The execution pool protects the grid from resource exhaustion by enforcing a maximum queue limit (<code>MaxQueueDepth</code>). When the queue is full, new task submissions are rejected. Here is what happens to those rejected items:</p>
+<p>The execution pool protects the grid from resource exhaustion by enforcing a maximum queue limit (<code>maxQueuedItems</code>). When the queue is full, new task submissions are rejected. Here is what happens to those rejected items:</p>
 <ul>
-<li><strong>Automatic Requeueing for Automations</strong>: Work items generated by scheduled automations (such as Alert Triage) are <strong>not lost or deleted</strong> when rejected. The automation engine catches the queue-full condition and automatically returns the work item to the <code>pending</code> backlog. The scheduler will re-attempt the item on a subsequent cycle once queue space or running slots become available.</li>
-<li><strong>Checkpoint Preservation in Applying State</strong>: If an item was rejected while in the <code>applying</code> state (meaning the LLM has already finished its analysis and the agent was attempting to commit changes such as acknowledging alerts or adding tags), its completed results are safely preserved. When retried, the agent resumes directly at the application step without re-running model queries.</li>
-<li><strong>Retry Limits</strong>: Work items track their attempts and failures. If an item repeatedly fails or cannot be processed across multiple automation runs, it eventually transitions to the <code>failed</code> state after exceeding maximum failure limits, preventing broken items from looping indefinitely.</li>
+<li><strong>Automatic Requeueing for Automations</strong>: Work items generated by scheduled automations (such as Alert Triage) are <strong>not lost or deleted</strong> when rejected. The automation engine catches the queue-full condition and automatically returns the work item to the <code>pending</code> backlog. The scheduler will re-attempt the item on a subsequent cycle once queue space or running slots become available. The run that hit the full queue appears in <strong>Run History</strong> with a <code>Failed</code> outcome.</li>
+<li><strong>Retry Limits</strong>: Work items track their attempts and failures. If an item fails in as many runs as the automation's <strong>maxFailures</strong> setting (default <code>3</code>), it is given up and transitions to the <code>failed</code> state, preventing broken items from looping indefinitely.</li>
 <li><strong>Operator Guidance</strong>: A non-zero or rising <strong>Rejected</strong> counter indicates that background workloads are outpacing worker throughput. Administrators should:<ul>
 <li>Review the schedule interval of active automations in <a href="../agent-studio/">Agent Studio</a> (e.g., lengthening intervals or tuning alert query filters to reduce batch sizes).</li>
-<li>Review <strong>Max Concurrent Instances</strong> on active agents to allow sufficient concurrency.</li>
+<li>Review <strong>Max Concurrent Sessions</strong> on active agents to allow sufficient concurrency.</li>
 <li>Check for slow upstream LLM provider responses that may be causing running tasks to hold slots longer than usual.</li>
 </ul>
 </li>
@@ -2811,24 +2831,24 @@
 <h2 id="work-item-lifecycle">Work Item Lifecycle<a class="headerlink" href="#work-item-lifecycle" title="Permanent link">¶</a></h2>
 <p>Automated tasks move through defined execution states:</p>
 <ul>
-<li><strong>Pending</strong>: The work item has been discovered and queued, awaiting an available worker instance.</li>
+<li><strong>Pending</strong>: The work item is in the backlog, awaiting a run to claim it (including items being retried after a failed run).</li>
+<li><strong>Queued</strong>: The work item has been claimed and is waiting in the execution pool for an available worker slot.</li>
 <li><strong>Running</strong>: An agent has claimed the item and is actively analyzing data, executing model turns, or invoking tools.</li>
-<li><strong>Applying</strong>: The agent has concluded its investigation and is committing changes (such as tagging alerts, acknowledging events, or creating cases).</li>
-<li><strong>Succeeded</strong>: The work item finished its run successfully.</li>
+<li><strong>Applying</strong>: The agent has concluded its investigation and its results are being written to the alerts the item covers.</li>
+<li><strong>Done</strong>: The work item finished its run successfully.</li>
 <li><strong>Failed</strong>: The task encountered an unrecoverable error or exceeded its retry attempts.</li>
-<li><strong>Skipped</strong>: The work item was bypassed (for example, if the target alert was already resolved).</li>
 </ul>
 <hr/>
 <h2 id="in-flight-work-items">In-Flight Work Items<a class="headerlink" href="#in-flight-work-items" title="Permanent link">¶</a></h2>
-<p>The <strong>In-Flight</strong> panel lists tasks that are currently queued, executing, or applying updates across the grid.</p>
+<p>The <strong>In Flight</strong> panel lists tasks that are currently queued, executing, or applying updates across the grid.</p>
 <h3 id="table-columns">Table Columns<a class="headerlink" href="#table-columns" title="Permanent link">¶</a></h3>
 <ul>
-<li><strong>Automation Name</strong>: The name of the automation driving the task. Users with administrative privileges can click the name to jump straight to its editor in <a href="../agent-studio/">Agent Studio</a>.</li>
-<li><strong>Group</strong>: The identifier of the workload group (such as a specific alert ID or investigation cluster).</li>
-<li><strong>Status</strong>: Visual chip indicating whether the item is <code>pending</code>, <code>running</code>, or <code>applying</code>.</li>
-<li><strong>Doing</strong>: Live phase indicator revealing what the agent is currently doing in real time, such as waiting for a model completion or invoking a specific tool (e.g., <code>invoking_tool:query_events</code>).</li>
-<li><strong>Agent</strong>: The active agent and delegation chain responsible for the item (e.g., <code>Hunter</code> or <code>Hunter -&gt; Case Analyst</code>).</li>
-<li><strong>Attempt</strong>: Current attempt number out of total allowed retries.</li>
+<li><strong>Automation</strong>: The name of the automation driving the task.</li>
+<li><strong>Group</strong>: The identifier of the workload group, made of the values the automation groups alerts by (e.g., <code>rule.name:Suspicious PowerShell</code>).</li>
+<li><strong>Status</strong>: Visual chip indicating whether the item is <code>pending</code>, <code>queued</code>, <code>running</code>, or <code>applying</code>.</li>
+<li><strong>Doing</strong>: Live phase indicator revealing what the agent is currently doing in real time, such as waiting for a model completion or invoking a specific tool (e.g., <code>Invoking query_events</code>).</li>
+<li><strong>Agent</strong>: The active agent and delegation chain responsible for the item (e.g., <code>Investigator</code> or <code>Investigator → DetectionEngineer</code>).</li>
+<li><strong>Attempt</strong>: How many times the item has been claimed for processing.</li>
 <li><strong>In State</strong>: How long the item has remained in its current state.</li>
 <li><strong>Elapsed</strong>: Total time elapsed since the work item was initially created.</li>
 <li><strong>Actions</strong>: Click the <strong>binoculars icon</strong> to open the live execution transcript.</li>
@@ -2836,63 +2856,53 @@
 <h3 id="expanded-work-item-inspector">Expanded Work Item Inspector<a class="headerlink" href="#expanded-work-item-inspector" title="Permanent link">¶</a></h3>
 <p>Expanding an in-flight row opens an inspector card with four subtabs:</p>
 <ul>
-<li><strong>Details Subtab</strong>: A key-value summary of the item ID, parent Automation ID (with a direct link to Agent Studio), Automation Kind, Group Key, State, Created timestamp, and Updated timestamp.</li>
+<li><strong>Details Subtab</strong>: A key-value summary of the Work Item ID, Run ID, Automation, Group, Status, Attempt, Created and Last Changed timestamps, and any Error. Superusers also get a gear icon to open the automation in Agent Studio.</li>
 <li><strong>Payload Subtab</strong>: Displays the exact input parameters and raw data supplied to the automation for this work item.</li>
 <li><strong>Attempts Subtab</strong>: Lists every attempt made on this work item, showing the attempt number, session UUID, live status chip, start time, and a binoculars icon to inspect that specific attempt's transcript. Alerts if any attempt was orphaned due to unexpected worker restarts.</li>
-<li><strong>Result Subtab</strong>: Displays intermediate conclusions, actions taken, or error causes.</li>
+<li><strong>Result Subtab</strong>: Displays the result the agent produced (for Alert Triage, the investigation session ID). Only shown once the item has a result, such as while it is applying.</li>
 </ul>
 <hr/>
-<h2 id="recent-work-items">Recent Work Items<a class="headerlink" href="#recent-work-items" title="Permanent link">¶</a></h2>
-<p>The <strong>Recent</strong> panel displays completed, failed, or skipped tasks from previous automation runs across the grid.</p>
+<h2 id="run-history">Run History<a class="headerlink" href="#run-history" title="Permanent link">¶</a></h2>
+<p>The <strong>Run History</strong> panel lists finished automation runs across the grid.</p>
+<h3 id="filtering-and-searching">Filtering and Searching<a class="headerlink" href="#filtering-and-searching" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Automation</strong>: Limits the list to one automation, or shows <strong>All</strong>.</li>
+<li><strong>Search</strong>: Matches automation names, errors, and work item groups, or a pasted run ID.</li>
+</ul>
 <h3 id="table-columns_1">Table Columns<a class="headerlink" href="#table-columns_1" title="Permanent link">¶</a></h3>
 <ul>
-<li><strong>Automation Name</strong>: Name of the completed automation.</li>
-<li><strong>Group</strong>: Workload grouping identifier (e.g., target alert ID).</li>
-<li><strong>Status</strong>: Visual chip showing the terminal outcome:<ul>
-<li><code>succeeded</code>: Task finished successfully and conclusions were recorded.</li>
-<li><code>failed</code>: Task failed after exhausting available retries.</li>
-<li><code>skipped</code>: Task was intentionally bypassed.</li>
+<li><strong>Automation</strong>: Name of the automation that ran.</li>
+<li><strong>Started</strong>: When the run began.</li>
+<li><strong>Duration</strong>: How long the run took.</li>
+<li><strong>Done</strong> and <strong>Failed</strong>: Number of work items the run finished or failed.</li>
+<li><strong>Outcome</strong>: <code>Completed</code> or <code>Failed</code>.</li>
 </ul>
-</li>
-<li><strong>Agent</strong>: Agents and sub-agents that participated in the workflow execution.</li>
-<li><strong>Attempt</strong>: Number of attempts required.</li>
-<li><strong>Duration</strong>: Total execution duration.</li>
-<li><strong>Finished</strong>: Timestamp when the task completed.</li>
-<li><strong>Actions</strong>: Click the <strong>binoculars icon</strong> to review the completed transcript.</li>
-</ul>
-<h3 id="inspecting-completed-work-items">Inspecting Completed Work Items<a class="headerlink" href="#inspecting-completed-work-items" title="Permanent link">¶</a></h3>
-<p>Expanding a recent row opens the inspector card:</p>
-<ul>
-<li><strong>Details</strong>: Full lifecycle timestamps and runtime metadata.</li>
-<li><strong>Payload</strong>: The original event or alert payload that triggered the run.</li>
-<li><strong>Attempts</strong>: Complete audit history of every session attempt, with start timestamps and links to each attempt's transcript.</li>
-<li><strong>Result</strong>: Summary conclusions generated by the agent, actions taken (such as tags applied or cases created), or error diagnostics explaining why a run failed.</li>
-</ul>
+<h3 id="inspecting-a-run">Inspecting a Run<a class="headerlink" href="#inspecting-a-run" title="Permanent link">¶</a></h3>
+<p>Expanding a run shows its <strong>Run ID</strong>, any run error, and the work items it handled, with each item's <strong>Group</strong>, <strong>Outcome</strong>, <strong>Error</strong>, <strong>Attempt</strong>, <strong>Finished</strong>, <strong>Duration</strong>, and a <strong>binoculars icon</strong> to review its transcript.</p>
+<p>Expanding a work item opens the same inspector card as In Flight.</p>
 <hr/>
 <h2 id="live-transcript-view">Live Transcript View<a class="headerlink" href="#live-transcript-view" title="Permanent link">¶</a></h2>
-<p>Selecting the binoculars icon on any in-flight or recent item opens the live, step-by-step transcript view.</p>
+<p>Selecting the binoculars icon on any in-flight or Run History item opens the live, step-by-step transcript view.</p>
 <h3 id="transcript-controls-and-status">Transcript Controls and Status<a class="headerlink" href="#transcript-controls-and-status" title="Permanent link">¶</a></h3>
 <ul>
 <li><strong>Agent Title &amp; Model</strong>: Displays the active agent name and the underlying LLM executing the run.</li>
-<li><strong>Live Badge</strong>: A pulsing chip appears when the task is actively executing, indicating real-time streaming updates.</li>
-<li><strong>Auto-Scroll</strong>: Streams model turns and tool results as they happen without requiring manual page reloads.</li>
+<li><strong>Live Badge</strong>: A <strong>Live</strong> chip appears while the task is still executing and you are viewing its latest attempt.</li>
+<li><strong>Live Updates</strong>: Model turns and tool results appear as they happen without requiring manual page reloads.</li>
 </ul>
 <h3 id="inspecting-agent-reasoning-and-tool-execution">Inspecting Agent Reasoning and Tool Execution<a class="headerlink" href="#inspecting-agent-reasoning-and-tool-execution" title="Permanent link">¶</a></h3>
 <ul>
-<li><strong>Chain-of-Thought Reasoning</strong>: Agent internal thoughts appear in an expandable accordion labeled with a lightbulb icon. Expanding this view reveals the agent's step-by-step hypothesis generation, query planning, and evidence evaluation.</li>
 <li><strong>Tool Use Cards</strong>: Every tool execution is displayed in an interactive card:<ul>
 <li><strong>Tool Name &amp; Parameters</strong>: Formatted code block showing exact parameters passed to the tool (such as OQL queries, alert IDs, or detection filters).</li>
-<li><strong>Status Indicator</strong>: Visual indicator showing whether the tool is pending, actively executing, completed, or failed.</li>
+<li><strong>Status Indicator</strong>: Visual indicator showing whether the tool is preparing, executing, completed, or returned an error.</li>
 <li><strong>Raw Results</strong>: Expandable accordion displaying the structured data returned by the tool.</li>
 </ul>
 </li>
 <li><strong>Nested Delegations</strong>: When an agent delegates sub-tasks to subordinate agents, the delegation appears as a nested panel:<ul>
 <li>Displays the delegated sub-agent identity.</li>
 <li>Tracks credits and tokens consumed by the sub-agent.</li>
-<li>Contains the sub-agent's own thoughts and nested tool executions.</li>
+<li>Contains the sub-agent's own thoughts, in an expandable accordion labeled with a lightbulb icon, and nested tool executions.</li>
 </ul>
 </li>
-<li><strong>Open in Chat</strong>: Analysts with appropriate chat permissions can click the <strong>Open in Onion AI</strong> button to load the session directly into the <a href="../onion-ai/">Onion AI</a> chat window, allowing them to ask follow-up questions and continue the investigation interactively.</li>
 </ul>
 </article>
 </div>
