@@ -2415,6 +2415,42 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ai-metrics/">
+<span class="md-ellipsis">
+    
+  
+    AI Metrics
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agent-studio/">
+<span class="md-ellipsis">
+    
+  
+    Agent Studio
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agent-monitor/">
+<span class="md-ellipsis">
+    
+  
+    Agent Monitor
+  
+
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -2897,7 +2933,17 @@
 <td style="text-align: center;">X</td>
 <td style="text-align: center;">X</td>
 <td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
 <td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>View Shared Onion AI History</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -2907,7 +2953,7 @@
 <td style="text-align: center;">X</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -2968,6 +3014,16 @@
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>View automations</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">X</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -3363,6 +3419,10 @@
 <td>Create and update all Onion AI memories</td>
 </tr>
 <tr>
+<td><em>assistant/read</em></td>
+<td>View Onion AI sessions and details</td>
+</tr>
+<tr>
 <td><em>assistant/read_authored</em></td>
 <td>View own Onion AI conversation history</td>
 </tr>
@@ -3389,6 +3449,10 @@
 <tr>
 <td><em>assistant/delete_all</em></td>
 <td>Currently unused</td>
+</tr>
+<tr>
+<td><em>automations/read</em></td>
+<td>View automations and run history</td>
 </tr>
 </tbody>
 </table>
@@ -3535,15 +3599,19 @@
 </tr>
 <tr>
 <td>assistant-user</td>
-<td><em>assistant/read_authored</em>, <em>assistant/write_authored</em>, <em>assistant/delete_authored</em>, <em>assistant/read_shared</em></td>
+<td><em>assistant/read</em>, <em>assistant/read_authored</em>, <em>assistant/write_authored</em>, <em>assistant/delete_authored</em>, <em>assistant/read_shared</em></td>
 </tr>
 <tr>
 <td>assistant-admin</td>
-<td><em>assistant/read_authored</em>, <em>assistant/write_authored</em>, <em>assistant/delete_authored</em>, <em>assistant/read_shared</em>, <em>assistant/read_all</em>, <em>assistant/write_all</em>, <em>assistant/delete_all</em></td>
+<td><em>assistant/read</em>, <em>assistant/read_authored</em>, <em>assistant/write_authored</em>, <em>assistant/delete_authored</em>, <em>assistant/read_shared</em>, <em>assistant/read_all</em>, <em>assistant/write_all</em>, <em>assistant/delete_all</em></td>
 </tr>
 <tr>
 <td>assistant-monitor</td>
-<td><em>assistant/read_authored</em>, <em>assistant/read_shared</em>, <em>assistant/read_all</em></td>
+<td><em>assistant/read</em>, <em>assistant/read_authored</em>, <em>assistant/read_shared</em>, <em>assistant/read_all</em></td>
+</tr>
+<tr>
+<td>automation-monitor</td>
+<td><em>automations/read</em></td>
 </tr>
 </tbody>
 </table>

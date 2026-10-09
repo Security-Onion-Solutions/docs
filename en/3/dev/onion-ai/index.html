@@ -2463,6 +2463,37 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#agentic-metrics-and-interface">
+<span class="md-ellipsis">
+      
+        Agentic Metrics and Interface
+      
+    </span>
+</a>
+<nav aria-label="Agentic Metrics and Interface" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#interactive-tool-use-cards">
+<span class="md-ellipsis">
+      
+        Interactive Tool Use Cards
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#delegated-sub-agent-cards">
+<span class="md-ellipsis">
+      
+        Delegated Sub-Agent Cards
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#metrics">
 <span class="md-ellipsis">
       
@@ -2520,6 +2551,42 @@
     
   
     Local LLM Hosting
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ai-metrics/">
+<span class="md-ellipsis">
+    
+  
+    AI Metrics
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agent-studio/">
+<span class="md-ellipsis">
+    
+  
+    Agent Studio
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agent-monitor/">
+<span class="md-ellipsis">
+    
+  
+    Agent Monitor
   
 
     
@@ -2739,6 +2806,37 @@
       
     </span>
 </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#agentic-metrics-and-interface">
+<span class="md-ellipsis">
+      
+        Agentic Metrics and Interface
+      
+    </span>
+</a>
+<nav aria-label="Agentic Metrics and Interface" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#interactive-tool-use-cards">
+<span class="md-ellipsis">
+      
+        Interactive Tool Use Cards
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#delegated-sub-agent-cards">
+<span class="md-ellipsis">
+      
+        Delegated Sub-Agent Cards
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#metrics">
@@ -2976,9 +3074,55 @@
 <p class="admonition-title">Note</p>
 <p>Be cautious when customizing the system prompt, as it can significantly influence the assistant's behavior and responses. A longer prompt will also use more credits.</p>
 </div>
+<h2 id="agentic-metrics-and-interface">Agentic Metrics and Interface<a class="headerlink" href="#agentic-metrics-and-interface" title="Permanent link">¶</a></h2>
+<p>When interacting with Onion AI, the top header bar displays real-time status indicators and clickable metric pills:</p>
+<ul>
+<li><strong>Current Agent &amp; Model</strong>:<ul>
+<li><strong>Display</strong>: In agentic mode, this pill displays the currently active agent alongside its assigned model (e.g., <code>Hunter (Claude 3.5 Sonnet)</code> or <code>Orchestrator</code>). In non-agentic mode, it displays the model's display name.</li>
+<li><strong>Clickable Selection</strong>: Clicking the pill opens a dropdown menu displaying all available agents and models, organized under subheaders by provider or adapter. Selecting an agent or model switches the active execution target immediately without needing to open configuration pages or leave the chat session.</li>
+</ul>
+</li>
+<li><strong>Automated Agents</strong>:<ul>
+<li><strong>Display</strong>: Visible when agentic automations are enabled and the user holds the <code>automations/read</code> permission. It displays a real-time summary of background automated tasks (e.g., <code>2 running · 1 queued</code>).</li>
+<li><strong>Clickable Navigation</strong>: Clicking this pill navigates directly to <a href="../agent-monitor/">Agent Monitor</a>, providing immediate visibility into active workloads, queues, and task transcripts.</li>
+</ul>
+</li>
+<li><strong>Credits Remaining</strong>:<ul>
+<li><strong>Display</strong>: For credit-based adapters (such as SOAI), this pill displays the remaining credit balance in real time.</li>
+<li><strong>Alert State</strong>: If the credit balance drops below the low-balance threshold, the text automatically shifts from blue to red to alert the operator.</li>
+</ul>
+</li>
+<li><strong>Action Buttons</strong>:<ul>
+<li><strong>New Chat (+ icon)</strong>: Clears the current view and initiates a new conversation session.</li>
+<li><strong>Options (Gear icon)</strong>: Opens user settings, including the auto-approval toggle for read-only tools and session parameters.</li>
+<li><strong>Help (? icon)</strong>: Opens contextual documentation.</li>
+</ul>
+</li>
+</ul>
+<h3 id="interactive-tool-use-cards">Interactive Tool Use Cards<a class="headerlink" href="#interactive-tool-use-cards" title="Permanent link">¶</a></h3>
+<p>When an agent invokes a tool during a conversation turn, an interactive card renders in the transcript:</p>
+<ul>
+<li><strong>Header</strong>: Displays the tool name, a status icon, and a colored status chip (<code>Pending Approval</code>, <code>Executing</code>, <code>Completed</code>, or <code>Failed</code>).</li>
+<li><strong>Parameters</strong>: An expandable code block displaying the exact JSON input parameters sent to the tool.</li>
+<li><strong>User Approval</strong>: If the tool modifies data or requires approval, the card presents <strong>Approve</strong> (green checkmark) and <strong>Reject</strong> (red cross) buttons along with an explanatory notice detailing what the tool will execute.</li>
+<li><strong>Execution Spinner</strong>: Indicates in real time while the tool is actively processing queries.</li>
+<li><strong>Results Accordion</strong>: Once complete, an expandable accordion allows inspecting the raw structured output returned by the tool.</li>
+</ul>
+<h3 id="delegated-sub-agent-cards">Delegated Sub-Agent Cards<a class="headerlink" href="#delegated-sub-agent-cards" title="Permanent link">¶</a></h3>
+<p>When an agent delegates a sub-task to another agent, a nested delegation card appears in the conversation:</p>
+<ul>
+<li><strong>Sub-Agent Banner</strong>: Shows the child agent's identity and visual badges for the credits and output tokens consumed by the sub-delegation.</li>
+<li><strong>Internal Thoughts</strong>: An expandable panel with a lightbulb icon reveals the child agent's reasoning process and step-by-step hypothesis testing.</li>
+<li><strong>Nested Tools</strong>: Any tools invoked by the child agent render directly within the delegation panel, maintaining full hierarchical visibility over nested actions.</li>
+</ul>
 <h2 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">¶</a></h2>
-<p>Superusers can review token usage and conversation history for all users by going to Administration --&gt; AI Metrics. This page provides usage statistics for a given date range. The page starts with a table of usage by user. Clicking a user's binoculars icon on the right hand side will show any sessions the user interacted with during the selected date range, even deleted sessions. Clicking on a session's binoculars icon will show the full conversation. Administrators can adjust who has permissions via RBAC roles.</p>
-<p>To provide an accurate history, deleted sessions are retained on the metrics page even after being deleted by the user.</p>
+<p>Superusers can review detailed token usage, credit expenditures, and conversation history across all users by navigating to <a href="../ai-metrics/">AI Metrics</a>.</p>
+<p>For advanced agent management and monitoring:</p>
+<ul>
+<li>Configure autonomous agents, skills, memories, and scheduled tasks in <a href="../agent-studio/">Agent Studio</a>.</li>
+<li>Monitor background agent workloads and scheduled execution transcripts in <a href="../agent-monitor/">Agent Monitor</a>.</li>
+</ul>
+<p>To provide an accurate audit trail, deleted sessions remain accessible in AI Metrics even after being deleted by a user.</p>
 <h2 id="memory">Memory<a class="headerlink" href="#memory" title="Permanent link">¶</a></h2>
 <p>OnionAI can utilize its memory system to retain and reference facts disclosed by users when chatting with the assistant. Memory works by scanning sessions in the background looking for new facts and storing them in a database. The memory is then used to provide contextual information to the assistant when it responds to a user's message.</p>
 <h3 id="how-memory-works">How Memory Works<a class="headerlink" href="#how-memory-works" title="Permanent link">¶</a></h3>
@@ -2990,7 +3134,7 @@
 <p>The embedding process is model specific. Memories embedded by one model cannot be accurately compared to memories embedded by any other model. Changing the model used for embedding will render all your previous memories unusable. They will not be deleted and will be accessible if the model is reverted back.</p>
 </div>
 <p>Once embedded, the facts are compared against existing memories on the same topics in a step called Reconcilation. A Reconcile agent will decide how the facts should be added, merged, replaced or removed. The reconcile agent's recommendations are validated before being executed to ensure that user defined memories aren't modified and that the session owner's permissions are respected.</p>
-<p>If any facts were rewritten during reconcilation, they are re-embedded before being stored in postgres.</p>
+<p>If any facts were rewritten during reconcilation, they are re-embedded before being stored in the database.</p>
 <p>Finally the session is updated indicating that it has been scanned. If new messages are sent in a previously scanned session, memory scans will find and scan only the new messages.</p>
 <p>When a user sends a message to the assistant, the memory system will embed the message about to be sent and check for any similar memories. Memories are added to the conversation by being added to the end of the prompt.</p>
 <h3 id="configuring-memory">Configuring Memory<a class="headerlink" href="#configuring-memory" title="Permanent link">¶</a></h3>
