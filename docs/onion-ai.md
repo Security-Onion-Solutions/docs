@@ -155,8 +155,8 @@ Your system prompt addendum will be added after Security Onion's default system 
 When interacting with Onion AI, the top header bar displays real-time status indicators and clickable metric pills:
 
 - **Current Agent & Model**:
-    - **Display**: In agentic mode, this pill displays the currently active agent alongside its assigned model (e.g., `Hunter (Claude 3.5 Sonnet)` or `Orchestrator`). In non-agentic mode, it displays the model's display name.
-    - **Clickable Selection**: Clicking the pill opens a dropdown menu displaying all available agents and models, organized under subheaders by provider or adapter. Selecting an agent or model switches the active execution target immediately without needing to open configuration pages or leave the chat session.
+    - **Display**: In agentic mode, this pill displays the currently active agent alongside its assigned model (e.g., `Investigator - Claude Sonnet`). In non-agentic mode, it displays the model's display name.
+    - **Clickable Selection**: Clicking the pill opens a dropdown menu displaying the enabled agents in agentic mode, or the available models organized under subheaders by provider or adapter in non-agentic mode. Selecting an agent or model switches the active execution target immediately without needing to open configuration pages or leave the chat session.
 - **Automated Agents**:
     - **Display**: Visible when agentic automations are enabled and the user holds the `automations/read` permission. It displays a real-time summary of background automated tasks (e.g., `2 running · 1 queued`).
     - **Clickable Navigation**: Clicking this pill navigates directly to [Agent Monitor](agent-monitor.md), providing immediate visibility into active workloads, queues, and task transcripts.
