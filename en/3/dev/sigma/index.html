@@ -1128,6 +1128,64 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#correlation-rules">
+<span class="md-ellipsis">
+      
+        Correlation Rules
+      
+    </span>
+</a>
+<nav aria-label="Correlation Rules" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#structure">
+<span class="md-ellipsis">
+      
+        Structure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#supported-types">
+<span class="md-ellipsis">
+      
+        Supported Types
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#timespan">
+<span class="md-ellipsis">
+      
+        Timespan
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#alert-contents">
+<span class="md-ellipsis">
+      
+        Alert Contents
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#behavior-and-limits">
+<span class="md-ellipsis">
+      
+        Behavior and Limits
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#sigma-configuration">
 <span class="md-ellipsis">
       
@@ -1137,6 +1195,33 @@
 </a>
 <nav aria-label="Sigma Configuration" class="md-nav">
 <ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#esql-settings">
+<span class="md-ellipsis">
+      
+        ES|QL Settings
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#turning-esql-off">
+<span class="md-ellipsis">
+      
+        Turning ES|QL Off
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#esql-result-limit">
+<span class="md-ellipsis">
+      
+        ES|QL Result Limit
+      
+    </span>
+</a>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#sigma-update-frequency">
 <span class="md-ellipsis">
@@ -2563,6 +2648,64 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#correlation-rules">
+<span class="md-ellipsis">
+      
+        Correlation Rules
+      
+    </span>
+</a>
+<nav aria-label="Correlation Rules" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#structure">
+<span class="md-ellipsis">
+      
+        Structure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#supported-types">
+<span class="md-ellipsis">
+      
+        Supported Types
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#timespan">
+<span class="md-ellipsis">
+      
+        Timespan
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#alert-contents">
+<span class="md-ellipsis">
+      
+        Alert Contents
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#behavior-and-limits">
+<span class="md-ellipsis">
+      
+        Behavior and Limits
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#sigma-configuration">
 <span class="md-ellipsis">
       
@@ -2572,6 +2715,33 @@
 </a>
 <nav aria-label="Sigma Configuration" class="md-nav">
 <ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#esql-settings">
+<span class="md-ellipsis">
+      
+        ES|QL Settings
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#turning-esql-off">
+<span class="md-ellipsis">
+      
+        Turning ES|QL Off
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#esql-result-limit">
+<span class="md-ellipsis">
+      
+        ES|QL Result Limit
+      
+    </span>
+</a>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#sigma-update-frequency">
 <span class="md-ellipsis">
@@ -2664,17 +2834,134 @@
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nt">sofilter</span><span class="p">:</span>
 <a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span><span class="nt">src_ip|cidr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.55.45/32</span>
 </code></pre></div>
-<p>Once you save this filter, it is enabled by default for this detection. Clicking on the <code>Detection Source</code> tab and then on <code>Convert</code> will show you what the new EQL query looks like, which should include a filter for the IP address.</p>
+<p>Once you save this filter, it is enabled by default for this detection. Clicking on the <code>Detection Source</code> tab and then on <code>Convert</code> will show you what the new EQL or ES|QL query looks like, which should include a filter for the IP address.</p>
 <p>For more information on Sigma rule syntax, please see the Sigma documentation at <a href="https://sigmahq.io/docs/basics/rules.html#detection">https://sigmahq.io/docs/basics/rules.html#detection</a>.</p>
 <h2 id="adding-new-sigma-rules">Adding New Sigma Rules<a class="headerlink" href="#adding-new-sigma-rules" title="Permanent link">¶</a></h2>
 <p>To add a new Sigma rule, go to the main <a href="../detections/">Detections</a> page and click the blue + button between Options and the query bar. A form will appear where you will:</p>
 <ol>
-<li>Click the Language drop-down and select <code>Sigma</code>.</li>
+<li>Click the Language drop-down and select <code>Sigma - Single event</code> for a rule that alerts on each matching event, or <code>Sigma - Correlation</code> for a <a href="#correlation-rules">correlation rule</a>.</li>
 <li>Optionally specify a license.</li>
 <li>Add the signature.</li>
 <li>Click the <code>CREATE</code> button and the detection should deploy to your grid at the next 15-minute cycle.</li>
 </ol>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/59_detection_create.png"><img alt="Image" src="../images/59_detection_create.png"/></a></p>
+<h2 id="correlation-rules">Correlation Rules<a class="headerlink" href="#correlation-rules" title="Permanent link">¶</a></h2>
+<p>A Sigma correlation alerts on a pattern across several events rather than on one event: many failed logins from one source, an unusual number of distinct values in a field, or two kinds of event on the same host.</p>
+<p>Correlations require ES|QL; see <a href="#esql-settings">ES|QL Settings</a>. On the Detections page, the <code>Detection Type - Sigma (Elastalert) - Correlations</code> query lists them.</p>
+<h3 id="structure">Structure<a class="headerlink" href="#structure" title="Permanent link">¶</a></h3>
+<p>A correlation is one detection containing multiple YAML documents separated by <code>---</code>. The first document is the correlation and gives the detection its id, title and severity. Every document after it is a single-event rule the correlation refers to by its <code>name</code> or <code>id</code>. All referenced rules must be in the same detection; a reference that cannot be found is rejected on save.</p>
+<p>A Custom Filter on a correlation applies to each referenced rule, so the excluded events are not counted.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Excessive Distinct DNS Queries From A Single Host</span>
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6f3b1c94-2d7e-4a58-9c21-8e4d0b5a7f13</span>
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="nt">correlation</span><span class="p">:</span>
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value_count</span>
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="nt">rules</span><span class="p">:</span>
+<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">so_dns_query_observed</span>
+<a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="nt">group-by</span><span class="p">:</span>
+<a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">source.ip</span>
+<a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="nt">timespan</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10m</span>
+<a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">    </span><span class="nt">condition</span><span class="p">:</span>
+<a href="#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">        </span><span class="nt">field</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns.query.name</span>
+<a href="#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">        </span><span class="nt">gte</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">40</span>
+<a href="#__codelineno-1-13" id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span>
+<a href="#__codelineno-1-14" id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="nn">---</span>
+<a href="#__codelineno-1-15" id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DNS Query Observed</span>
+<a href="#__codelineno-1-16" id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">so_dns_query_observed</span>
+<a href="#__codelineno-1-17" id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="nt">logsource</span><span class="p">:</span>
+<a href="#__codelineno-1-18" id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">    </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">network</span>
+<a href="#__codelineno-1-19" id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">    </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns</span>
+<a href="#__codelineno-1-20" id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="nt">detection</span><span class="p">:</span>
+<a href="#__codelineno-1-21" id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">    </span><span class="nt">selection</span><span class="p">:</span>
+<a href="#__codelineno-1-22" id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">        </span><span class="nt">dns.query.name|exists</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a href="#__codelineno-1-23" id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="w">    </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">selection</span>
+</code></pre></div>
+<h3 id="supported-types">Supported Types<a class="headerlink" href="#supported-types" title="Permanent link">¶</a></h3>
+<p>Every type requires <code>group-by</code> and <code>timespan</code>. Events missing a <code>group-by</code> field are not counted; a placeholder such as an empty string or <code>-</code> is a value, so filter it out in the referenced rule if needed.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Matches when</th>
+<th>Also requires</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>event_count</code></td>
+<td>matching events cross a threshold</td>
+<td><code>condition</code></td>
+</tr>
+<tr>
+<td><code>value_count</code></td>
+<td>distinct values of a field cross a threshold</td>
+<td><code>condition</code> with <code>field</code></td>
+</tr>
+<tr>
+<td><code>temporal</code></td>
+<td>the referenced rules match within the window; an event matching several of them counts for each</td>
+<td>two or more <code>rules</code>; an optional <code>condition</code> such as <code>gte: 2</code> means any two of them</td>
+</tr>
+<tr>
+<td><code>value_sum</code></td>
+<td>the sum of a field crosses a threshold</td>
+<td><code>condition</code> with <code>field</code></td>
+</tr>
+<tr>
+<td><code>value_avg</code></td>
+<td>the mean of a field crosses a threshold</td>
+<td><code>condition</code> with <code>field</code></td>
+</tr>
+<tr>
+<td><code>value_percentile</code></td>
+<td>a percentile of a field crosses a threshold</td>
+<td><code>condition</code> with <code>field</code> and <code>percentile</code></td>
+</tr>
+</tbody>
+</table>
+<p>A <code>condition</code> has exactly one comparison: <code>gt</code>, <code>gte</code>, <code>lt</code>, <code>lte</code>, <code>eq</code> or <code>neq</code>. A range, such as <code>gte</code> and <code>lte</code> together, is rejected on save. Use whole numbers for the threshold and for <code>percentile</code>, which must be between 0 and 100: a fraction is currently truncated, so <code>gt: 2.5</code> acts as <code>gt: 2</code>. The comparison also decides how events are counted; see <a href="#how-events-are-counted">How Events Are Counted</a>.</p>
+<p>The <code>field</code> of <code>value_sum</code>, <code>value_avg</code> and <code>value_percentile</code> must be numeric. Elasticsearch rejects the rule on every run otherwise, and the error appears in <code>/opt/so/log/elastalert/elastalert.log</code>.</p>
+<p>Security Onion does not support these parts of the Sigma correlation specification, and rejects them on save:</p>
+<ul>
+<li><code>temporal_ordered</code>, which requires the rules to match in a set order. Use <code>temporal</code> instead.</li>
+<li>A correlation that refers to another correlation. List the single-event rules directly.</li>
+<li><code>generate: true</code>, which also alerts on each referenced rule by itself. Add the rule as its own detection instead.</li>
+<li><code>aliases</code>, which groups by fields with different names in each rule. Use the same field name in each rule.</li>
+</ul>
+<h3 id="timespan">Timespan<a class="headerlink" href="#timespan" title="Permanent link">¶</a></h3>
+<p><code>timespan</code> is how close together the correlated events must be: <code>Xs</code>, <code>Xm</code>, <code>Xh</code>, or <code>Xd</code>, for example <code>10m</code>. Correlations run each time ElastAlert runs, every 3 minutes by default. For how events are grouped into windows, see <a href="#how-events-are-counted">How Events Are Counted</a>.</p>
+<h3 id="alert-contents">Alert Contents<a class="headerlink" href="#alert-contents" title="Permanent link">¶</a></h3>
+<p>An aggregated result holds only the counts and group-by fields, not the individual events. Listing <code>fields</code> on a referenced rule carries their values into the alert.</p>
+<p>Each correlation alert has a one-line summary in <code>event.reason</code>, shown at the top of Guided Analysis, for example <code>5 events for user.name jdoe in 14 seconds</code>. A <code>summary</code> on the correlation document replaces it:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s">'%count%</span><span class="nv"> </span><span class="s">failed</span><span class="nv"> </span><span class="s">logins</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">%user.name%</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">%duration%,</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">%source.ip%'</span>
+</code></pre></div>
+<p><code>%count%</code>, <code>%start%</code>, <code>%end%</code> and <code>%duration%</code> are always available, as is any <code>group-by</code> field or field listed under <code>fields</code>. A placeholder that cannot be filled is left as written, so a typo shows in the alert.</p>
+<p><code>labels.correlation_group_by</code> names the <code>group-by</code> fields and <code>labels.correlation_group</code> holds their values. Group-by addresses, user names and host names are also copied into <code>related.ip</code>, <code>related.user</code> and <code>related.hosts</code>, so a search such as <code>related.ip:192.168.1.10</code> finds correlation alerts alongside alerts from other engines.</p>
+<p>With <code>esqlCaseInsensitive</code> on, the default, group-by values ignore case: Windows records an account as it was typed, so <code>Admin</code> and <code>admin</code> are one group. The alert shows the value in lowercase, and a <code>&lt;field&gt;_spellings</code> field, such as <code>user.name_spellings</code>, lists the spellings seen. <code>related.*</code> holds those spellings, so a search for any of them finds the alert. <code>value_count</code> likewise counts <code>Evil.com</code> and <code>evil.com</code> as one value.</p>
+<h3 id="behavior-and-limits">Behavior and Limits<a class="headerlink" href="#behavior-and-limits" title="Permanent link">¶</a></h3>
+<h4 id="how-events-are-counted">How Events Are Counted<a class="headerlink" href="#how-events-are-counted" title="Permanent link">¶</a></h4>
+<p>How a correlation counts depends on its type and its comparison.</p>
+<p><strong>Overlapping windows:</strong> <code>event_count</code>, <code>value_count</code>, <code>temporal</code> and <code>value_sum</code> with <code>gt</code> or <code>gte</code>. Each run divides time into windows one timespan long, four times over, with each set starting a quarter of the timespan after the previous one. With a <code>10m</code> timespan, a window starts every 2.5 minutes. A burst lasting up to three quarters of the timespan (7.5 minutes here) falls entirely inside at least one window, so it is counted whole. The windows at the oldest and newest edges of what a run reads extend past it and are only partly counted. A partly counted window can only come in lower than the full one, so it can delay an alert to a later run but never cause a false one. For <code>value_sum</code>, this assumes the values are not negative.</p>
+<p><strong>One trailing window:</strong> every other combination, that is <code>lt</code>, <code>lte</code>, <code>eq</code> or <code>neq</code> with any type, and <code>value_avg</code> or <code>value_percentile</code> with any comparison. A partly counted window could meet these conditions when the full window would not: a busy host can look quiet, or one large value can outweigh the rest of an average. So the rule counts only the most recent complete timespan, the one ending <code>esqlQueryDelaySeconds</code> plus <code>esqlCorrelationAllowanceSeconds</code> ago (10.5 minutes by default). Its alerts arrive that much later, and it does not count late events; see <a href="#late-events">Late Events</a>.</p>
+<p>A correlation counts only events that occurred, so a host or user with no matching events in the timespan never appears and never alerts, even with <code>lt</code>, <code>lte</code> or <code>eq: 0</code>. A correlation cannot detect a source that has stopped sending data.</p>
+<h4 id="late-events">Late Events<a class="headerlink" href="#late-events" title="Permanent link">¶</a></h4>
+<p>ES|QL rules select events by when they arrived (<code>event.ingested</code>) and count them by when they happened (<code>@timestamp</code>). A laptop's backlog after a day off the network is counted in the windows it belongs to, not as one large burst, and the alert's <code>window_start</code> and <code>@timestamp</code> show when the events happened.</p>
+<p>How late a burst arrives does not matter, only how spread out its arrivals are: a burst is counted as long as its events arrive within the timespan plus <code>esqlCorrelationAllowanceSeconds</code> (default 600) of each other. To check whether the default fits your data, run this in Kibana's Discover (ES|QL mode):</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>FROM logs-*
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>| WHERE @timestamp &gt; NOW() - 1 day AND event.ingested IS NOT NULL AND host.name IS NOT NULL
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>| STATS arrival_spread = DATE_DIFF("seconds", MIN(event.ingested), MAX(event.ingested))
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>    BY host.name, event.dataset, minute = DATE_TRUNC(1 minute, @timestamp)
+<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>| STATS minutes = COUNT(*), p99 = PERCENTILE(arrival_spread, 99), over_10m = COUNT(CASE(arrival_spread &gt; 600, 1, null))
+<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>    BY event.dataset
+<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>| SORT p99 DESC
+</code></pre></div>
+<p>It shows how far apart events from one host in the same minute arrived. Look only at the datasets your correlations use. A <code>p99</code> well under 600 needs no change. If <code>over_10m</code> is a noticeable share of <code>minutes</code>, raise <code>esqlCorrelationAllowanceSeconds</code>. The <code>600</code> in the query is the default allowance; if you have changed the setting, use your value instead. Spreads of hours are not worth covering, since every correlation run would read hours of extra data.</p>
+<p>The allowance works this way only for overlapping windows. A <a href="#how-events-are-counted">trailing window</a> counts only events that happened within its timespan and arrived within <code>esqlCorrelationAllowanceSeconds</code> of happening; a backlog from earlier is not counted.</p>
+<h4 id="long-windows">Long Windows<a class="headerlink" href="#long-windows" title="Permanent link">¶</a></h4>
+<p>Every run reads the whole query window, the timespan plus 13 minutes by default, and ElastAlert runs every 3 minutes, so a <code>1d</code> rule reads each event about 480 times and a <code>7d</code> rule about 3,360 times. A timespan over 4 hours logs a warning in the <a href="../security-onion-console-logs/">SOC logs</a> when the rule is deployed. On a busy grid, narrow the referenced rule or shorten the window where possible.</p>
+<h4 id="repeat-alerts">Repeat Alerts<a class="headerlink" href="#repeat-alerts" title="Permanent link">¶</a></h4>
+<p>After a correlation alerts for a group, it does not alert for that group again for the rest of its query window (the timespan plus 13 minutes by default). A <code>7d</code> rule does not alert twice for the same group within a week.</p>
+<h4 id="distinct-counts-are-approximate">Distinct Counts Are Approximate<a class="headerlink" href="#distinct-counts-are-approximate" title="Permanent link">¶</a></h4>
+<p><code>value_count</code> is exact up to about 3,000 distinct values and within about 2% beyond that.</p>
 <h2 id="sigma-configuration">Sigma Configuration<a class="headerlink" href="#sigma-configuration" title="Permanent link">¶</a></h2>
 <ul>
 <li>Navigate to <a href="../administration/">Administration</a> --&gt; Configuration.</li>
@@ -2682,6 +2969,50 @@
 <li>Navigate to <code>SOC</code> --&gt; <code>config</code> --&gt; <code>server</code> --&gt; <code>modules</code> --&gt; <code>elastalertengine</code>.</li>
 </ul>
 <p>Once you've reached this location, here are some common settings.</p>
+<h3 id="esql-settings">ES|QL Settings<a class="headerlink" href="#esql-settings" title="Permanent link">¶</a></h3>
+<p>Sigma rules are converted to EQL by default. ES|QL is a pre-release option that adds <a href="#correlation-rules">correlation rules</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>useEsql</code></td>
+<td><code>false</code></td>
+<td>Convert Sigma rules to ES|QL instead of EQL. Required for correlations; see <a href="#turning-esql-off">Turning ES|QL Off</a> before switching it back.</td>
+</tr>
+<tr>
+<td><code>esqlCaseInsensitive</code></td>
+<td><code>true</code></td>
+<td>Match string values case-insensitively, and group correlation values regardless of case.</td>
+</tr>
+<tr>
+<td><code>esqlQueryDelaySeconds</code></td>
+<td><code>30</code></td>
+<td>How far behind the current time ES|QL rules search, so events not yet searchable are not missed. Alerts are delayed by the same amount. Set it to at least the longest index refresh interval.</td>
+</tr>
+<tr>
+<td><code>esqlCorrelationAllowanceSeconds</code></td>
+<td><code>600</code></td>
+<td>How much further apart than the timespan the events of one burst may arrive and still be counted together. Each correlation run re-reads that much more, and correlations that use a <a href="#how-events-are-counted">trailing window</a> alert that much later. See <a href="#late-events">Late Events</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>The delay applies to every ES|QL rule; the allowance applies only to correlations.</p>
+<p>A change to these settings regenerates every enabled Sigma rule, and imports or removes the community correlations, at the next Sigma sync (every 24 hours by default). To apply it right away, open the <a href="../detections/">Detections</a> <code>Options</code> menu, select ElastAlert and click <code>DIFFERENTIAL UPDATE</code>. On an airgap grid, or with <code>autoUpdateEnabled</code> turned off, <code>DIFFERENTIAL UPDATE</code> does not apply the change; use <code>FULL UPDATE</code> instead. After upgrading Security Onion, also use <code>FULL UPDATE</code>.</p>
+<h3 id="turning-esql-off">Turning ES|QL Off<a class="headerlink" href="#turning-esql-off" title="Permanent link">¶</a></h3>
+<p>Switching back to EQL is not supported once correlations are in use. <strong>Before turning <code>useEsql</code> off, disable every custom correlation</strong>: on the Detections page, search for <code>so_detection.ruleType:correlation</code>, select the enabled custom correlations and disable them. A custom correlation left enabled keeps running its last ES|QL rule, and every sync reports it as an error (<code>correlation rules require ES|QL</code>) until it is disabled.</p>
+<p>Once ES|QL is off, single-event rules go back to EQL and the community correlations are removed. Custom correlations are kept but cannot be edited until ES|QL is turned back on.</p>
+<h3 id="esql-result-limit">ES|QL Result Limit<a class="headerlink" href="#esql-result-limit" title="Permanent link">¶</a></h3>
+<p>Each run of an ES|QL rule returns at most 5,000 results: matching events for a single-event rule, groups over the threshold for a correlation. Matches beyond the limit are dropped and, if the matches keep coming, may never alert, so a true positive hidden in a burst of benign matches can be lost. EQL rules have the same limit but log no warning. A correlation returns one result per group over its threshold, so it is affected only when more than 5,000 groups cross it at once. Broad single-event rules over endpoint process or file events are the usual case: one noisy program can match tens of thousands of events in ten minutes.</p>
+<p>When a run hits the limit, <code>/opt/so/log/elastalert/elastalert.log</code> names the rule:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>Rule &lt;name&gt;: ES|QL results were truncated at the 5000 row limit (at least 37470 documents matched), so the dropped matches will not alert. Raise max_query_size, shorten buffer_time, or narrow the rule.
+</code></pre></div>
+<p>Tune the rule with a Custom Filter for the benign source. <code>ElastAlert</code> --&gt; <code>config</code> --&gt; <code>max_query_size</code> raises the limit, but only up to 10,000, the most Elasticsearch returns per query. For a single-event rule, shortening <code>ElastAlert</code> --&gt; <code>config</code> --&gt; <code>buffer_time</code> (10 minutes by default) also helps, since each run then reads fewer events; it applies to every single-event rule. Correlations set their own query window, so <code>buffer_time</code> does not affect them.</p>
 <h3 id="sigma-update-frequency">Sigma Update Frequency<a class="headerlink" href="#sigma-update-frequency" title="Permanent link">¶</a></h3>
 <p>By default, Security Onion checks for new Sigma rules every 24 hours. You can change this value at <code>SOC</code> --&gt; <code>config</code> --&gt; <code>server</code> --&gt; <code>modules</code> --&gt; <code>elastalertengine</code> --&gt; <code>communityRulesImportFrequencySeconds</code>.</p>
 <h3 id="sigma-packages">Sigma Packages<a class="headerlink" href="#sigma-packages" title="Permanent link">¶</a></h3>
@@ -2691,10 +3022,10 @@
 <h3 id="custom-sigma-repositories">Custom Sigma Repositories<a class="headerlink" href="#custom-sigma-repositories" title="Permanent link">¶</a></h3>
 <p>You can configure Security Onion to pull Sigma rules from custom git repos via <code>SOC</code> --&gt; <code>config</code> --&gt; <code>server</code> --&gt; <code>modules</code> --&gt; <code>elastalertengine</code> --&gt; <code>rulesRepos</code> --&gt; <code>default</code>. </p>
 <p>Repos can be accessed via https or from the local filesystem. For example:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>file:///nsm/rules/detect-sigma/repos/my-custom-rep
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>file:///nsm/rules/detect-sigma/repos/my-custom-rep
 </code></pre></div>
 <h3 id="enable-sigma-rules-on-import">Enable Sigma Rules on Import<a class="headerlink" href="#enable-sigma-rules-on-import" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>`SOC` &gt; `config` &gt; `server` &gt; `modules` &gt; `elastalertengine` &gt; `enabledSigmaRules` &gt; `default`
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>`SOC` &gt; `config` &gt; `server` &gt; `modules` &gt; `elastalertengine` &gt; `enabledSigmaRules` &gt; `default`
 </code></pre></div>
 <p>This configuration options allows you to specify which rules are automatically enabled upon initial import. The format for this filter is a YAML list that supports flexible filtering criteria based on a number of fields in a Sigma rule. A rule is enabled only if it matches all specified filters - if there is more than one filter for a field, then it has to match at least one.</p>
 <p>Configuration Format</p>
@@ -2707,12 +3038,12 @@
 <li><code>service</code>: List of strings. Specifies the service(s) to filter by (e.g., "security", "dns-client", "*" for any service).</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1"># Enable all critical and high rules from the "securityonion-resources" ruleset</span>
-<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ruleset</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"securityonion-resources"</span><span class="p p-Indicator">]</span>
-<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">  </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"critical"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"high"</span><span class="p p-Indicator">]</span>
-<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">  </span><span class="nt">product</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">]</span>
-<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">  </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">]</span>
-<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">  </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">]</span>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1"># Enable all critical and high rules from the "securityonion-resources" ruleset</span>
+<a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ruleset</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"securityonion-resources"</span><span class="p p-Indicator">]</span>
+<a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">  </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"critical"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"high"</span><span class="p p-Indicator">]</span>
+<a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">  </span><span class="nt">product</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">]</span>
+<a href="#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">  </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">]</span>
+<a href="#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">  </span><span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 </article>
 </div>
