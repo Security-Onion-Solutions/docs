@@ -173,7 +173,7 @@ To manually add a new fact to long-term memory:
 
 ## Automations
 
-The **Automations** tab configures recurring, autonomous agent workflows that execute in the background without requiring user interaction. A primary example is the built-in **Alert Triage** automation.
+The **Automations** tab configures recurring, autonomous agent workflows that execute in the background without requiring user interaction. A primary example is the built-in **Alert Triage** automation. For how to enable, disable, and monitor Alert Triage, see [Automations](automations.md).
 
 ### Automations Table Overview
 

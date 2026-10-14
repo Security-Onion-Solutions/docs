@@ -60,6 +60,8 @@ The remainder of the page is a data table that starts in the grouped view and ca
 
 - Security Onion Pro users will find one more button. The last is a computer chip icon that investigates the alert with [OnionAI](onion-ai.md).
 
+- If the [Alert Triage automation](automations.md) is enabled, triaged alerts also show an AI Assessment chip and a robot icon that opens the automated investigation.
+
 - Clicking a value in the table brings up a context menu of actions for that value. This allows you to refine your existing search, start a new search, or even pivot to external sites like Google and VirusTotal.
 
 - You can adjust the `Rows per page` setting in the bottom right and use the left and right arrow icons to page through the table.

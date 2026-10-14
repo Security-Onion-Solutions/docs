@@ -4,7 +4,7 @@
 
     This is an enterprise-level feature of Security Onion. Contact Security Onion Solutions, LLC via our website at <https://securityonion.com/pro> for more information about purchasing a [Security Onion Pro](security-onion-pro.md) license to enable this feature.
 
-Agent Monitor provides real-time visibility into autonomous background AI agents and scheduled automations (such as Alert Triage) executing across the grid.
+Agent Monitor provides real-time visibility into autonomous background AI agents and scheduled [Automations](automations.md) (such as Alert Triage) executing across the grid.
 
 This screen is located under the **Administration** menu on the left side of the Security Onion Console when agentic mode is enabled, and requires the `automations/read` permission, which is granted to the `analyst`, `auditor`, and `superuser` roles. It is also accessible directly from the **Background Agent Activity** pill in [Onion AI](onion-ai.md).
 
