@@ -227,7 +227,7 @@ Alert Triage investigates new alerts with the **AlertTriage** agent and records 
 - [Onion AI](onion-ai.md) enabled (`soc --> config --> server --> client --> assistant --> enabled`).
 - Agentic mode enabled (`soc --> config --> server --> modules --> assistant --> agentic`). This setting is only read when SOC starts.
 - A [PostgreSQL](postgresql.md) database, which stores automations, runs, and work items.
-- A grid that is not [airgapped](airgap.md). The scheduler does not run on airgapped grids.
+- On [airgapped](airgap.md) grids, a model the grid can reach, such as a [local model](local-llm.md). The SOAI adapter is not reachable without Internet access.
 
 #### Enabling Alert Triage
 
@@ -317,7 +317,7 @@ Besides the **Activity** subtab described above:
 - **[AI Metrics](ai-metrics.md)** shows the tokens and credits used.
 - SOC logs to `/opt/so/log/soc/sensoroni-server.log`. Useful messages include:
     - `automation scheduler started` and `automation scheduler stopped`
-    - `airgap enabled; automations will not run` and `no database connection; automations will not run`
+    - `no database connection; automations will not run`
     - `alert triage scan finished`, which reports how many groups were found and queued
     - `automation run finished`
     - `alert triage item failed` and `alert triage item is out of retries; giving up its group`
