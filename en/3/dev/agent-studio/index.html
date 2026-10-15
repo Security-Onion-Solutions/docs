@@ -3121,7 +3121,7 @@
 <li><a href="../onion-ai/">Onion AI</a> enabled (<code>soc --&gt; config --&gt; server --&gt; client --&gt; assistant --&gt; enabled</code>).</li>
 <li>Agentic mode enabled (<code>soc --&gt; config --&gt; server --&gt; modules --&gt; assistant --&gt; agentic</code>). This setting is only read when SOC starts.</li>
 <li>A <a href="../postgresql/">PostgreSQL</a> database, which stores automations, runs, and work items.</li>
-<li>On <a href="../airgap/">airgapped</a> grids, a model the grid can reach, such as a <a href="../local-llm/">local model</a>. The SOAI adapter is not reachable without Internet access.</li>
+<li>On <a href="../airgap/">airgapped</a> grids, a <a href="../local-llm/">local model</a>. SOC does not load the SOAI or Gemini adapters on airgapped grids and disables the models that use them, so map the AlertTriage agent (and the memory models, if memory is enabled) to a model on a local adapter.</li>
 </ul>
 <h4 id="enabling-alert-triage">Enabling Alert Triage<a class="headerlink" href="#enabling-alert-triage" title="Permanent link">¶</a></h4>
 <p>The Alert Triage automation is disabled by default. To enable it:</p>
