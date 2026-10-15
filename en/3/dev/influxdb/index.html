@@ -636,6 +636,19 @@
       
     </span>
 </a>
+<nav aria-label="Configuration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#container-metrics">
+<span class="md-ellipsis">
+      
+        Container Metrics
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#more-information">
@@ -2521,6 +2534,19 @@
       
     </span>
 </a>
+<nav aria-label="Configuration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#container-metrics">
+<span class="md-ellipsis">
+      
+        Container Metrics
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#more-information">
@@ -2570,6 +2596,10 @@
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-influxdb.png"><img alt="Image" src="../images/config-item-influxdb.png"/></a></p>
 <p>You can configure Telegraf by going to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; telegraf.</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-telegraf.png"><img alt="Image" src="../images/config-item-telegraf.png"/></a></p>
+<h3 id="container-metrics">Container Metrics<a class="headerlink" href="#container-metrics" title="Permanent link">¶</a></h3>
+<p>As of Security Onion 3.4.0, container metrics are collected on the host and then read by Telegraf, rather than being collected by Telegraf's built-in Docker input. This allows the Telegraf container to run without access to the Docker socket.</p>
+<p>By default, only the container metrics needed by the Security Onion dashboards in InfluxDB are collected. The remaining metrics that the Docker input previously provided are still available, but are disabled by default.</p>
+<p>If you have custom dashboards or queries that need any of those additional metrics, you can enable them individually. Go to <a href="../administration/">Administration</a> --&gt; Configuration. At the top of the page, click the <code>Options</code> menu and then enable the <code>Show advanced settings</code> option. Then navigate to telegraf --&gt; container_stats and enable the metrics you need. They are grouped by the measurement they belong to, such as <code>cpu</code>, <code>mem</code>, <code>net</code>, <code>blkio</code>, <code>status</code> and <code>health</code>.</p>
 <h2 id="more-information">More Information<a class="headerlink" href="#more-information" title="Permanent link">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
