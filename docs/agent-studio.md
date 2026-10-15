@@ -227,7 +227,7 @@ Alert Triage investigates new alerts with the **AlertTriage** agent and records 
 - [Onion AI](onion-ai.md) enabled (`soc --> config --> server --> client --> assistant --> enabled`).
 - Agentic mode enabled (`soc --> config --> server --> modules --> assistant --> agentic`). This setting is only read when SOC starts.
 - A [PostgreSQL](postgresql.md) database, which stores automations, runs, and work items.
-- On [airgapped](airgap.md) grids, a model the grid can reach, such as a [local model](local-llm.md). The SOAI adapter is not reachable without Internet access.
+- On [airgapped](airgap.md) grids, a [local model](local-llm.md). SOC does not load the SOAI or Gemini adapters on airgapped grids and disables the models that use them, so map the AlertTriage agent (and the memory models, if memory is enabled) to a model on a local adapter.
 
 #### Enabling Alert Triage
 
