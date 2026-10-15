@@ -239,7 +239,6 @@ nav:
     - AI Metrics: ai-metrics.md
     - Agent Studio: agent-studio.md
     - Agent Monitor: agent-monitor.md
-    - Automations: automations.md
   - Telemetry: telemetry.md
   - Security: security.md
   - Software Bill of Materials: software-bill-of-materials.md

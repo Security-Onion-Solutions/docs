@@ -194,7 +194,7 @@ For advanced agent management and monitoring:
 
 - Configure autonomous agents, skills, memories, and scheduled tasks in [Agent Studio](agent-studio.md).
 - Monitor background agent workloads and scheduled execution transcripts in [Agent Monitor](agent-monitor.md).
-- Learn how the Alert Triage automation works and how to enable it in [Automations](automations.md).
+- Learn how the Alert Triage automation works and how to enable it in [Agent Studio](agent-studio.md#alert-triage).
 
 To provide an accurate audit trail, deleted sessions remain accessible in AI Metrics even after being deleted by a user.
 
