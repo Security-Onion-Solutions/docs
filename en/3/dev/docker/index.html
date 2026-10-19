@@ -2710,7 +2710,7 @@
 <p><a href="https://github.com/Security-Onion-Solutions/securityonion/discussions/12635">https://github.com/Security-Onion-Solutions/securityonion/discussions/12635</a></p>
 <h2 id="networking-and-bridging">Networking and Bridging<a class="headerlink" href="#networking-and-bridging" title="Permanent link">¶</a></h2>
 <p>By default, Docker configures its network bridge with an IP address of <code>172.17.0.1</code>. This works fine for networks that aren't already using the <code>172.17.0.0/16</code> range. If you are using this range in your network, then you can change the Docker range during installation.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/16_setup_docker_range.png"><img alt="Image" src="../images/16_setup_docker_range.png"/></a></p>
+<p></p>
 <h2 id="containers">Containers<a class="headerlink" href="#containers" title="Permanent link">¶</a></h2>
 <p>Our Docker containers all belong to a common Docker bridge network, called <code>sobridge</code>. Each container is also aliased, so that communication can occur between the different docker containers using said alias. For example, communication to the <code>so-elasticsearch</code> container would occur through an alias of <code>Elasticsearch</code>.</p>
 <p>You may come across interfaces in <code>ifconfig</code> with the format <code>veth*</code>. These are the external interfaces for each of the Docker containers. These interfaces correspond to internal Docker container interfaces (within the Docker container itself).</p>

@@ -2523,18 +2523,18 @@
 <h1 id="pcap">PCAP<a class="headerlink" href="#pcap" title="Permanent link">¶</a></h1>
 <p><a href="../security-onion-console/">Security Onion Console</a> includes a PCAP interface which allows you to access your full packet capture that was written to disk by <a href="../suricata/">Suricata</a>. </p>
 <p>You can access PCAP in two different ways. The first and most common option is to pivot to PCAP from a particular event in <a href="../alerts/">Alerts</a>, <a href="../dashboards/">Dashboards</a>, or <a href="../hunt/">Hunt</a> by choosing the PCAP action on the action menu. </p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/61_actions.png"><img alt="Image" src="../images/61_actions.png"/></a></p>
+<p></p>
 <p>The second and less common option is to go directly to the PCAP interface, click the blue + button, and then put in your search criteria to search for a particular stream.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/73_jobs_add.png"><img alt="Image" src="../images/73_jobs_add.png"/></a></p>
+<p></p>
 <p>Regardless of which of these two options you choose, Security Onion should then locate the stream and render a high level overview of the packets.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/62_pcap.png"><img alt="Image" src="../images/62_pcap.png"/></a></p>
+<p></p>
 <p>If there are many packets in the stream, you can use the <code>LOAD MORE</code> button, <code>Rows per page</code> setting, and arrows to navigate through the list of packets. </p>
 <p>You can drill into individual rows to see the actual payload data. There are buttons at the top of the table that control what data is displayed in the individual rows. If you disable the <code>Show all packet data</code> and <code>HEX</code> buttons, then you get an ASCII transcript.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/65_pcap_details.png"><img alt="Image" src="../images/65_pcap_details.png"/></a></p>
+<p></p>
 <p>You can select text with your mouse and then use the context menu to send that selected text to <a href="../cyberchef/">CyberChef</a>, Google, or other destinations defined in the actions list.</p>
 <p>There are two buttons on the right side of the table header. The first will send all visible packet data to <a href="../cyberchef/">CyberChef</a>. Please note that this only sends packet data that is currently being displayed, so if you are looking at a large stream you may need to use the <code>LOAD MORE</code> button to display all packets in the stream. The second button on the far right allows you to download the full PCAP file. You can then open the PCAP file using <a href="../networkminer/">NetworkMiner</a>, <a href="../wireshark/">Wireshark</a>, or any other standard libpcap tool. You should typically avoid doing PCAP analysis on your normal desktop environment, so you may want to consider opening the PCAP file in a <a href="../security-onion-desktop/">Security Onion Desktop</a> instance.</p>
 <p>Once you've viewed one or more PCAPs, you will see them listed on the main PCAP page.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/72_jobs.png"><img alt="Image" src="../images/72_jobs.png"/></a></p>
+<p></p>
 <p>When you are done with a PCAP, you may want to delete it using the <code>X</code> button on the far right. This deletes the cached PCAP file saved at <code>/nsm/soc/jobs/</code>.</p>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">¶</a></h2>
 <p>If you have trouble retrieving PCAP, here are some things to check:</p>

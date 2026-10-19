@@ -2930,10 +2930,10 @@
 <p>In addition to Security Onion docker image updates, <code>soup</code> also checks for missing OS updates and asks if you want to install them.</p>
 <h3 id="automatic-os-updates">Automatic OS Updates<a class="headerlink" href="#automatic-os-updates" title="Permanent link">¶</a></h3>
 <p>You can configure automatic OS updates by going to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; patch.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-patch.png"><img alt="Image" src="../images/config-item-patch.png"/></a></p>
+<p></p>
 <h3 id="holding-os-updates">Holding OS Updates<a class="headerlink" href="#holding-os-updates" title="Permanent link">¶</a></h3>
 <p>If you would like to prevent certain packages from being upgraded automatically (commonly referred to as "locking" or "holding" packages), then you can do that via the <code>hold</code> setting. The most frequent use case is holding the kernel to prevent frequent system reboots. To hold a package, add the package name to the <code>hold</code> list in <a href="../administration/">Administration</a> --&gt; Configuration --&gt; versionlock --&gt; hold.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-versionlock.png"><img alt="Image" src="../images/config-item-versionlock.png"/></a></p>
+<p></p>
 <h2 id="local-configurations">Local Configurations<a class="headerlink" href="#local-configurations" title="Permanent link">¶</a></h2>
 <p><code>soup</code> will check for local configurations in <code>/opt/so/saltstack/local/</code> that may cause issues and flag them with the message <code>Potentially breaking changes found in the following files</code>. Please examine the output of <code>soup</code> and review any local configurations for possible issues.</p>
 <h2 id="log">Log<a class="headerlink" href="#log" title="Permanent link">¶</a></h2>

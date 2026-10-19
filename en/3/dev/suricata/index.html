@@ -2877,7 +2877,7 @@
 </blockquote>
 <p>Suricata <a href="../nids/">NIDS</a> alerts can be found in <a href="../alerts/">Alerts</a>, <a href="../dashboards/">Dashboards</a>, <a href="../hunt/">Hunt</a>, and <a href="../kibana/">Kibana</a>. </p>
 <p>Here's an example of Suricata <a href="../nids/">NIDS</a> alerts in <a href="../alerts/">Alerts</a>:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/50_alerts.png"><img alt="Image" src="../images/50_alerts.png"/></a></p>
+<p></p>
 <p>If enabled, Suricata metadata (protocol logs) can be found in <a href="../dashboards/">Dashboards</a>, <a href="../hunt/">Hunt</a>, and <a href="../kibana/">Kibana</a>.</p>
 <h2 id="community-id">Community ID<a class="headerlink" href="#community-id" title="Permanent link">¶</a></h2>
 <p>Security Onion enables Suricata's built-in support for <a href="../community-id/">Community ID</a>.</p>
@@ -2891,7 +2891,7 @@
 </ul>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">¶</a></h2>
 <p>You can configure Suricata by going to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; Suricata.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-suricata.png"><img alt="Image" src="../images/config-item-suricata.png"/></a></p>
+<p></p>
 <p>If you would like to configure <a href="../nids/">NIDS</a> rules, take a look at the <a href="../detections/">Detections</a> interface.</p>
 <h2 id="home_net">HOME_NET<a class="headerlink" href="#home_net" title="Permanent link">¶</a></h2>
 <p>The HOME_NET variable defines the networks that are considered home networks (those networks that you are monitoring and defending). The default value is RFC1918 private address space (10.0.0.0/8, 192.168.0.0/16, and 172.16.0.0/12). You can modify this default value by going to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; Suricata --&gt; config --&gt; vars --&gt; address-groups --&gt; HOME_NET.</p>
@@ -2931,7 +2931,7 @@
 </ul>
 <p>If you later find that some of that metadata is unnecessary, you can enable the SO_FILTERS ruleset to filter out unnecessary metadata. Navigate to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; SOC --&gt; config --&gt; server --&gt; modules --&gt; suricataengine --&gt; rulesetSources and enable the SO_FILTERS ruleset.</p>
 <p>To change your grid's metadata engine from <a href="../zeek/">Zeek</a> to Suricata, go to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; global --&gt; mdengine and change the value from <code>Zeek</code> to <code>Suricata</code>:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-global.png"><img alt="Image" src="../images/config-item-global.png"/></a></p>
+<p></p>
 <h2 id="file-extraction">File Extraction<a class="headerlink" href="#file-extraction" title="Permanent link">¶</a></h2>
 <p>If you choose Suricata for metadata, it will extract files from network traffic and <a href="../strelka/">Strelka</a> will then analyze those extracted files. The SO_EXTRACTIONS ruleset controls which file types are extracted and is enabled by default when Suricata is the metadata engine. You can customize file extraction by modifying rules in this ruleset.</p>
 <h2 id="pcap">PCAP<a class="headerlink" href="#pcap" title="Permanent link">¶</a></h2>

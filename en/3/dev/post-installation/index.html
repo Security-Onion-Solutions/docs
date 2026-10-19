@@ -2595,14 +2595,14 @@
 <h1 id="post-installation">Post Installation<a class="headerlink" href="#post-installation" title="Permanent link">¶</a></h1>
 <h2 id="adjust-firewall-rules">Adjust firewall rules<a class="headerlink" href="#adjust-firewall-rules" title="Permanent link">¶</a></h2>
 <p>Depending on what kind of installation you did, the Setup wizard may have already walked you through adding firewall rules to allow your analyst IP address(es). If you need to make other adjustments to firewall rules, you can do so by going to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; firewall --&gt; hostgroups.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-firewall.png"><img alt="Image" src="../images/config-item-firewall.png"/></a></p>
+<p></p>
 <p>If for some reason you can't access <a href="../security-onion-console/">SOC</a> at all, you can use the so-firewall command to allow the IP address of your web browser to connect (replacing <code>&lt;IP ADDRESS&gt;</code> with the actual IP address of your web browser):</p>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>sudo so-firewall includehost analyst &lt;IP ADDRESS&gt;
 </code></pre></div>
 <p>For more information, please see the <a href="../firewall/">Firewall</a> section.</p>
 <h2 id="services">Services<a class="headerlink" href="#services" title="Permanent link">¶</a></h2>
 <p>You can check the <a href="../grid/">Grid</a> page to see if all services are running correctly.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/39_grid.png"><img alt="Image" src="../images/39_grid.png"/></a></p>
+<p></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Please note that new nodes start off showing a red Fault and may take a few minutes to fully initialize before they show a green OK.</p>

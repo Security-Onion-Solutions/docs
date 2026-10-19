@@ -2593,9 +2593,9 @@
 <p>If you need to reset your InfluxDB password, you can reset your <a href="../security-onion-console/">SOC</a> password via the <a href="../administration/">Administration</a> interface which will also update your InfluxDB password.</p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">¶</a></h2>
 <p>You can configure InfluxDB by going to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; influxdb.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-influxdb.png"><img alt="Image" src="../images/config-item-influxdb.png"/></a></p>
+<p></p>
 <p>You can configure Telegraf by going to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; telegraf.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-telegraf.png"><img alt="Image" src="../images/config-item-telegraf.png"/></a></p>
+<p></p>
 <h3 id="container-metrics">Container Metrics<a class="headerlink" href="#container-metrics" title="Permanent link">¶</a></h3>
 <p>As of Security Onion 3.4.0, container metrics are collected on the host and then read by Telegraf, rather than being collected by Telegraf's built-in Docker input. This allows the Telegraf container to run without access to the Docker socket.</p>
 <p>By default, only the container metrics needed by the Security Onion dashboards in InfluxDB are collected. The remaining metrics that the Docker input previously provided are still available, but are disabled by default.</p>

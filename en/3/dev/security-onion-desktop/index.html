@@ -2504,7 +2504,7 @@
 <p><strong>Joining to Grid</strong></p>
 <p>You can optionally join your Desktop installation to your grid. This allows it to pull updates from the grid and automatically trust the grid's HTTPS certificate. It also updates the manager's firewall to allow the Desktop installation to connect. Desktop nodes display on the <a href="../grid/">Grid</a> page along with the other Grid nodes.</p>
 <p>If you choose not to join your Desktop installation to your grid, then you may need to allow the traffic through the host-based <a href="../firewall/">firewall</a> by going to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; firewall --&gt; hostgroups --&gt; analyst.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-firewall.png"><img alt="Image" src="../images/config-item-firewall.png"/></a></p>
+<p></p>
 <p><strong>Disabling</strong></p>
 <p>The analyst desktop is controlled via <a href="../salt/">Salt</a> pillar. If you need to disable the Security Onion Desktop environment, find the <code>workstation</code> setting in your <a href="../salt/">Salt</a> pillar and change <code>enabled: true</code> to <code>enabled: false</code>:</p>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nt">workstation</span><span class="p">:</span>

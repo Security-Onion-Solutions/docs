@@ -2819,7 +2819,7 @@
 <li>From the <a href="../alerts/">Alerts</a> interface, you can click an alert and then click the <code>Tune Detection</code> menu item.</li>
 </ul>
 <p>Once you've used one of these methods to reach the detection detail page, you can check the Status field in the upper-right corner and use the slider to enable or disable the detection.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/60_detection_sigma.png"><img alt="Image" src="../images/60_detection_sigma.png"/></a></p>
+<p></p>
 <p>To tune the detection:</p>
 <ul>
 <li>Click the Tuning tab</li>
@@ -2828,7 +2828,7 @@
 <li>Enter your custom filter in the Custom Filter field</li>
 <li>Click the <code>CREATE</code> button to create and enable the Override</li>
 </ul>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/60_detection_sigma_2_tuning_2_add.png"><img alt="Image" src="../images/60_detection_sigma_2_tuning_2_add.png"/></a></p>
+<p></p>
 <p>Custom Filters are Sigma Search Identifiers and will be applied like so: <code>"($ORIGINAL_CONDITION) and not 1 of sofilter*"</code></p>
 <p>For example, suppose that you have an <a href="../idh/">IDH</a> node installed with the HTTP webserver enabled. Your nightly vulnerability scan is connecting to it and generating an alert from the <code>Security Onion IDH - HTTP Access</code> detection. To filter out connection attempts from this scanner, you would add the following Custom Filter to this detection:</p>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nt">sofilter</span><span class="p">:</span>
@@ -2844,7 +2844,7 @@
 <li>Add the signature.</li>
 <li>Click the <code>CREATE</code> button and the detection should deploy to your grid at the next 15-minute cycle.</li>
 </ol>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/59_detection_create.png"><img alt="Image" src="../images/59_detection_create.png"/></a></p>
+<p></p>
 <h2 id="correlation-rules">Correlation Rules<a class="headerlink" href="#correlation-rules" title="Permanent link">¶</a></h2>
 <p>A Sigma correlation alerts on a pattern across several events rather than on one event: many failed logins from one source, an unusual number of distinct values in a field, or two kinds of event on the same host.</p>
 <p>Correlations require ES|QL; see <a href="#esql-settings">ES|QL Settings</a>. On the Detections page, the <code>Detection Type - Sigma (Elastalert) - Correlations</code> query lists them.</p>

@@ -2593,7 +2593,7 @@
 <p>If the Redis queue looks okay, but you are still having issues with logs getting indexed into <a href="../elasticsearch/">Elasticsearch</a>, you will want to check the <a href="../logstash/">Logstash</a> statistics on the search node(s).</p>
 <h2 id="tuning">Tuning<a class="headerlink" href="#tuning" title="Permanent link">¶</a></h2>
 <p>Security Onion configures Redis to use 812MB of your total system memory. If you have sufficient RAM available, you may want to increase the <code>redis_maxmemory</code> setting by going to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; Redis. This value is in Megabytes so to set it to use 8 gigs of ram you would set the value to 8192.</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-redis.png"><img alt="Image" src="../images/config-item-redis.png"/></a></p>
+<p></p>
 <p><a href="../logstash/">Logstash</a> on the manager node is configured to send to Redis.  For best performance, you may want to tune the <code>ls_pipeline_batch_size</code> value at <a href="../administration/">Administration</a> --&gt; Configuration --&gt; logstash_settings to find the sweet spot for your deployment.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

@@ -2655,18 +2655,18 @@
 <h2 id="adding-a-manager-hypervisor">Adding a Manager + Hypervisor<a class="headerlink" href="#adding-a-manager-hypervisor" title="Permanent link">¶</a></h2>
 <p>Manager nodes can have hypervisor capabilities. This node type is called a <code>managerhype</code>.</p>
 <p>Install a new node, select the <code>DISTRIBUTED</code> deployment option, choose <code>New Deployment</code>, and then select the <code>Managerhype</code> option:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/hypervisor/manhype-0.png"><img alt="Image" src="../images/hypervisor/manhype-0.png"/></a></p>
+<p></p>
 <p>Once installation has completed, the new node will act as a manager node until a license key is added in SOC. After adding the license, it will take approximately 45 minutes for the hypervisor portion of the managerhype to be ready. This is due to the three highstates that are required to complete setup of the node.</p>
 <p>If this is an airgap installation, then the instructions above will need to be followed prior to adding the license to SOC. The user will need to run <code>mkdir -p /nsm/libvirt/boot</code>.</p>
 <p>The details under <code>Adding a Hypervisor</code>, regarding when the base domain is ready and VMs can be created, applies to the managerhype node as well as <code>Adding a Security Onion VM</code>.</p>
 <h2 id="adding-a-hypervisor">Adding a Hypervisor<a class="headerlink" href="#adding-a-hypervisor" title="Permanent link">¶</a></h2>
 <p>Install a new node, select the <code>DISTRIBUTED</code> deployment option, choose <code>Existing Deployment</code>, and then select the <code>Hypervisor</code> option:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/hypervisor/hyper-0.png"><img alt="Image" src="../images/hypervisor/hyper-0.png"/></a></p>
+<p></p>
 <p>The manager will need to be able to connect to the hypervisor node by name so it will either need a DNS entry or you can manually add an entry in /etc/hosts on the manager.</p>
 <p>Once the new hypervisor node has been accepted into the grid, go to SOC Configuration, click the Options menu, enable advanced settings, and then navigate to <code>hypervisor</code> settings. It should look like this:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/hypervisor/hyper-1.png"><img alt="Image" src="../images/hypervisor/hyper-1.png"/></a></p>
+<p></p>
 <p>Once the base domain has been configured on the hypervisor (allowing VMs to be created), it should look like this:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/hypervisor/hyper-2.png"><img alt="Image" src="../images/hypervisor/hyper-2.png"/></a></p>
+<p></p>
 <h2 id="vm-storage-options-for-nsm">VM Storage Options for /nsm<a class="headerlink" href="#vm-storage-options-for-nsm" title="Permanent link">¶</a></h2>
 <p>The vast majority of data, for all node types, is stored in /nsm/. For a VM, there are three options available for /nsm storage. </p>
 <h1 id="directory-under">. <strong>Directory under /</strong><a class="headerlink" href="#directory-under" title="Permanent link">¶</a></h1>
@@ -2682,11 +2682,11 @@
 <h2 id="adding-a-security-onion-vm">Adding a Security Onion VM<a class="headerlink" href="#adding-a-security-onion-vm" title="Permanent link">¶</a></h2>
 <p>Please note that hardware for a vm cannot be modified once a vm is created.</p>
 <p>To create a new VM, click the plus sign. You should see a form like this. If using DHCP, please pay special attention to the DHCP notes:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/hypervisor/hyper-3.png"><img alt="Image" src="../images/hypervisor/hyper-3.png"/></a></p>
+<p></p>
 <p>Fill out the form and then click the green check to save and create the VM:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/hypervisor/hyper-4.png"><img alt="Image" src="../images/hypervisor/hyper-4.png"/></a></p>
+<p></p>
 <p>Once the VM is created and the first highstate is initiated, it should look like this:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/hypervisor/hyper-5.png"><img alt="Image" src="../images/hypervisor/hyper-5.png"/></a></p>
+<p></p>
 <h2 id="vm-creation-status">VM Creation Status<a class="headerlink" href="#vm-creation-status" title="Permanent link">¶</a></h2>
 <p>After a user has created a VM by filling out the form and clicking the green check mark, the web browser can be periodically refreshed to check the status of the VM creation. This is shown in the status column of the previous screenshot showing the highstate initiated.</p>
 <p>Processing
@@ -2715,7 +2715,7 @@
   The instance has been destroyed. This VM will be removed from the <code>Virtual Machines</code> table after 48 hours.</p>
 <h2 id="stopping-or-starting-a-vm">Stopping or Starting a VM<a class="headerlink" href="#stopping-or-starting-a-vm" title="Permanent link">¶</a></h2>
 <p>If you need to stop or start a VM, you can use the <code>Execute VM power operations</code> menu at the bottom of the VM form:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/hypervisor/hyper-6.png"><img alt="Image" src="../images/hypervisor/hyper-6.png"/></a></p>
+<p></p>
 <p>Here is the list of VM power operations and what they actually do:</p>
 <ul>
 <li>Reboot: gracefully reboot the VM (virt.reboot)</li>
@@ -2726,11 +2726,11 @@
 </ul>
 <h2 id="deleting-a-vm">Deleting a VM<a class="headerlink" href="#deleting-a-vm" title="Permanent link">¶</a></h2>
 <p>To delete a VM, click the trash icon:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/hypervisor/hyper-6.png"><img alt="Image" src="../images/hypervisor/hyper-6.png"/></a></p>
+<p></p>
 <p>It will ask for confirmation:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/hypervisor/hyper-7.png"><img alt="Image" src="../images/hypervisor/hyper-7.png"/></a></p>
+<p></p>
 <p>Once you've confirmed, it will show that it is pending deletion:</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/hypervisor/hyper-8.png"><img alt="Image" src="../images/hypervisor/hyper-8.png"/></a></p>
+<p></p>
 <p>The backend then deletes the VM, releases the hardware used by the VM, and updates the hypervisor annotation used by SOC. This process should take less than 30 seconds.</p>
 <p>You will then need to refresh your web browser to see that CPU, memory, and free hardware have been updated. The deleted VM should then be listed as <code>Destroyed Instance</code>.</p>
 <div class="admonition warning">

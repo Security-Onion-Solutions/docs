@@ -2437,19 +2437,19 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#known-issues">
+<a class="md-nav__link" href="#release-history">
 <span class="md-ellipsis">
       
-        Known Issues
+        Release History
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#release-history">
+<a class="md-nav__link" href="#340-20261023-changes">
 <span class="md-ellipsis">
       
-        Release History
+        3.4.0 [20261023] Changes
       
     </span>
 </a>
@@ -2550,19 +2550,19 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#known-issues">
+<a class="md-nav__link" href="#release-history">
 <span class="md-ellipsis">
       
-        Known Issues
+        Release History
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#release-history">
+<a class="md-nav__link" href="#340-20261023-changes">
 <span class="md-ellipsis">
       
-        Release History
+        3.4.0 [20261023] Changes
       
     </span>
 </a>
@@ -2629,15 +2629,54 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">¶</a></h1>
-<h3 id="known-issues">Known Issues<a class="headerlink" href="#known-issues" title="Permanent link">¶</a></h3>
-<h4 id="elastic-images-and-cpu-support">Elastic Images and CPU Support<a class="headerlink" href="#elastic-images-and-cpu-support" title="Permanent link">¶</a></h4>
-<p>Elastic recently changed made a change which requires x86_64-v3 CPU support:
-<a href="https://github.com/elastic/elastic-agent/issues/16309">https://github.com/elastic/elastic-agent/issues/16309</a>
-<a href="https://github.com/elastic/beats/issues/51824">https://github.com/elastic/beats/issues/51824</a></p>
-<p>If you are running Security Onion in a Proxmox VM, we recommend setting your CPU to host to make sure that your x86_64-v3 CPU is passed through to the VM:
-<a href="https://docs.securityonion.net/en/3/main/proxmox/#cpu">https://docs.securityonion.net/en/3/main/proxmox/#cpu</a></p>
-<p>If your CPUs do not support x86_64-v3 at all, then we recommend holding off on this upgrade until Elastic has resolved this issue.</p>
 <h3 id="release-history">Release History<a class="headerlink" href="#release-history" title="Permanent link">¶</a></h3>
+<h2 id="340-20261023-changes">3.4.0 [20261023] Changes<a class="headerlink" href="#340-20261023-changes" title="Permanent link">¶</a></h2>
+<ul>
+<li>FEATURE: Additional notification destination channels</li>
+<li>FEATURE: Agentic Automation Phase 1</li>
+<li>FEATURE: Agent Monitor Admin Page</li>
+<li>FEATURE: Agent Studio Automations Tab</li>
+<li>FEATURE: Alerts AI Investigation Tab</li>
+<li>FEATURE: Grid metric alarms</li>
+<li>FEATURE: Reduce so-elastic-agent docker image size</li>
+<li>FEATURE: Reduce so-elastic-fleet-package-registry docker image size <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16268">#16268</a></li>
+<li>FEATURE: Support Sigma Correlation rules <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16218">#16218</a></li>
+<li>FIX: 508 AA Item 1.3.5 Identify Input Purpose</li>
+<li>FIX: 508 AA Item 2.4.7 Focus Visible</li>
+<li>FIX: Closed backing indices cause SOC alert acknowledgement to fail <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16283">#16283</a></li>
+<li>FIX: Detections UI rejecting valid YARA rules</li>
+<li>FIX: File-based settings are now ineligible for duplication <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16220">#16220</a></li>
+<li>FIX: Fleet scripts fail when endpoints-initial is missing, moved to another space, or has multiple enrollment tokens <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16254">#16254</a></li>
+<li>FIX: Joining minion can execute code as root on the manager via install.txt</li>
+<li>FIX: /login shows white 401 error page instead of login form <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16226">#16226</a></li>
+<li>FIX: Merge default and pillar values for soc.config.server.client.alerts.queries <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16327">#16327</a></li>
+<li>FIX: Merge default and pillar values for soc.config.server.client.assistant.availableModels <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16321">#16321</a></li>
+<li>FIX: Move assistant event fields to defaults pillar</li>
+<li>FIX: Naming of automatically created index templates for Elastic integrations</li>
+<li>FIX: Only allow one detection sync to run at a time per engine <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16290">#16290</a></li>
+<li>FIX: Reclassify IDH nodes for licensing and grid health status</li>
+<li>FIX: root-executed scripts in /usr/sbin are owned by the unprivileged service account</li>
+<li>FIX: Service accounts use unnecessary /bin/bash login shells <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16256">#16256</a></li>
+<li>FIX: SOC download self signed certificate</li>
+<li>FIX: SOC quick link to DLM data_retention setting <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16271">#16271</a></li>
+<li>FIX: so-sensor-clean spins indefinitely and runs concurrent instances <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16241">#16241</a></li>
+<li>FIX: so-telegraf mounts the Docker socket and joins the docker group on every node</li>
+<li>FIX: Suricata fileinfo events silently dropped <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16248">#16248</a></li>
+<li>FIX: Zeek container stops are not graceful, leaving unarchived logs in /nsm/zeek/spool/tmp/post-terminate-* <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16224">#16224</a></li>
+<li>UPGRADE: Axios to 1.20.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16292">#16292</a></li>
+<li>UPGRADE: containerd 2.3.6 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16285">#16285</a></li>
+<li>UPGRADE: CyberChef to 11.5.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16244">#16244</a></li>
+<li>UPGRADE: Docker 29.8.1 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16284">#16284</a></li>
+<li>UPGRADE: dompurify to 3.4.16 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16295">#16295</a></li>
+<li>UPGRADE: Elastic 9.4.8 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16305">#16305</a></li>
+<li>UPGRADE: js-yaml to 5.4.1 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16293">#16293</a></li>
+<li>UPGRADE: moment to 2.31.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16294">#16294</a></li>
+<li>UPGRADE: nginx to 1.31.5 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16223">#16223</a></li>
+<li>UPGRADE: SOC Go dependencies <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16219">#16219</a></li>
+<li>UPGRADE: SOC OpenAI Go dependency to latest</li>
+<li>UPGRADE: Suricata to 8.0.7 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16245">#16245</a></li>
+<li>UPGRADE: Telegraf to 1.40.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16222">#16222</a></li>
+</ul>
 <h2 id="330-hotfix-20260911-changes">3.3.0 Hotfix [20260911] Changes<a class="headerlink" href="#330-hotfix-20260911-changes" title="Permanent link">¶</a></h2>
 <ul>
 <li>FIX: Disable memory by default <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16232">#16232</a></li>
