@@ -1,19 +1,54 @@
 # Release Notes
 
-### Known Issues
-
-#### Elastic Images and CPU Support
-
-Elastic recently changed made a change which requires x86_64-v3 CPU support:
-<https://github.com/elastic/elastic-agent/issues/16309>
-<https://github.com/elastic/beats/issues/51824>
-
-If you are running Security Onion in a Proxmox VM, we recommend setting your CPU to host to make sure that your x86_64-v3 CPU is passed through to the VM:
-<https://docs.securityonion.net/en/3/main/proxmox/#cpu>
-
-If your CPUs do not support x86_64-v3 at all, then we recommend holding off on this upgrade until Elastic has resolved this issue.
-
 ### Release History
+
+3.4.0 [20261023] Changes
+------------------------
+
+- FEATURE: Additional notification destination channels
+- FEATURE: Agentic Automation Phase 1
+- FEATURE: Agent Monitor Admin Page
+- FEATURE: Agent Studio Automations Tab
+- FEATURE: Alerts AI Investigation Tab
+- FEATURE: Grid metric alarms
+- FEATURE: Reduce so-elastic-agent docker image size
+- FEATURE: Reduce so-elastic-fleet-package-registry docker image size <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16268">#16268</a>
+- FEATURE: Support Sigma Correlation rules <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16218">#16218</a>
+- FIX: 508 AA Item 1.3.5 Identify Input Purpose
+- FIX: 508 AA Item 2.4.7 Focus Visible
+- FIX: Closed backing indices cause SOC alert acknowledgement to fail <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16283">#16283</a>
+- FIX: Detections UI rejecting valid YARA rules
+- FIX: File-based settings are now ineligible for duplication <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16220">#16220</a>
+- FIX: Fleet scripts fail when endpoints-initial is missing, moved to another space, or has multiple enrollment tokens <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16254">#16254</a>
+- FIX: Joining minion can execute code as root on the manager via install.txt
+- FIX: /login shows white 401 error page instead of login form <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16226">#16226</a>
+- FIX: Merge default and pillar values for soc.config.server.client.alerts.queries <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16327">#16327</a>
+- FIX: Merge default and pillar values for soc.config.server.client.assistant.availableModels <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16321">#16321</a>
+- FIX: Move assistant event fields to defaults pillar
+- FIX: Naming of automatically created index templates for Elastic integrations
+- FIX: Only allow one detection sync to run at a time per engine <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16290">#16290</a>
+- FIX: Reclassify IDH nodes for licensing and grid health status
+- FIX: root-executed scripts in /usr/sbin are owned by the unprivileged service account
+- FIX: Service accounts use unnecessary /bin/bash login shells <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16256">#16256</a>
+- FIX: SOC download self signed certificate
+- FIX: SOC quick link to DLM data_retention setting <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16271">#16271</a>
+- FIX: so-sensor-clean spins indefinitely and runs concurrent instances <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16241">#16241</a>
+- FIX: so-telegraf mounts the Docker socket and joins the docker group on every node
+- FIX: Suricata fileinfo events silently dropped <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16248">#16248</a>
+- FIX: Zeek container stops are not graceful, leaving unarchived logs in /nsm/zeek/spool/tmp/post-terminate-* <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16224">#16224</a>
+- UPGRADE: Axios to 1.20.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16292">#16292</a>
+- UPGRADE: containerd 2.3.6 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16285">#16285</a>
+- UPGRADE: CyberChef to 11.5.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16244">#16244</a>
+- UPGRADE: Docker 29.8.1 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16284">#16284</a>
+- UPGRADE: dompurify to 3.4.16 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16295">#16295</a>
+- UPGRADE: Elastic 9.4.8 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16305">#16305</a>
+- UPGRADE: js-yaml to 5.4.1 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16293">#16293</a>
+- UPGRADE: moment to 2.31.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16294">#16294</a>
+- UPGRADE: nginx to 1.31.5 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16223">#16223</a>
+- UPGRADE: SOC Go dependencies <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16219">#16219</a>
+- UPGRADE: SOC OpenAI Go dependency to latest
+- UPGRADE: Suricata to 8.0.7 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16245">#16245</a>
+- UPGRADE: Telegraf to 1.40.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16222">#16222</a>
 
 3.3.0 Hotfix [20260911] Changes
 -------------------------------
