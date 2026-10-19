@@ -372,6 +372,11 @@ components:
       description: 'One alert as an automation run left it: what it is and what the
         ledger records about it.'
       properties:
+        assessment:
+          description: 'The successful session''s assessment: 10 likely benign, 50
+            needs review, 90 likely malicious.'
+          example: 50
+          type: integer
         failedCount:
           example: 1
           type: integer
@@ -639,6 +644,19 @@ components:
           type: object
         agentic:
           type: boolean
+        alertTriageEpoch:
+          description: The earliest alert time Alert Triage considers, in RFC3339.
+          example: "2026-09-24T00:00:00Z"
+          type: string
+        automationTickIntervalSeconds:
+          description: How often the automation scheduler checks what is due.
+          example: 60
+          type: integer
+        automationTurnTimeoutSeconds:
+          description: Longest one model turn of an automation's session may run.
+            0 disables the timeout.
+          example: 300
+          type: integer
         availableAdapters:
           items:
             $ref: '#/components/schemas/model.AdapterParameters'
@@ -1222,6 +1240,63 @@ components:
           type: array
           uniqueItems: false
       type: object
+    model.AutomationRunListing:
+      description: One finished run, named for the automation it belongs to.
+      properties:
+        automationDeleted:
+          description: Indicates the automation has been deleted and only its history
+            remains.
+          example: false
+          type: boolean
+        automationId:
+          description: The automation this run belongs to.
+          example: 5c0b1f2e-0c6d-4a71-9f3e-1b8a2d4c6e90
+          type: string
+        displayName:
+          description: The automation's current name; empty once it has been deleted.
+          example: Nightly Alert Triage
+          type: string
+        endTime:
+          description: The time this run stopped; absent while it is in flight.
+          example: "2026-09-15T16:03:02Z"
+          type: string
+        error:
+          description: Why this run failed; absent unless it did.
+          type: string
+        id:
+          description: The unique id of this run, stamped on the sessions it creates.
+          example: 3f1a7c0e-9b21-4d8a-bc55-2e77a1f0c934
+          type: string
+        itemCounts:
+          additionalProperties:
+            type: integer
+          description: Items this run last worked or failed, counted by state; one
+            it failed counts as failed.
+          type: object
+        startTime:
+          description: The time this run started.
+          example: "2026-09-15T16:00:02Z"
+          type: string
+        state:
+          $ref: '#/components/schemas/model.AutomationRunState'
+      type: object
+    model.AutomationRunPage:
+      description: A page of finished runs across automations, newest first.
+      properties:
+        hasMore:
+          description: Indicates more runs exist past this page.
+          example: true
+          type: boolean
+        runs:
+          items:
+            $ref: '#/components/schemas/model.AutomationRunListing'
+          type: array
+          uniqueItems: false
+        total:
+          description: Every run matching the filter; absent unless it was asked for.
+          example: 120
+          type: integer
+      type: object
     model.AutomationRunRecord:
       description: 'One execution of one automation: opened before its kind runs,
         closed when it stops.'
@@ -1680,6 +1755,8 @@ components:
       properties:
         alerts:
           $ref: '#/components/schemas/model.AlertingParameters'
+        allowExternalMarkdownImages:
+          type: boolean
         apiTimeoutMs:
           type: integer
         assistant:
@@ -3433,6 +3510,10 @@ components:
           description: Indicates whether disk encryption is enabled on this node
           example: 1
           type: integer
+        load15m:
+          description: The node's 15-minute load metric
+          example: 1.09
+          type: number
         load1m:
           description: The node's 1-minute load metric
           example: 0.43
@@ -3440,10 +3521,6 @@ components:
         load5m:
           description: The node's 5-minute load metric
           example: 0.96
-          type: number
-        load15m:
-          description: The node's 15-minute load metric
-          example: 1.09
           type: number
         memoryTotalGB:
           description: Total size, in gigabytes, of the system memory, or RAM
@@ -3964,6 +4041,7 @@ components:
           enum:
           - nids
           - sigma
+          - sigma_correlation
           - yara
           type: string
         id:
@@ -5909,6 +5987,73 @@ paths:
       - bearer:
         - automations/read
       summary: Get Automation Activity
+      tags:
+      - Assistant
+  /connect/assistant/automations/runs:
+    get:
+      description: Retrieve a page of finished runs across every automation, newest
+        first, with each run's work items counted by state and its automation's name.
+        A deleted automation's runs are reported with an empty display name.
+      parameters:
+      - description: Only this automation's runs
+        example: c3d44fb8-3bc2-46e2-a7d2-8a8983556d1a
+        in: query
+        name: automationId
+        schema:
+          type: string
+      - description: Drop succeeded runs that worked no item
+        example: true
+        in: query
+        name: hideEmpty
+        schema:
+          type: boolean
+      - description: Case-insensitive text matched against the automation's name,
+          the run's error, and its items' group keys and errors, or a run ID; at most
+          256 characters
+        example: 10.0.0.1
+        in: query
+        name: q
+        schema:
+          type: string
+      - description: Page size, at most 500
+        example: 50
+        in: query
+        name: limit
+        schema:
+          type: integer
+      - description: Page offset
+        example: 0
+        in: query
+        name: offset
+        schema:
+          type: integer
+      - description: Also count every matching run
+        example: true
+        in: query
+        name: count
+        schema:
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.AutomationRunPage'
+          description: The page of runs
+        "400":
+          description: The search is too long
+        "401":
+          description: Request was not properly authenticated
+        "403":
+          description: Insufficient permissions for this request
+        "404":
+          description: automationId is not a valid automation ID
+        "500":
+          description: Internal SOC error; review SOC logs
+      security:
+      - bearer:
+        - automations/read
+      summary: List Finished Automation Runs
       tags:
       - Assistant
   /connect/assistant/balance/{modelAndAdapter}:
