@@ -7,10 +7,10 @@
 <link href="../nids/" rel="prev"/>
 <link href="../sigma-logsource-coverage/" rel="next"/>
 <link href="../images/logo/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.8.0" name="generator"/>
 <title>Sigma - Security Onion Documentation</title>
-<link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.57a0d79d.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.fb2fffe2.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -2819,7 +2819,7 @@
 <li>From the <a href="../alerts/">Alerts</a> interface, you can click an alert and then click the <code>Tune Detection</code> menu item.</li>
 </ul>
 <p>Once you've used one of these methods to reach the detection detail page, you can check the Status field in the upper-right corner and use the slider to enable or disable the detection.</p>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/60_detection_sigma.png"><img alt="Image" src="../images/60_detection_sigma.png"/></a></p>
 <p>To tune the detection:</p>
 <ul>
 <li>Click the Tuning tab</li>
@@ -2828,7 +2828,7 @@
 <li>Enter your custom filter in the Custom Filter field</li>
 <li>Click the <code>CREATE</code> button to create and enable the Override</li>
 </ul>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/60_detection_sigma_2_tuning_2_add.png"><img alt="Image" src="../images/60_detection_sigma_2_tuning_2_add.png"/></a></p>
 <p>Custom Filters are Sigma Search Identifiers and will be applied like so: <code>"($ORIGINAL_CONDITION) and not 1 of sofilter*"</code></p>
 <p>For example, suppose that you have an <a href="../idh/">IDH</a> node installed with the HTTP webserver enabled. Your nightly vulnerability scan is connecting to it and generating an alert from the <code>Security Onion IDH - HTTP Access</code> detection. To filter out connection attempts from this scanner, you would add the following Custom Filter to this detection:</p>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nt">sofilter</span><span class="p">:</span>
@@ -2844,7 +2844,7 @@
 <li>Add the signature.</li>
 <li>Click the <code>CREATE</code> button and the detection should deploy to your grid at the next 15-minute cycle.</li>
 </ol>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/59_detection_create.png"><img alt="Image" src="../images/59_detection_create.png"/></a></p>
 <h2 id="correlation-rules">Correlation Rules<a class="headerlink" href="#correlation-rules" title="Permanent link">¶</a></h2>
 <p>A Sigma correlation alerts on a pattern across several events rather than on one event: many failed logins from one source, an unusual number of distinct values in a field, or two kinds of event on the same host.</p>
 <p>Correlations require ES|QL; see <a href="#esql-settings">ES|QL Settings</a>. On the Detections page, the <code>Detection Type - Sigma (Elastalert) - Correlations</code> query lists them.</p>
@@ -3114,8 +3114,8 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-<script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.c21346df.min.js"></script>
 <script src="../_static/theme_overrides.js"></script>
 <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
 document$.subscribe(()=>{ lightbox.reload(); });

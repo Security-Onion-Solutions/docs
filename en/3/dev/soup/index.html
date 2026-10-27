@@ -7,10 +7,10 @@
 <link href="../updating/" rel="prev"/>
 <link href="../eol/" rel="next"/>
 <link href="../images/logo/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.8.0" name="generator"/>
 <title>soup - Security Onion Documentation</title>
-<link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.57a0d79d.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.fb2fffe2.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -2930,10 +2930,10 @@
 <p>In addition to Security Onion docker image updates, <code>soup</code> also checks for missing OS updates and asks if you want to install them.</p>
 <h3 id="automatic-os-updates">Automatic OS Updates<a class="headerlink" href="#automatic-os-updates" title="Permanent link">¶</a></h3>
 <p>You can configure automatic OS updates by going to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; patch.</p>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-patch.png"><img alt="Image" src="../images/config-item-patch.png"/></a></p>
 <h3 id="holding-os-updates">Holding OS Updates<a class="headerlink" href="#holding-os-updates" title="Permanent link">¶</a></h3>
 <p>If you would like to prevent certain packages from being upgraded automatically (commonly referred to as "locking" or "holding" packages), then you can do that via the <code>hold</code> setting. The most frequent use case is holding the kernel to prevent frequent system reboots. To hold a package, add the package name to the <code>hold</code> list in <a href="../administration/">Administration</a> --&gt; Configuration --&gt; versionlock --&gt; hold.</p>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-versionlock.png"><img alt="Image" src="../images/config-item-versionlock.png"/></a></p>
 <h2 id="local-configurations">Local Configurations<a class="headerlink" href="#local-configurations" title="Permanent link">¶</a></h2>
 <p><code>soup</code> will check for local configurations in <code>/opt/so/saltstack/local/</code> that may cause issues and flag them with the message <code>Potentially breaking changes found in the following files</code>. Please examine the output of <code>soup</code> and review any local configurations for possible issues.</p>
 <h2 id="log">Log<a class="headerlink" href="#log" title="Permanent link">¶</a></h2>
@@ -3089,8 +3089,8 @@ gpg: Signature made Thu 18 Feb 2021 02:26:10 PM UTC using RSA key ID FE507013 gp
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-<script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.c21346df.min.js"></script>
 <script src="../_static/theme_overrides.js"></script>
 <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
 document$.subscribe(()=>{ lightbox.reload(); });

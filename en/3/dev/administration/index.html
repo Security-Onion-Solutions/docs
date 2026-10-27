@@ -7,10 +7,10 @@
 <link href="../downloads/" rel="prev"/>
 <link href="../kibana/" rel="next"/>
 <link href="../images/logo/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.8.0" name="generator"/>
 <title>Administration - Security Onion Documentation</title>
-<link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.57a0d79d.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.fb2fffe2.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -2622,7 +2622,7 @@
 <p><a href="../security-onion-console/">Security Onion Console</a> includes an Administration section which allows you to administer Users, Grid Members, Configuration, and the License Key.</p>
 <h2 id="users">Users<a class="headerlink" href="#users" title="Permanent link">¶</a></h2>
 <p>The Users page shows all user accounts that have been created for the grid.</p>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/81_users.png"><img alt="Image" src="../images/81_users.png"/></a></p>
 <p>The Note column allows administrators to include a short note on a user's account.</p>
 <p>The Role column lists roles assigned to the user as defined in the <a href="../rbac/">RBAC</a> section.</p>
 <p>The Status column will show different icons depending on the status of the account:</p>
@@ -2635,12 +2635,12 @@
 <p>Hovering over the icon in the Status column will show you these details as well.</p>
 <h2 id="grid-members">Grid Members<a class="headerlink" href="#grid-members" title="Permanent link">¶</a></h2>
 <p>The Grid Members page shows nodes that have attempted to join the grid and whether or not they have been accepted into the grid by an administrator.</p>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/84_gridmembers.png"><img alt="Image" src="../images/84_gridmembers.png"/></a></p>
 <p>Unaccepted members are displayed on the left side and broken into three sections: Pending Members, Denied Members, and Rejected Members. When you accept a member, it will then move to the right side under Accepted Members.</p>
 <p>For accepted members, you can click the REVIEW button to show additional information about the grid member. If you want to remove the member, you can then click the DELETE button and review the confirmation.</p>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">¶</a></h2>
 <p>The Configuration page allows you to configure various components of your grid.</p>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/87_config.png"><img alt="Image" src="../images/87_config.png"/></a></p>
 <p>The most common configuration options are shown in the quick links on the right side. On the left side, click on a component in the tree view to drill into it and show all available settings for that component. You can then click on a setting to show the current setting or modify it if necessary. If you make a mistake, you can easily revert back to the default value. If a blue question mark appears on the setting page, click it to go to the documentation for that component.</p>
 <p>If unsure of which component a particular setting may belong to, use the Filter at the top of the list to look for a particular setting. To the right of the Filter field are buttons that do the following:</p>
 <ul>
@@ -2662,7 +2662,7 @@
 <p class="admonition-title">Warning</p>
 <p>Changing advanced settings is unsupported and could result in requiring a full cluster re-installation.</p>
 </div>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/88_config_options.png"><img alt="Image" src="../images/88_config_options.png"/></a></p>
 <h3 id="duplicate-settings">Duplicate Settings<a class="headerlink" href="#duplicate-settings" title="Permanent link">¶</a></h3>
 <p>Some settings can be duplicated to more easily create new settings. If a setting is eligible for duplication, then it will have a DUPLICATE button on the right side of the page, provided the <code>Show advanced settings</code> option is enabled at the top of the screen. Creating a duplicate setting is a TWO-STEP process.</p>
 <ol>
@@ -2674,7 +2674,7 @@
 <p>Duplicated settings do not retain their original setting's full behavior. For example, if the original setting only allowed for CIDR values, this new setting will not have the same protections on later views in the Configuration screen. Further, duplicated settings are marked as advanced settings. In order to see the new setting at a later time the <code>Show advanced settings</code> option must be enabled under the Configuration Options at the top of the Configuration screen. Finally, please note that duplicated settings cannot be removed or renamed via the SOC user interface.</p>
 </div>
 <h2 id="license-key">License Key<a class="headerlink" href="#license-key" title="Permanent link">¶</a></h2>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/91_licensekey.png"><img alt="Image" src="../images/91_licensekey.png"/></a></p>
 <p>The License Key screen allows you to add a license key for <a href="../security-onion-pro/">Security Onion Pro</a>. Once you've added a license key, the screen will show details about your license key.</p>
 </article>
 </div>
@@ -2745,8 +2745,8 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-<script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.c21346df.min.js"></script>
 <script src="../_static/theme_overrides.js"></script>
 <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
 document$.subscribe(()=>{ lightbox.reload(); });

@@ -7,10 +7,10 @@
 <link href="../hunt/" rel="prev"/>
 <link href="../detections/" rel="next"/>
 <link href="../images/logo/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.8.0" name="generator"/>
 <title>Cases - Security Onion Documentation</title>
-<link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.57a0d79d.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.fb2fffe2.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -2837,13 +2837,13 @@
 <h1 id="cases">Cases<a class="headerlink" href="#cases" title="Permanent link">¶</a></h1>
 <p><a href="../security-onion-console/">Security Onion Console</a> includes our Cases interface for case management. It allows you to escalate logs from <a href="../alerts/">Alerts</a>, <a href="../dashboards/">Dashboards</a>, and <a href="../hunt/">Hunt</a>, and then assign analysts, add comments and attachments, and track observables. </p>
 <p>On a new deployment, Cases will be empty until you create a new case. Once you have one or more cases, you can use the main Cases page to get an overview of all cases. </p>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/57_0_cases.png"><img alt="Image" src="../images/57_0_cases.png"/></a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Check out our Cases video at <a href="https://youtu.be/y_kr_hrtqVc">https://youtu.be/y_kr_hrtqVc</a>!</p>
 </div>
 <h2 id="options">Options<a class="headerlink" href="#options" title="Permanent link">¶</a></h2>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/57_1_cases_options.png"><img alt="Image" src="../images/57_1_cases_options.png"/></a></p>
 <p>Starting at the top of the main Cases page, the Options menu allows you to set options such as Automatic Refresh Interval and Time Zone.</p>
 <p>There is also a toggle labeled <code>Enable advanced interface features</code>. If you enable this option, then the interface will show more advanced features similar to <a href="../dashboards/">Dashboards</a> and <a href="../hunt/">Hunt</a>.</p>
 <h2 id="query-bar">Query Bar<a class="headerlink" href="#query-bar" title="Permanent link">¶</a></h2>
@@ -2873,7 +2873,7 @@
 </ul>
 <h2 id="creating-a-new-case">Creating a New Case<a class="headerlink" href="#creating-a-new-case" title="Permanent link">¶</a></h2>
 <p>To create a new case, click the + icon and then fill out the Title and Description and optionally the fields on the right side including Assignee, Status, Severity, Priority, TLP, PAP, Category, and Tags. Clicking the fields on the right side reveals drop-down boxes with standard options. The Assignee field will only list user accounts that are currently enabled.</p>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/57_2_cases_create.png"><img alt="Image" src="../images/57_2_cases_create.png"/></a></p>
 <p>Alternatively, if you find events of interest in <a href="../alerts/">Alerts</a>, <a href="../dashboards/">Dashboards</a>, or <a href="../hunt/">Hunt</a>, you can escalate directly to Cases using the escalate button (blue triangle with exclamation point). Clicking the escalate button will escalate the data from the row as it is displayed. This means that if you're looking at an aggregated view, you will get limited details in the resulting escalated case. If you want more details to be included in the case, then first drill into the aggregation and escalate one of the individual items in that aggregation. Once you click the escalate button, you can choose to escalate to a new case or an existing case. </p>
 <h2 id="comments">Comments<a class="headerlink" href="#comments" title="Permanent link">¶</a></h2>
 <p>On the Comments tab, you can add comments about the case.     The Comments field uses markdown syntax and you can read more about that at <a href="https://www.markdownguide.org/cheat-sheet/">https://www.markdownguide.org/cheat-sheet/</a>.</p>
@@ -3149,7 +3149,7 @@
 <li>VirusTotal</li>
 </ul>
 <p>To configure an analyzer, navigate to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; sensoroni.</p>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/config-item-sensoroni.png"><img alt="Image" src="../images/config-item-sensoroni.png"/></a></p>
 <p>At the top of the page, click the <code>Options</code> menu and then enable the <code>Show advanced settings</code> option. Then navigate to sensoroni --&gt; analyzers.</p>
 <h3 id="developing-analyzers">Developing Analyzers<a class="headerlink" href="#developing-analyzers" title="Permanent link">¶</a></h3>
 <p>If you'd like to develop a custom analyzer, take a look at the developer's guide at <a href="https://github.com/Security-Onion-Solutions/securityonion/tree/3/main/salt/sensoroni/files/analyzers">https://github.com/Security-Onion-Solutions/securityonion/tree/3/main/salt/sensoroni/files/analyzers</a>.</p>
@@ -3225,8 +3225,8 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-<script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.c21346df.min.js"></script>
 <script src="../_static/theme_overrides.js"></script>
 <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
 document$.subscribe(()=>{ lightbox.reload(); });

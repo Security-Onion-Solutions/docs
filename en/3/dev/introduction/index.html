@@ -7,10 +7,10 @@
 <link href=".." rel="prev"/>
 <link href="../license/" rel="next"/>
 <link href="../images/logo/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.7.7" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.8.0" name="generator"/>
 <title>Introduction - Security Onion Documentation</title>
-<link href="../assets/stylesheets/main.ec1eaa64.min.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.57a0d79d.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.fb2fffe2.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -2742,7 +2742,7 @@
 <p>Check out our Introduction to Security Onion video at <a href="https://securityonion.com/demo">https://securityonion.com/demo</a>!</p>
 </div>
 <p>In the diagram below, we see Security Onion in a traditional enterprise network with a firewall, workstations, and servers. You can use Security Onion to monitor north/south traffic to detect an adversary entering an environment, establishing command-and-control (C2), or perhaps data exfiltration. You'll probably also want to monitor east/west traffic to detect lateral movement. As more and more of our network traffic becomes encrypted, it's important to fill in those blind spots with additional visibility in the form of endpoint telemetry. Security Onion can consume logs from your servers and workstations so that you can then hunt across all of your network and host logs at the same time.</p>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/diagrams/network-horiz.png"><img alt="Image" src="../images/diagrams/network-horiz.png"/></a></p>
 <h2 id="network-visibility">Network Visibility<a class="headerlink" href="#network-visibility" title="Permanent link">¶</a></h2>
 <p>From a network visibility standpoint, Security Onion seamlessly weaves together intrusion detection, network metadata, full packet capture, file analysis, and intrusion detection honeypots.</p>
 <h3 id="intrusion-detection">Intrusion Detection<a class="headerlink" href="#intrusion-detection" title="Permanent link">¶</a></h3>
@@ -2762,17 +2762,17 @@
 <p>With all of the data sources mentioned above, there is an incredible amount of data available at your fingertips. Fortunately, Security Onion tightly integrates the following tools to help make sense of this data.</p>
 <h3 id="security-onion-console">Security Onion Console<a class="headerlink" href="#security-onion-console" title="Permanent link">¶</a></h3>
 <p><a href="../security-onion-console/">Security Onion Console</a> is the first thing you see when you log into Security Onion. It includes our <a href="../alerts/">Alerts</a> interface which allows you to see all of your <a href="../nids/">NIDS</a> alerts from <a href="../suricata/">Suricata</a>.</p>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/50_alerts.png"><img alt="Image" src="../images/50_alerts.png"/></a></p>
 <p><a href="../security-onion-console/">Security Onion Console</a> also includes our <a href="../dashboards/">Dashboards</a> interface which gives you a nice overview of not only your <a href="../nids/">NIDS</a> alerts but also network metadata logs from <a href="../zeek/">Zeek</a> or <a href="../suricata/">Suricata</a> and any other logs that you may be collecting. </p>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/53_dashboards.png"><img alt="Image" src="../images/53_dashboards.png"/></a></p>
 <p><a href="../hunt/">Hunt</a> is similar to <a href="../dashboards/">Dashboards</a> but its default queries are more focused on threat hunting.</p>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/56_hunt.png"><img alt="Image" src="../images/56_hunt.png"/></a></p>
 <p><a href="../cases/">Cases</a> is the case management interface. As you are working in <a href="../alerts/">Alerts</a>, <a href="../dashboards/">Dashboards</a>, or <a href="../hunt/">Hunt</a>, you may find alerts or logs that are interesting enough to send to <a href="../cases/">Cases</a> and create a case. Other analysts can collaborate with you as you work to close that case.</p>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/57_0_cases.png"><img alt="Image" src="../images/57_0_cases.png"/></a></p>
 <p><a href="../security-onion-console/">Security Onion Console</a> also includes an interface for full packet capture (<a href="../pcap/">PCAP</a>) retrieval.</p>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/62_pcap.png"><img alt="Image" src="../images/62_pcap.png"/></a></p>
 <p><a href="../security-onion-console/">Security Onion Console</a> also includes <a href="../detections/">Detections</a> which makes it quick and easy to tune your <a href="../nids/">NIDS</a>, <a href="../sigma/">Sigma</a>, and <a href="../yara/">YARA</a> rules.</p>
-<p></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/57_detections.png"><img alt="Image" src="../images/57_detections.png"/></a></p>
 <h3 id="cyberchef">CyberChef<a class="headerlink" href="#cyberchef" title="Permanent link">¶</a></h3>
 <p><a href="../cyberchef/">CyberChef</a> allows you to decode, decompress, and analyze artifacts. <a href="../alerts/">Alerts</a>, <a href="../dashboards/">Dashboards</a>, <a href="../hunt/">Hunt</a>, and <a href="../pcap/">PCAP</a> all allow you to quickly and easily send data to <a href="../cyberchef/">CyberChef</a> for further analysis.</p>
 <h2 id="workflow">Workflow<a class="headerlink" href="#workflow" title="Permanent link">¶</a></h2>
@@ -2862,8 +2862,8 @@
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-<script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+<script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.c21346df.min.js"></script>
 <script src="../_static/theme_overrides.js"></script>
 <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
 document$.subscribe(()=>{ lightbox.reload(); });
