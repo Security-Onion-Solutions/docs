@@ -2,7 +2,7 @@
 
 ### Release History
 
-3.4.0 [20261023] Changes
+3.4.0 [20261101] Changes
 ------------------------
 
 - FEATURE: Additional notification destination channels
@@ -16,7 +16,10 @@
 - FEATURE: Support Sigma Correlation rules <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16218">#16218</a>
 - FIX: 508 AA Item 1.3.5 Identify Input Purpose
 - FIX: 508 AA Item 2.4.7 Focus Visible
+- FIX: Backport Salt 3006.29 eMudhra/emSign CA fix into the 3006.19 onedir <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16349">#16349</a>
 - FIX: Closed backing indices cause SOC alert acknowledgement to fail <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16283">#16283</a>
+- FIX: Configurable Timeouts for Partial Detection Syncs <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16359">#16359</a>
+- FIX: Custom Docker bind mounts ignored for so-kafka and so-soc <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16355">#16355</a>
 - FIX: Detections UI rejecting valid YARA rules
 - FIX: File-based settings are now ineligible for duplication <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16220">#16220</a>
 - FIX: Fleet scripts fail when endpoints-initial is missing, moved to another space, or has multiple enrollment tokens <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16254">#16254</a>
@@ -36,19 +39,23 @@
 - FIX: so-telegraf mounts the Docker socket and joins the docker group on every node
 - FIX: Suricata fileinfo events silently dropped <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16248">#16248</a>
 - FIX: Zeek container stops are not graceful, leaving unarchived logs in /nsm/zeek/spool/tmp/post-terminate-* <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16224">#16224</a>
+- Update Go Toolchain to 1.27.3 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16353">#16353</a>
+- UPGRADE: Analyzer dependencies, including certifi <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16346">#16346</a>
 - UPGRADE: Axios to 1.20.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16292">#16292</a>
 - UPGRADE: containerd 2.3.6 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16285">#16285</a>
 - UPGRADE: CyberChef to 11.5.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16244">#16244</a>
 - UPGRADE: Docker 29.8.1 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16284">#16284</a>
-- UPGRADE: dompurify to 3.4.16 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16295">#16295</a>
+- UPGRADE: dompurify to 3.4.17 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16295">#16295</a>
+- UPGRADE: ElastAlert2 to 2.32.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16352">#16352</a>
 - UPGRADE: Elastic 9.4.8 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16305">#16305</a>
 - UPGRADE: js-yaml to 5.4.1 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16293">#16293</a>
 - UPGRADE: moment to 2.31.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16294">#16294</a>
-- UPGRADE: nginx to 1.31.5 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16223">#16223</a>
+- UPGRADE: nginx to 1.31.8 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16223">#16223</a>
 - UPGRADE: SOC Go dependencies <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16219">#16219</a>
 - UPGRADE: SOC OpenAI Go dependency to latest
 - UPGRADE: Suricata to 8.0.7 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16245">#16245</a>
 - UPGRADE: Telegraf to 1.40.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16222">#16222</a>
+- UPGRADE: Zeek to 8.0.11 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16348">#16348</a>
 
 3.3.0 Hotfix [20260911] Changes
 -------------------------------
