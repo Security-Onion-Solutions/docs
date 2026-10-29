@@ -54,7 +54,7 @@
 - UPGRADE: nginx to 1.31.8 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16223">#16223</a>
 - UPGRADE: SOC Go dependencies <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16219">#16219</a>
 - UPGRADE: SOC OpenAI Go dependency to latest
-- UPGRADE: Suricata to 8.0.7 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16245">#16245</a>
+- UPGRADE: Suricata to 8.0.8 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16245">#16245</a>
 - UPGRADE: Telegraf to 1.40.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16222">#16222</a>
 - UPGRADE: Zeek to 8.0.11 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16348">#16348</a>
 
