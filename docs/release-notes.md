@@ -21,6 +21,7 @@
 - FIX: Configurable Timeouts for Partial Detection Syncs <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16359">#16359</a>
 - FIX: Custom Docker bind mounts ignored for so-kafka and so-soc <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16355">#16355</a>
 - FIX: Detections UI rejecting valid YARA rules
+- FIX: eMudhra/emSign Certificate Trust Removal <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16360">#16360</a>
 - FIX: File-based settings are now ineligible for duplication <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16220">#16220</a>
 - FIX: Fleet scripts fail when endpoints-initial is missing, moved to another space, or has multiple enrollment tokens <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16254">#16254</a>
 - FIX: Joining minion can execute code as root on the manager via install.txt
@@ -56,6 +57,7 @@
 - UPGRADE: Suricata to 8.0.7 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16245">#16245</a>
 - UPGRADE: Telegraf to 1.40.0 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16222">#16222</a>
 - UPGRADE: Zeek to 8.0.11 <a href="https://github.com/Security-Onion-Solutions/securityonion/issues/16348">#16348</a>
+
 
 3.3.0 Hotfix [20260911] Changes
 -------------------------------
