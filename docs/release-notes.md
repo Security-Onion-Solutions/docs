@@ -2,7 +2,7 @@
 
 ### Release History
 
-3.4.0 [20261101] Changes
+3.4.0 [20261102] Changes
 ------------------------
 
 - FEATURE: Additional notification destination channels
