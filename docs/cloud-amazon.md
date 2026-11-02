@@ -19,6 +19,10 @@ If you would like to deploy Security Onion in Amazon Web Services (AWS), we have
 
 Before proceeding, determine the grid architecture desired. Choose from a single-node Grid versus a distributed, multi-node Grid. Additionally, determine if the lower latency of ephemeral instance storage is needed (typically when there is high-volume of traffic being monitored, which is most production scenarios), or if network-based storage, EBS, can be used for increased redundancy.
 
+!!! NOTE
+
+    If you plan to prepare a new instance for STIG configuration, review the prerequisites in [Prepare New Instances for STIG](#prepare-new-instances-for-stig) before launching.
+
 ## Single Node Grid
 
 For simple, low-volume production monitoring, a single node Grid can be used. EBS must be used for [Elasticsearch](elasticsearch.md) data storage if used for production purposes. Single node grids cannot use ephemeral instance storage without being at risk of data loss. However, for temporary evaluation installations, where there is little concern for data loss, ephemeral instance storage can be used. 
@@ -114,6 +118,41 @@ To configure a Security Onion instance (repeat for each node in a distributed Gr
 - Select: `Review and Launch`
 - If prompted, select the appropriate SSH keypair that will be used to ssh into the Security Onion instance for administration 
 - The default username for the Security Onion AMI is: `onion`
+
+## Prepare New Instances for STIG
+
+Starting with Security Onion 3.4.0 AMIs, run `so-stig-prep` on a new instance before installation to create the additional STIG partitions and enable FIPS.
+
+!!! NOTE
+
+    EBS encryption is configured at instance launch. After Grid setup, enable STIG as described in [Enabling STIG](stig.md#enabling-stig), which requires a Security Onion Pro license.
+
+Before launching, plan for the following prerequisites:
+
+- If disk encryption is desired, enable EBS encryption for the root (OS) volume and any additional EBS volumes at instance launch. For volumes you add later, select encryption when creating each volume, before attaching or using it.
+- Use an RSA SSH key pair of at least 2048 bits. Ed25519 keys cannot authenticate after the FIPS reboot.
+- Launch with the default 256G root volume, then expand it after first boot. For the default STIG file system layout, we require 370G or larger for the total root volume size.
+
+By default the helper creates separate file systems for `/home` (25G), `/tmp` (2G), `/var` (70G), `/var/log` (5G), `/var/log/audit` (2G), and `/var/tmp` (2G). Increase any of these with `--home`, `--tmp`, `--var`, `--varlog`, `--varlogaudit`, and `--vartmp`; overrides must be at least the defaults, and larger values will require more root volume capacity. For example:
+
+```
+sudo so-stig-prep --var 100 --varlog 10
+```
+
+To prepare a new instance:
+
+1. Launch the AMI
+2. SSH into the node and cancel out of the setup.
+3. Expand the root EBS volume to 370G or larger through the AWS console before running the helper.
+4. Run the helper:
+
+    ```
+    sudo so-stig-prep
+    ```
+
+    Run `sudo so-stig-prep --help` to review the size options. Use `--no-fips` to create the file systems without enabling FIPS.
+
+5. The helper reboots the instance when finished. Reconnect and proceed with Security Onion setup.
 
 ## Prepare Nodes with Ephemeral Storage
 

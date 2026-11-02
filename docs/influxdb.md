@@ -22,6 +22,14 @@ You can configure Telegraf by going to [Administration](administration.md) --> C
 
 ![Image](images/config-item-telegraf.png)
 
+### Container Metrics
+
+As of Security Onion 3.4.0, container metrics are collected on the host and then read by Telegraf, rather than being collected by Telegraf's built-in Docker input. This allows the Telegraf container to run without access to the Docker socket.
+
+By default, only the container metrics needed by the Security Onion dashboards in InfluxDB are collected. The remaining metrics that the Docker input previously provided are still available, but are disabled by default.
+
+If you have custom dashboards or queries that need any of those additional metrics, you can enable them individually. Go to [Administration](administration.md) --> Configuration. At the top of the page, click the `Options` menu and then enable the `Show advanced settings` option. Then navigate to telegraf --> container_stats and enable the metrics you need. They are grouped by the measurement they belong to, such as `cpu`, `mem`, `net`, `blkio`, `status` and `health`.
+
 ## More Information
 
 !!! NOTE

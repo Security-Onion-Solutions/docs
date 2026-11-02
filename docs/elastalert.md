@@ -12,7 +12,7 @@ The Detections module will generate ElastAlert 2 compatible rules automatically 
 
 Adjusting a [Sigma](sigma.md) rule should always be done via the [Detections](detections.md) screen.
 
-See the [notifications](notifications.md) section for information on how to enable outbound notifications via the Detections module.
+See the [ElastAlert 2 notifications](elastalert-notifications.md) section for information on how to enable outbound notifications via the Detections module.
 
 ## Custom Rules
 
