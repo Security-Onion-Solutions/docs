@@ -1,5 +1,9 @@
 # Release Notes
 
+### Known Issues
+
+No known issues at this time.
+
 ### Release History
 
 3.4.0 [20261102] Changes
