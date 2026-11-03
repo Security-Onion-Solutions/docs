@@ -2,7 +2,7 @@
 
 ### Known Issues
 
-If you run soup and get a warning that says ``The following node(s) do NOT support the x86-64-v3 CPU instruction set``, then you can safely override the warning and continue with the upgrade. The warning will be removed in the next version.
+If you are upgrading to Security Onion 3.4 and get a warning that says ``The following node(s) do NOT support the x86-64-v3 CPU instruction set``, then you can safely override the warning and continue with the upgrade. The warning will be removed in the next version.
 
 ### Release History
 
