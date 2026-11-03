@@ -2,7 +2,7 @@
 
 ### Known Issues
 
-No known issues at this time.
+If you run soup and get a warning about the CPU, then you can safely override the warning and continue with the upgrade. The warning will be removed in the next version.
 
 ### Release History
 
