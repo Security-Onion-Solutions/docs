@@ -123,6 +123,7 @@ nav:
     - Full Packet Capture: full-packet-capture.md
     - Suricata: suricata.md
     - Zeek: zeek.md
+    - SMB Threat Hunting: smb-hunting.md
     - Strelka: strelka.md
     - IDH: idh.md
   - Additional Network Visibility:
