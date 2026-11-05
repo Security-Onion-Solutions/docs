@@ -114,6 +114,7 @@ nav:
     - Security Onion Desktop Overview: security-onion-desktop.md
     - Chromium: chromium.md
     - NetworkMiner: networkminer.md
+    - SO-CRATES: so-crates.md
     - Wireshark: wireshark.md
   - Network Visibility:
     - Network Visibility Overview: network-visibility.md

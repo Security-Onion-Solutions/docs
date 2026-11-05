@@ -12,7 +12,7 @@ NetworkMiner is a part of our [Security Onion Desktop](security-onion-desktop.md
 
 ## File Extraction
 
-Suppose you are looking at an interesting HTTP file download in [PCAP](pcap.md) and want to extract the file. Click the PCAP download button and then open the PCAP file with NetworkMiner. NetworkMiner will automatically attempt to detect and extract any files transferred. You can access these extracted files on the Files tab. If any files are images, they can be viewed on the Images tab.
+Suppose you are looking at an interesting HTTP file download in [PCAP](pcap.md) and want to extract the file. Click the PCAP download button and then open the PCAP file with NetworkMiner. NetworkMiner will automatically attempt to detect and extract any files transferred. You can access these extracted files on the Files tab. If any files are images, they can be viewed on the Images tab. NetworkMiner saves extracted files in `~/.local/share/NetworkMiner/AssembledFiles`.
 
 ## More Information
 
