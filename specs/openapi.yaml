@@ -3463,10 +3463,6 @@ components:
             such as Elasticsearch: unknown, ok, fault'
           example: ok
           type: string
-        failedEvents:
-          description: The count of failed events (currently not in use)"
-          example: 0
-          type: integer
         fpsEnabled:
           description: Indicates whether federal information processing standards
             are enabled on this node
@@ -3578,11 +3574,6 @@ components:
             unknown, ok, fault'
           example: ok
           type: string
-        productionEps:
-          description: The events per second (EPS) produced by this node (not currently
-            populated)
-          example: 0
-          type: integer
         raidStatus:
           description: 'The raid status, if applicable: unknown, ok, fault'
           example: unknown

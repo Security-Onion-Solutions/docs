@@ -373,9 +373,8 @@ Numeric metrics evaluate quantitative hardware, network, and pipeline measuremen
   - `influxdb_size`: InfluxDB storage size in GB
   - `redis_queue`: Queued events in Redis
   - `pcap_retention`: Buffer retention in days
-  - `eps`: Consumption and production EPS
+  - `eps`: Consumption EPS (events per second processed by the node's Logstash)
   - `logstash_eps`: Inbound event throughput received by Logstash
-  - `failed_events`: Pipeline event failure counts
   - `loss`: Packet drop rates reported by Suricata and Zeek
   - `capture_loss`: Packet capture loss percentage reported by Zeek
   - `net`: Management In/Out and Monitor In throughput in Mbps
