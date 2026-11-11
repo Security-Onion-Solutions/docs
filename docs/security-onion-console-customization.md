@@ -49,11 +49,20 @@ The default timeout for user login sessions is 24 hours. This is a fixed timespa
 
 ## Custom Queries
 
-If you'd like to add your own custom queries to [Alerts](alerts.md), [Cases](cases.md), [Dashboards](dashboards.md), [Detections](detections.md) or [Hunt](hunt.md), you can go to [Administration](administration.md) --> Configuration --> SOC --> config --> server --> client and then select the specific app you'd like to modify. 
+Superusers can add a query to the query list for all users directly from [Alerts](alerts.md), [Cases](cases.md), [Dashboards](dashboards.md), [Detections](detections.md) or [Hunt](hunt.md). Run the query, then click the "Add to query list" button (the plus icon) at the right of the query bar. The button appears only after the query has been run, and only when it isn't already in the list. It opens the matching `queries` setting on the Configuration page, with the query you ran filled into the Query field of a new entry, and a notice that the value was filled in from a link. Type a Name, click Save, and enter a change note.
+
+- Only the query text is saved, not filter toggles or the time range.
+- On a Manager of Managers, the entry is always added to the manager's own list. To change a subgrid's list, use that subgrid's Configuration page.
+- The button is hidden only when the query exactly matches an entry in the list (ignoring leading and trailing spaces). It can't catch every duplicate, such as an entry added by another admin that hasn't been applied yet, or one hidden by your license. Remove a duplicate entry on the Configuration page.
+- If the query contains template delimiters such as `{{` or `{%`, it isn't filled in and can't be saved to the list. If it contains hidden characters, such as a zero-width joiner in some scripts or emoji, it isn't filled in, and a warning says why. Type the query into the entry without them.
+- The new entry goes at the end of the list and appears after the change is applied and SOC restarts.
+- If the query came from an entry that used `{myId}`, put `{myId}` back.
+
+To add a query by hand instead, for example when the link was refused, you can go to [Administration](administration.md) --> Configuration --> SOC --> config --> server --> client and then select the specific app you'd like to modify. 
 
 !!! WARNING
     
-    When you save your custom queries, SOC saves the entire list of queries (including our default queries included in the product). So if you update to a new version which includes new or updated default queries, you won't see the new or updated default queries since your custom query list is overriding the default.
+    When you save your custom queries, SOC saves the entire list of queries (including our default queries included in the product). So if you update to a new version which includes new or updated default queries, you won't see the new or updated default queries since your custom query list is overriding the default. When the list is still at its default, the notice on the Configuration page repeats this warning.
 
 To see all available fields for your queries, go down to the Events table and then click the arrow to expand a row. It will show all of the individual fields from that particular event.
 

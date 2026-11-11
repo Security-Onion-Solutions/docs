@@ -34,7 +34,7 @@ The query bar defaults to `Group By Name, Module` which groups the alerts by `ru
 
 On the right side of the query bar is a hunt button that will start a new hunt based on the current query.
 
-If you would like to save your own personal queries, you can bookmark them in your browser. If you would like to customize the default queries for all users, please see the [SOC Customization](security-onion-console-customization.md) section.
+If you would like to save your own personal queries, you can bookmark them in your browser. If you would like to customize the default queries for all users, please see the [SOC Customization](security-onion-console-customization.md) section. Superusers can also click the "Add to query list" button at the right of the query bar.
 
 ## Time Picker
 

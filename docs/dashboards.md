@@ -42,11 +42,11 @@ Dashboards will try to detect your local time zone via your browser. You can man
 
 The easiest way to get started is to click the query drop down box and select one of the pre-defined dashboards. These pre-defined dashboards cover most of the major data types that you would expect to see in a Security Onion deployment: [NIDS](nids.md) alerts from [Suricata](suricata.md), protocol metadata logs from [Zeek](zeek.md) or [Suricata](suricata.md), [Elastic Agent](elastic-agent.md) logs, and firewall logs.
 
-On the right side of the query bar are two buttons. The first button is an ellipsis (three dots) which toggles between showing the full query or only the search filter. The second button is a hunt button that will start a new hunt based on the current filters.
+On the right side of the query bar, an ellipsis (three dots) button toggles between showing the full query or only the search filter, and a hunt button starts a new hunt based on the current filters.
 
 Under the query bar, you’ll notice colored bubbles that represent the individual components of the query. If you want to remove part of the query, you can click the X in the corresponding bubble to remove it and run a new search.
 
-If you would like to save your own personal queries, you can bookmark them in your browser. If you would like to customize the default queries for all users, please see the [SOC Customization](security-onion-console-customization.md) section.
+If you would like to save your own personal queries, you can bookmark them in your browser. If you would like to customize the default queries for all users, please see the [SOC Customization](security-onion-console-customization.md) section. Superusers can also click the "Add to query list" button at the right of the query bar.
 
 ## Time Picker
 
