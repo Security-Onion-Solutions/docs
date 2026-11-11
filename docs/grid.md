@@ -4,7 +4,7 @@
 
 ![Image](images/39_grid.png)
 
-Starting at the top of the page, there is a `Grid EPS` value in the upper-right corner that shows the sum of all `Consumption EPS` measurements in the entire Grid. Below that you will find a list of all nodes in your grid.
+Starting at the top of the page, there is a `Grid EPS` value in the upper-right corner that shows the sum of `Consumption EPS` from the search stage of the Grid (the nodes that index events into [Elasticsearch](elasticsearch.md)). Below that you will find a list of all nodes in your grid.
 
 !!! WARNING
     
@@ -158,7 +158,7 @@ The `Inbound Monitor Traffic` field shows the throughput of inbound bytes reachi
 
 ### Dropped Monitor Traffic
 
-The `Dropped Monitor Traffic` field shows the throughput of inbound bytes intended for the sensor's monitoring interface but are instead dropped, typically due to insufficient network capacity.
+The `Dropped Monitor Traffic` field shows the number of inbound packets per second intended for the sensor's monitoring interface but are instead dropped, typically due to insufficient network capacity.
 
 ### Inbound Mgmt Traffic
 
@@ -231,9 +231,9 @@ When viewing the **Metrics** tab, Security Onion displays a responsive dashboard
 | | **System Uptime** | `system_uptime` | Total operating system uptime in days and seconds (`system_uptime`). |
 | | **Disk Usage** | `disk` | Partition utilization percentage for the root OS filesystem (`/`) and the NSM data partition (`/nsm`). |
 | | **Network Traffic** | `net` | Throughput in bits per second for Management In (`traffic_man_in`), Management Out (`traffic_man_out`), and Monitor In (`traffic_mon_in`). |
-| | **Monitor Packet Drops** | `net_drops` | Packet drops observed on monitoring capture interfaces (`traffic_mon_drops`). |
+| | **Monitor Packet Drops** | `net_drops` | Packet drops per second observed on monitoring capture interfaces (`traffic_mon_drops`). |
 | | **PCAP Retention** | `pcap_retention` | Age and retention window of packet capture buffers stored on disk in days (`pcap_retention`). |
-| **Pipeline & Ingestion** | **Grid / Consumption EPS** | `eps` | Events per second consumed across ingest components (`consumption_eps`). |
+| **Pipeline & Ingestion** | **Grid / Consumption EPS** | `eps` | Events per second consumed (`consumption_eps`). |
 | | **Logstash EPS** | `logstash_eps` | Inbound event throughput received by Logstash pipelines (`logstash_eps`). |
 | | **Elasticsearch Storage Size** | `elasticsearch_size` | Total disk storage consumed by Elasticsearch indices (`elasticsearch_size`). |
 | | **Elasticsearch Document Count** | `elasticsearch_docs` | Total number of indexed documents across all Elasticsearch indices (`elasticsearch_docs`). |
@@ -379,7 +379,7 @@ Numeric metrics evaluate quantitative hardware, network, and pipeline measuremen
   - `loss`: Packet drop rates reported by Suricata and Zeek
   - `capture_loss`: Packet capture loss percentage reported by Zeek
   - `net`: Management In/Out and Monitor In throughput in Mbps
-  - `net_drops`: Monitoring interface drop throughput
+  - `net_drops`: Monitoring interface drops per second
   - `container_cpu`: Container CPU usage percentage
   - `container_mem`: Container memory usage percentage
   - `container_net_in`: Container inbound network throughput in bits
@@ -395,6 +395,10 @@ Numeric metrics evaluate quantitative hardware, network, and pipeline measuremen
   - `==`: Equal to
   - `!=`: Not equal to
 - **Threshold Input & Validation**: A numeric text field. The UI displays persistent unit hints corresponding to the metric (`%`, `Seconds`, `Days`, `GB`, `Mbps`, `Bits`). Both integers and floating-point decimal numbers (e.g., `80`, `95.5`) are valid. Non-numeric text is rejected.
+
+!!! NOTE
+    
+    `net_drops` thresholds were previously measured in Mbps. Existing `net_drops` alarm thresholds are automatically converted to drops per second on upgrade, so please review them afterwards to make sure they still match your expectations.
 
 #### 2. Boolean Metrics (`bool`)
 

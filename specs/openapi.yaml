@@ -3643,8 +3643,15 @@ components:
           example: 0.030966666666666667
           type: number
         trafficMonInDropsMbs:
-          description: The inbound traffic packet drop rate, in megabytes per second,
-            to this node's monitor network interface
+          deprecated: true
+          description: Deprecated, use trafficMonInDropsPps instead. The inbound
+            traffic packet drop rate, in megabytes per second, to this node's monitor
+            network interface
+          example: 0
+          type: number
+        trafficMonInDropsPps:
+          description: The number of inbound packets dropped per second on this
+            node's monitor network interface
           example: 0
           type: number
         trafficMonInMbs:
