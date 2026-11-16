@@ -7,7 +7,7 @@
 <link href="../customizing/" rel="prev"/>
 <link href="../nginx/" rel="next"/>
 <link href="../images/logo/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.8.0" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.8.1" name="generator"/>
 <title>Security Onion Console Customization - Security Onion Documentation</title>
 <link href="../assets/stylesheets/main.57a0d79d.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.fb2fffe2.min.css" rel="stylesheet"/>
@@ -2719,10 +2719,19 @@
 <h2 id="session-timeout">Session Timeout<a class="headerlink" href="#session-timeout" title="Permanent link">¶</a></h2>
 <p>The default timeout for user login sessions is 24 hours. This is a fixed timespan and will expire regardless of whether the user is active or idle in SOC. You can configure this by going to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; kratos --&gt; config --&gt; session --&gt; lifespan.</p>
 <h2 id="custom-queries">Custom Queries<a class="headerlink" href="#custom-queries" title="Permanent link">¶</a></h2>
-<p>If you'd like to add your own custom queries to <a href="../alerts/">Alerts</a>, <a href="../cases/">Cases</a>, <a href="../dashboards/">Dashboards</a>, <a href="../detections/">Detections</a> or <a href="../hunt/">Hunt</a>, you can go to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; SOC --&gt; config --&gt; server --&gt; client and then select the specific app you'd like to modify. </p>
+<p>Superusers can add a query to the query list for all users directly from <a href="../alerts/">Alerts</a>, <a href="../cases/">Cases</a>, <a href="../dashboards/">Dashboards</a>, <a href="../detections/">Detections</a> or <a href="../hunt/">Hunt</a>. Run the query, then click the "Add to query list" button (the plus icon) at the right of the query bar. The button appears only after the query has been run, and only when it isn't already in the list. It opens the matching <code>queries</code> setting on the Configuration page, with the query you ran filled into the Query field of a new entry, and a notice that the value was filled in from a link. Type a Name, click Save, and enter a change note.</p>
+<ul>
+<li>Only the query text is saved, not filter toggles or the time range.</li>
+<li>On a Manager of Managers, the entry is always added to the manager's own list. To change a subgrid's list, use that subgrid's Configuration page.</li>
+<li>The button is hidden only when the query exactly matches an entry in the list (ignoring leading and trailing spaces). It can't catch every duplicate, such as an entry added by another admin that hasn't been applied yet, or one hidden by your license. Remove a duplicate entry on the Configuration page.</li>
+<li>If the query contains template delimiters such as <code>{{</code> or <code>{%</code>, it isn't filled in and can't be saved to the list. If it contains hidden characters, such as a zero-width joiner in some scripts or emoji, it isn't filled in, and a warning says why. Type the query into the entry without them.</li>
+<li>The new entry goes at the end of the list and appears after the change is applied and SOC restarts.</li>
+<li>If the query came from an entry that used <code>{myId}</code>, put <code>{myId}</code> back.</li>
+</ul>
+<p>To add a query by hand instead, for example when the link was refused, you can go to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; SOC --&gt; config --&gt; server --&gt; client and then select the specific app you'd like to modify. </p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>When you save your custom queries, SOC saves the entire list of queries (including our default queries included in the product). So if you update to a new version which includes new or updated default queries, you won't see the new or updated default queries since your custom query list is overriding the default.</p>
+<p>When you save your custom queries, SOC saves the entire list of queries (including our default queries included in the product). So if you update to a new version which includes new or updated default queries, you won't see the new or updated default queries since your custom query list is overriding the default. When the list is still at its default, the notice on the Configuration page repeats this warning.</p>
 </div>
 <p>To see all available fields for your queries, go down to the Events table and then click the arrow to expand a row. It will show all of the individual fields from that particular event.</p>
 <p>For example, suppose you want to add GeoIP information like <code>source.geo.region_iso_code</code> or <code>destination.geo.region_iso_code</code> to <a href="../alerts/">Alerts</a>. You would go to <a href="../administration/">Administration</a> --&gt; Configuration --&gt; SOC --&gt; config --&gt; server --&gt; client --&gt; alerts --&gt; queries and insert the following line wherever you want it show up in the query list:</p>
@@ -2811,7 +2820,7 @@
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-<script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+<script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
 <script src="../_static/theme_overrides.js"></script>
 <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
 document$.subscribe(()=>{ lightbox.reload(); });

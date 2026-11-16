@@ -7,7 +7,7 @@
 <link href="../influxdb/" rel="prev"/>
 <link href="../cyberchef/" rel="next"/>
 <link href="../images/logo/favicon.ico" rel="icon"/>
-<meta content="mkdocs-1.6.1, mkdocs-material-9.8.0" name="generator"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.8.1" name="generator"/>
 <title>PostgreSQL - Security Onion Documentation</title>
 <link href="../assets/stylesheets/main.57a0d79d.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.fb2fffe2.min.css" rel="stylesheet"/>
@@ -758,6 +758,15 @@
 <span class="md-ellipsis">
       
         Grid Metrics Snapshot
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#telegraf-partition-repair">
+<span class="md-ellipsis">
+      
+        Telegraf Partition Repair
       
     </span>
 </a>
@@ -2799,6 +2808,15 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#telegraf-partition-repair">
+<span class="md-ellipsis">
+      
+        Telegraf Partition Repair
+      
+    </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -2890,18 +2908,19 @@
 <p>Do not manually modify files in <code>/nsm/postgres/</code> as this could corrupt the database.</p>
 </div>
 <h2 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">¶</a></h2>
-<p>PostgreSQL uses a three-tier authentication model:</p>
+<p>PostgreSQL uses the following roles:</p>
 <ul>
 <li><strong><code>postgres</code> superuser</strong> — administrative operations only (schema init, role management during upgrade). The password is auto-generated and delivered to the container via the file mounted at <code>/run/secrets/postgres_password</code> using <code>POSTGRES_PASSWORD_FILE</code>.</li>
 <li><strong><code>so_postgres</code> application user</strong> — used by the Security Onion platform (the SOC assistant store) for day-to-day database access. The password is auto-generated and delivered via <code>/run/secrets/so_postgres_pass</code> using <code>SO_POSTGRES_PASS_FILE</code>.</li>
 <li><strong><code>so_telegraf_&lt;minion&gt;</code> per-minion users</strong> — one login role per grid minion, all members of the shared <code>so_telegraf</code> group. Each minion only sees its own credential via its per-minion pillar file.</li>
+<li><strong><code>so_maint_telegraf</code> maintenance user</strong> — the role pg_cron's Telegraf maintenance job and the Telegraf tools (<code>so-telegraf-repair</code>, <code>so-stats-show</code>) log in as. It has no password, can only log in over the container's local Unix socket, and acts with the privileges of the <code>so_telegraf</code> group role.</li>
 </ul>
 <p>All credentials are auto-generated and managed by Salt. Passwords are delivered to the container as mounted files rather than plaintext environment variables so they do not appear in <code>docker inspect</code> output.</p>
 <h2 id="encryption">Encryption<a class="headerlink" href="#encryption" title="Permanent link">¶</a></h2>
 <p>All TCP connections to PostgreSQL are encrypted with TLS using a certificate signed by the Security Onion CA at <code>/etc/pki/postgres.crt</code> / <code>/etc/pki/postgres.key</code>.</p>
 <p><code>pg_hba.conf</code> only permits:</p>
 <ul>
-<li><code>local</code> Unix-socket connections (used by the container's own admin scripts).</li>
+<li><code>local</code> Unix-socket connections, used by the container's own admin scripts and by pg_cron's scheduled jobs. These don't use TLS.</li>
 <li><code>hostssl</code> TLS-wrapped TCP connections with SCRAM-SHA-256 authentication.</li>
 </ul>
 <p>Plain-text <code>host</code> TCP connections are rejected, so a client using <code>sslmode=disable</code> cannot establish a session even if it has valid credentials.</p>
@@ -2939,7 +2958,7 @@
 </tr>
 </tbody>
 </table>
-<p>Infrastructure settings (TLS paths, <code>hba_file</code>, <code>listen_addresses</code>, preloaded extensions, etc.) are marked <strong>advanced</strong> — they are Salt-managed and should not be changed in normal operation.</p>
+<p>Infrastructure settings (TLS paths, <code>hba_file</code>, <code>listen_addresses</code>, <code>cron.host</code>, preloaded extensions, etc.) are marked <strong>advanced</strong> — they are Salt-managed and should not be changed in normal operation. <code>cron.host</code> tells pg_cron where to connect to run scheduled jobs; its only supported value is <code>/run/postgresql</code>, and any other value makes every scheduled job fail.</p>
 <h3 id="telegraf-output-selector">Telegraf output selector<a class="headerlink" href="#telegraf-output-selector" title="Permanent link">¶</a></h3>
 <p>The backend(s) Telegraf writes metrics to is configured under <a href="../administration/">Administration</a> --&gt; Configuration --&gt; telegraf --&gt; <strong>output</strong>:</p>
 <table>
@@ -2997,11 +3016,81 @@
 <a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>sudo<span class="w"> </span>so-stats-show<span class="w"> </span>&lt;hostname&gt;<span class="w"> </span><span class="c1"># a single host</span>
 </code></pre></div>
 <p>This tool requires <code>telegraf.output</code> to be <code>POSTGRES</code> or <code>BOTH</code>.</p>
+<h3 id="telegraf-partition-repair">Telegraf Partition Repair<a class="headerlink" href="#telegraf-partition-repair" title="Permanent link">¶</a></h3>
+<p><code>so-telegraf-repair</code> checks and repairs the partitions that hold <a href="#telegraf-metrics">Telegraf metrics</a>. If the hourly maintenance job stops running, new metrics land in each table's default partition instead of a dated partition, retention can no longer drop them, and <code>/nsm</code> keeps filling.</p>
+<p>Check the partitions without changing anything:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>sudo<span class="w"> </span>so-telegraf-repair<span class="w"> </span>--check
+</code></pre></div>
+<p><code>--check</code> prints a report for each Telegraf table and the number of default partitions holding rows. It reports that repair is needed when any default partition holds rows, a table has no partition for today, the pg_partman settings are out of date, the pg_cron launcher isn't running, or the maintenance job is missing or inactive. It also prints the status, time and message of the last maintenance run. That line is for information only and doesn't affect the exit code.</p>
+<table>
+<thead>
+<tr>
+<th>Exit code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>Healthy (or, without <code>--check</code>, the repair succeeded).</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>Repair is needed (or, without <code>--check</code>, the repair failed after it started changing data).</td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td>Skipped. <code>telegraf.output</code> isn't <code>POSTGRES</code> or <code>BOTH</code>, <code>so-postgres</code> isn't running, or the <code>so_telegraf</code> database or pg_partman isn't present. The output says which.</td>
+</tr>
+<tr>
+<td><code>3</code></td>
+<td>Could not check, for example because of a connection error.</td>
+</tr>
+</tbody>
+</table>
+<p>Run the repair:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>sudo<span class="w"> </span>so-telegraf-repair<span class="w">             </span><span class="c1"># prompts for confirmation</span>
+<a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a>sudo<span class="w"> </span>so-telegraf-repair<span class="w"> </span>--yes<span class="w">       </span><span class="c1"># no prompt</span>
+<a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a>sudo<span class="w"> </span>so-telegraf-repair<span class="w"> </span>--no-restart
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The repair permanently discards the rows in the default partitions. Those metrics can't be recovered.</p>
+</div>
+<ul>
+<li><code>--yes</code> skips the confirmation prompt.</li>
+<li><code>--no-restart</code> leaves a dead pg_cron launcher alone. Without it, the repair restarts <code>so-postgres</code> when the launcher isn't running.</li>
+<li>If the maintenance job or the <code>so_maint_telegraf</code> role is missing, the repair registers them first.</li>
+<li>The maintenance job is paused while the repair runs, and a successful repair always leaves it active, even if an admin had turned it off.</li>
+<li>If the output mentions a lock timeout, an hourly maintenance run was still holding the tables. Wait a few minutes and run the repair again.</li>
+</ul>
+<p>When a highstate or an upgrade finds rows in a default partition, it registers the maintenance job inactive on purpose and prints <code>WARNING: the Telegraf maintenance job is inactive; run 'sudo so-telegraf-repair'.</code> The job stays inactive until the repair runs, so nothing drains the default partitions before then.</p>
+<p><a href="../soup/">soup</a> runs the check, and the repair if needed, automatically when upgrading to 3.5.0. If the repair fails or can't run, soup lists the command to run in its final messages.</p>
+<h4 id="recovering-from-a-full-nsm">Recovering from a full <code>/nsm</code><a class="headerlink" href="#recovering-from-a-full-nsm" title="Permanent link">¶</a></h4>
+<p>If <code>/nsm</code> fills up, <code>so-postgres</code> can't start and the repair can't run. On a grid that was already nearly full, this can also happen during the upgrade itself, before soup reaches the repair. To recover:</p>
+<ol>
+<li>Free space on <code>/nsm</code>.</li>
+<li>
+<p>Run a highstate so <code>so-postgres</code> starts again:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>sudo<span class="w"> </span>salt-call<span class="w"> </span>state.highstate
+</code></pre></div>
+</li>
+<li>
+<p>Run the repair:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>sudo<span class="w"> </span>so-telegraf-repair
+</code></pre></div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you switch <code>telegraf.output</code> away from <code>POSTGRES</code> or <code>BOTH</code>, the metrics already stored in the <code>telegraf</code> schema stay in the <code>so_telegraf</code> database. No tool cleans them up, and <code>so-telegraf-repair</code> skips the grid.</p>
+</div>
 <h2 id="telegraf-metrics">Telegraf Metrics<a class="headerlink" href="#telegraf-metrics" title="Permanent link">¶</a></h2>
 <p>When <code>telegraf.output</code> is <code>POSTGRES</code> or <code>BOTH</code>, each grid minion writes its metrics directly to a shared <code>so_telegraf</code> database inside PostgreSQL using its own per-minion login role.</p>
 <ul>
 <li>Tables live in the <code>telegraf</code> schema and are partitioned daily by <a href="https://github.com/pgpartman/pg_partman"><code>pg_partman</code></a>.</li>
 <li>Retention is driven by the <code>postgres.telegraf.retention_days</code> configuration value; <code>pg_partman</code> drops expired partitions hourly via <a href="https://github.com/citusdata/pg_cron"><code>pg_cron</code></a>.</li>
+<li><a href="https://github.com/citusdata/pg_cron"><code>pg_cron</code></a> runs maintenance hourly at :17 over the container's Unix socket as <code>so_maint_telegraf</code>, with Telegraf's own privileges. See <a href="#telegraf-partition-repair">Telegraf Partition Repair</a> if it stops running.</li>
 <li>Tags and fields are stored as <code>jsonb</code> so the fixed-column-per-table limit (1600) does not constrain high-cardinality inputs.</li>
 <li>Each TCP connection is TLS-verified against the Security Onion CA (<code>sslmode=verify-full</code>).</li>
 </ul>
@@ -3038,14 +3127,14 @@
 <p>PostgreSQL is automatically backed up daily at 00:05. The backup uses <code>pg_dumpall</code> to capture all databases and roles, compressed with gzip, and stored 0600-mode at <code>/nsm/backup/so-postgres-backup-YYYY_MM_DD.sql.gz</code> with 7-day retention.</p>
 <p>See the <a href="../backup/">Backup</a> page for more.</p>
 <p>To manually create a backup:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>so-postgres<span class="w"> </span>pg_dumpall<span class="w"> </span>-U<span class="w"> </span>postgres<span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span>/nsm/backup/so-postgres-manual-backup.sql.gz
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>so-postgres<span class="w"> </span>pg_dumpall<span class="w"> </span>-U<span class="w"> </span>postgres<span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span>/nsm/backup/so-postgres-manual-backup.sql.gz
 </code></pre></div>
 <p>To restore from a backup:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>zcat<span class="w"> </span>/nsm/backup/so-postgres-backup-2026_04_21.sql.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-i<span class="w"> </span>so-postgres<span class="w"> </span>psql<span class="w"> </span>-U<span class="w"> </span>postgres
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>zcat<span class="w"> </span>/nsm/backup/so-postgres-backup-2026_04_21.sql.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-i<span class="w"> </span>so-postgres<span class="w"> </span>psql<span class="w"> </span>-U<span class="w"> </span>postgres
 </code></pre></div>
 <h2 id="diagnostic-logging">Diagnostic Logging<a class="headerlink" href="#diagnostic-logging" title="Permanent link">¶</a></h2>
 <p>PostgreSQL server logs land at <code>/opt/so/log/postgres/</code>. For container-level issues (startup problems, OOM, crashes), also check the <a href="../docker/">Docker</a> logs:</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>sudo<span class="w"> </span>docker<span class="w"> </span>logs<span class="w"> </span>so-postgres
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>sudo<span class="w"> </span>docker<span class="w"> </span>logs<span class="w"> </span>so-postgres
 </code></pre></div>
 <h2 id="more-information">More Information<a class="headerlink" href="#more-information" title="Permanent link">¶</a></h2>
 <div class="admonition note">
@@ -3122,7 +3211,7 @@
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.path", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-<script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+<script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
 <script src="../_static/theme_overrides.js"></script>
 <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
 document$.subscribe(()=>{ lightbox.reload(); });
