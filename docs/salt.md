@@ -62,10 +62,27 @@ Auto State Apply is configured at [Administration](administration.md) --> Config
 | `enabled` | `true` | Enables or disables Auto State Apply. When disabled, changes are picked up at the next scheduled highstate. |
 | `debounce_seconds` | `30` | How long a change must be quiet before it is applied. Multiple changes made within this window are combined into a single update. |
 | `drain_interval` | `15` | How often, in seconds, the manager checks for changes that are ready to be applied. |
-| `batch` | `25%` | How many nodes apply the state at once, either a number such as `10` or a percentage such as `25%`. |
+| `batch` | `10%` | How many nodes apply the state at once, either a number such as `10` or a percentage such as `25%`. |
 | `batch_wait` | `15` | How many seconds to wait between each batch of nodes. |
 
 Other than `enabled`, these are advanced settings, so you will only see them if you click the `Options` menu at the top of the page and then enable the `Show advanced settings` option.
+
+### Checking Results
+
+Auto State Apply logs each change it applies, and the result, to `/opt/so/log/salt/so-push-drainer.log` on the manager. The result is logged once the state has finished running, and includes the job ID (`jid`) and the settings or files that triggered it (`paths`):
+
+| Message | Level | Meaning |
+|---------|-------|---------|
+| `push succeeded` | `INFO` | The state was applied on the nodes that needed it. |
+| `push failed` | `ERROR` | The state failed or was rejected on at least one node. The message names the step that failed and, for each node, the states that failed. The change is applied at the next scheduled highstate. |
+| `push result unknown` | `WARNING` | The manager lost track of the state while it was running, for example because the salt-master service restarted. The state may still have completed. If it did not, the change is applied at the next scheduled highstate. |
+
+To see the full result of a job, look it up by its job ID:
+
+
+```
+sudo salt-run jobs.lookup_jid <jid>
+```
 
 ## Highstate Interval
 
