@@ -24,7 +24,7 @@ PostgreSQL uses the following roles:
 - **`postgres` superuser** — administrative operations only (schema init, role management during upgrade). The password is auto-generated and delivered to the container via the file mounted at `/run/secrets/postgres_password` using `POSTGRES_PASSWORD_FILE`.
 - **`so_postgres` application user** — used by the Security Onion platform (the SOC assistant store) for day-to-day database access. The password is auto-generated and delivered via `/run/secrets/so_postgres_pass` using `SO_POSTGRES_PASS_FILE`.
 - **`so_telegraf_<minion>` per-minion users** — one login role per grid minion, all members of the shared `so_telegraf` group. Each minion only sees its own credential via its per-minion pillar file.
-- **`so_maint_telegraf` maintenance user** — the role pg_cron's Telegraf maintenance job and the Telegraf tools (`so-telegraf-repair`, `so-stats-show`) log in as. It has no password, can only log in over the container's local Unix socket, and acts with the privileges of the `so_telegraf` group role.
+- **`so_maint_telegraf` maintenance user** — the role pg_cron's Telegraf maintenance job and the Telegraf tools (`so-telegraf-repair`, `so-stats-show`, `so-elasticsearch-indices-growth`, `so-elasticsearch-retention-estimate`) log in as. It has no password, can only log in over the container's local Unix socket, and acts with the privileges of the `so_telegraf` group role.
 
 All credentials are auto-generated and managed by Salt. Passwords are delivered to the container as mounted files rather than plaintext environment variables so they do not appear in `docker inspect` output.
 
@@ -61,8 +61,10 @@ The backend(s) Telegraf writes metrics to is configured under [Administration](a
 | Value | Behavior |
 |-------|----------|
 | `INFLUXDB` | Telegraf writes only to [InfluxDB](influxdb.md). |
-| `POSTGRES` | Telegraf writes only to PostgreSQL (`so_telegraf` database). |
-| `BOTH` | Telegraf dual-writes to both (useful during migration validation). |
+| `POSTGRES` | Telegraf writes only to PostgreSQL (`so_telegraf` database) and collects only the metrics Security Onion uses. |
+| `BOTH` | Telegraf dual-writes to both (useful during migration validation) and collects the full set of metrics. |
+
+If you rely on Telegraf metrics beyond what Security Onion uses, set `telegraf.output` to `BOTH`.
 
 ## Firewall
 
