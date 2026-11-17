@@ -2913,7 +2913,7 @@
 <li><strong><code>postgres</code> superuser</strong> — administrative operations only (schema init, role management during upgrade). The password is auto-generated and delivered to the container via the file mounted at <code>/run/secrets/postgres_password</code> using <code>POSTGRES_PASSWORD_FILE</code>.</li>
 <li><strong><code>so_postgres</code> application user</strong> — used by the Security Onion platform (the SOC assistant store) for day-to-day database access. The password is auto-generated and delivered via <code>/run/secrets/so_postgres_pass</code> using <code>SO_POSTGRES_PASS_FILE</code>.</li>
 <li><strong><code>so_telegraf_&lt;minion&gt;</code> per-minion users</strong> — one login role per grid minion, all members of the shared <code>so_telegraf</code> group. Each minion only sees its own credential via its per-minion pillar file.</li>
-<li><strong><code>so_maint_telegraf</code> maintenance user</strong> — the role pg_cron's Telegraf maintenance job and the Telegraf tools (<code>so-telegraf-repair</code>, <code>so-stats-show</code>) log in as. It has no password, can only log in over the container's local Unix socket, and acts with the privileges of the <code>so_telegraf</code> group role.</li>
+<li><strong><code>so_maint_telegraf</code> maintenance user</strong> — the role pg_cron's Telegraf maintenance job and the Telegraf tools (<code>so-telegraf-repair</code>, <code>so-stats-show</code>, <code>so-elasticsearch-indices-growth</code>, <code>so-elasticsearch-retention-estimate</code>) log in as. It has no password, can only log in over the container's local Unix socket, and acts with the privileges of the <code>so_telegraf</code> group role.</li>
 </ul>
 <p>All credentials are auto-generated and managed by Salt. Passwords are delivered to the container as mounted files rather than plaintext environment variables so they do not appear in <code>docker inspect</code> output.</p>
 <h2 id="encryption">Encryption<a class="headerlink" href="#encryption" title="Permanent link">¶</a></h2>
@@ -2975,14 +2975,15 @@
 </tr>
 <tr>
 <td><code>POSTGRES</code></td>
-<td>Telegraf writes only to PostgreSQL (<code>so_telegraf</code> database).</td>
+<td>Telegraf writes only to PostgreSQL (<code>so_telegraf</code> database) and collects only the metrics Security Onion uses.</td>
 </tr>
 <tr>
 <td><code>BOTH</code></td>
-<td>Telegraf dual-writes to both (useful during migration validation).</td>
+<td>Telegraf dual-writes to both (useful during migration validation) and collects the full set of metrics.</td>
 </tr>
 </tbody>
 </table>
+<p>If you rely on Telegraf metrics beyond what Security Onion uses, set <code>telegraf.output</code> to <code>BOTH</code>.</p>
 <h2 id="firewall">Firewall<a class="headerlink" href="#firewall" title="Permanent link">¶</a></h2>
 <p>PostgreSQL is only reachable from the manager itself and — within the docker bridge — from container peers. Access is enforced by the Security Onion <a href="../firewall/">firewall</a> via the <code>DOCKER-USER</code> iptables chain: <code>postgres</code> (5432) is granted only to the <code>manager</code>, <code>managerhype</code>, <code>managersearch</code>, <code>eval</code>, and <code>standalone</code> hostgroups. Sensors, heavynodes, search nodes, receivers, and other roles cannot reach the port.</p>
 <h2 id="management-commands">Management Commands<a class="headerlink" href="#management-commands" title="Permanent link">¶</a></h2>
