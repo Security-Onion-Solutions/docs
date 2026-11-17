@@ -24,7 +24,7 @@ PostgreSQL uses the following roles:
 - **`postgres` superuser** — administrative operations only (schema init, role management during upgrade). The password is auto-generated and delivered to the container via the file mounted at `/run/secrets/postgres_password` using `POSTGRES_PASSWORD_FILE`.
 - **`so_postgres` application user** — used by the Security Onion platform (the SOC assistant store) for day-to-day database access. The password is auto-generated and delivered via `/run/secrets/so_postgres_pass` using `SO_POSTGRES_PASS_FILE`.
 - **`so_telegraf_<minion>` per-minion users** — one login role per grid minion, all members of the shared `so_telegraf` group. Each minion only sees its own credential via its per-minion pillar file.
-- **`so_maint_telegraf` maintenance user** — the role pg_cron's Telegraf maintenance job and the Telegraf tools (`so-telegraf-repair`, `so-stats-show`) log in as. It has no password, can only log in over the container's local Unix socket, and acts with the privileges of the `so_telegraf` group role.
+- **`so_maint_telegraf` maintenance user** — the role pg_cron's Telegraf maintenance job and the Telegraf tools (`so-telegraf-repair`, `so-stats-show`, `so-elasticsearch-indices-growth`, `so-elasticsearch-retention-estimate`) log in as. It has no password, can only log in over the container's local Unix socket, and acts with the privileges of the `so_telegraf` group role.
 
 All credentials are auto-generated and managed by Salt. Passwords are delivered to the container as mounted files rather than plaintext environment variables so they do not appear in `docker inspect` output.
 
@@ -61,8 +61,8 @@ The backend(s) Telegraf writes metrics to is configured under [Administration](a
 | Value | Behavior |
 |-------|----------|
 | `INFLUXDB` | Telegraf writes only to [InfluxDB](influxdb.md). |
-| `POSTGRES` | Telegraf writes only to PostgreSQL (`so_telegraf` database). |
-| `BOTH` | Telegraf dual-writes to both (useful during migration validation). |
+| `POSTGRES` | Telegraf writes only to PostgreSQL (`so_telegraf` database) and collects only what the SOC Grid and Metrics pages use. See [What POSTGRES mode doesn't collect](#what-postgres-mode-doesnt-collect). |
+| `BOTH` | Telegraf dual-writes to both (useful during migration validation) and collects the full set of metrics, as InfluxDB needs. |
 
 ## Firewall
 
@@ -200,6 +200,22 @@ When `telegraf.output` is `POSTGRES` or `BOTH`, each grid minion writes its metr
 - Each TCP connection is TLS-verified against the Security Onion CA (`sslmode=verify-full`).
 
 Per-minion credentials are provisioned automatically when a minion's key is accepted — a Salt reactor creates the database role and writes the password into that minion's own pillar file. No admin intervention is required.
+
+### What POSTGRES mode doesn't collect
+
+When `telegraf.output` is `POSTGRES`, Telegraf skips metrics that neither SOC nor the built-in tools read, which keeps the `so_telegraf` database much smaller. It doesn't collect:
+
+- Elasticsearch node stats other than `indices`, `jvm` and `fs`: no `elasticsearch_http`, `elasticsearch_transport`, `elasticsearch_thread_pool`, `elasticsearch_breakers`, `elasticsearch_os` or `elasticsearch_process`.
+- Per-index cluster health (`elasticsearch_cluster_health_indices`). Cluster-level health (`elasticsearch_cluster_health`) is still collected.
+- `elasticsearch_clusterstats_indices`. `elasticsearch_clusterstats_nodes` is still collected.
+- Per-core `cpu` series. The `cpu-total` series is still collected.
+- `diskio` for partitions and stacked or removable devices (`dm-*`, `sr*`, `loop*`). Whole disks and `md*` software RAID devices are still collected.
+- `net` for virtual interfaces: container `veth*` interfaces, `docker*`, `lo`, and the Security Onion Docker networks (`sobridge` and `soauth` by default). Every physical interface, including the management interface, `bond0` and each bond member, is still collected.
+- `logstash_plugins`. `logstash_events` and `logstash_queue` are still collected.
+
+`INFLUXDB` and `BOTH` collect everything. If you need any of these metrics, set `telegraf.output` to `BOTH` to restore full collection.
+
+When a grid moves to `POSTGRES`, rows already stored for these metrics age out with `postgres.telegraf.retention_days`. Their tables remain in the `telegraf` schema, empty.
 
 ## Extensions
 

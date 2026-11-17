@@ -410,6 +410,16 @@ For maximum retention, our goal is to get the cluster balanced as close to the l
 
 In addition to global overrides, which apply to all indices, it is possible to tweak per index ILM policies. For example, perhaps Suricata alert data is something you need to keep in storage for 120 days. You can configure the so-suricata.alerts policy to have a delete phase of 120d. This comes at the cost of needing to reduce retention on other indices in order to free up the needed storage for Suricata alerts.
 
+!!! NOTE
+    
+    Both scripts read their history from the `elasticsearch_index_size` metric that [Telegraf](influxdb.md) collects hourly. Where they read it from depends on the Telegraf **output** setting (see [PostgreSQL](postgresql.md#telegraf-output-selector)). With `INFLUXDB` or `BOTH`, they read [InfluxDB](influxdb.md). With `POSTGRES`, they read the `so_telegraf` database in [PostgreSQL](postgresql.md):
+
+    - Run them on the manager, the only node running `so-postgres`. On any other node they stop with an error telling you to run them on the manager.
+    - History only goes back `postgres.telegraf.retention_days` days (14 by default). `so-elasticsearch-indices-growth` shows `n/a` for a window that has no data, so the 30-day column shows `n/a` unless retention is at least 31 days. `so-elasticsearch-retention-estimate` uses the longest window that has data, usually 7 days.
+    - Each data stream's size and growth are summed across every node that reports it (the manager and any heavynodes), so the figures are grid-wide.
+    - Right after installation, before Telegraf has collected the first hourly sample, `so-elasticsearch-indices-growth` prints only its header and `so-elasticsearch-retention-estimate` stops with an error naming `postgres.telegraf.retention_days` and `/opt/so/log/telegraf/telegraf.log`. The same error appears if no data is available in any window, for example because Telegraf isn't writing to PostgreSQL.
+    - If the scripts report that the `so_maint_telegraf` role is missing or misconfigured, run a highstate on the manager.
+
 !!! TIP
     
     Once you have ILM configured, you can consider increasing the cluster low / high watermark settings to allow Elasticsearch to use more of the available disk space. This can be done by going to [Administration](administration.md) --> Configuration --> Elasticsearch --> config --> cluster --> routing --> allocation --> disk --> watermark.
