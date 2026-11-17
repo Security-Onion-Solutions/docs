@@ -406,6 +406,14 @@ Estimated retention:     ~98 days (until configured low watermark setting)
  Low watermark breach estimated in ~42.47 days (2026-01-06)
 ```
 
+!!! NOTE
+    
+    With `telegraf.output` set to `POSTGRES` (see [PostgreSQL](postgresql.md#telegraf-output-selector)), run `so-elasticsearch-indices-growth` and `so-elasticsearch-retention-estimate` on the manager.
+
+    In `POSTGRES` mode, their history only goes back `postgres.telegraf.retention_days` days (14 by default), so the 30-day column shows `n/a` unless retention is at least 31.
+
+    In `POSTGRES` mode, they show no data right after installation until Telegraf's first hourly collection.
+
 For maximum retention, our goal is to get the cluster balanced as close to the low watermark setting as possible. In this example, it appears the cluster is gaining about 4GB worth of logs per day. However, ILM is currently deleting roughly 0.5GB per day, so overall storage usage is increasing. Without tweaking ILM configuration, this cluster will hit the watermark in roughly 42 days (total retention being roughly 98 days). To combat this, one option is to set a global_overrides for the delete phase as described above setting the delete phase to something like 90 days. This gives us a bit of space between the estimated retention and our actual delete phase.
 
 In addition to global overrides, which apply to all indices, it is possible to tweak per index ILM policies. For example, perhaps Suricata alert data is something you need to keep in storage for 120 days. You can configure the so-suricata.alerts policy to have a delete phase of 120d. This comes at the cost of needing to reduce retention on other indices in order to free up the needed storage for Suricata alerts.
