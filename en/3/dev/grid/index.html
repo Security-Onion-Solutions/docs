@@ -3477,7 +3477,7 @@
 <h1 id="grid">Grid<a class="headerlink" href="#grid" title="Permanent link">¶</a></h1>
 <p><a href="../security-onion-console/">Security Onion Console</a> includes a grid interface which allows you to quickly check the status of all nodes in your grid.</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/39_grid.png"><img alt="Image" src="../images/39_grid.png"/></a></p>
-<p>Starting at the top of the page, there is a <code>Grid EPS</code> value in the upper-right corner that shows the sum of all <code>Consumption EPS</code> measurements in the entire Grid. Below that you will find a list of all nodes in your grid.</p>
+<p>Starting at the top of the page, there is a <code>Grid EPS</code> value in the upper-right corner that shows the sum of the <code>Consumption EPS</code> of search nodes, managersearch and standalone nodes. Receivers are left out so events aren't counted twice, and heavynodes don't report <code>Consumption EPS</code>. Below that you will find a list of all nodes in your grid.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Please note that new nodes start off showing a red <code>Fault</code> and may take a few minutes to fully initialize before they show a green OK.</p>
@@ -3683,13 +3683,13 @@
 <td><strong>Pipeline &amp; Ingestion</strong></td>
 <td><strong>Grid / Consumption EPS</strong></td>
 <td><code>eps</code></td>
-<td>Events per second consumed across ingest components (<code>consumption_eps</code>).</td>
+<td>Average events per second consumed by each node, receivers included (<code>consumption_eps</code>).</td>
 </tr>
 <tr>
 <td></td>
-<td><strong>Logstash EPS</strong></td>
+<td><strong>Logstash Event Receive Rate</strong></td>
 <td><code>logstash_eps</code></td>
-<td>Inbound event throughput received by Logstash pipelines (<code>logstash_eps</code>).</td>
+<td>Events per second received by each Logstash pipeline.</td>
 </tr>
 <tr>
 <td></td>
@@ -3719,7 +3719,7 @@
 <td><strong>Detection Engines</strong></td>
 <td><strong>Packet Loss</strong></td>
 <td><code>loss</code></td>
-<td>Packet drop rates reported by Suricata (<code>suricata_loss</code>) and Zeek (<code>zeek_loss</code>).</td>
+<td>Percentage of packets dropped, as reported by Suricata (<code>suricata_loss</code>) and Zeek (<code>zeek_loss</code>).</td>
 </tr>
 <tr>
 <td></td>
@@ -3936,7 +3936,6 @@
 <li><code>redis_queue</code>: Queued events in Redis</li>
 <li><code>pcap_retention</code>: Buffer retention in days</li>
 <li><code>eps</code>: Consumption and production EPS</li>
-<li><code>logstash_eps</code>: Inbound event throughput received by Logstash</li>
 <li><code>failed_events</code>: Pipeline event failure counts</li>
 <li><code>loss</code>: Packet drop rates reported by Suricata and Zeek</li>
 <li><code>capture_loss</code>: Packet capture loss percentage reported by Zeek</li>
