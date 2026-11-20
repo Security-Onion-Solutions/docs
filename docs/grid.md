@@ -4,7 +4,7 @@
 
 ![Image](images/39_grid.png)
 
-Starting at the top of the page, there is a `Grid EPS` value in the upper-right corner that shows the sum of all `Consumption EPS` measurements in the entire Grid. Below that you will find a list of all nodes in your grid.
+Starting at the top of the page, there is a `Grid EPS` value in the upper-right corner that shows the sum of the `Consumption EPS` of search nodes, managersearch and standalone nodes. Receivers are left out so events aren't counted twice, and heavynodes don't report `Consumption EPS`. Below that you will find a list of all nodes in your grid.
 
 !!! WARNING
     
@@ -233,13 +233,13 @@ When viewing the **Metrics** tab, Security Onion displays a responsive dashboard
 | | **Network Traffic** | `net` | Throughput in bits per second for Management In (`traffic_man_in`), Management Out (`traffic_man_out`), and Monitor In (`traffic_mon_in`). |
 | | **Monitor Packet Drops** | `net_drops` | Packet drops observed on monitoring capture interfaces (`traffic_mon_drops`). |
 | | **PCAP Retention** | `pcap_retention` | Age and retention window of packet capture buffers stored on disk in days (`pcap_retention`). |
-| **Pipeline & Ingestion** | **Grid / Consumption EPS** | `eps` | Events per second consumed across ingest components (`consumption_eps`). |
-| | **Logstash EPS** | `logstash_eps` | Inbound event throughput received by Logstash pipelines (`logstash_eps`). |
+| **Pipeline & Ingestion** | **Grid / Consumption EPS** | `eps` | Average events per second consumed by each node, receivers included (`consumption_eps`). |
+| | **Logstash Event Receive Rate** | `logstash_eps` | Events per second received by each Logstash pipeline. |
 | | **Elasticsearch Storage Size** | `elasticsearch_size` | Total disk storage consumed by Elasticsearch indices (`elasticsearch_size`). |
 | | **Elasticsearch Document Count** | `elasticsearch_docs` | Total number of indexed documents across all Elasticsearch indices (`elasticsearch_docs`). |
 | | **Elasticsearch Ingest Time** | `elastic_ingest_time` | Average document indexing latency in milliseconds (`elastic_ingest_time`). |
 | | **Redis Queue Size** | `redis_queue` | Number of unparsed events queued in Redis awaiting pipeline processing (`redis_queue`). |
-| **Detection Engines** | **Packet Loss** | `loss` | Packet drop rates reported by Suricata (`suricata_loss`) and Zeek (`zeek_loss`). |
+| **Detection Engines** | **Packet Loss** | `loss` | Percentage of packets dropped, as reported by Suricata (`suricata_loss`) and Zeek (`zeek_loss`). |
 | | **Zeek Capture Loss** | `capture_loss` | Percentage of packet capture loss reported by Zeek (`zeek_capture_loss`). |
 | **Container Infrastructure**| **Container Uptime** | `container_uptime` | Running duration and uptime across Docker containers (`container_uptime`). |
 | | **Container CPU Usage** | `container_cpu` | Percentage of host CPU consumed by individual Docker containers (`container_cpu`). |
@@ -374,7 +374,6 @@ Numeric metrics evaluate quantitative hardware, network, and pipeline measuremen
   - `redis_queue`: Queued events in Redis
   - `pcap_retention`: Buffer retention in days
   - `eps`: Consumption and production EPS
-  - `logstash_eps`: Inbound event throughput received by Logstash
   - `failed_events`: Pipeline event failure counts
   - `loss`: Packet drop rates reported by Suricata and Zeek
   - `capture_loss`: Packet capture loss percentage reported by Zeek
