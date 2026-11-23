@@ -219,22 +219,28 @@ If historical metrics are not enabled on any node in the grid (e.g., `telegraf.o
 
 ### Metrics Dashboard & Graphs
 
-When viewing the **Metrics** tab, Security Onion displays a responsive dashboard containing up to **26 distinct metric panels** covering operating system resources, ingest pipelines, detection engines, Docker containers, and messaging queues:
+When viewing the **Metrics** tab, Security Onion displays a responsive dashboard containing up to **32 distinct metric panels** covering operating system resources, ingest pipelines, detection engines, Docker containers, and messaging queues:
 
 | Category | Panel Title | Metric Key | Description |
 |---|---|---|---|
 | **Host OS & System** | **CPU Usage** | `cpu` | Percentage of CPU utilized across all cores (`cpu_used`), tracking active workload versus idle time. |
 | | **Memory Usage** | `memory` | System RAM utilization percentage (`memory_used`). |
 | | **Load Average** | `load` | System load averages over 1-minute (`load1`), 5-minute (`load5`), and 15-minute (`load15`) intervals. |
+| | **Processes by State** | `processes` | Running, blocked and zombie processes. |
+| | **Total Processes** | `processes_total` | Total and sleeping processes. |
 | | **Swap Usage** | `swap` | System swap space utilization percentage (`swap_used`). |
 | | **I/O Wait** | `io_wait` | Percentage of CPU time spent waiting for outstanding disk or network I/O requests (`io_wait`). |
 | | **System Uptime** | `system_uptime` | Total operating system uptime in days and seconds (`system_uptime`). |
 | | **Disk Usage** | `disk` | Partition utilization percentage for the root OS filesystem (`/`) and the NSM data partition (`/nsm`). |
+| | **Disk Read** | `disk_read` | Bytes per second read from each disk. |
+| | **Disk Write** | `disk_write` | Bytes per second written to each disk. |
+| | **Disk Busy Time** | `disk_busy` | Percentage of time each disk was busy. |
 | | **Network Traffic** | `net` | Throughput in bits per second for Management In (`traffic_man_in`), Management Out (`traffic_man_out`), and Monitor In (`traffic_mon_in`). |
 | | **Monitor Packet Drops** | `net_drops` | Packet drops observed on monitoring capture interfaces (`traffic_mon_drops`). |
 | | **PCAP Retention** | `pcap_retention` | Age and retention window of packet capture buffers stored on disk in days (`pcap_retention`). |
 | **Pipeline & Ingestion** | **Grid / Consumption EPS** | `eps` | Average events per second consumed by each node, receivers included (`consumption_eps`). |
 | | **Logstash Event Receive Rate** | `logstash_eps` | Events per second received by each Logstash pipeline. |
+| | **Logstash Event Send Rate** | `logstash_out` | Events per second sent by each Logstash pipeline. |
 | | **Elasticsearch Storage Size** | `elasticsearch_size` | Total disk storage consumed by Elasticsearch indices (`elasticsearch_size`). |
 | | **Elasticsearch Document Count** | `elasticsearch_docs` | Total number of indexed documents across all Elasticsearch indices (`elasticsearch_docs`). |
 | | **Elasticsearch Ingest Time** | `elastic_ingest_time` | Average document indexing latency in milliseconds (`elastic_ingest_time`). |
