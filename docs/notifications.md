@@ -38,7 +38,7 @@ The notification icon is located in the upper-right corner of the SOC top naviga
 
 ### Viewing and Expanding Notifications
 
-Notifications are displayed chronologically, with the newest alerts appearing first. Each notification item includes:
+Notifications are displayed chronologically, with the newest alerts appearing first. Users with `notifications/read_all` (superusers and auditors) also see notifications targeted at other users. Each notification item includes:
 
 - **Severity Badge**: Color-coded text indicating the severity level (`CRITICAL`, `HIGH`, `MEDIUM`, `LOW`, or `INFO`).
 - **Timestamp**: Relative time since the alert was generated (e.g., "5 minutes ago", "2 hours ago").
