@@ -78,6 +78,10 @@ Click the vertical ellipsis (**...**) icon in the upper-right corner of the noti
     - All per-user read and dismissal audit tracking for that notification is permanently removed.
     - If your organization requires extended visibility across multiple shifts or audit retention, increase the retention window by configuring `dismissedPruneDays` in [Administration](administration.md) -> Configuration (`SOC > config > server > modules > notification > dismissedPruneDays`).
 
+### Reading Notifications with Onion AI
+
+[Onion AI](onion-ai.md) can read your notifications with its `query_notifications` tool, for example to summarize what arrived overnight. It sees the notifications the bell shows you, marks none of them as read, and requires the `notifications/read` permission. Automations can't read notifications in this release. Superusers also see notifications targeted at other users, labeled as sent to someone else.
+
 
 ## Accessing the Notifications Administration Screen
 
@@ -96,9 +100,11 @@ Because notification destinations and activation schedules are persisted central
 
 Security Onion uses [Role-Based Access Control (RBAC)](rbac.md) to govern notification interactions across different user personas:
 
-- **`superuser`**: Has full administrative control to add, edit, and remove destinations and schedules (`config/write`), send ad-hoc and test notifications (`notifications/write`), view notifications and user audit logs (`notifications/read`, `notifications/read_all`), and toggle read or dismissed states.
+- **`superuser`**: Has full administrative control to add, edit, and remove destinations and schedules (`config/write`), send ad-hoc and test notifications (`notifications/write`), view their notifications (`notifications/read`) and every notification, including ones targeted at other users, along with user audit logs (`notifications/read_all`), and toggle read or dismissed states.
 - **`analyst` and `limited-analyst`**: Possess the `notifications/write` privilege, allowing them to dispatch ad-hoc manual notifications via the API or command line and manage their personal read/dismissed states in the SOC Bell panel. However, they cannot modify administrative destinations or schedules.
-- **`auditor` and `limited-auditor`**: Possess the `notifications/read` privilege, enabling them to view their personal notifications in the SOC Bell panel. Full auditors additionally possess `notifications/read_all`, enabling them to review audit history of which users viewed or dismissed specific notifications.
+- **`auditor` and `limited-auditor`**: Possess the `notifications/read` privilege, enabling them to view their personal notifications in the SOC Bell panel. Full auditors additionally possess `notifications/read_all`, enabling them to see every notification in the SOC Bell panel, including ones targeted at other users, and to review audit history of which users viewed or dismissed specific notifications.
+
+Users who can send notifications (`notifications/write`) can also list destination names and routing (type, whether enabled, severities, and schedules, but no destination settings) through [Onion AI](onion-ai.md). That list is sent to the configured model provider, so destination names shouldn't contain sensitive text.
 
 ## Severities and Activation Schedules
 
