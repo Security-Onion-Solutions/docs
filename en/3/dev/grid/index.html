@@ -3608,7 +3608,7 @@
 </ol>
 <p>If historical metrics are not enabled on any node in the grid (e.g., <code>telegraf.output</code> is set to <code>INFLUXDB</code>), the <strong>Metrics</strong> tab remains hidden on the top navigation bar of the Grid screen.</p>
 <h3 id="metrics-dashboard-graphs">Metrics Dashboard &amp; Graphs<a class="headerlink" href="#metrics-dashboard-graphs" title="Permanent link">¶</a></h3>
-<p>When viewing the <strong>Metrics</strong> tab, Security Onion displays a responsive dashboard containing up to <strong>26 distinct metric panels</strong> covering operating system resources, ingest pipelines, detection engines, Docker containers, and messaging queues:</p>
+<p>When viewing the <strong>Metrics</strong> tab, Security Onion displays a responsive dashboard containing up to <strong>32 distinct metric panels</strong> covering operating system resources, ingest pipelines, detection engines, Docker containers, and messaging queues:</p>
 <table>
 <thead>
 <tr>
@@ -3639,6 +3639,18 @@
 </tr>
 <tr>
 <td></td>
+<td><strong>Processes by State</strong></td>
+<td><code>processes</code></td>
+<td>Running, blocked and zombie processes.</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total Processes</strong></td>
+<td><code>processes_total</code></td>
+<td>Total and sleeping processes.</td>
+</tr>
+<tr>
+<td></td>
 <td><strong>Swap Usage</strong></td>
 <td><code>swap</code></td>
 <td>System swap space utilization percentage (<code>swap_used</code>).</td>
@@ -3660,6 +3672,24 @@
 <td><strong>Disk Usage</strong></td>
 <td><code>disk</code></td>
 <td>Partition utilization percentage for the root OS filesystem (<code>/</code>) and the NSM data partition (<code>/nsm</code>).</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Disk Read</strong></td>
+<td><code>disk_read</code></td>
+<td>Bytes per second read from each disk.</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Disk Write</strong></td>
+<td><code>disk_write</code></td>
+<td>Bytes per second written to each disk.</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Disk Busy Time</strong></td>
+<td><code>disk_busy</code></td>
+<td>Percentage of time each disk was busy.</td>
 </tr>
 <tr>
 <td></td>
@@ -3690,6 +3720,12 @@
 <td><strong>Logstash Event Receive Rate</strong></td>
 <td><code>logstash_eps</code></td>
 <td>Events per second received by each Logstash pipeline.</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Logstash Event Send Rate</strong></td>
+<td><code>logstash_out</code></td>
+<td>Events per second sent by each Logstash pipeline.</td>
 </tr>
 <tr>
 <td></td>
