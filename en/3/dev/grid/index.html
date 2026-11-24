@@ -4004,7 +4004,8 @@
 <li><strong>Available Operators</strong>:</li>
 <li><code>==</code>: Is (equal)</li>
 <li><code>!=</code>: Is not (not equal)</li>
-<li><strong>Threshold Input &amp; Validation</strong>: Rendered as a select dropdown with options <code>true</code> and <code>false</code>. The backend also accepts <code>1</code> and <code>0</code>. Freeform strings or numbers other than <code>0</code> and <code>1</code> are rejected.</li>
+<li><strong>Threshold Input &amp; Validation</strong>: Rendered as a select dropdown with options <code>true</code> and <code>false</code>. The backend also accepts <code>1</code> and <code>0</code> and stores them as <code>true</code> and <code>false</code>. Freeform strings or numbers other than <code>0</code> and <code>1</code> are rejected.</li>
+<li><strong>Operator Validation</strong>: Only <code>==</code> and <code>!=</code> are accepted for boolean metrics. An existing alarm that uses another operator can't be saved until its operator is changed to <code>==</code> or <code>!=</code>, though it can still be deleted.</li>
 </ul>
 <h4 id="3-string-metrics-string">3. String Metrics (<code>string</code>)<a class="headerlink" href="#3-string-metrics-string" title="Permanent link">¶</a></h4>
 <p>String metrics evaluate categorical health statuses and text states:</p>
