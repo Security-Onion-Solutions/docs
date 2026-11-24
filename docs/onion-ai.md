@@ -121,7 +121,7 @@ The assistant currently runs in the cloud. In order to reference local informati
 - **update_detection_content**: If a detection needs its content updated, the assistant can use this tool to update the content and keep the same metadata, overrides, and enabled status.
 - **update_overrides**: This tool allows the assistant to update existing overrides for detections.
 - **query_notifications**: This read-only tool allows the assistant to read your [notifications](notifications.md) as the notification bell shows them, without marking them read.
-- **list_destinations**: This read-only tool allows the assistant to list notification destinations, without their settings, so it can send to the ones you name.
+- **list_destinations**: This read-only tool allows the assistant to list notification destinations for administrators, without their settings.
 - **send_notification**: This tool allows the assistant to send a notification to every enabled destination, or only to the destinations you name.
 
 ### Permissions
