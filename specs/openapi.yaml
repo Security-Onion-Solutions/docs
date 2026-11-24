@@ -271,6 +271,11 @@ components:
           description: Threshold value for comparison (numeric, string, or boolean).
           example: "80"
           type: string
+        thresholdUnits:
+          description: The unit the threshold is expressed in, set by the server
+            from the metric. Ignored on input.
+          example: pps
+          type: string
       type: object
     model.AlarmMetricInfo:
       description: AlarmMetricInfo provides metadata for an available grid metric
@@ -3642,9 +3647,10 @@ components:
             node's management network interface
           example: 0.030966666666666667
           type: number
-        trafficMonInDropsMbs:
-          description: The inbound traffic packet drop rate, in megabytes per second,
-            to this node's monitor network interface
+        trafficMonInDropsPps:
+          description: The rate of inbound packets dropped by this node's monitor
+            network interface, in packets per second. Replaces trafficMonInDropsMbs,
+            removed in 3.5.0.
           example: 0
           type: number
         trafficMonInMbs:
