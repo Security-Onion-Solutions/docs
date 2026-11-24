@@ -3056,6 +3056,8 @@
 <li><strong>query_cases</strong>: This tool allows the assistant to query cases from your local Security Onion instance similar to how you would use the <a href="../cases/">Cases</a> page.</li>
 <li><strong>query_detections</strong>: This tool allows the assistant to query detections from your local Security Onion instance similar to how you would use the <a href="../detections/">Detections</a> page.</li>
 <li><strong>get_playbooks</strong>: When the assistant uses this read-only tool, SOC will gather the playbooks, execute their queries, and return all the data ready for analysis. This tool is read-only.</li>
+<li><strong>query_notifications</strong>: This read-only tool allows the assistant to read your <a href="../notifications/">notifications</a> as the notification bell shows them, without marking them read.</li>
+<li><strong>list_destinations</strong>: This read-only tool allows the assistant to list notification destinations, without their settings, when your permissions allow.</li>
 <li><strong>ack_alerts</strong>: The assistant can use this tool to query and acknowledge <a href="../alerts/">Alerts</a> in your local Security Onion instance.</li>
 <li><strong>escalate_alerts</strong>: Similar to the ack tool, this tool allows the assistant to query for alerts and escalate them to a new case.</li>
 <li><strong>create_detection</strong>: The assistant will use this tool to create new detections in your local Security Onion instance.</li>
@@ -3063,6 +3065,7 @@
 <li><strong>toggle_detections</strong>: The assistant can use this tool to enable or disable existing detections in your local Security Onion instance.</li>
 <li><strong>update_detection_content</strong>: If a detection needs its content updated, the assistant can use this tool to update the content and keep the same metadata, overrides, and enabled status.</li>
 <li><strong>update_overrides</strong>: This tool allows the assistant to update existing overrides for detections.</li>
+<li><strong>send_notification</strong>: This tool allows the assistant to send a notification to every enabled destination, or only to the destinations you name.</li>
 </ul>
 <h3 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">¶</a></h3>
 <p>When the assistant requests any of these tools, the user will be prompted to approve or reject the usage. Approval will have the tool run and the result entered into the conversation followed by a response from the AI. Rejection will notify the assistant and allow it to respond.</p>
@@ -3072,7 +3075,11 @@
 <li>query_events</li>
 <li>query_cases</li>
 <li>query_detections</li>
+<li>query_reports</li>
+<li>query_notifications</li>
+<li>list_destinations</li>
 <li>get_playbooks</li>
+<li>Delegations to other agents (<code>delegate_to_*</code>)</li>
 </ul>
 <p>By default, permission must be granted for each tool request. However, users can enable auto-approval for read-only tools by toggling the slider in the Options dropdown at the top of the assistant page. With the option enabled, read-only tools will auto approve, while tools that modify data will still request explicit user approval.</p>
 <div class="admonition note">

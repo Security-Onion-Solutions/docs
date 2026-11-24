@@ -2293,6 +2293,15 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reading-notifications-with-onion-ai">
+<span class="md-ellipsis">
+      
+        Reading Notifications with Onion AI
+      
+    </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -2762,6 +2771,15 @@
     </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reading-notifications-with-onion-ai">
+<span class="md-ellipsis">
+      
+        Reading Notifications with Onion AI
+      
+    </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -2998,7 +3016,7 @@
 <li><strong>Opening the Popup</strong>: Click the envelope icon to toggle the notification popup panel. The panel header displays the total count of loaded notifications (e.g., <code>Notifications (5)</code>).</li>
 </ul>
 <h3 id="viewing-and-expanding-notifications">Viewing and Expanding Notifications<a class="headerlink" href="#viewing-and-expanding-notifications" title="Permanent link">¶</a></h3>
-<p>Notifications are displayed chronologically, with the newest alerts appearing first. Each notification item includes:</p>
+<p>Notifications are displayed chronologically, with the newest alerts appearing first. When your permissions allow, you also see notifications targeted at other users. Each notification item includes:</p>
 <ul>
 <li><strong>Severity Badge</strong>: Color-coded text indicating the severity level (<code>CRITICAL</code>, <code>HIGH</code>, <code>MEDIUM</code>, <code>LOW</code>, or <code>INFO</code>).</li>
 <li><strong>Timestamp</strong>: Relative time since the alert was generated (e.g., "5 minutes ago", "2 hours ago").</li>
@@ -3037,6 +3055,9 @@
 - If your organization requires extended visibility across multiple shifts or audit retention, increase the retention window by configuring <code>dismissedPruneDays</code> in <a href="../administration/">Administration</a> -&gt; Configuration (<code>SOC &gt; config &gt; server &gt; modules &gt; notification &gt; dismissedPruneDays</code>).</p>
 </li>
 </ul>
+<h3 id="reading-notifications-with-onion-ai">Reading Notifications with Onion AI<a class="headerlink" href="#reading-notifications-with-onion-ai" title="Permanent link">¶</a></h3>
+<p><a href="../onion-ai/">Onion AI</a> can read your notifications with its <code>query_notifications</code> tool, for example to summarize what arrived overnight. It sees the notifications the bell shows you and marks none of them as read. Automations can't read notifications. When your permissions allow, it also sees notifications targeted at other users, labeled as sent to someone else.</p>
+<p>Onion AI limits the amount of data included in each notification response. To change these limits, go to <a href="../administration/">Administration</a> -&gt; Configuration, enable <strong>Show advanced settings</strong>, and edit the settings under <code>SOC &gt; config &gt; server &gt; modules &gt; assistant &gt; tools &gt; queryNotifications</code>.</p>
 <h2 id="accessing-the-notifications-administration-screen">Accessing the Notifications Administration Screen<a class="headerlink" href="#accessing-the-notifications-administration-screen" title="Permanent link">¶</a></h2>
 <p>The Notifications administration interface is located in the Security Onion Console at <strong>Administration</strong> -&gt; <strong>Notifications</strong> (<code>/#/notifications</code>).</p>
 <h3 id="access-requirements">Access Requirements<a class="headerlink" href="#access-requirements" title="Permanent link">¶</a></h3>
@@ -3053,6 +3074,7 @@
 <li><strong><code>analyst</code> and <code>limited-analyst</code></strong>: Possess the <code>notifications/write</code> privilege, allowing them to dispatch ad-hoc manual notifications via the API or command line and manage their personal read/dismissed states in the SOC Bell panel. However, they cannot modify administrative destinations or schedules.</li>
 <li><strong><code>auditor</code> and <code>limited-auditor</code></strong>: Possess the <code>notifications/read</code> privilege, enabling them to view their personal notifications in the SOC Bell panel. Full auditors additionally possess <code>notifications/read_all</code>, enabling them to review audit history of which users viewed or dismissed specific notifications.</li>
 </ul>
+<p>Through <a href="../onion-ai/">Onion AI</a>, only administrators who can manage destinations can list them, without their settings. That list is sent to the configured model provider, so destination names shouldn't contain sensitive text. Other users can still ask Onion AI to send to a destination by its name, when their permissions allow.</p>
 <h2 id="severities-and-activation-schedules">Severities and Activation Schedules<a class="headerlink" href="#severities-and-activation-schedules" title="Permanent link">¶</a></h2>
 <p>Notifications utilize two primary filtering mechanisms to ensure that alerts reach the appropriate teams at the proper times: <strong>Severities</strong> and <strong>Activation Schedules</strong>.</p>
 <h3 id="severities">Severities<a class="headerlink" href="#severities" title="Permanent link">¶</a></h3>
