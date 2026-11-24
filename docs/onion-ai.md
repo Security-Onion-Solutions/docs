@@ -113,6 +113,8 @@ The assistant currently runs in the cloud. In order to reference local informati
 - **query_cases**: This tool allows the assistant to query cases from your local Security Onion instance similar to how you would use the [Cases](cases.md) page.
 - **query_detections**: This tool allows the assistant to query detections from your local Security Onion instance similar to how you would use the [Detections](detections.md) page.
 - **get_playbooks**: When the assistant uses this read-only tool, SOC will gather the playbooks, execute their queries, and return all the data ready for analysis. This tool is read-only.
+- **query_notifications**: This read-only tool allows the assistant to read your [notifications](notifications.md) as the notification bell shows them, without marking them read.
+- **list_destinations**: This read-only tool allows the assistant to list notification destinations, without their settings, when your permissions allow.
 - **ack_alerts**: The assistant can use this tool to query and acknowledge [Alerts](alerts.md) in your local Security Onion instance.
 - **escalate_alerts**: Similar to the ack tool, this tool allows the assistant to query for alerts and escalate them to a new case.
 - **create_detection**: The assistant will use this tool to create new detections in your local Security Onion instance.
@@ -120,6 +122,7 @@ The assistant currently runs in the cloud. In order to reference local informati
 - **toggle_detections**: The assistant can use this tool to enable or disable existing detections in your local Security Onion instance.
 - **update_detection_content**: If a detection needs its content updated, the assistant can use this tool to update the content and keep the same metadata, overrides, and enabled status.
 - **update_overrides**: This tool allows the assistant to update existing overrides for detections.
+- **send_notification**: This tool allows the assistant to send a notification to every enabled destination, or only to the destinations you name.
 
 ### Permissions
 
@@ -132,7 +135,11 @@ The following read-only tools can be used by the assistant without requiring exp
 - query_events
 - query_cases
 - query_detections
+- query_reports
+- query_notifications
+- list_destinations
 - get_playbooks
+- Delegations to other agents (`delegate_to_*`)
 
 By default, permission must be granted for each tool request. However, users can enable auto-approval for read-only tools by toggling the slider in the Options dropdown at the top of the assistant page. With the option enabled, read-only tools will auto approve, while tools that modify data will still request explicit user approval.
 

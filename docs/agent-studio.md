@@ -46,7 +46,7 @@ Clicking the **Screwdriver and Wrench Icon** in the top-right toolbar opens the 
 
 ## Agents
 
-The **Agents** tab catalogs all available AI agents, including built-in system agents (Orchestrator, Investigator, AlertTriage, Notifier, and DetectionEngineer) and custom agents created by administrators.
+The **Agents** tab catalogs all available AI agents, including built-in system agents (Orchestrator, Investigator, AlertTriage, and DetectionEngineer) and custom agents created by administrators.
 
 ### Agents Table Overview
 
