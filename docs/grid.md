@@ -413,7 +413,8 @@ Boolean metrics evaluate binary operational states and feature toggles:
 - **Available Operators**:
   - `==`: Is (equal)
   - `!=`: Is not (not equal)
-- **Threshold Input & Validation**: Rendered as a select dropdown with options `true` and `false`. The backend also accepts `1` and `0`. Freeform strings or numbers other than `0` and `1` are rejected.
+- **Threshold Input & Validation**: Rendered as a select dropdown with options `true` and `false`. The backend also accepts `1` and `0` and stores them as `true` and `false`. Freeform strings or numbers other than `0` and `1` are rejected.
+- **Operator Validation**: Only `==` and `!=` are accepted for boolean metrics. An existing alarm that uses another operator can't be saved until its operator is changed to `==` or `!=`, though it can still be deleted.
 
 #### 3. String Metrics (`string`)
 

@@ -6,6 +6,11 @@ If you are upgrading to Security Onion 3.4 and get a warning that says ``The fol
 
 ### Release History
 
+3.5.0 Changes
+-------------
+
+- FIX: Alarms on `os_needs_restart`, `gmd_enabled`, `lks_enabled` or `fps_enabled` with a threshold of `1` or `0` now evaluate correctly. These alarms may trigger or clear, and send notifications, right after the upgrade, so review them before upgrading.
+
 3.4.0 [20261102] Changes
 ------------------------
 
