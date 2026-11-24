@@ -82,6 +82,8 @@ Click the vertical ellipsis (**...**) icon in the upper-right corner of the noti
 
 [Onion AI](onion-ai.md) can read your notifications with its `query_notifications` tool, for example to summarize what arrived overnight. It sees the notifications the bell shows you, marks none of them as read, and requires the `notifications/read` permission. Automations can't read notifications in this release. Superusers also see notifications targeted at other users, labeled as sent to someone else.
 
+By default, Onion AI reads the 10 newest notifications, and at most 50 in one call. Each summary is shortened to 1,000 characters, each field value to 200, and each notification to 25 fields, links, and attachment names. To change these limits, go to [Administration](administration.md) -> Configuration, enable **Show advanced settings**, and edit the settings under `SOC > config > server > modules > assistant > tools > queryNotifications`.
+
 
 ## Accessing the Notifications Administration Screen
 
