@@ -38,7 +38,7 @@ The notification icon is located in the upper-right corner of the SOC top naviga
 
 ### Viewing and Expanding Notifications
 
-Notifications are displayed chronologically, with the newest alerts appearing first. Users with `notifications/read_all` (superusers and auditors) also see notifications targeted at other users. Each notification item includes:
+Notifications are displayed chronologically, with the newest alerts appearing first. When your permissions allow, you also see notifications targeted at other users. Each notification item includes:
 
 - **Severity Badge**: Color-coded text indicating the severity level (`CRITICAL`, `HIGH`, `MEDIUM`, `LOW`, or `INFO`).
 - **Timestamp**: Relative time since the alert was generated (e.g., "5 minutes ago", "2 hours ago").
@@ -80,9 +80,9 @@ Click the vertical ellipsis (**...**) icon in the upper-right corner of the noti
 
 ### Reading Notifications with Onion AI
 
-[Onion AI](onion-ai.md) can read your notifications with its `query_notifications` tool, for example to summarize what arrived overnight. It sees the notifications the bell shows you, marks none of them as read, and requires the `notifications/read` permission. Automations can't read notifications in this release. Superusers also see notifications targeted at other users, labeled as sent to someone else.
+[Onion AI](onion-ai.md) can read your notifications with its `query_notifications` tool, for example to summarize what arrived overnight. It sees the notifications the bell shows you and marks none of them as read. Automations can't read notifications. When your permissions allow, it also sees notifications targeted at other users, labeled as sent to someone else.
 
-By default, Onion AI reads the 10 newest notifications, and at most 50 in one call. Each summary is shortened to 1,000 characters, each field value to 200, and each notification to 25 fields, links, and attachment names. To change these limits, go to [Administration](administration.md) -> Configuration, enable **Show advanced settings**, and edit the settings under `SOC > config > server > modules > assistant > tools > queryNotifications`.
+Onion AI limits the amount of data included in each notification response. To change these limits, go to [Administration](administration.md) -> Configuration, enable **Show advanced settings**, and edit the settings under `SOC > config > server > modules > assistant > tools > queryNotifications`.
 
 
 ## Accessing the Notifications Administration Screen
@@ -102,11 +102,11 @@ Because notification destinations and activation schedules are persisted central
 
 Security Onion uses [Role-Based Access Control (RBAC)](rbac.md) to govern notification interactions across different user personas:
 
-- **`superuser`**: Has full administrative control to add, edit, and remove destinations and schedules (`config/write`), send ad-hoc and test notifications (`notifications/write`), view their notifications (`notifications/read`) and every notification, including ones targeted at other users, along with user audit logs (`notifications/read_all`), and toggle read or dismissed states.
+- **`superuser`**: Has full administrative control to add, edit, and remove destinations and schedules (`config/write`), send ad-hoc and test notifications (`notifications/write`), view notifications and user audit logs (`notifications/read`, `notifications/read_all`), and toggle read or dismissed states.
 - **`analyst` and `limited-analyst`**: Possess the `notifications/write` privilege, allowing them to dispatch ad-hoc manual notifications via the API or command line and manage their personal read/dismissed states in the SOC Bell panel. However, they cannot modify administrative destinations or schedules.
-- **`auditor` and `limited-auditor`**: Possess the `notifications/read` privilege, enabling them to view their personal notifications in the SOC Bell panel. Full auditors additionally possess `notifications/read_all`, enabling them to see every notification in the SOC Bell panel, including ones targeted at other users, and to review audit history of which users viewed or dismissed specific notifications.
+- **`auditor` and `limited-auditor`**: Possess the `notifications/read` privilege, enabling them to view their personal notifications in the SOC Bell panel. Full auditors additionally possess `notifications/read_all`, enabling them to review audit history of which users viewed or dismissed specific notifications.
 
-Through [Onion AI](onion-ai.md), only superusers (`config/read`) can list destination names and routing (type, whether enabled, severities, and schedules, but no destination settings). That list is sent to the configured model provider, so destination names shouldn't contain sensitive text. Other users who can send notifications (`notifications/write`) can still ask Onion AI to send to a destination by its name.
+Through [Onion AI](onion-ai.md), only administrators who can manage destinations can list them, without their settings. That list is sent to the configured model provider, so destination names shouldn't contain sensitive text. Other users can still ask Onion AI to send to a destination by its name, when their permissions allow.
 
 ## Severities and Activation Schedules
 
