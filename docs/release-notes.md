@@ -4,12 +4,9 @@
 
 If you are upgrading to Security Onion 3.4 and get a warning that says ``The following node(s) do NOT support the x86-64-v3 CPU instruction set``, then you can safely override the warning and continue with the upgrade. The warning will be removed in the next version.
 
+If you are upgrading to Security Onion 3.5 and have grid alarms on Restart Required, GMD, LKS or FPS (`os_needs_restart`, `gmd_enabled`, `lks_enabled`, `fps_enabled`) whose threshold is `1` or `0`, then review those alarms before upgrading. They now evaluate correctly, so they may trigger or clear, and send notifications, right after the upgrade.
+
 ### Release History
-
-3.5.0 Changes
--------------
-
-- FIX: Alarms on `os_needs_restart`, `gmd_enabled`, `lks_enabled` or `fps_enabled` with a threshold of `1` or `0` now evaluate correctly. These alarms may trigger or clear, and send notifications, right after the upgrade, so review them before upgrading.
 
 3.4.0 [20261102] Changes
 ------------------------
