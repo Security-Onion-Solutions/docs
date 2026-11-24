@@ -50,6 +50,7 @@ See the table below which explains the specific Security Onion privileges grante
 | Manage global Onion AI memories | X | | | | | | |
 | Manage all users' Onion AI memories | X | | | | | | |
 | View automations | X | X | | X | | | |
+| Run and stop automations | X | | | | | | |
 | View notifications | X | X | X | X | X | | |
 | View all notifications | X | | | X | | | |
 | Manage notifications | X | X | X | | | | |
