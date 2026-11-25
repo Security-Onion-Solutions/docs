@@ -2574,6 +2574,15 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#start-and-stop">
+<span class="md-ellipsis">
+      
+        Start and Stop
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#alert-triage">
 <span class="md-ellipsis">
       
@@ -2878,6 +2887,15 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#start-and-stop">
+<span class="md-ellipsis">
+      
+        Start and Stop
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#alert-triage">
 <span class="md-ellipsis">
       
@@ -3081,6 +3099,7 @@
 </ul>
 <h2 id="automations_1">Automations<a class="headerlink" href="#automations_1" title="Permanent link">¶</a></h2>
 <p>The <strong>Automations</strong> tab configures recurring, autonomous agent workflows that execute in the background without requiring user interaction. A scheduler in the Security Onion Console checks which automations are due, creates work items for them, and hands each work item to an agent in its own session. A primary example is the built-in <a href="#alert-triage">Alert Triage</a> automation.</p>
+<p>Turning an automation off also stops its in-flight run. See <a href="#start-and-stop">Start and Stop</a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><strong>Do not enable Alert Triage on an untuned ruleset.</strong></p>
@@ -3093,8 +3112,9 @@
 <li><strong>Kind</strong>: The automation template or category (e.g., <code>Alert Triage</code>).</li>
 <li><strong>Interval</strong>: How frequently the automation runs (e.g., <code>60 seconds</code>, <code>5 minutes</code>).</li>
 <li><strong>Handling Agent</strong>: The assigned agent responsible for executing the workflow.</li>
-<li><strong>Status</strong>: The state of the automation's latest run: <strong>Idle</strong>, <strong>Queued</strong>, <strong>Running</strong>, or <strong>Failed</strong>.</li>
-<li><strong>Enabled</strong>: Switch to enable or disable the automation.</li>
+<li><strong>Status</strong>: The state of the automation's latest run: <strong>Idle</strong>, <strong>Queued</strong>, <strong>Running</strong>, <strong>Stopping</strong>, <strong>Stopped</strong>, or <strong>Failed</strong>.</li>
+<li><strong>Auto Start</strong>: Switch to turn the automation's schedule on or off. Changing it saves right away.</li>
+<li><strong>Manual Control</strong>: <strong>Start</strong> while nothing is in flight, and <strong>Stop</strong> while a run is in flight. See <a href="#start-and-stop">Start and Stop</a>.</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -3115,7 +3135,7 @@
 <li><strong>Activity Subtab</strong>:<ul>
 <li><strong>Last Run</strong> and <strong>Next Run</strong>: When the automation last ran and is next due.</li>
 <li><strong>Backlog</strong>: Counts of work items still <strong>Pending</strong>, <strong>Running</strong>, or <strong>Applying</strong> for this automation.</li>
-<li><strong>Run History Table</strong>: Displays past runs, including <strong>Start Time</strong>, work items <strong>Done</strong> and <strong>Failed</strong>, and <strong>Outcome</strong>. Each run has a button to view it in <a href="../agent-monitor/">Agent Monitor</a>.</li>
+<li><strong>Run History Table</strong>: Displays past runs, including <strong>Start Time</strong>, <strong>Started by</strong> (the user who pressed <strong>Start</strong>, or <strong>Schedule</strong>), work items <strong>Done</strong> and <strong>Failed</strong>, and <strong>Outcome</strong>. A stopped run's outcome shows who stopped it. Each run has a button to view it in <a href="../agent-monitor/">Agent Monitor</a>.</li>
 <li><strong>Load More</strong>: Button to fetch older historical runs.</li>
 </ul>
 </li>
@@ -3125,6 +3145,23 @@
 <li><strong>Save</strong>: Saves changes to the automation configuration.</li>
 </ul>
 <p>To monitor live automated workloads as they execute, navigate to <a href="../agent-monitor/">Agent Monitor</a>.</p>
+<h3 id="start-and-stop">Start and Stop<a class="headerlink" href="#start-and-stop" title="Permanent link">¶</a></h3>
+<p>The <strong>Manual Control</strong> column holds one button per automation, shown to appropriately permissioned users.</p>
+<p><strong>Start</strong> starts one run immediately, whether or not <strong>Auto Start</strong> is on or the automation is due.</p>
+<ul>
+<li>On a disabled automation, the run is a one-off and the automation stays disabled.</li>
+<li>A manual run counts as the automation's last run, so an enabled automation's next scheduled run comes one interval later.</li>
+<li><strong>Start</strong> is refused while a run is already in flight, while the automation scheduler is not running, or when the automation's agent is not available.</li>
+</ul>
+<p><strong>Stop</strong> opens a dialog that explains what stopping does:</p>
+<ul>
+<li><strong>Stop run</strong> cancels the run's agent sessions. Unfinished work items return to the queue without counting toward <strong>maxFailures</strong>.</li>
+<li><strong>Stop and turn off</strong> also turns the automation off, so it does not run again on its schedule. It is offered only while the automation is on.</li>
+</ul>
+<p>Stop returns before the run ends. The run shows <strong>Stopping</strong> until its sessions have ended, which can take a few minutes, then <strong>Stopped</strong>. The run records when <strong>Stop</strong> was pressed, and its end time is later, when its sessions finished ending. Results from sessions that finish in between are still saved to their alerts.</p>
+<p>If a run stays <strong>Stopping</strong> after its sessions have ended, press <strong>Stop</strong> again to clear it. This does not change who stopped the run or when.</p>
+<p>A stop does not change the schedule. If the automation stays on, its next run is due one interval after the stopped run started, which can be the next scheduler check.</p>
+<p>Runs started or stopped through a <a href="../manager-of-managers/">Manager of Managers</a> parent show the parent's API client as the user. <strong>Start</strong> and <strong>Stop</strong> through a Manager of Managers parent require the subgrid to be on 3.5.0; an older subgrid answers <code>404</code> or <code>405</code>.</p>
 <h3 id="alert-triage">Alert Triage<a class="headerlink" href="#alert-triage" title="Permanent link">¶</a></h3>
 <p>Alert Triage investigates new alerts with the <strong>AlertTriage</strong> agent and records an assessment on each one.</p>
 <h4 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">¶</a></h4>
@@ -3143,18 +3180,19 @@
 <li>Optionally, change the model used by the triage agent at <code>soc --&gt; config --&gt; server --&gt; modules --&gt; assistant --&gt; agentMapping --&gt; AlertTriage</code> (default <code>haiku@SOAI</code>).</li>
 <li>On the <strong>Agents</strong> tab, confirm the <strong>AlertTriage</strong> agent is enabled.</li>
 <li>On the <strong>Automations</strong> tab, expand <strong>Alert Triage</strong>. On the <strong>General</strong> subtab, confirm the handling agent is <strong>AlertTriage</strong> and set the run interval.</li>
-<li>Turn on the <strong>Enabled</strong> switch and click <strong>Save</strong>.</li>
+<li>Turn on the <strong>Auto Start</strong> switch. The change saves right away.</li>
 </ol>
 <p>The first run starts on the next scheduler check, which happens every <strong>Check Interval</strong> seconds (60 by default).</p>
 <h4 id="disabling-alert-triage">Disabling Alert Triage<a class="headerlink" href="#disabling-alert-triage" title="Permanent link">¶</a></h4>
-<p>To stop Alert Triage, turn off its <strong>Enabled</strong> switch on the <strong>Automations</strong> tab and click <strong>Save</strong>.</p>
+<p>To stop Alert Triage, turn off its <strong>Auto Start</strong> switch on the <strong>Automations</strong> tab. The change saves right away.</p>
 <ul>
 <li>No new runs start once the automation is disabled.</li>
-<li>A run that is already in progress is not interrupted. Its investigations finish and their results are written to the alerts.</li>
+<li>A run that is already in progress is stopped. Its sessions end, and its unfinished work items return to the queue without counting toward <strong>maxFailures</strong>.</li>
 <li>Work items still waiting in the backlog are kept and picked up again if the automation is re-enabled.</li>
 </ul>
 <p>Other ways to stop automations:</p>
 <ul>
+<li><strong>Stop</strong> a run from the <strong>Manual Control</strong> column, or from its card in <a href="../agent-monitor/">Agent Monitor</a>. <strong>Stop and turn off</strong> also turns off <strong>Auto Start</strong>. See <a href="#start-and-stop">Start and Stop</a>.</li>
 <li><strong>Disable the AlertTriage agent</strong> on the <strong>Agents</strong> tab. The scheduler skips any automation whose agent is unavailable and logs <code>automation names an agent that is not available; skipping</code>.</li>
 <li><strong>Disable agentic mode</strong> by setting <code>agentic</code> to <code>false</code> and restarting SOC. The scheduler does not start at all, and <a href="../agent-monitor/">Agent Monitor</a> shows a banner saying it is not running.</li>
 </ul>
