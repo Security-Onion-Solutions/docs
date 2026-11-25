@@ -158,7 +158,7 @@ The `Inbound Monitor Traffic` field shows the throughput of inbound bytes reachi
 
 ### Dropped Monitor Traffic
 
-The `Dropped Monitor Traffic` field shows the throughput of inbound bytes intended for the sensor's monitoring interface but are instead dropped, typically due to insufficient network capacity.
+The `Dropped Monitor Traffic` field shows the rate of inbound packets dropped by the monitoring interface, in packets per second, typically due to insufficient network capacity. Only standalone, eval, sensor, and heavy nodes have a monitoring interface; other nodes show 0.
 
 ### Inbound Mgmt Traffic
 
@@ -236,7 +236,7 @@ When viewing the **Metrics** tab, Security Onion displays a responsive dashboard
 | | **Disk Write** | `disk_write` | Bytes per second written to each disk. |
 | | **Disk Busy Time** | `disk_busy` | Percentage of time each disk was busy. |
 | | **Network Traffic** | `net` | Throughput in bits per second for Management In (`traffic_man_in`), Management Out (`traffic_man_out`), and Monitor In (`traffic_mon_in`). |
-| | **Monitor Packet Drops** | `net_drops` | Packet drops observed on monitoring capture interfaces (`traffic_mon_drops`). |
+| | **Monitor Packet Drops** | `net_drops` | Rate of inbound packets dropped on the monitoring interface, in packets per second. |
 | | **PCAP Retention** | `pcap_retention` | Age and retention window of packet capture buffers stored on disk in days (`pcap_retention`). |
 | **Pipeline & Ingestion** | **Grid / Consumption EPS** | `eps` | Average events per second consumed by each node, receivers included (`consumption_eps`). |
 | | **Logstash Event Receive Rate** | `logstash_eps` | Events per second received by each Logstash pipeline. |
@@ -384,7 +384,7 @@ Numeric metrics evaluate quantitative hardware, network, and pipeline measuremen
   - `loss`: Packet drop rates reported by Suricata and Zeek
   - `capture_loss`: Packet capture loss percentage reported by Zeek
   - `net`: Management In/Out and Monitor In throughput in Mbps
-  - `net_drops`: Monitoring interface drop throughput
+  - `net_drops`: Monitoring interface drops in packets per second
   - `container_cpu`: Container CPU usage percentage
   - `container_mem`: Container memory usage percentage
   - `container_net_in`: Container inbound network throughput in bits
@@ -399,7 +399,7 @@ Numeric metrics evaluate quantitative hardware, network, and pipeline measuremen
   - `<=`: Less than or equal to
   - `==`: Equal to
   - `!=`: Not equal to
-- **Threshold Input & Validation**: A numeric text field. The UI displays persistent unit hints corresponding to the metric (`%`, `Seconds`, `Days`, `GB`, `Mbps`, `Bits`). Both integers and floating-point decimal numbers (e.g., `80`, `95.5`) are valid. Non-numeric text is rejected.
+- **Threshold Input & Validation**: A numeric text field. The UI displays persistent unit hints corresponding to the metric (`%`, `Seconds`, `Days`, `GB`, `Mbps`, `Bits`, `packets/s`). Both integers and floating-point decimal numbers (e.g., `80`, `95.5`) are valid. Non-numeric text is rejected. Monitor drops (`net_drops`) thresholds are in packets per second.
 
 #### 2. Boolean Metrics (`bool`)
 
