@@ -62,10 +62,28 @@ Auto State Apply is configured at [Administration](administration.md) --> Config
 | `enabled` | `true` | Enables or disables Auto State Apply. When disabled, changes are picked up at the next scheduled highstate. |
 | `debounce_seconds` | `30` | How long a change must be quiet before it is applied. Multiple changes made within this window are combined into a single update. |
 | `drain_interval` | `15` | How often, in seconds, the manager checks for changes that are ready to be applied. |
-| `batch` | `25%` | How many nodes apply the state at once, either a number such as `10` or a percentage such as `25%`. |
-| `batch_wait` | `15` | How many seconds to wait between each batch of nodes. |
+| `batch` | `10%` | How many nodes apply the state at once, either a number such as `10` or a percentage such as `25%`. |
 
 Other than `enabled`, these are advanced settings, so you will only see them if you click the `Options` menu at the top of the page and then enable the `Show advanced settings` option.
+
+### New Nodes
+
+When you add a node to the grid, including a hypervisor VM, it only receives these automatic updates after its first full update (highstate) completes. Changes saved before then are applied to the node right after its first highstate, so you may see one extra update right after the first one. This also applies to a manager's changes to itself during setup.
+
+If a node's first highstate never completes, its updates wait. You can release the node by running the following on it:
+
+```
+sudo salt-call grains.delkey first_highstate_pending
+```
+
+### Results
+
+Results are logged in `/opt/so/log/salt/so-push-drainer.log`:
+
+- `push failed` (ERROR) means a state failed on a node. The next scheduled highstate retries it.
+- `push result unknown` (WARNING) means Salt stopped waiting for the result. The change may still have been applied.
+
+Pushes wait 45 seconds after salt-master restarts. A node that was still reconnecting can miss a push even when the push is logged as succeeded. It gets the change with its regular highstate, which runs on the [Highstate Interval](#highstate-interval).
 
 ## Highstate Interval
 
