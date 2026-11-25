@@ -158,13 +158,7 @@ The `Inbound Monitor Traffic` field shows the throughput of inbound bytes reachi
 
 ### Dropped Monitor Traffic
 
-The `Dropped Monitor Traffic` field shows the rate of inbound packets dropped by the monitoring interface, in packets per second, typically due to insufficient network capacity. Only standalone, eval, sensor, and heavy nodes have a monitoring interface. Other nodes show 0 and have no series in the drops chart. On a sensor, a value of 0 with no drops chart series can also mean that the node hasn't yet reported its monitoring interface.
-
-During a staged upgrade, a Manager of Managers on 3.5.0 shows 0.0 packets/s for nodes of a subgrid that hasn't been upgraded to 3.5.0 yet, until that subgrid is upgraded. Likewise, a Manager of Managers still on 3.4.0 shows 0 Mb/s for nodes of a subgrid that is already on 3.5.0, until the Manager of Managers is upgraded.
-
-In the node API, the `trafficMonInDropsMbs` field is replaced by `trafficMonInDropsPps`, in packets per second.
-
-Starting in 3.5.0, nodes without a monitoring interface read Management In/Out from their reported management interface instead of `eth0`, and show 0 for Monitor In and Mon Drops instead of the traffic on `eth1`. Existing alarms on these values for such nodes may fire or clear once after the upgrade.
+The `Dropped Monitor Traffic` field shows the rate of inbound packets dropped by the monitoring interface, in packets per second, typically due to insufficient network capacity. Only standalone, eval, sensor, and heavy nodes have a monitoring interface; other nodes show 0.
 
 ### Inbound Mgmt Traffic
 
@@ -405,7 +399,7 @@ Numeric metrics evaluate quantitative hardware, network, and pipeline measuremen
   - `<=`: Less than or equal to
   - `==`: Equal to
   - `!=`: Not equal to
-- **Threshold Input & Validation**: A numeric text field. The UI displays persistent unit hints corresponding to the metric (`%`, `Seconds`, `Days`, `GB`, `Mbps`, `Bits`, `packets/s`). Both integers and floating-point decimal numbers (e.g., `80`, `95.5`) are valid. Non-numeric text is rejected. Monitor drops (`net_drops`) alarms saved before 3.5.0 are converted to packets per second on upgrade and keep firing at the same drop rate; new thresholds are in packets per second (multiply an old value by 125,000).
+- **Threshold Input & Validation**: A numeric text field. The UI displays persistent unit hints corresponding to the metric (`%`, `Seconds`, `Days`, `GB`, `Mbps`, `Bits`, `packets/s`). Both integers and floating-point decimal numbers (e.g., `80`, `95.5`) are valid. Non-numeric text is rejected. Monitor drops (`net_drops`) thresholds are in packets per second.
 
 #### 2. Boolean Metrics (`bool`)
 
@@ -419,7 +413,8 @@ Boolean metrics evaluate binary operational states and feature toggles:
 - **Available Operators**:
   - `==`: Is (equal)
   - `!=`: Is not (not equal)
-- **Threshold Input & Validation**: Rendered as a select dropdown with options `true` and `false`. The backend also accepts `1` and `0`. Freeform strings or numbers other than `0` and `1` are rejected.
+- **Threshold Input & Validation**: Rendered as a select dropdown with options `true` and `false`. The backend also accepts `1` and `0` and stores them as `true` and `false`. Freeform strings or numbers other than `0` and `1` are rejected.
+- **Operator Validation**: Only `==` and `!=` are accepted for boolean metrics. An existing alarm that uses another operator can't be saved until its operator is changed to `==` or `!=`, though it can still be deleted.
 
 #### 3. String Metrics (`string`)
 
