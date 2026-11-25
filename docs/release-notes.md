@@ -8,6 +8,8 @@ If you are upgrading to Security Onion 3.5 and have grid alarms on Restart Requi
 
 If you are upgrading to Security Onion 3.5 and use the Redis queue, then note that it now runs Valkey, the open source fork of Redis. Queued events carry over automatically. Once so-redis has saved its queue, Redis 7.4 can no longer read it.
 
+If you are upgrading to Security Onion 3.5 and have a Monitor Packet Drops alarm, then remove that alarm and add it again with a threshold in packets per second. Its unit changed from Mbps to packets per second, and existing thresholds are not converted.
+
 ### Release History
 
 3.4.0 [20261102] Changes
