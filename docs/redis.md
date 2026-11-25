@@ -1,8 +1,6 @@
 # Redis
 
-From <https://redis.io/>:
-
-> Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs and geospatial indexes with radius queries.
+Security Onion's Redis queue runs [Valkey](https://valkey.io/), the open source (BSD licensed) fork of Redis. Commands and settings keep the Redis names.
 
 On Standalone (non-Eval) installations and distributed deployments, [Logstash](logstash.md) on the manager node outputs to Redis. Search nodes can then consume from Redis.
 
@@ -53,15 +51,17 @@ Security Onion configures Redis to use 812MB of your total system memory. If you
 
 ## Diagnostic Logging
 
-Redis logs can be found at `/opt/so/log/redis/`. Depending on what you're looking for, you may also need to look at the [Docker](docker.md) logs for the container:
+Redis logs can be found at `/opt/so/log/redis/` and are written by Valkey. Depending on what you're looking for, you may also need to look at the [Docker](docker.md) logs for the container:
 
 
 ```bash
 sudo docker logs so-redis
 ```
 
+If so-redis doesn't start after the upgrade and `redis-server.log` shows an RDB load error, move `/nsm/redis/data/dump.rdb` aside and restart so-redis. This drops the events queued in that file.
+
 ## More Information
 
 !!! NOTE
     
-    For more information about Redis, please see <https://redis.io/>.
+    For more information about Valkey, please see <https://valkey.io/>.
