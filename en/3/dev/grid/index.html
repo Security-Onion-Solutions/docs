@@ -3559,7 +3559,7 @@
 <h3 id="inbound-monitor-traffic">Inbound Monitor Traffic<a class="headerlink" href="#inbound-monitor-traffic" title="Permanent link">¶</a></h3>
 <p>The <code>Inbound Monitor Traffic</code> field shows the throughput of inbound bytes reaching the sensor's monitoring interface.</p>
 <h3 id="dropped-monitor-traffic">Dropped Monitor Traffic<a class="headerlink" href="#dropped-monitor-traffic" title="Permanent link">¶</a></h3>
-<p>The <code>Dropped Monitor Traffic</code> field shows the throughput of inbound bytes intended for the sensor's monitoring interface but are instead dropped, typically due to insufficient network capacity.</p>
+<p>The <code>Dropped Monitor Traffic</code> field shows the rate of inbound packets dropped by the monitoring interface, in packets per second, typically due to insufficient network capacity. Only standalone, eval, sensor, and heavy nodes have a monitoring interface; other nodes show 0.</p>
 <h3 id="inbound-mgmt-traffic">Inbound Mgmt Traffic<a class="headerlink" href="#inbound-mgmt-traffic" title="Permanent link">¶</a></h3>
 <p>The <code>Inbound Mgmt Traffic</code> field shows the throughput of inbound bytes intended for the node's management interface. This is the internal interface that the node uses to communicate with other nodes in the Security Onion Grid.</p>
 <h3 id="outbound-mgmt-traffic">Outbound Mgmt Traffic<a class="headerlink" href="#outbound-mgmt-traffic" title="Permanent link">¶</a></h3>
@@ -3701,7 +3701,7 @@
 <td></td>
 <td><strong>Monitor Packet Drops</strong></td>
 <td><code>net_drops</code></td>
-<td>Packet drops observed on monitoring capture interfaces (<code>traffic_mon_drops</code>).</td>
+<td>Rate of inbound packets dropped on the monitoring interface, in packets per second.</td>
 </tr>
 <tr>
 <td></td>
@@ -3976,7 +3976,7 @@
 <li><code>loss</code>: Packet drop rates reported by Suricata and Zeek</li>
 <li><code>capture_loss</code>: Packet capture loss percentage reported by Zeek</li>
 <li><code>net</code>: Management In/Out and Monitor In throughput in Mbps</li>
-<li><code>net_drops</code>: Monitoring interface drop throughput</li>
+<li><code>net_drops</code>: Monitoring interface drops in packets per second</li>
 <li><code>container_cpu</code>: Container CPU usage percentage</li>
 <li><code>container_mem</code>: Container memory usage percentage</li>
 <li><code>container_net_in</code>: Container inbound network throughput in bits</li>
@@ -3991,7 +3991,7 @@
 <li><code>&lt;=</code>: Less than or equal to</li>
 <li><code>==</code>: Equal to</li>
 <li><code>!=</code>: Not equal to</li>
-<li><strong>Threshold Input &amp; Validation</strong>: A numeric text field. The UI displays persistent unit hints corresponding to the metric (<code>%</code>, <code>Seconds</code>, <code>Days</code>, <code>GB</code>, <code>Mbps</code>, <code>Bits</code>). Both integers and floating-point decimal numbers (e.g., <code>80</code>, <code>95.5</code>) are valid. Non-numeric text is rejected.</li>
+<li><strong>Threshold Input &amp; Validation</strong>: A numeric text field. The UI displays persistent unit hints corresponding to the metric (<code>%</code>, <code>Seconds</code>, <code>Days</code>, <code>GB</code>, <code>Mbps</code>, <code>Bits</code>, <code>packets/s</code>). Both integers and floating-point decimal numbers (e.g., <code>80</code>, <code>95.5</code>) are valid. Non-numeric text is rejected. Monitor drops (<code>net_drops</code>) thresholds are in packets per second.</li>
 </ul>
 <h4 id="2-boolean-metrics-bool">2. Boolean Metrics (<code>bool</code>)<a class="headerlink" href="#2-boolean-metrics-bool" title="Permanent link">¶</a></h4>
 <p>Boolean metrics evaluate binary operational states and feature toggles:</p>
