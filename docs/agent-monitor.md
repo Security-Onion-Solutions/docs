@@ -15,7 +15,7 @@ The top toolbar offers quick controls for supervising active execution:
 - **Breadcrumbs**: Navigate between the main overview and detailed execution transcripts.
 - **Pause / Resume**: Freezes live updates so analysts can inspect in-flight work without the view changing, or resumes live polling.
 - **Refresh**: Manually reloads current execution state.
-- **Options (Gear Icon)**: Controls whether **Run History** hides successful runs with no work items. Stopped runs, and runs a user started with **Run now**, are always listed.
+- **Options (Gear Icon)**: Controls whether **Run History** hides successful runs with no work items. Stopped runs are always listed.
 - **Documentation Link**: Quick access to Onion AI documentation.
 
 If the automation scheduler is not running, an alert banner appears at the top of the page.
@@ -68,9 +68,7 @@ The **In Flight** panel lists tasks that are currently queued, executing, or app
 
 Above the work-item table, a card for each run in flight shows the automation, who started it (or **Schedule**), how long it has run, how many open work items it has, and its state. A run that is still scanning for work shows **Scanning**.
 
-Users with the `config/write` permission (the `superuser` role) also get a **Stop** button on each card. It opens a dialog with **Stop run** and, while the automation is on, **Stop and turn off**; see [Run Now and Stop](agent-studio.md#run-now-and-stop). A stopping run shows **Stopping**, who stopped it, and how many sessions are still ending. **Stop** stays available on a stopping run.
-
-Everyone with `automations/read` sees the cards, the **Stopping** state, and who started or stopped a run.
+Appropriately permissioned users also get a **Stop** button on each card. It opens a dialog with **Stop run** and, while the automation is on, **Stop and turn off**; see [Start and Stop](agent-studio.md#start-and-stop). A stopping run shows **Stopping** and how many sessions are still ending. **Stop** stays available on a stopping run.
 
 ### Table Columns
 
@@ -107,15 +105,15 @@ The **Run History** panel lists finished automation runs across the grid.
 ### Table Columns
 
 - **Automation**: Name of the automation that ran.
-- **Started by**: The user who started the run with **Run now**, or **Schedule**.
+- **Started by**: The user who started the run with **Start**, or **Schedule**.
 - **Started**: When the run began.
-- **Duration**: How long the run took. A stopped run's duration ends when **Stop** was pressed.
+- **Duration**: How long the run took. A stopped run's duration includes the time its sessions took to end after **Stop** was pressed.
 - **Done** and **Failed**: Number of work items the run finished or failed.
 - **Outcome**: `Completed`, `Failed`, or `Stopped`.
 
 ### Inspecting a Run
 
-Expanding a run shows its **Run ID**, any run error, and the work items it handled. A stopped run also says who stopped it and when it ended, and that its unfinished items went back to the queue without counting as failures. The work items are listed with each item's **Group**, **Outcome**, **Error**, **Attempt**, **Finished**, **Duration**, and a **binoculars icon** to review its transcript.
+Expanding a run shows its **Run ID**, any run error, and the work items it handled. A stopped run also says who stopped it and when **Stop** was pressed, and that its unfinished items went back to the queue without counting as failures. The work items are listed with each item's **Group**, **Outcome**, **Error**, **Attempt**, **Finished**, **Duration**, and a **binoculars icon** to review its transcript.
 
 Expanding a work item opens the same inspector card as In Flight.
 

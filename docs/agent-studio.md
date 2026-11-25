@@ -175,7 +175,7 @@ To manually add a new fact to long-term memory:
 
 The **Automations** tab configures recurring, autonomous agent workflows that execute in the background without requiring user interaction. A scheduler in the Security Onion Console checks which automations are due, creates work items for them, and hands each work item to an agent in its own session. A primary example is the built-in [Alert Triage](#alert-triage) automation.
 
-Turning an automation off also stops its in-flight run. See [Run Now and Stop](#run-now-and-stop).
+Turning an automation off also stops its in-flight run. See [Start and Stop](#start-and-stop).
 
 !!! WARNING
 
@@ -192,8 +192,8 @@ Turning an automation off also stops its in-flight run. See [Run Now and Stop](#
 - **Interval**: How frequently the automation runs (e.g., `60 seconds`, `5 minutes`).
 - **Handling Agent**: The assigned agent responsible for executing the workflow.
 - **Status**: The state of the automation's latest run: **Idle**, **Queued**, **Running**, **Stopping**, **Stopped**, or **Failed**.
-- **Enabled**: Switch to enable or disable the automation.
-- **Actions**: **Run now** while nothing is in flight, and **Stop** while a run is in flight. See [Run Now and Stop](#run-now-and-stop).
+- **Auto Start**: Switch to turn the automation's schedule on or off. Changing it saves right away.
+- **Manual Control**: **Start** while nothing is in flight, and **Stop** while a run is in flight. See [Start and Stop](#start-and-stop).
 
 !!! NOTE
 
@@ -211,7 +211,7 @@ Expanding an automation row opens an editor card with three subtabs:
 - **Activity Subtab**:
     - **Last Run** and **Next Run**: When the automation last ran and is next due.
     - **Backlog**: Counts of work items still **Pending**, **Running**, or **Applying** for this automation.
-    - **Run History Table**: Displays past runs, including **Start Time**, **Started by** (the user who used **Run now**, or **Schedule**), work items **Done** and **Failed**, and **Outcome**. A stopped run's outcome shows who stopped it. Each run has a button to view it in [Agent Monitor](agent-monitor.md).
+    - **Run History Table**: Displays past runs, including **Start Time**, **Started by** (the user who pressed **Start**, or **Schedule**), work items **Done** and **Failed**, and **Outcome**. A stopped run's outcome shows who stopped it. Each run has a button to view it in [Agent Monitor](agent-monitor.md).
     - **Load More**: Button to fetch older historical runs.
 
 #### Automation Actions
@@ -220,28 +220,28 @@ Expanding an automation row opens an editor card with three subtabs:
 
 To monitor live automated workloads as they execute, navigate to [Agent Monitor](agent-monitor.md).
 
-### Run Now and Stop
+### Start and Stop
 
-The **Actions** column holds one button per automation. It requires the `config/write` permission, which is granted to the `superuser` role. Everyone who can see the tab sees the run states and who started or stopped a run.
+The **Manual Control** column holds one button per automation, shown to appropriately permissioned users.
 
-**Run now** starts one run immediately, whether or not the automation is enabled or due.
+**Start** starts one run immediately, whether or not **Auto Start** is on or the automation is due.
 
 - On a disabled automation, the run is a one-off and the automation stays disabled.
 - A manual run counts as the automation's last run, so an enabled automation's next scheduled run comes one interval later.
-- Run now is refused while a run is already in flight, while the automation scheduler is not running, or when the automation's agent is not available.
+- **Start** is refused while a run is already in flight, while the automation scheduler is not running, or when the automation's agent is not available.
 
 **Stop** opens a dialog that explains what stopping does:
 
 - **Stop run** cancels the run's agent sessions. Unfinished work items return to the queue without counting toward **maxFailures**.
 - **Stop and turn off** also turns the automation off, so it does not run again on its schedule. It is offered only while the automation is on.
 
-Stop returns before the run ends. The run shows **Stopping** until its sessions have ended, which can take a few minutes, then **Stopped**. A stopped run's end time is when **Stop** was pressed, not when its sessions finished ending.
+Stop returns before the run ends. The run shows **Stopping** until its sessions have ended, which can take a few minutes, then **Stopped**. The run records when **Stop** was pressed, and its end time is later, when its sessions finished ending. Results from sessions that finish in between are still saved to their alerts.
 
 If a run stays **Stopping** after its sessions have ended, press **Stop** again to clear it. This does not change who stopped the run or when.
 
 A stop does not change the schedule. If the automation stays on, its next run is due one interval after the stopped run started, which can be the next scheduler check.
 
-Runs started or stopped through a [Manager of Managers](manager-of-managers.md) parent show the parent's API client as the user. Run now and Stop through a Manager of Managers parent require the subgrid to be on 3.5.0; an older subgrid answers `404` or `405`.
+Runs started or stopped through a [Manager of Managers](manager-of-managers.md) parent show the parent's API client as the user. **Start** and **Stop** through a Manager of Managers parent require the subgrid to be on 3.5.0; an older subgrid answers `404` or `405`.
 
 ### Alert Triage
 
@@ -264,13 +264,13 @@ The Alert Triage automation is disabled by default. To enable it:
 3. Optionally, change the model used by the triage agent at `soc --> config --> server --> modules --> assistant --> agentMapping --> AlertTriage` (default `haiku@SOAI`).
 4. On the **Agents** tab, confirm the **AlertTriage** agent is enabled.
 5. On the **Automations** tab, expand **Alert Triage**. On the **General** subtab, confirm the handling agent is **AlertTriage** and set the run interval.
-6. Turn on the **Enabled** switch and click **Save**.
+6. Turn on the **Auto Start** switch. The change saves right away.
 
 The first run starts on the next scheduler check, which happens every **Check Interval** seconds (60 by default).
 
 #### Disabling Alert Triage
 
-To stop Alert Triage, turn off its **Enabled** switch on the **Automations** tab and click **Save**.
+To stop Alert Triage, turn off its **Auto Start** switch on the **Automations** tab. The change saves right away.
 
 - No new runs start once the automation is disabled.
 - A run that is already in progress is stopped. Its sessions end, and its unfinished work items return to the queue without counting toward **maxFailures**.
@@ -278,7 +278,7 @@ To stop Alert Triage, turn off its **Enabled** switch on the **Automations** tab
 
 Other ways to stop automations:
 
-- **Stop** a run from the **Actions** column, or from its card in [Agent Monitor](agent-monitor.md). **Stop and turn off** also disables the automation. See [Run Now and Stop](#run-now-and-stop).
+- **Stop** a run from the **Manual Control** column, or from its card in [Agent Monitor](agent-monitor.md). **Stop and turn off** also turns off **Auto Start**. See [Start and Stop](#start-and-stop).
 - **Disable the AlertTriage agent** on the **Agents** tab. The scheduler skips any automation whose agent is unavailable and logs `automation names an agent that is not available; skipping`.
 - **Disable agentic mode** by setting `agentic` to `false` and restarting SOC. The scheduler does not start at all, and [Agent Monitor](agent-monitor.md) shows a banner saying it is not running.
 
