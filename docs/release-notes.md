@@ -6,7 +6,7 @@ If you are upgrading to Security Onion 3.4 and get a warning that says ``The fol
 
 If you are upgrading to Security Onion 3.5 and have grid alarms on Restart Required, GMD, LKS or FPS (`os_needs_restart`, `gmd_enabled`, `lks_enabled`, `fps_enabled`) whose threshold is `1` or `0`, then review those alarms before upgrading. They now evaluate correctly, so they may trigger or clear, and send notifications, right after the upgrade.
 
-If you are upgrading to Security Onion 3.5 and have alarms on Monitor Packet Drops (`net_drops`), then note that this metric is now measured in packets per second instead of Mbps. Existing drops alarms are converted automatically during the upgrade and keep firing at the same drop rate. Enter new or edited thresholds in packets per second; an old Mbps value multiplied by 125,000 is the equivalent.
+If you are upgrading to Security Onion 3.5 and have a Monitor Packet Drops alarm, then remove that alarm and add it again with a threshold in packets per second. Its unit changed from Mbps to packets per second, and existing thresholds are not converted.
 
 ### Release History
 
