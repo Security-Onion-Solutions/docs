@@ -6,6 +6,8 @@ If you are upgrading to Security Onion 3.4 and get a warning that says ``The fol
 
 If you are upgrading to Security Onion 3.5 and have grid alarms on Restart Required, GMD, LKS or FPS (`os_needs_restart`, `gmd_enabled`, `lks_enabled`, `fps_enabled`) whose threshold is `1` or `0`, then review those alarms before upgrading. They now evaluate correctly, so they may trigger or clear, and send notifications, right after the upgrade.
 
+If you are upgrading to Security Onion 3.5 and use the Redis queue, then note that it now runs Valkey, the open source fork of Redis. Queued events carry over automatically. Once so-redis has saved its queue, Redis 7.4 can no longer read it.
+
 ### Release History
 
 3.4.0 [20261102] Changes
